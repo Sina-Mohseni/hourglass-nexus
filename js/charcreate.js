@@ -45,8 +45,8 @@ function initCharCreate(){
   if(guide && guide.avatar && portraitEl) portraitEl.innerHTML = '<img src="'+esc(guide.avatar)+'">';
   if(guide && titleEl) titleEl.textContent = guide.name;
 
-  // Check if save exists
-  var hasSave = acDB.get("ac_saveExists") === "1";
+  // Check if a save or a created character exists
+  var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   var resumeBtn = document.getElementById("cc-choice-resume");
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
@@ -84,7 +84,16 @@ function initCharCreate(){
   };
   if(resumeBtn) resumeBtn.onclick = function(){
     if(resumeBtn.disabled) return;
-    loadGameSave();
+    // If a full save exists, restore it; otherwise just enter main app
+    if(acDB.get("ac_saveExists") === "1"){
+      loadGameSave();
+    } else {
+      var screen = document.getElementById("charcreate-screen");
+      if(screen){
+        screen.classList.add("exiting");
+        setTimeout(function(){ screen.remove(); enterMainApp() }, 600);
+      }
+    }
   };
 }
 
