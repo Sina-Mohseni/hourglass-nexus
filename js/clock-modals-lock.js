@@ -208,11 +208,6 @@ function initLock(){
 
 /* ══════════ CHARACTER CREATION GATE ══════════ */
 function checkCharCreate(){
-  // If character already created, go straight to main app
-  if(acDB.get("ac_charCreated") === "1"){
-    enterMainApp();
-    return;
-  }
-  // Otherwise show character creation
+  // Always show the intro screen with New / Resume choices
   initCharCreate();
 }

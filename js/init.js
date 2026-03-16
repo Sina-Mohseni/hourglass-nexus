@@ -15,13 +15,7 @@ document.addEventListener("DOMContentLoaded", async function(){
   initCalendar();
   initWeather();
 
-  // If character already created, remove creation screen immediately
-  var ccScreen = document.getElementById("charcreate-screen");
-  if(acDB.get("ac_charCreated") === "1" && ccScreen){
-    ccScreen.remove();
-  }
-
-  // Hide all app content until char creation is done
+  // Hide all app content until char creation / intro is done
   var contentArea = $(".content-area");
   var footer = $("#footer-assembly");
   if(contentArea) contentArea.style.visibility = "hidden";
