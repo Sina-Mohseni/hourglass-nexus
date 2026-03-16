@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useGame } from '../hooks/useGame';
+import { asset } from '../utils/asset';
 
 const INTRO = [
   "Bienvenue, voyageur. Je suis <span class='hl'>A.T.O.M.</span>, l'Architecte Temporel des Origines Mécaniques.",
@@ -118,7 +119,7 @@ export default function CharCreate() {
       <div className="cc-bg" />
       <div className="cc-vignette" />
       <div className="cc-guide-portrait">
-        {guide.avatar && <img src={guide.avatar} alt="" />}
+        {guide.avatar && <img src={asset(guide.avatar)} alt="" />}
       </div>
       <div className="cc-guide-title">{guide.name}</div>
 
@@ -219,7 +220,7 @@ export default function CharCreate() {
         )}
       </div>
 
-      <img src="/assets/ealogo.png" alt="" className="cc-watermark" />
+      <img src={asset('/assets/ealogo.png')} alt="" className="cc-watermark" />
     </div>
   );
 }

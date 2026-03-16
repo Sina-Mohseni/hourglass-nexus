@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useGame } from '../hooks/useGame';
+import { asset } from '../utils/asset';
 
 const STAT_COLORS = { CRE: '#9b59b6', SAG: '#5dade2', CHA: '#e8a838', FOR: '#e74c3c', AGI: '#27ae60' };
 
@@ -47,7 +48,7 @@ export default function UserPage() {
       {guide && (
         <div className="accueil-guide" style={{ margin: '0 0 8px' }}>
           <div className="accueil-guide-header">
-            <img className="ag-avatar" src={guide.avatar} alt="" />
+            <img className="ag-avatar" src={asset(guide.avatar)} alt="" />
             <div className="ag-info">
               <div className="ag-name">{guide.name}</div>
               <div className="ag-title">{guide.title}</div>
