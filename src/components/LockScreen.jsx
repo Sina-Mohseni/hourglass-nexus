@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useGame } from '../hooks/useGame';
+import { asset } from '../utils/asset';
 
 export default function LockScreen() {
   const { guide, unlock } = useGame();
@@ -109,7 +110,7 @@ export default function LockScreen() {
         <p className="lock-hint">Réveillez le guide et placez-le dans le portail</p>
       </div>
       <div className="lock-logo-fixed" style={{ opacity: awakened ? 0 : 1 }}>
-        <img src="/assets/ealogo.png" alt="" className="lock-logo-img" />
+        <img src={asset('/assets/ealogo.png')} alt="" className="lock-logo-img" />
       </div>
       <div className="hole" ref={holeRef}>
         <div className="hole-rune" />
@@ -121,7 +122,7 @@ export default function LockScreen() {
         onMouseDown={(e) => { e.preventDefault(); handleStart(e.clientX, e.clientY); }}
         onTouchStart={(e) => { e.preventDefault(); const t = e.touches[0]; handleStart(t.clientX, t.clientY); }}
       >
-        <img src={guide.avatar} alt="" className="lock-guide-img" />
+        <img src={asset(guide.avatar)} alt="" className="lock-guide-img" />
         <span className="lock-guide-label">{label}</span>
       </div>
     </div>

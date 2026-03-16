@@ -1,4 +1,5 @@
 import { useGame } from '../hooks/useGame';
+import { asset } from '../utils/asset';
 
 export default function AccueilPage() {
   const { guide, user, clans, navigateTo, setClanMapOpen } = useGame();
@@ -8,7 +9,7 @@ export default function AccueilPage() {
     <>
       <div className="welcome-hero">
         <div className="logo-container">
-          <img src="/assets/ealogo.png" alt="HN" />
+          <img src={asset('/assets/ealogo.png')} alt="HN" />
           <div className="logo-ring" />
         </div>
         <h1 className="welcome-title">HOURGLASS <span className="accent">NEXUS</span></h1>
@@ -25,7 +26,7 @@ export default function AccueilPage() {
       {guide && (
         <div className="accueil-guide">
           <div className="accueil-guide-header">
-            <img className="ag-avatar" src={guide.avatar} alt="" />
+            <img className="ag-avatar" src={asset(guide.avatar)} alt="" />
             <div className="ag-info">
               <div className="ag-name">{guide.name}</div>
               <div className="ag-title">{guide.title}</div>
