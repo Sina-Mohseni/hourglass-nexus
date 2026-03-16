@@ -10216,6 +10216,822 @@
       },
       "quote": "Tout a cédé. Je suis encore là.",
       "job": "guerrier"
+    },
+    {
+      "id": "solaris",
+      "name": "Solaris",
+      "role": "Persona",
+      "title": "L'Astre Intérieur",
+      "avatar": "",
+      "color": "#f59e0b",
+      "difficulty": "Difficile",
+      "element": "Solaire",
+      "bio": "Solaris porte en elle un fragment de soleil. Sa lumière réchauffe ou consume, selon son humeur.",
+      "traits": [
+        "Radieuse",
+        "Imprévisible",
+        "Passionnée",
+        "Magnétique"
+      ],
+      "stats": {
+        "CRE": 70,
+        "SAG": 55,
+        "CHA": 85,
+        "FOR": 60,
+        "AGI": 50
+      },
+      "affinities": {
+        "helios": 95,
+        "ember": 80,
+        "aurora": 88,
+        "eclipse": 45,
+        "lumen": 90,
+        "phoenix": 75
+      },
+      "quote": "Je brûle pour que d'autres voient.",
+      "job": "mage"
+    },
+    {
+      "id": "cobalt_y",
+      "name": "Cobalt Prime",
+      "role": "Persona",
+      "title": "Le Sang Bleu",
+      "avatar": "",
+      "color": "#2563eb",
+      "difficulty": "Moyen",
+      "element": "Cobalt Pur",
+      "bio": "Cobalt Prime coule dans les veines de la terre. Son toucher transforme le fer en acier pur.",
+      "traits": [
+        "Méthodique",
+        "Résistant",
+        "Loyal",
+        "Silencieux"
+      ],
+      "stats": {
+        "CRE": 45,
+        "SAG": 65,
+        "CHA": 40,
+        "FOR": 80,
+        "AGI": 35
+      },
+      "affinities": {
+        "alloy": 92,
+        "anvil": 85,
+        "ore": 78,
+        "smelt": 88,
+        "tungsten": 70,
+        "copper": 65
+      },
+      "quote": "Le métal ne ment jamais.",
+      "job": "forgeron"
+    },
+    {
+      "id": "minotaure",
+      "name": "Minotaure",
+      "role": "Persona",
+      "title": "Le Gardien du Labyrinthe",
+      "avatar": "",
+      "color": "#92400e",
+      "difficulty": "Expert",
+      "element": "Labyrinthe",
+      "bio": "Minotaure erre dans un dédale sans fin. Ceux qui le croisent ne retrouvent jamais leur chemin.",
+      "traits": [
+        "Territorial",
+        "Ancien",
+        "Furieux",
+        "Solitaire"
+      ],
+      "stats": {
+        "CRE": 30,
+        "SAG": 50,
+        "CHA": 35,
+        "FOR": 95,
+        "AGI": 40
+      },
+      "affinities": {
+        "golem": 85,
+        "basalt": 90,
+        "grim": 78,
+        "obsidian": 82,
+        "void": 60,
+        "shade": 72
+      },
+      "quote": "Le labyrinthe n'a pas de sortie. Il n'en a jamais eu.",
+      "job": "guerrier"
+    },
+    {
+      "id": "serenade",
+      "name": "Sérénade",
+      "role": "Persona",
+      "title": "La Mélodie Éternelle",
+      "avatar": "",
+      "color": "#c084fc",
+      "difficulty": "Facile",
+      "element": "Mélodie",
+      "bio": "Sérénade chante des mélodies que seuls les cœurs brisés peuvent entendre. Sa voix guérit les âmes.",
+      "traits": [
+        "Douce",
+        "Empathique",
+        "Mélancolique",
+        "Généreuse"
+      ],
+      "stats": {
+        "CRE": 80,
+        "SAG": 70,
+        "CHA": 90,
+        "FOR": 20,
+        "AGI": 45
+      },
+      "affinities": {
+        "lyre": 95,
+        "harmonia": 92,
+        "echo": 85,
+        "pulse": 70,
+        "sylph": 78,
+        "orphea": 88
+      },
+      "quote": "Écoute. La musique parle quand les mots se taisent.",
+      "job": "barde"
+    },
+    {
+      "id": "tectonique",
+      "name": "Tectonique",
+      "role": "Persona",
+      "title": "Celui Qui Fend la Croûte",
+      "avatar": "",
+      "color": "#78350f",
+      "difficulty": "Maître",
+      "element": "Tectonique",
+      "bio": "Tectonique est la force qui sépare les continents. Chaque pas qu'il fait redessine la carte.",
+      "traits": [
+        "Colossal",
+        "Lent",
+        "Implacable",
+        "Primordial"
+      ],
+      "stats": {
+        "CRE": 25,
+        "SAG": 60,
+        "CHA": 30,
+        "FOR": 99,
+        "AGI": 15
+      },
+      "affinities": {
+        "tremor": 98,
+        "basalt": 95,
+        "magma": 92,
+        "strata": 88,
+        "bedrock": 90,
+        "caldera": 85
+      },
+      "quote": "Les montagnes se souviennent de ma colère.",
+      "job": "berserker"
+    },
+    {
+      "id": "papyrus",
+      "name": "Papyrus",
+      "role": "Persona",
+      "title": "Le Scribe des Âges",
+      "avatar": "",
+      "color": "#d4a373",
+      "difficulty": "Facile",
+      "element": "Papyrus",
+      "bio": "Papyrus consigne tout. Chaque mot prononcé, chaque souffle émis. Rien n'échappe à sa plume.",
+      "traits": [
+        "Méticuleux",
+        "Patient",
+        "Observateur",
+        "Discret"
+      ],
+      "stats": {
+        "CRE": 75,
+        "SAG": 85,
+        "CHA": 50,
+        "FOR": 25,
+        "AGI": 40
+      },
+      "affinities": {
+        "quill": 95,
+        "grimoire": 90,
+        "vellum": 88,
+        "glyph": 82,
+        "fable": 78,
+        "nib": 85
+      },
+      "quote": "Ce qui n'est pas écrit n'a jamais existé.",
+      "job": "cartographe"
+    },
+    {
+      "id": "typhon",
+      "name": "Typhon",
+      "role": "Persona",
+      "title": "Le Souffle Dévastateur",
+      "avatar": "",
+      "color": "#475569",
+      "difficulty": "Expert",
+      "element": "Ouragan",
+      "bio": "Typhon est la tempête faite chair. Là où il passe, le silence qui suit est assourdissant.",
+      "traits": [
+        "Dévastateur",
+        "Rapide",
+        "Insaisissable",
+        "Capricieux"
+      ],
+      "stats": {
+        "CRE": 40,
+        "SAG": 35,
+        "CHA": 55,
+        "FOR": 75,
+        "AGI": 90
+      },
+      "affinities": {
+        "gale": 95,
+        "tempest": 92,
+        "gust": 88,
+        "vortex": 85,
+        "maelstrom": 80,
+        "drift": 70
+      },
+      "quote": "Je ne passe pas. J'efface.",
+      "job": "assassin"
+    },
+    {
+      "id": "opale",
+      "name": "Opale",
+      "role": "Persona",
+      "title": "La Pierre des Mille Feux",
+      "avatar": "",
+      "color": "#e0e7ff",
+      "difficulty": "Moyen",
+      "element": "Opale",
+      "bio": "Opale change de couleur selon la lumière. Personne ne connaît sa vraie teinte.",
+      "traits": [
+        "Changeante",
+        "Mystérieuse",
+        "Belle",
+        "Fragile"
+      ],
+      "stats": {
+        "CRE": 70,
+        "SAG": 60,
+        "CHA": 80,
+        "FOR": 30,
+        "AGI": 55
+      },
+      "affinities": {
+        "prisme": 92,
+        "geode": 88,
+        "quartz": 85,
+        "iris": 90,
+        "glint": 78,
+        "mirage": 82
+      },
+      "quote": "Tu ne vois que ce que je veux bien montrer.",
+      "job": "enchanteur"
+    },
+    {
+      "id": "ragnarok",
+      "name": "Ragnarök",
+      "role": "Persona",
+      "title": "La Fin des Fins",
+      "avatar": "",
+      "color": "#7f1d1d",
+      "difficulty": "Légendaire",
+      "element": "Apocalypse",
+      "bio": "Ragnarök est la promesse que tout a une fin. Il attend patiemment le dernier jour.",
+      "traits": [
+        "Inévitable",
+        "Patient",
+        "Terrifiant",
+        "Juste"
+      ],
+      "stats": {
+        "CRE": 20,
+        "SAG": 90,
+        "CHA": 65,
+        "FOR": 85,
+        "AGI": 30
+      },
+      "affinities": {
+        "thanatos": 98,
+        "nihil": 95,
+        "omega": 92,
+        "pyre": 88,
+        "requiem": 90,
+        "ravage": 85
+      },
+      "quote": "Je ne suis pas la fin. Je suis ce qui vient après.",
+      "job": "necromancien"
+    },
+    {
+      "id": "borealis",
+      "name": "Boréalis",
+      "role": "Persona",
+      "title": "La Danseuse Polaire",
+      "avatar": "",
+      "color": "#34d399",
+      "difficulty": "Moyen",
+      "element": "Aurore Boréale",
+      "bio": "Boréalis danse dans le ciel nocturne. Ses voiles de lumière racontent des histoires oubliées.",
+      "traits": [
+        "Gracieuse",
+        "Éthérée",
+        "Libre",
+        "Lumineuse"
+      ],
+      "stats": {
+        "CRE": 85,
+        "SAG": 60,
+        "CHA": 75,
+        "FOR": 25,
+        "AGI": 80
+      },
+      "affinities": {
+        "aurora": 98,
+        "nimbus": 85,
+        "lumen": 90,
+        "sylph": 88,
+        "wisp": 82,
+        "prisme": 78
+      },
+      "quote": "Le ciel est mon seul partenaire de danse.",
+      "job": "druide"
+    },
+    {
+      "id": "cerbere",
+      "name": "Cerbère",
+      "role": "Persona",
+      "title": "Le Gardien des Portes",
+      "avatar": "",
+      "color": "#1c1917",
+      "difficulty": "Expert",
+      "element": "Seuil Infernal",
+      "bio": "Cerbère garde les portes entre les mondes. Trois têtes, trois jugements, une seule sentence.",
+      "traits": [
+        "Vigilant",
+        "Tripartite",
+        "Impitoyable",
+        "Loyal"
+      ],
+      "stats": {
+        "CRE": 30,
+        "SAG": 75,
+        "CHA": 40,
+        "FOR": 88,
+        "AGI": 45
+      },
+      "affinities": {
+        "shade": 92,
+        "grim": 90,
+        "obsidian": 85,
+        "void": 88,
+        "wraith": 78,
+        "onyx": 82
+      },
+      "quote": "Trois bouches. Aucune n'a jamais dit oui.",
+      "job": "paladin"
+    },
+    {
+      "id": "mandragore",
+      "name": "Mandragore",
+      "role": "Persona",
+      "title": "La Racine Hurlante",
+      "avatar": "",
+      "color": "#65a30d",
+      "difficulty": "Difficile",
+      "element": "Mandragore",
+      "bio": "Mandragore pousse dans les cimetières. Son cri rend fou, mais sa sève guérit tout.",
+      "traits": [
+        "Toxique",
+        "Guérisseuse",
+        "Terrifiante",
+        "Rare"
+      ],
+      "stats": {
+        "CRE": 55,
+        "SAG": 70,
+        "CHA": 30,
+        "FOR": 45,
+        "AGI": 35
+      },
+      "affinities": {
+        "sprig": 90,
+        "flora": 88,
+        "nectar": 85,
+        "thistle": 92,
+        "moss": 78,
+        "lichen": 82
+      },
+      "quote": "Ne me déracine pas. Tu n'es pas prêt à entendre.",
+      "job": "alchimiste"
+    },
+    {
+      "id": "parallaxe",
+      "name": "Parallaxe",
+      "role": "Persona",
+      "title": "L'Observateur Décalé",
+      "avatar": "",
+      "color": "#6366f1",
+      "difficulty": "Maître",
+      "element": "Parallaxe",
+      "bio": "Parallaxe voit le monde depuis un angle que personne d'autre ne peut atteindre. Sa perspective déforme la réalité.",
+      "traits": [
+        "Décalé",
+        "Brillant",
+        "Incompris",
+        "Visionnaire"
+      ],
+      "stats": {
+        "CRE": 90,
+        "SAG": 80,
+        "CHA": 45,
+        "FOR": 30,
+        "AGI": 60
+      },
+      "affinities": {
+        "prisme": 95,
+        "tesseract": 92,
+        "fractal": 88,
+        "paradox": 90,
+        "continuum": 85,
+        "paradigm": 82
+      },
+      "quote": "Vous regardez tous dans la même direction. C'est votre erreur.",
+      "job": "oracle"
+    },
+    {
+      "id": "anthracite",
+      "name": "Anthracite",
+      "role": "Persona",
+      "title": "Le Charbon Noble",
+      "avatar": "",
+      "color": "#27272a",
+      "difficulty": "Moyen",
+      "element": "Anthracite",
+      "bio": "Anthracite brûle plus longtemps et plus chaud que tous les autres. Sa patience est sa puissance.",
+      "traits": [
+        "Endurant",
+        "Discret",
+        "Puissant",
+        "Humble"
+      ],
+      "stats": {
+        "CRE": 40,
+        "SAG": 70,
+        "CHA": 35,
+        "FOR": 75,
+        "AGI": 30
+      },
+      "affinities": {
+        "ember": 90,
+        "clinker": 88,
+        "kiln": 85,
+        "scoria": 82,
+        "pyre": 78,
+        "smelt": 80
+      },
+      "quote": "Je brûle encore quand tout s'est éteint.",
+      "job": "forgeron"
+    },
+    {
+      "id": "chimere_y",
+      "name": "Chimaera",
+      "role": "Persona",
+      "title": "L'Impossible Vivant",
+      "avatar": "",
+      "color": "#a855f7",
+      "difficulty": "Légendaire",
+      "element": "Chimère",
+      "bio": "Chimaera est faite de morceaux de créatures qui n'auraient jamais dû coexister. Elle est l'impossible devenu réel.",
+      "traits": [
+        "Composite",
+        "Terrifiante",
+        "Magnifique",
+        "Instable"
+      ],
+      "stats": {
+        "CRE": 85,
+        "SAG": 45,
+        "CHA": 70,
+        "FOR": 80,
+        "AGI": 65
+      },
+      "affinities": {
+        "chimere": 98,
+        "paradox": 88,
+        "genesis": 82,
+        "mythos": 90,
+        "fractal": 78,
+        "mirage": 85
+      },
+      "quote": "Je suis tout ce qui n'aurait pas dû naître.",
+      "job": "chasseur"
+    },
+    {
+      "id": "talisman",
+      "name": "Talisman",
+      "role": "Persona",
+      "title": "Le Porte-Bonheur",
+      "avatar": "",
+      "color": "#eab308",
+      "difficulty": "Facile",
+      "element": "Chance Absolue",
+      "bio": "Talisman porte chance à tous ceux qui le touchent. Mais sa propre fortune, personne ne la connaît.",
+      "traits": [
+        "Chanceux",
+        "Généreux",
+        "Mystérieux",
+        "Joyeux"
+      ],
+      "stats": {
+        "CRE": 60,
+        "SAG": 55,
+        "CHA": 80,
+        "FOR": 35,
+        "AGI": 70
+      },
+      "affinities": {
+        "jinx": 92,
+        "karma": 88,
+        "sigil": 85,
+        "rune": 82,
+        "totem": 90,
+        "scarab": 78
+      },
+      "quote": "La chance n'existe pas. Mais moi, si.",
+      "job": "marchand"
+    },
+    {
+      "id": "absinthe",
+      "name": "Absinthe",
+      "role": "Persona",
+      "title": "La Fée Verte",
+      "avatar": "",
+      "color": "#84cc16",
+      "difficulty": "Difficile",
+      "element": "Absinthe",
+      "bio": "Absinthe trouble l'esprit et révèle les vérités cachées. Ses visions sont aussi belles que dangereuses.",
+      "traits": [
+        "Enivrante",
+        "Lucide",
+        "Dangereuse",
+        "Séductrice"
+      ],
+      "stats": {
+        "CRE": 88,
+        "SAG": 65,
+        "CHA": 78,
+        "FOR": 25,
+        "AGI": 50
+      },
+      "affinities": {
+        "solvent": 90,
+        "mirage": 92,
+        "vitriol": 85,
+        "nectar": 88,
+        "sulfur": 78,
+        "nutmeg": 82
+      },
+      "quote": "La vérité est au fond du verre. Ose boire.",
+      "job": "alchimiste"
+    },
+    {
+      "id": "monolithe_y",
+      "name": "Monolithe",
+      "role": "Persona",
+      "title": "La Pierre Debout",
+      "avatar": "",
+      "color": "#57534e",
+      "difficulty": "Expert",
+      "element": "Monolithe",
+      "bio": "Monolithe se dresse depuis l'aube des temps. Il ne parle pas, mais sa présence dit tout.",
+      "traits": [
+        "Immobile",
+        "Ancien",
+        "Imposant",
+        "Silencieux"
+      ],
+      "stats": {
+        "CRE": 20,
+        "SAG": 90,
+        "CHA": 50,
+        "FOR": 95,
+        "AGI": 10
+      },
+      "affinities": {
+        "monolithe": 98,
+        "basalt": 92,
+        "bedrock": 95,
+        "plinth": 88,
+        "strata": 85,
+        "lithic": 90
+      },
+      "quote": "...",
+      "job": "moine"
+    },
+    {
+      "id": "arachnea",
+      "name": "Arachnéa",
+      "role": "Persona",
+      "title": "La Tisseuse du Destin",
+      "avatar": "",
+      "color": "#6b21a8",
+      "difficulty": "Difficile",
+      "element": "Toile",
+      "bio": "Arachnéa tisse des fils invisibles entre les êtres. Chaque connexion est un piège ou un salut.",
+      "traits": [
+        "Patiente",
+        "Calculatrice",
+        "Précise",
+        "Froide"
+      ],
+      "stats": {
+        "CRE": 75,
+        "SAG": 80,
+        "CHA": 55,
+        "FOR": 30,
+        "AGI": 70
+      },
+      "affinities": {
+        "gossamer": 95,
+        "twine": 92,
+        "lattice": 88,
+        "spool": 90,
+        "latch": 82,
+        "weir": 78
+      },
+      "quote": "Chaque fil mène quelque part. Surtout ceux que tu ne vois pas.",
+      "job": "espion"
+    },
+    {
+      "id": "volcan",
+      "name": "Volcan",
+      "role": "Persona",
+      "title": "La Colère Endormie",
+      "avatar": "",
+      "color": "#dc2626",
+      "difficulty": "Maître",
+      "element": "Volcan",
+      "bio": "Volcan dort pendant des siècles, puis se réveille en un instant. Sa fureur remodèle le monde.",
+      "traits": [
+        "Dormant",
+        "Explosif",
+        "Primordial",
+        "Destructeur"
+      ],
+      "stats": {
+        "CRE": 35,
+        "SAG": 40,
+        "CHA": 60,
+        "FOR": 98,
+        "AGI": 20
+      },
+      "affinities": {
+        "magma": 98,
+        "caldera": 95,
+        "pyre": 92,
+        "ember": 88,
+        "scoria": 90,
+        "tremor": 85
+      },
+      "quote": "Mon silence n'est pas la paix. C'est un avertissement.",
+      "job": "berserker"
+    },
+    {
+      "id": "origami",
+      "name": "Origami",
+      "role": "Persona",
+      "title": "Le Plieur de Réalités",
+      "avatar": "",
+      "color": "#f0abfc",
+      "difficulty": "Moyen",
+      "element": "Pliage",
+      "bio": "Origami plie l'espace comme du papier. Chaque pli crée un nouveau monde, chaque dépli en détruit un.",
+      "traits": [
+        "Délicat",
+        "Créatif",
+        "Précis",
+        "Philosophe"
+      ],
+      "stats": {
+        "CRE": 92,
+        "SAG": 70,
+        "CHA": 60,
+        "FOR": 20,
+        "AGI": 55
+      },
+      "affinities": {
+        "quill": 85,
+        "fractal": 90,
+        "tesseract": 92,
+        "datum": 78,
+        "pixel": 82,
+        "vellum": 88
+      },
+      "quote": "Un pli suffit pour changer la forme du monde.",
+      "job": "enchanteur"
+    },
+    {
+      "id": "sextant",
+      "name": "Sextant",
+      "role": "Persona",
+      "title": "Le Navigateur des Étoiles",
+      "avatar": "",
+      "color": "#0ea5e9",
+      "difficulty": "Moyen",
+      "element": "Navigation",
+      "bio": "Sextant lit les étoiles comme d'autres lisent les livres. Aucun horizon ne lui est inconnu.",
+      "traits": [
+        "Précis",
+        "Aventurier",
+        "Calme",
+        "Fiable"
+      ],
+      "stats": {
+        "CRE": 55,
+        "SAG": 75,
+        "CHA": 60,
+        "FOR": 45,
+        "AGI": 65
+      },
+      "affinities": {
+        "beacon": 90,
+        "meridian": 92,
+        "sonar": 85,
+        "drift": 88,
+        "corona": 78,
+        "arc": 82
+      },
+      "quote": "Les étoiles ne mentent pas. Il suffit de savoir les lire.",
+      "job": "explorateur"
+    },
+    {
+      "id": "reverie",
+      "name": "Rêverie",
+      "role": "Persona",
+      "title": "La Songeuse Éveillée",
+      "avatar": "",
+      "color": "#c4b5fd",
+      "difficulty": "Facile",
+      "element": "Songe",
+      "bio": "Rêverie vit entre le sommeil et l'éveil. Ses rêves deviennent réalité si elle y croit assez fort.",
+      "traits": [
+        "Rêveuse",
+        "Douce",
+        "Puissante",
+        "Distraite"
+      ],
+      "stats": {
+        "CRE": 95,
+        "SAG": 60,
+        "CHA": 70,
+        "FOR": 20,
+        "AGI": 40
+      },
+      "affinities": {
+        "wisp": 92,
+        "nimbus": 88,
+        "mirage": 95,
+        "nebula": 85,
+        "haze": 90,
+        "velvet": 82
+      },
+      "quote": "Ferme les yeux. C'est là que tout commence.",
+      "job": "oracle"
+    },
+    {
+      "id": "chroniqueur",
+      "name": "Chroniqueur",
+      "role": "Persona",
+      "title": "Le Témoin des Époques",
+      "avatar": "",
+      "color": "#a16207",
+      "difficulty": "Difficile",
+      "element": "Chronique",
+      "bio": "Le Chroniqueur a traversé chaque ère sans vieillir. Il se souvient de tout, même de ce qui n'a pas encore eu lieu.",
+      "traits": [
+        "Omniscient",
+        "Détaché",
+        "Précis",
+        "Mélancolique"
+      ],
+      "stats": {
+        "CRE": 65,
+        "SAG": 95,
+        "CHA": 55,
+        "FOR": 30,
+        "AGI": 45
+      },
+      "affinities": {
+        "chronos": 95,
+        "tempus": 92,
+        "fable": 88,
+        "grimoire": 90,
+        "vestige": 85,
+        "epoch": 82
+      },
+      "quote": "J'ai vu la fin. Elle ressemble beaucoup au début.",
+      "job": "chronomancien"
     }
   ]
 }
