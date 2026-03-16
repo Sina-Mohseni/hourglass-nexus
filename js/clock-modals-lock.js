@@ -48,12 +48,8 @@ function initLock(){
   var lk = $("#lock-screen"), ho = $("#lock-hole"), gi = $("#lock-guide");
   if(!lk || !ho || !gi) return;
 
-  // If already unlocked, skip
-  if(acDB.get("ac_unlocked") === "1"){
-    lk.remove();
-    checkCharCreate();
-    return;
-  }
+  // Reset unlocked state so lock screen always plays
+  acDB.set("ac_unlocked", "0");
 
   // Set guide avatar image
   var guide = getGuidePersona();
