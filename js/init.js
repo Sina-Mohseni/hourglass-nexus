@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
   // Hide all app content until char creation is done
   var contentArea = $(".content-area");
-  var footer = $("#diablo-footer");
+  var footer = $("#footer-assembly");
   if(contentArea) contentArea.style.visibility = "hidden";
   if(footer) footer.style.visibility = "hidden";
 

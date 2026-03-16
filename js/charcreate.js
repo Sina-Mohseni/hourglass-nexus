@@ -590,7 +590,7 @@ function enterMainApp(){
 
   // Reveal app content
   var contentArea = $(".content-area");
-  var footer = $("#diablo-footer");
+  var footer = $("#footer-assembly");
   if(contentArea) contentArea.style.visibility = "";
   if(footer) footer.style.visibility = "";
 }
