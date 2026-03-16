@@ -1,0 +1,1157 @@
+{
+  "jobs": [
+    {
+      "id": "guerrier",
+      "name": "Guerrier",
+      "icon": "⚔️",
+      "color": "#ef4444",
+      "category": "Combat",
+      "desc": "Maître des armes et du combat rapproché. Le Guerrier excelle dans les affrontements directs.",
+      "advantages": [
+        "Dégâts physiques +20%",
+        "Résistance aux attaques directes",
+        "Accès aux arènes gratuitement"
+      ],
+      "disadvantages": [
+        "Discrétion réduite",
+        "Magie affaiblie",
+        "Négociation plus difficile"
+      ],
+      "statBonus": {
+        "FOR": 15,
+        "AGI": 5
+      },
+      "statMalus": {
+        "CRE": -5,
+        "SAG": -5
+      },
+      "perks": {
+        "borderDiscount": 0,
+        "shopDiscount": 0,
+        "arenaBonus": 20,
+        "craftBonus": 0,
+        "socialBonus": -10
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "assassin",
+      "name": "Assassin",
+      "icon": "🗡️",
+      "color": "#334155",
+      "category": "Combat",
+      "desc": "Tueur silencieux spécialisé dans l'élimination rapide. Frappe une fois, disparaît.",
+      "advantages": [
+        "Coups critiques +30%",
+        "Infiltration facile",
+        "Traversée des frontières simplifiée"
+      ],
+      "disadvantages": [
+        "Faible en combat prolongé",
+        "Réputation négative initiale",
+        "Faible en groupe"
+      ],
+      "statBonus": {
+        "AGI": 20,
+        "CRE": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "CHA": -10
+      },
+      "perks": {
+        "borderDiscount": 30,
+        "shopDiscount": 0,
+        "arenaBonus": 10,
+        "craftBonus": 0,
+        "socialBonus": -15
+      },
+      "availability": {
+        "regions": [
+          "sysyt"
+        ],
+        "cities": []
+      }
+    },
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "icon": "🛡️",
+      "color": "#3b82f6",
+      "category": "Combat",
+      "desc": "Chevalier sacré voué à la protection des innocents. Sa foi est son bouclier.",
+      "advantages": [
+        "Protection alliés +25%",
+        "Réputation positive accélérée",
+        "Résistance à la magie noire"
+      ],
+      "disadvantages": [
+        "Ne peut pas mentir",
+        "Lent au combat",
+        "Interdit de fuir"
+      ],
+      "statBonus": {
+        "FOR": 10,
+        "SAG": 10
+      },
+      "statMalus": {
+        "AGI": -10,
+        "CRE": -5
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 5,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": 15
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "icon": "🪓",
+      "color": "#dc2626",
+      "category": "Combat",
+      "desc": "Combattant enragé qui puise sa force dans la fureur. Plus il est blessé, plus il frappe fort.",
+      "advantages": [
+        "Dégâts augmentent avec les blessures",
+        "Immunité à la peur",
+        "Intimidation naturelle"
+      ],
+      "disadvantages": [
+        "Ne peut pas se soigner en combat",
+        "Perd le contrôle parfois",
+        "Mauvais en diplomatie"
+      ],
+      "statBonus": {
+        "FOR": 20
+      },
+      "statMalus": {
+        "SAG": -10,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": -10,
+        "shopDiscount": -10,
+        "arenaBonus": 25,
+        "craftBonus": 0,
+        "socialBonus": -20
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "archer",
+      "name": "Archer",
+      "icon": "🏹",
+      "color": "#65a30d",
+      "category": "Combat",
+      "desc": "Tireur d'élite qui ne rate jamais sa cible. Spécialiste du combat à distance.",
+      "advantages": [
+        "Attaque à distance",
+        "Précision +25%",
+        "Bon éclaireur"
+      ],
+      "disadvantages": [
+        "Faible au corps à corps",
+        "Dépend des munitions",
+        "Vulnérable en mêlée"
+      ],
+      "statBonus": {
+        "AGI": 15,
+        "CRE": 5
+      },
+      "statMalus": {
+        "FOR": -5
+      },
+      "perks": {
+        "borderDiscount": 5,
+        "shopDiscount": 0,
+        "arenaBonus": 15,
+        "craftBonus": 5,
+        "socialBonus": 0
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "moine",
+      "name": "Moine",
+      "icon": "☯️",
+      "color": "#a78bfa",
+      "category": "Combat",
+      "desc": "Artiste martial qui combat avec son corps et son esprit. La discipline est sa force.",
+      "advantages": [
+        "Combat sans armes efficace",
+        "Méditation restaure la vie",
+        "Résistance mentale"
+      ],
+      "disadvantages": [
+        "Pas d'armure lourde",
+        "Vœu de pauvreté",
+        "Sensible à la tentation"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "SAG": 10
+      },
+      "statMalus": {
+        "CRE": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": -15,
+        "arenaBonus": 10,
+        "craftBonus": 0,
+        "socialBonus": 10
+      },
+      "availability": {
+        "regions": [
+          "umiora"
+        ],
+        "cities": [
+          "sangha"
+        ]
+      },
+      "unlockRegions": [
+        "kuhiria",
+        "habytia"
+      ],
+      "unlockNote": "Les monastères se trouvent dans les montagnes et terres ancestrales"
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "icon": "🔮",
+      "color": "#7c3aed",
+      "category": "Magie",
+      "desc": "Érudit des arts arcanes. Le Mage plie la réalité par la connaissance et la volonté.",
+      "advantages": [
+        "Sorts puissants",
+        "Détection magique",
+        "Accès aux bibliothèques secrètes"
+      ],
+      "disadvantages": [
+        "Fragile physiquement",
+        "Temps d'incantation long",
+        "Consomme beaucoup de mana"
+      ],
+      "statBonus": {
+        "CRE": 15,
+        "SAG": 10
+      },
+      "statMalus": {
+        "FOR": -10,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 5,
+        "arenaBonus": 5,
+        "craftBonus": 10,
+        "socialBonus": 5
+      },
+      "availability": {
+        "regions": [
+          "hardirian"
+        ],
+        "cities": []
+      }
+    },
+    {
+      "id": "necromancien",
+      "name": "Nécromancien",
+      "icon": "💀",
+      "color": "#1e293b",
+      "category": "Magie",
+      "desc": "Maître des morts et des ombres. Invoque les esprits et manipule l'énergie vitale.",
+      "advantages": [
+        "Invocation de morts-vivants",
+        "Drain de vie",
+        "Vision dans l'obscurité"
+      ],
+      "disadvantages": [
+        "Rejeté par la société",
+        "Faible à la lumière sacrée",
+        "Réputation toxique"
+      ],
+      "statBonus": {
+        "CRE": 20
+      },
+      "statMalus": {
+        "CHA": -15,
+        "SAG": -5
+      },
+      "perks": {
+        "borderDiscount": -20,
+        "shopDiscount": -10,
+        "arenaBonus": 15,
+        "craftBonus": 5,
+        "socialBonus": -25
+      },
+      "availability": {
+        "regions": [
+          "sysyt"
+        ],
+        "cities": []
+      },
+      "unlockRegions": [
+        "sysyt",
+        "kuhiria",
+        "umbraeth"
+      ],
+      "unlockNote": "Les arts sombres ne s'enseignent qu'au crépuscule ou dans les profondeurs"
+    },
+    {
+      "id": "druide",
+      "name": "Druide",
+      "icon": "🌿",
+      "color": "#22c55e",
+      "category": "Magie",
+      "desc": "Gardien de la nature qui puise sa magie dans les éléments vivants. Parle aux animaux.",
+      "advantages": [
+        "Soins naturels",
+        "Communication animale",
+        "Passage libre en forêt"
+      ],
+      "disadvantages": [
+        "Faible en zone urbaine",
+        "Refuse la technologie",
+        "Lent à agir"
+      ],
+      "statBonus": {
+        "SAG": 15,
+        "CRE": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": 0,
+        "arenaBonus": 0,
+        "craftBonus": 10,
+        "socialBonus": 10
+      },
+      "availability": {
+        "regions": [
+          "orianen",
+          "kuhiria"
+        ],
+        "cities": []
+      },
+      "unlockRegions": [
+        "orianen",
+        "kuhiria",
+        "siore"
+      ],
+      "unlockNote": "La magie naturelle ne germe que dans les terres fertiles"
+    },
+    {
+      "id": "enchanteur",
+      "name": "Enchanteur",
+      "icon": "✨",
+      "color": "#e879f9",
+      "category": "Magie",
+      "desc": "Spécialiste de l'enchantement d'objets et de personnes. Sa voix est un sortilège.",
+      "advantages": [
+        "Enchantement d'objets",
+        "Charme irrésistible",
+        "Bonus de vente"
+      ],
+      "disadvantages": [
+        "Très fragile",
+        "Inutile sans cible",
+        "Vulnérable aux esprits forts"
+      ],
+      "statBonus": {
+        "CHA": 15,
+        "CRE": 10
+      },
+      "statMalus": {
+        "FOR": -10
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 20,
+        "arenaBonus": -5,
+        "craftBonus": 15,
+        "socialBonus": 20
+      },
+      "availability": {
+        "regions": [
+          "orianen"
+        ],
+        "cities": [
+          "kael-norath"
+        ]
+      }
+    },
+    {
+      "id": "alchimiste",
+      "name": "Alchimiste",
+      "icon": "⚗️",
+      "color": "#f59e0b",
+      "category": "Magie",
+      "desc": "Maître des potions et des transmutations. Transforme le plomb en or — parfois.",
+      "advantages": [
+        "Fabrication de potions",
+        "Transmutation de matériaux",
+        "Résistance aux poisons"
+      ],
+      "disadvantages": [
+        "Explosions accidentelles",
+        "Ingrédients rares nécessaires",
+        "Lent en combat"
+      ],
+      "statBonus": {
+        "CRE": 10,
+        "SAG": 10
+      },
+      "statMalus": {
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 5,
+        "shopDiscount": 15,
+        "arenaBonus": 0,
+        "craftBonus": 25,
+        "socialBonus": 0
+      },
+      "availability": {
+        "regions": [
+          "wohkara"
+        ],
+        "cities": []
+      },
+      "unlockCities": [
+        "crystara",
+        "lumen-spire",
+        "pyralis"
+      ],
+      "unlockNote": "Les laboratoires alchimiques ne se trouvent que dans certaines cités"
+    },
+    {
+      "id": "chronomancien",
+      "name": "Chronomancien",
+      "icon": "⏳",
+      "color": "#06b6d4",
+      "category": "Magie",
+      "desc": "Manipulateur du temps. Ralentit, accélère ou gèle les instants à volonté.",
+      "advantages": [
+        "Ralentissement temporel",
+        "Prédiction à court terme",
+        "Esquive temporelle"
+      ],
+      "disadvantages": [
+        "Fatigue extrême",
+        "Paradoxes dangereux",
+        "Instable émotionnellement"
+      ],
+      "statBonus": {
+        "SAG": 15,
+        "AGI": 10
+      },
+      "statMalus": {
+        "FOR": -5,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 0,
+        "arenaBonus": 15,
+        "craftBonus": 0,
+        "socialBonus": 0
+      },
+      "availability": {
+        "regions": [
+          "umiora",
+          "karymor"
+        ],
+        "cities": []
+      },
+      "unlockRegions": [
+        "hardirian",
+        "karymor"
+      ],
+      "unlockNote": "Né des failles temporelles d'Hardirian ou des machines de Karymor"
+    },
+    {
+      "id": "forgeron",
+      "name": "Forgeron",
+      "icon": "🔨",
+      "color": "#b45309",
+      "category": "Artisanat",
+      "desc": "Maître de la forge et du métal. Crée les armes et armures les plus solides du Nexus.",
+      "advantages": [
+        "Fabrication d'armes",
+        "Réparation d'équipement",
+        "Résistance au feu"
+      ],
+      "disadvantages": [
+        "Lent au combat",
+        "Peu discret",
+        "Dépendant de sa forge"
+      ],
+      "statBonus": {
+        "FOR": 10,
+        "CRE": 10
+      },
+      "statMalus": {
+        "AGI": -10
+      },
+      "perks": {
+        "borderDiscount": 5,
+        "shopDiscount": 10,
+        "arenaBonus": 5,
+        "craftBonus": 20,
+        "socialBonus": 5
+      },
+      "availability": {
+        "regions": [
+          "habytia"
+        ],
+        "cities": [
+          "feranth"
+        ]
+      },
+      "unlockRegions": [
+        "habytia",
+        "wohkara",
+        "karymor"
+      ],
+      "unlockNote": "La forge exige la montagne, le feu ou le métal"
+    },
+    {
+      "id": "ingenieur",
+      "name": "Ingénieur",
+      "icon": "⚙️",
+      "color": "#64748b",
+      "category": "Artisanat",
+      "desc": "Inventeur mécanique qui conçoit des machines et des dispositifs ingénieux.",
+      "advantages": [
+        "Fabrication de machines",
+        "Pièges mécaniques",
+        "Analyse de structures"
+      ],
+      "disadvantages": [
+        "Inutile sans outils",
+        "Fragile physiquement",
+        "Peu charismatique"
+      ],
+      "statBonus": {
+        "CRE": 15,
+        "SAG": 5
+      },
+      "statMalus": {
+        "CHA": -5,
+        "FOR": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 10,
+        "arenaBonus": 5,
+        "craftBonus": 20,
+        "socialBonus": -5
+      },
+      "availability": {
+        "regions": [
+          "habytia",
+          "karymor"
+        ],
+        "cities": []
+      },
+      "unlockRegions": [
+        "karymor",
+        "habytia"
+      ],
+      "unlockNote": "Les rouages ne tournent qu'à Karymor et dans les forges d'Habytia"
+    },
+    {
+      "id": "cuisinier",
+      "name": "Cuisinier",
+      "icon": "🍳",
+      "color": "#fb923c",
+      "category": "Artisanat",
+      "desc": "Artiste culinaire qui nourrit le corps et l'âme. Un bon repas résout bien des conflits.",
+      "advantages": [
+        "Repas qui soignent",
+        "Résistance aux poisons",
+        "Populaire partout"
+      ],
+      "disadvantages": [
+        "Faible au combat",
+        "Dépend des ingrédients",
+        "Pas de magie"
+      ],
+      "statBonus": {
+        "CHA": 10,
+        "SAG": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 10,
+        "arenaBonus": -5,
+        "craftBonus": 15,
+        "socialBonus": 15
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "tailleur",
+      "name": "Tailleur",
+      "icon": "🧵",
+      "color": "#ec4899",
+      "category": "Artisanat",
+      "desc": "Créateur de vêtements enchantés et d'armures légères. L'élégance est une armure.",
+      "advantages": [
+        "Armures légères enchantées",
+        "Déguisement facile",
+        "Bonus social"
+      ],
+      "disadvantages": [
+        "Faible physiquement",
+        "Matériaux rares",
+        "Inutile sans tissu"
+      ],
+      "statBonus": {
+        "CRE": 10,
+        "CHA": 10
+      },
+      "statMalus": {
+        "FOR": -10
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 15,
+        "arenaBonus": 0,
+        "craftBonus": 15,
+        "socialBonus": 10
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "cartographe",
+      "name": "Cartographe",
+      "icon": "🗺️",
+      "color": "#14b8a6",
+      "category": "Artisanat",
+      "desc": "Explorateur et créateur de cartes. Connaît chaque chemin, chaque raccourci, chaque piège.",
+      "advantages": [
+        "Carte complète visible",
+        "Raccourcis secrets",
+        "Traversée rapide"
+      ],
+      "disadvantages": [
+        "Faible au combat",
+        "Distrait facilement",
+        "Peu utile en ville"
+      ],
+      "statBonus": {
+        "SAG": 10,
+        "AGI": 10
+      },
+      "statMalus": {
+        "FOR": -5,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": 25,
+        "shopDiscount": 0,
+        "arenaBonus": 0,
+        "craftBonus": 5,
+        "socialBonus": 5
+      },
+      "availability": "universal",
+      "unlockRegions": [
+        "orianen",
+        "hardirian",
+        "wohkara"
+      ],
+      "unlockNote": "Les grandes expéditions partent des contrées centrales"
+    },
+    {
+      "id": "joaillier",
+      "name": "Joaillier",
+      "icon": "💎",
+      "color": "#a855f7",
+      "category": "Artisanat",
+      "desc": "Artisan des pierres précieuses et des bijoux enchantés. Chaque gemme cache un pouvoir.",
+      "advantages": [
+        "Création de bijoux magiques",
+        "Évaluation d'objets",
+        "Richesse naturelle"
+      ],
+      "disadvantages": [
+        "Cible des voleurs",
+        "Fragile",
+        "Cupide parfois"
+      ],
+      "statBonus": {
+        "CRE": 10,
+        "CHA": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 20,
+        "arenaBonus": 0,
+        "craftBonus": 15,
+        "socialBonus": 5
+      },
+      "availability": "universal",
+      "unlockCities": [
+        "crystara",
+        "shar-vaelis"
+      ],
+      "unlockNote": "Seuls les maîtres de Crystara et Shar-Vaëlis enseignent la joaillerie"
+    },
+    {
+      "id": "barde",
+      "name": "Barde",
+      "icon": "🎵",
+      "color": "#ec4899",
+      "category": "Social",
+      "desc": "Musicien et conteur itinérant. Sa musique inspire les alliés et déroute les ennemis.",
+      "advantages": [
+        "Boost moral de groupe",
+        "Charme musical",
+        "Bienvenu partout"
+      ],
+      "disadvantages": [
+        "Faible seul",
+        "Pas d'armure",
+        "Facilement distrait"
+      ],
+      "statBonus": {
+        "CHA": 15,
+        "CRE": 10
+      },
+      "statMalus": {
+        "FOR": -10
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": 10,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": 25
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "diplomate",
+      "name": "Diplomate",
+      "icon": "🤝",
+      "color": "#2563eb",
+      "category": "Social",
+      "desc": "Maître de la négociation et de la rhétorique. Résout les conflits par les mots.",
+      "advantages": [
+        "Négociation avancée",
+        "Passe-frontière à prix réduit",
+        "Immunité diplomatique"
+      ],
+      "disadvantages": [
+        "Inutile au combat",
+        "Dépend des autres",
+        "Lent à décider"
+      ],
+      "statBonus": {
+        "CHA": 20,
+        "SAG": 5
+      },
+      "statMalus": {
+        "FOR": -10,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 40,
+        "shopDiscount": 15,
+        "arenaBonus": -10,
+        "craftBonus": 0,
+        "socialBonus": 30
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "espion",
+      "name": "Espion",
+      "icon": "🕵️",
+      "color": "#475569",
+      "category": "Social",
+      "desc": "Agent d'infiltration maître du déguisement. Obtient des informations par tous les moyens.",
+      "advantages": [
+        "Infiltration",
+        "Déguisement parfait",
+        "Vol d'information"
+      ],
+      "disadvantages": [
+        "Pas de confiance",
+        "Double jeu risqué",
+        "Identité instable"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "CHA": 10
+      },
+      "statMalus": {
+        "FOR": -5,
+        "SAG": -5
+      },
+      "perks": {
+        "borderDiscount": 30,
+        "shopDiscount": 5,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": -5
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "marchand",
+      "name": "Marchand",
+      "icon": "💰",
+      "color": "#eab308",
+      "category": "Social",
+      "desc": "Commerçant né qui sait acheter bas et vendre haut. L'or attire l'or.",
+      "advantages": [
+        "Prix réduits partout",
+        "Réseau commercial",
+        "Revenus passifs"
+      ],
+      "disadvantages": [
+        "Faible au combat",
+        "Cupide",
+        "Cible des bandits"
+      ],
+      "statBonus": {
+        "CHA": 10,
+        "SAG": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 25,
+        "arenaBonus": -5,
+        "craftBonus": 5,
+        "socialBonus": 10
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "guérisseur",
+      "name": "Guérisseur",
+      "icon": "💚",
+      "color": "#10b981",
+      "category": "Social",
+      "desc": "Médecin et soigneur qui consacre sa vie à aider les autres. Respecté par tous.",
+      "advantages": [
+        "Soins avancés",
+        "Résistance aux maladies",
+        "Bienvenu dans toute cité"
+      ],
+      "disadvantages": [
+        "Serment de non-violence",
+        "Lent au combat",
+        "Épuisement fréquent"
+      ],
+      "statBonus": {
+        "SAG": 15,
+        "CHA": 5
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": 5,
+        "arenaBonus": -10,
+        "craftBonus": 10,
+        "socialBonus": 20
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "icon": "👁️",
+      "color": "#818cf8",
+      "category": "Social",
+      "desc": "Voyant mystique qui lit l'avenir dans les étoiles, le feu ou les os.",
+      "advantages": [
+        "Prédiction d'événements",
+        "Conseil stratégique",
+        "Aura mystérieuse"
+      ],
+      "disadvantages": [
+        "Visions incontrôlables",
+        "Physiquement faible",
+        "Socialement isolé"
+      ],
+      "statBonus": {
+        "SAG": 20
+      },
+      "statMalus": {
+        "FOR": -5,
+        "AGI": -5,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": 10,
+        "shopDiscount": 0,
+        "arenaBonus": 10,
+        "craftBonus": 0,
+        "socialBonus": 5
+      },
+      "availability": {
+        "regions": [
+          "hardirian"
+        ],
+        "cities": [
+          "nexus-prime"
+        ]
+      }
+    },
+    {
+      "id": "explorateur",
+      "name": "Explorateur",
+      "icon": "🧭",
+      "color": "#0ea5e9",
+      "category": "Exploration",
+      "desc": "Aventurier né qui vit pour la découverte. Chaque horizon est une promesse.",
+      "advantages": [
+        "Traversée rapide",
+        "Découvertes bonus",
+        "Survie en milieu hostile"
+      ],
+      "disadvantages": [
+        "Jamais satisfait",
+        "Faible en défense",
+        "Peu d'attaches sociales"
+      ],
+      "statBonus": {
+        "AGI": 15,
+        "CRE": 5
+      },
+      "statMalus": {
+        "FOR": -5
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": 0,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": 5
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "chasseur",
+      "name": "Chasseur",
+      "icon": "🦅",
+      "color": "#84cc16",
+      "category": "Exploration",
+      "desc": "Traqueur de bêtes et de primes. Patient, silencieux, mortel.",
+      "advantages": [
+        "Pistage parfait",
+        "Survie en forêt",
+        "Peaux et trophées"
+      ],
+      "disadvantages": [
+        "Peu social",
+        "Solitaire",
+        "Mal à l'aise en ville"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "FOR": 10
+      },
+      "statMalus": {
+        "CHA": -10
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 5,
+        "arenaBonus": 10,
+        "craftBonus": 10,
+        "socialBonus": -10
+      },
+      "availability": {
+        "regions": [
+          "kuhiria"
+        ],
+        "cities": []
+      }
+    },
+    {
+      "id": "pirate",
+      "name": "Pirate",
+      "icon": "🏴‍☠️",
+      "color": "#0f172a",
+      "category": "Exploration",
+      "desc": "Écumeur des mers et des airs. La liberté est son seul trésor.",
+      "advantages": [
+        "Navigation experte",
+        "Vol légal (presque)",
+        "Réseau de contrebande"
+      ],
+      "disadvantages": [
+        "Recherché",
+        "Pas de base fixe",
+        "Réputation douteuse"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "CHA": 5
+      },
+      "statMalus": {
+        "SAG": -5,
+        "CRE": -5
+      },
+      "perks": {
+        "borderDiscount": 25,
+        "shopDiscount": -5,
+        "arenaBonus": 10,
+        "craftBonus": 0,
+        "socialBonus": -15
+      },
+      "availability": {
+        "regions": [
+          "siore"
+        ],
+        "cities": [
+          "noir-havre"
+        ]
+      },
+      "unlockRegions": [
+        "siore",
+        "sysyt"
+      ],
+      "unlockNote": "Seules les contrées côtières forgent de vrais pirates"
+    },
+    {
+      "id": "nomade",
+      "name": "Nomade",
+      "icon": "🐫",
+      "color": "#d97706",
+      "category": "Exploration",
+      "desc": "Voyageur éternel des déserts et des steppes. Le vent est son seul compagnon.",
+      "advantages": [
+        "Survie extrême",
+        "Résistance climatique",
+        "Commerce caravanier"
+      ],
+      "disadvantages": [
+        "Pas d'attache",
+        "Faible en combat structuré",
+        "Peu d'alliés"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "SAG": 10
+      },
+      "statMalus": {
+        "CRE": -5,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": 10,
+        "arenaBonus": 0,
+        "craftBonus": 5,
+        "socialBonus": 0
+      },
+      "availability": {
+        "regions": [
+          "siore",
+          "wohkara"
+        ],
+        "cities": []
+      },
+      "unlockRegions": [
+        "wohkara",
+        "kuhiria"
+      ],
+      "unlockNote": "Les déserts et steppes sont la seule école du Nomade"
+    },
+    {
+      "id": "voleur",
+      "name": "Voleur",
+      "icon": "🎭",
+      "color": "#6b21a8",
+      "category": "Exploration",
+      "desc": "Pickpocket de génie et crocheteur de serrures. Ce qui est à toi est bientôt à moi.",
+      "advantages": [
+        "Crochetage expert",
+        "Vol à la tire",
+        "Évasion rapide"
+      ],
+      "disadvantages": [
+        "Recherché souvent",
+        "Pas de confiance",
+        "Fragile en combat direct"
+      ],
+      "statBonus": {
+        "AGI": 20
+      },
+      "statMalus": {
+        "FOR": -5,
+        "CHA": -5,
+        "SAG": -5
+      },
+      "perks": {
+        "borderDiscount": 20,
+        "shopDiscount": -5,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": -15
+      },
+      "availability": "universal"
+    },
+    {
+      "id": "éclaireur",
+      "name": "Éclaireur",
+      "icon": "🔦",
+      "color": "#38bdf8",
+      "category": "Exploration",
+      "desc": "Spécialiste de la reconnaissance et de l'avant-garde. Voit tout avant tout le monde.",
+      "advantages": [
+        "Vision améliorée",
+        "Détection de pièges",
+        "Rapport tactique"
+      ],
+      "disadvantages": [
+        "Seul en première ligne",
+        "Faible en groupe",
+        "Stressé souvent"
+      ],
+      "statBonus": {
+        "AGI": 10,
+        "SAG": 10
+      },
+      "statMalus": {
+        "FOR": -5,
+        "CHA": -5
+      },
+      "perks": {
+        "borderDiscount": 15,
+        "shopDiscount": 0,
+        "arenaBonus": 5,
+        "craftBonus": 0,
+        "socialBonus": 5
+      },
+      "availability": "universal"
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "types": {
+    "cendres": {
+      "id": "cendres",
+      "name": "Pluie de Cendres",
+      "icon": "🌋",
+      "color": "#64748b",
+      "desc": "Des cendres volcaniques recouvrent le ciel. L'air est lourd, la visibilité réduite. Les anciens disent que c'est le souffle de Kael-Norath.",
+      "effects": [
+        {
+          "icon": "👁️",
+          "name": "Visibilité réduite",
+          "desc": "Portée de vue diminuée de moitié"
+        },
+        {
+          "icon": "🛡️",
+          "name": "Armure ternie",
+          "desc": "L'équipement métallique s'oxyde plus vite"
+        }
+      ],
+      "night_variant": {
+        "name": "Nuit de Cendres",
+        "icon": "🌑",
+        "desc": "Les cendres obscurcissent les étoiles. Seules les braises volantes éclairent les ruines."
+      },
+      "stats": {
+        "temp": "Tiède",
+        "vent": "Faible",
+        "mana": "Instable"
+      }
+    },
+    "eclat": {
+      "id": "eclat",
+      "name": "Éclat Solaire",
+      "icon": "☀️",
+      "color": "#e8a838",
+      "desc": "Un soleil radieux baigne les terres du Nexus. La lumière dorée renforce les enchantements et revigore les voyageurs.",
+      "effects": [
+        {
+          "icon": "✨",
+          "name": "Mana régénéré",
+          "desc": "+15% régénération de mana"
+        },
+        {
+          "icon": "💛",
+          "name": "Moral haut",
+          "desc": "Les personas sont de bonne humeur"
+        }
+      ],
+      "night_variant": {
+        "name": "Clair de Lune",
+        "icon": "🌕",
+        "desc": "La pleine lune éclaire les sentiers. Les créatures nocturnes sont calmes, le voyage est sûr."
+      },
+      "stats": {
+        "temp": "Chaud",
+        "vent": "Calme",
+        "mana": "Fort"
+      }
+    },
+    "brume": {
+      "id": "brume",
+      "name": "Brume d'Âmes",
+      "icon": "🌫️",
+      "color": "#9b59b6",
+      "desc": "Une brume surnaturelle envahit les terres. On aperçoit des silhouettes fantomatiques entre les arbres. Les morts murmurent.",
+      "effects": [
+        {
+          "icon": "👻",
+          "name": "Spectres errants",
+          "desc": "Des apparitions surgissent aléatoirement"
+        },
+        {
+          "icon": "🔮",
+          "name": "Arcane amplifié",
+          "desc": "+20% puissance des sorts arcanes"
+        }
+      ],
+      "night_variant": {
+        "name": "Voile Spectral",
+        "icon": "👁️‍🗨️",
+        "desc": "La brume devient épaisse et luisante. Les portails entre les mondes s'entrouvrent."
+      },
+      "stats": {
+        "temp": "Froid",
+        "vent": "Nul",
+        "mana": "Très fort"
+      }
+    },
+    "orage_sang": {
+      "id": "orage_sang",
+      "name": "Orage de Sang",
+      "icon": "🩸",
+      "color": "#8b1a1a",
+      "desc": "Le ciel se teint de rouge. Des éclairs cramoisis frappent la terre. La pluie est tiède et porte une odeur de fer.",
+      "effects": [
+        {
+          "icon": "⚡",
+          "name": "Foudre rouge",
+          "desc": "Risque d'être frappé en terrain découvert"
+        },
+        {
+          "icon": "💀",
+          "name": "Malédiction passive",
+          "desc": "Les non-morts sont plus agressifs"
+        },
+        {
+          "icon": "❤️",
+          "name": "Vitalité drainée",
+          "desc": "-5% PV max pendant la durée"
+        }
+      ],
+      "night_variant": {
+        "name": "Tempête Écarlate",
+        "icon": "🌩️",
+        "desc": "L'orage atteint son paroxysme. Le ciel pulse comme un cœur géant. Les démons rôdent."
+      },
+      "stats": {
+        "temp": "Brûlant",
+        "vent": "Violent",
+        "mana": "Chaotique"
+      }
+    },
+    "givre": {
+      "id": "givre",
+      "name": "Souffle de Givre",
+      "icon": "❄️",
+      "color": "#5dade2",
+      "desc": "Un froid surnaturel descend des montagnes. Le givre recouvre tout, les rivières gèlent en quelques heures.",
+      "effects": [
+        {
+          "icon": "🥶",
+          "name": "Hypothermie",
+          "desc": "Les déplacements sont ralentis de 30%"
+        },
+        {
+          "icon": "💎",
+          "name": "Cristaux de mana",
+          "desc": "Des cristaux apparaissent, récoltables"
+        }
+      ],
+      "night_variant": {
+        "name": "Nuit Glaciale",
+        "icon": "🧊",
+        "desc": "Le givre devient si dense qu'il étouffe tous les sons. Un silence mortel règne."
+      },
+      "stats": {
+        "temp": "Glacial",
+        "vent": "Mordant",
+        "mana": "Cristallisé"
+      }
+    },
+    "spores": {
+      "id": "spores",
+      "name": "Pluie de Spores",
+      "icon": "🍄",
+      "color": "#27ae60",
+      "desc": "Des spores luminescentes tombent du ciel. La végétation pousse à vue d'œil. L'air est chargé de pollen magique.",
+      "effects": [
+        {
+          "icon": "🌿",
+          "name": "Croissance folle",
+          "desc": "La flore envahit les chemins"
+        },
+        {
+          "icon": "💚",
+          "name": "Régénération",
+          "desc": "+10% régénération de vie"
+        },
+        {
+          "icon": "🤧",
+          "name": "Allergie",
+          "desc": "Certains personas éternuent sans cesse"
+        }
+      ],
+      "night_variant": {
+        "name": "Lueur Fongique",
+        "icon": "✨",
+        "desc": "Les spores deviennent bioluminescentes. La forêt s'illumine de vert et de bleu."
+      },
+      "stats": {
+        "temp": "Doux",
+        "vent": "Léger",
+        "mana": "Naturel"
+      }
+    },
+    "eclat_void": {
+      "id": "eclat_void",
+      "name": "Éclat du Vide",
+      "icon": "🕳️",
+      "color": "#1a1a2e",
+      "desc": "Le ciel se fissure. Des fragments de réalité flottent dans l'air. Le Vide murmure des vérités interdites.",
+      "effects": [
+        {
+          "icon": "🌀",
+          "name": "Distorsion",
+          "desc": "Les distances sont trompeuses"
+        },
+        {
+          "icon": "🧠",
+          "name": "Murmures",
+          "desc": "Sagesse +10, mais risque de folie"
+        }
+      ],
+      "night_variant": {
+        "name": "Abîme Ouvert",
+        "icon": "🌌",
+        "desc": "Le Vide est pleinement visible. Des constellations inconnues brillent dans les fissures du ciel."
+      },
+      "stats": {
+        "temp": "Néant",
+        "vent": "Inexistant",
+        "mana": "Infini"
+      }
+    },
+    "sablons": {
+      "id": "sablons",
+      "name": "Tempête de Sablons",
+      "icon": "⏳",
+      "color": "#c9a04a",
+      "desc": "Le sable doré du temps tourbillonne. Les horloges s'affolent, les souvenirs remontent à la surface.",
+      "effects": [
+        {
+          "icon": "⏰",
+          "name": "Temps instable",
+          "desc": "Les cooldowns varient aléatoirement"
+        },
+        {
+          "icon": "🪙",
+          "name": "Pluie de Sablons",
+          "desc": "Chance de trouver des Sablons au sol"
+        }
+      ],
+      "night_variant": {
+        "name": "Nuit Hors du Temps",
+        "icon": "⌛",
+        "desc": "Le temps s'arrête presque. Chaque seconde dure une éternité."
+      },
+      "stats": {
+        "temp": "Variable",
+        "vent": "Tourbillon",
+        "mana": "Temporel"
+      }
+    }
+  },
+  "forecast": {
+    "2026-03-10": "eclat",
+    "2026-03-11": "eclat",
+    "2026-03-12": "brume",
+    "2026-03-13": "brume",
+    "2026-03-14": "orage_sang",
+    "2026-03-15": "spores",
+    "2026-03-16": "spores",
+    "2026-03-17": "eclat",
+    "2026-03-18": "givre",
+    "2026-03-19": "givre",
+    "2026-03-20": "sablons",
+    "2026-03-21": "eclat",
+    "2026-03-22": "cendres",
+    "2026-03-23": "cendres",
+    "2026-03-24": "eclat_void",
+    "2026-03-25": "eclat_void",
+    "2026-03-26": "orage_sang",
+    "2026-03-27": "eclat",
+    "2026-03-28": "spores",
+    "2026-03-29": "brume",
+    "2026-03-30": "sablons",
+    "2026-03-31": "givre",
+    "2026-04-01": "eclat",
+    "2026-04-02": "cendres",
+    "2026-04-03": "orage_sang",
+    "2026-04-04": "spores",
+    "2026-04-05": "eclat_void",
+    "2026-04-06": "brume",
+    "2026-04-07": "eclat",
+    "2026-04-08": "givre",
+    "2026-04-09": "sablons",
+    "2026-04-10": "eclat"
+  },
+  "default": "eclat"
+}

@@ -1,0 +1,584 @@
+/* ══════════ ORB SYSTEM ══════════ */
+.orb-wrap {
+  position: relative; z-index: 500;
+  pointer-events: auto;
+}
+.orb-right { margin-right: 0; margin-bottom: 2px }
+.orb-left-fixed {
+  position: fixed;
+  bottom: -5px; left: 5px;
+  z-index: 502;
+  pointer-events: auto;
+}
+.orb-left-fixed .orb-frame,
+.orb-left-fixed .orb-frame-outer { display: none }
+
+/* Blue orb — fixed bottom-right, mirrors red orb */
+.orb-right-fixed {
+  position: fixed;
+  bottom: -5px; right: 4px;
+  z-index: 502;
+  pointer-events: auto;
+}
+.orb-right-fixed .orb-frame,
+.orb-right-fixed .orb-frame-outer { display: none }
+
+.orb-btn {
+  position: relative; width: 90px; height: 90px;
+  background: none; border: none; cursor: pointer; padding: 0;
+  transition: transform .15s;
+  z-index: 3;
+}
+.orb-btn:active { transform: scale(.94) }
+
+/* ═══════════ BGMAP CORNER (fixed bottom-right, z:400) ═══════════ */
+.bgmap-corner {
+  position: fixed;
+  bottom: -20px; right: -50px;
+  width: 200px; height: 200px;
+  z-index: 400;
+  pointer-events: none;
+}
+.bgmap-corner-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  animation: bgmapPulse 5s ease-in-out infinite;
+}
+@keyframes bgmapPulse {
+  0%,100% { opacity:.8 }
+  50% { opacity:1 }
+}
+
+/* ── WORLDMAP INSIDE BLUE LIQUID — static, always visible ── */
+.liq-worldmap {
+  position: absolute; inset: -30%; z-index: 1;
+  background: url('../assets/worldmap.png') center/200% auto no-repeat;
+  opacity: .45;
+  mix-blend-mode: hard-light;
+  filter: url(#liquid-warp-blue) brightness(.9);
+}
+
+/* ── ORB GLASS ── */
+.orb-glass {
+  position: absolute; inset: 8px;
+  border-radius: 50%; overflow: hidden;
+  background: radial-gradient(circle at 45% 35%, #1a1210, #0a0804);
+  box-shadow:
+    inset 0 6px 16px rgba(0,0,0,.9),
+    inset 0 -3px 10px rgba(0,0,0,.5);
+}
+
+/* ── LIQUID CONTAINER ── */
+/* ★ MODIF 1: 100% au lieu de 78% pour remplir complètement les orbes */
+.orb-liquid-container {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 100%;
+  overflow: hidden; border-radius: 50%;
+}
+
+/* ── LIQUID LAYERS (shared) ── */
+.liq-layer {
+  position: absolute; inset: 0;
+}
+.liq-base {
+  z-index: 1;
+}
+.liq-wave {
+  z-index: 2;
+}
+
+/* ── RED LIQUID (Health) ── */
+.liq-red-base {
+  background: radial-gradient(ellipse at 50% 70%, #c0392b, #8b1a1a 55%, #5a0f0f 85%, #3a0808);
+  animation: redBasePulse 4s ease-in-out infinite;
+}
+@keyframes redBasePulse {
+  0%,100% { opacity: 1 }
+  50% { opacity: .85 }
+}
+
+.liq-red-wave1 {
+  background: radial-gradient(ellipse at 30% 40%, rgba(220,60,60,.5), transparent 60%);
+  filter: url(#liquid-warp);
+  animation: waveShift1 6s ease-in-out infinite;
+}
+.liq-red-wave2 {
+  background: radial-gradient(ellipse at 70% 30%, rgba(200,40,40,.35), transparent 55%);
+  filter: url(#liquid-warp);
+  animation: waveShift2 8s ease-in-out infinite;
+}
+.liq-red-wave3 {
+  background: radial-gradient(ellipse at 50% 20%, rgba(255,80,80,.2), transparent 50%);
+  filter: url(#liquid-warp);
+  animation: waveShift3 5s ease-in-out infinite;
+}
+
+.liq-red-caustics {
+  position: absolute; inset: 0; z-index: 3;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(255,120,80,.12) 0%, transparent 30%),
+    radial-gradient(circle at 70% 40%, rgba(255,100,60,.1) 0%, transparent 25%),
+    radial-gradient(circle at 50% 70%, rgba(255,140,100,.08) 0%, transparent 35%);
+  animation: causticsRed 7s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes causticsRed {
+  0%   { transform: translate(0, 0) scale(1); opacity: .6 }
+  33%  { transform: translate(3px, -2px) scale(1.05); opacity: .8 }
+  66%  { transform: translate(-2px, 2px) scale(.97); opacity: .5 }
+  100% { transform: translate(0, 0) scale(1); opacity: .6 }
+}
+
+/* ── BLUE LIQUID (Mana) ── */
+.liq-blue-base {
+  background: radial-gradient(ellipse at 50% 70%, #4a7dd4, #1a3a6b 55%, #0f1f3a 85%, #080f20);
+  animation: blueBasePulse 5s ease-in-out infinite;
+}
+@keyframes blueBasePulse {
+  0%,100% { opacity: 1 }
+  50% { opacity: .85 }
+}
+
+.liq-blue-wave1 {
+  background: radial-gradient(ellipse at 35% 45%, rgba(90,160,230,.45), transparent 60%);
+  filter: url(#liquid-warp-blue);
+  animation: waveShift1 7s ease-in-out infinite;
+}
+.liq-blue-wave2 {
+  background: radial-gradient(ellipse at 65% 35%, rgba(60,130,210,.3), transparent 55%);
+  filter: url(#liquid-warp-blue);
+  animation: waveShift2 9s ease-in-out infinite;
+}
+.liq-blue-wave3 {
+  background: radial-gradient(ellipse at 50% 25%, rgba(120,180,255,.2), transparent 50%);
+  filter: url(#liquid-warp-blue);
+  animation: waveShift3 6s ease-in-out infinite;
+}
+
+.liq-blue-caustics {
+  position: absolute; inset: 0; z-index: 3;
+  background:
+    radial-gradient(circle at 35% 55%, rgba(100,180,255,.12) 0%, transparent 30%),
+    radial-gradient(circle at 65% 45%, rgba(80,150,240,.1) 0%, transparent 25%),
+    radial-gradient(circle at 45% 65%, rgba(120,200,255,.08) 0%, transparent 35%);
+  animation: causticsBlue 8s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes causticsBlue {
+  0%   { transform: translate(0, 0) scale(1); opacity: .6 }
+  33%  { transform: translate(-2px, 3px) scale(1.04); opacity: .8 }
+  66%  { transform: translate(3px, -1px) scale(.96); opacity: .5 }
+  100% { transform: translate(0, 0) scale(1); opacity: .6 }
+}
+
+/* ── SHARED WAVE KEYFRAMES ── */
+@keyframes waveShift1 {
+  0%   { transform: translate(0, 0) rotate(0deg) }
+  25%  { transform: translate(4px, -3px) rotate(2deg) }
+  50%  { transform: translate(-2px, 2px) rotate(-1deg) }
+  75%  { transform: translate(3px, 1px) rotate(1deg) }
+  100% { transform: translate(0, 0) rotate(0deg) }
+}
+@keyframes waveShift2 {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1) }
+  33%  { transform: translate(-3px, 2px) rotate(-2deg) scale(1.03) }
+  66%  { transform: translate(2px, -3px) rotate(1deg) scale(.97) }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1) }
+}
+@keyframes waveShift3 {
+  0%   { transform: translate(0, 0) scale(1) }
+  50%  { transform: translate(2px, -2px) scale(1.06) }
+  100% { transform: translate(0, 0) scale(1) }
+}
+
+/* ═══════════ GREY MINI ORBS (Calendar & Weather) ═══════════ */
+.orb-mini {
+  position: fixed;
+  pointer-events: auto;
+}
+.orb-mini-left {
+  bottom: 88px; left: 0;
+  z-index: 499; /* bgcal(498) < orb-cal(499) < bgprofil(501) */
+}
+.orb-mini-right {
+  bottom: 88px; right: 0;
+  z-index: 399; /* bgmet(398) < orb-weather(399) */
+}
+.orb-mini-btn {
+  position: relative; width: 60px; height: 60px;
+  background: none; border: none; cursor: pointer; padding: 0;
+  transition: transform .15s;
+}
+.orb-mini-btn:active { transform: scale(.9) }
+.orb-mini-glass {
+  position: absolute; inset: 6px;
+  border-radius: 50%; overflow: hidden;
+  background: radial-gradient(circle at 45% 35%, #2a2a30, #18181c);
+  box-shadow:
+    inset 0 5px 12px rgba(0,0,0,.9),
+    inset 0 -2px 6px rgba(0,0,0,.5);
+}
+
+/* 3D metallic frame — outer ring */
+.orb-mini-frame {
+  position: absolute; inset: 2px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(145deg, #8a8a9a 0%, #5a5a6a 25%, #3a3a44 50%, #5a5a6a 75%, #8a8a9a 100%) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; z-index: 10;
+  box-shadow:
+    0 0 6px rgba(0,0,0,.7),
+    0 2px 4px rgba(0,0,0,.4);
+}
+/* Highlight top-left arc */
+.orb-mini-frame::before {
+  content: ''; position: absolute;
+  top: -2px; left: 2px; right: 40%;
+  height: 50%;
+  border-radius: 50%;
+  border-top: 1.5px solid rgba(200,200,220,.5);
+  border-left: 1px solid rgba(200,200,220,.3);
+  border-right: none; border-bottom: none;
+  pointer-events: none;
+}
+/* Shadow bottom-right arc */
+.orb-mini-frame::after {
+  content: ''; position: absolute;
+  bottom: -2px; right: 2px; left: 40%;
+  height: 50%;
+  border-radius: 50%;
+  border-bottom: 1.5px solid rgba(0,0,0,.6);
+  border-right: 1px solid rgba(0,0,0,.4);
+  border-left: none; border-top: none;
+  pointer-events: none;
+}
+/* Outer dark ring */
+.orb-mini-frame-outer {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(50,50,60,.7);
+  pointer-events: none; z-index: 9;
+  box-shadow: 0 0 10px rgba(0,0,0,.5), inset 0 0 4px rgba(100,100,120,.1);
+}
+.orb-mini-liquid {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 100%; overflow: hidden; border-radius: 50%;
+}
+
+/* Grey liquid */
+.liq-grey-base {
+  background: radial-gradient(ellipse at 50% 70%, #5a5a6a, #3a3a44 55%, #22222a 85%, #16161c);
+  animation: greyBasePulse 5s ease-in-out infinite;
+}
+@keyframes greyBasePulse {
+  0%,100% { opacity: 1 }
+  50% { opacity: .8 }
+}
+.liq-grey-wave1 {
+  background: radial-gradient(ellipse at 35% 40%, rgba(140,140,160,.4), transparent 60%);
+  filter: url(#liquid-warp);
+  animation: waveShift1 7s ease-in-out infinite;
+}
+.liq-grey-wave2 {
+  background: radial-gradient(ellipse at 65% 30%, rgba(120,120,140,.3), transparent 55%);
+  filter: url(#liquid-warp);
+  animation: waveShift2 9s ease-in-out infinite;
+}
+.liq-grey-caustics {
+  position: absolute; inset: 0; z-index: 3;
+  background:
+    radial-gradient(circle at 35% 55%, rgba(160,160,180,.1) 0%, transparent 30%),
+    radial-gradient(circle at 65% 45%, rgba(140,140,160,.08) 0%, transparent 25%);
+  animation: causticsBlue 9s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+/* Grey meniscus */
+.orb-meniscus-grey {
+  top: 3px;
+  background: linear-gradient(90deg, transparent, rgba(160,160,180,.3), rgba(140,140,160,.45), rgba(160,160,180,.3), transparent);
+  box-shadow: 0 0 5px rgba(140,140,160,.2);
+}
+
+/* Grey bubbles */
+.liq-bubbles-grey .bubble {
+  background: radial-gradient(circle at 35% 30%, rgba(200,200,220,.3), rgba(140,140,160,.08));
+  border: 1px solid rgba(180,180,200,.12);
+}
+.bg1 { width:4px; height:4px; left:22%; bottom:8%;  animation: greyBubble 3s ease-in-out infinite 0s }
+.bg2 { width:3px; height:3px; left:55%; bottom:12%; animation: greyBubble 3.4s ease-in-out infinite .5s }
+.bg3 { width:5px; height:5px; left:38%; bottom:5%;  animation: greyBubble 3.8s ease-in-out infinite 1s }
+.bg4 { width:3px; height:3px; left:68%; bottom:15%; animation: greyBubble 2.8s ease-in-out infinite 1.5s }
+.bg5 { width:4px; height:4px; left:28%; bottom:18%; animation: greyBubble 3.2s ease-in-out infinite 2s }
+.bg6 { width:3px; height:3px; left:60%; bottom:6%;  animation: greyBubble 2.6s ease-in-out infinite 2.5s }
+
+@keyframes greyBubble {
+  0%   { transform: translateY(0) scale(.5); opacity: 0 }
+  10%  { opacity: .6 }
+  50%  { transform: translateY(-14px) translateX(2px) scale(.9); opacity: .4 }
+  100% { transform: translateY(-26px) translateX(-1px) scale(.2); opacity: 0 }
+}
+
+/* Icon overlay centered in orb */
+.orb-mini-icon {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.8));
+}
+
+/* Active state */
+.orb-mini.active .orb-mini-glass {
+  box-shadow:
+    inset 0 5px 12px rgba(0,0,0,.9),
+    inset 0 -2px 6px rgba(0,0,0,.5);
+}
+.orb-mini.active .orb-mini-frame {
+  background:
+    linear-gradient(145deg, #b0a080 0%, #8a7a5a 25%, #5a4a2e 50%, #8a7a5a 75%, #b0a080 100%) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  box-shadow:
+    0 0 10px rgba(201,160,74,.4),
+    0 2px 6px rgba(0,0,0,.4);
+}
+.orb-mini.active .orb-mini-frame-outer {
+  border-color: rgba(201,160,74,.3);
+  box-shadow: 0 0 14px rgba(201,160,74,.25), inset 0 0 4px rgba(201,160,74,.1);
+}
+
+/* ═══════════ BGCAL FRAME (behind calendar orb, below bgprofil) ═══════════ */
+.bgcal-corner {
+  position: fixed;
+  bottom: 52px; left: -10px;
+  width: 130px; height: 130px;
+  z-index: 498;
+  pointer-events: none;
+}
+.bgcal-frame-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,.6));
+  opacity: .8;
+}
+
+/* ═══════════ BGMET FRAME (behind weather orb, below bgmap) ═══════════ */
+.bgmet-corner {
+  position: fixed;
+  bottom: 52px; right: -30px;
+  width: 130px; height: 130px;
+  z-index: 398;
+  pointer-events: none;
+}
+.bgmet-frame-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,.6));
+  animation: bgmapPulse 5s ease-in-out infinite;
+  opacity: .8;
+}
+
+/* ── MENISCUS (surface tension line) ── */
+/* ★ MODIF 1: meniscus en haut puisque les orbes sont remplis */
+.orb-meniscus {
+  position: absolute; left: 2px; right: 2px;
+  height: 3px; z-index: 5;
+  border-radius: 50%;
+  animation: meniscusFloat 4s ease-in-out infinite;
+}
+.orb-meniscus-red {
+  top: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,120,80,.4), rgba(255,80,60,.6), rgba(255,120,80,.4), transparent);
+  box-shadow: 0 0 6px rgba(255,80,60,.3), 0 2px 8px rgba(200,40,30,.15);
+}
+.orb-meniscus-blue {
+  top: 4px;
+  background: linear-gradient(90deg, transparent, rgba(100,180,255,.35), rgba(80,150,240,.5), rgba(100,180,255,.35), transparent);
+  box-shadow: 0 0 6px rgba(80,150,240,.3), 0 2px 8px rgba(40,100,200,.15);
+}
+@keyframes meniscusFloat {
+  0%,100% { transform: translateY(0) scaleX(1) }
+  25%  { transform: translateY(1px) scaleX(.97) }
+  50%  { transform: translateY(-1px) scaleX(1.02) }
+  75%  { transform: translateY(0.5px) scaleX(.99) }
+}
+
+/* ── BUBBLES ── */
+.liq-bubbles {
+  position: absolute; inset: 0; z-index: 4;
+  pointer-events: none;
+}
+.bubble {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.18), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.06);
+}
+/* Health bubbles */
+.b1 { width:4px; height:4px; left:25%; bottom:10%; animation: bubbleRise 4.5s ease-in infinite 0s }
+.b2 { width:3px; height:3px; left:55%; bottom:15%; animation: bubbleRise 5.2s ease-in infinite .8s }
+.b3 { width:5px; height:5px; left:40%; bottom:5%;  animation: bubbleRise 6s ease-in infinite 1.5s }
+.b4 { width:2px; height:2px; left:65%; bottom:20%; animation: bubbleRise 4s ease-in infinite 2.2s }
+.b5 { width:3px; height:3px; left:30%; bottom:25%; animation: bubbleRise 5.5s ease-in infinite 3s }
+.b6 { width:2px; height:2px; left:50%; bottom:8%;  animation: bubbleRise 4.8s ease-in infinite 3.8s }
+/* Mana bubbles */
+.bb1 { width:4px; height:4px; left:30%; bottom:12%; animation: bubbleRise 5s ease-in infinite .3s }
+.bb2 { width:3px; height:3px; left:60%; bottom:8%;  animation: bubbleRise 5.8s ease-in infinite 1.1s }
+.bb3 { width:5px; height:5px; left:45%; bottom:18%; animation: bubbleRise 6.5s ease-in infinite 2s }
+.bb4 { width:2px; height:2px; left:35%; bottom:5%;  animation: bubbleRise 4.2s ease-in infinite 2.8s }
+.bb5 { width:3px; height:3px; left:55%; bottom:22%; animation: bubbleRise 5.3s ease-in infinite 3.5s }
+.bb6 { width:2px; height:2px; left:70%; bottom:10%; animation: bubbleRise 4.6s ease-in infinite 4.2s }
+
+@keyframes bubbleRise {
+  0%   { transform: translateY(0) scale(1); opacity: 0 }
+  10%  { opacity: .6 }
+  60%  { opacity: .4 }
+  90%  { transform: translateY(-35px) scale(.5); opacity: .1 }
+  100% { transform: translateY(-40px) scale(.3); opacity: 0 }
+}
+
+/* ── POTION BUBBLES (red orb — bigger, brighter, more active) ── */
+.liq-bubbles-potion .bubble {
+  background: radial-gradient(circle at 35% 30%, rgba(255,200,180,.35), rgba(255,100,80,.1));
+  border: 1px solid rgba(255,180,150,.15);
+}
+.bp1  { width:7px;  height:7px;  left:20%; bottom:5%;  animation: potionBubble 2.8s ease-in-out infinite 0s }
+.bp2  { width:5px;  height:5px;  left:50%; bottom:10%; animation: potionBubble 3.2s ease-in-out infinite .4s }
+.bp3  { width:8px;  height:8px;  left:35%; bottom:3%;  animation: potionBubble 3.5s ease-in-out infinite .7s }
+.bp4  { width:4px;  height:4px;  left:65%; bottom:15%; animation: potionBubble 2.5s ease-in-out infinite 1s }
+.bp5  { width:6px;  height:6px;  left:28%; bottom:20%; animation: potionBubble 3.8s ease-in-out infinite 1.3s }
+.bp6  { width:5px;  height:5px;  left:72%; bottom:8%;  animation: potionBubble 2.6s ease-in-out infinite 1.6s }
+.bp7  { width:9px;  height:9px;  left:45%; bottom:2%;  animation: potionBubble 4s ease-in-out infinite 0.2s }
+.bp8  { width:4px;  height:4px;  left:58%; bottom:25%; animation: potionBubble 2.4s ease-in-out infinite 2s }
+.bp9  { width:6px;  height:6px;  left:15%; bottom:18%; animation: potionBubble 3s ease-in-out infinite 2.3s }
+.bp10 { width:7px;  height:7px;  left:40%; bottom:12%; animation: potionBubble 3.3s ease-in-out infinite .1s }
+.bp11 { width:3px;  height:3px;  left:75%; bottom:5%;  animation: potionBubble 2.2s ease-in-out infinite 1.8s }
+.bp12 { width:5px;  height:5px;  left:32%; bottom:8%;  animation: potionBubble 2.9s ease-in-out infinite 2.6s }
+
+@keyframes potionBubble {
+  0%   { transform: translateY(0) translateX(0) scale(.6); opacity: 0 }
+  8%   { opacity: .8 }
+  25%  { transform: translateY(-10px) translateX(3px) scale(1); opacity: .7 }
+  50%  { transform: translateY(-22px) translateX(-2px) scale(.9); opacity: .5 }
+  75%  { transform: translateY(-32px) translateX(2px) scale(.6); opacity: .3 }
+  100% { transform: translateY(-42px) translateX(0) scale(.2); opacity: 0 }
+}
+
+/* ── MANA POTION BUBBLES (blue orb — same energy as red) ── */
+.liq-bubbles-mana .bubble {
+  background: radial-gradient(circle at 35% 30%, rgba(180,220,255,.35), rgba(80,150,240,.1));
+  border: 1px solid rgba(150,200,255,.15);
+}
+.bm1  { width:7px;  height:7px;  left:22%; bottom:6%;  animation: manaBubble 2.9s ease-in-out infinite 0s }
+.bm2  { width:5px;  height:5px;  left:52%; bottom:12%; animation: manaBubble 3.1s ease-in-out infinite .5s }
+.bm3  { width:8px;  height:8px;  left:38%; bottom:4%;  animation: manaBubble 3.4s ease-in-out infinite .8s }
+.bm4  { width:4px;  height:4px;  left:68%; bottom:16%; animation: manaBubble 2.6s ease-in-out infinite 1.1s }
+.bm5  { width:6px;  height:6px;  left:25%; bottom:22%; animation: manaBubble 3.7s ease-in-out infinite 1.4s }
+.bm6  { width:5px;  height:5px;  left:70%; bottom:9%;  animation: manaBubble 2.7s ease-in-out infinite 1.7s }
+.bm7  { width:9px;  height:9px;  left:42%; bottom:3%;  animation: manaBubble 3.9s ease-in-out infinite .3s }
+.bm8  { width:4px;  height:4px;  left:60%; bottom:24%; animation: manaBubble 2.3s ease-in-out infinite 2.1s }
+.bm9  { width:6px;  height:6px;  left:18%; bottom:16%; animation: manaBubble 3.1s ease-in-out infinite 2.4s }
+.bm10 { width:7px;  height:7px;  left:48%; bottom:10%; animation: manaBubble 3.2s ease-in-out infinite .2s }
+.bm11 { width:3px;  height:3px;  left:78%; bottom:6%;  animation: manaBubble 2.1s ease-in-out infinite 1.9s }
+.bm12 { width:5px;  height:5px;  left:30%; bottom:7%;  animation: manaBubble 2.8s ease-in-out infinite 2.7s }
+
+@keyframes manaBubble {
+  0%   { transform: translateY(0) translateX(0) scale(.6); opacity: 0 }
+  8%   { opacity: .75 }
+  25%  { transform: translateY(-10px) translateX(-3px) scale(1); opacity: .65 }
+  50%  { transform: translateY(-22px) translateX(2px) scale(.9); opacity: .45 }
+  75%  { transform: translateY(-32px) translateX(-2px) scale(.6); opacity: .25 }
+  100% { transform: translateY(-42px) translateX(0) scale(.2); opacity: 0 }
+}
+
+/* ── ORB SHINE (glass reflections) ── */
+.orb-shine {
+  position: absolute; top: 6px; left: 10px;
+  width: 14px; height: 8px;
+  background: radial-gradient(ellipse, rgba(255,255,255,.3), transparent);
+  border-radius: 50%; pointer-events: none; z-index: 8;
+  animation: shineBreath 3s ease-in-out infinite;
+}
+.orb-shine2 {
+  position: absolute; top: 10px; left: 18px;
+  width: 6px; height: 4px;
+  background: radial-gradient(ellipse, rgba(255,255,255,.15), transparent);
+  border-radius: 50%; pointer-events: none; z-index: 8;
+}
+@keyframes shineBreath {
+  0%,100% { opacity: .8 }
+  50% { opacity: .5 }
+}
+
+/* ── ORB FRAMES (metallic ring) ── */
+.orb-frame {
+  position: absolute; inset: 2px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(145deg, #c9a04a 0%, #8a6d2b 30%, #5a4a2e 60%, #8a6d2b 80%, #c9a04a 100%) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; z-index: 10;
+  box-shadow:
+    0 0 8px rgba(0,0,0,.8),
+    0 2px 6px rgba(0,0,0,.5);
+}
+.orb-frame::before {
+  content: ''; position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,160,74,.2);
+  pointer-events: none;
+}
+.orb-frame::after {
+  content: ''; position: absolute; inset: 2px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,160,74,.1);
+  pointer-events: none;
+}
+
+.orb-frame-outer {
+  position: absolute; inset: -1px;
+  border-radius: 50%;
+  border: 2px solid rgba(90,74,46,.5);
+  pointer-events: none; z-index: 9;
+  box-shadow: 0 0 12px rgba(0,0,0,.6);
+}
+
+.orb-label {
+  position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-ui); font-size: 8px; color: var(--bone-dim);
+  letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,0,.9);
+}
+
+/* ── ACTIVE STATES ── */
+.orb-wrap.active .orb-frame {
+  background:
+    linear-gradient(145deg, #e8c96a 0%, #c9a04a 30%, #8a6d2b 60%, #c9a04a 80%, #e8c96a 100%) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.orb-right.active .orb-frame-outer {
+  box-shadow: 0 0 18px rgba(46,94,166,.4), 0 0 6px rgba(201,160,74,.3);
+}
+.orb-wrap.active .orb-label { color: var(--gold-light) }
+

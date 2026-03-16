@@ -1,0 +1,143 @@
+{
+  "persona": {
+    "name": "Nelis",
+    "subtitle": "Gardien·ne de l'Heure & des Passages",
+    "status": "en ligne"
+  },
+  "menus": [
+    {
+      "title": "Hourglass Project",
+      "desc": "Histoires & récits à travers le temps et les dimensions.",
+      "target": "hourglass"
+    },
+    {
+      "title": "Nexus Games",
+      "desc": "Jeux de société et expériences ludiques originales.",
+      "target": "nexus"
+    }
+  ],
+  "dialog": {
+    "start": {
+      "npc": [
+        "Bienvenue, voyageur. Je suis **Nelis**, gardien·ne de ce portail.",
+        "Ici se croisent des histoires et des jeux nés de l'imagination d'Elrand Avicenna.",
+        "Dis-moi, qu'est-ce qui t'amène aujourd'hui ?"
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "label": "Découvrir les histoires (Hourglass)",
+          "goto": "path_hourglass"
+        },
+        {
+          "id": "c2",
+          "label": "Explorer les jeux (Nexus Games)",
+          "goto": "path_nexus"
+        },
+        {
+          "id": "c3",
+          "label": "En savoir plus sur ce portail",
+          "goto": "path_about"
+        }
+      ]
+    },
+    "path_hourglass": {
+      "npc": [
+        "Le projet **Hourglass** rassemble deux approches narratives distinctes.",
+        "**Hourglass Eye** te propose des récits courts, vus à travers l'œil d'un observateur omniscient.",
+        "**Hourglass Universe** déploie une saga continue avec de multiples personnages et mondes.",
+        "Que souhaites-tu explorer ?"
+      ],
+      "choices": [
+        {
+          "id": "h1",
+          "label": "Hourglass Eye — les récits courts",
+          "goto": "end_hourglass_eye"
+        },
+        {
+          "id": "h2",
+          "label": "Hourglass Universe — la saga",
+          "goto": "end_hourglass_universe"
+        },
+        {
+          "id": "back",
+          "label": "Revenir en arrière",
+          "goto": "start"
+        }
+      ]
+    },
+    "path_nexus": {
+      "npc": [
+        "**Nexus Games** est l'espace ludique du portail.",
+        "**Nexus Boardgames** propose des jeux de société originaux jouables sur Tabletop Simulator.",
+        "**Nexus Tower** est un défi vertical : traverse les étages en enchaînant des mini-jeux variés.",
+        "Vers lequel veux-tu te diriger ?"
+      ],
+      "choices": [
+        {
+          "id": "n1",
+          "label": "Nexus Boardgames — jeux de société",
+          "goto": "end_nexus_boardgames"
+        },
+        {
+          "id": "n2",
+          "label": "Nexus Tower — la tour des épreuves",
+          "goto": "end_nexus_tower"
+        },
+        {
+          "id": "back",
+          "label": "Revenir en arrière",
+          "goto": "start"
+        }
+      ]
+    },
+    "path_about": {
+      "npc": [
+        "Ce portail est **Anim'Connect**, un espace créé par Elrand Avicenna.",
+        "Il rassemble des projets narratifs et ludiques, tous conçus avec passion.",
+        "Chaque projet vit dans son propre univers, mais tous partagent la même philosophie : **créer du lien**."
+      ],
+      "choices": [
+        {
+          "id": "a1",
+          "label": "Voir les histoires (Hourglass)",
+          "goto": "path_hourglass"
+        },
+        {
+          "id": "a2",
+          "label": "Voir les jeux (Nexus Games)",
+          "goto": "path_nexus"
+        },
+        {
+          "id": "back",
+          "label": "Revenir au début",
+          "goto": "start"
+        }
+      ]
+    },
+    "end_hourglass_eye": {
+      "npc": [
+        "Excellente curiosité. Je t'ouvre les portes d'**Hourglass Eye**…"
+      ],
+      "action": "navigate:hourglass-eye"
+    },
+    "end_hourglass_universe": {
+      "npc": [
+        "Prépare-toi à un long voyage. **Hourglass Universe** t'attend…"
+      ],
+      "action": "navigate:hourglass-universe"
+    },
+    "end_nexus_boardgames": {
+      "npc": [
+        "Les plateaux sont prêts. Bienvenue dans **Nexus Boardgames**…"
+      ],
+      "action": "navigate:nexus-boardgames"
+    },
+    "end_nexus_tower": {
+      "npc": [
+        "La tour se dresse devant toi. Chaque étage est un défi. Bonne ascension…"
+      ],
+      "action": "navigate:nexus-tower"
+    }
+  }
+}

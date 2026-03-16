@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {
+      "id": "hourglass",
+      "name": "Hourglass Project",
+      "tagline": "Histoires & Narrations",
+      "description": "Plongez dans des récits captivants à travers deux prismes narratifs uniques.",
+      "color": "#e8a838",
+      "colorAlt": "#c47a1a",
+      "projects": [
+        {
+          "id": "hourglass-eye",
+          "name": "Hourglass Eye",
+          "icon": "assets/anim.png",
+          "type": "Récits Courts",
+          "description": "De petites histoires intimes racontées du point de vue d'un œil omniscient. Chaque récit est une fenêtre ouverte sur un moment suspendu dans le temps.",
+          "link": "projets/hourglass-eye/hourglass-eye.html",
+          "status": "coming-soon"
+        },
+        {
+          "id": "hourglass-universe",
+          "name": "Hourglass Universe",
+          "icon": "assets/hourglass.png",
+          "type": "Saga Continue",
+          "description": "Des histoires continues suivant une multitude de personnages à travers des mondes différents. Un univers partagé, des destins entrelacés.",
+          "link": "projets/hourglass-universe/hourglass-universe.html",
+          "status": "coming-soon"
+        }
+      ]
+    },
+    {
+      "id": "nexus",
+      "name": "Nexus Games",
+      "tagline": "Jeux & Expériences",
+      "description": "Des jeux originaux conçus pour rassembler, défier et surprendre.",
+      "color": "#00d4aa",
+      "colorAlt": "#00a88a",
+      "projects": [
+        {
+          "id": "nexus-boardgames",
+          "name": "Nexus Boardgames",
+          "icon": "assets/accueil.png",
+          "type": "Jeux de Société",
+          "description": "Des jeux de société originaux présentés via Tabletop Simulator. Stratégie, bluff et interactions dans un format numérique.",
+          "link": "projets/nexus-boardgames/nexus-boardgames.html",
+          "status": "coming-soon"
+        },
+        {
+          "id": "nexus-tower",
+          "name": "Nexus Tower",
+          "icon": "assets/settings.png",
+          "type": "Jeu d'Étages",
+          "description": "Un jeu complet de traversée d'étages à travers une multitude de mini-jeux variés. Chaque palier est une nouvelle épreuve.",
+          "link": "projets/nexus-tower/nexus-tower.html",
+          "status": "coming-soon"
+        }
+      ]
+    }
+  ]
+}

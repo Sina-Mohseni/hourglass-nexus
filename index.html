@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a0806">
+  <title>Hourglass Nexus — Sanctuaire</title>
+  <link rel="icon" href="assets/ealogo.png" type="image/png">
+  <!-- CSS Split Files -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/accueil.css">
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/orbs.css">
+  <link rel="stylesheet" href="css/pages-accueil.css">
+  <link rel="stylesheet" href="css/pages-user.css">
+  <link rel="stylesheet" href="css/pages-inventory.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/drawer.css">
+  <link rel="stylesheet" href="css/worldmap.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/lockscreen.css">
+  <link rel="stylesheet" href="css/charcreate.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+  <div class="bg-decor bg-decor-jour" id="bg-decor-jour"></div>
+  <div class="bg-decor bg-decor-nuit" id="bg-decor-nuit"></div>
+
+  <!-- ACCUEIL IMAGE — hidden until main app -->
+  <div class="accueil-corner hidden-until-app" id="accueil-corner">
+    <img src="assets/accueil.png" alt="Accueil" class="accueil-corner-img">
+  </div>
+
+  <!-- BGMAP IMAGE — hidden until main app -->
+  <div class="bgmap-corner hidden-until-app" id="bgmap-corner">
+    <img src="assets/bgmap.png" alt="" class="bgmap-corner-img">
+  </div>
+
+  <!-- BLUE ORB (Mana) — outside sanctuary, in front of bgmap -->
+  <div class="orb-wrap orb-right-fixed hidden-until-app" id="orb-right">
+    <button class="orb-btn" data-page="worldmap" id="orb-mana">
+      <div class="orb-glass orb-glass-mana">
+        <div class="orb-liquid-container" id="orb-mana-fill">
+          <div class="liq-layer liq-base liq-blue-base"></div>
+          <div class="liq-layer liq-worldmap"></div>
+          <div class="liq-layer liq-wave liq-blue-wave1"></div>
+          <div class="liq-layer liq-wave liq-blue-wave2"></div>
+          <div class="liq-layer liq-wave liq-blue-wave3"></div>
+          <div class="liq-caustics liq-blue-caustics"></div>
+          <div class="liq-bubbles liq-bubbles-mana">
+            <span class="bubble bb1"></span><span class="bubble bb2"></span>
+            <span class="bubble bb3"></span><span class="bubble bb4"></span>
+            <span class="bubble bb5"></span><span class="bubble bb6"></span>
+            <span class="bubble bm1"></span><span class="bubble bm2"></span>
+            <span class="bubble bm3"></span><span class="bubble bm4"></span>
+            <span class="bubble bm5"></span><span class="bubble bm6"></span>
+            <span class="bubble bm7"></span><span class="bubble bm8"></span>
+            <span class="bubble bm9"></span><span class="bubble bm10"></span>
+            <span class="bubble bm11"></span><span class="bubble bm12"></span>
+          </div>
+        </div>
+        <div class="orb-meniscus orb-meniscus-blue"></div>
+        <div class="orb-shine"></div>
+        <div class="orb-shine2"></div>
+      </div>
+      <div class="orb-frame"></div>
+      <div class="orb-frame-outer"></div>
+      <span class="orb-label">Extelua</span>
+    </button>
+  </div>
+
+  <div class="sanctuary">
+    <div class="screen">
+
+      <!-- ★ HEADER FIXE — creux profond de 35px (moitié du losange 70px) -->
+      <div class="app-header" id="app-header">
+        <svg class="app-bar-bg" viewBox="0 0 400 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H400 V50 H250 C244,50 241,47 236,40 L208,15 C204,10 196,10 192,15 L164,40 C159,47 156,50 150,50 H0 Z" fill="#0d0b08"/>
+          <path d="M0,50 H150 C156,50 159,47 164,40 L192,15 C196,10 204,10 208,15 L236,40 C241,47 244,50 250,50 H400" fill="none" stroke="#8a6d2b" stroke-width="1" stroke-linejoin="round" style="filter:drop-shadow(0 0 3px rgba(201,160,74,.15))"/>
+        </svg>
+        <div class="app-bar-content">
+          <div class="header-left">
+            <div class="header-clock">
+              <div class="header-date" id="header-date">—</div>
+              <div class="header-time" id="header-time">00:00:00</div>
+            </div>
+          </div>
+          <div class="header-right"></div>
+        </div>
+      </div>
+
+      <!-- CONTENT AREA -->
+      <div class="content-area">
+        <div class="page active scrollable" id="page-accueil"></div>
+        <div class="page scrollable" id="page-user"></div>
+        <div class="page" id="page-worldmap"></div>
+        <div class="page scrollable" id="page-inventory"></div>
+        <div class="page scrollable" id="page-profile"></div>
+      </div>
+
+      <!-- Drawer Backdrop -->
+      <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+      <!-- DRAWER (legacy) -->
+      <div class="drawer" id="drawer">
+        <div class="drawer-handle" id="drawer-handle">
+          <div class="drawer-handle-bar"></div>
+        </div>
+        <div class="drawer-content">
+          <div class="drawer-body" id="drawer-body"></div>
+        </div>
+      </div>
+
+      <!-- ★ FOOTER ASSEMBLY — losange + footer + panel, tout bouge ensemble -->
+      <div class="footer-assembly" id="footer-assembly">
+        <!-- Losange arrondi avec double bordure 3D -->
+        <div class="footer-diamond" id="footer-diamond">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="dg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2a1f14"/>
+                <stop offset="40%" stop-color="#1a1210"/>
+                <stop offset="70%" stop-color="#0d0908"/>
+                <stop offset="100%" stop-color="#1a1210"/>
+              </linearGradient>
+              <radialGradient id="dg2" cx="35%" cy="30%">
+                <stop offset="0%" stop-color="rgba(139,26,26,.6)"/>
+                <stop offset="50%" stop-color="transparent"/>
+              </radialGradient>
+              <radialGradient id="dg3" cx="65%" cy="70%">
+                <stop offset="0%" stop-color="rgba(201,160,74,.35)"/>
+                <stop offset="50%" stop-color="transparent"/>
+              </radialGradient>
+              <linearGradient id="dg-highlight" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="rgba(232,201,106,.5)"/>
+                <stop offset="100%" stop-color="rgba(90,74,46,.0)"/>
+              </linearGradient>
+              <linearGradient id="dg-shadow" x1="1" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="rgba(0,0,0,.5)"/>
+                <stop offset="100%" stop-color="rgba(90,74,46,.0)"/>
+              </linearGradient>
+            </defs>
+            <!-- Outer shadow border (dark, thick — depth) -->
+            <path d="M50,7 C55,7 58,10 88,44 C92,48 92,52 88,56 L58,88 C55,92 52,93 50,93 C48,93 45,92 42,88 L12,56 C8,52 8,48 12,44 L42,12 C45,8 48,7 50,7 Z" fill="none" stroke="#1a1008" stroke-width="5"/>
+            <!-- Main gold border -->
+            <path d="M50,7 C55,7 58,10 88,44 C92,48 92,52 88,56 L58,88 C55,92 52,93 50,93 C48,93 45,92 42,88 L12,56 C8,52 8,48 12,44 L42,12 C45,8 48,7 50,7 Z" fill="url(#dg1)" stroke="#8a6d2b" stroke-width="2.5"/>
+            <!-- 3D highlight top-left -->
+            <path d="M50,7 C55,7 58,10 88,44 C92,48 92,50 90,50" fill="none" stroke="url(#dg-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M50,7 C45,7 42,10 12,44 C8,48 8,50 10,50" fill="none" stroke="url(#dg-highlight)" stroke-width="1" opacity=".5" stroke-linecap="round"/>
+            <!-- 3D shadow bottom-right -->
+            <path d="M88,56 L58,88 C55,92 52,93 50,93 C48,93 45,92 42,88 L12,56" fill="none" stroke="url(#dg-shadow)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Inner bevel border (lighter gold, thinner) -->
+            <path d="M50,14 C54,14 56,16 82,44 C85,47 85,53 82,56 L56,82 C53,85 47,85 44,82 L18,56 C15,53 15,47 18,44 L44,18 C47,15 46,14 50,14 Z" fill="none" stroke="rgba(201,160,74,.25)" stroke-width="1"/>
+            <!-- Inner glows -->
+            <path d="M50,14 C54,14 56,16 82,44 C85,47 85,53 82,56 L56,82 C53,85 47,85 44,82 L18,56 C15,53 15,47 18,44 L44,18 C47,15 46,14 50,14 Z" fill="url(#dg2)"/>
+            <path d="M50,14 C54,14 56,16 82,44 C85,47 85,53 82,56 L56,82 C53,85 47,85 44,82 L18,56 C15,53 15,47 18,44 L44,18 C47,15 46,14 50,14 Z" fill="url(#dg3)"/>
+            <!-- Ember lights -->
+            <circle cx="36" cy="36" r="4" fill="rgba(232,168,56,.5)" opacity=".7"><animate attributeName="opacity" values=".4;.9;.4;.7;.4" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="60" cy="56" r="3.5" fill="rgba(139,26,26,.6)" opacity=".6"><animate attributeName="opacity" values=".5;.3;.8;.5" dur="3.5s" repeatCount="indefinite"/></circle>
+            <circle cx="44" cy="64" r="2.5" fill="rgba(232,168,56,.4)" opacity=".5"><animate attributeName="opacity" values=".3;.7;.5;.3" dur="4.5s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <!-- Footer bar — creux profond de 35px (miroir du header) -->
+        <div class="app-footer" id="app-footer">
+          <svg class="app-bar-bg" viewBox="0 0 400 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,50 H400 V0 H250 C244,0 241,3 236,10 L208,35 C204,40 196,40 192,35 L164,10 C159,3 156,0 150,0 H0 Z" fill="#0d0b08"/>
+            <path d="M0,0 H150 C156,0 159,3 164,10 L192,35 C196,40 204,40 208,35 L236,10 C241,3 244,0 250,0 H400" fill="none" stroke="#8a6d2b" stroke-width="1" stroke-linejoin="round" style="filter:drop-shadow(0 0 3px rgba(201,160,74,.15))"/>
+          </svg>
+          <div class="app-bar-content app-bar-content-bottom">
+            <div class="footer-left"></div>
+            <div class="footer-right"></div>
+          </div>
+        </div>
+        <!-- Bloc panel collé sous le footer -->
+        <div class="footer-panel" id="footer-panel"></div>
+      </div>
+
+      <!-- SVG Filters -->
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <filter id="liquid-warp">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" seed="1" result="noise">
+              <animate attributeName="baseFrequency" dur="12s" values="0.015 0.02;0.02 0.03;0.015 0.02" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <filter id="liquid-warp-blue">
+            <feTurbulence type="fractalNoise" baseFrequency="0.018 0.025" numOctaves="3" seed="42" result="noise">
+              <animate attributeName="baseFrequency" dur="14s" values="0.018 0.025;0.025 0.018;0.018 0.025" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <filter id="glow-red"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          <filter id="glow-blue"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+        </defs>
+      </svg>
+
+      <!-- FIXED PORTRAIT (bottom-left) — behind bgprofil -->
+      <div class="footer-portrait hidden-until-app" id="footer-portrait">
+        <img src="" alt="" id="orb-portrait-img" style="display:none">
+        <span class="footer-portrait-empty" id="orb-portrait-empty">👤</span>
+      </div>
+
+      <!-- BGCAL FRAME — behind calendar orb, below bgprofil -->
+      <div class="bgcal-corner hidden-until-app" id="bgcal-corner">
+        <img src="assets/bgprofil.png" alt="" class="bgcal-frame-img">
+      </div>
+
+      <!-- BGMET FRAME — behind weather orb, below bgmap -->
+      <div class="bgmet-corner hidden-until-app" id="bgmet-corner">
+        <img src="assets/bgmap.png" alt="" class="bgmet-frame-img">
+      </div>
+
+      <!-- GREY ORB — Calendar (bottom-left, above bgcal, below bgprofil) -->
+      <div class="orb-mini orb-mini-left hidden-until-app" id="orb-cal-wrap">
+        <button class="orb-mini-btn" id="orb-cal-btn">
+          <div class="orb-mini-glass">
+            <div class="orb-mini-liquid orb-liq-grey">
+              <div class="liq-layer liq-base liq-grey-base"></div>
+              <div class="liq-layer liq-wave liq-grey-wave1"></div>
+              <div class="liq-layer liq-wave liq-grey-wave2"></div>
+              <div class="liq-caustics liq-grey-caustics"></div>
+              <div class="liq-bubbles liq-bubbles-grey">
+                <span class="bubble bg1"></span><span class="bubble bg2"></span>
+                <span class="bubble bg3"></span><span class="bubble bg4"></span>
+                <span class="bubble bg5"></span><span class="bubble bg6"></span>
+              </div>
+            </div>
+            <div class="orb-meniscus orb-meniscus-grey"></div>
+            <div class="orb-shine"></div>
+          </div>
+          <span class="orb-mini-icon">⏳</span>
+          <div class="orb-mini-frame"></div>
+          <div class="orb-mini-frame-outer"></div>
+        </button>
+      </div>
+
+      <!-- GREY ORB — Weather (bottom-right, above bgmet, below bgmap) -->
+      <div class="orb-mini orb-mini-right hidden-until-app" id="orb-weather-wrap">
+        <button class="orb-mini-btn" id="orb-weather-btn">
+          <div class="orb-mini-glass">
+            <div class="orb-mini-liquid orb-liq-grey">
+              <div class="liq-layer liq-base liq-grey-base"></div>
+              <div class="liq-layer liq-wave liq-grey-wave1"></div>
+              <div class="liq-layer liq-wave liq-grey-wave2"></div>
+              <div class="liq-caustics liq-grey-caustics"></div>
+              <div class="liq-bubbles liq-bubbles-grey">
+                <span class="bubble bg1"></span><span class="bubble bg2"></span>
+                <span class="bubble bg3"></span><span class="bubble bg4"></span>
+                <span class="bubble bg5"></span><span class="bubble bg6"></span>
+              </div>
+            </div>
+            <div class="orb-meniscus orb-meniscus-grey"></div>
+            <div class="orb-shine"></div>
+          </div>
+          <span class="orb-mini-icon" id="orb-weather-icon">🌤️</span>
+          <div class="orb-mini-frame"></div>
+          <div class="orb-mini-frame-outer"></div>
+        </button>
+      </div>
+
+      <!-- BGPROFIL FRAME — on top of portrait, clickable -->
+      <div class="bgprofil-corner hidden-until-app" id="bgprofil-corner">
+        <img src="assets/bgprofil.png" alt="" class="bgprofil-frame-img">
+      </div>
+
+      <!-- RED ORB (Health) — bottom-left, same level as bgprofil -->
+      <div class="orb-wrap orb-left-fixed hidden-until-app" id="orb-left-health">
+        <button class="orb-btn" id="orb-health">
+          <div class="orb-glass orb-glass-health">
+            <div class="orb-liquid-container" id="orb-health-fill">
+              <div class="liq-layer liq-base liq-red-base"></div>
+              <div class="liq-layer liq-wave liq-red-wave1"></div>
+              <div class="liq-layer liq-wave liq-red-wave2"></div>
+              <div class="liq-layer liq-wave liq-red-wave3"></div>
+              <div class="liq-caustics liq-red-caustics"></div>
+              <div class="liq-bubbles liq-bubbles-potion">
+                <span class="bubble b1"></span><span class="bubble b2"></span>
+                <span class="bubble b3"></span><span class="bubble b4"></span>
+                <span class="bubble b5"></span><span class="bubble b6"></span>
+                <span class="bubble bp1"></span><span class="bubble bp2"></span>
+                <span class="bubble bp3"></span><span class="bubble bp4"></span>
+                <span class="bubble bp5"></span><span class="bubble bp6"></span>
+                <span class="bubble bp7"></span><span class="bubble bp8"></span>
+                <span class="bubble bp9"></span><span class="bubble bp10"></span>
+                <span class="bubble bp11"></span><span class="bubble bp12"></span>
+              </div>
+            </div>
+            <div class="orb-meniscus orb-meniscus-red"></div>
+            <div class="orb-shine"></div>
+            <div class="orb-shine2"></div>
+          </div>
+          <div class="orb-frame"></div>
+          <div class="orb-frame-outer"></div>
+          <span class="orb-label" id="orb-health-label">Vitalité</span>
+        </button>
+      </div>
+
+      <!-- Generic Modal Overlay -->
+      <div class="modal-overlay" id="modal-overlay" style="display:none">
+        <div class="modal-box" id="modal-box">
+          <button class="modal-close" id="modal-close">✕</button>
+          <div class="modal-content" id="modal-content"></div>
+        </div>
+      </div>
+
+      <!-- Confirm modal -->
+      <div class="confirm-overlay" id="confirm-overlay" style="display:none">
+        <div class="confirm-box">
+          <p class="confirm-text" id="confirm-text"></p>
+          <div class="confirm-actions">
+            <button class="confirm-btn confirm-yes" id="confirm-yes">Confirmer</button>
+            <button class="confirm-btn confirm-no" id="confirm-no">Annuler</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════ CHARACTER CREATION SCREEN ═══════ -->
+      <div class="charcreate-screen" id="charcreate-screen">
+        <div class="cc-bg"></div>
+        <div class="cc-vignette"></div>
+        <div class="cc-guide-portrait" id="cc-guide-portrait"></div>
+        <div class="cc-guide-title" id="cc-guide-title"></div>
+        <div class="cc-dialog-zone">
+          <div class="cc-dialog-frame">
+            <div class="cc-dialog-ornament-top"></div>
+            <div class="cc-dialog-text" id="cc-dialog-text"></div>
+            <div class="cc-dialog-ornament-bot"></div>
+          </div>
+          <div class="cc-tap-hint" id="cc-tap-hint">
+            <span class="cc-tap-arrow">▼</span> Touche pour continuer
+          </div>
+          <div class="cc-choice-zone" id="cc-choice-zone">
+            <button class="cc-choice-btn cc-choice-new" id="cc-choice-new">
+              <span class="cc-choice-icon">✦</span>
+              <span class="cc-choice-label">Nouveau Voyage</span>
+            </button>
+            <button class="cc-choice-btn cc-choice-resume" id="cc-choice-resume" disabled>
+              <span class="cc-choice-icon">↻</span>
+              <span class="cc-choice-label">Reprendre le Voyage</span>
+            </button>
+          </div>
+          <div class="cc-avatar-zone" id="cc-avatar-zone">
+            <div class="cc-avatar-ring">
+              <div class="cc-avatar-preview" id="cc-avatar-preview">
+                <span class="cc-avatar-plus">＋</span>
+              </div>
+            </div>
+            <div class="cc-avatar-actions">
+              <div class="cc-avatar-label">Choisir un portrait</div>
+              <button class="cc-skip-btn" id="cc-skip-avatar">Passer</button>
+            </div>
+            <input type="file" accept="image/*" id="cc-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
+          </div>
+          <div class="cc-name-zone" id="cc-name-zone">
+            <input type="text" id="cc-name-input" class="cc-name-input" placeholder="Ton nom de voyageur…" maxlength="24" autocomplete="off">
+            <button class="cc-confirm-btn" id="cc-confirm-btn" disabled>Valider</button>
+          </div>
+        </div>
+        <img src="assets/ealogo.png" alt="" class="cc-watermark">
+      </div>
+
+      <!-- ═══════ LOCK SCREEN ═══════ -->
+      <div class="lock-screen" id="lock-screen">
+        <div class="lock-particles" id="lock-particles"></div>
+        <div class="lock-content" id="lock-content">
+          <h2 class="lock-title">HOURGLASS NEXUS</h2>
+          <p class="lock-hint">Réveillez le guide et placez-le dans le portail</p>
+        </div>
+        <div class="lock-logo-fixed" id="lock-logo-fixed">
+          <img src="assets/ealogo.png" alt="" class="lock-logo-img">
+        </div>
+        <div class="hole" id="lock-hole">
+          <div class="hole-rune"></div>
+        </div>
+        <div class="lock-guide-drag" id="lock-guide">
+          <img src="" alt="" class="lock-guide-img" id="lock-guide-img">
+          <span class="lock-guide-label">Endormi</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- JS Split Files (order matters) -->
+  <script src="js/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/ui-core.js"></script>
+  <script src="js/charcreate.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/drawer-sections.js"></script>
+  <script src="js/panels.js"></script>
+  <script src="js/worldmap.js"></script>
+  <script src="js/drawer-nav.js"></script>
+  <script src="js/weather-news.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/clock-modals-lock.js"></script>
+  <script src="js/init.js"></script>
+</body>
+</html>

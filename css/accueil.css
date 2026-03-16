@@ -1,0 +1,25 @@
+/* ═══════════ ACCUEIL CORNER (fixed top-right, z:500) ═══════════ */
+.accueil-corner {
+  position: fixed;
+  top: 0; right: 0;
+  z-index: 500;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.accueil-corner-img {
+  width: 120px; height: 120px;
+  object-fit: contain;
+  object-position: top right;
+  display: block;
+  transition: transform .25s;
+}
+.accueil-corner:active .accueil-corner-img { transform: scale(.9) }
+
+.header-clock { display:flex; flex-direction:column; align-items:flex-start; gap:1px }
+.header-time {
+  font-family: var(--font-heading); font-size:13px; font-weight:700;
+  color: var(--gold-light); letter-spacing:1px; font-variant-numeric:tabular-nums;
+  text-shadow: 0 0 8px rgba(201,160,74,.3);
+}
+.header-date { font-family: var(--font-ui); font-size:8px; color:var(--bone-dim); letter-spacing:.5px }
+

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "sablons",
+    "name": "Sablons",
+    "icon": "🪙",
+    "type": "Monnaie",
+    "rarity": "Commun",
+    "color": "#e8a838",
+    "desc": "La monnaie du Nexus. S'obtient en explorant, en commerçant ou en gagnant des épreuves."
+  },
+  {
+    "id": "cle-nexus",
+    "name": "Clé du Nexus",
+    "icon": "🔑",
+    "type": "Clé",
+    "rarity": "Rare",
+    "color": "#a78bfa",
+    "desc": "Ouvre les portes scellées de la Tour. Chaque clé est unique et correspond à un étage précis."
+  },
+  {
+    "id": "fragment-temps",
+    "name": "Fragment de Temps",
+    "icon": "⌛",
+    "type": "Artefact",
+    "rarity": "Légendaire",
+    "color": "#06b6d4",
+    "desc": "Un éclat du Sablier Originel. Permet de remonter brièvement dans le temps lors d'une épreuve."
+  },
+  {
+    "id": "elixir-lumiere",
+    "name": "Élixir de Lumière",
+    "icon": "✨",
+    "type": "Consommable",
+    "rarity": "Peu commun",
+    "color": "#ffd76a",
+    "desc": "Restaure l'énergie et révèle les chemins cachés pendant un court instant."
+  },
+  {
+    "id": "rune-protection",
+    "name": "Rune de Protection",
+    "icon": "🛡️",
+    "type": "Rune",
+    "rarity": "Rare",
+    "color": "#10b981",
+    "desc": "Glyphe gravé par Rune. Absorbe un coup fatal et se brise après utilisation."
+  },
+  {
+    "id": "plume-orphea",
+    "name": "Plume d'Orphéa",
+    "icon": "🪶",
+    "type": "Artefact",
+    "rarity": "Légendaire",
+    "color": "#d946ef",
+    "desc": "Plume de la Conteuse Éternelle. Permet d'écrire un destin alternatif pour un personnage."
+  },
+  {
+    "id": "carte-vierge",
+    "name": "Carte TCG Vierge",
+    "icon": "🃏",
+    "type": "Carte",
+    "rarity": "Commun",
+    "color": "#64748b",
+    "desc": "Une carte vierge. Peut être forgée en carte personnalisée à la Forge du Nexus."
+  },
+  {
+    "id": "cristal-ombre",
+    "name": "Cristal d'Ombre",
+    "icon": "🔮",
+    "type": "Cristal",
+    "rarity": "Expert",
+    "color": "#334155",
+    "desc": "Cristal forgé dans le Néant. Amplifie les capacités liées à l'ombre et au silence."
+  },
+  {
+    "id": "parchemin-ancien",
+    "name": "Parchemin Ancien",
+    "icon": "📜",
+    "type": "Parchemin",
+    "rarity": "Rare",
+    "color": "#b45309",
+    "desc": "Un parchemin scellé contenant un savoir oublié. Déverrouille une compétence cachée."
+  },
+  {
+    "id": "essence-foudre",
+    "name": "Essence de Foudre",
+    "icon": "⚡",
+    "type": "Essence",
+    "rarity": "Peu commun",
+    "color": "#facc15",
+    "desc": "Énergie pure capturée lors d'un orage du Nexus. Accélère temporairement les actions."
+  },
+  {
+    "id": "graine-nexus",
+    "name": "Graine du Nexus",
+    "icon": "🌱",
+    "type": "Graine",
+    "rarity": "Rare",
+    "color": "#84cc16",
+    "desc": "Une graine vivante qui pousse dans n'importe quel sol. Peut créer un passage végétal temporaire."
+  },
+  {
+    "id": "miroir-iris",
+    "name": "Miroir d'Iris",
+    "icon": "🪞",
+    "type": "Artefact",
+    "rarity": "Expert",
+    "color": "#14b8a6",
+    "desc": "Miroir enchanté par Iris. Révèle les intentions cachées de quiconque s'y reflète."
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "events": [
+    {
+      "id": "ev01",
+      "date": "2026-03-15",
+      "time": "10:00",
+      "title": "Assemblée du Nexus",
+      "desc": "Grande réunion au Sanctuaire. Toutes les personas sont convoquées pour discuter de l'avenir des Épreuves.",
+      "persona": "atom",
+      "color": "#06b6d4",
+      "icon": "⚙️"
+    },
+    {
+      "id": "ev02",
+      "date": "2026-03-15",
+      "time": "14:00",
+      "title": "Cours de stratégie — MINUS",
+      "desc": "Miro dispense un atelier de tactiques avancées pour le jeu MINUS. Ouvert à tous les voyageurs.",
+      "persona": "miro",
+      "color": "#f59e0b",
+      "icon": "🃏"
+    },
+    {
+      "id": "ev03",
+      "date": "2026-03-16",
+      "time": "09:00",
+      "title": "Expédition dans les Ruines",
+      "desc": "Brakk organise une expédition dans les ruines de Kael-Norath. Équipement recommandé.",
+      "persona": "brakk",
+      "color": "#e74c3c",
+      "icon": "⚔️"
+    },
+    {
+      "id": "ev04",
+      "date": "2026-03-17",
+      "time": "20:00",
+      "title": "Soirée Taverne — Contes",
+      "desc": "Lyre raconte les légendes oubliées de l'ère des Sabliers au coin du feu.",
+      "persona": "lyre",
+      "color": "#9b59b6",
+      "icon": "🎵"
+    },
+    {
+      "id": "ev05",
+      "date": "2026-03-18",
+      "time": "11:00",
+      "title": "Marché Ambulant de Zara",
+      "desc": "Zara ouvre son étal d'objets rares et d'éléments introuvables. Premier arrivé, premier servi.",
+      "persona": "zara",
+      "color": "#27ae60",
+      "icon": "🪙"
+    },
+    {
+      "id": "ev06",
+      "date": "2026-03-19",
+      "time": "15:00",
+      "title": "Duel au Chroma Dices",
+      "desc": "Vex défie quiconque ose l'affronter. Le perdant offre un artefact.",
+      "persona": "vex",
+      "color": "#e74c3c",
+      "icon": "🎲"
+    },
+    {
+      "id": "ev07",
+      "date": "2026-03-20",
+      "time": "08:00",
+      "title": "Équinoxe — Rituel de Naïa",
+      "desc": "Naïa invoque les forces de l'eau au lever du soleil. Un événement rare et sacré.",
+      "persona": "naia",
+      "color": "#5dade2",
+      "icon": "🌊"
+    },
+    {
+      "id": "ev08",
+      "date": "2026-03-21",
+      "time": "13:00",
+      "title": "Forge d'Iris",
+      "desc": "Iris ouvre sa forge légendaire. Apportez vos matériaux bruts pour créer un objet unique.",
+      "persona": "iris",
+      "color": "#c9a04a",
+      "icon": "🔥"
+    },
+    {
+      "id": "ev09",
+      "date": "2026-03-22",
+      "time": "16:00",
+      "title": "Tournoi Chess & Cards",
+      "desc": "Kordo organise le tournoi hebdomadaire. Les vainqueurs gagnent des Sablons et de la gloire.",
+      "persona": "kordo",
+      "color": "#8b1a1a",
+      "icon": "♟️"
+    },
+    {
+      "id": "ev10",
+      "date": "2026-03-23",
+      "time": "19:00",
+      "title": "Mystères d'Orphéa",
+      "desc": "Orphéa révèle un nouveau chapitre de la prophétie du Nexus à la Taverne.",
+      "persona": "orphea",
+      "color": "#9b59b6",
+      "icon": "🔮"
+    },
+    {
+      "id": "ev11",
+      "date": "2026-03-25",
+      "time": "10:00",
+      "title": "Entraînement avec Solen",
+      "desc": "Solen propose un entraînement de survie dans les Marais Noirs. Courage requis.",
+      "persona": "solen",
+      "color": "#27ae60",
+      "icon": "🌿"
+    },
+    {
+      "id": "ev12",
+      "date": "2026-03-28",
+      "time": "12:00",
+      "title": "Festival de Tika",
+      "desc": "Tika organise un festival de danse et de musique dans la cour du Nexus.",
+      "persona": "tika",
+      "color": "#f59e0b",
+      "icon": "🎪"
+    },
+    {
+      "id": "ev13",
+      "date": "2026-03-30",
+      "time": "17:00",
+      "title": "Conférence d'Elrand",
+      "desc": "Elrand Avicenna partage ses découvertes sur les dimensions cachées du Nexus.",
+      "persona": "elrand",
+      "color": "#c9a04a",
+      "icon": "📜"
+    },
+    {
+      "id": "ev14",
+      "date": "2026-04-01",
+      "time": "00:00",
+      "title": "Poisson du Nexus",
+      "desc": "Pipo prépare ses farces annuelles. Méfiez-vous de tout ce qui brille aujourd'hui.",
+      "persona": "pipo",
+      "color": "#5dade2",
+      "icon": "🐟"
+    },
+    {
+      "id": "ev15",
+      "date": "2026-04-05",
+      "time": "14:00",
+      "title": "Éclipse — Veille de Shade",
+      "desc": "Shade surveille les ombres qui s'allongent. Un passage secret pourrait s'ouvrir.",
+      "persona": "shade",
+      "color": "#4a4030",
+      "icon": "🌑"
+    },
+    {
+      "id": "ev16",
+      "date": "2026-04-10",
+      "time": "11:00",
+      "title": "Étude des Runes",
+      "desc": "Rune déchiffre d'anciens glyphes trouvés dans les catacombes. Aide bienvenue.",
+      "persona": "rune",
+      "color": "#9b59b6",
+      "icon": "🪄"
+    },
+    {
+      "id": "ev17",
+      "date": "2026-02-28",
+      "time": "18:00",
+      "title": "Blitz Challenge",
+      "desc": "Blitz lance son défi éclair : finir 3 parties de MINUS en moins de 10 minutes.",
+      "persona": "blitz",
+      "color": "#e8a838",
+      "icon": "⚡"
+    },
+    {
+      "id": "ev18",
+      "date": "2026-03-14",
+      "time": "21:00",
+      "title": "Veillée de Cendre",
+      "desc": "Cendre partage les souvenirs des mondes disparus autour des braises mourantes.",
+      "persona": "cendre",
+      "color": "#64748b",
+      "icon": "🕯️"
+    }
+  ]
+}

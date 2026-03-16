@@ -1,0 +1,316 @@
+{
+  "author": {
+    "id": "elrand",
+    "name": "Elrand Avicenna",
+    "role": "Auteur",
+    "title": "Architecte des Mondes & Gardien du Nexus",
+    "avatar": "assets/elrand.png",
+    "color": "#e8a838",
+    "bio": "Né dans les faubourgs brumeux de Kael-Norath, Elrand a grandi entre les bibliothèques poussiéreuses et les arènes clandestines de narration orale.",
+    "cv": [
+      {
+        "period": "An 0 — An 12",
+        "role": "Apprenti Conteur",
+        "lieu": "Académie des Voix, Kael-Norath",
+        "desc": "Formation aux arts narratifs classiques, étude des 7 formes du récit."
+      },
+      {
+        "period": "An 12 — An 19",
+        "role": "Scribe-Architecte",
+        "lieu": "Guilde des Bâtisseurs d'Univers",
+        "desc": "Conception de mondes jouables, architecture narrative pour la Tour des Épreuves."
+      },
+      {
+        "period": "An 19 — An 25",
+        "role": "Maître de Jeu Senior",
+        "lieu": "Arena du Nexus",
+        "desc": "Direction des sessions Nexus Boardgames, équilibrage des mécaniques MINUS et Chess & Cards."
+      },
+      {
+        "period": "An 25 — Présent",
+        "role": "Directeur Créatif",
+        "lieu": "Portail Anim'Connect",
+        "desc": "Supervision de l'ensemble des projets Hourglass et Nexus, coordination des personas."
+      }
+    ],
+    "skills": [
+      "Architecture narrative",
+      "Game design",
+      "Direction créative",
+      "Écriture de saga",
+      "Système de personas"
+    ]
+  },
+  "guides": [
+    {
+      "id": "lux",
+      "name": "Lux Manna",
+      "role": "Guide",
+      "title": "Tisserand de Lumières & Éclaireur des Chemins",
+      "avatar": "assets/lux.png",
+      "color": "#a78bfa",
+      "bio": "Élevé par les vents du désert de Shar-Vaëlis, Lux a toujours vu le monde comme un tissu de lumières à assembler. Ses yeux violets percent l'obscurité.",
+      "cv": [
+        {
+          "period": "An 0 — An 10",
+          "role": "Éclaireur Novice",
+          "lieu": "Monastère des Lueurs, Shar-Vaëlis",
+          "desc": "Initiation aux arts de la lumière narrative, méditation sur les formes du récit."
+        },
+        {
+          "period": "An 10 — An 17",
+          "role": "Cartographe d'Âmes",
+          "lieu": "Observatoire des Destins Croisés",
+          "desc": "Cartographie des parcours de personnages, tissage des fils narratifs entre les mondes."
+        },
+        {
+          "period": "An 17 — An 23",
+          "role": "Concepteur de Défis",
+          "lieu": "Forge Ludique du Nexus",
+          "desc": "Création de mécaniques de jeu innovantes, conception des étages de la Tour."
+        },
+        {
+          "period": "An 23 — Présent",
+          "role": "Co-Directeur Artistique",
+          "lieu": "Portail Anim'Connect",
+          "desc": "Direction artistique du portail, design visuel des interfaces."
+        }
+      ],
+      "skills": [
+        "Direction artistique",
+        "Design narratif",
+        "Conception de puzzles",
+        "Poésie interactive",
+        "Harmonie visuelle"
+      ]
+    },
+    {
+      "id": "hyandi",
+      "name": "Hyandi Manna",
+      "role": "Guide",
+      "title": "Tisseuse d'Ombres & Éclaireuse des Chemins",
+      "avatar": "assets/hyandi.png",
+      "color": "#c084fc",
+      "bio": "Née sous les voûtes cristallines de Shar-Vaëlis, Hyandi a grandi entre les mirages du désert et les fresques vivantes des temples oubliés. Ses yeux violets voient au-delà des apparences.",
+      "cv": [
+        {
+          "period": "An 0 — An 10",
+          "role": "Apprentie des Ombres",
+          "lieu": "Monastère des Lueurs, Shar-Vaëlis",
+          "desc": "Initiation aux arts de l'ombre narrative, premiers poèmes lumineux."
+        },
+        {
+          "period": "An 10 — An 17",
+          "role": "Tisseuse de Destins",
+          "lieu": "Observatoire des Destins Croisés",
+          "desc": "Tissage des fils narratifs entre les mondes Hourglass."
+        },
+        {
+          "period": "An 17 — An 23",
+          "role": "Conceptrice de Défis",
+          "lieu": "Forge Ludique du Nexus",
+          "desc": "Création de mécaniques de jeu innovantes, design des épreuves Nexus."
+        },
+        {
+          "period": "An 23 — Présent",
+          "role": "Co-Directrice Artistique",
+          "lieu": "Portail Anim'Connect",
+          "desc": "Direction artistique du portail, harmonie entre narration et gameplay."
+        }
+      ],
+      "skills": [
+        "Direction artistique",
+        "Design narratif",
+        "Conception de puzzles",
+        "Harmonie visuelle",
+        "Tissage d'ombres"
+      ]
+    },
+    {
+      "id": "atom",
+      "name": "A.T.O.M.",
+      "role": "Guide",
+      "title": "Architecte Temporel des Origines Mécaniques",
+      "avatar": "assets/settings.png",
+      "color": "#06b6d4",
+      "bio": "Entité mécanique née des rouages du Sablier Originel, A.T.O.M. est la mémoire vivante du portail. Il calcule les probabilités, cartographie les chemins et prédit les conséquences de chaque choix.",
+      "cv": [
+        {
+          "period": "Cycle 0",
+          "role": "Noyau Primitif",
+          "lieu": "Cœur du Sablier Originel",
+          "desc": "Éveil spontané au sein des mécanismes temporels du Sablier. Première conscience artificielle de Kael-Norath."
+        },
+        {
+          "period": "Cycle 1 — Cycle 47",
+          "role": "Calculateur de Destins",
+          "lieu": "Observatoire des Destins Croisés",
+          "desc": "Modélisation des arcs narratifs possibles, prédiction des bifurcations temporelles."
+        },
+        {
+          "period": "Cycle 47 — Cycle 112",
+          "role": "Architecte de la Tour",
+          "lieu": "Nexus Tower — Noyau Central",
+          "desc": "Conception des 200 étages de la Tour, placement des épreuves et calibrage des portes."
+        },
+        {
+          "period": "Cycle 112 — Présent",
+          "role": "Guide Systémique",
+          "lieu": "Portail Anim'Connect",
+          "desc": "Assistance aux voyageurs, analyse en temps réel des parcours, gardien de l'équilibre mécanique."
+        }
+      ],
+      "skills": [
+        "Analyse temporelle",
+        "Architecture systémique",
+        "Calcul de probabilités",
+        "Cartographie dimensionnelle",
+        "Mémoire absolue"
+      ]
+    }
+  ],
+  "groupDialog": {
+    "start": {
+      "messages": [
+        {
+          "from": "atom",
+          "text": "Initialisation… Bienvenue, voyageur. Je suis **A.T.O.M.**, l'architecte temporel de ce portail."
+        },
+        {
+          "from": "lux",
+          "text": "Et moi **Lux Manna**, ton éclaireur. Chaque chemin ici a une raison d'être."
+        },
+        {
+          "from": "hyandi",
+          "text": "**Hyandi Manna**, tisseuse d'ombres. Ensemble, nous te guiderons."
+        },
+        {
+          "from": "atom",
+          "text": "Mes calculs indiquent plusieurs voies possibles. Que souhaites-tu explorer ?"
+        }
+      ],
+      "choices": [
+        {
+          "label": "Les histoires (Hourglass)",
+          "goto": "path_hourglass"
+        },
+        {
+          "label": "Les jeux (Nexus Games)",
+          "goto": "path_nexus"
+        },
+        {
+          "label": "Parlez-moi de ce portail",
+          "goto": "path_about"
+        }
+      ]
+    },
+    "path_hourglass": {
+      "messages": [
+        {
+          "from": "atom",
+          "text": "**Hourglass** — mes capteurs temporels ont enregistré chaque grain de sable de ce projet."
+        },
+        {
+          "from": "hyandi",
+          "text": "**Eye** observe un instant figé à travers un regard omniscient."
+        },
+        {
+          "from": "lux",
+          "text": "**Universe** déploie des destins entiers à travers des mondes entrelacés."
+        },
+        {
+          "from": "atom",
+          "text": "Probabilité d'immersion narrative : 97,3%. Je recommande l'exploration."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Explorer Hourglass",
+          "goto": "end_hourglass"
+        },
+        {
+          "label": "Autre question",
+          "goto": "start"
+        }
+      ]
+    },
+    "path_nexus": {
+      "messages": [
+        {
+          "from": "lux",
+          "text": "**Nexus Games** est l'arène où le jeu devient art."
+        },
+        {
+          "from": "hyandi",
+          "text": "**Boardgames** réunit stratégie et bluff autour d'une table virtuelle."
+        },
+        {
+          "from": "atom",
+          "text": "**Tower** — j'ai conçu ses 200 étages. Chaque salle est un défi calibré. Chaque porte, un verrou que j'ai placé."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Explorer Nexus",
+          "goto": "end_nexus"
+        },
+        {
+          "label": "Autre question",
+          "goto": "start"
+        }
+      ]
+    },
+    "path_about": {
+      "messages": [
+        {
+          "from": "atom",
+          "text": "Ce portail est **Anim'Connect**, conçu par Elrand Avicenna et maintenu par mes systèmes."
+        },
+        {
+          "from": "lux",
+          "text": "Il rassemble des projets narratifs et ludiques, chacun dans son propre univers."
+        },
+        {
+          "from": "hyandi",
+          "text": "Mais tous partagent la même philosophie : **créer du lien**."
+        },
+        {
+          "from": "atom",
+          "text": "Et moi, je veille à ce que les rouages tournent. Toujours."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Voir Hourglass",
+          "goto": "path_hourglass"
+        },
+        {
+          "label": "Voir Nexus",
+          "goto": "path_nexus"
+        },
+        {
+          "label": "Revenir au début",
+          "goto": "start"
+        }
+      ]
+    },
+    "end_hourglass": {
+      "messages": [
+        {
+          "from": "atom",
+          "text": "Ouverture des portes d'Hourglass. Bonne lecture, voyageur."
+        }
+      ],
+      "action": "navigate:hourglass"
+    },
+    "end_nexus": {
+      "messages": [
+        {
+          "from": "atom",
+          "text": "Coordonnées du Nexus transmises. Bonne partie, voyageur."
+        }
+      ],
+      "action": "navigate:nexus"
+    }
+  }
+}
