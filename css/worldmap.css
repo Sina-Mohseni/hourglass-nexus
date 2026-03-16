@@ -84,8 +84,6 @@
   0%,100% { transform:translate(-50%,-100%) scale(1) }
   50% { transform:translate(-50%,-100%) scale(1.15) }
 }
-}
-.wm-avatar.visible { display:block }
 .wm-avatar img { width:100%; height:100%; object-fit:cover }
 .wma-emoji { font-size:18px; display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:var(--stone) }
 @keyframes avatarBob { 0%,100%{transform:translate(-50%,-100%)}50%{transform:translate(-50%,calc(-100% - 4px))} }

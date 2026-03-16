@@ -52,7 +52,7 @@
 /* ── WORLDMAP INSIDE BLUE LIQUID — static, always visible ── */
 .liq-worldmap {
   position: absolute; inset: -30%; z-index: 1;
-  background: url('../assets/worldmap.png') center/200% auto no-repeat;
+  background: url('../assets/worldmap.jpg') center/200% auto no-repeat;
   opacity: .45;
   mix-blend-mode: hard-light;
   filter: url(#liquid-warp-blue) brightness(.9);
