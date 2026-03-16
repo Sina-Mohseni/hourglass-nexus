@@ -1,0 +1,3653 @@
+{
+  "currency": {
+    "name": "Sablons",
+    "icon": "🪙",
+    "symbol": "§"
+  },
+  "cities": [
+    {
+      "id": "kael-norath",
+      "name": "Kael-Norath",
+      "desc": "Cité originelle où sont nées les premières histoires. Capitale du savoir et des arts narratifs.",
+      "color": "#a78bfa",
+      "mapBg": "assets/cityport.png",
+      "wx": 43.8,
+      "wy": 23.9,
+      "region": "orianen"
+    },
+    {
+      "id": "shar-vaelis",
+      "name": "Shar-Vaëlis",
+      "desc": "Cité souterraine baignée de lumières artificielles. Berceau de la philosophie de la Lumière.",
+      "color": "#e8a838",
+      "mapBg": "assets/cityundercity.webp",
+      "wx": 36.0,
+      "wy": 50.6,
+      "region": "wohkara"
+    },
+    {
+      "id": "nexus-prime",
+      "name": "Nexus Prime",
+      "desc": "Le cœur mécanique du portail. Quartier général d'A.T.O.M. et siège des Nexus Games.",
+      "color": "#06b6d4",
+      "mapBg": "assets/map.jpg",
+      "wx": 51.6,
+      "wy": 62.8,
+      "region": "hardirian"
+    },
+    {
+      "id": "val-drakar",
+      "name": "Val-Drakar",
+      "desc": "Forteresse suspendue au-dessus d'un volcan éteint. Les guerriers y forgent leur légende.",
+      "color": "#dc2626",
+      "mapBg": "",
+      "wx": 69.7,
+      "wy": 14.8,
+      "region": "habytia"
+    },
+    {
+      "id": "lumen-spire",
+      "name": "Lumen-Spire",
+      "desc": "Tour de cristal canalisant la lumière pure. Les savants y étudient le spectre de la réalité.",
+      "color": "#fbbf24",
+      "mapBg": "",
+      "wx": 24.0,
+      "wy": 11.9,
+      "region": "umiora"
+    },
+    {
+      "id": "umbraeth",
+      "name": "Umbraeth",
+      "desc": "Cité enfouie dans l'ombre perpétuelle. Seuls ceux qui voient dans le noir y prospèrent.",
+      "color": "#334155",
+      "mapBg": "",
+      "wx": 29.4,
+      "wy": 83.5,
+      "region": "kuhiria"
+    },
+    {
+      "id": "aqua-nereis",
+      "name": "Aqua-Nereis",
+      "desc": "Cité flottante sur un lac sans fond. Les courants racontent les histoires du monde.",
+      "color": "#06b6d4",
+      "mapBg": "",
+      "wx": 27.1,
+      "wy": 86.5,
+      "region": "kuhiria"
+    },
+    {
+      "id": "zephyria",
+      "name": "Zéphyria",
+      "desc": "Archipel de plateformes volantes. Le vent y est roi et les habitants parlent en sifflant.",
+      "color": "#a3e635",
+      "mapBg": "",
+      "wx": 22.9,
+      "wy": 85.4,
+      "region": "kuhiria"
+    },
+    {
+      "id": "pyralis",
+      "name": "Pyralis",
+      "desc": "Cité bâtie dans les braises éternelles. La chaleur y forge les esprits autant que le métal.",
+      "color": "#ea580c",
+      "mapBg": "",
+      "wx": 35.0,
+      "wy": 52.6,
+      "region": "wohkara"
+    },
+    {
+      "id": "crystara",
+      "name": "Crystara",
+      "desc": "Cité de cristal vivant. Les murs changent de couleur selon l'humeur de ses habitants.",
+      "color": "#c084fc",
+      "mapBg": "",
+      "wx": 24.4,
+      "wy": 17.3,
+      "region": "umiora"
+    },
+    {
+      "id": "feranth",
+      "name": "Feranth",
+      "desc": "Cité-forteresse des forgerons. Le son des marteaux y résonne jour et nuit.",
+      "color": "#b45309",
+      "mapBg": "",
+      "wx": 68.3,
+      "wy": 17.5,
+      "region": "habytia"
+    },
+    {
+      "id": "sylvanor",
+      "name": "Sylvanor",
+      "desc": "Forêt-cité où les bâtiments poussent comme des arbres. La nature y dicte ses lois.",
+      "color": "#22c55e",
+      "mapBg": "",
+      "wx": 41.8,
+      "wy": 26.2,
+      "region": "orianen"
+    },
+    {
+      "id": "miralis",
+      "name": "Miralis",
+      "desc": "Cité des miroirs. Chaque surface réfléchit une version alternative de la réalité.",
+      "color": "#818cf8",
+      "mapBg": "",
+      "wx": 50.4,
+      "wy": 64.5,
+      "region": "hardirian"
+    },
+    {
+      "id": "noir-havre",
+      "name": "Tour des Énigmes",
+      "desc": "Forteresse insulaire de Siore abritant les épreuves et jeux du Nexus. Seule cité de l'île du Serpent.",
+      "color": "#f97316",
+      "mapBg": "",
+      "wx": 17,
+      "wy": 38,
+      "region": "siore"
+    },
+    {
+      "id": "solace",
+      "name": "Solace",
+      "desc": "Oasis de paix au milieu du désert de verre. Refuge des âmes brisées.",
+      "color": "#fda4af",
+      "mapBg": "",
+      "wx": 21.5,
+      "wy": 17.7,
+      "region": "umiora"
+    },
+    {
+      "id": "mechanis",
+      "name": "Mechanis",
+      "desc": "Cité entièrement automatisée. Les engrenages pensent, les pistons rêvent.",
+      "color": "#64748b",
+      "mapBg": "",
+      "wx": 66.6,
+      "wy": 42.4,
+      "region": "karymor"
+    },
+    {
+      "id": "astralheim",
+      "name": "Astralheim",
+      "desc": "Cité bâtie sur un plan astral. La gravité y est optionnelle.",
+      "color": "#6366f1",
+      "mapBg": "",
+      "wx": 47.3,
+      "wy": 64.4,
+      "region": "hardirian"
+    },
+    {
+      "id": "veridian",
+      "name": "Véridian",
+      "desc": "Cité où le mensonge est physiquement impossible. La vérité y est une loi naturelle.",
+      "color": "#10b981",
+      "mapBg": "",
+      "wx": 40.3,
+      "wy": 27.1,
+      "region": "orianen"
+    },
+    {
+      "id": "vortexia",
+      "name": "Vortexia",
+      "desc": "Cité construite autour d'un maelström temporel. Le temps y coule en spirale.",
+      "color": "#7c3aed",
+      "mapBg": "",
+      "wx": 44.8,
+      "wy": 64.2,
+      "region": "hardirian"
+    },
+    {
+      "id": "ferro-glyph",
+      "name": "Ferro-Glyph",
+      "desc": "Cité gravée à même la montagne. Chaque mur raconte un chapitre de l'histoire.",
+      "color": "#78716c",
+      "mapBg": "",
+      "wx": 64.8,
+      "wy": 19.0,
+      "region": "habytia"
+    },
+    {
+      "id": "nimba",
+      "name": "Nimba",
+      "desc": "Cité-nuage qui dérive au gré des vents. Ses habitants ne touchent jamais le sol.",
+      "color": "#e0f2fe",
+      "mapBg": "",
+      "wx": 16.5,
+      "wy": 15.0,
+      "region": "umiora"
+    },
+    {
+      "id": "sangha",
+      "name": "Sangha",
+      "desc": "Monastère-cité dédié à l'équilibre intérieur. Le silence y est une vertu.",
+      "color": "#f0abfc",
+      "mapBg": "",
+      "wx": 23.5,
+      "wy": 82.7,
+      "region": "kuhiria"
+    },
+    {
+      "id": "ruin-march",
+      "name": "Ruin-March",
+      "desc": "Cité nomade bâtie sur les ruines de civilisations oubliées. Elle avance sans cesse.",
+      "color": "#a16207",
+      "mapBg": "",
+      "wx": 30.7,
+      "wy": 52.6,
+      "region": "wohkara"
+    },
+    {
+      "id": "echo-noir",
+      "name": "Écho-Noir",
+      "desc": "Cité construite dans un cratère acoustique. Chaque son y est amplifié mille fois.",
+      "color": "#1e293b",
+      "mapBg": "",
+      "wx": 67.3,
+      "wy": 69.0,
+      "region": "sysyt"
+    },
+    {
+      "id": "opal-rift",
+      "name": "Opal-Rift",
+      "desc": "Cité suspendue au bord d'une faille dimensionnelle. La réalité y est fragile.",
+      "color": "#14b8a6",
+      "mapBg": "",
+      "wx": 65.7,
+      "wy": 44.6,
+      "region": "karymor"
+    },
+    {
+      "id": "khora",
+      "name": "Khora",
+      "desc": "Cité-labyrinthe dont le plan change chaque nuit. Impossible de la cartographier.",
+      "color": "#e11d48",
+      "mapBg": "",
+      "wx": 64.3,
+      "wy": 72.2,
+      "region": "sysyt"
+    },
+    {
+      "id": "sablier",
+      "name": "Sablier",
+      "desc": "Cité bâtie en forme de sablier géant. La moitié haute s'écoule vers la moitié basse.",
+      "color": "#d4a574",
+      "mapBg": "",
+      "wx": 27.9,
+      "wy": 52.4,
+      "region": "wohkara"
+    },
+    {
+      "id": "velkan",
+      "name": "Velkan",
+      "desc": "Cité des loups. La meute y fait loi et la loyauté est la monnaie.",
+      "color": "#059669",
+      "mapBg": "",
+      "wx": 60.9,
+      "wy": 75.1,
+      "region": "sysyt"
+    },
+    {
+      "id": "kairos",
+      "name": "Kairos",
+      "desc": "Cité du moment parfait. Tout y est question de timing.",
+      "color": "#f59e0b",
+      "mapBg": "",
+      "wx": 62.5,
+      "wy": 48.5,
+      "region": "karymor"
+    },
+    {
+      "id": "errata",
+      "name": "Errata",
+      "desc": "Cité des erreurs corrigées. Chaque bâtiment est une faute qui a trouvé sa solution.",
+      "color": "#f87171",
+      "mapBg": "",
+      "wx": 37.9,
+      "wy": 29.6,
+      "region": "orianen"
+    },
+    {
+      "id": "bibliotheque-celeste",
+      "name": "Bibliothèque Céleste",
+      "desc": "Archives infinies suspendues dans les nuages d'Orianen. Chaque livre flotte et s'ouvre à qui le mérite.",
+      "color": "#c084fc",
+      "mapBg": "",
+      "wx": 35.5,
+      "wy": 27.3,
+      "region": "orianen"
+    },
+    {
+      "id": "encrier-geant",
+      "name": "L'Encrier Géant",
+      "desc": "Cité bâtie autour d'un lac d'encre noire. Les scribes y puisent l'inspiration.",
+      "color": "#6366f1",
+      "mapBg": "",
+      "wx": 34.6,
+      "wy": 26.5,
+      "region": "orianen"
+    },
+    {
+      "id": "page-blanche",
+      "name": "Page Blanche",
+      "desc": "Cité vierge qui se réécrit chaque jour. Rien n'y est permanent sauf le changement.",
+      "color": "#f5f5f4",
+      "mapBg": "",
+      "wx": 32.8,
+      "wy": 25.0,
+      "region": "orianen"
+    },
+    {
+      "id": "conte-vivant",
+      "name": "Conte-Vivant",
+      "desc": "Cité où les histoires prennent forme physique. Les personnages de fiction y marchent.",
+      "color": "#d946ef",
+      "mapBg": "",
+      "wx": 33.5,
+      "wy": 22.3,
+      "region": "orianen"
+    },
+    {
+      "id": "reliure",
+      "name": "La Reliure",
+      "desc": "Cité-atelier où les maîtres relieurs assemblent les chapitres du monde.",
+      "color": "#a16207",
+      "mapBg": "",
+      "wx": 34.7,
+      "wy": 20.1,
+      "region": "orianen"
+    },
+    {
+      "id": "palimpseste",
+      "name": "Palimpseste",
+      "desc": "Cité bâtie sur les ruines de cent cités précédentes. Chaque couche murmure.",
+      "color": "#94a3b8",
+      "mapBg": "",
+      "wx": 36.8,
+      "wy": 18.1,
+      "region": "orianen"
+    },
+    {
+      "id": "epilogue",
+      "name": "Épilogue",
+      "desc": "La dernière cité d'Orianen. On y vient pour conclure les histoires inachevées.",
+      "color": "#1e293b",
+      "mapBg": "",
+      "wx": 39.5,
+      "wy": 22.0,
+      "region": "orianen"
+    },
+    {
+      "id": "prologue",
+      "name": "Prologue",
+      "desc": "La première cité que tout voyageur traverse en Orianen. Ici, les récits commencent.",
+      "color": "#22c55e",
+      "mapBg": "",
+      "wx": 44.9,
+      "wy": 20.5,
+      "region": "orianen"
+    },
+    {
+      "id": "glacier-pensif",
+      "name": "Glacier Pensif",
+      "desc": "Masse de glace consciente qui avance d'un pas par siècle. Les sages viennent l'écouter.",
+      "color": "#bae6fd",
+      "mapBg": "",
+      "wx": 20.0,
+      "wy": 10.6,
+      "region": "umiora"
+    },
+    {
+      "id": "neige-eternelle",
+      "name": "Neige Éternelle",
+      "desc": "Cité enfouie sous une neige qui ne fond jamais. On y entre par des tunnels de givre.",
+      "color": "#e0f2fe",
+      "mapBg": "",
+      "wx": 21.4,
+      "wy": 9.1,
+      "region": "umiora"
+    },
+    {
+      "id": "aurore-boreale",
+      "name": "Aurore Boréale",
+      "desc": "Cité illuminée en permanence par des lumières dansantes. Le sommeil y est optionnel.",
+      "color": "#a5f3fc",
+      "mapBg": "",
+      "wx": 26.2,
+      "wy": 8.4,
+      "region": "umiora"
+    },
+    {
+      "id": "pic-du-marteau",
+      "name": "Pic du Marteau",
+      "desc": "Sommet le plus haut d'Habytia. Les forgerons y frappent le ciel avec leurs enclumes.",
+      "color": "#78716c",
+      "mapBg": "",
+      "wx": 64.3,
+      "wy": 15.3,
+      "region": "habytia"
+    },
+    {
+      "id": "mine-profonde",
+      "name": "Mine Profonde",
+      "desc": "La mine la plus profonde du monde. Nul ne sait ce qui se trouve tout en bas.",
+      "color": "#57534e",
+      "mapBg": "",
+      "wx": 61.2,
+      "wy": 11.6,
+      "region": "habytia"
+    },
+    {
+      "id": "pont-des-geants",
+      "name": "Pont des Géants",
+      "desc": "Pont de pierre naturel reliant deux pics. Les géants l'auraient bâti en une nuit.",
+      "color": "#a8a29e",
+      "mapBg": "",
+      "wx": 65.3,
+      "wy": 10.2,
+      "region": "habytia"
+    },
+    {
+      "id": "cheminee-volcanique",
+      "name": "Cheminée Volcanique",
+      "desc": "Cité bâtie dans une cheminée volcanique éteinte. La chaleur y est douce et constante.",
+      "color": "#dc2626",
+      "mapBg": "",
+      "wx": 67.6,
+      "wy": 10.0,
+      "region": "habytia"
+    },
+    {
+      "id": "oasis-miroir",
+      "name": "Oasis Miroir",
+      "desc": "Oasis dont l'eau reflète non pas le ciel, mais les désirs de celui qui regarde.",
+      "color": "#fbbf24",
+      "mapBg": "",
+      "wx": 27.8,
+      "wy": 48.1,
+      "region": "wohkara"
+    },
+    {
+      "id": "caravane-eternelle",
+      "name": "Caravane Éternelle",
+      "desc": "Cité mobile qui ne s'arrête jamais. Pour y entrer, il faut courir.",
+      "color": "#d97706",
+      "mapBg": "",
+      "wx": 31.9,
+      "wy": 45.0,
+      "region": "wohkara"
+    },
+    {
+      "id": "dune-chantante",
+      "name": "Dune Chantante",
+      "desc": "Dune de sable qui émet une mélodie quand le vent souffle. Les musiciens y pèlerinent.",
+      "color": "#fde68a",
+      "mapBg": "",
+      "wx": 34.9,
+      "wy": 47.0,
+      "region": "wohkara"
+    },
+    {
+      "id": "rouage-central",
+      "name": "Rouage Central",
+      "desc": "Le plus grand engrenage du monde. Sa rotation alimente toute la contrée en énergie.",
+      "color": "#475569",
+      "mapBg": "",
+      "wx": 57.2,
+      "wy": 43.2,
+      "region": "karymor"
+    },
+    {
+      "id": "faille-dimensionnelle",
+      "name": "Faille Dimensionnelle",
+      "desc": "Cité construite au bord d'une déchirure dans le tissu de la réalité.",
+      "color": "#7c3aed",
+      "mapBg": "",
+      "wx": 60.5,
+      "wy": 40.9,
+      "region": "karymor"
+    },
+    {
+      "id": "horloge-inversee",
+      "name": "Horloge Inversée",
+      "desc": "Cité où le temps coule à l'envers. Les habitants rajeunissent chaque jour.",
+      "color": "#06b6d4",
+      "mapBg": "",
+      "wx": 61.1,
+      "wy": 36.1,
+      "region": "karymor"
+    },
+    {
+      "id": "circuit-pensant",
+      "name": "Circuit Pensant",
+      "desc": "Cité dont les rues forment un circuit logique géant. Chaque carrefour est un calcul.",
+      "color": "#38bdf8",
+      "mapBg": "",
+      "wx": 64.6,
+      "wy": 39.7,
+      "region": "karymor"
+    },
+    {
+      "id": "nexus-arena",
+      "name": "Nexus Arena",
+      "desc": "Grand colisée du Nexus où se déroulent les tournois inter-contrées.",
+      "color": "#ef4444",
+      "mapBg": "",
+      "wx": 43.7,
+      "wy": 63.0,
+      "region": "hardirian"
+    },
+    {
+      "id": "jardin-astral",
+      "name": "Jardin Astral",
+      "desc": "Jardin flottant entre les dimensions. Les plantes y poussent dans le vide.",
+      "color": "#8b5cf6",
+      "mapBg": "",
+      "wx": 43.9,
+      "wy": 56.4,
+      "region": "hardirian"
+    },
+    {
+      "id": "carrefour-eternel",
+      "name": "Carrefour Éternel",
+      "desc": "Intersection de toutes les routes du monde. Tous les chemins y mènent.",
+      "color": "#f59e0b",
+      "mapBg": "",
+      "wx": 47.2,
+      "wy": 55.1,
+      "region": "hardirian"
+    },
+    {
+      "id": "porte-des-plans",
+      "name": "Porte des Plans",
+      "desc": "Arche massive ouvrant sur d'autres plans d'existence. Gardée jour et nuit.",
+      "color": "#1d4ed8",
+      "mapBg": "",
+      "wx": 52.8,
+      "wy": 58.0,
+      "region": "hardirian"
+    },
+    {
+      "id": "phare-pourpre",
+      "name": "Phare Pourpre",
+      "desc": "Phare émettant une lumière violette qui guide les navigateurs du crépuscule.",
+      "color": "#c026d3",
+      "mapBg": "",
+      "wx": 59.8,
+      "wy": 70.8,
+      "region": "sysyt"
+    },
+    {
+      "id": "falaise-des-poetes",
+      "name": "Falaise des Poètes",
+      "desc": "Promontoire rocheux où les poètes viennent déclamer face à l'océan.",
+      "color": "#f472b6",
+      "mapBg": "",
+      "wx": 61.3,
+      "wy": 67.4,
+      "region": "sysyt"
+    },
+    {
+      "id": "crique-assassine",
+      "name": "Crique Assassine",
+      "desc": "Baie cachée où les assassins de Sysyt s'entraînent sous les étoiles.",
+      "color": "#334155",
+      "mapBg": "",
+      "wx": 64.6,
+      "wy": 66.9,
+      "region": "sysyt"
+    },
+    {
+      "id": "temple-oublie",
+      "name": "Temple Oublié",
+      "desc": "Temple enfoui dans la jungle dont les murs chantent quand il pleut.",
+      "color": "#22c55e",
+      "mapBg": "",
+      "wx": 27.2,
+      "wy": 81.9,
+      "region": "kuhiria"
+    }
+  ],
+  "locations": [
+    {
+      "id": "bibliotheque",
+      "name": "Bibliothèque",
+      "icon": "📚",
+      "color": "#a78bfa",
+      "desc": "Archives du savoir. Consultez les grimoires, apprenez des compétences et découvrez des secrets.",
+      "features": [
+        "Grimoires",
+        "Compétences",
+        "Lore"
+      ],
+      "x": 22,
+      "y": 18,
+      "city": "kael-norath",
+      "region": "orianen"
+    },
+    {
+      "id": "taverne",
+      "name": "Taverne",
+      "icon": "🍺",
+      "color": "#f59e0b",
+      "desc": "Le cœur social de la Société. Rencontrez les personas, écoutez des rumeurs et acceptez des quêtes.",
+      "features": [
+        "Rencontres",
+        "Rumeurs",
+        "Quêtes"
+      ],
+      "x": 75,
+      "y": 22,
+      "city": "kael-norath",
+      "region": "orianen"
+    },
+    {
+      "id": "guilde",
+      "name": "Guilde",
+      "icon": "⚔️",
+      "color": "#ef4444",
+      "desc": "Rejoignez une guilde, formez des alliances et participez à des défis collectifs.",
+      "features": [
+        "Guildes",
+        "Alliances",
+        "Rangs"
+      ],
+      "x": 18,
+      "y": 50,
+      "city": "shar-vaelis",
+      "region": "wohkara"
+    },
+    {
+      "id": "arene",
+      "name": "Arène",
+      "icon": "🏟️",
+      "color": "#06b6d4",
+      "desc": "Affrontez d'autres joueurs ou des personas dans des duels de cartes et d'esprit.",
+      "features": [
+        "Duels",
+        "Tournois",
+        "Classement"
+      ],
+      "x": 50,
+      "y": 42,
+      "city": "nexus-prime",
+      "region": "hardirian"
+    },
+    {
+      "id": "theatre",
+      "name": "Théâtre",
+      "icon": "🎭",
+      "color": "#d946ef",
+      "desc": "Assistez à des récits joués par les personas. Chaque représentation est unique.",
+      "features": [
+        "Récits",
+        "Spectacles",
+        "Événements"
+      ],
+      "x": 80,
+      "y": 52,
+      "city": "kael-norath",
+      "region": "orianen"
+    },
+    {
+      "id": "stade",
+      "name": "Stade",
+      "icon": "🏆",
+      "color": "#10b981",
+      "desc": "Compétitions et épreuves sportives. Gagnez des trophées et des récompenses rares.",
+      "features": [
+        "Compétitions",
+        "Trophées",
+        "Défis"
+      ],
+      "x": 30,
+      "y": 78,
+      "city": "nexus-prime",
+      "region": "hardirian"
+    },
+    {
+      "id": "marche",
+      "name": "Marché",
+      "icon": "🪙",
+      "color": "#e8a838",
+      "desc": "Achetez, vendez, troquez. La Roue de la Chance tourne pour les plus audacieux.",
+      "features": [
+        "Achats",
+        "Ventes",
+        "Troc",
+        "Roue de la Chance"
+      ],
+      "x": 68,
+      "y": 80,
+      "city": "shar-vaelis",
+      "region": "wohkara"
+    },
+    {
+      "id": "forge-ombres",
+      "name": "Forge des Ombres",
+      "icon": "🔥",
+      "color": "#c084fc",
+      "desc": "Atelier secret où les Tisserands d'Ombres façonnent des artefacts nourris de ténèbres.",
+      "features": [
+        "Artisanat",
+        "Enchantements",
+        "Ombres"
+      ],
+      "x": 45,
+      "y": 68,
+      "city": "shar-vaelis",
+      "region": "wohkara"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "icon": "🖥️",
+      "color": "#38bdf8",
+      "desc": "Centre de contrôle du Nexus. Surveillez les flux de données et accédez aux portails inter-cités.",
+      "features": [
+        "Portails",
+        "Données",
+        "Navigation"
+      ],
+      "x": 72,
+      "y": 60,
+      "city": "nexus-prime",
+      "region": "hardirian"
+    },
+    {
+      "id": "caserne-drakar",
+      "name": "Caserne",
+      "icon": "⚔️",
+      "color": "#ef4444",
+      "desc": "Quartier des guerriers. Entraînement, recrutement et rites de passage.",
+      "features": [
+        "Combat",
+        "Entraînement",
+        "Rites"
+      ],
+      "x": 35,
+      "y": 15,
+      "city": "val-drakar",
+      "region": "habytia"
+    },
+    {
+      "id": "fonderie",
+      "name": "Fonderie",
+      "icon": "🔨",
+      "color": "#b91c1c",
+      "desc": "Les forges de Val-Drakar produisent les armes les plus redoutables du monde.",
+      "features": [
+        "Armes",
+        "Forge",
+        "Matériaux"
+      ],
+      "x": 76,
+      "y": 18,
+      "city": "val-drakar",
+      "region": "habytia"
+    },
+    {
+      "id": "colisee-drakar",
+      "name": "Colisée du Feu",
+      "icon": "🔥",
+      "color": "#f87171",
+      "desc": "Arène volcanique où les combats se livrent au bord du magma.",
+      "features": [
+        "Duels",
+        "Spectacle",
+        "Honneur"
+      ],
+      "x": 47,
+      "y": 68,
+      "city": "val-drakar",
+      "region": "habytia"
+    },
+    {
+      "id": "observatoire",
+      "name": "Observatoire",
+      "icon": "🔭",
+      "color": "#f59e0b",
+      "desc": "Observez les étoiles et décryptez les constellations prophétiques.",
+      "features": [
+        "Étoiles",
+        "Prophéties",
+        "Recherche"
+      ],
+      "x": 36,
+      "y": 36,
+      "city": "lumen-spire",
+      "region": "umiora"
+    },
+    {
+      "id": "prisme-lab",
+      "name": "Laboratoire du Prisme",
+      "icon": "💎",
+      "color": "#fde68a",
+      "desc": "Expériences sur la décomposition de la lumière et ses applications magiques.",
+      "features": [
+        "Expériences",
+        "Lumière",
+        "Magie"
+      ],
+      "x": 72,
+      "y": 35,
+      "city": "lumen-spire",
+      "region": "umiora"
+    },
+    {
+      "id": "scriptorium",
+      "name": "Scriptorium Solaire",
+      "icon": "📜",
+      "color": "#eab308",
+      "desc": "Salle d'écriture baignée de lumière. Les plus grands textes y sont copiés.",
+      "features": [
+        "Écriture",
+        "Copies",
+        "Archives"
+      ],
+      "x": 59,
+      "y": 71,
+      "city": "lumen-spire",
+      "region": "umiora"
+    },
+    {
+      "id": "marche-noir",
+      "name": "Marché Noir",
+      "icon": "🕯️",
+      "color": "#475569",
+      "desc": "Commerce souterrain d'objets rares et d'informations sensibles.",
+      "features": [
+        "Contrebande",
+        "Secrets",
+        "Troc"
+      ],
+      "x": 31,
+      "y": 19,
+      "city": "umbraeth",
+      "region": "kuhiria"
+    },
+    {
+      "id": "souterrains",
+      "name": "Souterrains",
+      "icon": "🕳️",
+      "color": "#1e293b",
+      "desc": "Réseau de tunnels infini. On dit que certains mènent hors du monde connu.",
+      "features": [
+        "Exploration",
+        "Dangers",
+        "Trésors"
+      ],
+      "x": 76,
+      "y": 31,
+      "city": "umbraeth",
+      "region": "kuhiria"
+    },
+    {
+      "id": "autel-ombres",
+      "name": "Autel des Ombres",
+      "icon": "🌑",
+      "color": "#64748b",
+      "desc": "Lieu sacré où les ombres prennent forme et murmurent des vérités.",
+      "features": [
+        "Rituels",
+        "Ombres",
+        "Visions"
+      ],
+      "x": 62,
+      "y": 64,
+      "city": "umbraeth",
+      "region": "kuhiria"
+    },
+    {
+      "id": "port-nereis",
+      "name": "Port des Vagues",
+      "icon": "⛵",
+      "color": "#22d3ee",
+      "desc": "Port marchand où arrivent les trésors des mers lointaines.",
+      "features": [
+        "Commerce",
+        "Voyages",
+        "Trésors"
+      ],
+      "x": 21,
+      "y": 16,
+      "city": "aqua-nereis",
+      "region": "kuhiria"
+    },
+    {
+      "id": "cascade-sonore",
+      "name": "Cascade Sonore",
+      "icon": "🌊",
+      "color": "#0891b2",
+      "desc": "Cascade musicale dont les notes changent selon les saisons.",
+      "features": [
+        "Musique",
+        "Méditation",
+        "Saisons"
+      ],
+      "x": 76,
+      "y": 35,
+      "city": "aqua-nereis",
+      "region": "kuhiria"
+    },
+    {
+      "id": "temple-abyssal",
+      "name": "Temple Abyssal",
+      "icon": "🐚",
+      "color": "#155e75",
+      "desc": "Temple immergé dédié aux divinités des profondeurs.",
+      "features": [
+        "Prière",
+        "Abysses",
+        "Mystères"
+      ],
+      "x": 39,
+      "y": 73,
+      "city": "aqua-nereis",
+      "region": "kuhiria"
+    },
+    {
+      "id": "nid-vent",
+      "name": "Nid du Vent",
+      "icon": "🪺",
+      "color": "#84cc16",
+      "desc": "Perchoir naturel où les dresseurs de courants affinent leur art.",
+      "features": [
+        "Dressage",
+        "Vent",
+        "Altitude"
+      ],
+      "x": 16,
+      "y": 34,
+      "city": "zephyria",
+      "region": "kuhiria"
+    },
+    {
+      "id": "pont-celeste",
+      "name": "Pont Céleste",
+      "icon": "🌉",
+      "color": "#65a30d",
+      "desc": "Passerelle entre les îles volantes, balayée par des bourrasques.",
+      "features": [
+        "Traversée",
+        "Défi",
+        "Panorama"
+      ],
+      "x": 78,
+      "y": 36,
+      "city": "zephyria",
+      "region": "kuhiria"
+    },
+    {
+      "id": "soufflerie",
+      "name": "Soufflerie",
+      "icon": "🌀",
+      "color": "#bef264",
+      "desc": "Laboratoire aérodynamique où l'on étudie les vents primordiaux.",
+      "features": [
+        "Recherche",
+        "Vent",
+        "Technologie"
+      ],
+      "x": 59,
+      "y": 58,
+      "city": "zephyria",
+      "region": "kuhiria"
+    },
+    {
+      "id": "bains-braise",
+      "name": "Bains de Braise",
+      "icon": "♨️",
+      "color": "#f97316",
+      "desc": "Sources chaudes volcaniques aux vertus régénératrices.",
+      "features": [
+        "Repos",
+        "Guérison",
+        "Chaleur"
+      ],
+      "x": 33,
+      "y": 18,
+      "city": "pyralis",
+      "region": "wohkara"
+    },
+    {
+      "id": "tour-flamme",
+      "name": "Tour de la Flamme",
+      "icon": "🗼",
+      "color": "#c2410c",
+      "desc": "Tour de guet et phare incandescent visible depuis trois cités.",
+      "features": [
+        "Vigie",
+        "Signal",
+        "Défense"
+      ],
+      "x": 80,
+      "y": 39,
+      "city": "pyralis",
+      "region": "wohkara"
+    },
+    {
+      "id": "cendrier",
+      "name": "Le Cendrier",
+      "icon": "🏺",
+      "color": "#fb923c",
+      "desc": "Taverne enfumée où se négocient les contrats les plus dangereux.",
+      "features": [
+        "Contrats",
+        "Négociation",
+        "Rumeurs"
+      ],
+      "x": 52,
+      "y": 74,
+      "city": "pyralis",
+      "region": "wohkara"
+    },
+    {
+      "id": "galerie-cristal",
+      "name": "Galerie de Cristal",
+      "icon": "💠",
+      "color": "#a855f7",
+      "desc": "Exposition permanente d'œuvres sculptées dans le cristal vivant.",
+      "features": [
+        "Art",
+        "Cristal",
+        "Beauté"
+      ],
+      "x": 16,
+      "y": 33,
+      "city": "crystara",
+      "region": "umiora"
+    },
+    {
+      "id": "resonance",
+      "name": "Salle de Résonance",
+      "icon": "🔔",
+      "color": "#9333ea",
+      "desc": "Chambre acoustique parfaite. Un murmure y devient symphonie.",
+      "features": [
+        "Son",
+        "Acoustique",
+        "Harmonie"
+      ],
+      "x": 75,
+      "y": 29,
+      "city": "crystara",
+      "region": "umiora"
+    },
+    {
+      "id": "mine-spectrale",
+      "name": "Mine Spectrale",
+      "icon": "⛏️",
+      "color": "#7c3aed",
+      "desc": "Mines profondes où les cristaux poussent comme des arbres.",
+      "features": [
+        "Extraction",
+        "Cristaux",
+        "Ressources"
+      ],
+      "x": 40,
+      "y": 77,
+      "city": "crystara",
+      "region": "umiora"
+    },
+    {
+      "id": "grand-enclume",
+      "name": "Grande Enclume",
+      "icon": "🔨",
+      "color": "#92400e",
+      "desc": "L'enclume mythique sur laquelle furent forgées les armes légendaires.",
+      "features": [
+        "Forge",
+        "Légendes",
+        "Création"
+      ],
+      "x": 17,
+      "y": 21,
+      "city": "feranth",
+      "region": "habytia"
+    },
+    {
+      "id": "quartier-acier",
+      "name": "Quartier d'Acier",
+      "icon": "🏗️",
+      "color": "#a16207",
+      "desc": "Quartier résidentiel des artisans. Chaque maison est un atelier.",
+      "features": [
+        "Artisanat",
+        "Vie",
+        "Commerce"
+      ],
+      "x": 63,
+      "y": 27,
+      "city": "feranth",
+      "region": "habytia"
+    },
+    {
+      "id": "haut-fourneau",
+      "name": "Haut-Fourneau",
+      "icon": "🌋",
+      "color": "#78350f",
+      "desc": "Fourneau alimenté par le magma. Il ne s'est jamais éteint.",
+      "features": [
+        "Énergie",
+        "Feu",
+        "Production"
+      ],
+      "x": 45,
+      "y": 82,
+      "city": "feranth",
+      "region": "habytia"
+    },
+    {
+      "id": "canopee",
+      "name": "Canopée",
+      "icon": "🌿",
+      "color": "#16a34a",
+      "desc": "Niveau supérieur de la cité. Les habitations s'accrochent aux branches géantes.",
+      "features": [
+        "Habitations",
+        "Nature",
+        "Hauteur"
+      ],
+      "x": 14,
+      "y": 37,
+      "city": "sylvanor",
+      "region": "orianen"
+    },
+    {
+      "id": "racines",
+      "name": "Les Racines",
+      "icon": "🌱",
+      "color": "#15803d",
+      "desc": "Niveau inférieur, sombre et humide, où poussent les plantes rares.",
+      "features": [
+        "Plantes",
+        "Alchimie",
+        "Secrets"
+      ],
+      "x": 80,
+      "y": 31,
+      "city": "sylvanor",
+      "region": "orianen"
+    },
+    {
+      "id": "clairiere-ancienne",
+      "name": "Clairière Ancienne",
+      "icon": "🍃",
+      "color": "#4ade80",
+      "desc": "Lieu sacré au cœur de la forêt. L'arbre-mère y veille.",
+      "features": [
+        "Sacré",
+        "Arbre-Mère",
+        "Rituels"
+      ],
+      "x": 47,
+      "y": 66,
+      "city": "sylvanor",
+      "region": "orianen"
+    },
+    {
+      "id": "hall-reflets",
+      "name": "Hall des Reflets",
+      "icon": "🪞",
+      "color": "#6366f1",
+      "desc": "Couloir infini de miroirs montrant les futurs possibles.",
+      "features": [
+        "Visions",
+        "Futurs",
+        "Réflexion"
+      ],
+      "x": 32,
+      "y": 27,
+      "city": "miralis",
+      "region": "hardirian"
+    },
+    {
+      "id": "bazar-illusions",
+      "name": "Bazar des Illusions",
+      "icon": "🎪",
+      "color": "#4f46e5",
+      "desc": "Marché où rien n'est ce qu'il semble. Attention aux arnaques.",
+      "features": [
+        "Commerce",
+        "Illusions",
+        "Tromperie"
+      ],
+      "x": 78,
+      "y": 40,
+      "city": "miralis",
+      "region": "hardirian"
+    },
+    {
+      "id": "tour-verite",
+      "name": "Tour de Vérité",
+      "icon": "🗝️",
+      "color": "#a5b4fc",
+      "desc": "Le seul miroir de la cité qui montre la réalité telle qu'elle est.",
+      "features": [
+        "Vérité",
+        "Épreuve",
+        "Sagesse"
+      ],
+      "x": 46,
+      "y": 64,
+      "city": "miralis",
+      "region": "hardirian"
+    },
+    {
+      "id": "quai-fortune",
+      "name": "Quai de la Fortune",
+      "icon": "🏴‍☠️",
+      "color": "#1e293b",
+      "desc": "Quai principal où accostent les navires les plus recherchés.",
+      "features": [
+        "Pirates",
+        "Navires",
+        "Commerce"
+      ],
+      "x": 37,
+      "y": 35,
+      "city": "noir-havre",
+      "region": "siore"
+    },
+    {
+      "id": "taverne-maree",
+      "name": "Taverne de la Marée",
+      "icon": "🍻",
+      "color": "#334155",
+      "desc": "Le repaire des capitaines. On y échange cartes et cicatrices.",
+      "features": [
+        "Rencontres",
+        "Cartes",
+        "Histoires"
+      ],
+      "x": 63,
+      "y": 24,
+      "city": "noir-havre",
+      "region": "siore"
+    },
+    {
+      "id": "grotte-butin",
+      "name": "Grotte au Butin",
+      "icon": "💰",
+      "color": "#475569",
+      "desc": "Caverne secrète où les pirates cachent leurs trésors les plus précieux.",
+      "features": [
+        "Trésors",
+        "Cachette",
+        "Pièges"
+      ],
+      "x": 49,
+      "y": 78,
+      "city": "noir-havre",
+      "region": "siore"
+    },
+    {
+      "id": "jardin-silence",
+      "name": "Jardin du Silence",
+      "icon": "🌸",
+      "color": "#fb7185",
+      "desc": "Jardin où aucun son ne porte. Idéal pour la méditation profonde.",
+      "features": [
+        "Méditation",
+        "Calme",
+        "Guérison"
+      ],
+      "x": 36,
+      "y": 13,
+      "city": "solace",
+      "region": "umiora"
+    },
+    {
+      "id": "thermes",
+      "name": "Thermes de Solace",
+      "icon": "💧",
+      "color": "#f472b6",
+      "desc": "Bains sacrés qui soignent les blessures du corps et de l'esprit.",
+      "features": [
+        "Guérison",
+        "Repos",
+        "Eau"
+      ],
+      "x": 67,
+      "y": 19,
+      "city": "solace",
+      "region": "umiora"
+    },
+    {
+      "id": "sanctuaire",
+      "name": "Sanctuaire",
+      "icon": "🕊️",
+      "color": "#fecdd3",
+      "desc": "Lieu d'asile absolu. Aucune violence n'y est tolérée.",
+      "features": [
+        "Paix",
+        "Refuge",
+        "Protection"
+      ],
+      "x": 43,
+      "y": 70,
+      "city": "solace",
+      "region": "umiora"
+    },
+    {
+      "id": "usine-reves",
+      "name": "Usine à Rêves",
+      "icon": "⚙️",
+      "color": "#94a3b8",
+      "desc": "Fabrique de souvenirs artificiels. Chaque rêve a un prix.",
+      "features": [
+        "Rêves",
+        "Fabrication",
+        "Commerce"
+      ],
+      "x": 28,
+      "y": 24,
+      "city": "mechanis",
+      "region": "karymor"
+    },
+    {
+      "id": "hub-central",
+      "name": "Hub Central",
+      "icon": "🔧",
+      "color": "#475569",
+      "desc": "Noyau mécanique de la cité. Toutes les machines convergent ici.",
+      "features": [
+        "Machines",
+        "Contrôle",
+        "Énergie"
+      ],
+      "x": 71,
+      "y": 26,
+      "city": "mechanis",
+      "region": "karymor"
+    },
+    {
+      "id": "depot-rouages",
+      "name": "Dépôt des Rouages",
+      "icon": "🔩",
+      "color": "#cbd5e1",
+      "desc": "Entrepôt de pièces détachées et de prototypes mécaniques.",
+      "features": [
+        "Pièces",
+        "Invention",
+        "Stockage"
+      ],
+      "x": 48,
+      "y": 73,
+      "city": "mechanis",
+      "region": "karymor"
+    },
+    {
+      "id": "void-plaza",
+      "name": "Void Plaza",
+      "icon": "✨",
+      "color": "#818cf8",
+      "desc": "Place centrale flottant dans le vide. Point de rencontre astral.",
+      "features": [
+        "Rencontres",
+        "Astral",
+        "Vide"
+      ],
+      "x": 25,
+      "y": 33,
+      "city": "astralheim",
+      "region": "hardirian"
+    },
+    {
+      "id": "jardin-etoiles",
+      "name": "Jardin des Étoiles",
+      "icon": "⭐",
+      "color": "#4f46e5",
+      "desc": "Jardin où les étoiles poussent comme des fleurs.",
+      "features": [
+        "Étoiles",
+        "Contemplation",
+        "Magie"
+      ],
+      "x": 68,
+      "y": 29,
+      "city": "astralheim",
+      "region": "hardirian"
+    },
+    {
+      "id": "passerelle-plans",
+      "name": "Passerelle des Plans",
+      "icon": "🌌",
+      "color": "#a78bfa",
+      "desc": "Pont dimensionnel connectant les différents plans d'existence.",
+      "features": [
+        "Dimensions",
+        "Voyage",
+        "Portails"
+      ],
+      "x": 45,
+      "y": 72,
+      "city": "astralheim",
+      "region": "hardirian"
+    },
+    {
+      "id": "tribunal-verite",
+      "name": "Tribunal de Vérité",
+      "icon": "⚖️",
+      "color": "#059669",
+      "desc": "Cour de justice où les procès durent rarement plus d'une minute.",
+      "features": [
+        "Justice",
+        "Vérité",
+        "Procès"
+      ],
+      "x": 30,
+      "y": 18,
+      "city": "veridian",
+      "region": "orianen"
+    },
+    {
+      "id": "place-confession",
+      "name": "Place des Confessions",
+      "icon": "🗣️",
+      "color": "#34d399",
+      "desc": "Place publique où les gens viennent se libérer de leurs secrets.",
+      "features": [
+        "Confessions",
+        "Liberté",
+        "Catharsis"
+      ],
+      "x": 65,
+      "y": 31,
+      "city": "veridian",
+      "region": "orianen"
+    },
+    {
+      "id": "phare-sincerite",
+      "name": "Phare de Sincérité",
+      "icon": "🏛️",
+      "color": "#6ee7b7",
+      "desc": "Tour émettant un champ de vérité sur toute la cité.",
+      "features": [
+        "Phare",
+        "Énergie",
+        "Contrôle"
+      ],
+      "x": 41,
+      "y": 67,
+      "city": "veridian",
+      "region": "orianen"
+    },
+    {
+      "id": "spirale-temps",
+      "name": "Spirale du Temps",
+      "icon": "🌀",
+      "color": "#8b5cf6",
+      "desc": "Escalier en colimaçon infini où chaque marche est une époque.",
+      "features": [
+        "Temps",
+        "Exploration",
+        "Époques"
+      ],
+      "x": 29,
+      "y": 18,
+      "city": "vortexia",
+      "region": "hardirian"
+    },
+    {
+      "id": "horloge-brisee",
+      "name": "Horloge Brisée",
+      "icon": "🕰️",
+      "color": "#6d28d9",
+      "desc": "Horloge géante arrêtée qui maintient la cité hors du temps.",
+      "features": [
+        "Temps",
+        "Anomalie",
+        "Mystère"
+      ],
+      "x": 65,
+      "y": 24,
+      "city": "vortexia",
+      "region": "hardirian"
+    },
+    {
+      "id": "echo-temporel",
+      "name": "Écho Temporel",
+      "icon": "⏳",
+      "color": "#c4b5fd",
+      "desc": "Lieu où résonnent les événements passés et futurs simultanément.",
+      "features": [
+        "Échos",
+        "Visions",
+        "Temps"
+      ],
+      "x": 44,
+      "y": 81,
+      "city": "vortexia",
+      "region": "hardirian"
+    },
+    {
+      "id": "mur-chroniques",
+      "name": "Mur des Chroniques",
+      "icon": "📖",
+      "color": "#a8a29e",
+      "desc": "Paroi immense gravée de l'histoire complète du monde connu.",
+      "features": [
+        "Histoire",
+        "Gravures",
+        "Savoir"
+      ],
+      "x": 31,
+      "y": 29,
+      "city": "ferro-glyph",
+      "region": "habytia"
+    },
+    {
+      "id": "atelier-glyphes",
+      "name": "Atelier des Glyphes",
+      "icon": "✍️",
+      "color": "#57534e",
+      "desc": "Atelier où les graveurs créent de nouveaux glyphes de pouvoir.",
+      "features": [
+        "Glyphes",
+        "Création",
+        "Pouvoir"
+      ],
+      "x": 65,
+      "y": 25,
+      "city": "ferro-glyph",
+      "region": "habytia"
+    },
+    {
+      "id": "caveau-memoire",
+      "name": "Caveau de Mémoire",
+      "icon": "🏛️",
+      "color": "#44403c",
+      "desc": "Crypte protégeant les souvenirs les plus précieux de la civilisation.",
+      "features": [
+        "Mémoire",
+        "Protection",
+        "Reliques"
+      ],
+      "x": 44,
+      "y": 82,
+      "city": "ferro-glyph",
+      "region": "habytia"
+    },
+    {
+      "id": "port-celeste",
+      "name": "Port Céleste",
+      "icon": "🎈",
+      "color": "#bae6fd",
+      "desc": "Aéroport où accostent les navires volants et les montgolfières.",
+      "features": [
+        "Navires",
+        "Vol",
+        "Arrivées"
+      ],
+      "x": 22,
+      "y": 13,
+      "city": "nimba",
+      "region": "umiora"
+    },
+    {
+      "id": "brume-salon",
+      "name": "Salon de Brume",
+      "icon": "☁️",
+      "color": "#7dd3fc",
+      "desc": "Salon de thé suspendu dans les nuages. Vue imprenable garantie.",
+      "features": [
+        "Détente",
+        "Vue",
+        "Social"
+      ],
+      "x": 84,
+      "y": 32,
+      "city": "nimba",
+      "region": "umiora"
+    },
+    {
+      "id": "nid-tonnerre",
+      "name": "Nid du Tonnerre",
+      "icon": "⛈️",
+      "color": "#38bdf8",
+      "desc": "Poste avancé au cœur des orages. Récolte d'énergie foudroyante.",
+      "features": [
+        "Énergie",
+        "Foudre",
+        "Danger"
+      ],
+      "x": 57,
+      "y": 71,
+      "city": "nimba",
+      "region": "umiora"
+    },
+    {
+      "id": "dojo-mantra",
+      "name": "Dojo du Mantra",
+      "icon": "🧘",
+      "color": "#e879f9",
+      "desc": "Salle d'entraînement mental. Les pensées sont les seules armes.",
+      "features": [
+        "Mental",
+        "Entraînement",
+        "Discipline"
+      ],
+      "x": 32,
+      "y": 30,
+      "city": "sangha",
+      "region": "kuhiria"
+    },
+    {
+      "id": "jardin-zen",
+      "name": "Jardin Zen",
+      "icon": "🪨",
+      "color": "#d946ef",
+      "desc": "Jardin de pierres et de sable. Chaque grain a été placé avec intention.",
+      "features": [
+        "Méditation",
+        "Harmonie",
+        "Patience"
+      ],
+      "x": 87,
+      "y": 23,
+      "city": "sangha",
+      "region": "kuhiria"
+    },
+    {
+      "id": "pagode-eveil",
+      "name": "Pagode de l'Éveil",
+      "icon": "🏯",
+      "color": "#c026d3",
+      "desc": "Sommet du monastère. Seuls les illuminés y accèdent.",
+      "features": [
+        "Sagesse",
+        "Éveil",
+        "Épreuve"
+      ],
+      "x": 43,
+      "y": 60,
+      "city": "sangha",
+      "region": "kuhiria"
+    },
+    {
+      "id": "avant-garde",
+      "name": "Avant-Garde",
+      "icon": "🚩",
+      "color": "#ca8a04",
+      "desc": "Front de la cité nomade. Les éclaireurs y préparent la prochaine étape.",
+      "features": [
+        "Éclaireurs",
+        "Exploration",
+        "Avance"
+      ],
+      "x": 14,
+      "y": 36,
+      "city": "ruin-march",
+      "region": "wohkara"
+    },
+    {
+      "id": "brocante-reliques",
+      "name": "Brocante aux Reliques",
+      "icon": "🏺",
+      "color": "#a16207",
+      "desc": "Marché ambulant d'artefacts trouvés dans les ruines traversées.",
+      "features": [
+        "Reliques",
+        "Commerce",
+        "Trouvailles"
+      ],
+      "x": 72,
+      "y": 20,
+      "city": "ruin-march",
+      "region": "wohkara"
+    },
+    {
+      "id": "camp-archives",
+      "name": "Camp des Archives",
+      "icon": "📦",
+      "color": "#92400e",
+      "desc": "Tentes-bibliothèques où l'on catalogue les découvertes.",
+      "features": [
+        "Archives",
+        "Recherche",
+        "Catalogage"
+      ],
+      "x": 57,
+      "y": 70,
+      "city": "ruin-march",
+      "region": "wohkara"
+    },
+    {
+      "id": "chambre-sourde",
+      "name": "Chambre Sourde",
+      "icon": "🔇",
+      "color": "#0f172a",
+      "desc": "Salle d'isolation totale. Le seul endroit silencieux de la cité.",
+      "features": [
+        "Silence",
+        "Repos",
+        "Isolation"
+      ],
+      "x": 36,
+      "y": 17,
+      "city": "echo-noir",
+      "region": "sysyt"
+    },
+    {
+      "id": "amphitheatre-son",
+      "name": "Amphithéâtre Sonique",
+      "icon": "🎵",
+      "color": "#334155",
+      "desc": "Scène naturelle où un murmure atteint les derniers rangs.",
+      "features": [
+        "Concerts",
+        "Discours",
+        "Acoustique"
+      ],
+      "x": 74,
+      "y": 18,
+      "city": "echo-noir",
+      "region": "sysyt"
+    },
+    {
+      "id": "labo-frequences",
+      "name": "Labo des Fréquences",
+      "icon": "📡",
+      "color": "#475569",
+      "desc": "Laboratoire étudiant les fréquences capables d'altérer la matière.",
+      "features": [
+        "Recherche",
+        "Son",
+        "Pouvoir"
+      ],
+      "x": 42,
+      "y": 70,
+      "city": "echo-noir",
+      "region": "sysyt"
+    },
+    {
+      "id": "bord-faille",
+      "name": "Bord de la Faille",
+      "icon": "🌋",
+      "color": "#0d9488",
+      "desc": "Corniche surplombant la faille. On y aperçoit d'autres dimensions.",
+      "features": [
+        "Dimensions",
+        "Vue",
+        "Danger"
+      ],
+      "x": 26,
+      "y": 22,
+      "city": "opal-rift",
+      "region": "karymor"
+    },
+    {
+      "id": "quartier-stable",
+      "name": "Quartier Stable",
+      "icon": "🏠",
+      "color": "#2dd4bf",
+      "desc": "Zone protégée où la réalité reste cohérente. Quartier résidentiel.",
+      "features": [
+        "Résidence",
+        "Sécurité",
+        "Stabilité"
+      ],
+      "x": 84,
+      "y": 29,
+      "city": "opal-rift",
+      "region": "karymor"
+    },
+    {
+      "id": "institut-faille",
+      "name": "Institut de la Faille",
+      "icon": "🔬",
+      "color": "#5eead4",
+      "desc": "Centre de recherche sur les anomalies dimensionnelles.",
+      "features": [
+        "Recherche",
+        "Anomalies",
+        "Science"
+      ],
+      "x": 40,
+      "y": 77,
+      "city": "opal-rift",
+      "region": "karymor"
+    },
+    {
+      "id": "entree-mouvante",
+      "name": "Entrée Mouvante",
+      "icon": "🚪",
+      "color": "#f43f5e",
+      "desc": "Porte d'entrée qui n'apparaît jamais au même endroit deux fois.",
+      "features": [
+        "Entrée",
+        "Hasard",
+        "Recherche"
+      ],
+      "x": 36,
+      "y": 24,
+      "city": "khora",
+      "region": "sysyt"
+    },
+    {
+      "id": "coeur-fixe",
+      "name": "Cœur Fixe",
+      "icon": "📍",
+      "color": "#be123c",
+      "desc": "Le seul point immobile du labyrinthe. Repère absolu.",
+      "features": [
+        "Repère",
+        "Navigation",
+        "Stabilité"
+      ],
+      "x": 66,
+      "y": 27,
+      "city": "khora",
+      "region": "sysyt"
+    },
+    {
+      "id": "mur-vivant",
+      "name": "Mur Vivant",
+      "icon": "🧱",
+      "color": "#fb7185",
+      "desc": "Paroi qui se déplace, créant et détruisant les chemins.",
+      "features": [
+        "Labyrinthe",
+        "Mouvement",
+        "Piège"
+      ],
+      "x": 44,
+      "y": 65,
+      "city": "khora",
+      "region": "sysyt"
+    },
+    {
+      "id": "dome-haut",
+      "name": "Dôme Supérieur",
+      "icon": "🔺",
+      "color": "#fbbf24",
+      "desc": "Quartier riche qui s'érode lentement. Le luxe y est éphémère.",
+      "features": [
+        "Luxe",
+        "Érosion",
+        "Élite"
+      ],
+      "x": 37,
+      "y": 16,
+      "city": "sablier",
+      "region": "wohkara"
+    },
+    {
+      "id": "gorge-passage",
+      "name": "Gorge du Passage",
+      "icon": "⏳",
+      "color": "#a16207",
+      "desc": "Étranglement central. Seul passage entre les deux moitiés.",
+      "features": [
+        "Passage",
+        "Commerce",
+        "Contrôle"
+      ],
+      "x": 80,
+      "y": 22,
+      "city": "sablier",
+      "region": "wohkara"
+    },
+    {
+      "id": "fond-sable",
+      "name": "Fond de Sable",
+      "icon": "🔻",
+      "color": "#92400e",
+      "desc": "Quartier bas qui s'enrichit du sable tombé. Économie inversée.",
+      "features": [
+        "Accumulation",
+        "Renouveau",
+        "Peuple"
+      ],
+      "x": 61,
+      "y": 66,
+      "city": "sablier",
+      "region": "wohkara"
+    },
+    {
+      "id": "taniere-alpha",
+      "name": "Tanière de l'Alpha",
+      "icon": "🐺",
+      "color": "#047857",
+      "desc": "Résidence du chef de meute. Les décisions s'y prennent.",
+      "features": [
+        "Leadership",
+        "Décisions",
+        "Pouvoir"
+      ],
+      "x": 14,
+      "y": 29,
+      "city": "velkan",
+      "region": "sysyt"
+    },
+    {
+      "id": "piste-chasse",
+      "name": "Piste de Chasse",
+      "icon": "🌲",
+      "color": "#065f46",
+      "desc": "Terrain d'entraînement et de chasse rituelle.",
+      "features": [
+        "Chasse",
+        "Entraînement",
+        "Rituel"
+      ],
+      "x": 73,
+      "y": 27,
+      "city": "velkan",
+      "region": "sysyt"
+    },
+    {
+      "id": "cercle-lune",
+      "name": "Cercle de Lune",
+      "icon": "🌙",
+      "color": "#34d399",
+      "desc": "Clairière sacrée pour les cérémonies de pleine lune.",
+      "features": [
+        "Cérémonie",
+        "Lune",
+        "Sacré"
+      ],
+      "x": 62,
+      "y": 61,
+      "city": "velkan",
+      "region": "sysyt"
+    },
+    {
+      "id": "cadran-central",
+      "name": "Cadran Central",
+      "icon": "🕐",
+      "color": "#d97706",
+      "desc": "Horloge géante réglant le rythme de vie de toute la cité.",
+      "features": [
+        "Temps",
+        "Rythme",
+        "Organisation"
+      ],
+      "x": 32,
+      "y": 22,
+      "city": "kairos",
+      "region": "karymor"
+    },
+    {
+      "id": "bourse-instant",
+      "name": "Bourse de l'Instant",
+      "icon": "📊",
+      "color": "#b45309",
+      "desc": "Marché où la valeur des biens change à chaque seconde.",
+      "features": [
+        "Commerce",
+        "Spéculation",
+        "Rapidité"
+      ],
+      "x": 71,
+      "y": 36,
+      "city": "kairos",
+      "region": "karymor"
+    },
+    {
+      "id": "jardin-patience",
+      "name": "Jardin de Patience",
+      "icon": "🌺",
+      "color": "#fbbf24",
+      "desc": "Contraste absolu : un jardin où le temps semble s'arrêter.",
+      "features": [
+        "Calme",
+        "Patience",
+        "Repos"
+      ],
+      "x": 42,
+      "y": 58,
+      "city": "kairos",
+      "region": "karymor"
+    },
+    {
+      "id": "hall-corrections",
+      "name": "Hall des Corrections",
+      "icon": "✏️",
+      "color": "#ef4444",
+      "desc": "Archive des erreurs historiques et de leurs corrections.",
+      "features": [
+        "Erreurs",
+        "Leçons",
+        "Archives"
+      ],
+      "x": 15,
+      "y": 23,
+      "city": "errata",
+      "region": "orianen"
+    },
+    {
+      "id": "atelier-reparation",
+      "name": "Atelier de Réparation",
+      "icon": "🔧",
+      "color": "#dc2626",
+      "desc": "Lieu où l'on répare tout — objets, relations, promesses.",
+      "features": [
+        "Réparation",
+        "Restauration",
+        "Pardon"
+      ],
+      "x": 80,
+      "y": 24,
+      "city": "errata",
+      "region": "orianen"
+    },
+    {
+      "id": "place-pardon",
+      "name": "Place du Pardon",
+      "icon": "🕊️",
+      "color": "#fca5a5",
+      "desc": "Place publique dédiée à la réconciliation et aux secondes chances.",
+      "features": [
+        "Pardon",
+        "Réconciliation",
+        "Paix"
+      ],
+      "x": 40,
+      "y": 79,
+      "city": "errata",
+      "region": "orianen"
+    },
+    {
+      "id": "bibliotheque-celeste-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#c084fc",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 22,
+      "y": 28,
+      "city": "bibliotheque-celeste",
+      "region": "orianen"
+    },
+    {
+      "id": "bibliotheque-celeste-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#c084fc",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 62,
+      "y": 35,
+      "city": "bibliotheque-celeste",
+      "region": "orianen"
+    },
+    {
+      "id": "bibliotheque-celeste-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#c084fc",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 42,
+      "y": 71,
+      "city": "bibliotheque-celeste",
+      "region": "orianen"
+    },
+    {
+      "id": "encrier-geant-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#6366f1",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 35,
+      "y": 40,
+      "city": "encrier-geant",
+      "region": "orianen"
+    },
+    {
+      "id": "encrier-geant-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#6366f1",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 60,
+      "y": 45,
+      "city": "encrier-geant",
+      "region": "orianen"
+    },
+    {
+      "id": "encrier-geant-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#6366f1",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 55,
+      "y": 72,
+      "city": "encrier-geant",
+      "region": "orianen"
+    },
+    {
+      "id": "page-blanche-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#f5f5f4",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 38,
+      "y": 21,
+      "city": "page-blanche",
+      "region": "orianen"
+    },
+    {
+      "id": "page-blanche-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#f5f5f4",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 63,
+      "y": 34,
+      "city": "page-blanche",
+      "region": "orianen"
+    },
+    {
+      "id": "page-blanche-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#f5f5f4",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 51,
+      "y": 75,
+      "city": "page-blanche",
+      "region": "orianen"
+    },
+    {
+      "id": "conte-vivant-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#d946ef",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 30,
+      "y": 40,
+      "city": "conte-vivant",
+      "region": "orianen"
+    },
+    {
+      "id": "conte-vivant-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#d946ef",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 62,
+      "y": 37,
+      "city": "conte-vivant",
+      "region": "orianen"
+    },
+    {
+      "id": "conte-vivant-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#d946ef",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 44,
+      "y": 82,
+      "city": "conte-vivant",
+      "region": "orianen"
+    },
+    {
+      "id": "reliure-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#a16207",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 32,
+      "y": 28,
+      "city": "reliure",
+      "region": "orianen"
+    },
+    {
+      "id": "reliure-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#a16207",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 67,
+      "y": 43,
+      "city": "reliure",
+      "region": "orianen"
+    },
+    {
+      "id": "reliure-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#a16207",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 55,
+      "y": 72,
+      "city": "reliure",
+      "region": "orianen"
+    },
+    {
+      "id": "palimpseste-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#94a3b8",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 28,
+      "y": 22,
+      "city": "palimpseste",
+      "region": "orianen"
+    },
+    {
+      "id": "palimpseste-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#94a3b8",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 76,
+      "y": 43,
+      "city": "palimpseste",
+      "region": "orianen"
+    },
+    {
+      "id": "palimpseste-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#94a3b8",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 41,
+      "y": 79,
+      "city": "palimpseste",
+      "region": "orianen"
+    },
+    {
+      "id": "epilogue-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#1e293b",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 25,
+      "y": 28,
+      "city": "epilogue",
+      "region": "orianen"
+    },
+    {
+      "id": "epilogue-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#1e293b",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 75,
+      "y": 32,
+      "city": "epilogue",
+      "region": "orianen"
+    },
+    {
+      "id": "epilogue-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#1e293b",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 50,
+      "y": 82,
+      "city": "epilogue",
+      "region": "orianen"
+    },
+    {
+      "id": "prologue-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#22c55e",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 32,
+      "y": 33,
+      "city": "prologue",
+      "region": "orianen"
+    },
+    {
+      "id": "prologue-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#22c55e",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 71,
+      "y": 30,
+      "city": "prologue",
+      "region": "orianen"
+    },
+    {
+      "id": "prologue-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#22c55e",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 47,
+      "y": 79,
+      "city": "prologue",
+      "region": "orianen"
+    },
+    {
+      "id": "glacier-pensif-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#bae6fd",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 30,
+      "y": 30,
+      "city": "glacier-pensif",
+      "region": "umiora"
+    },
+    {
+      "id": "glacier-pensif-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#bae6fd",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 60,
+      "y": 30,
+      "city": "glacier-pensif",
+      "region": "umiora"
+    },
+    {
+      "id": "glacier-pensif-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#bae6fd",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 55,
+      "y": 67,
+      "city": "glacier-pensif",
+      "region": "umiora"
+    },
+    {
+      "id": "neige-eternelle-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#e0f2fe",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 35,
+      "y": 39,
+      "city": "neige-eternelle",
+      "region": "umiora"
+    },
+    {
+      "id": "neige-eternelle-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#e0f2fe",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 60,
+      "y": 29,
+      "city": "neige-eternelle",
+      "region": "umiora"
+    },
+    {
+      "id": "neige-eternelle-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#e0f2fe",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 47,
+      "y": 63,
+      "city": "neige-eternelle",
+      "region": "umiora"
+    },
+    {
+      "id": "aurore-boreale-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#a5f3fc",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 20,
+      "y": 38,
+      "city": "aurore-boreale",
+      "region": "umiora"
+    },
+    {
+      "id": "aurore-boreale-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#a5f3fc",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 74,
+      "y": 39,
+      "city": "aurore-boreale",
+      "region": "umiora"
+    },
+    {
+      "id": "aurore-boreale-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#a5f3fc",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 42,
+      "y": 81,
+      "city": "aurore-boreale",
+      "region": "umiora"
+    },
+    {
+      "id": "pic-du-marteau-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#78716c",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 33,
+      "y": 31,
+      "city": "pic-du-marteau",
+      "region": "habytia"
+    },
+    {
+      "id": "pic-du-marteau-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#78716c",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 78,
+      "y": 27,
+      "city": "pic-du-marteau",
+      "region": "habytia"
+    },
+    {
+      "id": "pic-du-marteau-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#78716c",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 42,
+      "y": 72,
+      "city": "pic-du-marteau",
+      "region": "habytia"
+    },
+    {
+      "id": "mine-profonde-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#57534e",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 31,
+      "y": 33,
+      "city": "mine-profonde",
+      "region": "habytia"
+    },
+    {
+      "id": "mine-profonde-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#57534e",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 68,
+      "y": 35,
+      "city": "mine-profonde",
+      "region": "habytia"
+    },
+    {
+      "id": "mine-profonde-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#57534e",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 48,
+      "y": 65,
+      "city": "mine-profonde",
+      "region": "habytia"
+    },
+    {
+      "id": "pont-des-geants-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#a8a29e",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 39,
+      "y": 29,
+      "city": "pont-des-geants",
+      "region": "habytia"
+    },
+    {
+      "id": "pont-des-geants-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#a8a29e",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 75,
+      "y": 35,
+      "city": "pont-des-geants",
+      "region": "habytia"
+    },
+    {
+      "id": "pont-des-geants-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#a8a29e",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 57,
+      "y": 80,
+      "city": "pont-des-geants",
+      "region": "habytia"
+    },
+    {
+      "id": "cheminee-volcanique-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#dc2626",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 25,
+      "y": 25,
+      "city": "cheminee-volcanique",
+      "region": "habytia"
+    },
+    {
+      "id": "cheminee-volcanique-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#dc2626",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 69,
+      "y": 40,
+      "city": "cheminee-volcanique",
+      "region": "habytia"
+    },
+    {
+      "id": "cheminee-volcanique-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#dc2626",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 40,
+      "y": 76,
+      "city": "cheminee-volcanique",
+      "region": "habytia"
+    },
+    {
+      "id": "oasis-miroir-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#fbbf24",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 36,
+      "y": 21,
+      "city": "oasis-miroir",
+      "region": "wohkara"
+    },
+    {
+      "id": "oasis-miroir-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#fbbf24",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 77,
+      "y": 39,
+      "city": "oasis-miroir",
+      "region": "wohkara"
+    },
+    {
+      "id": "oasis-miroir-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#fbbf24",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 53,
+      "y": 66,
+      "city": "oasis-miroir",
+      "region": "wohkara"
+    },
+    {
+      "id": "caravane-eternelle-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#d97706",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 37,
+      "y": 26,
+      "city": "caravane-eternelle",
+      "region": "wohkara"
+    },
+    {
+      "id": "caravane-eternelle-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#d97706",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 66,
+      "y": 34,
+      "city": "caravane-eternelle",
+      "region": "wohkara"
+    },
+    {
+      "id": "caravane-eternelle-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#d97706",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 59,
+      "y": 80,
+      "city": "caravane-eternelle",
+      "region": "wohkara"
+    },
+    {
+      "id": "dune-chantante-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#fde68a",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 29,
+      "y": 33,
+      "city": "dune-chantante",
+      "region": "wohkara"
+    },
+    {
+      "id": "dune-chantante-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#fde68a",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 73,
+      "y": 45,
+      "city": "dune-chantante",
+      "region": "wohkara"
+    },
+    {
+      "id": "dune-chantante-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#fde68a",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 46,
+      "y": 74,
+      "city": "dune-chantante",
+      "region": "wohkara"
+    },
+    {
+      "id": "rouage-central-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#475569",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 26,
+      "y": 23,
+      "city": "rouage-central",
+      "region": "karymor"
+    },
+    {
+      "id": "rouage-central-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#475569",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 69,
+      "y": 34,
+      "city": "rouage-central",
+      "region": "karymor"
+    },
+    {
+      "id": "rouage-central-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#475569",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 45,
+      "y": 64,
+      "city": "rouage-central",
+      "region": "karymor"
+    },
+    {
+      "id": "faille-dimensionnelle-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#7c3aed",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 38,
+      "y": 30,
+      "city": "faille-dimensionnelle",
+      "region": "karymor"
+    },
+    {
+      "id": "faille-dimensionnelle-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#7c3aed",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 63,
+      "y": 35,
+      "city": "faille-dimensionnelle",
+      "region": "karymor"
+    },
+    {
+      "id": "faille-dimensionnelle-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#7c3aed",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 59,
+      "y": 81,
+      "city": "faille-dimensionnelle",
+      "region": "karymor"
+    },
+    {
+      "id": "horloge-inversee-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#06b6d4",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 33,
+      "y": 28,
+      "city": "horloge-inversee",
+      "region": "karymor"
+    },
+    {
+      "id": "horloge-inversee-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#06b6d4",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 65,
+      "y": 32,
+      "city": "horloge-inversee",
+      "region": "karymor"
+    },
+    {
+      "id": "horloge-inversee-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#06b6d4",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 41,
+      "y": 68,
+      "city": "horloge-inversee",
+      "region": "karymor"
+    },
+    {
+      "id": "circuit-pensant-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#38bdf8",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 28,
+      "y": 22,
+      "city": "circuit-pensant",
+      "region": "karymor"
+    },
+    {
+      "id": "circuit-pensant-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#38bdf8",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 70,
+      "y": 39,
+      "city": "circuit-pensant",
+      "region": "karymor"
+    },
+    {
+      "id": "circuit-pensant-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#38bdf8",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 60,
+      "y": 80,
+      "city": "circuit-pensant",
+      "region": "karymor"
+    },
+    {
+      "id": "nexus-arena-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#ef4444",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 28,
+      "y": 25,
+      "city": "nexus-arena",
+      "region": "hardirian"
+    },
+    {
+      "id": "nexus-arena-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#ef4444",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 60,
+      "y": 37,
+      "city": "nexus-arena",
+      "region": "hardirian"
+    },
+    {
+      "id": "nexus-arena-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#ef4444",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 57,
+      "y": 67,
+      "city": "nexus-arena",
+      "region": "hardirian"
+    },
+    {
+      "id": "jardin-astral-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#8b5cf6",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 20,
+      "y": 20,
+      "city": "jardin-astral",
+      "region": "hardirian"
+    },
+    {
+      "id": "jardin-astral-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#8b5cf6",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 74,
+      "y": 30,
+      "city": "jardin-astral",
+      "region": "hardirian"
+    },
+    {
+      "id": "jardin-astral-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#8b5cf6",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 55,
+      "y": 76,
+      "city": "jardin-astral",
+      "region": "hardirian"
+    },
+    {
+      "id": "carrefour-eternel-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#f59e0b",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 39,
+      "y": 29,
+      "city": "carrefour-eternel",
+      "region": "hardirian"
+    },
+    {
+      "id": "carrefour-eternel-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#f59e0b",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 60,
+      "y": 28,
+      "city": "carrefour-eternel",
+      "region": "hardirian"
+    },
+    {
+      "id": "carrefour-eternel-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#f59e0b",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 49,
+      "y": 67,
+      "city": "carrefour-eternel",
+      "region": "hardirian"
+    },
+    {
+      "id": "porte-des-plans-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#1d4ed8",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 28,
+      "y": 32,
+      "city": "porte-des-plans",
+      "region": "hardirian"
+    },
+    {
+      "id": "porte-des-plans-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#1d4ed8",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 65,
+      "y": 37,
+      "city": "porte-des-plans",
+      "region": "hardirian"
+    },
+    {
+      "id": "porte-des-plans-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#1d4ed8",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 45,
+      "y": 72,
+      "city": "porte-des-plans",
+      "region": "hardirian"
+    },
+    {
+      "id": "phare-pourpre-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#c026d3",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 22,
+      "y": 40,
+      "city": "phare-pourpre",
+      "region": "sysyt"
+    },
+    {
+      "id": "phare-pourpre-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#c026d3",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 77,
+      "y": 41,
+      "city": "phare-pourpre",
+      "region": "sysyt"
+    },
+    {
+      "id": "phare-pourpre-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#c026d3",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 60,
+      "y": 68,
+      "city": "phare-pourpre",
+      "region": "sysyt"
+    },
+    {
+      "id": "falaise-des-poetes-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#f472b6",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 26,
+      "y": 25,
+      "city": "falaise-des-poetes",
+      "region": "sysyt"
+    },
+    {
+      "id": "falaise-des-poetes-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#f472b6",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 62,
+      "y": 44,
+      "city": "falaise-des-poetes",
+      "region": "sysyt"
+    },
+    {
+      "id": "falaise-des-poetes-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#f472b6",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 51,
+      "y": 69,
+      "city": "falaise-des-poetes",
+      "region": "sysyt"
+    },
+    {
+      "id": "crique-assassine-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#334155",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 35,
+      "y": 35,
+      "city": "crique-assassine",
+      "region": "sysyt"
+    },
+    {
+      "id": "crique-assassine-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#334155",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 71,
+      "y": 40,
+      "city": "crique-assassine",
+      "region": "sysyt"
+    },
+    {
+      "id": "crique-assassine-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#334155",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 47,
+      "y": 65,
+      "city": "crique-assassine",
+      "region": "sysyt"
+    },
+    {
+      "id": "temple-oublie-place",
+      "name": "Place Centrale",
+      "icon": "🏛️",
+      "color": "#22c55e",
+      "desc": "Place principale de la cité. Point de rencontre et de commerce.",
+      "features": [
+        "Social",
+        "Commerce",
+        "Repos"
+      ],
+      "x": 32,
+      "y": 32,
+      "city": "temple-oublie",
+      "region": "kuhiria"
+    },
+    {
+      "id": "temple-oublie-atelier",
+      "name": "Atelier",
+      "icon": "🔧",
+      "color": "#22c55e",
+      "desc": "Atelier de fabrication et de réparation. Les artisans y travaillent.",
+      "features": [
+        "Artisanat",
+        "Fabrication",
+        "Échange"
+      ],
+      "x": 77,
+      "y": 36,
+      "city": "temple-oublie",
+      "region": "kuhiria"
+    },
+    {
+      "id": "temple-oublie-quartier",
+      "name": "Quartier Résidentiel",
+      "icon": "🏠",
+      "color": "#22c55e",
+      "desc": "Quartier où vivent les habitants. Calme et sûr.",
+      "features": [
+        "Résidence",
+        "Repos",
+        "Rencontres"
+      ],
+      "x": 47,
+      "y": 66,
+      "city": "temple-oublie",
+      "region": "kuhiria"
+    }
+  ],
+  "regions": [
+    {
+      "id": "umiora",
+      "name": "Umiora",
+      "desc": "Les Terres de Givre Éternel",
+      "color": "#bae6fd",
+      "history": "Umiora est le berceau des premières neiges du monde. Avant même que les autres contrées ne prennent forme, ses glaciers sculptaient déjà les vallées. Les anciens racontent que le souffle de Kronos gela l'océan primordial, créant un continent de cristal et de silence. Les peuples d'Umiora apprirent à voir dans le blanc — à lire les fissures de la glace comme d'autres lisent les étoiles. C'est ici que naquit l'art de la résonance cristalline, et que les premiers architectes comprirent que la beauté naît de la contrainte.",
+      "wx": 20,
+      "wy": 10,
+      "passName": "Sceau de Givre",
+      "passIcon": "❄️",
+      "passCost": 150
+    },
+    {
+      "id": "siore",
+      "name": "Siore",
+      "desc": "L'Île du Serpent — Tour des Énigmes",
+      "color": "#f97316",
+      "history": "Siore est une île mystérieuse gardée par un serpent de feu gravé dans la roche volcanique. Jadis refuge des pirates et des exilés, elle est aujourd'hui entièrement consacrée à la Tour des Énigmes — une forteresse colossale où les voyageurs du Nexus affrontent les épreuves de jeu les plus redoutables. Le Serpent de Siore veille sur les eaux qui l'entourent, et seuls ceux qui ont prouvé leur valeur peuvent accoster. L'île entière est un labyrinthe de défis, de puzzles et de jeux de stratégie.",
+      "wx": 17,
+      "wy": 38,
+      "passName": "Marque du Serpent",
+      "passIcon": "🐍",
+      "passCost": 200
+    },
+    {
+      "id": "orianen",
+      "name": "Orianen",
+      "desc": "Les Plaines de la Sagesse — Tour Hourglass",
+      "color": "#22c55e",
+      "history": "Orianen est le berceau de la narration et du savoir. Ses plaines verdoyantes abritent la Tour Hourglass — un ensemble de cités-bibliothèques reliées entre elles, où chaque rue est un chapitre et chaque bâtiment une histoire. C'est ici que furent posées les premières pierres de la civilisation narrative, et que Kael-Norath, la cité originelle, fut fondée par Elrand lui-même. Les conteurs, les scribes et les rêveurs du monde entier convergent vers Orianen pour écrire, lire et vivre les récits qui façonnent la réalité.",
+      "wx": 38,
+      "wy": 25,
+      "passName": "Sauf-Conduit Vert",
+      "passIcon": "🌿",
+      "passCost": 100
+    },
+    {
+      "id": "habytia",
+      "name": "Habytia",
+      "desc": "Les Pics du Monde Forgé",
+      "color": "#94a3b8",
+      "history": "Habytia est un massif montagneux colossal dont les sommets percent les nuages. C'est dans ses entrailles que naquit l'art de la forge et de la gravure. Les Habytiens creusèrent la roche pendant des siècles, bâtissant des cités verticales reliées par des ponts de fer et des escaliers taillés dans le granit. Le peuple de la montagne croit que chaque pierre contient un souvenir du monde d'avant — et que frapper la roche, c'est éveiller la mémoire de la terre. Les plus grands forgerons, graveurs et architectes du Nexus viennent d'Habytia.",
+      "wx": 66,
+      "wy": 14,
+      "passName": "Passe des Pics",
+      "passIcon": "⛰️",
+      "passCost": 175
+    },
+    {
+      "id": "wohkara",
+      "name": "Wohkara",
+      "desc": "Le Désert des Braises Mouvantes",
+      "color": "#d97706",
+      "history": "Wohkara est un désert vivant. Ses dunes changent de forme chaque nuit, et le sable y brille d'une chaleur interne comme si un soleil dormait sous la surface. Les peuples nomades de Wohkara n'ont jamais bâti de murs permanents — ils se déplacent avec les vents, emportant leurs histoires sur leurs dos. C'est la contrée des marchands, des conteurs ambulants et des épreuves de survie. Shar-Vaëlis, la cité souterraine, fut creusée pour échapper à la chaleur mortelle de la surface. On dit que celui qui survit à Wohkara peut survivre à tout.",
+      "wx": 32,
+      "wy": 48,
+      "passName": "Visa des Braises",
+      "passIcon": "🔥",
+      "passCost": 150
+    },
+    {
+      "id": "karymor",
+      "name": "Karymor",
+      "desc": "Les Terres Mécaniques de l'Est",
+      "color": "#64748b",
+      "history": "Karymor est né de la collision entre la magie ancienne et l'ingéniosité mécanique. Ses paysages rocheux et ses gorges profondes abritent des ruines technologiques d'une civilisation disparue — les Karymoriens. Ces bâtisseurs furent les premiers à comprendre les rouages du temps et à construire des machines capables de le mesurer. Aujourd'hui, leurs descendants continuent de mêler magie et mécanique, créant des automates conscients et des horloges vivantes. Karymor est aussi la terre des failles dimensionnelles, où la réalité est parfois plus fine qu'un voile.",
+      "wx": 62,
+      "wy": 42,
+      "passName": "Engrenage-Clé",
+      "passIcon": "⚙️",
+      "passCost": 200
+    },
+    {
+      "id": "hardirian",
+      "name": "Hardirian",
+      "desc": "Le Cœur du Nexus",
+      "color": "#8b5cf6",
+      "history": "Hardirian est le centre géographique et spirituel du monde. C'est ici que convergent les lignes de force qui relient toutes les contrées. Le Nexus Prime — quartier général d'A.T.O.M. — y fut érigé comme un phare entre les dimensions. Hardirian est une terre de contrastes : plaines mystiques à l'ouest, forêts hantées au nord, gorges cristallines au sud. C'est la contrée où se croisent tous les peuples, toutes les langues, toutes les croyances. On dit qu'à Hardirian, chaque pas vous rapproche d'un miroir de vous-même.",
+      "wx": 46,
+      "wy": 60,
+      "passName": "Nexus Laissez-Passer",
+      "passIcon": "🔮",
+      "passCost": 125
+    },
+    {
+      "id": "sysyt",
+      "name": "Sysyt",
+      "desc": "Les Côtes du Crépuscule",
+      "color": "#e879f9",
+      "history": "Sysyt est baignée dans un crépuscule perpétuel. Le soleil ne se couche jamais complètement sur ses côtes, créant un ciel de pourpre et d'or qui a inspiré des générations de poètes et de musiciens. Les Sysytiens vivent au rythme des marées et des éclipses, vénérant la dualité entre jour et nuit. Leurs cités sont construites sur des promontoires rocheux battus par les vagues, et leurs architectures mêlent pierre noire et vitraux lumineux. C'est à Sysyt que les meilleurs assassins et les plus grands artistes apprennent leur art — souvent les mêmes personnes.",
+      "wx": 62,
+      "wy": 68,
+      "passName": "Sigil Crépusculaire",
+      "passIcon": "🌅",
+      "passCost": 175
+    },
+    {
+      "id": "kuhiria",
+      "name": "Kuhiria",
+      "desc": "Les Terres Ancestrales du Sud",
+      "color": "#fbbf24",
+      "history": "Kuhiria est la plus ancienne terre habitée du monde, bien que peu s'en souviennent. Ses jungles denses et ses plateaux balayés par les vents cachent des temples oubliés et des passages vers des plans d'existence inconnus. Les Kuhiriens sont les gardiens des traditions orales — rien n'est écrit, tout est chanté. Leur connexion au monde spirituel est si forte que les frontières entre rêve et réalité s'estompent souvent. C'est ici que les premiers mantras furent prononcés, et que la méditation devint un art martial.",
+      "wx": 26,
+      "wy": 84,
+      "passName": "Totem Ancestral",
+      "passIcon": "🗿",
+      "passCost": 250
+    }
+  ],
+  "reputationTiers": [
+    {
+      "id": "inconnu",
+      "name": "Inconnu",
+      "icon": "❓",
+      "min": 0,
+      "color": "#64748b"
+    },
+    {
+      "id": "etranger",
+      "name": "Étranger",
+      "icon": "👤",
+      "min": 10,
+      "color": "#94a3b8"
+    },
+    {
+      "id": "connu",
+      "name": "Connu",
+      "icon": "👋",
+      "min": 25,
+      "color": "#22d3ee"
+    },
+    {
+      "id": "estime",
+      "name": "Estimé",
+      "icon": "⭐",
+      "min": 50,
+      "color": "#a78bfa"
+    },
+    {
+      "id": "respecte",
+      "name": "Respecté",
+      "icon": "🏅",
+      "min": 75,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "venere",
+      "name": "Vénéré",
+      "icon": "👑",
+      "min": 100,
+      "color": "#e8a838"
+    },
+    {
+      "id": "legendaire",
+      "name": "Légendaire",
+      "icon": "🔱",
+      "min": 150,
+      "color": "#d946ef"
+    }
+  ]
+}

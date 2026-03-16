@@ -1,0 +1,28 @@
+{
+  "games": [
+    {
+      "id": "minus",
+      "name": "MINUS",
+      "icon": "assets/ealogo.png",
+      "type": "Cartes",
+      "desc": "Jeu de cartes à révélation simultanée.",
+      "status": "discovered"
+    },
+    {
+      "id": "chess-cards",
+      "name": "Chess & Cards",
+      "icon": "assets/ealogo.png",
+      "type": "Combat",
+      "desc": "Jeu de combat 15 cartes par joueur.",
+      "status": "locked"
+    },
+    {
+      "id": "chroma-dices",
+      "name": "Chroma Dices",
+      "icon": "assets/ealogo.png",
+      "type": "Stratégie",
+      "desc": "Jeu de dés colorés sur plateau.",
+      "status": "locked"
+    }
+  ]
+}

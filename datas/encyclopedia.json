@@ -1,0 +1,239 @@
+{
+  "categories": [
+    {
+      "id": "personnages",
+      "name": "Personnages",
+      "icon": "👤"
+    },
+    {
+      "id": "mondes",
+      "name": "Mondes",
+      "icon": "🌍"
+    },
+    {
+      "id": "lieux",
+      "name": "Lieux",
+      "icon": "🏛️"
+    },
+    {
+      "id": "jeux",
+      "name": "Jeux",
+      "icon": "🎲"
+    },
+    {
+      "id": "artefacts",
+      "name": "Artefacts",
+      "icon": "✦"
+    }
+  ],
+  "cards": [
+    {
+      "id": "elrand",
+      "name": "Elrand Avicenna",
+      "category": "personnages",
+      "rarity": "Légendaire",
+      "rarityColor": "#e8a838",
+      "image": "assets/elrand.png",
+      "type": "Architecte des Mondes",
+      "stats": {
+        "CRE": 98,
+        "SAG": 90,
+        "CHA": 85
+      },
+      "description": "Né dans les faubourgs de Kael-Norath, Elrand façonne des univers entiers depuis son atelier de narration. Créateur du Nexus et gardien de l'Hourglass.",
+      "quote": "Chaque mot posé est une brique d'un monde qui attend d'exister."
+    },
+    {
+      "id": "hyandi",
+      "name": "Hyandi Manna",
+      "category": "personnages",
+      "rarity": "Légendaire",
+      "rarityColor": "#c084fc",
+      "image": "assets/hyandi.png",
+      "type": "Tisseuse d'Ombres",
+      "stats": {
+        "CRE": 92,
+        "SAG": 95,
+        "CHA": 88
+      },
+      "description": "Née sous les voûtes cristallines de Shar-Vaëlis, Hyandi tisse l'ombre et la lumière pour révéler la beauté cachée. Co-directrice artistique du portail.",
+      "quote": "L'ombre ne cache rien. Elle donne de la profondeur à ce qui brille."
+    },
+    {
+      "id": "lux",
+      "name": "Lux Manna",
+      "category": "personnages",
+      "rarity": "Légendaire",
+      "rarityColor": "#a78bfa",
+      "image": "assets/lux.png",
+      "type": "Tisserand de Lumières",
+      "stats": {
+        "CRE": 90,
+        "SAG": 93,
+        "CHA": 91
+      },
+      "description": "Élevé par les vents du désert de Shar-Vaëlis, Lux voit le monde comme un tissu de lumières à assembler. Ses yeux violets percent l'obscurité.",
+      "quote": "La lumière ne force rien. Elle révèle ce qui était déjà là."
+    },
+    {
+      "id": "atom",
+      "name": "A.T.O.M.",
+      "category": "personnages",
+      "rarity": "Légendaire",
+      "rarityColor": "#06b6d4",
+      "image": "assets/settings.png",
+      "type": "Architecte Temporel",
+      "stats": {
+        "CRE": 88,
+        "SAG": 99,
+        "CHA": 72
+      },
+      "description": "Entité mécanique née des rouages du Sablier Originel. A.T.O.M. est la mémoire vivante du portail, architecte de la Tour et gardien de l'équilibre.",
+      "quote": "Le temps n'est qu'une variable. Je les contrôle toutes."
+    },
+    {
+      "id": "nelis",
+      "name": "Nelis",
+      "category": "personnages",
+      "rarity": "Épique",
+      "rarityColor": "#06b6d4",
+      "image": "assets/anim.png",
+      "type": "Gardien·ne de l'Heure",
+      "stats": {
+        "CRE": 78,
+        "SAG": 99,
+        "CHA": 80
+      },
+      "description": "Gardien·ne mystérieux·se qui veille aux portes entre les mondes. Nelis guide les voyageurs qui arrivent au portail.",
+      "quote": "Le temps n'est pas une ligne. C'est un labyrinthe."
+    },
+    {
+      "id": "kael-norath",
+      "name": "Kael-Norath",
+      "category": "mondes",
+      "rarity": "Épique",
+      "rarityColor": "#06b6d4",
+      "image": "assets/hourglass.png",
+      "type": "Monde Primordial",
+      "stats": {
+        "DAN": 75,
+        "MYS": 95,
+        "RES": 60
+      },
+      "description": "Monde originel où sont nées les premières histoires. Ses bibliothèques contiennent tous les récits jamais écrits et ceux qui restent à écrire.",
+      "quote": "Ici, les mots ont un poids que nulle balance ne peut mesurer."
+    },
+    {
+      "id": "shar-vaelis",
+      "name": "Shar-Vaëlis",
+      "category": "mondes",
+      "rarity": "Rare",
+      "rarityColor": "#10b981",
+      "image": "assets/settings.png",
+      "type": "Désert de Lumière",
+      "stats": {
+        "DAN": 60,
+        "MYS": 88,
+        "RES": 45
+      },
+      "description": "Un désert infini où les dunes brillent d'une lumière intérieure. Lieu de naissance de Lux et Hyandi Manna, berceau de la philosophie de la Lumière.",
+      "quote": "Chaque grain de sable est une histoire qui attend le vent."
+    },
+    {
+      "id": "academie-voix",
+      "name": "Académie des Voix",
+      "category": "lieux",
+      "rarity": "Rare",
+      "rarityColor": "#10b981",
+      "image": "assets/anim.png",
+      "type": "Institution",
+      "stats": {
+        "SAV": 95,
+        "INF": 80,
+        "ACC": 40
+      },
+      "description": "Prestigieuse académie de Kael-Norath où l'on enseigne les sept formes du récit. C'est ici qu'Elrand a fait ses premières armes.",
+      "quote": "Une voix bien posée peut ébranler un empire."
+    },
+    {
+      "id": "arena-nexus",
+      "name": "Aréna du Nexus",
+      "category": "lieux",
+      "rarity": "Épique",
+      "rarityColor": "#06b6d4",
+      "image": "assets/accueil.png",
+      "type": "Lieu de Combat Ludique",
+      "stats": {
+        "SAV": 70,
+        "INF": 90,
+        "ACC": 75
+      },
+      "description": "Le cœur battant du Nexus Games. C'est dans cette arène que se déroulent les parties de Boardgames et les ascensions de la Tour.",
+      "quote": "Ici, la stratégie est reine et le bluff est roi."
+    },
+    {
+      "id": "minus",
+      "name": "MINUS",
+      "category": "jeux",
+      "rarity": "Légendaire",
+      "rarityColor": "#e8a838",
+      "image": "assets/ealogo.png",
+      "type": "Jeu de Cartes",
+      "stats": {
+        "CPX": 85,
+        "REJ": 95,
+        "STR": 90
+      },
+      "description": "Jeu de cartes à révélation simultanée avec annulation et mécanique de binômes. 2–6 joueurs, deux modes de deck.",
+      "quote": "Le moins peut devenir le plus."
+    },
+    {
+      "id": "nexus-tower-card",
+      "name": "La Tour",
+      "category": "jeux",
+      "rarity": "Épique",
+      "rarityColor": "#06b6d4",
+      "image": "assets/settings.png",
+      "type": "Jeu d'Étages",
+      "stats": {
+        "CPX": 90,
+        "REJ": 80,
+        "STR": 95
+      },
+      "description": "200 étages, 16 personas, un seul objectif : atteindre le sommet. Chaque palier est une épreuve unique.",
+      "quote": "Chaque étage est un monde. Chaque monde est un défi."
+    },
+    {
+      "id": "sablier-originel",
+      "name": "Sablier Originel",
+      "category": "artefacts",
+      "rarity": "Légendaire",
+      "rarityColor": "#e8a838",
+      "image": "assets/hourglass.png",
+      "type": "Artefact Temporel",
+      "stats": {
+        "PUI": 99,
+        "STA": 50,
+        "CTR": 30
+      },
+      "description": "Le Sablier qui a donné son nom au projet Hourglass. On dit qu'il contient le sable de tous les instants jamais vécus.",
+      "quote": "Retourner le sablier, c'est réécrire l'histoire."
+    },
+    {
+      "id": "oeil-omniscient",
+      "name": "Œil Omniscient",
+      "category": "artefacts",
+      "rarity": "Épique",
+      "rarityColor": "#06b6d4",
+      "image": "assets/anim.png",
+      "type": "Artefact de Vision",
+      "stats": {
+        "PUI": 85,
+        "STA": 90,
+        "CTR": 70
+      },
+      "description": "L'Œil à travers lequel sont racontées les histoires d'Hourglass Eye. Il voit tout, comprend tout, mais ne juge jamais.",
+      "quote": "Observer sans juger est la plus haute forme de sagesse."
+    }
+  ]
+}

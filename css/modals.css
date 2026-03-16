@@ -1,0 +1,43 @@
+/* ═══════════ MODALS ═══════════ */
+.modal-overlay {
+  position:absolute; inset:0; z-index:100;
+  background:rgba(0,0,0,.75); backdrop-filter:blur(4px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.modal-box {
+  position:relative; width:100%; max-width:380px; max-height:80vh;
+  overflow-y:auto; scrollbar-width:thin;
+  background:linear-gradient(180deg, var(--stone), var(--dark-stone));
+  border:var(--border-ornate); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow-heavy);
+}
+.modal-close {
+  position:absolute; top:8px; right:8px;
+  width:28px; height:28px; border-radius:50%;
+  background:var(--dark-stone); border:1px solid var(--gold-dark);
+  color:var(--bone-dim); font-size:14px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.modal-close:active { background:var(--blood) }
+
+.confirm-overlay {
+  position:absolute; inset:0; z-index:110;
+  background:rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.confirm-box {
+  background:linear-gradient(180deg, var(--stone), var(--dark-stone));
+  border:var(--border-ornate); border-radius:var(--radius);
+  padding:24px; text-align:center; max-width:300px;
+  box-shadow:var(--shadow-heavy);
+}
+.confirm-text { font-family:var(--font-heading); font-size:13px; color:var(--bone); margin-bottom:16px }
+.confirm-actions { display:flex; gap:10px; justify-content:center }
+.confirm-btn {
+  font-family:var(--font-heading); font-size:11px; font-weight:600;
+  padding:8px 20px; border-radius:var(--radius); cursor:pointer;
+  border:var(--border-gold); transition:all .2s;
+}
+.confirm-yes { background:linear-gradient(145deg, var(--blood), var(--blood-bright)); color:var(--bone) }
+.confirm-no { background:var(--dark-stone); color:var(--bone-dim) }
+.confirm-btn:active { transform:scale(.95) }
+
