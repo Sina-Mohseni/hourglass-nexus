@@ -54,7 +54,7 @@
 /* ═══════════ BGMAP CORNER (fixed bottom-right, z:400) ═══════════ */
 .bgmap-corner {
   position: fixed;
-  bottom: -15px; right: -35px;
+  bottom: -15px; right: 0;
   width: 150px; height: 150px;
   z-index: 400;
   pointer-events: none;
@@ -396,7 +396,7 @@
 /* ═══════════ BGGUILDE CORNER (fixed top-right, miroir de bgmap) ═══════════ */
 .bgguilde-corner {
   position: fixed;
-  top: -15px; right: -35px;
+  top: -15px; right: 0;
   width: 150px; height: 150px;
   z-index: 400;
   pointer-events: none;
