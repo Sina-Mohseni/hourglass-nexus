@@ -31,17 +31,85 @@
   <div class="bg-decor bg-decor-jour" id="bg-decor-jour"></div>
   <div class="bg-decor bg-decor-nuit" id="bg-decor-nuit"></div>
 
-  <!-- ACCUEIL IMAGE — hidden until main app -->
+  <!-- BGCALENDRIER IMAGE — hidden until main app, top-left (miroir de bgprofil) -->
+  <div class="bgcalendrier-corner hidden-until-app" id="bgcalendrier-corner">
+    <img src="assets/menu/bgcalendrier.png" alt="" class="bgcalendrier-corner-img">
+  </div>
+
+  <!-- BGGUILDE IMAGE — hidden until main app, top-right (miroir de bgmap) -->
+  <div class="bgguilde-corner hidden-until-app" id="bgguilde-corner">
+    <img src="assets/menu/bgguilde.png" alt="" class="bgguilde-corner-img">
+  </div>
+
+  <!-- ACCUEIL IMAGE — hidden until main app, below bgguilde, stuck right -->
   <div class="accueil-corner hidden-until-app" id="accueil-corner">
     <img src="assets/accueil.png" alt="Accueil" class="accueil-corner-img">
   </div>
 
   <!-- BGMAP IMAGE — hidden until main app -->
   <div class="bgmap-corner hidden-until-app" id="bgmap-corner">
-    <img src="assets/bgmap.png" alt="" class="bgmap-corner-img">
+    <img src="assets/menu/bgmap.png" alt="" class="bgmap-corner-img">
   </div>
 
-  <!-- BLUE ORB (Mana) — outside sanctuary, in front of bgmap -->
+  <!-- GOLD ORB (Chroniques) — top-left, miroir de la boule rouge -->
+  <div class="orb-wrap orb-topleft-fixed hidden-until-app" id="orb-topleft-gold">
+    <button class="orb-btn" id="orb-gold">
+      <div class="orb-glass orb-glass-gold">
+        <div class="orb-liquid-container" id="orb-gold-fill">
+          <div class="liq-layer liq-base liq-gold-base"></div>
+          <div class="liq-layer liq-wave liq-gold-wave1"></div>
+          <div class="liq-layer liq-wave liq-gold-wave2"></div>
+          <div class="liq-layer liq-wave liq-gold-wave3"></div>
+          <div class="liq-caustics liq-gold-caustics"></div>
+          <div class="liq-bubbles liq-bubbles-gold">
+            <span class="bubble bgo1"></span><span class="bubble bgo2"></span>
+            <span class="bubble bgo3"></span><span class="bubble bgo4"></span>
+            <span class="bubble bgo5"></span><span class="bubble bgo6"></span>
+            <span class="bubble bgo7"></span><span class="bubble bgo8"></span>
+            <span class="bubble bgo9"></span><span class="bubble bgo10"></span>
+            <span class="bubble bgo11"></span><span class="bubble bgo12"></span>
+          </div>
+        </div>
+        <div class="orb-meniscus orb-meniscus-gold"></div>
+        <div class="orb-shine"></div>
+        <div class="orb-shine2"></div>
+      </div>
+      <div class="orb-frame"></div>
+      <div class="orb-frame-outer"></div>
+      <span class="orb-label" id="orb-gold-label">Chroniques</span>
+    </button>
+  </div>
+
+  <!-- MAUVE ORB (Guilde) — top-right, miroir de la boule bleue -->
+  <div class="orb-wrap orb-topright-fixed hidden-until-app" id="orb-topright-mauve">
+    <button class="orb-btn" id="orb-mauve">
+      <div class="orb-glass orb-glass-mauve">
+        <div class="orb-liquid-container" id="orb-mauve-fill">
+          <div class="liq-layer liq-base liq-mauve-base"></div>
+          <div class="liq-layer liq-wave liq-mauve-wave1"></div>
+          <div class="liq-layer liq-wave liq-mauve-wave2"></div>
+          <div class="liq-layer liq-wave liq-mauve-wave3"></div>
+          <div class="liq-caustics liq-mauve-caustics"></div>
+          <div class="liq-bubbles liq-bubbles-mauve">
+            <span class="bubble bmv1"></span><span class="bubble bmv2"></span>
+            <span class="bubble bmv3"></span><span class="bubble bmv4"></span>
+            <span class="bubble bmv5"></span><span class="bubble bmv6"></span>
+            <span class="bubble bmv7"></span><span class="bubble bmv8"></span>
+            <span class="bubble bmv9"></span><span class="bubble bmv10"></span>
+            <span class="bubble bmv11"></span><span class="bubble bmv12"></span>
+          </div>
+        </div>
+        <div class="orb-meniscus orb-meniscus-mauve"></div>
+        <div class="orb-shine"></div>
+        <div class="orb-shine2"></div>
+      </div>
+      <div class="orb-frame"></div>
+      <div class="orb-frame-outer"></div>
+      <span class="orb-label">Guilde</span>
+    </button>
+  </div>
+
+  <!-- BLUE ORB (Mana) — bottom-right, in front of bgmap -->
   <div class="orb-wrap orb-right-fixed hidden-until-app" id="orb-right">
     <button class="orb-btn" data-page="worldmap" id="orb-mana">
       <div class="orb-glass orb-glass-mana">
@@ -149,6 +217,7 @@
         <div class="page" id="page-worldmap"></div>
         <div class="page scrollable" id="page-inventory"></div>
         <div class="page scrollable" id="page-profile"></div>
+        <div class="page scrollable" id="page-guild"></div>
       </div>
 
       <!-- Drawer Backdrop -->
@@ -254,67 +323,9 @@
         <span class="footer-portrait-empty" id="orb-portrait-empty">👤</span>
       </div>
 
-      <!-- BGCAL FRAME — behind calendar orb, below bgprofil -->
-      <div class="bgcal-corner hidden-until-app" id="bgcal-corner">
-        <img src="assets/bgprofil.png" alt="" class="bgcal-frame-img">
-      </div>
-
-      <!-- BGMET FRAME — behind weather orb, below bgmap -->
-      <div class="bgmet-corner hidden-until-app" id="bgmet-corner">
-        <img src="assets/bgmap.png" alt="" class="bgmet-frame-img">
-      </div>
-
-      <!-- GREY ORB — Calendar (bottom-left, above bgcal, below bgprofil) -->
-      <div class="orb-mini orb-mini-left hidden-until-app" id="orb-cal-wrap">
-        <button class="orb-mini-btn" id="orb-cal-btn">
-          <div class="orb-mini-glass">
-            <div class="orb-mini-liquid orb-liq-grey">
-              <div class="liq-layer liq-base liq-grey-base"></div>
-              <div class="liq-layer liq-wave liq-grey-wave1"></div>
-              <div class="liq-layer liq-wave liq-grey-wave2"></div>
-              <div class="liq-caustics liq-grey-caustics"></div>
-              <div class="liq-bubbles liq-bubbles-grey">
-                <span class="bubble bg1"></span><span class="bubble bg2"></span>
-                <span class="bubble bg3"></span><span class="bubble bg4"></span>
-                <span class="bubble bg5"></span><span class="bubble bg6"></span>
-              </div>
-            </div>
-            <div class="orb-meniscus orb-meniscus-grey"></div>
-            <div class="orb-shine"></div>
-          </div>
-          <span class="orb-mini-icon">⏳</span>
-          <div class="orb-mini-frame"></div>
-          <div class="orb-mini-frame-outer"></div>
-        </button>
-      </div>
-
-      <!-- GREY ORB — Weather (bottom-right, above bgmet, below bgmap) -->
-      <div class="orb-mini orb-mini-right hidden-until-app" id="orb-weather-wrap">
-        <button class="orb-mini-btn" id="orb-weather-btn">
-          <div class="orb-mini-glass">
-            <div class="orb-mini-liquid orb-liq-grey">
-              <div class="liq-layer liq-base liq-grey-base"></div>
-              <div class="liq-layer liq-wave liq-grey-wave1"></div>
-              <div class="liq-layer liq-wave liq-grey-wave2"></div>
-              <div class="liq-caustics liq-grey-caustics"></div>
-              <div class="liq-bubbles liq-bubbles-grey">
-                <span class="bubble bg1"></span><span class="bubble bg2"></span>
-                <span class="bubble bg3"></span><span class="bubble bg4"></span>
-                <span class="bubble bg5"></span><span class="bubble bg6"></span>
-              </div>
-            </div>
-            <div class="orb-meniscus orb-meniscus-grey"></div>
-            <div class="orb-shine"></div>
-          </div>
-          <span class="orb-mini-icon" id="orb-weather-icon">🌤️</span>
-          <div class="orb-mini-frame"></div>
-          <div class="orb-mini-frame-outer"></div>
-        </button>
-      </div>
-
       <!-- BGPROFIL FRAME — on top of portrait, clickable -->
       <div class="bgprofil-corner hidden-until-app" id="bgprofil-corner">
-        <img src="assets/bgprofil.png" alt="" class="bgprofil-frame-img">
+        <img src="assets/menu/bgprofil.png" alt="" class="bgprofil-frame-img">
       </div>
 
       <!-- RED ORB (Health) — bottom-left, same level as bgprofil -->

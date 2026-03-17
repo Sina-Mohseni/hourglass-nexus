@@ -17,29 +17,22 @@ function getEventsForDate(y, m, d){
 }
 
 function initCalendar(){
-  var btn = document.getElementById("orb-cal-btn");
-  var wrap = document.getElementById("orb-cal-wrap");
-  function doOpen(e){ e.stopPropagation(); calSelectedEvent=null; setDiamondImage(null,"⏳"); openCalendarPanel() }
-  if(btn) btn.addEventListener("click", doOpen);
-  if(wrap) wrap.addEventListener("click", doOpen);
+  /* Le calendrier est désormais ouvert via la boule Or (gold orb) */
 }
 
 function openCalendarPanel(){
   var html = buildCalendarHTML();
-  setFooterPanelContent(html);
+  setHeaderPanelContent(html);
   wireCalendarActions();
-  /* Toujours ouvrir le panel */
-  var asm = document.getElementById("footer-assembly");
+  /* Ouvrir le header panel */
+  var asm = document.getElementById("header-assembly");
   if(asm){
     asm.classList.add("snapping");
+    asm.style.zIndex = "510";
     asm.style.transform = "translateY(0px)";
-    window._fpOpen = true;
+    window._hpOpen = true;
     setTimeout(function(){ asm.classList.remove("snapping") }, 450);
   }
-  var calBtn = document.getElementById("orb-cal-wrap");
-  if(calBtn) calBtn.classList.add("active");
-  var wBtn = document.getElementById("orb-weather-wrap");
-  if(wBtn) wBtn.classList.remove("active");
 }
 
 function buildCalendarHTML(){
@@ -264,7 +257,7 @@ function buildCalendarEventDetail(ev){
 
 /* ── Wire calendar interactions ── */
 function wireCalendarActions(){
-  var body = document.getElementById("fp-body"); if(!body) return;
+  var body = document.getElementById("hp-body") || document.getElementById("fp-body"); if(!body) return;
 
   // View tabs
   body.querySelectorAll(".cal-tab").forEach(function(tab){

@@ -101,3 +101,60 @@
   z-index: 3;
 }
 
+/* ═══════════ GUILD PAGE ═══════════ */
+.guild-page-wrap { padding: 10px 12px }
+.guild-section { margin-bottom: 16px }
+.guild-section-title {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 8px rgba(201,160,74,.3);
+  margin-bottom: 8px;
+}
+.guild-card {
+  background: linear-gradient(180deg, var(--stone) 0%, var(--dark-stone) 100%);
+  border: var(--border-gold);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.guild-card p {
+  font-family: var(--font-ui);
+  font-size: 11px; color: var(--bone-dim);
+  line-height: 1.5; margin: 0;
+}
+.guild-persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+.guild-persona-card {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 8px 4px;
+  background: linear-gradient(180deg, var(--stone) 0%, var(--dark-stone) 100%);
+  border: var(--border-gold);
+  border-radius: var(--radius);
+  cursor: pointer; transition: all .25s;
+}
+.guild-persona-card.in-team {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(201,160,74,.3);
+}
+.gpc-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid var(--gold-dark);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--abyss);
+  margin-bottom: 4px;
+}
+.gpc-avatar img { width: 100%; height: 100%; object-fit: cover }
+.gpc-avatar span { font-size: 14px; font-weight: 700 }
+.gpc-name {
+  font-family: var(--font-heading); font-size: 9px; font-weight: 700;
+  color: var(--bone); text-align: center; letter-spacing: .5px;
+}
+.gpc-title {
+  font-family: var(--font-ui); font-size: 7px;
+  color: var(--bone-dim); text-align: center;
+}
+

@@ -134,36 +134,22 @@ function generateDailyNews(gameDay){
 }
 
 function initWeather(){
-  var btn = document.getElementById("orb-weather-btn");
-  var wrap = document.getElementById("orb-weather-wrap");
-  updateWeatherIcon();
-  function doOpen(e){ e.stopPropagation(); openDailyInfoPanel() }
-  if(btn) btn.addEventListener("click", doOpen);
-  if(wrap) wrap.addEventListener("click", doOpen);
-}
-
-function updateWeatherIcon(){
-  var ico = document.getElementById("orb-weather-icon");
-  if(!ico) return;
-  ico.textContent = "📰"; // Changed from weather to news icon
+  /* La météo/actu est désormais ouverte via la boule Or (gold orb) */
 }
 
 function openDailyInfoPanel(){
   var html = buildDailyInfoHTML();
-  setFooterPanelContent(html);
+  setHeaderPanelContent(html);
   wireDailyInfoActions();
-  var asm = document.getElementById("footer-assembly");
+  var asm = document.getElementById("header-assembly");
   if(asm){
     asm.classList.add("snapping");
+    asm.style.zIndex = "510";
     asm.style.transform = "translateY(0px)";
-    window._fpOpen = true;
+    window._hpOpen = true;
     setTimeout(function(){ asm.classList.remove("snapping") }, 450);
   }
-  setDiamondImage(null, "📰");
-  var wBtn = document.getElementById("orb-weather-wrap");
-  if(wBtn) wBtn.classList.add("active");
-  var cBtn = document.getElementById("orb-cal-wrap");
-  if(cBtn) cBtn.classList.remove("active");
+  setHeaderDiamondImage(null, "📰");
 }
 
 function buildDailyInfoHTML(){

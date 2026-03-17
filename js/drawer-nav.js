@@ -33,6 +33,7 @@ function updateDrawerContent(){
   else if(curPage === "worldmap") html = buildDrawerWorldmap();
   else if(curPage === "inventory") html = '<div class="dr-concept"><h3>🎒 Inventaire</h3><p>G\u00e9rez votre \u00e9quipement depuis la page inventaire.</p></div>';
   else if(curPage === "profile") html = '<div class="dr-concept"><h3>👤 Profil</h3><p>Modifiez votre personnage directement sur cette page.</p></div>';
+  else if(curPage === "guild") html = '<div class="dr-concept"><h3>🏰 Guilde</h3><p>Gérez votre guilde, consultez les personas et visitez la taverne.</p></div>';
 
   // Set dans le footer panel (pas d'ouverture auto)
   setFooterPanelContent(html);
@@ -206,13 +207,21 @@ function showPage(pid){
   // ★ Worldmap dans le losange sur la page carte
   if(pid === "worldmap") setDiamondImage("assets/worldmap.jpg", null);
 
+  // ★ Guild page — construire le contenu
+  if(pid === "guild"){
+    setDiamondImage(null, "🏰");
+    setTimeout(function(){ buildGuildPage() }, 10);
+  }
+
   $$(".header-btn").forEach(function(b){ var bp=b.getAttribute("data-page"); if(bp) b.classList.toggle("active",bp===pid) });
   var ac = document.getElementById("accueil-corner");
   if(ac) ac.classList.toggle("active", pid==="accueil");
   var fp = document.getElementById("footer-portrait");
   var or_ = document.getElementById("orb-right");
+  var orbMauveWrap = document.getElementById("orb-topright-mauve");
   if(fp) fp.classList.toggle("active-page", pid==="user" || pid==="profile");
   if(or_) or_.classList.toggle("active", pid==="worldmap");
+  if(orbMauveWrap) orbMauveWrap.classList.toggle("active", pid==="guild");
   updateOrbLabels();
 }
 
@@ -423,6 +432,8 @@ function initFooterPanel(){
   });
 }
 
+var goldSection = "calendrier"; // calendrier | actu | meteo
+
 function initNav(){
   $$(".header-btn").forEach(function(b){
     var pg = b.getAttribute("data-page");
@@ -430,10 +441,56 @@ function initNav(){
   });
   var accueilCorner = document.getElementById("accueil-corner");
   if(accueilCorner) accueilCorner.onclick = function(){ showPage("accueil") };
-  // Red orb → user page (seul accès)
+  // Red orb → user page
   var orbHealth = document.getElementById("orb-health");
   if(orbHealth) orbHealth.onclick = function(){ showPage("user") };
+  // Blue orb → worldmap
   var orbMana = document.getElementById("orb-mana");
   if(orbMana) orbMana.onclick = function(){ showPage("worldmap") };
+  // Gold orb → cycle calendrier / actu / météo dans le header panel
+  var orbGold = document.getElementById("orb-gold");
+  if(orbGold) orbGold.onclick = function(){ openGoldOrbPanel() };
+  // Mauve orb → guild page
+  var orbMauve = document.getElementById("orb-mauve");
+  if(orbMauve) orbMauve.onclick = function(){ showPage("guild") };
+}
+
+function openGoldOrbPanel(){
+  // Si le header panel est ouvert, cycler entre les sections
+  if(window._hpOpen){
+    if(goldSection === "calendrier"){ goldSection = "actu"; openDailyInfoPanel(); }
+    else if(goldSection === "actu"){ goldSection = "meteo"; openWeatherPanel(); }
+    else { goldSection = "calendrier"; calSelectedEvent=null; openCalendarPanel(); }
+  } else {
+    goldSection = "calendrier";
+    calSelectedEvent = null;
+    setHeaderDiamondImage(null, "⏳");
+    openCalendarPanel();
+  }
+}
+
+function openWeatherPanel(){
+  var w = getTodayWeather();
+  var night = isNightInGame();
+  var wIcon = night && w.night_variant ? w.night_variant.icon : w.icon;
+  var wName = night && w.night_variant ? w.night_variant.name : w.name;
+  var wDesc = night && w.night_variant ? w.night_variant.desc : w.desc;
+  var wCol = w.color || "#c9a04a";
+  var h = '<div class="daily-info-wrap">'
+    + '<div class="di-weather-card">'
+    + '<div class="di-weather-icon" style="color:'+esc(wCol)+'">'+wIcon+'</div>'
+    + '<div class="di-weather-name" style="color:'+esc(wCol)+'">'+esc(wName)+'</div>'
+    + '<div class="di-weather-desc">'+esc(wDesc)+'</div>'
+    + '</div></div>';
+  setHeaderPanelContent(h);
+  var asm = document.getElementById("header-assembly");
+  if(asm){
+    asm.classList.add("snapping");
+    asm.style.zIndex = "510";
+    asm.style.transform = "translateY(0px)";
+    window._hpOpen = true;
+    setTimeout(function(){ asm.classList.remove("snapping") }, 450);
+  }
+  setHeaderDiamondImage(null, wIcon);
 }
 
