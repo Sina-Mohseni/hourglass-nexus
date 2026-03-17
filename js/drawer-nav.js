@@ -188,6 +188,7 @@ function showPage(pid){
     closeDrawerPanel();
     clearDiamondImage();
     closeFooterPanel();
+    closeHeaderPanel();
     // ★ Sur la page user, activer profil par défaut avec l'avatar dans le losange
     if(pid === "user"){
       userSection = "profil";
@@ -213,6 +214,103 @@ function showPage(pid){
   if(fp) fp.classList.toggle("active-page", pid==="user" || pid==="profile");
   if(or_) or_.classList.toggle("active", pid==="worldmap");
   updateOrbLabels();
+}
+
+/* ══════════ HEADER PANEL DRAG (tiroir qui descend depuis le header) ══════════ */
+function initHeaderPanel(){
+  var diamond = document.getElementById("header-diamond");
+  var panel = document.getElementById("header-panel");
+  if(!diamond || !panel) return;
+
+  var isDrag = false, startY = 0, hasMoved = false, startH = 0;
+
+  /*
+   * Géométrie :
+   * - Panel est un overlay absolu sous le header (top: 50px)
+   * - Fermé : height = 0
+   * - Ouvert : height = maxH (vh - 110)
+   * - Le losange suit le bas du panel via bottom = -(40 + panelH)
+   */
+  function calcMax(){
+    window._hpMax = window.innerHeight - 110;
+    if(window._hpMax < 100) window._hpMax = 100;
+  }
+  calcMax();
+
+  /* Démarrer fermé */
+  window._hpOpen = false;
+  panel.style.height = "0px";
+  updateDiamondPos(0);
+
+  function updateDiamondPos(h){
+    diamond.style.bottom = -(40 + h) + "px";
+  }
+
+  function getY(e){ return (e.touches ? e.touches[0] : e).clientY }
+  function currentH(){ return parseFloat(panel.style.height) || 0 }
+
+  function onStart(e){
+    e.preventDefault(); e.stopPropagation();
+    isDrag = true; hasMoved = false;
+    startY = getY(e);
+    startH = currentH();
+    panel.classList.remove("snapping");
+    diamond.classList.remove("panel-open");
+    document.addEventListener("touchmove", onMove, {passive:false});
+    document.addEventListener("touchend", onEnd, {passive:true});
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onEnd);
+  }
+
+  function onMove(e){
+    if(!isDrag) return; e.preventDefault();
+    var delta = getY(e) - startY;
+    if(Math.abs(delta) > 5) hasMoved = true;
+    var newH = Math.max(0, Math.min(window._hpMax, startH + delta));
+    panel.style.height = newH + "px";
+    updateDiamondPos(newH);
+  }
+
+  function snapTo(h){
+    panel.classList.add("snapping");
+    diamond.classList.add("panel-open");
+    panel.style.height = h + "px";
+    updateDiamondPos(h);
+    window._hpOpen = (h > 0);
+    setTimeout(function(){
+      panel.classList.remove("snapping");
+      diamond.classList.remove("panel-open");
+    }, 450);
+  }
+
+  function onEnd(e){
+    if(!isDrag) return; isDrag = false;
+    var endH = currentH();
+
+    if(!hasMoved){
+      /* Tap = toggle */
+      snapTo(window._hpOpen ? 0 : window._hpMax);
+    } else {
+      /* Snap selon position (>50% = ouvrir) */
+      snapTo(endH > window._hpMax * 0.5 ? window._hpMax : 0);
+    }
+
+    document.removeEventListener("touchmove", onMove);
+    document.removeEventListener("touchend", onEnd);
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup", onEnd);
+  }
+
+  diamond.addEventListener("touchstart", onStart, {passive:false});
+  diamond.addEventListener("mousedown", onStart);
+
+  window.addEventListener("resize", function(){
+    calcMax();
+    if(window._hpOpen){
+      panel.style.height = window._hpMax + "px";
+      updateDiamondPos(window._hpMax);
+    }
+  });
 }
 
 /* ══════════ FOOTER PANEL DRAG (tout l'assembly bouge via translateY) ══════════ */

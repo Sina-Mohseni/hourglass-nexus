@@ -57,6 +57,60 @@ function closeFooterPanel(){
   if(wBtn) wBtn.classList.remove("active");
 }
 
+/* ══════════ HEADER PANEL (le header-assembly bouge en bloc, miroir du footer) ══════════ */
+function setHeaderPanelContent(html){
+  var panel = document.getElementById("header-panel");
+  if(!panel) return;
+  panel.innerHTML = '<button class="hp-close-btn" id="hp-close-btn">\u2715</button>'
+    + '<div class="header-panel-inner" id="hp-body">'+html+'</div>';
+  var closeBtn = document.getElementById("hp-close-btn");
+  if(closeBtn) closeBtn.onclick = function(e){
+    e.stopPropagation();
+    closeHeaderPanel();
+  };
+}
+
+function closeHeaderPanel(){
+  var panel = document.getElementById("header-panel");
+  var diamond = document.getElementById("header-diamond");
+  if(!panel) return;
+  panel.classList.add("snapping");
+  if(diamond) diamond.classList.add("panel-open");
+  panel.style.height = "0px";
+  if(diamond) diamond.style.bottom = "-40px";
+  window._hpOpen = false;
+  setTimeout(function(){
+    panel.classList.remove("snapping");
+    if(diamond) diamond.classList.remove("panel-open");
+  }, 450);
+}
+
+/* ══════════ HEADER DIAMOND IMAGE OVERLAY ══════════ */
+function setHeaderDiamondImage(imgSrc, emoji){
+  var diamond = document.getElementById("header-diamond");
+  if(!diamond) return;
+  var old = diamond.querySelector(".diamond-img-overlay");
+  if(old) old.remove();
+  if(!imgSrc && !emoji){ diamond.classList.remove("has-content"); return }
+  var overlay = document.createElement("div");
+  overlay.className = "diamond-img-overlay";
+  if(imgSrc){
+    overlay.innerHTML = '<img src="'+imgSrc+'">';
+  } else if(emoji){
+    overlay.innerHTML = '<div class="diamond-emoji">'+emoji+'</div>';
+  }
+  diamond.appendChild(overlay);
+  diamond.classList.add("has-content");
+}
+
+function clearHeaderDiamondImage(){
+  var diamond = document.getElementById("header-diamond");
+  if(!diamond) return;
+  var old = diamond.querySelector(".diamond-img-overlay");
+  if(old) old.remove();
+  diamond.classList.remove("has-content");
+}
+
 /* ══════════ SHOW BG IMAGES (accueil.png / bgmap.png) ══════════ */
 function showAppBackgrounds(){
   $$(".hidden-until-app").forEach(function(el){

@@ -11,14 +11,17 @@ document.addEventListener("DOMContentLoaded", async function(){
   initClock();
   initNav();
   initDrawer();
+  initHeaderPanel();
   initFooterPanel();
   initCalendar();
   initWeather();
 
   // Hide all app content until char creation / intro is done
   var contentArea = $(".content-area");
+  var headerAsm = $("#header-assembly");
   var footer = $("#footer-assembly");
   if(contentArea) contentArea.style.visibility = "hidden";
+  if(headerAsm) headerAsm.style.visibility = "hidden";
   if(footer) footer.style.visibility = "hidden";
 
   initLock();
