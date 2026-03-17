@@ -77,9 +77,12 @@
   <div class="sanctuary">
     <div class="screen">
 
-      <!-- ★ HEADER ASSEMBLY — panel + header + losange, tout bouge ensemble (miroir du footer) -->
+      <!-- Spacer pour compenser le header-assembly (absolute) -->
+      <div class="header-spacer"></div>
+
+      <!-- ★ HEADER ASSEMBLY — panel + header + losange, tout bouge ensemble (miroir exact du footer) -->
       <div class="header-assembly" id="header-assembly">
-        <!-- Bloc panel collé au-dessus du header -->
+        <!-- Bloc panel collé au-dessus du header (caché par translateY négatif) -->
         <div class="header-panel" id="header-panel"></div>
         <!-- Header bar — creux profond de 35px -->
         <div class="app-header" id="app-header">

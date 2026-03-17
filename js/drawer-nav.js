@@ -216,46 +216,49 @@ function showPage(pid){
   updateOrbLabels();
 }
 
-/* ══════════ HEADER PANEL DRAG (tiroir qui descend depuis le header) ══════════ */
+/* ══════════ HEADER PANEL DRAG (miroir exact du footer — translateY négatif) ══════════ */
 function initHeaderPanel(){
   var diamond = document.getElementById("header-diamond");
+  var asm = document.getElementById("header-assembly");
   var panel = document.getElementById("header-panel");
-  if(!diamond || !panel) return;
+  if(!diamond || !asm || !panel) return;
 
-  var isDrag = false, startY = 0, hasMoved = false, startH = 0;
+  var isDrag = false, startY = 0, hasMoved = false, startTranslate = 0;
 
   /*
-   * Géométrie :
-   * - Panel est un overlay absolu sous le header (top: 50px)
-   * - Fermé : height = 0
-   * - Ouvert : height = maxH (vh - 110)
-   * - Le losange suit le bas du panel via bottom = -(40 + panelH)
+   * Géométrie (miroir du footer) :
+   * - Assembly = [panel (height=travel)] + [header bar (50px)] + [diamond (absolute)]
+   * - Fermé : translateY(-travel) → panel hors écran au-dessus, header bar en top:0
+   * - Ouvert : translateY(0) → panel visible, header bar descend à y=travel
+   * - Travel = vh - 110 (même que le footer)
    */
-  function calcMax(){
-    window._hpMax = window.innerHeight - 110;
-    if(window._hpMax < 100) window._hpMax = 100;
+  function calcTravel(){
+    window._hpTravel = window.innerHeight - 110;
+    if(window._hpTravel < 100) window._hpTravel = 100;
+    panel.style.height = window._hpTravel + "px";
   }
-  calcMax();
+  calcTravel();
 
   /* Démarrer fermé */
   window._hpOpen = false;
-  panel.style.height = "0px";
-  updateDiamondPos(0);
-
-  function updateDiamondPos(h){
-    diamond.style.bottom = -(40 + h) + "px";
-  }
+  asm.style.transform = "translateY(" + (-window._hpTravel) + "px)";
 
   function getY(e){ return (e.touches ? e.touches[0] : e).clientY }
-  function currentH(){ return parseFloat(panel.style.height) || 0 }
+  function currentT(){
+    var st = asm.style.transform;
+    var m = st.match(/translateY\(([^)]+)px\)/);
+    return m ? parseFloat(m[1]) : -window._hpTravel;
+  }
 
   function onStart(e){
     e.preventDefault(); e.stopPropagation();
     isDrag = true; hasMoved = false;
     startY = getY(e);
-    startH = currentH();
-    panel.classList.remove("snapping");
-    diamond.classList.remove("panel-open");
+    startTranslate = currentT();
+    asm.classList.remove("snapping");
+    /* Fermer le footer-panel et mettre le header au-dessus */
+    if(window._fpOpen) closeFooterPanel();
+    asm.style.zIndex = "510";
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
@@ -266,35 +269,40 @@ function initHeaderPanel(){
     if(!isDrag) return; e.preventDefault();
     var delta = getY(e) - startY;
     if(Math.abs(delta) > 5) hasMoved = true;
-    var newH = Math.max(0, Math.min(window._hpMax, startH + delta));
-    panel.style.height = newH + "px";
-    updateDiamondPos(newH);
-  }
-
-  function snapTo(h){
-    panel.classList.add("snapping");
-    diamond.classList.add("panel-open");
-    panel.style.height = h + "px";
-    updateDiamondPos(h);
-    window._hpOpen = (h > 0);
-    setTimeout(function(){
-      panel.classList.remove("snapping");
-      diamond.classList.remove("panel-open");
-    }, 450);
+    /* Clamp entre -travel (fermé) et 0 (ouvert) */
+    var newT = Math.max(-window._hpTravel, Math.min(0, startTranslate + delta));
+    asm.style.transform = "translateY(" + newT + "px)";
   }
 
   function onEnd(e){
     if(!isDrag) return; isDrag = false;
-    var endH = currentH();
+    var endT = currentT();
+    asm.classList.add("snapping");
 
     if(!hasMoved){
       /* Tap = toggle */
-      snapTo(window._hpOpen ? 0 : window._hpMax);
+      if(window._hpOpen){
+        asm.style.transform = "translateY(" + (-window._hpTravel) + "px)";
+        window._hpOpen = false;
+      } else {
+        asm.style.transform = "translateY(0px)";
+        window._hpOpen = true;
+      }
     } else {
-      /* Snap selon position (>50% = ouvrir) */
-      snapTo(endH > window._hpMax * 0.5 ? window._hpMax : 0);
+      /* Snap : si plus de la moitié tirée → ouvrir */
+      if(endT > -window._hpTravel * 0.5){
+        asm.style.transform = "translateY(0px)";
+        window._hpOpen = true;
+      } else {
+        asm.style.transform = "translateY(" + (-window._hpTravel) + "px)";
+        window._hpOpen = false;
+      }
     }
 
+    setTimeout(function(){
+      asm.classList.remove("snapping");
+      if(!window._hpOpen) asm.style.zIndex = "";
+    }, 450);
     document.removeEventListener("touchmove", onMove);
     document.removeEventListener("touchend", onEnd);
     document.removeEventListener("mousemove", onMove);
@@ -305,11 +313,9 @@ function initHeaderPanel(){
   diamond.addEventListener("mousedown", onStart);
 
   window.addEventListener("resize", function(){
-    calcMax();
-    if(window._hpOpen){
-      panel.style.height = window._hpMax + "px";
-      updateDiamondPos(window._hpMax);
-    }
+    calcTravel();
+    if(!window._hpOpen) asm.style.transform = "translateY(" + (-window._hpTravel) + "px)";
+    else asm.style.transform = "translateY(0px)";
   });
 }
 
@@ -357,6 +363,9 @@ function initFooterPanel(){
     startY = getY(e);
     startTranslate = currentT();
     asm.classList.remove("snapping");
+    /* Fermer le header-panel et mettre le footer au-dessus */
+    if(window._hpOpen) closeHeaderPanel();
+    asm.style.zIndex = "510";
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
@@ -394,7 +403,10 @@ function initFooterPanel(){
       }
     }
 
-    setTimeout(function(){ asm.classList.remove("snapping") }, 450);
+    setTimeout(function(){
+      asm.classList.remove("snapping");
+      if(!window._fpOpen) asm.style.zIndex = "";
+    }, 450);
     document.removeEventListener("touchmove", onMove);
     document.removeEventListener("touchend", onEnd);
     document.removeEventListener("mousemove", onMove);
