@@ -71,8 +71,8 @@
 /* ══════════ BGPROFIL FRAME (on top of portrait, clickable) ══════════ */
 .bgprofil-corner {
   position: fixed;
-  bottom: -20px; left: -15px;
-  width: 200px; height: 200px;
+  bottom: -10px; left: -8px;
+  width: 100px; height: 100px;
   z-index: 501;
   pointer-events: none;
 }
