@@ -50,7 +50,10 @@ function closeFooterPanel(){
   var travel = window._fpTravel || (window.innerHeight - 100);
   asm.style.transform = "translateY(" + travel + "px)";
   window._fpOpen = false;
-  setTimeout(function(){ asm.classList.remove("snapping") }, 450);
+  setTimeout(function(){
+    asm.classList.remove("snapping");
+    asm.style.zIndex = "";
+  }, 450);
   var calBtn = document.getElementById("orb-cal-wrap");
   var wBtn = document.getElementById("orb-weather-wrap");
   if(calBtn) calBtn.classList.remove("active");
@@ -61,6 +64,8 @@ function closeFooterPanel(){
 function setHeaderPanelContent(html){
   var panel = document.getElementById("header-panel");
   if(!panel) return;
+  var h = window._hpTravel || (window.innerHeight - 110);
+  panel.style.height = h + "px";
   panel.innerHTML = '<button class="hp-close-btn" id="hp-close-btn">\u2715</button>'
     + '<div class="header-panel-inner" id="hp-body">'+html+'</div>';
   var closeBtn = document.getElementById("hp-close-btn");
@@ -71,17 +76,15 @@ function setHeaderPanelContent(html){
 }
 
 function closeHeaderPanel(){
-  var panel = document.getElementById("header-panel");
-  var diamond = document.getElementById("header-diamond");
-  if(!panel) return;
-  panel.classList.add("snapping");
-  if(diamond) diamond.classList.add("panel-open");
-  panel.style.height = "0px";
-  if(diamond) diamond.style.bottom = "-40px";
+  var asm = document.getElementById("header-assembly");
+  if(!asm) return;
+  asm.classList.add("snapping");
+  var travel = window._hpTravel || (window.innerHeight - 110);
+  asm.style.transform = "translateY(" + (-travel) + "px)";
   window._hpOpen = false;
   setTimeout(function(){
-    panel.classList.remove("snapping");
-    if(diamond) diamond.classList.remove("panel-open");
+    asm.classList.remove("snapping");
+    asm.style.zIndex = "";
   }, 450);
 }
 
