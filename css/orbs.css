@@ -26,7 +26,7 @@
 /* Gold orb — fixed top-left (miroir de la rouge) */
 .orb-topleft-fixed {
   position: fixed;
-  top: 5px; left: 5px;
+  top: 3px; left: 5px;
   z-index: 502;
   pointer-events: auto;
 }
@@ -36,7 +36,7 @@
 /* Mauve orb — fixed top-right (miroir de la bleue) */
 .orb-topright-fixed {
   position: fixed;
-  top: 5px; right: 4px;
+  top: 3px; right: 4px;
   z-index: 502;
   pointer-events: auto;
 }
