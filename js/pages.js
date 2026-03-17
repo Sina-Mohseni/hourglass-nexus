@@ -547,3 +547,59 @@ function buildInventoryPage(){
   });
 }
 
+/* ══════════ GUILD PAGE ══════════ */
+function buildGuildPage(){
+  var p = $("#page-guild"); if(!p) return;
+  var personas = getPersonas ? getPersonas() : [];
+  var u = loadUser();
+
+  var h = '<div class="guild-page-wrap">';
+
+  /* — En-tête guilde — */
+  h += '<div class="story-card" style="text-align:center">'
+    + '<div style="font-size:36px;margin-bottom:6px">\ud83c\udff0</div>'
+    + '<div class="story-card-title">La Guilde</div>'
+    + '<p>Le refuge des \u00e2mes errantes, l\'\u00e9picentre des alliances et des intrigues.</p></div>';
+
+  /* — Personas — */
+  h += '<div class="guild-section"><div class="guild-section-title">\u2694\ufe0f Personas</div>';
+  if(personas.length > 0){
+    h += '<div class="guild-persona-grid">';
+    personas.forEach(function(pe){
+      var inTeam = teamIds.indexOf(pe.id) !== -1;
+      h += '<div class="guild-persona-card'+(inTeam?' in-team':'')+'" data-pid="'+esc(pe.id)+'">'
+        + '<div class="gpc-avatar" style="border-color:'+esc(pe.color)+'">';
+      if(pe.avatar) h += '<img src="'+esc(pe.avatar)+'">';
+      else h += '<span style="color:'+esc(pe.color)+'">'+pe.name.substring(0,2).toUpperCase()+'</span>';
+      h += '</div><div class="gpc-name">'+esc(pe.name)+'</div>'
+        + '<div class="gpc-title">'+esc(pe.title||"")+'</div></div>';
+    });
+    h += '</div>';
+  } else {
+    h += '<p style="color:var(--bone-dim);font-size:11px;text-align:center">Aucun persona d\u00e9couvert.</p>';
+  }
+  h += '</div>';
+
+  /* — Camp — */
+  h += '<div class="guild-section"><div class="guild-section-title">\u26fa Camp</div>'
+    + '<div class="guild-card"><p>Le camp de votre guilde est votre base d\'op\u00e9rations. '
+    + 'Consolidez vos ressources et pr\u00e9parez vos exp\u00e9ditions.</p></div></div>';
+
+  /* — Guilde générale — */
+  h += '<div class="guild-section"><div class="guild-section-title">\ud83d\udcdc Guilde G\u00e9n\u00e9rale</div>'
+    + '<div class="guild-card"><p>Le tableau des qu\u00eates et des contrats. '
+    + 'Acceptez des missions pour gagner en r\u00e9putation.</p></div></div>';
+
+  /* — Marché — */
+  h += '<div class="guild-section"><div class="guild-section-title">\ud83d\udcb0 March\u00e9</div>'
+    + '<div class="guild-card"><p>\u00c9changez, achetez et vendez des objets rares avec les marchands ambulants.</p></div></div>';
+
+  /* — Taverne — */
+  h += '<div class="guild-section"><div class="guild-section-title">\ud83c\udf7a Taverne</div>'
+    + '<div class="guild-card"><p>L\'\u00e2tre cr\u00e9pite, la bi\u00e8re coule. '
+    + '\u00c9coutez les rumeurs et recrutez des compagnons.</p></div></div>';
+
+  h += '</div>';
+  p.innerHTML = h;
+}
+

@@ -54,10 +54,6 @@ function closeFooterPanel(){
     asm.classList.remove("snapping");
     asm.style.zIndex = "";
   }, 450);
-  var calBtn = document.getElementById("orb-cal-wrap");
-  var wBtn = document.getElementById("orb-weather-wrap");
-  if(calBtn) calBtn.classList.remove("active");
-  if(wBtn) wBtn.classList.remove("active");
 }
 
 /* ══════════ HEADER PANEL (le header-assembly bouge en bloc, miroir du footer) ══════════ */
