@@ -1,7 +1,7 @@
 /* ═══════════ ACCUEIL CORNER (fixed right, below bgguilde, z:399) ═══════════ */
 .accueil-corner {
   position: fixed;
-  bottom: 90px; right: 0;
+  bottom: 120px; right: 0;
   z-index: 399;
   cursor: pointer;
   pointer-events: auto;
