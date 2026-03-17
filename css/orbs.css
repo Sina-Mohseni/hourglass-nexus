@@ -6,7 +6,7 @@
 .orb-right { margin-right: 0; margin-bottom: 2px }
 .orb-left-fixed {
   position: fixed;
-  bottom: -5px; left: 5px;
+  bottom: 12px; left: 12px;
   z-index: 502;
   pointer-events: auto;
 }
@@ -16,7 +16,7 @@
 /* Blue orb — fixed bottom-right, mirrors red orb */
 .orb-right-fixed {
   position: fixed;
-  bottom: -5px; right: 4px;
+  bottom: 12px; right: 12px;
   z-index: 502;
   pointer-events: auto;
 }
@@ -26,7 +26,7 @@
 /* Gold orb — fixed top-left (miroir de la rouge) */
 .orb-topleft-fixed {
   position: fixed;
-  top: 3px; left: 5px;
+  top: 12px; left: 12px;
   z-index: 502;
   pointer-events: auto;
 }
@@ -36,7 +36,7 @@
 /* Mauve orb — fixed top-right (miroir de la bleue) */
 .orb-topright-fixed {
   position: fixed;
-  top: 3px; right: 4px;
+  top: 12px; right: 12px;
   z-index: 502;
   pointer-events: auto;
 }
@@ -44,7 +44,7 @@
 .orb-topright-fixed .orb-frame-outer { display: none }
 
 .orb-btn {
-  position: relative; width: 90px; height: 90px;
+  position: relative; width: 115px; height: 115px;
   background: none; border: none; cursor: pointer; padding: 0;
   transition: transform .15s;
   z-index: 3;
