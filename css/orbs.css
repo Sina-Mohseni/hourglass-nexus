@@ -54,7 +54,7 @@
 /* ═══════════ BGMAP CORNER (fixed bottom-right, z:400) ═══════════ */
 .bgmap-corner {
   position: fixed;
-  bottom: -5px; right: -5px;
+  bottom: 0; right: 0;
   width: 150px; height: 150px;
   z-index: 400;
   pointer-events: none;
@@ -381,7 +381,7 @@
 /* ═══════════ BGCALENDRIER CORNER (fixed top-left, miroir de bgprofil) ═══════════ */
 .bgcalendrier-corner {
   position: fixed;
-  top: -5px; left: -5px;
+  top: 0; left: 0;
   width: 150px; height: 150px;
   z-index: 400;
   pointer-events: none;
@@ -397,7 +397,7 @@
 /* ═══════════ BGGUILDE CORNER (fixed top-right, miroir de bgmap) ═══════════ */
 .bgguilde-corner {
   position: fixed;
-  top: -5px; right: -5px;
+  top: 0; right: 0;
   width: 150px; height: 150px;
   z-index: 400;
   pointer-events: none;
