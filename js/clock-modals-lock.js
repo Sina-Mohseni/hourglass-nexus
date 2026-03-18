@@ -88,11 +88,38 @@ function initLock(){
     var hc=gc(ho); sp(hc.x,hc.y);
     gi.classList.remove("dragging"); gi.classList.add("awakened");
     var label = gi.querySelector(".lock-guide-label");
-    if(label) label.textContent = "Éveillé";
+    if(label) label.textContent = "\u00c9veill\u00e9";
 
     // 1. Pulse
     var ring=document.createElement("div"); ring.className="pulse-ring"; gi.appendChild(ring); setTimeout(function(){ring.remove()},600);
 
+    // Check intro mode
+    var mode = window._introMode || "new";
+
+    if(mode === "resume"){
+      // Resume: shorter animation, then resume intro
+      var lockContent = document.getElementById("lock-content");
+      var logoFixed = document.getElementById("lock-logo-fixed");
+      if(lockContent) setTimeout(function(){ lockContent.style.transition = "opacity .4s"; lockContent.style.opacity = "0" }, 400);
+      if(logoFixed) setTimeout(function(){ logoFixed.style.transition = "opacity .4s"; logoFixed.style.opacity = "0" }, 300);
+
+      setTimeout(function(){
+        lk.style.transition = "opacity .6s ease";
+        lk.style.opacity = "0";
+        var particles = lk.querySelector(".lock-particles");
+        if(particles){ particles.style.transition = "opacity .3s"; particles.style.opacity = "0" }
+      }, 800);
+
+      setTimeout(function(){ lk.remove() }, 1400);
+
+      setTimeout(function(){
+        acDB.set("ac_unlocked","1");
+        showResumeIntro();
+      }, 1500);
+      return;
+    }
+
+    // New voyage: full animation to char create
     // Préparer : cacher portrait et titre du charcreate
     var ccPortrait = document.getElementById("cc-guide-portrait");
     var ccTitle = document.getElementById("cc-guide-title");
@@ -176,7 +203,7 @@ function initLock(){
       var c=gc(gi),p=gxy(e); off.x=c.x-p.x; off.y=c.y-p.y;
       isDrag=true; gi.classList.add("dragging");
       var label = gi.querySelector(".lock-guide-label");
-      if(label) label.textContent = "Réveillé !";
+      if(label) label.textContent = "R\u00e9veill\u00e9 !";
       var mv=tp==="pointer"?"pointermove":tp==="touch"?"touchmove":"mousemove";
       var ends=tp==="pointer"?["pointerup","pointercancel"]:tp==="touch"?["touchend","touchcancel"]:["mouseup"];
       function onM(e){ if(!isDrag) return; e.preventDefault(); var p=gxy(e); sp(p.x+off.x,p.y+off.y) }
@@ -204,6 +231,6 @@ function initLock(){
 
 /* ══════════ CHARACTER CREATION GATE ══════════ */
 function checkCharCreate(){
-  // Always show the intro screen with New / Resume choices
-  initCharCreate();
+  // For new voyage, always start fresh char creation (skip the choice phase)
+  initCharCreateNewVoyage();
 }

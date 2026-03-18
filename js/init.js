@@ -24,5 +24,13 @@ document.addEventListener("DOMContentLoaded", async function(){
   if(headerAsm) headerAsm.style.visibility = "hidden";
   if(footer) footer.style.visibility = "hidden";
 
-  initLock();
+  // New intro flow: Loading → Main Menu → Lock → CharCreate/Resume
+  initLoadingScreen(function(){
+    initMainMenu(
+      // Nouveau Voyage
+      function(){ showLockForNewVoyage() },
+      // Reprendre le Voyage
+      function(){ showLockForResume() }
+    );
+  });
 });
