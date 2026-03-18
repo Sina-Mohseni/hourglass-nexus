@@ -28,6 +28,70 @@ function initCharCreate(){
   var screen = document.getElementById("charcreate-screen");
   if(!screen) return;
 
+  _prepareCharCreateScreen(screen);
+
+  ccDialogIdx = 0;
+  ccPhase = "intro";
+  showCCDialog(CC_INTRO[0]);
+  showCCTapHint(true);
+
+  var zone = document.querySelector(".cc-dialog-zone");
+  if(zone) zone.onclick = function(e){
+    if(e.target.closest("input, button, .cc-avatar-ring, .cc-avatar-label")) return;
+    advanceCCDialog();
+  };
+
+  // Wire choice buttons (legacy, kept for fallback)
+  var newBtn = document.getElementById("cc-choice-new");
+  if(newBtn) newBtn.onclick = function(){
+    ccPhase = "creation";
+    ccDialogIdx = 0;
+    hideCCChoiceZone();
+    showCCDialog(CC_CREATION[0]);
+    showCCTapHint(true);
+  };
+  var resumeBtn = document.getElementById("cc-choice-resume");
+  var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
+  if(resumeBtn && hasSave) resumeBtn.disabled = false;
+  if(resumeBtn) resumeBtn.onclick = function(){
+    if(resumeBtn.disabled) return;
+    if(acDB.get("ac_saveExists") === "1"){
+      loadGameSave();
+    } else {
+      var screen = document.getElementById("charcreate-screen");
+      if(screen){
+        screen.classList.add("exiting");
+        setTimeout(function(){ screen.remove(); enterMainApp() }, 600);
+      }
+    }
+  };
+}
+
+/* New voyage: skip intro/choice, go straight to creation dialog */
+function initCharCreateNewVoyage(){
+  var screen = document.getElementById("charcreate-screen");
+  if(!screen) return;
+
+  _prepareCharCreateScreen(screen);
+
+  // Hide the choice zone since we already chose from main menu
+  var choiceZone = document.getElementById("cc-choice-zone");
+  if(choiceZone) choiceZone.style.display = "none";
+
+  // Start at creation phase directly
+  ccDialogIdx = 0;
+  ccPhase = "creation";
+  showCCDialog(CC_CREATION[0]);
+  showCCTapHint(true);
+
+  var zone = document.querySelector(".cc-dialog-zone");
+  if(zone) zone.onclick = function(e){
+    if(e.target.closest("input, button, .cc-avatar-ring, .cc-avatar-label")) return;
+    advanceCCDialog();
+  };
+}
+
+function _prepareCharCreateScreen(screen){
   // Inject CC region/city animations if not already present
   if(!document.getElementById("cc-extra-styles")){
     var sty = document.createElement("style");
@@ -45,11 +109,6 @@ function initCharCreate(){
   if(guide && guide.avatar && portraitEl) portraitEl.innerHTML = '<img src="'+esc(guide.avatar)+'">';
   if(guide && titleEl) titleEl.textContent = guide.name;
 
-  // Check if a save or a created character exists
-  var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
-  var resumeBtn = document.getElementById("cc-choice-resume");
-  if(resumeBtn && hasSave) resumeBtn.disabled = false;
-
   // Dialog zone starts hidden, fades in
   var zone = document.querySelector(".cc-dialog-zone");
   if(zone){
@@ -61,40 +120,6 @@ function initCharCreate(){
       zone.style.transform = "translateY(0)";
     }, 400);
   }
-
-  ccDialogIdx = 0;
-  ccPhase = "intro";
-  showCCDialog(CC_INTRO[0]);
-  showCCTapHint(true);
-
-  // Click anywhere in dialog zone to advance
-  if(zone) zone.onclick = function(e){
-    if(e.target.closest("input, button, .cc-avatar-ring, .cc-avatar-label")) return;
-    advanceCCDialog();
-  };
-
-  // Wire choice buttons
-  var newBtn = document.getElementById("cc-choice-new");
-  if(newBtn) newBtn.onclick = function(){
-    ccPhase = "creation";
-    ccDialogIdx = 0;
-    hideCCChoiceZone();
-    showCCDialog(CC_CREATION[0]);
-    showCCTapHint(true);
-  };
-  if(resumeBtn) resumeBtn.onclick = function(){
-    if(resumeBtn.disabled) return;
-    // If a full save exists, restore it; otherwise just enter main app
-    if(acDB.get("ac_saveExists") === "1"){
-      loadGameSave();
-    } else {
-      var screen = document.getElementById("charcreate-screen");
-      if(screen){
-        screen.classList.add("exiting");
-        setTimeout(function(){ screen.remove(); enterMainApp() }, 600);
-      }
-    }
-  };
 }
 
 function showCCDialog(html){

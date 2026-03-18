@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/worldmap.css">
   <link rel="stylesheet" href="css/modals.css">
   <link rel="stylesheet" href="css/lockscreen.css">
+  <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/charcreate.css">
   <link rel="stylesheet" href="css/profile.css">
 </head>
@@ -424,8 +425,55 @@
         <img src="assets/ealogo.png" alt="" class="cc-watermark">
       </div>
 
+      <!-- ═══════ LOADING SCREEN ═══════ -->
+      <div class="loading-screen" id="loading-screen">
+        <div class="loading-particles"></div>
+        <div class="loading-vignette"></div>
+        <div class="loading-content">
+          <img src="assets/ealogo.png" alt="" class="loading-logo">
+          <h1 class="loading-title">HOURGLASS NEXUS</h1>
+          <div class="loading-bar-track">
+            <div class="loading-bar-fill" id="loading-bar-fill"></div>
+          </div>
+          <p class="loading-subtitle" id="loading-subtitle">Initialisation du Nexus…</p>
+        </div>
+      </div>
+
+      <!-- ═══════ MAIN MENU ═══════ -->
+      <div class="main-menu" id="main-menu" style="display:none">
+        <div class="mm-particles"></div>
+        <div class="mm-vignette"></div>
+        <div class="mm-bg-glow"></div>
+        <div class="mm-content">
+          <img src="assets/ealogo.png" alt="" class="mm-logo">
+          <h1 class="mm-title">HOURGLASS NEXUS</h1>
+          <p class="mm-tagline">Un voyage à travers les abysses du temps</p>
+          <button class="mm-start-btn" id="mm-start-btn">
+            <span class="mm-start-text">Appuyer pour commencer</span>
+          </button>
+          <div class="mm-menu-choices" id="mm-menu-choices" style="display:none">
+            <button class="mm-choice-btn mm-choice-new" id="mm-choice-new">
+              <span class="mm-choice-icon">✦</span>
+              <span class="mm-choice-label">Nouveau Voyage</span>
+            </button>
+            <button class="mm-choice-btn mm-choice-resume" id="mm-choice-resume" disabled>
+              <span class="mm-choice-icon">↻</span>
+              <span class="mm-choice-label">Reprendre le Voyage</span>
+            </button>
+          </div>
+        </div>
+        <button class="mm-music-btn" id="mm-music-btn" title="Musique">
+          <svg class="mm-music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+          <div class="mm-music-bar" id="mm-music-bar"></div>
+        </button>
+      </div>
+
       <!-- ═══════ LOCK SCREEN ═══════ -->
-      <div class="lock-screen" id="lock-screen">
+      <div class="lock-screen" id="lock-screen" style="display:none">
         <div class="lock-particles" id="lock-particles"></div>
         <div class="lock-content" id="lock-content">
           <h2 class="lock-title">HOURGLASS NEXUS</h2>
@@ -445,6 +493,12 @@
 
     </div>
   </div>
+  <!-- Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music/theme.mp3" type="audio/mpeg">
+    <source src="assets/music/theme.ogg" type="audio/ogg">
+  </audio>
+
   <!-- JS Split Files (order matters) -->
   <script src="js/storage.js"></script>
   <script src="js/state.js"></script>
@@ -459,6 +513,7 @@
   <script src="js/weather-news.js"></script>
   <script src="js/calendar.js"></script>
   <script src="js/clock-modals-lock.js"></script>
+  <script src="js/intro.js"></script>
   <script src="js/init.js"></script>
 </body>
 </html>
