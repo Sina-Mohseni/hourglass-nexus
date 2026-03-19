@@ -99,8 +99,8 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  // Music toggle
-  initMusicToggle(musicBtn);
+  // Music: autoplay + toggle
+  initMusicToggle(musicBtn, true);
 }
 
 function closeMainMenu(cb){
@@ -114,24 +114,45 @@ function closeMainMenu(cb){
 }
 
 /* ── Music Toggle ── */
-function initMusicToggle(btn){
+function initMusicToggle(btn, autoplay){
   if(!btn) return;
   var audio = document.getElementById("bg-music");
   if(!audio) return;
 
-  btn.onclick = function(){
+  function playMusic(){
+    audio.volume = 0.4;
+    audio.play().then(function(){
+      introMusicPlaying = true;
+      btn.classList.add("active");
+    }).catch(function(){
+      // Autoplay blocked by browser — start on first user interaction
+      introMusicPlaying = false;
+      btn.classList.remove("active");
+      function resumeOnClick(){
+        audio.volume = 0.4;
+        audio.play().then(function(){
+          introMusicPlaying = true;
+          btn.classList.add("active");
+        }).catch(function(){});
+        document.removeEventListener("click", resumeOnClick);
+        document.removeEventListener("touchstart", resumeOnClick);
+      }
+      document.addEventListener("click", resumeOnClick, {once: true});
+      document.addEventListener("touchstart", resumeOnClick, {once: true});
+    });
+  }
+
+  // Autoplay on init
+  if(autoplay) playMusic();
+
+  btn.onclick = function(e){
+    e.stopPropagation();
     if(introMusicPlaying){
       audio.pause();
       introMusicPlaying = false;
       btn.classList.remove("active");
     } else {
-      audio.volume = 0.4;
-      audio.play().then(function(){
-        introMusicPlaying = true;
-        btn.classList.add("active");
-      }).catch(function(){
-        // Autoplay blocked — ignore silently
-      });
+      playMusic();
     }
   };
 }
