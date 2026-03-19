@@ -72,7 +72,7 @@
 .bgprofil-corner {
   position: fixed;
   bottom: 0; left: 0;
-  width: 150px; height: 150px;
+  width: 75px; height: 75px;
   z-index: 501;
   pointer-events: none;
 }
