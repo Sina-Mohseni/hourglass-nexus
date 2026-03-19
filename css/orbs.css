@@ -9,7 +9,7 @@
   bottom: -3px; left: 2px;
   z-index: 502;
   pointer-events: auto;
-  transform: scale(0.5);
+  transform: scale(0.75);
   transform-origin: bottom left;
 }
 .orb-left-fixed .orb-frame,
@@ -21,7 +21,7 @@
   bottom: -3px; right: -8px;
   z-index: 502;
   pointer-events: auto;
-  transform: scale(0.5);
+  transform: scale(0.75);
   transform-origin: bottom right;
 }
 .orb-right-fixed .orb-frame,
@@ -33,7 +33,7 @@
   top: -3px; left: 2px;
   z-index: 502;
   pointer-events: auto;
-  transform: scale(0.5);
+  transform: scale(0.75);
   transform-origin: top left;
 }
 .orb-topleft-fixed .orb-frame,
@@ -45,7 +45,7 @@
   top: -3px; right: -8px;
   z-index: 502;
   pointer-events: auto;
-  transform: scale(0.5);
+  transform: scale(0.75);
   transform-origin: top right;
 }
 .orb-topright-fixed .orb-frame,
@@ -63,7 +63,7 @@
 .bgmap-corner {
   position: fixed;
   bottom: 0; right: 0;
-  width: 75px; height: 75px;
+  width: 113px; height: 113px;
   z-index: 400;
   pointer-events: none;
 }
@@ -390,7 +390,7 @@
 .bgcalendrier-corner {
   position: fixed;
   top: 0; left: 0;
-  width: 75px; height: 75px;
+  width: 113px; height: 113px;
   z-index: 400;
   pointer-events: none;
 }
@@ -406,7 +406,7 @@
 .bgguilde-corner {
   position: fixed;
   top: 0; right: 0;
-  width: 75px; height: 75px;
+  width: 113px; height: 113px;
   z-index: 400;
   pointer-events: none;
 }
