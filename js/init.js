@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", async function(){
   if(headerAsm) headerAsm.style.visibility = "hidden";
   if(footer) footer.style.visibility = "hidden";
 
+  // Hide body ambient backgrounds during intro
+  document.body.classList.add("intro-active");
+
   // New intro flow: Loading → Main Menu → Lock → CharCreate/Resume
   initLoadingScreen(function(){
     initMainMenu(

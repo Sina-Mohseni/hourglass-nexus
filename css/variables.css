@@ -70,6 +70,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Hide ambient backgrounds during intro screens */
+body.intro-active::before,
+body.intro-active::after { display: none; }
+
 /* Stone/fire ambient background */
 body::before {
   content: '';
