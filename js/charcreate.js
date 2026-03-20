@@ -92,6 +92,7 @@ function initCharCreateNewVoyage(){
 }
 
 function _prepareCharCreateScreen(screen){
+  screen.style.display = "";
   // Inject CC region/city animations if not already present
   if(!document.getElementById("cc-extra-styles")){
     var sty = document.createElement("style");
