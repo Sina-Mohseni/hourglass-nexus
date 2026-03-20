@@ -72,7 +72,8 @@ body {
 
 /* Hide ambient backgrounds during intro screens */
 body.intro-active::before,
-body.intro-active::after { display: none; }
+body.intro-active::after,
+body.intro-active .bg-decor { display: none; }
 
 /* Stone/fire ambient background */
 body::before {
