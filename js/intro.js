@@ -72,19 +72,28 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
   /* ---- Start video + music together ---- */
+  var musicStarted = false;
+
+  function startMusic(){
+    if(!audio) return;
+    audio.currentTime = 0;
+    audio.volume = _musicMuted ? 0 : 0.4;
+    var p = audio.play();
+    if(p && p.then){
+      p.then(function(){ musicStarted = true; })
+       .catch(function(){ musicStarted = false; });
+    }
+  }
+
   function playAll(){
     if(video){
       video.currentTime = 0;
       video.play();
     }
-    if(audio){
-      audio.currentTime = 0;
-      audio.volume = 0.4;
-      audio.play();
-    }
+    startMusic();
   }
 
-  // Attempt autoplay (works in Capacitor, may be blocked in browser)
+  // Attempt autoplay (works in Capacitor, blocked in browser until user interaction)
   playAll();
 
   /* ---- Show choices ---- */
@@ -105,7 +114,8 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- "Entrer" = user interaction → guarantees play ---- */
   if(enterBtn){
     enterBtn.onclick = function(){
-      playAll();
+      // User interaction → music is guaranteed to play now
+      if(!musicStarted) startMusic();
       showChoices();
     };
   }
