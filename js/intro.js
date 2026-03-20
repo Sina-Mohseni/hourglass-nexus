@@ -74,16 +74,8 @@ function startMusic(){
   audio.play().then(function(){
     introMusicPlaying = true;
   }).catch(function(){
-    // Autoplay blocked by browser — will start on first user interaction
-    // (handled by volume button click or any touch/click on the page)
-    document.addEventListener("click", function onFirstClick(){
-      ensureMusicPlaying();
-      document.removeEventListener("click", onFirstClick);
-    });
-    document.addEventListener("touchstart", function onFirstTouch(){
-      ensureMusicPlaying();
-      document.removeEventListener("touchstart", onFirstTouch);
-    });
+    // Autoplay blocked by browser — music will start on "Entrer" click
+    // or video end (both call ensureMusicPlaying)
   });
 }
 
@@ -108,8 +100,13 @@ function initVolumeToggle(){
   }
 
   btn.onclick = function(){
-    // Always ensure music is playing first (handles autoplay block)
-    ensureMusicPlaying();
+    if(!introMusicPlaying){
+      // First click: just start the music (don't toggle)
+      ensureMusicPlaying();
+      introMusicMuted = false;
+      updateIcon();
+      return;
+    }
 
     if(!introMusicMuted){
       audio.volume = 0;
@@ -163,6 +160,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   // When video ends → show choices with fade (if not already shown)
   if(video){
     video.addEventListener("ended", function(){
+      ensureMusicPlaying();
       showChoices();
     });
   }
