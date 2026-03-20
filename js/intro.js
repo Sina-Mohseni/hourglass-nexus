@@ -4,7 +4,7 @@
    Loading Screen → Main Menu → Lock Screen → CharCreate / Resume
    ═══════════════════════════════════════════════════════════════ */
 
-var introMusicMuted = false;
+var _musicMuted = false;
 
 /* ── Loading Screen ── */
 function initLoadingScreen(onDone){
@@ -13,7 +13,6 @@ function initLoadingScreen(onDone){
   var sub = document.getElementById("loading-subtitle");
   if(!screen){ onDone(); return }
 
-  // 6-7s first visit, 2-3s on reload
   var hasVisited = acDB.get("ac_hasVisited") === "1";
   var duration = hasVisited ? (2000 + Math.random() * 1000) : (6000 + Math.random() * 1000);
 
@@ -33,7 +32,6 @@ function initLoadingScreen(onDone){
     }
   }, msgInterval);
 
-  // Animate bar
   var start = Date.now();
   function tick(){
     var elapsed = Date.now() - start;
@@ -54,62 +52,51 @@ function initLoadingScreen(onDone){
   requestAnimationFrame(tick);
 }
 
-/* ── Volume Toggle (mute/unmute only — music is always playing) ── */
-function initVolumeToggle(){
-  var btn = document.getElementById("mm-volume-btn");
-  var iconOn = document.getElementById("mm-volume-icon-on");
-  var iconOff = document.getElementById("mm-volume-icon-off");
-  var audio = document.getElementById("bg-music");
-  if(!btn || !audio) return;
-
-  function updateIcon(){
-    if(introMusicMuted){
-      if(iconOn) iconOn.style.display = "none";
-      if(iconOff) iconOff.style.display = "";
-      btn.classList.add("muted");
-    } else {
-      if(iconOn) iconOn.style.display = "";
-      if(iconOff) iconOff.style.display = "none";
-      btn.classList.remove("muted");
-    }
-  }
-
-  btn.onclick = function(){
-    introMusicMuted = !introMusicMuted;
-    audio.volume = introMusicMuted ? 0 : 0.4;
-    updateIcon();
-  };
-}
-
 /* ── Main Menu ── */
 function initMainMenu(onNewVoyage, onResumeVoyage){
-  var menu = document.getElementById("main-menu");
+  var menu    = document.getElementById("main-menu");
   if(!menu) return;
   menu.style.display = "";
 
-  var video = document.getElementById("mm-bg-video");
-  var enterBtn = document.getElementById("mm-enter-btn");
-  var choices = document.getElementById("mm-menu-choices");
-  var newBtn = document.getElementById("mm-choice-new");
+  var video     = document.getElementById("mm-bg-video");
+  var audio     = document.getElementById("bg-music");
+  var enterBtn  = document.getElementById("mm-enter-btn");
+  var choices   = document.getElementById("mm-menu-choices");
+  var newBtn    = document.getElementById("mm-choice-new");
   var resumeBtn = document.getElementById("mm-choice-resume");
-  var audio = document.getElementById("bg-music");
+  var volBtn    = document.getElementById("mm-volume-btn");
+  var volOn     = document.getElementById("mm-volume-icon-on");
+  var volOff    = document.getElementById("mm-volume-icon-off");
 
-  // Check if save exists
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
-  // Start music synchronized with video
-  if(audio && video){
-    audio.volume = 0.4;
+  /* ---- Start video + music together ---- */
+  var musicStarted = false;
+
+  function startMusic(){
+    if(!audio) return;
     audio.currentTime = 0;
-    video.currentTime = 0;
-    audio.play();
-    video.play();
-  } else if(audio){
-    audio.volume = 0.4;
-    audio.play();
+    audio.volume = _musicMuted ? 0 : 0.4;
+    var p = audio.play();
+    if(p && p.then){
+      p.then(function(){ musicStarted = true; })
+       .catch(function(){ musicStarted = false; });
+    }
   }
 
+  function playAll(){
+    if(video){
+      video.currentTime = 0;
+      video.play();
+    }
+    startMusic();
+  }
+
+  // Attempt autoplay (works in Capacitor, blocked in browser until user interaction)
+  playAll();
+
+  /* ---- Show choices ---- */
   var choicesShown = false;
   function showChoices(){
     if(choicesShown) return;
@@ -124,44 +111,55 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     }
   }
 
-  // "Entrer" button — show choices immediately
+  /* ---- "Entrer" = user interaction → guarantees play ---- */
   if(enterBtn){
     enterBtn.onclick = function(){
+      // User interaction → music is guaranteed to play now
+      if(!musicStarted) startMusic();
       showChoices();
     };
   }
 
-  // When video ends → show choices with fade (if not already shown)
+  /* ---- Video ends → show choices ---- */
   if(video){
     video.addEventListener("ended", function(){
       showChoices();
     });
   }
 
-  // Nouveau voyage
+  /* ---- Volume toggle (mute/unmute) ---- */
+  function updateVolIcon(){
+    if(volOn)  volOn.style.display  = _musicMuted ? "none" : "";
+    if(volOff) volOff.style.display = _musicMuted ? "" : "none";
+    if(volBtn) volBtn.classList.toggle("muted", _musicMuted);
+  }
+
+  if(volBtn){
+    volBtn.onclick = function(){
+      _musicMuted = !_musicMuted;
+      if(audio) audio.volume = _musicMuted ? 0 : 0.4;
+      updateVolIcon();
+    };
+  }
+
+  /* ---- Navigation ---- */
   if(newBtn){
     newBtn.onclick = function(){
       closeMainMenu(function(){ onNewVoyage() });
     };
   }
-
-  // Reprendre le voyage
   if(resumeBtn){
     resumeBtn.onclick = function(){
       if(resumeBtn.disabled) return;
       closeMainMenu(function(){ onResumeVoyage() });
     };
   }
-
-  initVolumeToggle();
 }
 
+/* ── Fade out music + close menu ── */
 function fadeOutMusic(duration, cb){
   var audio = document.getElementById("bg-music");
-  if(!audio || audio.paused){
-    if(cb) cb();
-    return;
-  }
+  if(!audio || audio.paused){ if(cb) cb(); return }
   var startVol = audio.volume;
   var steps = 20;
   var interval = duration / steps;
@@ -194,7 +192,6 @@ function showLockForNewVoyage(){
   var lk = document.getElementById("lock-screen");
   if(!lk) return;
   lk.style.display = "";
-  // Set mode so after unlock we go to char creation (new)
   window._introMode = "new";
   initLock();
 }
@@ -204,7 +201,6 @@ function showLockForResume(){
   var lk = document.getElementById("lock-screen");
   if(!lk) return;
   lk.style.display = "";
-  // Set mode so after unlock we go to resume flow
   window._introMode = "resume";
   initLock();
 }
@@ -224,7 +220,6 @@ function showResumeIntro(){
   var screen = document.querySelector(".screen");
   if(screen) screen.appendChild(overlay);
 
-  // Auto-advance after 2.5s, or click to skip
   var dismissed = false;
   function dismiss(){
     if(dismissed) return;
@@ -232,7 +227,6 @@ function showResumeIntro(){
     overlay.classList.add("fading");
     setTimeout(function(){
       overlay.remove();
-      // Load the saved game and enter
       loadGameSave();
     }, 600);
   }
