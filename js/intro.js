@@ -5,6 +5,23 @@
    ═══════════════════════════════════════════════════════════════ */
 
 var _musicMuted = false;
+var _audioUnlocked = false;
+
+/* ── Unlock audio context on first user interaction ── */
+function unlockAudio(){
+  if(_audioUnlocked) return;
+  var audio = document.getElementById("bg-music");
+  if(!audio) return;
+  audio.volume = 0;
+  var p = audio.play();
+  if(p && p.then){
+    p.then(function(){
+      audio.pause();
+      audio.currentTime = 0;
+      _audioUnlocked = true;
+    }).catch(function(){});
+  }
+}
 
 /* ── Loading Screen ── */
 function initLoadingScreen(onDone){
@@ -12,6 +29,17 @@ function initLoadingScreen(onDone){
   var bar = document.getElementById("loading-bar-fill");
   var sub = document.getElementById("loading-subtitle");
   if(!screen){ onDone(); return }
+
+  // Any touch/click during loading unlocks audio for later
+  var tapHint = document.getElementById("loading-tap-hint");
+  function onInteract(){
+    unlockAudio();
+    if(tapHint) tapHint.classList.add("hidden");
+    screen.removeEventListener("click", onInteract);
+    screen.removeEventListener("touchstart", onInteract);
+  }
+  screen.addEventListener("click", onInteract);
+  screen.addEventListener("touchstart", onInteract);
 
   var hasVisited = acDB.get("ac_hasVisited") === "1";
   var duration = hasVisited ? (2000 + Math.random() * 1000) : (6000 + Math.random() * 1000);
