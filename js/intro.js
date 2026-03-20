@@ -61,21 +61,32 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var video     = document.getElementById("mm-bg-video");
   var audio     = document.getElementById("bg-music");
   var enterBtn  = document.getElementById("mm-enter-btn");
-  var choices   = document.getElementById("mm-menu-choices");
-  var newBtn    = document.getElementById("mm-choice-new");
-  var resumeBtn = document.getElementById("mm-choice-resume");
+  var circles   = document.getElementById("mm-menu-circles");
+  var mainCirc  = document.getElementById("mm-main-circles");
   var volBtn    = document.getElementById("mm-volume-btn");
   var volOn     = document.getElementById("mm-volume-icon-on");
   var volOff    = document.getElementById("mm-volume-icon-off");
 
+  // Circle buttons
+  var appelBtn  = document.getElementById("mm-circle-appel");
+  var codexBtn  = document.getElementById("mm-circle-codex");
+  var departBtn = document.getElementById("mm-circle-depart");
+  var retourBtn = document.getElementById("mm-circle-retour");
+  var codexTBtn = document.getElementById("mm-circle-codex-tournoi");
+  var codexEBtn = document.getElementById("mm-circle-codex-extelua");
+  var subAppel  = document.getElementById("mm-sub-appel");
+  var subCodex  = document.getElementById("mm-sub-codex");
+  var backAppel = document.getElementById("mm-sub-appel-back");
+  var backCodex = document.getElementById("mm-sub-codex-back");
+
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
-  if(resumeBtn && hasSave) resumeBtn.disabled = false;
+  if(retourBtn && hasSave) retourBtn.disabled = false;
 
   // Video + volume button hidden until "Entrer" is clicked
   if(video) video.style.display = "none";
   if(volBtn) volBtn.style.display = "none";
 
-  /* ---- Play video + music (called on Entrer click) ---- */
+  /* ---- Play video + music ---- */
   function playAll(){
     if(video){
       video.style.display = "";
@@ -90,31 +101,69 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(volBtn) volBtn.style.display = "";
   }
 
-  /* ---- Show choices ---- */
-  function showChoices(){
+  /* ---- Show main circles ---- */
+  function showCircles(){
     if(enterBtn){
       enterBtn.classList.add("hidden");
       setTimeout(function(){ enterBtn.style.display = "none"; }, 400);
     }
-    if(choices){
-      choices.style.display = "";
-      choices.classList.add("visible");
+    if(circles){
+      circles.style.display = "";
+      circles.classList.add("visible");
     }
+  }
+
+  /* ---- Switch between main and sub circles ---- */
+  function switchTo(hideEl, showEl){
+    hideEl.classList.add("fading-out");
+    setTimeout(function(){
+      hideEl.style.display = "none";
+      hideEl.classList.remove("fading-out");
+      showEl.style.display = "";
+      showEl.classList.add("fading-in");
+      // Reset animations on child buttons
+      var btns = showEl.querySelectorAll(".mm-circle-btn");
+      for(var i = 0; i < btns.length; i++){
+        btns[i].style.animation = "none";
+        btns[i].offsetHeight;
+        btns[i].style.animation = "";
+      }
+      setTimeout(function(){ showEl.classList.remove("fading-in"); }, 600);
+    }, 350);
   }
 
   /* ---- "Entrer" = start everything ---- */
   if(enterBtn){
     enterBtn.onclick = function(){
       playAll();
-      showChoices();
+      showCircles();
     };
   }
 
-  /* ---- Video ends → show choices (fallback if Entrer not clicked) ---- */
-  if(video){
-    video.addEventListener("ended", function(){
-      showChoices();
-    });
+  /* ---- L'Appel → sub-menu ---- */
+  if(appelBtn){
+    appelBtn.onclick = function(){
+      switchTo(mainCirc, subAppel);
+    };
+  }
+
+  /* ---- Codex → sub-menu ---- */
+  if(codexBtn){
+    codexBtn.onclick = function(){
+      switchTo(mainCirc, subCodex);
+    };
+  }
+
+  /* ---- Back buttons ---- */
+  if(backAppel){
+    backAppel.onclick = function(){
+      switchTo(subAppel, mainCirc);
+    };
+  }
+  if(backCodex){
+    backCodex.onclick = function(){
+      switchTo(subCodex, mainCirc);
+    };
   }
 
   /* ---- Volume toggle ---- */
@@ -133,15 +182,26 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   }
 
   /* ---- Navigation ---- */
-  if(newBtn){
-    newBtn.onclick = function(){
+  if(departBtn){
+    departBtn.onclick = function(){
       closeMainMenu(function(){ onNewVoyage() });
     };
   }
-  if(resumeBtn){
-    resumeBtn.onclick = function(){
-      if(resumeBtn.disabled) return;
+  if(retourBtn){
+    retourBtn.onclick = function(){
+      if(retourBtn.disabled) return;
       closeMainMenu(function(){ onResumeVoyage() });
+    };
+  }
+  // Codex buttons — placeholder for future functionality
+  if(codexTBtn){
+    codexTBtn.onclick = function(){
+      // TODO: open Codex du Tournoi
+    };
+  }
+  if(codexEBtn){
+    codexEBtn.onclick = function(){
+      // TODO: open Codex d'Extelua
     };
   }
 }

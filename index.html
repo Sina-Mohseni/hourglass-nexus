@@ -452,15 +452,99 @@
           <button class="mm-enter-btn" id="mm-enter-btn">
             <span class="mm-enter-text">Entrer</span>
           </button>
-          <div class="mm-menu-choices" id="mm-menu-choices" style="display:none">
-            <button class="mm-choice-btn mm-choice-new" id="mm-choice-new">
-              <span class="mm-choice-icon">✦</span>
-              <span class="mm-choice-label">Nouveau Voyage</span>
-            </button>
-            <button class="mm-choice-btn mm-choice-resume" id="mm-choice-resume" disabled>
-              <span class="mm-choice-icon">↻</span>
-              <span class="mm-choice-label">Reprendre le Voyage</span>
-            </button>
+          <div class="mm-menu-circles" id="mm-menu-circles" style="display:none">
+            <!-- Main circles -->
+            <div class="mm-main-circles" id="mm-main-circles">
+              <button class="mm-circle-btn mm-circle-appel" id="mm-circle-appel">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="32" cy="20" r="6" fill="rgba(201,160,74,.2)"/>
+                  <path d="M32 26v10" stroke-width="2.5"/>
+                  <path d="M22 48c0-8 4-12 10-12s10 4 10 12" stroke-width="2"/>
+                  <path d="M18 18c-4 6-4 14 0 20" stroke-width="1.5" opacity=".6"/>
+                  <path d="M46 18c4 6 4 14 0 20" stroke-width="1.5" opacity=".6"/>
+                  <path d="M12 14c-6 10-6 22 0 32" stroke-width="1" opacity=".35"/>
+                  <path d="M52 14c6 10 6 22 0 32" stroke-width="1" opacity=".35"/>
+                </svg>
+                <span class="mm-circle-label">L'Appel</span>
+              </button>
+              <button class="mm-circle-btn mm-circle-codex" id="mm-circle-codex">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="14" y="10" width="36" height="44" rx="3" fill="rgba(201,160,74,.1)"/>
+                  <path d="M14 10c0 0 4-2 18-2s18 2 18 2" stroke-width="1.5"/>
+                  <path d="M14 54c0 0 4 2 18 2s18-2 18-2" stroke-width="1.5"/>
+                  <line x1="22" y1="22" x2="42" y2="22" stroke-width="1.5" opacity=".7"/>
+                  <line x1="22" y1="28" x2="42" y2="28" stroke-width="1.5" opacity=".5"/>
+                  <line x1="22" y1="34" x2="38" y2="34" stroke-width="1.5" opacity=".5"/>
+                  <circle cx="32" cy="46" r="4" stroke-width="1.5" opacity=".6"/>
+                  <path d="M30 46l2 2 4-4" stroke-width="1.5" opacity=".6"/>
+                </svg>
+                <span class="mm-circle-label">Codex</span>
+              </button>
+            </div>
+
+            <!-- L'Appel sub-circles -->
+            <div class="mm-sub-circles" id="mm-sub-appel" style="display:none">
+              <button class="mm-circle-btn mm-circle-depart" id="mm-circle-depart">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="32" cy="32" r="18" stroke-width="1.5" opacity=".3"/>
+                  <path d="M32 14v8" stroke-width="2"/>
+                  <path d="M32 42v8" stroke-width="2"/>
+                  <path d="M14 32h8" stroke-width="2"/>
+                  <path d="M42 32h8" stroke-width="2"/>
+                  <circle cx="32" cy="32" r="6" fill="rgba(139,26,26,.3)" stroke-width="2"/>
+                  <path d="M29 32l2 2 4-4" stroke-width="2.5"/>
+                </svg>
+                <span class="mm-circle-label">Départ</span>
+              </button>
+              <button class="mm-circle-btn mm-circle-retour" id="mm-circle-retour" disabled>
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 32a12 12 0 1 1 3.5 8.5" stroke-width="2.5"/>
+                  <path d="M20 32l-5 5" stroke-width="2"/>
+                  <path d="M20 32l5 3" stroke-width="2"/>
+                  <circle cx="32" cy="32" r="4" fill="rgba(26,58,107,.3)" stroke-width="1.5"/>
+                </svg>
+                <span class="mm-circle-label">Retour</span>
+              </button>
+              <button class="mm-circle-btn mm-circle-back" id="mm-sub-appel-back">
+                <svg class="mm-circle-icon mm-circle-icon-sm" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M38 16L22 32l16 16"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Codex sub-circles -->
+            <div class="mm-sub-circles" id="mm-sub-codex" style="display:none">
+              <button class="mm-circle-btn mm-circle-codex-tournoi" id="mm-circle-codex-tournoi">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 14h20v6c0 8-4 12-10 16c-6-4-10-8-10-16v-6z" fill="rgba(201,160,74,.15)" stroke-width="2"/>
+                  <path d="M18 14h-4v8c0 4 2 6 6 7" stroke-width="1.5" opacity=".6"/>
+                  <path d="M46 14h4v8c0 4-2 6-6 7" stroke-width="1.5" opacity=".6"/>
+                  <line x1="28" y1="42" x2="36" y2="42" stroke-width="2"/>
+                  <rect x="24" y="44" width="16" height="4" rx="1" fill="rgba(201,160,74,.2)" stroke-width="1.5"/>
+                  <path d="M32 22v6" stroke-width="2" opacity=".6"/>
+                  <path d="M29 25l3 3 3-3" stroke-width="1.5" opacity=".6"/>
+                </svg>
+                <span class="mm-circle-label">Tournoi</span>
+              </button>
+              <button class="mm-circle-btn mm-circle-codex-extelua" id="mm-circle-codex-extelua">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="32" cy="32" r="18" stroke-width="1.5" opacity=".3"/>
+                  <ellipse cx="32" cy="32" rx="18" ry="8" stroke-width="1" opacity=".25"/>
+                  <ellipse cx="32" cy="32" rx="8" ry="18" stroke-width="1" opacity=".25"/>
+                  <circle cx="32" cy="32" r="4" fill="rgba(201,160,74,.2)" stroke-width="2"/>
+                  <circle cx="32" cy="14" r="2" fill="rgba(201,160,74,.4)"/>
+                  <circle cx="32" cy="50" r="2" fill="rgba(201,160,74,.4)"/>
+                  <circle cx="14" cy="32" r="2" fill="rgba(201,160,74,.4)"/>
+                  <circle cx="50" cy="32" r="2" fill="rgba(201,160,74,.4)"/>
+                </svg>
+                <span class="mm-circle-label">Extelua</span>
+              </button>
+              <button class="mm-circle-btn mm-circle-back" id="mm-sub-codex-back">
+                <svg class="mm-circle-icon mm-circle-icon-sm" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M38 16L22 32l16 16"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         <!-- Volume toggle button -->
