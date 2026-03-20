@@ -173,6 +173,7 @@ function closeMainMenu(cb){
   fadeOutMusic(800, function(){});
   setTimeout(function(){
     menu.remove();
+    document.body.classList.remove("intro-active");
     if(cb) cb();
   }, 800);
 }
