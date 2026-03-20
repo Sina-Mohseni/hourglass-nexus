@@ -142,51 +142,6 @@
   to { opacity: .7; transform: translateY(0) }
 }
 
-/* Start button */
-.mm-start-btn {
-  margin-top: 30px; padding: 18px 40px;
-  background: transparent;
-  border: 2px solid rgba(201,160,74,.35);
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative; overflow: hidden;
-  opacity: 0; animation: mmStartIn 1s ease-out 1.2s forwards;
-}
-@keyframes mmStartIn {
-  from { opacity: 0; transform: translateY(12px) }
-  to { opacity: 1; transform: translateY(0) }
-}
-.mm-start-text {
-  font-family: var(--font-heading); font-size: 13px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold-light);
-  text-shadow: 0 0 12px rgba(201,160,74,.4);
-  animation: mmStartPulse 2.5s ease-in-out infinite;
-}
-@keyframes mmStartPulse {
-  0%,100% { opacity: .7 }
-  50% { opacity: 1 }
-}
-.mm-start-btn::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(201,160,74,.06), transparent);
-  animation: mmStartShimmer 3s ease-in-out infinite;
-}
-@keyframes mmStartShimmer {
-  0% { transform: translateX(-100%) }
-  50%,100% { transform: translateX(100%) }
-}
-.mm-start-btn:active {
-  transform: scale(.96);
-  border-color: var(--gold);
-}
-.mm-start-btn.hidden {
-  animation: mmStartOut .4s ease-in forwards;
-  pointer-events: none;
-}
-@keyframes mmStartOut {
-  to { opacity: 0; transform: translateY(-10px) }
-}
 
 /* Menu choices */
 .mm-menu-choices {
@@ -242,8 +197,8 @@
 }
 .mm-choice-label { flex: 1 }
 
-/* Music button */
-.mm-music-btn {
+/* Volume button */
+.mm-volume-btn {
   position: absolute; bottom: 24px; right: 24px;
   width: 44px; height: 44px;
   background: rgba(13,11,8,.7);
@@ -254,29 +209,17 @@
   transition: all .3s;
   backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
 }
-.mm-music-btn:hover {
+.mm-volume-btn:hover {
   border-color: var(--gold);
   background: rgba(26,22,16,.8);
 }
-.mm-music-icon {
+.mm-volume-icon {
   width: 20px; height: 20px;
-  color: var(--gold-dark);
+  color: var(--gold-light);
   transition: color .3s;
 }
-.mm-music-btn.active .mm-music-icon {
-  color: var(--gold-light);
-}
-.mm-music-bar {
-  position: absolute;
-  width: 28px; height: 2px;
-  background: var(--blood);
-  transform: rotate(-45deg);
-  border-radius: 2px;
-  transition: opacity .3s;
-  box-shadow: 0 0 4px rgba(139,26,26,.5);
-}
-.mm-music-btn.active .mm-music-bar {
-  opacity: 0;
+.mm-volume-btn.muted .mm-volume-icon {
+  color: var(--gold-dark);
 }
 
 /* Main menu fade out */

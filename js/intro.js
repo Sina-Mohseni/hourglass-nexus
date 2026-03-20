@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 var introMusicPlaying = false;
+var introMusicMuted = false;
 
 /* ── Loading Screen ── */
 function initLoadingScreen(onDone){
@@ -54,34 +55,79 @@ function initLoadingScreen(onDone){
   requestAnimationFrame(tick);
 }
 
+/* ── Start music (called right after loading screen) ── */
+function startMusic(){
+  var audio = document.getElementById("bg-music");
+  if(!audio) return;
+  audio.volume = 0.4;
+  audio.play().then(function(){
+    introMusicPlaying = true;
+  }).catch(function(){
+    // Autoplay blocked — start on first user interaction
+    function resumeOnInteraction(){
+      audio.volume = introMusicMuted ? 0 : 0.4;
+      audio.play().then(function(){
+        introMusicPlaying = true;
+      }).catch(function(){});
+      document.removeEventListener("click", resumeOnInteraction);
+      document.removeEventListener("touchstart", resumeOnInteraction);
+    }
+    document.addEventListener("click", resumeOnInteraction, {once: true});
+    document.addEventListener("touchstart", resumeOnInteraction, {once: true});
+  });
+}
+
+/* ── Volume Toggle ── */
+function initVolumeToggle(){
+  var btn = document.getElementById("mm-volume-btn");
+  var iconOn = document.getElementById("mm-volume-icon-on");
+  var iconOff = document.getElementById("mm-volume-icon-off");
+  var audio = document.getElementById("bg-music");
+  if(!btn || !audio) return;
+
+  btn.onclick = function(e){
+    e.stopPropagation();
+    if(!introMusicMuted){
+      // Mute: volume to 0 but keep playing
+      audio.volume = 0;
+      introMusicMuted = true;
+      if(iconOn) iconOn.style.display = "none";
+      if(iconOff) iconOff.style.display = "";
+      btn.classList.add("muted");
+    } else {
+      // Unmute: restore volume
+      audio.volume = 0.4;
+      introMusicMuted = false;
+      if(iconOn) iconOn.style.display = "";
+      if(iconOff) iconOff.style.display = "none";
+      btn.classList.remove("muted");
+    }
+  };
+}
+
 /* ── Main Menu ── */
 function initMainMenu(onNewVoyage, onResumeVoyage){
   var menu = document.getElementById("main-menu");
   if(!menu) return;
   menu.style.display = "";
 
-  var startBtn = document.getElementById("mm-start-btn");
+  var video = document.getElementById("mm-bg-video");
   var choices = document.getElementById("mm-menu-choices");
   var newBtn = document.getElementById("mm-choice-new");
   var resumeBtn = document.getElementById("mm-choice-resume");
-  var musicBtn = document.getElementById("mm-music-btn");
 
   // Check if save exists
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
-  // "Appuyer pour commencer"
-  if(startBtn){
-    startBtn.onclick = function(){
-      startBtn.classList.add("hidden");
-      setTimeout(function(){
-        startBtn.style.display = "none";
-        if(choices){
-          choices.style.display = "";
-          choices.classList.add("visible");
-        }
-      }, 400);
-    };
+  // When video ends → show choices
+  if(video){
+    video.addEventListener("ended", function(){
+      if(choices){
+        choices.style.display = "";
+        choices.classList.add("visible");
+      }
+    });
   }
 
   // Nouveau voyage
@@ -99,8 +145,9 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  // Music: autoplay + toggle
-  initMusicToggle(musicBtn, true);
+  // Start music right away and init volume toggle
+  startMusic();
+  initVolumeToggle();
 }
 
 function fadeOutMusic(duration, cb){
@@ -121,8 +168,6 @@ function fadeOutMusic(duration, cb){
       audio.pause();
       audio.volume = startVol;
       introMusicPlaying = false;
-      var btn = document.getElementById("mm-music-btn");
-      if(btn) btn.classList.remove("active");
       if(cb) cb();
     }
   }, interval);
@@ -137,50 +182,6 @@ function closeMainMenu(cb){
     menu.remove();
     if(cb) cb();
   }, 800);
-}
-
-/* ── Music Toggle ── */
-function initMusicToggle(btn, autoplay){
-  if(!btn) return;
-  var audio = document.getElementById("bg-music");
-  if(!audio) return;
-
-  function playMusic(){
-    audio.volume = 0.4;
-    audio.play().then(function(){
-      introMusicPlaying = true;
-      btn.classList.add("active");
-    }).catch(function(){
-      // Autoplay blocked by browser — start on first user interaction
-      introMusicPlaying = false;
-      btn.classList.remove("active");
-      function resumeOnClick(){
-        audio.volume = 0.4;
-        audio.play().then(function(){
-          introMusicPlaying = true;
-          btn.classList.add("active");
-        }).catch(function(){});
-        document.removeEventListener("click", resumeOnClick);
-        document.removeEventListener("touchstart", resumeOnClick);
-      }
-      document.addEventListener("click", resumeOnClick, {once: true});
-      document.addEventListener("touchstart", resumeOnClick, {once: true});
-    });
-  }
-
-  // Autoplay on init
-  if(autoplay) playMusic();
-
-  btn.onclick = function(e){
-    e.stopPropagation();
-    if(introMusicPlaying){
-      audio.pause();
-      introMusicPlaying = false;
-      btn.classList.remove("active");
-    } else {
-      playMusic();
-    }
-  };
 }
 
 /* ── Lock Screen for New Voyage ── */
