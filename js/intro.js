@@ -4,7 +4,6 @@
    Loading Screen → Main Menu → Lock Screen → CharCreate / Resume
    ═══════════════════════════════════════════════════════════════ */
 
-var introMusicPlaying = false;
 var introMusicMuted = false;
 
 /* ── Loading Screen ── */
@@ -55,39 +54,7 @@ function initLoadingScreen(onDone){
   requestAnimationFrame(tick);
 }
 
-/* ── Ensure music is playing (handles autoplay block) ── */
-function ensureMusicPlaying(){
-  var audio = document.getElementById("bg-music");
-  if(!audio) return;
-  if(!audio.paused){ introMusicPlaying = true; return; }
-  audio.volume = introMusicMuted ? 0 : 0.4;
-  audio.play().then(function(){
-    introMusicPlaying = true;
-  }).catch(function(){});
-}
-
-/* ── Start music (called right after loading screen) ── */
-function startMusic(){
-  var audio = document.getElementById("bg-music");
-  if(!audio) return;
-  audio.volume = 0.4;
-  audio.play().then(function(){
-    introMusicPlaying = true;
-  }).catch(function(){
-    // Autoplay blocked by browser — will start on first user interaction
-    // (handled by volume button click or any touch/click on the page)
-    document.addEventListener("click", function onFirstClick(){
-      ensureMusicPlaying();
-      document.removeEventListener("click", onFirstClick);
-    });
-    document.addEventListener("touchstart", function onFirstTouch(){
-      ensureMusicPlaying();
-      document.removeEventListener("touchstart", onFirstTouch);
-    });
-  });
-}
-
-/* ── Volume Toggle ── */
+/* ── Volume Toggle (mute/unmute only — music is always playing) ── */
 function initVolumeToggle(){
   var btn = document.getElementById("mm-volume-btn");
   var iconOn = document.getElementById("mm-volume-icon-on");
@@ -108,16 +75,8 @@ function initVolumeToggle(){
   }
 
   btn.onclick = function(){
-    // Always ensure music is playing first (handles autoplay block)
-    ensureMusicPlaying();
-
-    if(!introMusicMuted){
-      audio.volume = 0;
-      introMusicMuted = true;
-    } else {
-      audio.volume = 0.4;
-      introMusicMuted = false;
-    }
+    introMusicMuted = !introMusicMuted;
+    audio.volume = introMusicMuted ? 0 : 0.4;
     updateIcon();
   };
 }
@@ -133,10 +92,23 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var choices = document.getElementById("mm-menu-choices");
   var newBtn = document.getElementById("mm-choice-new");
   var resumeBtn = document.getElementById("mm-choice-resume");
+  var audio = document.getElementById("bg-music");
 
   // Check if save exists
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
+
+  // Start music synchronized with video
+  if(audio && video){
+    audio.volume = 0.4;
+    audio.currentTime = 0;
+    video.currentTime = 0;
+    audio.play();
+    video.play();
+  } else if(audio){
+    audio.volume = 0.4;
+    audio.play();
+  }
 
   var choicesShown = false;
   function showChoices(){
@@ -155,7 +127,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   // "Entrer" button — show choices immediately
   if(enterBtn){
     enterBtn.onclick = function(){
-      ensureMusicPlaying();
       showChoices();
     };
   }
@@ -182,8 +153,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  // Start music right away and init volume toggle
-  startMusic();
   initVolumeToggle();
 }
 
@@ -204,7 +173,6 @@ function fadeOutMusic(duration, cb){
       clearInterval(fade);
       audio.pause();
       audio.volume = startVol;
-      introMusicPlaying = false;
       if(cb) cb();
     }
   }, interval);
