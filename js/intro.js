@@ -55,6 +55,17 @@ function initLoadingScreen(onDone){
   requestAnimationFrame(tick);
 }
 
+/* ── Ensure music is playing (handles autoplay block) ── */
+function ensureMusicPlaying(){
+  var audio = document.getElementById("bg-music");
+  if(!audio) return;
+  if(!audio.paused){ introMusicPlaying = true; return; }
+  audio.volume = introMusicMuted ? 0 : 0.4;
+  audio.play().then(function(){
+    introMusicPlaying = true;
+  }).catch(function(){});
+}
+
 /* ── Start music (called right after loading screen) ── */
 function startMusic(){
   var audio = document.getElementById("bg-music");
@@ -63,17 +74,16 @@ function startMusic(){
   audio.play().then(function(){
     introMusicPlaying = true;
   }).catch(function(){
-    // Autoplay blocked — start on first user interaction
-    function resumeOnInteraction(){
-      audio.volume = introMusicMuted ? 0 : 0.4;
-      audio.play().then(function(){
-        introMusicPlaying = true;
-      }).catch(function(){});
-      document.removeEventListener("click", resumeOnInteraction);
-      document.removeEventListener("touchstart", resumeOnInteraction);
-    }
-    document.addEventListener("click", resumeOnInteraction, {once: true});
-    document.addEventListener("touchstart", resumeOnInteraction, {once: true});
+    // Autoplay blocked by browser — will start on first user interaction
+    // (handled by volume button click or any touch/click on the page)
+    document.addEventListener("click", function onFirstClick(){
+      ensureMusicPlaying();
+      document.removeEventListener("click", onFirstClick);
+    });
+    document.addEventListener("touchstart", function onFirstTouch(){
+      ensureMusicPlaying();
+      document.removeEventListener("touchstart", onFirstTouch);
+    });
   });
 }
 
@@ -85,23 +95,30 @@ function initVolumeToggle(){
   var audio = document.getElementById("bg-music");
   if(!btn || !audio) return;
 
-  btn.onclick = function(e){
-    e.stopPropagation();
-    if(!introMusicMuted){
-      // Mute: volume to 0 but keep playing
-      audio.volume = 0;
-      introMusicMuted = true;
+  function updateIcon(){
+    if(introMusicMuted){
       if(iconOn) iconOn.style.display = "none";
       if(iconOff) iconOff.style.display = "";
       btn.classList.add("muted");
     } else {
-      // Unmute: restore volume
-      audio.volume = 0.4;
-      introMusicMuted = false;
       if(iconOn) iconOn.style.display = "";
       if(iconOff) iconOff.style.display = "none";
       btn.classList.remove("muted");
     }
+  }
+
+  btn.onclick = function(){
+    // Always ensure music is playing first (handles autoplay block)
+    ensureMusicPlaying();
+
+    if(!introMusicMuted){
+      audio.volume = 0;
+      introMusicMuted = true;
+    } else {
+      audio.volume = 0.4;
+      introMusicMuted = false;
+    }
+    updateIcon();
   };
 }
 
