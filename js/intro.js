@@ -103,10 +103,36 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   initMusicToggle(musicBtn, true);
 }
 
+function fadeOutMusic(duration, cb){
+  var audio = document.getElementById("bg-music");
+  if(!audio || audio.paused){
+    if(cb) cb();
+    return;
+  }
+  var startVol = audio.volume;
+  var steps = 20;
+  var interval = duration / steps;
+  var step = 0;
+  var fade = setInterval(function(){
+    step++;
+    audio.volume = Math.max(0, startVol * (1 - step / steps));
+    if(step >= steps){
+      clearInterval(fade);
+      audio.pause();
+      audio.volume = startVol;
+      introMusicPlaying = false;
+      var btn = document.getElementById("mm-music-btn");
+      if(btn) btn.classList.remove("active");
+      if(cb) cb();
+    }
+  }, interval);
+}
+
 function closeMainMenu(cb){
   var menu = document.getElementById("main-menu");
   if(!menu){ if(cb) cb(); return }
   menu.classList.add("fading");
+  fadeOutMusic(800, function(){});
   setTimeout(function(){
     menu.remove();
     if(cb) cb();
