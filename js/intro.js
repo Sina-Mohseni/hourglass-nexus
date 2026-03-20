@@ -129,6 +129,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   menu.style.display = "";
 
   var video = document.getElementById("mm-bg-video");
+  var enterBtn = document.getElementById("mm-enter-btn");
   var choices = document.getElementById("mm-menu-choices");
   var newBtn = document.getElementById("mm-choice-new");
   var resumeBtn = document.getElementById("mm-choice-resume");
@@ -137,13 +138,32 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
-  // When video ends → show choices
+  var choicesShown = false;
+  function showChoices(){
+    if(choicesShown) return;
+    choicesShown = true;
+    if(enterBtn){
+      enterBtn.classList.add("hidden");
+      setTimeout(function(){ enterBtn.style.display = "none"; }, 400);
+    }
+    if(choices){
+      choices.style.display = "";
+      choices.classList.add("visible");
+    }
+  }
+
+  // "Entrer" button — show choices immediately
+  if(enterBtn){
+    enterBtn.onclick = function(){
+      ensureMusicPlaying();
+      showChoices();
+    };
+  }
+
+  // When video ends → show choices with fade (if not already shown)
   if(video){
     video.addEventListener("ended", function(){
-      if(choices){
-        choices.style.display = "";
-        choices.classList.add("visible");
-      }
+      showChoices();
     });
   }
 
