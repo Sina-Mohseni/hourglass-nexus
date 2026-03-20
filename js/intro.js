@@ -1,27 +1,10 @@
 "use strict";
 
 /* ══════════ INTRO FLOW ══════════
-   Loading Screen → Main Menu → Lock Screen → CharCreate / Resume
+   Loading Screen → Title Screen (Entrer) → Main Menu → Lock Screen
    ═══════════════════════════════════════════════════════════════ */
 
 var _musicMuted = false;
-var _audioUnlocked = false;
-
-/* ── Unlock audio context on first user interaction ── */
-function unlockAudio(){
-  if(_audioUnlocked) return;
-  var audio = document.getElementById("bg-music");
-  if(!audio) return;
-  audio.volume = 0;
-  var p = audio.play();
-  if(p && p.then){
-    p.then(function(){
-      audio.pause();
-      audio.currentTime = 0;
-      _audioUnlocked = true;
-    }).catch(function(){});
-  }
-}
 
 /* ── Loading Screen ── */
 function initLoadingScreen(onDone){
@@ -29,17 +12,6 @@ function initLoadingScreen(onDone){
   var bar = document.getElementById("loading-bar-fill");
   var sub = document.getElementById("loading-subtitle");
   if(!screen){ onDone(); return }
-
-  // Any touch/click during loading unlocks audio for later
-  var tapHint = document.getElementById("loading-tap-hint");
-  function onInteract(){
-    unlockAudio();
-    if(tapHint) tapHint.classList.add("hidden");
-    screen.removeEventListener("click", onInteract);
-    screen.removeEventListener("touchstart", onInteract);
-  }
-  screen.addEventListener("click", onInteract);
-  screen.addEventListener("touchstart", onInteract);
 
   var hasVisited = acDB.get("ac_hasVisited") === "1";
   var duration = hasVisited ? (2000 + Math.random() * 1000) : (6000 + Math.random() * 1000);
@@ -99,36 +71,27 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(resumeBtn && hasSave) resumeBtn.disabled = false;
 
-  /* ---- Start video + music together ---- */
-  var musicStarted = false;
+  // Video + volume button hidden until "Entrer" is clicked
+  if(video) video.style.display = "none";
+  if(volBtn) volBtn.style.display = "none";
 
-  function startMusic(){
-    if(!audio) return;
-    audio.currentTime = 0;
-    audio.volume = _musicMuted ? 0 : 0.4;
-    var p = audio.play();
-    if(p && p.then){
-      p.then(function(){ musicStarted = true; })
-       .catch(function(){ musicStarted = false; });
-    }
-  }
-
+  /* ---- Play video + music (called on Entrer click) ---- */
   function playAll(){
     if(video){
+      video.style.display = "";
       video.currentTime = 0;
       video.play();
     }
-    startMusic();
+    if(audio){
+      audio.currentTime = 0;
+      audio.volume = 0.4;
+      audio.play();
+    }
+    if(volBtn) volBtn.style.display = "";
   }
 
-  // Attempt autoplay (works in Capacitor, blocked in browser until user interaction)
-  playAll();
-
   /* ---- Show choices ---- */
-  var choicesShown = false;
   function showChoices(){
-    if(choicesShown) return;
-    choicesShown = true;
     if(enterBtn){
       enterBtn.classList.add("hidden");
       setTimeout(function(){ enterBtn.style.display = "none"; }, 400);
@@ -139,23 +102,22 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     }
   }
 
-  /* ---- "Entrer" = user interaction → guarantees play ---- */
+  /* ---- "Entrer" = start everything ---- */
   if(enterBtn){
     enterBtn.onclick = function(){
-      // User interaction → music is guaranteed to play now
-      if(!musicStarted) startMusic();
+      playAll();
       showChoices();
     };
   }
 
-  /* ---- Video ends → show choices ---- */
+  /* ---- Video ends → show choices (fallback if Entrer not clicked) ---- */
   if(video){
     video.addEventListener("ended", function(){
       showChoices();
     });
   }
 
-  /* ---- Volume toggle (mute/unmute) ---- */
+  /* ---- Volume toggle ---- */
   function updateVolIcon(){
     if(volOn)  volOn.style.display  = _musicMuted ? "none" : "";
     if(volOff) volOff.style.display = _musicMuted ? "" : "none";
@@ -165,11 +127,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(volBtn){
     volBtn.onclick = function(){
       _musicMuted = !_musicMuted;
-      if(audio){
-        audio.volume = _musicMuted ? 0 : 0.4;
-        // User interaction → start music if it never started
-        if(!_musicMuted && !musicStarted) startMusic();
-      }
+      if(audio) audio.volume = _musicMuted ? 0 : 0.4;
       updateVolIcon();
     };
   }
