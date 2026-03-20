@@ -101,6 +101,16 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(volBtn) volBtn.style.display = "";
   }
 
+  /* ---- Reset animations on buttons so they replay ---- */
+  function replayAnimations(container){
+    var btns = container.querySelectorAll(".mm-circle-btn");
+    for(var i = 0; i < btns.length; i++){
+      btns[i].style.animation = "none";
+      btns[i].offsetHeight; // force reflow
+      btns[i].style.animation = "";
+    }
+  }
+
   /* ---- Show main circles ---- */
   function showCircles(){
     if(enterBtn){
@@ -110,6 +120,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(circles){
       circles.style.display = "";
       circles.classList.add("visible");
+      replayAnimations(mainCirc);
     }
   }
 
