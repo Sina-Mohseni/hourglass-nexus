@@ -137,7 +137,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(volBtn){
     volBtn.onclick = function(){
       _musicMuted = !_musicMuted;
-      if(audio) audio.volume = _musicMuted ? 0 : 0.4;
+      if(audio){
+        audio.volume = _musicMuted ? 0 : 0.4;
+        // User interaction → start music if it never started
+        if(!_musicMuted && !musicStarted) startMusic();
+      }
       updateVolIcon();
     };
   }
