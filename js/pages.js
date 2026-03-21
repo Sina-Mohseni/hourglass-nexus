@@ -347,6 +347,8 @@ function wireProfilePage(){
         if(status) status.innerHTML = ok
           ? '<span style="color:var(--poison)">\u2714 Portrait sauvegard\u00e9</span>'
           : '<span style="color:var(--blood-glow)">\u2718 Erreur</span>';
+        var u2 = loadUser();
+        if(u2.avatar) setDiamondImage(u2.avatar, null); else setDiamondImage(null,"\ud83d\udc64");
         updateOrbLabels(); buildUserPage(); buildInventoryPage(); buildProfilePage(); buildAccueil();
         updateDrawerContent();
       };
