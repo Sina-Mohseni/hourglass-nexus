@@ -210,15 +210,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  /* ---- Back to Level 1 ---- */
-  if(backGame){
-    backGame.onclick = function(){
-      if(mmContent) mmContent.classList.remove("mm-sub-active");
-      if(menu) menu.classList.remove("mm-top-align");
-      switchTo(subGame, mainCirc);
-    };
-  }
-
   /* ---- Volume toggle ---- */
   function updateVolIcon(){
     if(volOn)  volOn.style.display  = _musicMuted ? "none" : "";
@@ -246,14 +237,41 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
       closeMainMenu(function(){ onResumeVoyage() });
     };
   }
+  var codexList = document.getElementById("mm-codex-list");
+  var subButtons = subGame ? subGame.querySelector(".mm-sub-buttons") : null;
+
   if(codexBtn){
     codexBtn.onclick = function(){
-      // TODO: open Codex
+      if(subButtons) subButtons.style.display = "none";
+      if(codexList) codexList.style.display = "";
+      if(codexBtn) codexBtn.style.display = "none";
+      if(tournoisBtn) tournoisBtn.style.display = "none";
+      if(departBtn) departBtn.style.display = "none";
+      if(retourBtn) retourBtn.style.display = "none";
     };
   }
   if(tournoisBtn){
     tournoisBtn.onclick = function(){
       // TODO: open Tournois Précédents
+    };
+  }
+
+  /* ---- Back from sub-game (and codex) to level 1 ---- */
+  if(backGame){
+    backGame.onclick = function(){
+      // If codex list is open, go back to sub-game buttons
+      if(codexList && codexList.style.display !== "none"){
+        codexList.style.display = "none";
+        if(subButtons) subButtons.style.display = "";
+        if(codexBtn) codexBtn.style.display = "";
+        if(tournoisBtn) tournoisBtn.style.display = "";
+        if(departBtn) departBtn.style.display = "";
+        if(retourBtn) retourBtn.style.display = "";
+        return;
+      }
+      if(mmContent) mmContent.classList.remove("mm-sub-active");
+      if(menu) menu.classList.remove("mm-top-align");
+      switchTo(subGame, mainCirc);
     };
   }
 }
