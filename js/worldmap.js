@@ -155,7 +155,7 @@ function buildWorldmapPage(){
   var cities = getCities(), u = loadUser(), avSrc = u.avatar || "";
 
   var h = '<div class="worldmap-wrap">'
-    + '<div class="worldmap-page" id="worldmap-page"><div class="worldmap-inner" id="worldmap-inner"><img src="assets/worldmap.jpg" alt="World Map" id="worldmap-img">';
+    + '<div class="worldmap-page" id="worldmap-page"><div class="worldmap-inner" id="worldmap-inner"><img src="assets/worldmap.png" alt="World Map" id="worldmap-img">';
   cities.forEach(function(c){
     if(c.hidden) return;
     var isActive = (currentCityId === c.id);
@@ -175,7 +175,7 @@ function buildWorldmapPage(){
   else h += '<div class="wma-emoji">\ud83d\udc64</div>';
   h += '</div>';
   h += '</div></div>';
-  h += '<div class="wm-minimap" id="wm-minimap"><img src="assets/worldmap.jpg">'
+  h += '<div class="wm-minimap" id="wm-minimap"><img src="assets/worldmap.png">'
     + '<div class="wm-minimap-view" id="wm-minimap-view"></div>'
     + '<div class="wm-minimap-label">'+getGameDateShort(u.gameDay, u.gameHour)+'</div></div></div>';
   p.innerHTML = h;

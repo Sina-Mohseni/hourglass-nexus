@@ -548,7 +548,7 @@ function goToRegionPhase(){
   // Build minimap with regions positioned like on worldmap
   var div = document.createElement("div");
   div.className = "cc-region-zone visible";
-  div.style.cssText = "position:relative;width:100%;max-width:340px;margin:12px auto;aspect-ratio:4/3;background:url(assets/worldmap.jpg) center/cover no-repeat;border-radius:12px;border:1px solid rgba(201,160,74,.2);overflow:hidden;animation:ccFadeUp .4s ease both";
+  div.style.cssText = "position:relative;width:100%;max-width:340px;margin:12px auto;aspect-ratio:4/3;background:url(assets/worldmap.png) center/cover no-repeat;border-radius:12px;border:1px solid rgba(201,160,74,.2);overflow:hidden;animation:ccFadeUp .4s ease both";
 
   // Dark overlay for contrast
   var overlay = document.createElement("div");
