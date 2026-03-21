@@ -34,13 +34,7 @@ function setFooterPanelContent(html){
   /* Hauteur = travel distance (tout l'espace entre header et footer) */
   var h = window._fpTravel || (window.innerHeight - 110);
   panel.style.height = h + "px";
-  panel.innerHTML = '<button class="fp-close-btn" id="fp-close-btn">\u2715</button>'
-    + '<div class="footer-panel-inner" id="fp-body">'+html+'</div>';
-  var closeBtn = document.getElementById("fp-close-btn");
-  if(closeBtn) closeBtn.onclick = function(e){
-    e.stopPropagation();
-    closeFooterPanel();
-  };
+  panel.innerHTML = '<div class="footer-panel-inner" id="fp-body">'+html+'</div>';
 }
 
 function closeFooterPanel(){
@@ -62,13 +56,7 @@ function setHeaderPanelContent(html){
   if(!panel) return;
   var h = window._hpTravel || (window.innerHeight - 110);
   panel.style.height = h + "px";
-  panel.innerHTML = '<button class="hp-close-btn" id="hp-close-btn">\u2715</button>'
-    + '<div class="header-panel-inner" id="hp-body">'+html+'</div>';
-  var closeBtn = document.getElementById("hp-close-btn");
-  if(closeBtn) closeBtn.onclick = function(e){
-    e.stopPropagation();
-    closeHeaderPanel();
-  };
+  panel.innerHTML = '<div class="header-panel-inner" id="hp-body">'+html+'</div>';
 }
 
 function closeHeaderPanel(){

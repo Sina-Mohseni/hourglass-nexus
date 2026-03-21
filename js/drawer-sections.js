@@ -42,7 +42,8 @@ function buildDrawerUserSection(){
   if(userSection === "rebelles") return buildDrawerDiscRebelles();
   var cfg = userSectionCfg[userSection] || {emoji:"?", label:userSection};
   return '<div class="dr-concept"><h3>'+cfg.emoji+' '+esc(cfg.label)+'</h3>'
-    + '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic">Bient\u00f4t disponible</p></div>';
+    + '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic">Bient\u00f4t disponible</p>'
+    + '<button class="prof-back-btn" id="generic-back-btn">\u2190 Retour</button></div>';
 }
 
 /* ══════════ PROFIL (dans le tiroir) ══════════ */
@@ -106,6 +107,7 @@ function buildDrawerProfile(){
     + '<span class="prof-section-arrow">\u203a</span></div></div>';
 
   h += '<button class="prof-reset-btn" id="prof-reset-btn">\u26a0 R\u00e9initialiser le personnage</button>';
+  h += '<button class="prof-back-btn" id="fp-close-panel">\u2190 Fermer</button>';
   h += '</div>';
   return h;
 }
@@ -193,6 +195,7 @@ function buildDrawerJob(){
     h += '</div></div>';
   }
 
+  h += '<button class="prof-back-btn" id="job-back-btn">\u2190 Retour au profil</button>';
   h += '</div>';
   return h;
 }
@@ -417,7 +420,9 @@ function buildDrawerCampement(){
       + '<div class="camp-item-desc">'+esc(it.desc)+'</div></div>'
       + '<span class="camp-item-arrow">\u203a</span></div>';
   });
-  h += '</div></div>';
+  h += '</div>';
+  h += '<button class="prof-back-btn" id="fp-close-panel">\u2190 Fermer</button>';
+  h += '</div>';
   return h;
 }
 
@@ -450,6 +455,7 @@ function buildDrawerTaverne(){
     + '<div style="font-family:var(--font-heading);font-size:11px;color:var(--gold);margin-bottom:4px">\ud83d\udcac Rumeur du jour</div>'
     + '<div style="font-size:11px;color:var(--bone-dim);font-style:italic;line-height:1.5">'
     + '"On raconte que les portes de Shar-Va\u00eblis s\'ouvriront bient\u00f4t aux voyageurs audacieux\u2026"</div></div>';
+  h += '<button class="prof-back-btn" id="taverne-back-btn">\u2190 Retour au campement</button>';
   h += '</div>';
   return h;
 }

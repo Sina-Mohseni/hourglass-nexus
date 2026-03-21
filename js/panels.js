@@ -158,6 +158,28 @@ function wirePanelActions(){
     });
   };
 
+  // Close panel buttons (Fermer)
+  body.querySelectorAll("#fp-close-panel").forEach(function(btn){
+    btn.onclick = function(){ closeFooterPanel(); };
+  });
+
+  // Job back → profil
+  var backJob = body.querySelector("#job-back-btn");
+  if(backJob) backJob.onclick = function(){
+    userSection="profil";
+    var u = loadUser();
+    if(u.avatar) setDiamondImage(u.avatar, null); else setDiamondImage(null,"\ud83d\udc64");
+    updateDrawerContent();
+  };
+
+  // Taverne back → campement
+  var backTaverne = body.querySelector("#taverne-back-btn");
+  if(backTaverne) backTaverne.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
+
+  // Generic back → campement (for fusion, musiques, etc.)
+  var backGeneric = body.querySelector("#generic-back-btn");
+  if(backGeneric) backGeneric.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
+
   // Taverne persona clicks
   body.querySelectorAll("[data-tavpid]").forEach(function(c){
     c.onclick = function(){
