@@ -76,6 +76,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var departBtn = document.getElementById("mm-circle-depart");
   var retourBtn = document.getElementById("mm-circle-retour");
   var codexBtn  = document.getElementById("mm-circle-codex");
+  var tournoisBtn = document.getElementById("mm-circle-tournois");
   var backGame  = document.getElementById("mm-sub-game-back");
 
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
@@ -145,15 +146,27 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  /* ---- Level 1 → Level 2 ---- */
+  /* ---- Level 1 actions ---- */
   if(nouvelleBtn){
     nouvelleBtn.onclick = function(){
-      switchTo(mainCirc, subGame);
+      closeMainMenu(function(){ onNewVoyage() });
     };
   }
   if(chargerBtn){
     chargerBtn.onclick = function(){
       if(chargerBtn.disabled) return;
+      // Populate player portrait + name in sub-menu header
+      var u = loadUser();
+      var portraitEl = document.getElementById("mm-player-portrait");
+      var nameEl = document.getElementById("mm-player-name");
+      if(portraitEl){
+        if(u.avatar){
+          portraitEl.innerHTML = '<img src="' + u.avatar + '" alt="">';
+        } else {
+          portraitEl.textContent = "\uD83D\uDC64";
+        }
+      }
+      if(nameEl) nameEl.textContent = u.name || "Voyageur";
       switchTo(mainCirc, subGame);
     };
   }
@@ -195,6 +208,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(codexBtn){
     codexBtn.onclick = function(){
       // TODO: open Codex
+    };
+  }
+  if(tournoisBtn){
+    tournoisBtn.onclick = function(){
+      // TODO: open Tournois Précédents
     };
   }
 }
