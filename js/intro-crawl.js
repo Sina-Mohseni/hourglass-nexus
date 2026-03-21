@@ -1,6 +1,17 @@
 "use strict";
 
-/* ══════════ INTRO CRAWL + SCENARIO CHOICE ══════════ */
+/* ══════════ INTRO NARRATION + SCENARIO CHOICE ══════════ */
+
+var IC_PARAGRAPHS = [
+  {text: "LE TOURNOI D'EXTELUA", cls: "ic-title"},
+  {text: "Depuis des temps immémoriaux, le monde d'Extelua organise le plus grand tournoi que les terres aient jamais connu."},
+  {text: "Tous les deux ans, quarante participants sont choisis parmi les peuples des contrées — guerriers, mages, artisans, rebelles et vagabonds — pour s'affronter dans une épreuve qui dure une année entière."},
+  {text: "Pendant douze lunes, les champions traversent les cités, affrontent des créatures légendaires, résolvent des énigmes ancestrales et forgent des alliances fragiles."},
+  {text: "Le tournoi est bien plus qu'une compétition. C'est un rite sacré, un héritage que chaque génération préserve avec ferveur. Les vainqueurs entrent dans la légende. Les vaincus repartent transformés."},
+  {text: "Nul ne sait exactement comment les quarante sont choisis. Certains reçoivent un sceau marqué du symbole du Nexus. D'autres sont convoqués en rêve. Mais tous ressentent l'appel — une vibration dans les os, un murmure dans le vent."},
+  {text: "Cette année, l'appel résonne à nouveau. Les portes du Nexus s'ouvrent. Le sablier se retourne."},
+  {text: "Et toi, voyageur… tu as été choisi.", cls: "ic-final"}
+];
 
 var _icMuted = false;
 
@@ -10,11 +21,15 @@ function showIntroCrawl(onDone){
   overlay.style.display = "";
 
   var audio = document.getElementById("ic-music");
+  var nextBtn = document.getElementById("ic-next-btn");
   var skipBtn = document.getElementById("ic-skip-btn");
   var volBtn = document.getElementById("ic-volume-btn");
   var volOn = document.getElementById("ic-vol-on");
   var volOff = document.getElementById("ic-vol-off");
-  var crawlText = document.getElementById("ic-crawl-text");
+  var textZone = document.getElementById("ic-text-zone");
+
+  var paraIdx = 0;
+  var transitioning = false;
 
   // Start music
   if(audio){
@@ -32,29 +47,71 @@ function showIntroCrawl(onDone){
     if(volOff) volOff.style.display = _icMuted ? "" : "none";
   };
 
+  // Show a paragraph
+  function showParagraph(idx){
+    if(!textZone) return;
+    var data = IC_PARAGRAPHS[idx];
+    var p = document.createElement("div");
+    p.className = "ic-paragraph" + (data.cls ? " " + data.cls : "");
+    p.textContent = data.text;
+    textZone.innerHTML = "";
+    textZone.appendChild(p);
+
+    // Update button text on last paragraph
+    if(idx >= IC_PARAGRAPHS.length - 1 && nextBtn){
+      nextBtn.textContent = "Continuer \u25BA";
+    }
+  }
+
+  // Go to next paragraph
+  function nextParagraph(){
+    if(transitioning) return;
+    var currentP = textZone ? textZone.querySelector(".ic-paragraph") : null;
+
+    if(paraIdx >= IC_PARAGRAPHS.length - 1){
+      // Last paragraph was showing → end
+      endIntro();
+      return;
+    }
+
+    if(currentP){
+      transitioning = true;
+      currentP.classList.add("fading-out");
+      setTimeout(function(){
+        paraIdx++;
+        showParagraph(paraIdx);
+        transitioning = false;
+      }, 500);
+    } else {
+      paraIdx++;
+      showParagraph(paraIdx);
+    }
+  }
+
   var dismissed = false;
-  function endCrawl(){
+  function endIntro(){
     if(dismissed) return;
     dismissed = true;
     overlay.classList.add("fading-out");
     setTimeout(function(){
       overlay.style.display = "none";
       overlay.classList.remove("fading-out");
-      // Reset crawl animation for potential replay
-      if(crawlText) crawlText.style.animation = "none";
+      if(textZone) textZone.innerHTML = "";
+      // Reset button
+      if(nextBtn) nextBtn.textContent = "Suivant \u25BC";
       onDone();
     }, 800);
   }
 
-  // Skip button
-  if(skipBtn) skipBtn.onclick = endCrawl;
+  // Wire buttons
+  if(nextBtn) nextBtn.onclick = nextParagraph;
+  if(skipBtn) skipBtn.onclick = endIntro;
 
-  // Auto-end when crawl animation finishes
-  if(crawlText){
-    crawlText.addEventListener("animationend", function(){
-      setTimeout(endCrawl, 1500);
-    }, {once: true});
-  }
+  // Also allow tapping the text zone
+  if(textZone) textZone.onclick = nextParagraph;
+
+  // Show first paragraph
+  showParagraph(0);
 }
 
 function showScenarioChoice(onChosen){
@@ -63,8 +120,6 @@ function showScenarioChoice(onChosen){
   overlay.style.display = "";
 
   var audio = document.getElementById("ic-music");
-  // Keep the intro music playing during scenario choice
-  // (it was started in the crawl)
 
   overlay.querySelectorAll(".sc-choice").forEach(function(btn){
     btn.onclick = function(){
@@ -97,7 +152,7 @@ function showScenarioChoice(onChosen){
   });
 }
 
-/* Full intro sequence: crawl → scenario → lock screen */
+/* Full intro sequence: narration → scenario → lock screen */
 function startIntroSequence(onNewVoyage){
   showIntroCrawl(function(){
     showScenarioChoice(function(scenario){
