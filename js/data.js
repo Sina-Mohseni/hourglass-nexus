@@ -60,7 +60,7 @@ function getLocations(){ return (locsData && locsData.locations) || [] }
 function getCities(){ return (locsData && locsData.cities) || [] }
 function getRegions(){ return (locsData && locsData.regions) || [] }
 function getRegionById(id){ return getRegions().find(function(r){ return r.id === id }) || null }
-function getCitiesByRegion(rid){ return getCities().filter(function(c){ return c.region === rid }) }
+function getCitiesByRegion(rid){ return getCities().filter(function(c){ return c.region === rid && !c.hidden }) }
 function getJobs(){ return (jobsData && jobsData.jobs) || [] }
 function getJobById(id){ return getJobs().find(function(j){ return j.id === id }) || null }
 function getReputationTiers(){ return (locsData && locsData.reputationTiers) || [] }
