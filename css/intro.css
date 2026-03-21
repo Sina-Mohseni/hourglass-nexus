@@ -205,11 +205,11 @@
 .mm-sub-circles {
   position: absolute; top: 0; left: 0; right: 0;
   flex-direction: column; align-items: center;
-  gap: 18px;
+  gap: 12px;
 }
 .mm-sub-buttons {
-  display: flex; justify-content: center; align-items: flex-start;
-  gap: 16px;
+  display: grid; grid-template-columns: repeat(2, auto);
+  gap: 10px 16px; justify-content: center; justify-items: center;
 }
 
 /* Player header in sub-menu */
@@ -218,17 +218,17 @@
   opacity: 0; animation: mmCircleIn .5s ease-out forwards;
 }
 .mm-player-portrait {
-  width: 64px; height: 64px;
-  border-radius: 50%;
+  width: 80px; height: 100px;
+  border-radius: 6px;
   border: 2px solid rgba(201,160,74,.4);
-  background: radial-gradient(circle at 40% 35%, rgba(30,25,18,.9), rgba(10,8,6,.95));
+  background: linear-gradient(180deg, rgba(30,25,18,.9), rgba(10,8,6,.95));
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  font-size: 28px;
+  font-size: 36px;
   box-shadow: 0 0 20px rgba(201,160,74,.2), inset 0 0 10px rgba(0,0,0,.5);
 }
 .mm-player-portrait img {
-  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  width: 100%; height: 100%; object-fit: cover;
 }
 .mm-player-name {
   font-family: var(--font-heading); font-size: 13px; font-weight: 700;
@@ -317,7 +317,7 @@
   box-shadow: 0 0 10px rgba(201,160,74,.1), inset 0 0 10px rgba(0,0,0,.5);
 }
 .mm-circle-icon-sm { width: 48px; height: 48px; }
-.mm-circle-back { align-self: center; }
+.mm-circle-back { align-self: center; margin-top: 4px; }
 
 /* Fade transitions between levels */
 .mm-main-circles.fading-out,
