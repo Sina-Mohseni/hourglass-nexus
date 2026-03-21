@@ -1,109 +1,94 @@
-/* ═══════════ INTRO CRAWL (Star Wars style) ═══════════ */
+/* ═══════════ INTRO NARRATION (paragraph by paragraph) ═══════════ */
 .intro-crawl-overlay {
   position: absolute; inset: 0; z-index: 1100;
-  background: #000; overflow: hidden;
-}
-.ic-starfield {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.4), transparent),
-    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,.3), transparent),
-    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,.5), transparent),
-    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,.3), transparent),
-    radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,.4), transparent),
-    radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,.2), transparent),
-    radial-gradient(1px 1px at 45% 50%, rgba(255,255,255,.35), transparent),
-    radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,.3), transparent),
-    radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,.25), transparent),
-    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,.45), transparent);
-}
-
-.ic-perspective {
-  position: absolute;
-  bottom: 0; left: 50%; width: 90%; max-width: 380px;
-  height: 100%;
-  transform: translateX(-50%);
-  perspective: 300px;
+  background: radial-gradient(ellipse at 50% 40%, #1a1610, #0a0806);
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-
-.ic-crawl-text {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  text-align: center;
-  transform-origin: 50% 100%;
-  transform: rotateX(20deg);
-  animation: icCrawl 50s linear forwards;
-}
-
-@keyframes icCrawl {
-  0%   { top: 100%; }
-  100% { top: -250%; }
-}
-
-.ic-crawl-text p {
-  font-family: var(--font-body, Georgia, serif);
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--gold-light, #e8d5a3);
-  margin-bottom: 24px;
-  text-shadow: 0 0 8px rgba(201,160,74,.3);
-}
-
-.ic-crawl-title {
-  font-family: var(--font-display, 'Cinzel Decorative', serif) !important;
-  font-size: 28px !important;
-  font-weight: 900 !important;
-  letter-spacing: 6px;
-  color: var(--gold, #c9a04a) !important;
-  text-shadow: 0 0 30px rgba(201,160,74,.6) !important;
-  margin-bottom: 36px !important;
-}
-
-.ic-crawl-end {
-  font-weight: 700;
-  font-size: 20px !important;
-  color: var(--gold, #c9a04a) !important;
-  text-shadow: 0 0 20px rgba(201,160,74,.5) !important;
-}
-
-/* Gradient mask: fade at top and bottom */
-.ic-perspective::before,
-.ic-perspective::after {
-  content: ''; position: absolute; left: 0; right: 0; z-index: 2;
+.ic-vignette {
+  position: absolute; inset: 0;
+  box-shadow: inset 0 0 150px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,.6);
   pointer-events: none;
 }
-.ic-perspective::before {
-  top: 0; height: 30%;
-  background: linear-gradient(180deg, #000 0%, transparent 100%);
+
+/* Text zone — centered, full-width */
+.ic-text-zone {
+  position: relative; z-index: 2;
+  max-width: 340px; width: 90%;
+  text-align: center; padding: 20px;
 }
-.ic-perspective::after {
-  bottom: 0; height: 15%;
-  background: linear-gradient(0deg, #000 0%, transparent 100%);
+.ic-paragraph {
+  font-family: var(--font-body, Georgia, serif);
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--gold-light, #e8d5a3);
+  text-shadow: 0 0 12px rgba(201,160,74,.3), 0 2px 8px rgba(0,0,0,.8);
+  opacity: 0;
+  animation: icParaIn .8s ease-out forwards;
+}
+.ic-paragraph.ic-title {
+  font-family: var(--font-display, 'Cinzel Decorative', serif);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: var(--gold, #c9a04a);
+  text-shadow: 0 0 30px rgba(201,160,74,.6), 0 2px 12px rgba(0,0,0,.9);
+  margin-bottom: 8px;
+}
+.ic-paragraph.ic-final {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold, #c9a04a);
+  text-shadow: 0 0 24px rgba(201,160,74,.5);
 }
 
-/* Skip button */
-.ic-skip-btn {
-  position: absolute; bottom: 30px; right: 20px; z-index: 10;
-  padding: 10px 22px;
-  background: rgba(26,22,16,.7);
-  border: 1px solid rgba(201,160,74,.3);
-  border-radius: 8px;
-  font-family: var(--font-heading); font-size: 12px;
-  letter-spacing: 1px; text-transform: uppercase;
+@keyframes icParaIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ic-paragraph.fading-out {
+  animation: icParaOut .5s ease-in forwards;
+}
+@keyframes icParaOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-12px); }
+}
+
+/* Next button — bottom center */
+.ic-next-btn {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10;
+  padding: 12px 32px;
+  background: rgba(201,160,74,.1);
+  border: 1.5px solid rgba(201,160,74,.35);
+  border-radius: 10px;
+  font-family: var(--font-heading); font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--gold-light, #e8d5a3);
   cursor: pointer; transition: all .2s;
   backdrop-filter: blur(4px);
 }
-.ic-skip-btn:active { border-color: var(--gold); transform: scale(.95); }
+.ic-next-btn:active { border-color: var(--gold); transform: translateX(-50%) scale(.95); }
 
-/* Volume button */
+/* Skip button — top right */
+.ic-skip-btn {
+  position: absolute; top: 20px; right: 16px; z-index: 10;
+  padding: 8px 16px;
+  background: rgba(26,22,16,.6);
+  border: 1px solid rgba(201,160,74,.2);
+  border-radius: 8px;
+  font-family: var(--font-ui); font-size: 10px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--bone-dim, #8a7e6b);
+  cursor: pointer; transition: all .2s;
+}
+.ic-skip-btn:active { border-color: var(--gold); color: var(--gold-light); }
+
+/* Volume button — top left */
 .ic-volume-btn {
-  position: absolute; bottom: 30px; left: 20px; z-index: 10;
+  position: absolute; top: 20px; left: 16px; z-index: 10;
   width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(26,22,16,.7);
-  border: 1px solid rgba(201,160,74,.3);
+  background: rgba(26,22,16,.6);
+  border: 1px solid rgba(201,160,74,.2);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: all .2s;
   backdrop-filter: blur(4px);
@@ -114,7 +99,7 @@
   stroke: var(--gold-light, #e8d5a3);
 }
 
-/* Fade out */
+/* Fade out overlay */
 .intro-crawl-overlay.fading-out {
   animation: icFadeOut .8s ease-in forwards;
 }
@@ -195,7 +180,6 @@
   color: var(--bone-dim, #8a7e6b);
   margin-top: 3px; line-height: 1.4;
 }
-
 .scenario-overlay.fading-out {
   animation: icFadeOut .8s ease-in forwards;
 }
