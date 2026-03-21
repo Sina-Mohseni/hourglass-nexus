@@ -95,18 +95,22 @@ function initCharCreate(){
   };
 }
 
-/* New voyage: skip intro/choice, go straight to creation dialog */
+/* New voyage: portrait+name already done, skip to scenario dialog then region */
 function initCharCreateNewVoyage(){
   var screen = document.getElementById("charcreate-screen");
   if(!screen) return;
 
   _prepareCharCreateScreen(screen);
 
-  // Hide the choice zone since we already chose from main menu
+  // Hide the choice zone and avatar/name zones (already done before scenario)
   var choiceZone = document.getElementById("cc-choice-zone");
   if(choiceZone) choiceZone.style.display = "none";
+  var avatarZone = document.getElementById("cc-avatar-zone");
+  if(avatarZone) avatarZone.style.display = "none";
+  var nameZone = document.getElementById("cc-name-zone");
+  if(nameZone) nameZone.style.display = "none";
 
-  // Use scenario-specific dialog if available
+  // Use scenario-specific dialog
   var scenario = window._chosenScenario || "lambda";
   var scenarioDialogs = CC_SCENARIO_INTROS[scenario] || CC_CREATION;
   window._ccScenarioDialogs = scenarioDialogs;
@@ -116,7 +120,7 @@ function initCharCreateNewVoyage(){
   u.scenario = scenario;
   saveUser(u);
 
-  // Start at creation phase directly
+  // Show scenario intro dialogs, then go straight to region
   ccDialogIdx = 0;
   ccPhase = "creation";
   showCCDialog(scenarioDialogs[0]);
@@ -216,11 +220,8 @@ function advanceCCDialog(){
     if(ccDialogIdx < dialogs.length){
       showCCDialog(dialogs[ccDialogIdx]);
     } else {
-      ccPhase = "avatar";
-      showCCTapHint(false);
-      var zone = document.getElementById("cc-avatar-zone");
-      if(zone) zone.classList.add("visible");
-      wireAvatarEvents();
+      // Portrait+name already done before scenario choice → go to region
+      goToRegionPhase();
     }
   } else if(ccPhase === "farewell"){
     var screen = document.getElementById("charcreate-screen");
