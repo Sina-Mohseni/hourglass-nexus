@@ -237,7 +237,7 @@ function wirePanelProfile(body){
         if(status) status.innerHTML = ok
           ? '<span style="color:var(--poison)">\u2714 Portrait sauvegard\u00e9</span>'
           : '<span style="color:var(--blood-glow)">\u2718 Erreur</span>';
-        updateOrbLabels(); buildUserPage();
+        updateOrbLabels(); buildUserPage(); buildInventoryPage(); buildAccueil();
         // Rafraîchir le tiroir
         setTimeout(function(){ userSection="profil"; updateDrawerContent() }, 300);
       };
@@ -257,7 +257,8 @@ function wirePanelProfile(body){
     saveUser(u);
     var status = body.querySelector("#prof-save-status");
     if(status) status.innerHTML = '<span style="color:var(--poison)">\u2714 Profil sauvegard\u00e9 !</span>';
-    buildUserPage();
+    buildUserPage(); buildInventoryPage(); buildAccueil();
+    setTimeout(function(){ userSection="profil"; updateDrawerContent() }, 300);
     setTimeout(function(){ if(status) status.textContent = "" }, 2000);
   };
   // Color picker
@@ -268,7 +269,8 @@ function wirePanelProfile(body){
       saveUser(u);
       body.querySelectorAll(".prof-cc").forEach(function(x){ x.classList.remove("selected") });
       el.classList.add("selected");
-      buildUserPage();
+      buildUserPage(); buildAccueil();
+      setTimeout(function(){ updateDrawerContent() }, 300);
     };
   });
 }
