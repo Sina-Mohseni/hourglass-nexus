@@ -124,3 +124,244 @@
   text-shadow: 0 0 8px rgba(201,160,74,.2);
 }
 
+/* ═══════════ GDD CONTENT BLOCKS ═══════════ */
+.gdd-pipeline {
+  display: flex; align-items: stretch; gap: 0;
+  margin: 8px 12px; overflow-x: auto; scrollbar-width: thin;
+}
+.gdd-pipe-step {
+  flex: 1; min-width: 70px; padding: 8px 6px; text-align: center;
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); position: relative;
+}
+.gdd-pipe-step:first-child { border-radius: var(--radius) 0 0 var(--radius) }
+.gdd-pipe-step:last-child { border-radius: 0 var(--radius) var(--radius) 0 }
+.gdd-pipe-step:not(:last-child)::after {
+  content: '\2192'; position: absolute; right: -7px; top: 50%; transform: translateY(-50%);
+  color: var(--gold); font-size: 12px; z-index: 2; background: var(--abyss); padding: 0 2px;
+}
+.gdd-pipe-icon { font-size: 18px; margin-bottom: 2px }
+.gdd-pipe-label {
+  font-family: var(--font-heading); font-size: 8px; font-weight: 700;
+  color: var(--gold); letter-spacing: .5px; margin-bottom: 2px;
+}
+.gdd-pipe-desc { font-size: 9px; color: var(--bone-dim); line-height: 1.3 }
+
+/* ATOM block */
+.gdd-atom-block {
+  margin: 8px 12px; padding: 12px;
+  border: 2px solid var(--arcane); border-radius: var(--radius);
+  background: rgba(155,127,212,.03); position: relative;
+}
+.gdd-atom-block::before {
+  content: '\2699 A.T.O.M. \2699'; position: absolute; top: -9px; left: 50%;
+  transform: translateX(-50%); background: var(--abyss); padding: 0 8px;
+  font-family: var(--font-heading); font-size: 8px; color: var(--arcane);
+  letter-spacing: 1px;
+}
+.gdd-atom-block p {
+  font-size: 11px; line-height: 1.7; margin-bottom: 6px; color: var(--bone);
+}
+.gdd-atom-who {
+  font-family: var(--font-heading); font-size: 9px; color: var(--arcane);
+  letter-spacing: .5px; margin-bottom: 4px;
+}
+
+/* Narrative text */
+.gdd-narr {
+  font-size: 12px; color: var(--bone); line-height: 1.7;
+  padding: 2px 14px; font-style: italic;
+}
+.gdd-narr strong { color: var(--gold-light); font-style: normal }
+
+/* Separator */
+.gdd-sep {
+  text-align: center; margin: 10px 0; color: var(--gold-dark);
+  font-size: 10px; letter-spacing: 6px;
+}
+
+/* Grid layouts */
+.gdd-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 12px }
+.gdd-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin: 0 12px }
+@media (max-width: 480px) {
+  .gdd-grid-2, .gdd-grid-3 { grid-template-columns: 1fr }
+  .gdd-pipeline { flex-direction: column }
+  .gdd-pipe-step { border-radius: var(--radius) !important }
+  .gdd-pipe-step::after { display: none }
+}
+
+/* Quote */
+.gdd-quote {
+  border-left: 3px solid var(--gold); margin: 8px 12px; padding: 8px 12px;
+  font-style: italic; font-size: 11px; color: var(--bone);
+  background: rgba(212,160,48,.04); border-radius: 0 var(--radius) var(--radius) 0;
+}
+.gdd-quote.nex { border-left-color: var(--arcane); background: rgba(155,127,212,.04) }
+.gdd-quote.ess { border-left-color: #20c997; background: rgba(32,201,151,.04) }
+
+/* Lantern bar */
+.gdd-lantern {
+  display: flex; align-items: center; gap: 10px;
+  margin: 8px 12px; padding: 10px 14px;
+  background: rgba(212,160,48,.05); border: 1px solid rgba(212,160,48,.2);
+  border-radius: var(--radius);
+}
+.gdd-lantern-icon { font-size: 22px; flex-shrink: 0 }
+.gdd-lantern-body { flex: 1 }
+.gdd-lantern-title {
+  font-family: var(--font-heading); font-size: 10px; color: var(--gold);
+  font-weight: 700; letter-spacing: .5px; margin-bottom: 3px;
+}
+.gdd-lantern-track { height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden }
+.gdd-lantern-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)) }
+.gdd-lantern-note { font-size: 9px; color: var(--bone-dim); margin-top: 3px }
+
+/* Essence flow */
+.gdd-flow {
+  display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+  margin: 8px 12px;
+}
+.gdd-flow-step {
+  flex: 1; min-width: 60px; text-align: center;
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  padding: 6px 4px; font-size: 10px;
+}
+.gdd-flow-arrow { color: var(--gold); font-size: 12px; flex-shrink: 0 }
+
+/* Card types grid */
+.gdd-card-types {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 6px; margin: 8px 12px;
+}
+.gdd-card-type {
+  border-radius: var(--radius); padding: 10px; text-align: center;
+  border: 1px solid rgba(201,160,74,.15);
+}
+.gdd-ct-icon { font-size: 20px; margin-bottom: 4px }
+.gdd-ct-name { font-family: var(--font-heading); font-size: 10px; font-weight: 700; margin-bottom: 3px }
+.gdd-ct-desc { font-size: 9px; color: var(--bone-dim); line-height: 1.3 }
+
+/* NPC cards */
+.gdd-npc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px; margin: 8px 12px;
+}
+.gdd-npc-card {
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  padding: 10px; cursor: pointer; border-left: 3px solid;
+  transition: background .2s;
+}
+.gdd-npc-card:active { transform: scale(.97) }
+.gdd-npc-name { font-family: var(--font-heading); font-size: 11px; font-weight: 700 }
+.gdd-npc-role { font-size: 9px; color: var(--bone-dim); font-style: italic; margin-top: 2px }
+.gdd-npc-body {
+  display: none; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(201,160,74,.15);
+}
+.gdd-npc-body p { font-size: 10px; color: var(--bone-dim); line-height: 1.5; margin-bottom: 4px }
+
+/* Zone cards */
+.gdd-zone-card {
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  padding: 10px; cursor: pointer; border-left: 3px solid;
+  margin-bottom: 6px; transition: background .2s;
+}
+.gdd-zone-card:active { transform: scale(.98) }
+.gdd-zone-icon { font-size: 20px; margin-bottom: 4px }
+.gdd-zone-name { font-family: var(--font-heading); font-size: 12px; font-weight: 700 }
+.gdd-zone-sub { font-size: 9px; color: var(--bone-dim); font-style: italic; margin-top: 2px }
+.gdd-zone-body {
+  display: none; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(201,160,74,.15);
+}
+.gdd-zone-body p { font-size: 10px; color: var(--bone-dim); line-height: 1.5; margin-bottom: 4px }
+
+/* Arena format cards */
+.gdd-af-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 12px }
+.gdd-af {
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  padding: 10px; border-top: 3px solid;
+}
+.gdd-af-icon { font-size: 18px; margin-bottom: 4px }
+.gdd-af-name { font-family: var(--font-heading); font-size: 11px; font-weight: 700; margin-bottom: 3px }
+.gdd-af-sub { font-size: 9px; color: var(--bone-dim); font-style: italic; margin-bottom: 6px }
+.gdd-af-body p { font-size: 10px; color: var(--bone-dim); line-height: 1.5 }
+
+/* Game cards */
+.gdd-game-card {
+  margin: 6px 12px; padding: 12px;
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  cursor: pointer; transition: background .2s;
+}
+.gdd-game-card:active { transform: scale(.98) }
+.gdd-gc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px }
+.gdd-gc-name { font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--bone) }
+.gdd-gc-pct {
+  font-family: var(--font-ui); font-size: 10px; padding: 2px 6px;
+  border-radius: 3px; font-weight: 700; flex-shrink: 0;
+}
+.gdd-gc-sub { font-size: 9px; color: var(--bone-dim); font-style: italic; margin-top: 2px }
+.gdd-gc-body {
+  display: none; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(201,160,74,.15);
+}
+.gdd-slots { display: flex; flex-direction: column; gap: 4px; margin: 6px 0 }
+.gdd-slot {
+  display: flex; align-items: center; gap: 6px; padding: 4px 8px;
+  border-radius: 4px; border: 1px solid rgba(201,160,74,.15); font-size: 10px;
+}
+.gdd-slot.done { border-color: rgba(32,201,151,.3); background: rgba(32,201,151,.04) }
+.gdd-slot-icon { font-size: 12px; flex-shrink: 0 }
+.gdd-slot-type {
+  font-family: var(--font-heading); font-size: 8px; color: var(--bone-dim);
+  min-width: 50px; letter-spacing: .3px;
+}
+.gdd-slot-label { font-size: 10px; flex: 1; color: var(--bone-dim) }
+.gdd-slot.done .gdd-slot-label { color: var(--bone) }
+.gdd-slot-world {
+  font-size: 8px; padding: 1px 4px; border-radius: 2px;
+  font-family: var(--font-ui);
+}
+
+/* Codex sections */
+.gdd-codex-sec {
+  margin: 6px 12px; padding: 10px 12px;
+  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
+  border: 1px solid rgba(201,160,74,.15); border-radius: var(--radius);
+  cursor: pointer; transition: background .2s;
+}
+.gdd-codex-sec:hover { border-color: rgba(201,160,74,.3) }
+.gdd-cs-head { display: flex; justify-content: space-between; align-items: center }
+.gdd-cs-title { font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: var(--bone) }
+.gdd-cs-badge {
+  font-size: 8px; padding: 2px 6px; border-radius: 3px;
+  font-family: var(--font-ui); font-weight: 600;
+}
+.gdd-cs-body {
+  display: none; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid rgba(201,160,74,.15);
+}
+.gdd-cs-body p { font-size: 10px; color: var(--bone-dim); line-height: 1.5; margin-bottom: 4px }
+
+/* Rule rows */
+.gdd-rule {
+  display: flex; gap: 8px; align-items: flex-start; padding: 6px 0;
+  border-bottom: 1px solid rgba(201,160,74,.1);
+}
+.gdd-rule:last-child { border-bottom: none }
+.gdd-rule-n { font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--gold); min-width: 18px; flex-shrink: 0 }
+.gdd-rule-t { font-size: 11px; color: var(--bone); font-weight: 600; margin-bottom: 2px }
+.gdd-rule-d { font-size: 10px; color: var(--bone-dim); line-height: 1.4 }
+
+@media (max-width: 480px) {
+  .gdd-af-grid { grid-template-columns: 1fr }
+  .gdd-flow { flex-direction: column }
+  .gdd-card-types { grid-template-columns: 1fr 1fr }
+  .gdd-npc-grid { grid-template-columns: 1fr }
+}
+

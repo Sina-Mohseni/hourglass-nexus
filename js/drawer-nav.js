@@ -31,9 +31,9 @@ function updateDrawerContent(){
   if(curPage === "accueil") html = buildDrawerAccueil();
   else if(curPage === "user") html = buildDrawerUserSection();
   else if(curPage === "worldmap") html = buildDrawerWorldmap();
-  else if(curPage === "inventory") html = '<div class="dr-concept"><h3>🎒 Inventaire</h3><p>G\u00e9rez votre \u00e9quipement depuis la page inventaire.</p></div>';
-  else if(curPage === "profile") html = '<div class="dr-concept"><h3>👤 Profil</h3><p>Modifiez votre personnage directement sur cette page.</p></div>';
-  else if(curPage === "guild") html = '<div class="dr-concept"><h3>🏰 Guilde</h3><p>Gérez votre guilde, consultez les personas et visitez la taverne.</p></div>';
+  else if(curPage === "inventory") html = '<div class="dr-concept"><h3>Essences &amp; Cartes</h3><p><strong>Essences &amp; Cartes</strong> \u2014 D\u00e9couvrez des sujets dans les sagas, compl\u00e9tez leurs cartes, r\u00e9coltez les essences et assignez-les aux jeux.</p></div>';
+  else if(curPage === "profile") html = '<div class="dr-concept"><h3>Profil</h3><p>Modifiez votre personnage directement sur cette page.</p></div>';
+  else if(curPage === "guild") html = '<div class="dr-concept"><h3>Zones du Nexus</h3><p>Les Zones du Nexus abritent 10 \u00e2mes. Explorez leurs histoires et participez aux jeux d\u2019ar\u00e8ne d\u2019A.T.O.M.</p></div>';
 
   // Set dans le footer panel (pas d'ouverture auto)
   setFooterPanelContent(html);
@@ -45,10 +45,9 @@ function updateDrawerContent(){
 
 function buildDrawerAccueil(){
   return '<div class="dr-concept">'
-    + '<h3>\u2726 Le Sanctuaire</h3>'
-    + '<p><strong>Hourglass Nexus</strong> est un portail immersif qui r\u00e9unit des exp\u00e9riences narratives et ludiques au sein d\'un univers partag\u00e9.</p>'
-    + '<p>Explorez l\'<strong>Encyclop\u00e9die TCG</strong>, affrontez des personas dans les <strong>Jeux du Nexus</strong>, et parcourez la <strong>Carte du Monde</strong>.</p>'
-    + '<p style="color:var(--gold-light);font-weight:600;margin-top:8px">Forg\u00e9 dans les abysses de Kael-Norath par Elrand Avicenna.</p>'
+    + '<h3>\u2726 Le Nexus</h3>'
+    + '<p>Le <strong>Nexus</strong> est une tour infinie perc\u00e9e de portes. Chaque porte m\u00e8ne vers une <strong>Saga</strong> \u2014 une vie, un monde, une histoire.</p>'
+    + '<p>En vivant ces sagas, d\u00e9couvrez des <strong>Sujets</strong>, compl\u00e9tez leurs <strong>Cartes</strong>, r\u00e9coltez leurs <strong>Essences</strong> et assignez-les aux <strong>Jeux d\u2019Ar\u00e8ne</strong> d\u2019<strong>A.T.O.M.</strong></p>'
     + '</div>';
 }
 
@@ -56,8 +55,8 @@ function buildDrawerWorldmap(){
   var cities = getCities();
 
   if(!currentCityId){
-    var h = '<div class="dr-wm-desc"><h3>🌍 Extelua</h3>'
-      + '<p>La carte du monde s\'\u00e9tend devant vous. S\u00e9lectionnez une cit\u00e9 pour vous y rendre.</p>'
+    var h = '<div class="dr-wm-desc"><h3>\u00cele Hourglass Nexus</h3>'
+      + '<p>L\u2019\u00cele du Nexus s\u2019\u00e9tend devant vous \u2014 <strong>Tour Hourglass</strong>, <strong>Zone d\u2019A.T.O.M.</strong>, <strong>Zone d\u2019Ar\u00e8ne</strong>, <strong>Couloir des Portes</strong>, <strong>Zone Inconnue</strong>. S\u00e9lectionnez une zone pour vous y rendre.</p>'
       + '<div class="dr-wm-cities">';
     cities.forEach(function(c){
       h += '<div class="dr-wm-city" data-cid="'+esc(c.id)+'">'

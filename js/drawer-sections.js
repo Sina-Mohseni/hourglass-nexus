@@ -465,8 +465,15 @@ function buildDrawerUserFiche(){
 }
 
 function buildDrawerGuide(){
-  var guide = getGuidePersona(); if(!guide) return '';
-  return buildDrawerPersonaFiche(guide);
+  var guide = getGuidePersona();
+  var h = '<div class="dr-concept">'
+    + '<h3>A.T.O.M.</h3>'
+    + '<p><strong>Nature :</strong> gardien permanent du Nexus</p>'
+    + '<p><strong>Fonctions :</strong> guide, conservateur du Codex, concepteur de jeux</p>'
+    + '<p><strong>Ton :</strong> bienveillant, pr\u00e9cis, l\u00e9g\u00e8rement ironique</p>'
+    + '</div>';
+  if(guide) h += buildDrawerPersonaFiche(guide);
+  return h;
 }
 
 function buildDrawerEncyclopedie(){

@@ -130,10 +130,10 @@
       "id": "atom",
       "name": "A.T.O.M.",
       "role": "Guide",
-      "title": "Architecte Temporel des Origines Mécaniques",
+      "title": "Architecte Temporel des Origines Mémorielles",
       "avatar": "assets/settings.png",
-      "color": "#06b6d4",
-      "bio": "Entité mécanique née des rouages du Sablier Originel, A.T.O.M. est la mémoire vivante du portail. Il calcule les probabilités, cartographie les chemins et prédit les conséquences de chaque choix.",
+      "color": "#9B7FD4",
+      "bio": "Le seul être permanent du Nexus. Il existe depuis avant la construction de la tour — ou peut-être qu'il est la tour. Présence bienveillante, mémoire infaillible, voix entre les sagas. Il observe, commente, et attend les essences que les âmes lui rapportent pour compléter ses jeux — son obsession de toujours.",
       "cv": [
         {
           "period": "Cycle 0",
@@ -174,32 +174,32 @@
       "messages": [
         {
           "from": "atom",
-          "text": "Initialisation… Bienvenue, voyageur. Je suis **A.T.O.M.**, l'architecte temporel de ce portail."
-        },
-        {
-          "from": "lux",
-          "text": "Et moi **Lux Manna**, ton éclaireur. Chaque chemin ici a une raison d'être."
-        },
-        {
-          "from": "hyandi",
-          "text": "**Hyandi Manna**, tisseuse d'ombres. Ensemble, nous te guiderons."
+          "text": "Tu es dans le Nexus. Ne cherche pas à comprendre comment. Ce que tu dois savoir : tu n'es pas perdu. Tu es arrivé."
         },
         {
           "from": "atom",
-          "text": "Mes calculs indiquent plusieurs voies possibles. Que souhaites-tu explorer ?"
+          "text": "Je m'appelle **A.T.O.M.** — Architecte Temporel des Origines Mémorielles. Je garde cet endroit depuis plus longtemps que la plupart des étoiles n'ont brûlé."
+        },
+        {
+          "from": "atom",
+          "text": "L'ancien monde que tu habitais est terminé. Ce n'est pas une punition. C'est simplement la nature des histoires : elles finissent. Mais toi, tu n'as pas fini."
+        },
+        {
+          "from": "atom",
+          "text": "Toutes ces portes — chacune mène vers une **Saga**. Une vie. Un monde. Que souhaites-tu explorer ?"
         }
       ],
       "choices": [
         {
-          "label": "Les histoires (Hourglass)",
+          "label": "Les Sagas",
           "goto": "path_hourglass"
         },
         {
-          "label": "Les jeux (Nexus Games)",
+          "label": "Les Jeux d'Arène",
           "goto": "path_nexus"
         },
         {
-          "label": "Parlez-moi de ce portail",
+          "label": "Qu'est-ce que le Nexus ?",
           "goto": "path_about"
         }
       ]
@@ -208,24 +208,20 @@
       "messages": [
         {
           "from": "atom",
-          "text": "**Hourglass** — mes capteurs temporels ont enregistré chaque grain de sable de ce projet."
-        },
-        {
-          "from": "hyandi",
-          "text": "**Eye** observe un instant figé à travers un regard omniscient."
-        },
-        {
-          "from": "lux",
-          "text": "**Universe** déploie des destins entiers à travers des mondes entrelacés."
+          "text": "Les **Sagas** sont des vies que tu peux vivre. Chaque saga a son milieu, ses éléments, ses événements."
         },
         {
           "from": "atom",
-          "text": "Probabilité d'immersion narrative : 97,3%. Je recommande l'exploration."
+          "text": "Certains mots y brilleront différemment — ce sont des **Sujets**. En les touchant, tu ouvriras leur Carte."
+        },
+        {
+          "from": "atom",
+          "text": "Mais une Carte ne se remplit pas d'un seul geste — il te faudra lire, explorer, revenir parfois, pour la compléter entièrement."
         }
       ],
       "choices": [
         {
-          "label": "Explorer Hourglass",
+          "label": "Entrer dans une Saga",
           "goto": "end_hourglass"
         },
         {
@@ -237,21 +233,21 @@
     "path_nexus": {
       "messages": [
         {
-          "from": "lux",
-          "text": "**Nexus Games** est l'arène où le jeu devient art."
-        },
-        {
-          "from": "hyandi",
-          "text": "**Boardgames** réunit stratégie et bluff autour d'une table virtuelle."
+          "from": "atom",
+          "text": "Les **Jeux d'Arène** sont mon obsession depuis l'origine des temps."
         },
         {
           "from": "atom",
-          "text": "**Tower** — j'ai conçu ses 200 étages. Chaque salle est un défi calibré. Chaque porte, un verrou que j'ai placé."
+          "text": "Chaque jeu nécessite 5 composantes : une zone de jeu, des participants, des règles, un objectif, et un sujet de saga."
+        },
+        {
+          "from": "atom",
+          "text": "Toutes ces composantes viennent des **Cartes** que les âmes rapportent des sagas. Je ne peux pas visiter les sagas moi-même. C'est pourquoi j'ai besoin de vous."
         }
       ],
       "choices": [
         {
-          "label": "Explorer Nexus",
+          "label": "Voir les Jeux",
           "goto": "end_nexus"
         },
         {
@@ -264,28 +260,24 @@
       "messages": [
         {
           "from": "atom",
-          "text": "Ce portail est **Anim'Connect**, conçu par Elrand Avicenna et maintenu par mes systèmes."
-        },
-        {
-          "from": "lux",
-          "text": "Il rassemble des projets narratifs et ludiques, chacun dans son propre univers."
-        },
-        {
-          "from": "hyandi",
-          "text": "Mais tous partagent la même philosophie : **créer du lien**."
+          "text": "Le **Nexus** est une tour infinie percée de portes. Chaque porte mène vers une Saga — une vie, un monde, une histoire à vivre."
         },
         {
           "from": "atom",
-          "text": "Et moi, je veille à ce que les rouages tournent. Toujours."
+          "text": "En vivant ces sagas, tu découvres des **Sujets** dont tu remplis progressivement les **Cartes**. Une fois complète, l'**Essence** du sujet peut être récoltée."
+        },
+        {
+          "from": "atom",
+          "text": "Il y a aussi neuf autres âmes ici. Elles sont comme toi — des morts arrivés avant toi. Tu es le dixième. Le dernier arrivé."
         }
       ],
       "choices": [
         {
-          "label": "Voir Hourglass",
+          "label": "Les Sagas",
           "goto": "path_hourglass"
         },
         {
-          "label": "Voir Nexus",
+          "label": "Les Jeux d'Arène",
           "goto": "path_nexus"
         },
         {
@@ -298,7 +290,7 @@
       "messages": [
         {
           "from": "atom",
-          "text": "Ouverture des portes d'Hourglass. Bonne lecture, voyageur."
+          "text": "Je ne sais pas ce que tu vas rapporter. Ni combien de temps tu mettras à le compléter. C'est ce qui rend chaque retour intéressant."
         }
       ],
       "action": "navigate:hourglass"
@@ -307,7 +299,7 @@
       "messages": [
         {
           "from": "atom",
-          "text": "Coordonnées du Nexus transmises. Bonne partie, voyageur."
+          "text": "Chaque carte que tu rapportes est une pièce. Je ne sais pas ce que tu vas choisir. C'est ce qui rend chaque jeu unique."
         }
       ],
       "action": "navigate:nexus"
