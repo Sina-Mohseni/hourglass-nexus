@@ -66,9 +66,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var volBtn    = document.getElementById("mm-volume-btn");
   var volOn     = document.getElementById("mm-volume-icon-on");
   var volOff    = document.getElementById("mm-volume-icon-off");
-  var mmLogo    = menu.querySelector(".mm-logo");
-  var mmTitle   = menu.querySelector(".mm-title");
-  var mmTagline = menu.querySelector(".mm-tagline");
+  var mmContent = menu.querySelector(".mm-content");
 
   // Level 1 buttons
   var nouvelleBtn = document.getElementById("mm-circle-nouvelle");
@@ -170,9 +168,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
         }
       }
       if(nameEl) nameEl.textContent = u.name || "Voyageur";
-      if(mmLogo) mmLogo.style.display = "none";
-      if(mmTitle) mmTitle.style.display = "none";
-      if(mmTagline) mmTagline.style.display = "none";
+      if(mmContent) mmContent.classList.add("mm-sub-active");
       switchTo(mainCirc, subGame);
     };
   }
@@ -216,9 +212,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- Back to Level 1 ---- */
   if(backGame){
     backGame.onclick = function(){
-      if(mmLogo) mmLogo.style.display = "";
-      if(mmTitle) mmTitle.style.display = "";
-      if(mmTagline) mmTagline.style.display = "";
+      if(mmContent) mmContent.classList.remove("mm-sub-active");
       switchTo(subGame, mainCirc);
     };
   }
