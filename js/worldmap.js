@@ -157,6 +157,7 @@ function buildWorldmapPage(){
   var h = '<div class="worldmap-wrap">'
     + '<div class="worldmap-page" id="worldmap-page"><div class="worldmap-inner" id="worldmap-inner"><img src="assets/worldmap.jpg" alt="World Map" id="worldmap-img">';
   cities.forEach(function(c){
+    if(c.hidden) return;
     var isActive = (currentCityId === c.id);
     var cls = "wm-city" + (isActive ? " active" : "");
     h += '<div class="'+cls+'" data-cid="'+esc(c.id)+'" data-region="'+esc(c.region)+'" style="left:'+c.wx+'%;top:'+c.wy+'%">'
@@ -270,6 +271,7 @@ function findCityAt(x, y, radius){
   var cities = getCities();
   var best = null, bestD = Infinity;
   cities.forEach(function(c){
+    if(c.hidden) return;
     var d = Math.hypot(x - c.wx, y - c.wy);
     if(d < radius && d < bestD){ bestD = d; best = c }
   });

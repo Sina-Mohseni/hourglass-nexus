@@ -61,6 +61,7 @@ function buildDrawerWorldmap(){
       + '<p>La carte du monde s\'\u00e9tend devant vous. S\u00e9lectionnez une cit\u00e9 pour vous y rendre.</p>'
       + '<div class="dr-wm-cities">';
     cities.forEach(function(c){
+      if(c.hidden) return;
       h += '<div class="dr-wm-city" data-cid="'+esc(c.id)+'">'
         + '<div class="dr-wm-city-dot" style="background:'+esc(c.color)+'">🏙️</div>'
         + '<div class="dr-wm-city-info"><div class="dr-wm-city-name">'+esc(c.name)+'</div>'
@@ -95,6 +96,14 @@ function buildDrawerWorldmap(){
   if(avSrc) h += '<img src="'+esc(avSrc)+'">'; else h += '<div class="ma-emoji">👤</div>';
   h += '</div></div>';
   h += '<div id="dr-loc-banner-area"></div>';
+  // If this is a portal city, show a return button
+  if(city.portalFrom){
+    var originLoc = getLocations().find(function(l){ return l.id === city.portalFrom });
+    var originCity = originLoc ? getCities().find(function(c){ return c.id === originLoc.city }) : null;
+    if(originCity){
+      h += '<button class="prof-back-btn dr-portal-return" id="dr-portal-return" style="margin-top:10px">\u2193 Redescendre \u00e0 '+esc(originCity.name)+'</button>';
+    }
+  }
   h += '<button class="prof-back-btn" id="fp-close-panel" style="margin-top:10px">\u2190 Fermer</button>';
   return h;
 }
@@ -168,8 +177,16 @@ function showLocBanner(loc){
     + '<div class="dr-loc-banner-desc">'+esc((loc.features||[]).join(" \u2022 "))+'</div></div>'
     + '<span class="dr-loc-banner-arrow">\u203a</span></div>';
   var enterBtn = document.getElementById("dr-loc-enter");
+  // Check if this location is a portal to another city
+  var portalCity = getCities().find(function(c){ return c.portalFrom === loc.id });
   if(enterBtn) enterBtn.onclick = function(){
-    showConfirm("Entrer dans "+loc.name+" ?", function(){});
+    if(portalCity){
+      showConfirm("Monter vers "+portalCity.name+" ?", function(){
+        selectCity(portalCity.id);
+      });
+    } else {
+      showConfirm("Entrer dans "+loc.name+" ?", function(){});
+    }
   };
   if(body) body.querySelectorAll(".dr-map-loc").forEach(function(el){ el.classList.toggle("active", el.getAttribute("data-lid")===loc.id) });
   // Afficher l'icone du lieu dans le losange

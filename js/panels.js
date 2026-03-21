@@ -319,6 +319,15 @@ function wirePanelWorldmapActions(){
   body.querySelectorAll(".dr-wm-city").forEach(function(el){
     el.onclick = function(){ selectCity(el.getAttribute("data-cid")) };
   });
+  // Portal return button (e.g. sky map → back to ground city)
+  var returnBtn = body.querySelector("#dr-portal-return");
+  if(returnBtn) returnBtn.onclick = function(){
+    var city = getCities().find(function(c){ return c.id === currentCityId });
+    if(city && city.portalFrom){
+      var originLoc = getLocations().find(function(l){ return l.id === city.portalFrom });
+      if(originLoc) selectCity(originLoc.city);
+    }
+  };
   initPanelAvatarDrag();
 }
 
