@@ -224,7 +224,7 @@ function showPage(pid){
   // ★ Logo du site dans le losange sur la page d'accueil
   if(pid === "accueil") setDiamondImage("assets/ealogo.png", null);
   // ★ Worldmap dans le losange sur la page carte
-  if(pid === "worldmap") setDiamondImage("assets/worldmap.jpg", null);
+  if(pid === "worldmap") setDiamondImage("assets/worldmap.png", null);
 
   // ★ Guild page — construire le contenu
   if(pid === "guild"){
