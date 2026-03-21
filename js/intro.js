@@ -256,17 +256,24 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
-  /* ---- Back from sub-game (and codex) to level 1 ---- */
+  /* ---- Codex back → restore sub-game buttons ---- */
+  function closeCodexList(){
+    if(codexList) codexList.style.display = "none";
+    if(subButtons) subButtons.style.display = "";
+    if(codexBtn) codexBtn.style.display = "";
+    if(tournoisBtn) tournoisBtn.style.display = "";
+    if(departBtn) departBtn.style.display = "";
+    if(retourBtn) retourBtn.style.display = "";
+  }
+
+  var codexBackBtn = document.getElementById("mm-codex-back");
+  if(codexBackBtn) codexBackBtn.onclick = closeCodexList;
+
+  /* ---- Back from sub-game to level 1 ---- */
   if(backGame){
     backGame.onclick = function(){
-      // If codex list is open, go back to sub-game buttons
       if(codexList && codexList.style.display !== "none"){
-        codexList.style.display = "none";
-        if(subButtons) subButtons.style.display = "";
-        if(codexBtn) codexBtn.style.display = "";
-        if(tournoisBtn) tournoisBtn.style.display = "";
-        if(departBtn) departBtn.style.display = "";
-        if(retourBtn) retourBtn.style.display = "";
+        closeCodexList();
         return;
       }
       if(mmContent) mmContent.classList.remove("mm-sub-active");

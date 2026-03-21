@@ -47,8 +47,9 @@ function buildDrawerAccueil(){
   return '<div class="dr-concept">'
     + '<h3>\u2726 Le Sanctuaire</h3>'
     + '<p><strong>Hourglass Nexus</strong> est un portail immersif qui r\u00e9unit des exp\u00e9riences narratives et ludiques au sein d\'un univers partag\u00e9.</p>'
-    + '<p>Explorez l\'<strong>Encyclop\u00e9die TCG</strong>, affrontez des personas dans les <strong>Jeux du Nexus</strong>, et parcourez la <strong>Carte du Monde</strong>.</p>'
+    + '<p>Explorez le <strong>Codex</strong>, affrontez des personas dans les <strong>Jeux du Nexus</strong>, et parcourez la <strong>Carte du Monde</strong>.</p>'
     + '<p style="color:var(--gold-light);font-weight:600;margin-top:8px">Forg\u00e9 dans les abysses de Kael-Norath par Elrand Avicenna.</p>'
+    + '<button class="prof-back-btn" id="fp-close-panel">\u2190 Fermer</button>'
     + '</div>';
 }
 
@@ -94,6 +95,7 @@ function buildDrawerWorldmap(){
   if(avSrc) h += '<img src="'+esc(avSrc)+'">'; else h += '<div class="ma-emoji">👤</div>';
   h += '</div></div>';
   h += '<div id="dr-loc-banner-area"></div>';
+  h += '<button class="prof-back-btn" id="fp-close-panel" style="margin-top:10px">\u2190 Fermer</button>';
   return h;
 }
 
