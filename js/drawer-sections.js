@@ -7,7 +7,7 @@ var userSectionCfg = {
   equipement:{emoji:"\ud83d\udee1\ufe0f",label:"\u00c9quipement"},
   inventaire:{emoji:"\ud83c\udf92",label:"Inventaire"},
   equipe:{emoji:"\u2694\ufe0f",label:"\u00c9quipe"},
-  encyclopedie:{emoji:"\ud83c\udccf",label:"Encyclop\u00e9die TCG"},
+  encyclopedie:{emoji:"\ud83c\udccf",label:"Codex"},
   fusion:{emoji:"\u2697\ufe0f",label:"Fusion"},
   campement:{emoji:"\u26fa",label:"Campement"},
   taverne:{emoji:"\ud83c\udf7a",label:"Taverne"},
@@ -18,6 +18,7 @@ var userSectionCfg = {
   jeux:{emoji:"\ud83c\udfae",label:"Jeux"},
   personas:{emoji:"\ud83d\udc64",label:"Personas"},
   cites:{emoji:"\ud83c\udfd9\ufe0f",label:"Contr\u00e9es & Cit\u00e9s"},
+  rebelles:{emoji:"\u2694\ufe0f",label:"Rebelles"},
   metier:{emoji:"\ud83d\udee0\ufe0f",label:"M\u00e9tier"},
   "camp-metier":{emoji:"\ud83c\udfed",label:"Camp du M\u00e9tier"}
 };
@@ -38,6 +39,7 @@ function buildDrawerUserSection(){
   if(userSection === "jeux") return buildDrawerDiscJeux();
   if(userSection === "personas") return buildDrawerDiscPersonas();
   if(userSection === "cites") return buildDrawerDiscCites();
+  if(userSection === "rebelles") return buildDrawerDiscRebelles();
   var cfg = userSectionCfg[userSection] || {emoji:"?", label:userSection};
   return '<div class="dr-concept"><h3>'+cfg.emoji+' '+esc(cfg.label)+'</h3>'
     + '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic">Bient\u00f4t disponible</p></div>';
@@ -283,38 +285,38 @@ function buildDrawerCampMetier(){
 function buildDrawerEquipment(){
   var u = loadUser();
   var equipped = JSON.parse(acDB.get("ac_equipped") || "{}");
+  var slots = [
+    {id:"univers", icon:"\ud83c\udf0c", name:"Univers", desc:"Monde \u00e9quip\u00e9", color:"#9b59b6"},
+    {id:"epoque", icon:"\u23f3", name:"\u00c9poque", desc:"\u00c8re temporelle", color:"#5dade2"},
+    {id:"theme", icon:"\ud83c\udfa8", name:"Th\u00e8me", desc:"Tonalit\u00e9 narrative", color:"#e8a838"},
+    {id:"capacite", icon:"\u26a1", name:"Capacit\u00e9", desc:"Pouvoir actif", color:"#e74c3c"},
+    {id:"deroulement", icon:"\ud83d\udcdc", name:"D\u00e9roulement", desc:"Structure du r\u00e9cit", color:"#27ae60"},
+    {id:"objectif", icon:"\ud83c\udfaf", name:"Objectif", desc:"But de la qu\u00eate", color:"#e67e22"}
+  ];
 
   var h = '<div class="dr-fiche">';
-  h += '<div style="text-align:center;margin-bottom:8px"><div style="font-size:28px;margin-bottom:4px">\ud83d\udee1\ufe0f</div>'
+  h += '<div style="text-align:center;margin-bottom:12px"><div style="font-size:28px;margin-bottom:4px">\ud83d\udee1\ufe0f</div>'
     + '<div class="dr-name" style="text-align:center">\u00c9quipement</div>'
-    + '<div class="dr-sub" style="text-align:center">Armure, armes & attributs</div></div>';
+    + '<div class="dr-sub" style="text-align:center">\u00c9quipez-vous pour votre prochaine aventure</div></div>';
 
-  h += '<div class="inv-paperdoll" style="max-width:280px;margin:0 auto">';
-  h += '<div class="inv-character">';
-  if(u.avatar) h += '<img src="'+esc(u.avatar)+'">';
-  else h += '<div class="inv-character-empty">\ud83d\udc64</div>';
-  h += '</div>';
-  EQUIP_SLOTS.forEach(function(slot){
+  h += '<div class="equip-slots-grid">';
+  slots.forEach(function(slot){
     var item = equipped[slot.id];
-    var filled = item ? " filled" : "";
-    h += '<div class="inv-slot '+slot.cls+filled+'" data-slot="'+slot.id+'">'
-      + '<span class="inv-slot-icon">'+(item ? item.icon : slot.icon)+'</span>'
-      + '<span class="inv-slot-label">'+esc(slot.label)+'</span></div>';
+    var isEmpty = !item;
+    var borderCol = isEmpty ? slot.color+'40' : slot.color;
+    var bgCol = isEmpty ? slot.color+'08' : slot.color+'15';
+    h += '<div class="equip-slot" data-eslot="'+slot.id+'" style="border-color:'+borderCol+';background:'+bgCol+'">'
+      + '<div class="equip-slot-icon" style="color:'+slot.color+'">'+(item ? esc(item.icon) : slot.icon)+'</div>'
+      + '<div class="equip-slot-info">'
+      + '<div class="equip-slot-cat" style="color:'+slot.color+'">'+esc(slot.name)+'</div>'
+      + '<div class="equip-slot-name">'+(item ? esc(item.name) : esc(slot.desc))+'</div>'
+      + '</div>'
+      + (isEmpty ? '<div class="equip-slot-empty">Vide</div>' : '<div class="equip-slot-check" style="color:'+slot.color+'">\u2713</div>')
+      + '</div>';
   });
   h += '</div>';
 
-  h += '<div class="section-title" style="padding:10px 0 4px">Attributs</div>';
-  var stats = [
-    {key:"CRE", val:u.statCRE, color:"#9b59b6"},{key:"SAG", val:u.statSAG, color:"#5dade2"},
-    {key:"CHA", val:u.statCHA, color:"#e8a838"},{key:"FOR", val:u.statFOR, color:"#e74c3c"},
-    {key:"AGI", val:u.statAGI, color:"#27ae60"}
-  ];
-  stats.forEach(function(s){
-    h += '<div class="dr-stat-bar"><span class="dr-stat-label">'+s.key+'</span>'
-      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:'+s.val+'%;background:linear-gradient(90deg,'+s.color+','+s.color+'88)"></div></div>'
-      + '<span class="dr-stat-val">'+s.val+'</span></div>';
-  });
-  h += '<button class="prof-back-btn" id="equip-back-btn">\u2190 Retour au profil</button>';
+  h += '<button class="prof-back-btn" id="equip-back-btn">\u2190 Retour au campement</button>';
   h += '</div>';
   return h;
 }
@@ -322,38 +324,36 @@ function buildDrawerEquipment(){
 /* ══════════ INVENTAIRE (dans le tiroir) ══════════ */
 function buildDrawerInventory(){
   var u = loadUser(), cur = getCurrency();
+  var inv = JSON.parse(acDB.get("ac_inventory") || "{}");
+  var categories = [
+    {id:"univers", icon:"\ud83c\udf0c", name:"Univers", color:"#9b59b6"},
+    {id:"epoque", icon:"\u23f3", name:"\u00c9poque", color:"#5dade2"},
+    {id:"theme", icon:"\ud83c\udfa8", name:"Th\u00e8me", color:"#e8a838"},
+    {id:"capacite", icon:"\u26a1", name:"Capacit\u00e9", color:"#e74c3c"},
+    {id:"deroulement", icon:"\ud83d\udcdc", name:"D\u00e9roulement", color:"#27ae60"},
+    {id:"objectif", icon:"\ud83c\udfaf", name:"Objectif", color:"#e67e22"}
+  ];
+  var totalItems = 0;
+  categories.forEach(function(c){ var items = inv[c.id]; if(items) totalItems += items.length; });
+
   var h = '<div class="dr-fiche">';
   h += '<div class="loot-header" style="margin-bottom:8px">'
     + '<div class="loot-header-icon">\ud83c\udf92</div>'
     + '<div class="loot-header-info"><div class="loot-header-title">Inventaire</div>'
-    + '<div class="loot-header-sub">'+elementsData.length+' objet'+(elementsData.length>1?'s':'')+' \u2022 '+cur.icon+' '+u.coins+' '+esc(cur.name)+'</div></div></div>';
+    + '<div class="loot-header-sub">'+totalItems+' objet'+(totalItems>1?'s':'')+' \u2022 '+cur.icon+' '+u.coins+' '+esc(cur.name)+'</div></div></div>';
 
-  // Filters
-  var rarities = ["Tout"], seenR = {};
-  elementsData.forEach(function(e){ if(!seenR[e.rarity]){ seenR[e.rarity]=1; rarities.push(e.rarity) } });
-  h += '<div class="loot-filters">';
-  rarities.forEach(function(r, i){
-    h += '<button class="loot-filter'+(i===0?' active':'')+'" data-lf="'+esc(r)+'">'+esc(r)+'</button>';
+  h += '<div style="display:grid;gap:8px">';
+  categories.forEach(function(cat){
+    var items = inv[cat.id] || [];
+    var count = items.length;
+    h += '<div class="camp-item" style="border-left:3px solid '+cat.color+'" data-inv-cat="'+cat.id+'">'
+      + '<div class="camp-item-icon" style="color:'+cat.color+'">'+cat.icon+'</div>'
+      + '<div class="camp-item-info"><div class="camp-item-name">'+esc(cat.name)+'</div>'
+      + '<div class="camp-item-desc">'+count+' objet'+(count>1?'s':'')+'</div></div>'
+      + '<span class="camp-item-arrow">\u203a</span></div>';
   });
   h += '</div>';
-
-  if(elementsData.length === 0){
-    h += '<div style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic;font-size:11px">Aucun objet</div>';
-  } else {
-    h += '<div class="loot-list">';
-    elementsData.forEach(function(el, i){
-      var rarCol = el.color || "#c9a04a";
-      h += '<div class="loot-card" data-lidx="'+i+'" data-lrar="'+esc(el.rarity)+'">'
-        + '<div class="loot-card-accent" style="background:'+esc(rarCol)+'"></div>'
-        + '<div class="loot-card-icon" style="background:'+esc(rarCol)+'12;border-color:'+esc(rarCol)+'30">'+el.icon+'</div>'
-        + '<div class="loot-card-body"><div class="loot-card-name" style="color:'+esc(rarCol)+'">'+esc(el.name)+'</div>'
-        + '<div class="loot-card-meta">'+esc(el.type)+' \u2022 '+esc(el.rarity)+'</div>'
-        + '<div class="loot-card-desc">'+esc(el.desc)+'</div></div>'
-        + '<div class="loot-card-qty">x1</div></div>';
-    });
-    h += '</div>';
-  }
-  h += '<button class="prof-back-btn" id="inv-back-btn">\u2190 Retour au profil</button>';
+  h += '<button class="prof-back-btn" id="inv-back-btn">\u2190 Retour au campement</button>';
   h += '</div>';
   return h;
 }
@@ -400,10 +400,10 @@ function buildDrawerCampement(){
     + '<div class="dr-sub" style="text-align:center">Votre refuge entre les \u00e9preuves</div></div>';
 
   var items = [
-    {id:"equipement", icon:"\ud83d\udee1\ufe0f", name:"\u00c9quipement", desc:"Armure, armes & attributs", color:"var(--blood-glow)"},
-    {id:"inventaire", icon:"\ud83c\udf92", name:"Inventaire", desc:"Objets collect\u00e9s & ressources", color:"var(--ember)"},
+    {id:"equipement", icon:"\ud83d\udee1\ufe0f", name:"\u00c9quipement", desc:"\u00c9quipez vos 6 cat\u00e9gories d'objets", color:"var(--blood-glow)"},
+    {id:"inventaire", icon:"\ud83c\udf92", name:"Inventaire", desc:"Univers, \u00e9poque, th\u00e8me & plus", color:"var(--ember)"},
     {id:"equipe", icon:"\u2694\ufe0f", name:"\u00c9quipe", desc:"G\u00e9rer votre \u00e9quipe de personas", color:"var(--gold)"},
-    {id:"encyclopedie", icon:"\ud83c\udccf", name:"Encyclop\u00e9die", desc:"Cartes TCG du Nexus", color:"var(--frost)"},
+    {id:"encyclopedie", icon:"\ud83d\udcd6", name:"Codex", desc:"Dossiers & archives du Nexus", color:"var(--frost)"},
     {id:"fusion", icon:"\u2697\ufe0f", name:"Fusion", desc:"Combiner des \u00e9l\u00e9ments", color:"var(--arcane)"},
     {id:"musiques", icon:"\ud83c\udfb5", name:"Musiques", desc:"Ambiances sonores", color:"var(--poison)"}
   ];
@@ -470,45 +470,31 @@ function buildDrawerGuide(){
 }
 
 function buildDrawerEncyclopedie(){
-  var cats = getEncyCats(), cards = getEncyCards(), u = loadUser(), col = u.cardColor || "#c9a04a";
-  allTcgCards = [];
-
-  if(selectedCard){
-    return buildDrawerTCGCard(selectedCard)
-      + '<button class="dr-team-btn" id="tcg-back" style="margin-top:10px">\u2190 Retour</button>';
-  }
-
   var h = '<div class="dr-fiche">';
-  h += '<div class="ency-filters">'
-    + '<button class="ency-filter active" data-cat="all">Tout</button>';
-  cats.forEach(function(c){
-    h += '<button class="ency-filter" data-cat="'+esc(c.id)+'">'+c.icon+' '+esc(c.name)+'</button>';
-  });
-  h += '</div><div class="ency-grid">';
+  h += '<div style="text-align:center;margin-bottom:12px">'
+    + '<div style="font-size:28px;margin-bottom:4px">\ud83d\udcd6</div>'
+    + '<div class="dr-name" style="color:var(--gold-light);text-align:center">Codex</div>'
+    + '<div class="dr-sub" style="text-align:center">Archives & dossiers du Nexus</div></div>';
 
-  var uImg = u.avatar ? '<img src="'+esc(u.avatar)+'">' : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--dark-stone)">👤</div>';
-  allTcgCards.push({name:u.name||"Voyageur",type:"Joueur",rarity:u.title,rarityColor:col,image:u.avatar||"",description:"Le voyageur qui explore le Nexus.",stats:{CRE:u.statCRE,SAG:u.statSAG,CHA:u.statCHA},quote:u.quote});
-  h += '<div class="tcg-card" data-cidx="0" data-cat="personnages">'
-    + '<div class="tcg-card-glow" style="background:linear-gradient(90deg,transparent,'+esc(col)+',transparent)"></div>'
-    + '<div class="tcg-img-wrap">'+uImg+'<span class="tcg-rarity" style="background:'+esc(col)+'">'+esc(u.title)+'</span><span class="tcg-type">Joueur</span></div>'
-    + '<div class="tcg-body"><div class="tcg-name">'+esc(u.name||"Voyageur")+'</div>'
-    + '<div class="tcg-stats"><span class="tcg-stat">CRE '+u.statCRE+'</span><span class="tcg-stat">SAG '+u.statSAG+'</span><span class="tcg-stat">CHA '+u.statCHA+'</span></div>'
-    + '<div class="tcg-quote">"'+esc(u.quote)+'"</div></div></div>';
+  var dossiers = [
+    {id:"elements", icon:"\ud83c\udf0d", name:"Dossier Extelua", desc:"Le monde, ses r\u00e9gions & ses secrets", color:"var(--gold)"},
+    {id:"personas", icon:"\ud83d\udc64", name:"Dossier Personas", desc:"Personnages rencontr\u00e9s dans le Nexus", color:"var(--arcane)"},
+    {id:"cites", icon:"\ud83c\udfd9\ufe0f", name:"Dossier Morkar", desc:"Contr\u00e9es, cit\u00e9s & lieux myst\u00e9rieux", color:"var(--ember)"},
+    {id:"rebelles", icon:"\u2694\ufe0f", name:"Dossier des Rebelles", desc:"Factions, r\u00e9sistants & all\u00e9geances", color:"var(--blood-glow)"},
+    {id:"jeux", icon:"\ud83c\udfae", name:"Dossier Jeux", desc:"Mini-jeux & \u00e9preuves du Nexus", color:"var(--frost)"}
+  ];
 
-  cards.forEach(function(c, idx){
-    allTcgCards.push(c);
-    var sk = Object.keys(c.stats || {});
-    h += '<div class="tcg-card" data-cat="'+esc(c.category)+'" data-cidx="'+(idx+1)+'">'
-      + '<div class="tcg-card-glow" style="background:linear-gradient(90deg,transparent,'+esc(c.rarityColor)+',transparent)"></div>'
-      + '<div class="tcg-img-wrap"><img src="'+esc(c.image)+'"><span class="tcg-rarity" style="background:'+esc(c.rarityColor)+'">'+esc(c.rarity)+'</span>'
-      + '<span class="tcg-type">'+esc(c.type)+'</span></div><div class="tcg-body"><div class="tcg-name">'+esc(c.name)+'</div>'
-      + '<div class="tcg-desc">'+esc(c.description)+'</div><div class="tcg-stats">';
-    sk.forEach(function(k){ h += '<span class="tcg-stat">'+k+' '+c.stats[k]+'</span>' });
-    h += '</div>';
-    if(c.quote) h += '<div class="tcg-quote">"'+esc(c.quote)+'"</div>';
-    h += '</div></div>';
+  h += '<div style="display:grid;gap:8px">';
+  dossiers.forEach(function(d){
+    h += '<div class="camp-item" data-camp="'+d.id+'">'
+      + '<div class="camp-item-icon" style="color:'+d.color+'">'+d.icon+'</div>'
+      + '<div class="camp-item-info"><div class="camp-item-name">'+esc(d.name)+'</div>'
+      + '<div class="camp-item-desc">'+esc(d.desc)+'</div></div>'
+      + '<span class="camp-item-arrow">\u203a</span></div>';
   });
-  h += '</div></div>';
+  h += '</div>';
+  h += '<button class="prof-back-btn" id="codex-back-btn">\u2190 Retour au campement</button>';
+  h += '</div>';
   return h;
 }
 
@@ -556,7 +542,9 @@ function buildDrawerDiscElements(){
       + '<div style="flex:1;min-width:0"><div style="font-family:var(--font-heading);font-size:11px;font-weight:600;color:'+esc(e.color)+'">'+esc(e.name)+'</div>'
       + '<div style="font-family:var(--font-ui);font-size:9px;color:var(--bone-dim)">'+esc(e.type)+' \u2022 '+esc(e.rarity)+'</div></div></div>';
   });
-  h += '</div></div>';
+  h += '</div>';
+  h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
+  h += '</div>';
   return h;
 }
 
@@ -582,7 +570,9 @@ function buildDrawerDiscJeux(){
       + '<div class="game-desc">'+esc(g.desc)+'</div></div>'
       + '<span class="game-status">'+(g.status==="locked"?"🔒":"⚔️")+'</span></div>';
   });
-  h += '</div></div>';
+  h += '</div>';
+  h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
+  h += '</div>';
   return h;
 }
 
@@ -617,7 +607,9 @@ function buildDrawerDiscPersonas(){
   h += '</div><button class="ts-auto" id="ts-auto">\u26a1</button></div>';
   h += '<div class="personas-grid">';
   allP.forEach(function(pe){ h += makePersonaCard(pe, false) });
-  h += '</div></div>';
+  h += '</div>';
+  h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
+  h += '</div>';
   return h;
 }
 
@@ -707,6 +699,19 @@ function buildDrawerDiscCites(){
     });
   }
 
+  h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
+  h += '</div>';
+  return h;
+}
+
+function buildDrawerDiscRebelles(){
+  var h = '<div class="dr-fiche">';
+  h += '<div style="text-align:center;margin-bottom:12px">'
+    + '<div style="font-size:28px;margin-bottom:4px">\u2694\ufe0f</div>'
+    + '<div class="dr-name" style="color:var(--blood-glow);text-align:center">Dossier des Rebelles</div>'
+    + '<div class="dr-sub" style="text-align:center">Factions, r\u00e9sistants & all\u00e9geances</div></div>';
+  h += '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic;font-size:11px">Ce dossier est encore class\u00e9 secret\u2026 Bient\u00f4t disponible.</p>';
+  h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
   h += '</div>';
   return h;
 }

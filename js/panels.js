@@ -5,7 +5,14 @@ function wirePanelActions(){
   var body = document.getElementById("fp-body"); if(!body) return;
 
   var backBtn = document.getElementById("disc-back");
-  if(backBtn) backBtn.onclick = function(){ selectedPersona=null; selectedGame=null; selectedElement=null; updateDrawerContent() };
+  if(backBtn) backBtn.onclick = function(){
+    var codexSections = ["elements","personas","cites","jeux","rebelles"];
+    if(codexSections.indexOf(userSection) >= 0 && !selectedPersona && !selectedGame && !selectedElement){
+      userSection = "encyclopedie"; setDiamondImage(null,"\ud83d\udcd6"); updateDrawerContent();
+    } else {
+      selectedPersona=null; selectedGame=null; selectedElement=null; updateDrawerContent();
+    }
+  };
 
   var tcgBack = document.getElementById("tcg-back");
   if(tcgBack) tcgBack.onclick = function(){ selectedCard=null; updateDrawerContent() };
@@ -116,23 +123,19 @@ function wirePanelActions(){
   // Inventaire filters + card clicks
   wirePanelInventory(body);
 
-  // Back buttons (retour au profil depuis équipement/inventaire)
+  // Back buttons (retour au campement depuis équipement/inventaire)
   var backEquip = body.querySelector("#equip-back-btn");
   if(backEquip) backEquip.onclick = function(){
-    userSection="profil";
-    var u = loadUser();
-    if(u.avatar) setDiamondImage(u.avatar, null); else setDiamondImage(null,"\ud83d\udc64");
-    updateDrawerContent();
+    userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent();
   };
   var backInv = body.querySelector("#inv-back-btn");
   if(backInv) backInv.onclick = function(){
-    userSection="profil";
-    var u = loadUser();
-    if(u.avatar) setDiamondImage(u.avatar, null); else setDiamondImage(null,"\ud83d\udc64");
-    updateDrawerContent();
+    userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent();
   };
   var backEquipe = body.querySelector("#equipe-back-btn");
   if(backEquipe) backEquipe.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
+  var backCodex = body.querySelector("#codex-back-btn");
+  if(backCodex) backCodex.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
   var backCampMetier = body.querySelector("#camp-metier-back");
   if(backCampMetier) backCampMetier.onclick = function(){
     userSection="metier";
