@@ -177,6 +177,42 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     };
   }
 
+  /* ---- Player info modal ---- */
+  var portraitEl = document.getElementById("mm-player-portrait");
+  if(portraitEl){
+    portraitEl.onclick = function(){
+      var u = loadUser();
+      var esc = function(s){ var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
+      var avatarHTML = u.avatar
+        ? '<img src="' + esc(u.avatar) + '" alt="">'
+        : '<div class="mm-player-modal-avatar-empty">\uD83D\uDC64</div>';
+      var overlay = document.createElement("div");
+      overlay.className = "mm-player-modal";
+      overlay.innerHTML =
+        '<div class="mm-player-modal-box">' +
+          '<button class="mm-player-modal-close">&times;</button>' +
+          '<div class="mm-player-modal-avatar">' + avatarHTML + '</div>' +
+          '<div class="mm-player-modal-info">' +
+            '<div class="mm-player-modal-name">' + esc(u.name || "Voyageur") + '</div>' +
+            '<div class="mm-player-modal-title">' + esc(u.title || "Voyageur") + ' &middot; Niv. ' + u.level + '</div>' +
+            '<div class="mm-player-modal-quote">&laquo; ' + esc(u.quote) + ' &raquo;</div>' +
+            '<div class="mm-player-modal-stats">' +
+              '<div class="mm-player-modal-stat"><span>CRE</span><span class="mm-player-modal-stat-val">' + u.statCRE + '</span></div>' +
+              '<div class="mm-player-modal-stat"><span>SAG</span><span class="mm-player-modal-stat-val">' + u.statSAG + '</span></div>' +
+              '<div class="mm-player-modal-stat"><span>CHA</span><span class="mm-player-modal-stat-val">' + u.statCHA + '</span></div>' +
+              '<div class="mm-player-modal-stat"><span>FOR</span><span class="mm-player-modal-stat-val">' + u.statFOR + '</span></div>' +
+              '<div class="mm-player-modal-stat"><span>AGI</span><span class="mm-player-modal-stat-val">' + u.statAGI + '</span></div>' +
+              '<div class="mm-player-modal-stat"><span>Or</span><span class="mm-player-modal-stat-val">' + u.coins + '</span></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      menu.appendChild(overlay);
+      var close = function(){ if(overlay.parentNode) overlay.parentNode.removeChild(overlay); };
+      overlay.querySelector(".mm-player-modal-close").onclick = close;
+      overlay.onclick = function(e){ if(e.target === overlay) close(); };
+    };
+  }
+
   /* ---- Back to Level 1 ---- */
   if(backGame){
     backGame.onclick = function(){
