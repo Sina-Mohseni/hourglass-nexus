@@ -40,6 +40,7 @@ function buildDrawerUserSection(){
   if(userSection === "personas") return buildDrawerDiscPersonas();
   if(userSection === "cites") return buildDrawerDiscCites();
   if(userSection === "rebelles") return buildDrawerDiscRebelles();
+  if(userSection === "musiques") return buildDrawerMusiques();
   var cfg = userSectionCfg[userSection] || {emoji:"?", label:userSection};
   return '<div class="dr-concept"><h3>'+cfg.emoji+' '+esc(cfg.label)+'</h3>'
     + '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic">Bient\u00f4t disponible</p>'
@@ -719,6 +720,78 @@ function buildDrawerDiscRebelles(){
     + '<div class="dr-sub" style="text-align:center">Factions, r\u00e9sistants & all\u00e9geances</div></div>';
   h += '<p style="text-align:center;color:var(--bone-dim);padding:30px 0;font-style:italic;font-size:11px">Ce dossier est encore class\u00e9 secret\u2026 Bient\u00f4t disponible.</p>';
   h += '<button class="prof-back-btn" id="disc-back">\u2190 Retour au Codex</button>';
+  h += '</div>';
+  return h;
+}
+
+/* ══════════ MUSIQUES (player Diablo-style) ══════════ */
+var MUSIC_TRACKS = [
+  {id:"main-menu", title:"Tournoi d'Extelua", artist:"Menu Principal", src:"assets/music/extelua-tournament-main-menu.mp3", icon:"\ud83c\udfc6", color:"#c9a04a", duration:""},
+  {id:"intro", title:"L'Appel du Nexus", artist:"Intro Narrative", src:"assets/music/extelua-intro.mp3", icon:"\ud83c\udf0c", color:"#9b59b6", duration:""},
+  {id:"guide", title:"Le Guide S'\u00c9veille", artist:"Cr\u00e9ation du Personnage", src:"assets/music/guide.mp3", icon:"\ud83e\uddd9", color:"#5dade2", duration:""}
+];
+
+var _mpCurrentTrack = null;
+var _mpAudio = null;
+var _mpPlaying = false;
+
+function _getMpAudio(){
+  if(!_mpAudio){
+    _mpAudio = document.createElement("audio");
+    _mpAudio.id = "mp-audio";
+    _mpAudio.preload = "auto";
+    document.body.appendChild(_mpAudio);
+  }
+  return _mpAudio;
+}
+
+function buildDrawerMusiques(){
+  var h = '<div class="dr-fiche" style="padding:0">';
+
+  // Header with currently playing
+  h += '<div class="mp-header">';
+  h += '<div class="mp-now-art" id="mp-now-art">'
+    + (_mpCurrentTrack ? _mpCurrentTrack.icon : '\ud83c\udfb5')
+    + '</div>';
+  h += '<div class="mp-now-info">';
+  h += '<div class="mp-now-title" id="mp-now-title">'
+    + esc(_mpCurrentTrack ? _mpCurrentTrack.title : 'Aucune piste')
+    + '</div>';
+  h += '<div class="mp-now-artist" id="mp-now-artist">'
+    + esc(_mpCurrentTrack ? _mpCurrentTrack.artist : 'S\u00e9lectionnez une musique')
+    + '</div>';
+  h += '</div></div>';
+
+  // Progress bar
+  h += '<div class="mp-progress-wrap" id="mp-progress-wrap">'
+    + '<div class="mp-progress-bar" id="mp-progress-bar"></div></div>';
+
+  // Controls
+  h += '<div class="mp-controls">';
+  h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-prev">\u23ee</button>';
+  h += '<button class="mp-ctrl-btn mp-ctrl-play" id="mp-play">'
+    + (_mpPlaying ? '\u275a\u275a' : '\u25b6') + '</button>';
+  h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-next">\u23ed</button>';
+  h += '</div>';
+
+  // Track list
+  h += '<div class="mp-tracklist">';
+  MUSIC_TRACKS.forEach(function(t, i){
+    var isActive = _mpCurrentTrack && _mpCurrentTrack.id === t.id;
+    h += '<div class="mp-track'+(isActive ? ' mp-track-active' : '')+'" data-midx="'+i+'">'
+      + '<div class="mp-track-icon" style="color:'+t.color+';border-color:'+t.color+'40;background:'+t.color+'10">'
+      + (isActive && _mpPlaying ? '<span class="mp-eq">\u266a</span>' : t.icon)
+      + '</div>'
+      + '<div class="mp-track-info">'
+      + '<div class="mp-track-title"'+(isActive ? ' style="color:'+t.color+'"' : '')+'>'+esc(t.title)+'</div>'
+      + '<div class="mp-track-artist">'+esc(t.artist)+'</div>'
+      + '</div>'
+      + (isActive && _mpPlaying ? '<div class="mp-track-playing" style="color:'+t.color+'">\u266b</div>' : '')
+      + '</div>';
+  });
+  h += '</div>';
+
+  h += '<button class="prof-back-btn" id="musiques-back-btn">\u2190 Retour au campement</button>';
   h += '</div>';
   return h;
 }
