@@ -4,8 +4,8 @@
 /* Full-page paperdoll with portrait */
 .inv-paperdoll-6 {
   position: relative;
-  margin: 0 auto; width: 100%; max-width: 400px;
-  min-height: 85vh;
+  margin: 0 auto; width: 100%;
+  aspect-ratio: 9/16;
   background: linear-gradient(180deg, var(--abyss) 0%, var(--dark-stone) 40%, var(--abyss) 100%);
   border: var(--border-ornate); border-radius: var(--radius);
   box-shadow: var(--shadow-heavy);
