@@ -176,7 +176,14 @@ function wirePanelActions(){
   var backTaverne = body.querySelector("#taverne-back-btn");
   if(backTaverne) backTaverne.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
 
-  // Generic back → campement (for fusion, musiques, etc.)
+  // Musiques back → campement
+  var backMusiques = body.querySelector("#musiques-back-btn");
+  if(backMusiques) backMusiques.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
+
+  // Music player controls
+  wireMusicPlayer(body);
+
+  // Generic back → campement (for fusion, etc.)
   var backGeneric = body.querySelector("#generic-back-btn");
   if(backGeneric) backGeneric.onclick = function(){ userSection="campement"; setDiamondImage(null,"\u26fa"); updateDrawerContent() };
 
@@ -310,5 +317,94 @@ function wirePanelWorldmapActions(){
     el.onclick = function(){ selectCity(el.getAttribute("data-cid")) };
   });
   initPanelAvatarDrag();
+}
+
+/* ══════════ MUSIC PLAYER ══════════ */
+function wireMusicPlayer(body){
+  var audio = _getMpAudio();
+
+  // Track clicks
+  body.querySelectorAll(".mp-track").forEach(function(el){
+    el.onclick = function(){
+      var idx = parseInt(el.getAttribute("data-midx"));
+      if(isNaN(idx) || !MUSIC_TRACKS[idx]) return;
+      _mpPlayTrack(MUSIC_TRACKS[idx]);
+    };
+  });
+
+  // Play/pause
+  var playBtn = body.querySelector("#mp-play");
+  if(playBtn) playBtn.onclick = function(){
+    if(!_mpCurrentTrack){
+      _mpPlayTrack(MUSIC_TRACKS[0]);
+      return;
+    }
+    if(_mpPlaying){
+      audio.pause();
+      _mpPlaying = false;
+    } else {
+      audio.play().catch(function(){});
+      _mpPlaying = true;
+    }
+    updateDrawerContent();
+  };
+
+  // Prev / Next
+  var prevBtn = body.querySelector("#mp-prev");
+  var nextBtn = body.querySelector("#mp-next");
+  if(prevBtn) prevBtn.onclick = function(){ _mpSkip(-1); };
+  if(nextBtn) nextBtn.onclick = function(){ _mpSkip(1); };
+
+  // Progress bar seek
+  var progWrap = body.querySelector("#mp-progress-wrap");
+  if(progWrap) progWrap.onclick = function(e){
+    if(!audio.duration) return;
+    var rect = progWrap.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  };
+
+  // Update progress bar
+  _mpStartProgressUpdate();
+}
+
+function _mpPlayTrack(track){
+  var audio = _getMpAudio();
+  // Stop any other site audio
+  ["bg-music","ic-music","guide-music"].forEach(function(id){
+    var a = document.getElementById(id);
+    if(a && !a.paused) a.pause();
+  });
+  _mpCurrentTrack = track;
+  audio.src = track.src;
+  audio.volume = 0.5;
+  audio.loop = false;
+  audio.play().catch(function(){});
+  _mpPlaying = true;
+  // Auto next on end
+  audio.onended = function(){ _mpSkip(1); };
+  updateDrawerContent();
+}
+
+function _mpSkip(dir){
+  if(!_mpCurrentTrack) return;
+  var idx = -1;
+  MUSIC_TRACKS.forEach(function(t,i){ if(t.id === _mpCurrentTrack.id) idx = i; });
+  idx += dir;
+  if(idx < 0) idx = MUSIC_TRACKS.length - 1;
+  if(idx >= MUSIC_TRACKS.length) idx = 0;
+  _mpPlayTrack(MUSIC_TRACKS[idx]);
+}
+
+var _mpProgressTimer = null;
+function _mpStartProgressUpdate(){
+  if(_mpProgressTimer) clearInterval(_mpProgressTimer);
+  _mpProgressTimer = setInterval(function(){
+    var bar = document.getElementById("mp-progress-bar");
+    var audio = _mpAudio;
+    if(!bar || !audio || !audio.duration) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    bar.style.width = pct + "%";
+  }, 300);
 }
 
