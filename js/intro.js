@@ -169,6 +169,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
       }
       if(nameEl) nameEl.textContent = u.name || "Voyageur";
       if(mmContent) mmContent.classList.add("mm-sub-active");
+      if(menu) menu.classList.add("mm-top-align");
       switchTo(mainCirc, subGame);
     };
   }
@@ -213,6 +214,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(backGame){
     backGame.onclick = function(){
       if(mmContent) mmContent.classList.remove("mm-sub-active");
+      if(menu) menu.classList.remove("mm-top-align");
       switchTo(subGame, mainCirc);
     };
   }
