@@ -613,6 +613,23 @@
         </audio>
       </div>
 
+      <!-- ═══════ IDENTITY (portrait + name, before scenario) ═══════ -->
+      <div class="identity-overlay" id="identity-screen" style="display:none">
+        <div class="sc-vignette"></div>
+        <div class="id-content">
+          <div class="sc-title">Qui es-tu, voyageur ?</div>
+          <div class="id-avatar-ring" id="id-avatar-ring">
+            <div class="id-avatar-preview" id="id-avatar-preview">
+              <span class="id-avatar-plus">+</span>
+            </div>
+          </div>
+          <div class="id-avatar-label" id="id-avatar-label">Choisir un portrait</div>
+          <input type="file" accept="image/*" id="id-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
+          <input type="text" id="id-name-input" class="id-name-input" placeholder="Ton nom de voyageur&#x2026;" maxlength="24" autocomplete="off">
+          <button class="id-confirm-btn" id="id-confirm-btn">Continuer</button>
+        </div>
+      </div>
+
       <!-- ═══════ SCENARIO CHOICE ═══════ -->
       <div class="scenario-overlay" id="scenario-choice" style="display:none">
         <div class="sc-vignette"></div>

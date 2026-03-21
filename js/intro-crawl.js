@@ -114,6 +114,61 @@ function showIntroCrawl(onDone){
   showParagraph(0);
 }
 
+/* ══════════ IDENTITY SCREEN (portrait + name) ══════════ */
+function showIdentityScreen(onDone){
+  var overlay = document.getElementById("identity-screen");
+  if(!overlay){ onDone(); return; }
+  overlay.style.display = "";
+
+  var ring = document.getElementById("id-avatar-ring");
+  var preview = document.getElementById("id-avatar-preview");
+  var label = document.getElementById("id-avatar-label");
+  var fileInput = document.getElementById("id-file-input");
+  var nameInput = document.getElementById("id-name-input");
+  var confirmBtn = document.getElementById("id-confirm-btn");
+
+  var avatarData = "";
+
+  // Avatar pick
+  function openFilePicker(){ if(fileInput) fileInput.click(); }
+  if(ring) ring.onclick = openFilePicker;
+  if(label) label.onclick = openFilePicker;
+  if(fileInput) fileInput.onchange = function(){
+    var file = fileInput.files[0]; if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e){
+      avatarData = e.target.result;
+      if(preview) preview.innerHTML = '<img src="'+avatarData+'">';
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Confirm
+  if(confirmBtn) confirmBtn.onclick = function(){
+    var name = nameInput ? nameInput.value.trim() : "";
+    if(name.length < 2){ if(nameInput) nameInput.focus(); return; }
+
+    // Save name + avatar immediately
+    var u = loadUser();
+    u.name = name;
+    saveUser(u);
+    if(avatarData) saveAvatar(avatarData);
+    window._idAvatarData = avatarData;
+    window._idName = name;
+
+    overlay.classList.add("fading-out");
+    setTimeout(function(){
+      overlay.style.display = "none";
+      overlay.classList.remove("fading-out");
+      // Reset for potential replay
+      if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
+      if(nameInput) nameInput.value = "";
+      onDone();
+    }, 800);
+  };
+}
+
+/* ══════════ SCENARIO CHOICE ══════════ */
 function showScenarioChoice(onChosen){
   var overlay = document.getElementById("scenario-choice");
   if(!overlay){ onChosen("lambda"); return; }
@@ -152,11 +207,18 @@ function showScenarioChoice(onChosen){
   });
 }
 
-/* Full intro sequence: narration → scenario → lock screen */
-function startIntroSequence(onNewVoyage){
+/* Full intro sequence
+   mode "new" : crawl → identity → scenario → lock → guide (region/city/job)
+   mode "participation" : crawl → scenario → lock → guide (region/city/job) */
+function startIntroSequence(onNewVoyage, mode){
+  var isNew = (mode !== "participation");
   showIntroCrawl(function(){
-    showScenarioChoice(function(scenario){
-      onNewVoyage();
-    });
+    if(isNew){
+      showIdentityScreen(function(){
+        showScenarioChoice(function(){ onNewVoyage(); });
+      });
+    } else {
+      showScenarioChoice(function(){ onNewVoyage(); });
+    }
   });
 }

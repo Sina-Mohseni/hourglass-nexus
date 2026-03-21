@@ -150,7 +150,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- Level 1 actions ---- */
   if(nouvelleBtn){
     nouvelleBtn.onclick = function(){
-      closeMainMenu(function(){ startIntroSequence(onNewVoyage) });
+      closeMainMenu(function(){ startIntroSequence(onNewVoyage, "new") });
     };
   }
   if(chargerBtn){
@@ -228,7 +228,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- Navigation ---- */
   if(departBtn){
     departBtn.onclick = function(){
-      closeMainMenu(function(){ startIntroSequence(onNewVoyage) });
+      closeMainMenu(function(){ startIntroSequence(onNewVoyage, "participation") });
     };
   }
   if(retourBtn){

@@ -99,6 +99,69 @@
   stroke: var(--gold-light, #e8d5a3);
 }
 
+/* ═══════════ IDENTITY SCREEN (portrait + name) ═══════════ */
+.identity-overlay {
+  position: absolute; inset: 0; z-index: 1100;
+  background: radial-gradient(ellipse at 50% 30%, #1a1610, #0a0806);
+  overflow: hidden;
+}
+.id-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 60px 20px 40px;
+  min-height: 100%;
+}
+.id-avatar-ring {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 2.5px solid rgba(201,160,74,.35);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; margin: 30px 0 12px;
+  background: rgba(0,0,0,.3);
+  overflow: hidden; transition: all .3s;
+  opacity: 0; animation: scFadeIn .5s ease-out .2s forwards;
+}
+.id-avatar-ring:active { border-color: var(--gold); transform: scale(.95); }
+.id-avatar-preview { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.id-avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+.id-avatar-plus {
+  font-size: 36px; color: rgba(201,160,74,.3);
+  font-weight: 300;
+}
+.id-avatar-label {
+  font-family: var(--font-ui); font-size: 11px;
+  color: var(--bone-dim); letter-spacing: .5px;
+  margin-bottom: 24px; cursor: pointer;
+  opacity: 0; animation: scFadeIn .5s ease-out .3s forwards;
+}
+.id-avatar-label:active { color: var(--gold-light); }
+.id-name-input {
+  width: 80%; max-width: 280px;
+  padding: 14px 18px;
+  background: rgba(26,22,16,.8);
+  border: 1.5px solid rgba(201,160,74,.25);
+  border-radius: 10px;
+  font-family: var(--font-heading); font-size: 16px;
+  letter-spacing: 1px; text-align: center;
+  color: var(--gold-light, #e8d5a3);
+  outline: none; transition: border-color .2s;
+  opacity: 0; animation: scFadeIn .5s ease-out .4s forwards;
+}
+.id-name-input::placeholder { color: rgba(201,160,74,.3); }
+.id-name-input:focus { border-color: var(--gold); }
+.id-confirm-btn {
+  margin-top: 20px; padding: 14px 40px;
+  background: rgba(201,160,74,.1);
+  border: 1.5px solid rgba(201,160,74,.35);
+  border-radius: 10px;
+  font-family: var(--font-heading); font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-light, #e8d5a3);
+  cursor: pointer; transition: all .2s;
+  opacity: 0; animation: scFadeIn .5s ease-out .5s forwards;
+}
+.id-confirm-btn:active { border-color: var(--gold); transform: scale(.95); }
+.identity-overlay.fading-out { animation: icFadeOut .8s ease-in forwards; }
+
 /* Fade out overlay */
 .intro-crawl-overlay.fading-out {
   animation: icFadeOut .8s ease-in forwards;
