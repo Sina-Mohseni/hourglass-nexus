@@ -198,9 +198,13 @@
 .mm-menu-circles.visible {
   display: flex !important;
 }
-.mm-main-circles {
+.mm-main-circles, .mm-sub-circles {
   display: flex; justify-content: center; align-items: flex-start;
   gap: 36px;
+}
+.mm-sub-circles {
+  position: absolute; top: 0; left: 0; right: 0;
+  justify-content: center;
 }
 
 /* Individual circle button */
@@ -248,6 +252,18 @@
 }
 
 /* Special circle colors */
+.mm-circle-nouvelle .mm-circle-icon {
+  border-color: rgba(139,26,26,.5);
+  box-shadow: 0 0 20px rgba(139,26,26,.2), inset 0 0 15px rgba(0,0,0,.5);
+}
+.mm-circle-nouvelle:hover .mm-circle-icon {
+  border-color: rgba(200,60,60,.7);
+  box-shadow: 0 0 30px rgba(139,26,26,.4), inset 0 0 15px rgba(0,0,0,.4);
+}
+.mm-circle-charger .mm-circle-icon {
+  border-color: rgba(26,58,107,.5);
+  box-shadow: 0 0 20px rgba(26,58,107,.2), inset 0 0 15px rgba(0,0,0,.5);
+}
 .mm-circle-depart .mm-circle-icon {
   border-color: rgba(139,26,26,.5);
   box-shadow: 0 0 20px rgba(139,26,26,.2), inset 0 0 15px rgba(0,0,0,.5);
@@ -256,7 +272,34 @@
   border-color: rgba(26,58,107,.5);
   box-shadow: 0 0 20px rgba(26,58,107,.2), inset 0 0 15px rgba(0,0,0,.5);
 }
+.mm-circle-codex .mm-circle-icon {
+  border-color: rgba(201,160,74,.4);
+}
 
+/* Back button (smaller circle) */
+.mm-circle-back .mm-circle-icon {
+  width: 48px; height: 48px; padding: 10px;
+  border-color: rgba(201,160,74,.2);
+  box-shadow: 0 0 10px rgba(201,160,74,.1), inset 0 0 10px rgba(0,0,0,.5);
+}
+.mm-circle-icon-sm { width: 48px; height: 48px; }
+.mm-circle-back { align-self: center; }
+
+/* Fade transitions between levels */
+.mm-main-circles.fading-out,
+.mm-sub-circles.fading-out {
+  animation: mmCircleFadeOut .35s ease-in forwards;
+}
+@keyframes mmCircleFadeOut {
+  to { opacity: 0; transform: scale(.9) }
+}
+.mm-sub-circles.fading-in .mm-circle-btn {
+  animation: mmCircleIn .5s ease-out forwards;
+}
+.mm-sub-circles.fading-in .mm-circle-btn:nth-child(1) { animation-delay: .05s }
+.mm-sub-circles.fading-in .mm-circle-btn:nth-child(2) { animation-delay: .15s }
+.mm-sub-circles.fading-in .mm-circle-btn:nth-child(3) { animation-delay: .25s }
+.mm-sub-circles.fading-in .mm-circle-btn:nth-child(4) { animation-delay: .35s }
 
 /* Volume button */
 .mm-volume-btn {

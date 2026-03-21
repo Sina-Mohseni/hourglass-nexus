@@ -67,11 +67,19 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var volOn     = document.getElementById("mm-volume-icon-on");
   var volOff    = document.getElementById("mm-volume-icon-off");
 
-  // Circle buttons
+  // Level 1 buttons
+  var nouvelleBtn = document.getElementById("mm-circle-nouvelle");
+  var chargerBtn  = document.getElementById("mm-circle-charger");
+
+  // Level 2 buttons
+  var subGame   = document.getElementById("mm-sub-game");
   var departBtn = document.getElementById("mm-circle-depart");
   var retourBtn = document.getElementById("mm-circle-retour");
+  var codexBtn  = document.getElementById("mm-circle-codex");
+  var backGame  = document.getElementById("mm-sub-game-back");
 
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
+  if(chargerBtn && hasSave) chargerBtn.disabled = false;
   if(retourBtn && hasSave) retourBtn.disabled = false;
 
   // Video + volume button hidden until "Entrer" is clicked
@@ -93,6 +101,16 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(volBtn) volBtn.style.display = "";
   }
 
+  /* ---- Replay animations on buttons ---- */
+  function replayAnimations(container){
+    var btns = container.querySelectorAll(".mm-circle-btn");
+    for(var i = 0; i < btns.length; i++){
+      btns[i].style.animation = "none";
+      btns[i].offsetHeight;
+      btns[i].style.animation = "";
+    }
+  }
+
   /* ---- Show main circles ---- */
   function showCircles(){
     if(enterBtn){
@@ -102,13 +120,21 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(circles){
       circles.style.display = "";
       circles.classList.add("visible");
-      var btns = mainCirc.querySelectorAll(".mm-circle-btn");
-      for(var i = 0; i < btns.length; i++){
-        btns[i].style.animation = "none";
-        btns[i].offsetHeight;
-        btns[i].style.animation = "";
-      }
+      replayAnimations(mainCirc);
     }
+  }
+
+  /* ---- Switch between circle levels ---- */
+  function switchTo(hideEl, showEl){
+    hideEl.classList.add("fading-out");
+    setTimeout(function(){
+      hideEl.style.display = "none";
+      hideEl.classList.remove("fading-out");
+      showEl.style.display = "";
+      showEl.classList.add("fading-in");
+      replayAnimations(showEl);
+      setTimeout(function(){ showEl.classList.remove("fading-in"); }, 600);
+    }, 350);
   }
 
   /* ---- "Entrer" = start everything ---- */
@@ -116,6 +142,26 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     enterBtn.onclick = function(){
       playAll();
       showCircles();
+    };
+  }
+
+  /* ---- Level 1 → Level 2 ---- */
+  if(nouvelleBtn){
+    nouvelleBtn.onclick = function(){
+      switchTo(mainCirc, subGame);
+    };
+  }
+  if(chargerBtn){
+    chargerBtn.onclick = function(){
+      if(chargerBtn.disabled) return;
+      switchTo(mainCirc, subGame);
+    };
+  }
+
+  /* ---- Back to Level 1 ---- */
+  if(backGame){
+    backGame.onclick = function(){
+      switchTo(subGame, mainCirc);
     };
   }
 
@@ -144,6 +190,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     retourBtn.onclick = function(){
       if(retourBtn.disabled) return;
       closeMainMenu(function(){ onResumeVoyage() });
+    };
+  }
+  if(codexBtn){
+    codexBtn.onclick = function(){
+      // TODO: open Codex
     };
   }
 }
