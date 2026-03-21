@@ -286,37 +286,38 @@ function buildDrawerEquipment(){
   var u = loadUser();
   var equipped = JSON.parse(acDB.get("ac_equipped") || "{}");
   var slots = [
-    {id:"univers", icon:"\ud83c\udf0c", name:"Univers", desc:"Monde \u00e9quip\u00e9", color:"#9b59b6"},
-    {id:"epoque", icon:"\u23f3", name:"\u00c9poque", desc:"\u00c8re temporelle", color:"#5dade2"},
-    {id:"theme", icon:"\ud83c\udfa8", name:"Th\u00e8me", desc:"Tonalit\u00e9 narrative", color:"#e8a838"},
-    {id:"capacite", icon:"\u26a1", name:"Capacit\u00e9", desc:"Pouvoir actif", color:"#e74c3c"},
-    {id:"deroulement", icon:"\ud83d\udcdc", name:"D\u00e9roulement", desc:"Structure du r\u00e9cit", color:"#27ae60"},
-    {id:"objectif", icon:"\ud83c\udfaf", name:"Objectif", desc:"But de la qu\u00eate", color:"#e67e22"}
+    {id:"univers", icon:"\ud83c\udf0c", name:"Univers", cls:"inv-slot-top-l", color:"#9b59b6"},
+    {id:"epoque", icon:"\u23f3", name:"\u00c9poque", cls:"inv-slot-top-r", color:"#5dade2"},
+    {id:"theme", icon:"\ud83c\udfa8", name:"Th\u00e8me", cls:"inv-slot-mid-l", color:"#e8a838"},
+    {id:"capacite", icon:"\u26a1", name:"Capacit\u00e9", cls:"inv-slot-mid-r", color:"#e74c3c"},
+    {id:"deroulement", icon:"\ud83d\udcdc", name:"D\u00e9roulement", cls:"inv-slot-bot-l", color:"#27ae60"},
+    {id:"objectif", icon:"\ud83c\udfaf", name:"Objectif", cls:"inv-slot-bot-r", color:"#e67e22"}
   ];
 
-  var h = '<div class="dr-fiche">';
-  h += '<div style="text-align:center;margin-bottom:12px"><div style="font-size:28px;margin-bottom:4px">\ud83d\udee1\ufe0f</div>'
-    + '<div class="dr-name" style="text-align:center">\u00c9quipement</div>'
-    + '<div class="dr-sub" style="text-align:center">\u00c9quipez-vous pour votre prochaine aventure</div></div>';
+  var h = '<div class="dr-fiche" style="padding:0">';
+  h += '<div class="inv-paperdoll-6">';
 
-  h += '<div class="equip-slots-grid">';
+  // Portrait background
+  h += '<div class="inv-portrait-full">';
+  if(u.avatar) h += '<img src="'+esc(u.avatar)+'">';
+  else h += '<div class="inv-character-empty">\ud83d\udc64</div>';
+  h += '</div>';
+  h += '<div class="inv-portrait-vignette"></div>';
+
+  // 6 slots
   slots.forEach(function(slot){
     var item = equipped[slot.id];
-    var isEmpty = !item;
-    var borderCol = isEmpty ? slot.color+'40' : slot.color;
-    var bgCol = isEmpty ? slot.color+'08' : slot.color+'15';
-    h += '<div class="equip-slot" data-eslot="'+slot.id+'" style="border-color:'+borderCol+';background:'+bgCol+'">'
-      + '<div class="equip-slot-icon" style="color:'+slot.color+'">'+(item ? esc(item.icon) : slot.icon)+'</div>'
-      + '<div class="equip-slot-info">'
-      + '<div class="equip-slot-cat" style="color:'+slot.color+'">'+esc(slot.name)+'</div>'
-      + '<div class="equip-slot-name">'+(item ? esc(item.name) : esc(slot.desc))+'</div>'
-      + '</div>'
-      + (isEmpty ? '<div class="equip-slot-empty">Vide</div>' : '<div class="equip-slot-check" style="color:'+slot.color+'">\u2713</div>')
-      + '</div>';
+    var filled = item ? " filled" : "";
+    h += '<div class="inv-slot inv-slot-6 '+slot.cls+filled+'" data-slot="'+slot.id+'" style="--slot-color:'+slot.color+'">'
+      + '<span class="inv-slot-icon">'+(item ? esc(item.icon) : slot.icon)+'</span>'
+      + '<span class="inv-slot-label">'+esc(slot.name)+'</span></div>';
   });
+
+  // Player name
+  h += '<div class="inv-portrait-name">'+esc(u.name||"Voyageur")+'</div>';
   h += '</div>';
 
-  h += '<button class="prof-back-btn" id="equip-back-btn">\u2190 Retour au campement</button>';
+  h += '<button class="prof-back-btn" id="equip-back-btn" style="margin-top:10px">\u2190 Retour au campement</button>';
   h += '</div>';
   return h;
 }
