@@ -315,9 +315,9 @@ function buildProfilePage(){
     + '<span class="prof-section-arrow">\u203a</span></div>';
 
   h += '<div class="prof-section-card" id="prof-goto-ency">'
-    + '<div class="prof-section-icon">\ud83c\udccf</div>'
-    + '<div class="prof-section-info"><div class="prof-section-name">Encyclop\u00e9die TCG</div>'
-    + '<div class="prof-section-desc">Votre carte et les cartes du Nexus</div></div>'
+    + '<div class="prof-section-icon">\ud83d\udcd6</div>'
+    + '<div class="prof-section-info"><div class="prof-section-name">Codex</div>'
+    + '<div class="prof-section-desc">Dossiers & archives du Nexus</div></div>'
     + '<span class="prof-section-arrow">\u203a</span></div>';
 
   // Back button
