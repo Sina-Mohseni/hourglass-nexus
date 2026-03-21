@@ -231,6 +231,13 @@ function initLock(){
 
 /* ══════════ CHARACTER CREATION GATE ══════════ */
 function checkCharCreate(){
+  // Start guide music
+  var guideAudio = document.getElementById("guide-music");
+  if(guideAudio){
+    guideAudio.currentTime = 0;
+    guideAudio.volume = 0.4;
+    guideAudio.play().catch(function(){});
+  }
   // For new voyage, always start fresh char creation (skip the choice phase)
   initCharCreateNewVoyage();
 }

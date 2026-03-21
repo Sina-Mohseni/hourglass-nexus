@@ -19,6 +19,34 @@ var CC_CREATION = [
   "Mais avant d'aller plus loin, j'ai besoin de savoir <span class='hl'>qui</span> tu es.",
   "Choisis un <span class='hl'>portrait</span> qui te représente — ou reste dans l'ombre, si c'est ton souhait."
 ];
+
+var CC_SCENARIO_INTROS = {
+  "lambda": [
+    "Tu as choisi le chemin d'un <span class='hl'>Lambda</span> — un simple voyageur, sans titre ni prétention.",
+    "C'est un chemin modeste, mais ne te méprends pas… les plus grandes légendes sont nées de l'ombre.",
+    "Choisis un <span class='hl'>portrait</span> qui te représente."
+  ],
+  "champion": [
+    "Tu as choisi le chemin d'un <span class='hl'>Champion</span> — un guerrier d'élite, forgé pour la victoire.",
+    "Le tournoi t'attend de pied ferme. Les <span class='hlr'>quarante</span> te reconnaîtront comme un rival redoutable.",
+    "Choisis un <span class='hl'>portrait</span> digne de ta renommée."
+  ],
+  "rebelle": [
+    "Tu as choisi le chemin d'un <span class='hlr'>Rebelle</span> — un dissident qui défie l'ordre établi.",
+    "Le tournoi n'est qu'une façade pour toi. Tu y cherches la <span class='hlr'>vérité</span> que les puissants cachent.",
+    "Choisis un <span class='hl'>portrait</span> pour masquer tes intentions."
+  ],
+  "apprenti-morkar": [
+    "Tu as choisi le chemin d'un <span class='hlc'>Apprenti de Morkar</span> — un novice dans les arcanes.",
+    "Les secrets de <span class='hlc'>Morkar</span> sont vastes et dangereux. Ton maître t'a envoyé ici pour faire tes preuves.",
+    "Choisis un <span class='hl'>portrait</span> qui te représente, jeune apprenti."
+  ],
+  "veteran-morkar": [
+    "Tu as choisi le chemin d'un <span class='hlc'>Vétéran de Morkar</span> — un maître aguerri des mystères.",
+    "Tu connais les <span class='hlc'>arcanes</span> mieux que quiconque. Le tournoi sera ton terrain de chasse.",
+    "Choisis un <span class='hl'>portrait</span> digne de ton rang, Vétéran."
+  ]
+};
 var CC_NAME_DIALOG = "Bien. Maintenant, dis-moi… quel <span class='hl'>nom</span> portes-tu ?";
 var CC_REGION_DIALOG = "Chaque voyageur vient de quelque part. De quelle <span class='hl'>contrée</span> es-tu originaire ?";
 var CC_CITY_DIALOG = "Et dans cette contrée… quelle <span class='hl'>cité</span> appelles-tu ton foyer ?";
@@ -78,10 +106,20 @@ function initCharCreateNewVoyage(){
   var choiceZone = document.getElementById("cc-choice-zone");
   if(choiceZone) choiceZone.style.display = "none";
 
+  // Use scenario-specific dialog if available
+  var scenario = window._chosenScenario || "lambda";
+  var scenarioDialogs = CC_SCENARIO_INTROS[scenario] || CC_CREATION;
+  window._ccScenarioDialogs = scenarioDialogs;
+
+  // Save scenario to user data
+  var u = loadUser();
+  u.scenario = scenario;
+  saveUser(u);
+
   // Start at creation phase directly
   ccDialogIdx = 0;
   ccPhase = "creation";
-  showCCDialog(CC_CREATION[0]);
+  showCCDialog(scenarioDialogs[0]);
   showCCTapHint(true);
 
   var zone = document.querySelector(".cc-dialog-zone");
@@ -93,6 +131,20 @@ function initCharCreateNewVoyage(){
 
 function _prepareCharCreateScreen(screen){
   screen.style.display = "";
+
+  // Wire guide music volume toggle
+  var ccVolBtn = document.getElementById("cc-volume-btn");
+  var ccVolOn = document.getElementById("cc-vol-on");
+  var ccVolOff = document.getElementById("cc-vol-off");
+  var guideAudio = document.getElementById("guide-music");
+  if(ccVolBtn && guideAudio){
+    ccVolBtn.onclick = function(){
+      guideAudio.muted = !guideAudio.muted;
+      if(ccVolOn) ccVolOn.style.display = guideAudio.muted ? "none" : "";
+      if(ccVolOff) ccVolOff.style.display = guideAudio.muted ? "" : "none";
+    };
+  }
+
   // Inject CC region/city animations if not already present
   if(!document.getElementById("cc-extra-styles")){
     var sty = document.createElement("style");
@@ -159,9 +211,10 @@ function advanceCCDialog(){
       showCCChoiceZone();
     }
   } else if(ccPhase === "creation"){
+    var dialogs = window._ccScenarioDialogs || CC_CREATION;
     ccDialogIdx++;
-    if(ccDialogIdx < CC_CREATION.length){
-      showCCDialog(CC_CREATION[ccDialogIdx]);
+    if(ccDialogIdx < dialogs.length){
+      showCCDialog(dialogs[ccDialogIdx]);
     } else {
       ccPhase = "avatar";
       showCCTapHint(false);
@@ -613,6 +666,17 @@ function completeCCOrigin(){
 }
 
 function enterMainApp(){
+  // Fade out guide music if playing
+  var guideAudio = document.getElementById("guide-music");
+  if(guideAudio && !guideAudio.paused){
+    var gVol = guideAudio.volume;
+    var gSteps = 0;
+    var gFade = setInterval(function(){
+      gSteps++;
+      guideAudio.volume = Math.max(0, gVol * (1 - gSteps / 15));
+      if(gSteps >= 15){ clearInterval(gFade); guideAudio.pause(); guideAudio.volume = gVol; }
+    }, 40);
+  }
   showAppBackgrounds();
   buildAccueil();
   buildUserPage();

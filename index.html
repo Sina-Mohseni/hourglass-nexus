@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/modals.css">
   <link rel="stylesheet" href="css/lockscreen.css">
   <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/intro-crawl.css">
   <link rel="stylesheet" href="css/charcreate.css">
   <link rel="stylesheet" href="css/profile.css">
 </head>
@@ -384,6 +385,18 @@
       <div class="charcreate-screen" id="charcreate-screen" style="display:none">
         <div class="cc-bg"></div>
         <div class="cc-vignette"></div>
+        <button class="cc-volume-btn" id="cc-volume-btn" title="Volume">
+          <svg class="cc-vol-icon" id="cc-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+          <svg class="cc-vol-icon" id="cc-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+        </button>
         <div class="cc-guide-portrait" id="cc-guide-portrait"></div>
         <div class="cc-guide-title" id="cc-guide-title"></div>
         <div class="cc-dialog-zone">
@@ -577,6 +590,85 @@
         </button>
       </div>
 
+      <!-- ═══════ INTRO CRAWL (Star Wars style) ═══════ -->
+      <div class="intro-crawl-overlay" id="intro-crawl" style="display:none">
+        <div class="ic-starfield"></div>
+        <div class="ic-perspective">
+          <div class="ic-crawl-text" id="ic-crawl-text">
+            <p class="ic-crawl-title">LE TOURNOI D'EXTELUA</p>
+            <p>Depuis des temps immémoriaux, le monde d'Extelua organise le plus grand tournoi que les terres aient jamais connu.</p>
+            <p>Tous les deux ans, quarante participants sont choisis parmi les peuples des contrées — guerriers, mages, artisans, rebelles et vagabonds — pour s'affronter dans une épreuve qui dure une année entière.</p>
+            <p>Pendant douze lunes, les champions traversent les cités, affrontent des créatures légendaires, résolvent des énigmes ancestrales et forgent des alliances fragiles.</p>
+            <p>Le tournoi est bien plus qu'une compétition. C'est un rite sacré, un héritage que chaque génération préserve avec ferveur. Les vainqueurs entrent dans la légende. Les vaincus repartent transformés.</p>
+            <p>Nul ne sait exactement comment les quarante sont choisis. Certains reçoivent un sceau marqué du symbole du Nexus. D'autres sont convoqués en rêve. Mais tous ressentent l'appel — une vibration dans les os, un murmure dans le vent.</p>
+            <p>Cette année, l'appel résonne à nouveau. Les portes du Nexus s'ouvrent. Le sablier se retourne.</p>
+            <p class="ic-crawl-end">Et toi, voyageur… tu as été choisi.</p>
+          </div>
+        </div>
+        <button class="ic-skip-btn" id="ic-skip-btn">Passer &#x203a;</button>
+        <button class="ic-volume-btn" id="ic-volume-btn" title="Volume">
+          <svg class="ic-vol-icon" id="ic-vol-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+          <svg class="ic-vol-icon" id="ic-vol-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+        </button>
+        <audio id="ic-music" loop preload="auto">
+          <source src="assets/music/extelua-intro.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <!-- ═══════ SCENARIO CHOICE ═══════ -->
+      <div class="scenario-overlay" id="scenario-choice" style="display:none">
+        <div class="sc-vignette"></div>
+        <div class="sc-content">
+          <div class="sc-title">Choisis ton chemin</div>
+          <div class="sc-subtitle">Quel destin veux-tu embrasser ?</div>
+          <div class="sc-choices">
+            <button class="sc-choice" data-scenario="lambda">
+              <span class="sc-choice-icon">&#x1F6B6;</span>
+              <span class="sc-choice-info">
+                <span class="sc-choice-name">Le chemin d'un Lambda</span>
+                <span class="sc-choice-desc">Un simple voyageur, sans gloire ni titre</span>
+              </span>
+            </button>
+            <button class="sc-choice" data-scenario="champion">
+              <span class="sc-choice-icon">&#x1F3C6;</span>
+              <span class="sc-choice-info">
+                <span class="sc-choice-name">Le chemin d'un Champion</span>
+                <span class="sc-choice-desc">Un guerrier d'élite, forgé pour vaincre</span>
+              </span>
+            </button>
+            <button class="sc-choice" data-scenario="rebelle">
+              <span class="sc-choice-icon">&#x1F525;</span>
+              <span class="sc-choice-info">
+                <span class="sc-choice-name">Le chemin d'un Rebelle</span>
+                <span class="sc-choice-desc">Un dissident, qui défie l'ordre établi</span>
+              </span>
+            </button>
+            <button class="sc-choice" data-scenario="apprenti-morkar">
+              <span class="sc-choice-icon">&#x1F9D9;</span>
+              <span class="sc-choice-info">
+                <span class="sc-choice-name">Le chemin d'un Apprenti de Morkar</span>
+                <span class="sc-choice-desc">Un novice dans les arcanes de Morkar</span>
+              </span>
+            </button>
+            <button class="sc-choice" data-scenario="veteran-morkar">
+              <span class="sc-choice-icon">&#x2694;&#xFE0F;</span>
+              <span class="sc-choice-info">
+                <span class="sc-choice-name">Le chemin d'un Vétéran de Morkar</span>
+                <span class="sc-choice-desc">Un maître aguerri des secrets de Morkar</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- ═══════ LOCK SCREEN ═══════ -->
       <div class="lock-screen" id="lock-screen" style="display:none">
         <div class="lock-particles" id="lock-particles"></div>
@@ -602,6 +694,9 @@
   <audio id="bg-music" loop preload="auto">
     <source src="assets/music/extelua-tournament-main-menu.mp3" type="audio/mpeg">
   </audio>
+  <audio id="guide-music" loop preload="auto">
+    <source src="assets/music/guide.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- JS Split Files (order matters) -->
   <script src="js/storage.js"></script>
@@ -617,6 +712,7 @@
   <script src="js/weather-news.js"></script>
   <script src="js/calendar.js"></script>
   <script src="js/clock-modals-lock.js"></script>
+  <script src="js/intro-crawl.js"></script>
   <script src="js/intro.js"></script>
   <script src="js/init.js"></script>
 </body>
