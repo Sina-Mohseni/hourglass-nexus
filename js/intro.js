@@ -68,16 +68,8 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var volOff    = document.getElementById("mm-volume-icon-off");
 
   // Circle buttons
-  var appelBtn  = document.getElementById("mm-circle-appel");
-  var codexBtn  = document.getElementById("mm-circle-codex");
   var departBtn = document.getElementById("mm-circle-depart");
   var retourBtn = document.getElementById("mm-circle-retour");
-  var codexTBtn = document.getElementById("mm-circle-codex-tournoi");
-  var codexEBtn = document.getElementById("mm-circle-codex-extelua");
-  var subAppel  = document.getElementById("mm-sub-appel");
-  var subCodex  = document.getElementById("mm-sub-codex");
-  var backAppel = document.getElementById("mm-sub-appel-back");
-  var backCodex = document.getElementById("mm-sub-codex-back");
 
   var hasSave = acDB.get("ac_saveExists") === "1" || acDB.get("ac_charCreated") === "1";
   if(retourBtn && hasSave) retourBtn.disabled = false;
@@ -101,16 +93,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(volBtn) volBtn.style.display = "";
   }
 
-  /* ---- Reset animations on buttons so they replay ---- */
-  function replayAnimations(container){
-    var btns = container.querySelectorAll(".mm-circle-btn");
-    for(var i = 0; i < btns.length; i++){
-      btns[i].style.animation = "none";
-      btns[i].offsetHeight; // force reflow
-      btns[i].style.animation = "";
-    }
-  }
-
   /* ---- Show main circles ---- */
   function showCircles(){
     if(enterBtn){
@@ -120,27 +102,13 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     if(circles){
       circles.style.display = "";
       circles.classList.add("visible");
-      replayAnimations(mainCirc);
-    }
-  }
-
-  /* ---- Switch between main and sub circles ---- */
-  function switchTo(hideEl, showEl){
-    hideEl.classList.add("fading-out");
-    setTimeout(function(){
-      hideEl.style.display = "none";
-      hideEl.classList.remove("fading-out");
-      showEl.style.display = "";
-      showEl.classList.add("fading-in");
-      // Reset animations on child buttons
-      var btns = showEl.querySelectorAll(".mm-circle-btn");
+      var btns = mainCirc.querySelectorAll(".mm-circle-btn");
       for(var i = 0; i < btns.length; i++){
         btns[i].style.animation = "none";
         btns[i].offsetHeight;
         btns[i].style.animation = "";
       }
-      setTimeout(function(){ showEl.classList.remove("fading-in"); }, 600);
-    }, 350);
+    }
   }
 
   /* ---- "Entrer" = start everything ---- */
@@ -148,32 +116,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     enterBtn.onclick = function(){
       playAll();
       showCircles();
-    };
-  }
-
-  /* ---- L'Appel → sub-menu ---- */
-  if(appelBtn){
-    appelBtn.onclick = function(){
-      switchTo(mainCirc, subAppel);
-    };
-  }
-
-  /* ---- Codex → sub-menu ---- */
-  if(codexBtn){
-    codexBtn.onclick = function(){
-      switchTo(mainCirc, subCodex);
-    };
-  }
-
-  /* ---- Back buttons ---- */
-  if(backAppel){
-    backAppel.onclick = function(){
-      switchTo(subAppel, mainCirc);
-    };
-  }
-  if(backCodex){
-    backCodex.onclick = function(){
-      switchTo(subCodex, mainCirc);
     };
   }
 
@@ -202,17 +144,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
     retourBtn.onclick = function(){
       if(retourBtn.disabled) return;
       closeMainMenu(function(){ onResumeVoyage() });
-    };
-  }
-  // Codex buttons — placeholder for future functionality
-  if(codexTBtn){
-    codexTBtn.onclick = function(){
-      // TODO: open Codex du Tournoi
-    };
-  }
-  if(codexEBtn){
-    codexEBtn.onclick = function(){
-      // TODO: open Codex d'Extelua
     };
   }
 }
