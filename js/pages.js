@@ -349,6 +349,7 @@ function wireProfilePage(){
           : '<span style="color:var(--blood-glow)">\u2718 Erreur</span>';
         var u2 = loadUser();
         if(u2.avatar) setDiamondImage(u2.avatar, null); else setDiamondImage(null,"\ud83d\udc64");
+        updateWorldmapAvatar();
         updateOrbLabels(); buildUserPage(); buildInventoryPage(); buildProfilePage(); buildAccueil();
         updateDrawerContent();
       };

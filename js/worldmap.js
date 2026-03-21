@@ -143,6 +143,13 @@ function makeSinuousPath(sx, sy, ex, ey){
   return d;
 }
 
+function updateWorldmapAvatar(){
+  var el = document.getElementById("wm-avatar"); if(!el) return;
+  var u = loadUser();
+  if(u.avatar) el.innerHTML = '<img src="'+esc(u.avatar)+'">';
+  else el.innerHTML = '<div class="wma-emoji">\ud83d\udc64</div>';
+}
+
 function buildWorldmapPage(){
   var p = $("#page-worldmap"); if(!p) return;
   var cities = getCities(), u = loadUser(), avSrc = u.avatar || "";
