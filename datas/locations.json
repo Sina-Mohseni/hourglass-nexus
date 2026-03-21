@@ -138,11 +138,21 @@
     {
       "id": "noir-havre",
       "name": "Tour des Énigmes",
-      "desc": "Forteresse insulaire de Siore abritant les épreuves et jeux du Nexus. Seule cité de l'île du Serpent.",
+      "desc": "Forteresse insulaire de Siore abritant les épreuves et jeux du Nexus.",
       "color": "#f97316",
       "mapBg": "",
       "wx": 17,
       "wy": 38,
+      "region": "siore"
+    },
+    {
+      "id": "tour-celeste",
+      "name": "Tour Céleste",
+      "desc": "Tour vertigineuse dont le sommet perce les nuages. Porte d'accès vers les Cieux d'Extelua.",
+      "color": "#7dd3fc",
+      "mapBg": "",
+      "wx": 19,
+      "wy": 36,
       "region": "siore"
     },
     {
@@ -3513,7 +3523,7 @@
       ],
       "x": 52,
       "y": 30,
-      "city": "noir-havre",
+      "city": "tour-celeste",
       "region": "siore"
     },
     {
@@ -3629,7 +3639,7 @@
     {
       "id": "siore",
       "name": "Siore",
-      "desc": "L'Île du Serpent — Tour des Énigmes",
+      "desc": "L'Île du Serpent — Tour des Énigmes & Tour Céleste",
       "color": "#f97316",
       "history": "Siore est une île mystérieuse gardée par un serpent de feu gravé dans la roche volcanique. Jadis refuge des pirates et des exilés, elle est aujourd'hui entièrement consacrée à la Tour des Énigmes — une forteresse colossale où les voyageurs du Nexus affrontent les épreuves de jeu les plus redoutables. Le Serpent de Siore veille sur les eaux qui l'entourent, et seuls ceux qui ont prouvé leur valeur peuvent accoster. L'île entière est un labyrinthe de défis, de puzzles et de jeux de stratégie.",
       "wx": 17,
