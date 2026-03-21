@@ -413,59 +413,45 @@ function wireProfilePage(){
   };
 }
 
-/* ══════════ INVENTORY PAGE (DIABLO-STYLE) ══════════ */
+/* ══════════ EQUIPMENT PAGE (6 slots Diablo-style) ══════════ */
 var EQUIP_SLOTS = [
-  {id:"helm", label:"Casque", icon:"🪖", cls:"inv-slot-helm"},
-  {id:"amulet", label:"Amulette", icon:"📿", cls:"inv-slot-amulet"},
-  {id:"chest", label:"Plastron", icon:"🛡️", cls:"inv-slot-chest"},
-  {id:"shoulders", label:"\u00c9paules", icon:"🦺", cls:"inv-slot-shoulders"},
-  {id:"gloves", label:"Gants", icon:"🧤", cls:"inv-slot-gloves"},
-  {id:"weapon-l", label:"Arme droite", icon:"⚔️", cls:"inv-slot-weapon-l"},
-  {id:"belt", label:"Ceinture", icon:"🪢", cls:"inv-slot-belt"},
-  {id:"pants", label:"Jambi\u00e8res", icon:"👖", cls:"inv-slot-pants"},
-  {id:"boots", label:"Bottes", icon:"🥾", cls:"inv-slot-boots"},
-  {id:"ring-l", label:"Anneau G", icon:"💍", cls:"inv-slot-ring-l"},
-  {id:"ring-r", label:"Anneau D", icon:"💍", cls:"inv-slot-ring-r"},
-  {id:"weapon-r", label:"Arme gauche", icon:"🗡️", cls:"inv-slot-weapon-r"}
+  {id:"univers", label:"Univers", icon:"\ud83c\udf0c", cls:"inv-slot-top-l", color:"#9b59b6"},
+  {id:"epoque", label:"\u00c9poque", icon:"\u23f3", cls:"inv-slot-top-r", color:"#5dade2"},
+  {id:"theme", label:"Th\u00e8me", icon:"\ud83c\udfa8", cls:"inv-slot-mid-l", color:"#e8a838"},
+  {id:"capacite", label:"Capacit\u00e9", icon:"\u26a1", cls:"inv-slot-mid-r", color:"#e74c3c"},
+  {id:"deroulement", label:"D\u00e9roulement", icon:"\ud83d\udcdc", cls:"inv-slot-bot-l", color:"#27ae60"},
+  {id:"objectif", label:"Objectif", icon:"\ud83c\udfaf", cls:"inv-slot-bot-r", color:"#e67e22"}
 ];
 
-/* ══════════ EQUIPMENT PAGE (DIABLO-STYLE — ex-inventaire) ══════════ */
+/* ══════════ EQUIPMENT PAGE ══════════ */
 function buildEquipmentPage(){
   var p = $("#page-inventory"); if(!p) return;
   var u = loadUser();
   var equipped = JSON.parse(acDB.get("ac_equipped") || "{}");
 
   var h = '<div class="inv-page">';
-  h += '<div class="inv-paperdoll">';
-  h += '<div class="inv-character">';
+  h += '<div class="inv-paperdoll inv-paperdoll-6">';
+
+  // Full portrait background
+  h += '<div class="inv-portrait-full">';
   if(u.avatar) h += '<img src="'+esc(u.avatar)+'">';
-  else h += '<div class="inv-character-empty">👤</div>';
+  else h += '<div class="inv-character-empty">\ud83d\udc64</div>';
   h += '</div>';
 
+  // Vignette overlay
+  h += '<div class="inv-portrait-vignette"></div>';
+
+  // 6 slots positioned around portrait
   EQUIP_SLOTS.forEach(function(slot){
     var item = equipped[slot.id];
     var filled = item ? " filled" : "";
-    h += '<div class="inv-slot '+slot.cls+filled+'" data-slot="'+slot.id+'">'
-      + '<span class="inv-slot-icon">'+(item ? item.icon : slot.icon)+'</span>'
+    h += '<div class="inv-slot inv-slot-6 '+slot.cls+filled+'" data-slot="'+slot.id+'" style="--slot-color:'+slot.color+'">'
+      + '<span class="inv-slot-icon">'+(item ? esc(item.icon) : slot.icon)+'</span>'
       + '<span class="inv-slot-label">'+esc(slot.label)+'</span></div>';
   });
-  h += '</div>';
 
-  h += '<div class="section-title">Attributs</div>';
-  h += '<div style="padding:0 4px">';
-  var stats = [
-    {key:"CRE", val:u.statCRE, color:"#9b59b6"},
-    {key:"SAG", val:u.statSAG, color:"#5dade2"},
-    {key:"CHA", val:u.statCHA, color:"#e8a838"},
-    {key:"FOR", val:u.statFOR, color:"#e74c3c"},
-    {key:"AGI", val:u.statAGI, color:"#27ae60"}
-  ];
-  stats.forEach(function(s){
-    h += '<div class="dr-stat-bar">'
-      + '<span class="dr-stat-label">'+s.key+'</span>'
-      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:'+s.val+'%;background:linear-gradient(90deg,'+s.color+','+s.color+'88)"></div></div>'
-      + '<span class="dr-stat-val">'+s.val+'</span></div>';
-  });
+  // Player name overlay
+  h += '<div class="inv-portrait-name">'+esc(u.name||"Voyageur")+'</div>';
   h += '</div></div>';
 
   p.innerHTML = h;

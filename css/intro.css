@@ -114,6 +114,39 @@
 .main-menu.mm-top-align { align-items: flex-start; }
 .mm-sub-active .mm-menu-circles { margin-top: 0; }
 .mm-sub-active .mm-player-portrait { width: 240px; height: 320px; }
+
+/* Codex dossier list in loaded game */
+.mm-codex-list { width: 100%; max-width: 320px; }
+.mm-codex-grid { display: grid; gap: 8px; }
+.mm-codex-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(145deg, rgba(26,22,16,.85), rgba(13,11,8,.9));
+  border: 1px solid rgba(201,160,74,.2);
+  border-radius: 10px;
+  cursor: pointer; transition: all .25s ease;
+  opacity: 0; animation: mmCircleIn .5s ease-out forwards;
+}
+.mm-codex-item:nth-child(1) { animation-delay: 0s }
+.mm-codex-item:nth-child(2) { animation-delay: .08s }
+.mm-codex-item:nth-child(3) { animation-delay: .16s }
+.mm-codex-item:nth-child(4) { animation-delay: .24s }
+.mm-codex-item:nth-child(5) { animation-delay: .32s }
+.mm-codex-item:active { transform: scale(.97); border-color: var(--gold); }
+.mm-codex-item-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(201,160,74,.15);
+}
+.mm-codex-item-name {
+  font-family: var(--font-heading); font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 8px rgba(201,160,74,.3);
+}
+
 .mm-logo {
   width: 120px; height: 120px; object-fit: contain;
   filter: drop-shadow(0 0 50px rgba(201,160,74,.6)) drop-shadow(0 0 100px rgba(139,26,26,.3));
