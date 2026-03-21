@@ -347,7 +347,8 @@ function wireProfilePage(){
         if(status) status.innerHTML = ok
           ? '<span style="color:var(--poison)">\u2714 Portrait sauvegard\u00e9</span>'
           : '<span style="color:var(--blood-glow)">\u2718 Erreur</span>';
-        updateOrbLabels(); buildUserPage(); buildInventoryPage(); buildProfilePage();
+        updateOrbLabels(); buildUserPage(); buildInventoryPage(); buildProfilePage(); buildAccueil();
+        updateDrawerContent();
       };
       reader.readAsDataURL(file);
     };
@@ -366,7 +367,8 @@ function wireProfilePage(){
     saveUser(u);
     var status = document.getElementById("prof-save-status");
     if(status) status.innerHTML = '<span style="color:var(--poison)">\u2714 Profil sauvegard\u00e9 !</span>';
-    buildUserPage(); buildInventoryPage();
+    buildUserPage(); buildInventoryPage(); buildAccueil();
+    updateDrawerContent();
     setTimeout(function(){ if(status) status.textContent = "" }, 2000);
     // Refresh the header area
     buildProfilePage();
@@ -381,7 +383,8 @@ function wireProfilePage(){
       saveUser(u);
       if(p) p.querySelectorAll(".prof-cc").forEach(function(x){ x.classList.remove("selected") });
       el.classList.add("selected");
-      buildUserPage();
+      buildUserPage(); buildAccueil();
+      updateDrawerContent();
     };
   });
 
