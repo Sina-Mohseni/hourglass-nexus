@@ -10915,11 +10915,21 @@
       {
         "id": "noir-havre",
         "name": "Tour des Énigmes",
-        "desc": "Forteresse insulaire de Siore abritant les épreuves et jeux du Nexus. Seule cité de l'île du Serpent.",
+        "desc": "Forteresse insulaire de Siore abritant les épreuves et jeux du Nexus.",
         "color": "#f97316",
         "mapBg": "",
         "wx": 17,
         "wy": 38,
+        "region": "siore"
+      },
+      {
+        "id": "tour-celeste",
+        "name": "Tour Céleste",
+        "desc": "Tour vertigineuse dont le sommet perce les nuages. Porte d'accès vers les Cieux d'Extelua.",
+        "color": "#7dd3fc",
+        "mapBg": "",
+        "wx": 19,
+        "wy": 36,
         "region": "siore"
       },
       {
@@ -11381,6 +11391,18 @@
         "wx": 27.2,
         "wy": 81.9,
         "region": "kuhiria"
+      },
+      {
+        "id": "cieux-extelua",
+        "name": "Cieux d'Extelua",
+        "desc": "Les îles flottantes au-dessus d'Extelua. Un royaume céleste accessible uniquement depuis la Tour Céleste de Siore.",
+        "color": "#7dd3fc",
+        "mapBg": "assets/extelua-sky.png",
+        "wx": 17,
+        "wy": 38,
+        "region": "siore",
+        "hidden": true,
+        "portalFrom": "tour-celeste"
       }
     ],
     "locations": [
@@ -14264,6 +14286,118 @@
         "y": 66,
         "city": "temple-oublie",
         "region": "kuhiria"
+      },
+      {
+        "id": "tour-celeste",
+        "name": "Tour Céleste",
+        "icon": "🗼",
+        "color": "#7dd3fc",
+        "desc": "Une tour vertigineuse dont le sommet perce les nuages. On dit qu'elle mène aux Cieux d'Extelua.",
+        "features": [
+          "Portail",
+          "Cieux",
+          "Ascension"
+        ],
+        "x": 52,
+        "y": 30,
+        "city": "tour-celeste",
+        "region": "siore"
+      },
+      {
+        "id": "ile-verdoyante",
+        "name": "Île Verdoyante",
+        "icon": "🌿",
+        "color": "#22c55e",
+        "desc": "Une île flottante couverte d'une végétation luxuriante et de cascades suspendues.",
+        "features": [
+          "Nature",
+          "Repos",
+          "Herboristerie"
+        ],
+        "x": 18,
+        "y": 30,
+        "city": "cieux-extelua",
+        "region": "siore"
+      },
+      {
+        "id": "pic-givre",
+        "name": "Pic Givré",
+        "icon": "🏔️",
+        "color": "#93c5fd",
+        "desc": "Un sommet enneigé flottant dans les airs, balayé par des vents glacials.",
+        "features": [
+          "Glace",
+          "Épreuves",
+          "Cristaux"
+        ],
+        "x": 78,
+        "y": 18,
+        "city": "cieux-extelua",
+        "region": "siore"
+      },
+      {
+        "id": "ile-automnale",
+        "name": "Île Automnale",
+        "icon": "🍂",
+        "color": "#f59e0b",
+        "desc": "Une île où les arbres portent éternellement des feuilles d'or et de cuivre.",
+        "features": [
+          "Savoir",
+          "Méditation",
+          "Grimoires"
+        ],
+        "x": 60,
+        "y": 55,
+        "city": "cieux-extelua",
+        "region": "siore"
+      },
+      {
+        "id": "ile-ardente",
+        "name": "Île Ardente",
+        "icon": "🔥",
+        "color": "#ef4444",
+        "desc": "Des roches volcaniques suspendues dans le ciel, entourées de braises éternelles.",
+        "features": [
+          "Forge",
+          "Combat",
+          "Artisanat"
+        ],
+        "x": 42,
+        "y": 82,
+        "city": "cieux-extelua",
+        "region": "siore"
+      },
+      {
+        "id": "sanctuaire-celeste",
+        "name": "Sanctuaire Céleste",
+        "icon": "✨",
+        "color": "#c084fc",
+        "desc": "Le cœur des Cieux. Un temple flottant où convergent toutes les énergies d'Extelua.",
+        "features": [
+          "Sanctuaire",
+          "Magie",
+          "Quêtes"
+        ],
+        "x": 38,
+        "y": 42,
+        "city": "cieux-extelua",
+        "region": "siore"
+      },
+      {
+        "id": "archipel-brumeux",
+        "name": "Archipel Brumeux",
+        "icon": "🌫️",
+        "color": "#94a3b8",
+        "desc": "Un amas de petits îlots enveloppés d'une brume perpétuelle. Des secrets s'y cachent.",
+        "features": [
+          "Mystère",
+          "Exploration",
+          "Trésors"
+        ],
+        "x": 22,
+        "y": 65,
+        "city": "cieux-extelua",
+        "region": "siore"
       }
     ],
     "regions": [
@@ -14282,7 +14416,7 @@
       {
         "id": "siore",
         "name": "Siore",
-        "desc": "L'Île du Serpent — Tour des Énigmes",
+        "desc": "L'Île du Serpent — Tour des Énigmes & Tour Céleste",
         "color": "#f97316",
         "history": "Siore est une île mystérieuse gardée par un serpent de feu gravé dans la roche volcanique. Jadis refuge des pirates et des exilés, elle est aujourd'hui entièrement consacrée à la Tour des Énigmes — une forteresse colossale où les voyageurs du Nexus affrontent les épreuves de jeu les plus redoutables. Le Serpent de Siore veille sur les eaux qui l'entourent, et seuls ceux qui ont prouvé leur valeur peuvent accoster. L'île entière est un labyrinthe de défis, de puzzles et de jeux de stratégie.",
         "wx": 17,
