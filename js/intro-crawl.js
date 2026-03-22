@@ -58,16 +58,38 @@ var IC_PARAGRAPHS_ISOLE = [
   {text: "", cls: "ic-morkar-announce"}
 ];
 
+/* ── Connecté ceremony paragraphs ── */
+var IC_PARAGRAPHS_CONNECTE = [
+  {text: "CÉRÉMONIE D'OUVERTURE", cls: "ic-title"},
+  {text: "Tu l'as vue mille fois sur les écrans de ta planète. Chaque cycle, depuis que tu es enfant, tu regardais la cérémonie d'ouverture en retenant ton souffle, assis devant les retransmissions du Réseau. Tu connaissais chaque moment par cœur — les projecteurs, le grondement, l'hymne. Mais être là, en vrai, debout au milieu de l'arène… c'est autre chose. Rien ne t'avait préparé à l'échelle de ce que tu vois."},
+  {text: "L'arène du Nexus est encore plus immense que sur les écrans. Taillée dans la roche d'un astéroïde artificiel, elle s'étend à perte de vue. Autour de toi, des centaines de milliers d'êtres venus de tous les mondes connectés. Tu reconnais certaines espèces — les délégations de Veruhn avec leurs bannières argentées, les Khorans en armures cérémonielles, les Tessalins dont tu as étudié les stratégies dans les archives des Cycles passés. Pour la première fois, ils ne sont pas des images. Ils sont réels."},
+  {text: "Un grondement sourd monte du sol. La structure tremble, et la musique explose — tu la reconnais. L'Ouverture du Sablier, le thème que tout le Réseau connaît. Mais ici, diffusé en direct, amplifié par l'acoustique de l'arène, le son te traverse le corps comme une décharge. C'est le signal. Le spectacle commence."},
+  {text: "Les hologrammes se déploient dans le ciel de l'arène — les mêmes constellations que celles des retransmissions, mais en trois dimensions réelles, à une échelle qui te donne le vertige. L'histoire d'Extelua se rejoue sous tes yeux : les âges de ténèbres, la fondation du Réseau, les alliances brisées et les renaissances. Tu connais cette histoire. On te l'a enseignée. Mais la voir ainsi, portée par la lumière et le son, c'est comme la comprendre pour la première fois."},
+  {text: "Les artistes font leur entrée sur la scène centrale — suspendus dans des champs de gravité inversée, leurs mouvements synchronisés avec les déflagrations de lumière. Tu as vu ces performances dans les compilations que ton monde rediffuse chaque cycle. Tu reconnaissais certains numéros. Mais en vrai, la précision est sidérante. Le public retient son souffle à l'unisson."},
+  {text: "L'hymne monte de la foule. Et cette fois, tu le connais. Les mots que des milliards d'êtres chantent en même temps à travers tout le Réseau — tu les as appris, comme tout le monde sur ta planète. Tu les chantes aussi, et ta voix se perd dans celle de la multitude. C'est un moment que tu as rêvé toute ta vie. Certains autour de toi pleurent. Tu comprends pourquoi."},
+  {text: "Tu lèves les yeux. Le Sablier holographique apparaît au-dessus de l'arène — immense, immobile, ses grains de lumière suspendus entre les deux chambres. Le symbole d'Extelua. Celui que tu as porté en pendentif, imprimé sur tes affaires, vu sur chaque écran de ta planète depuis ta naissance. Mais là-haut, flottant dans le vide de l'arène, il est autre chose. Il est réel. Et il t'attend."},
+  {text: "Les flammes contrôlées traversent la scène et les drones lumineux dessinent leurs fractales dans l'espace. Tu connais ce passage — c'est le moment que les commentateurs appellent « la Convergence », quand les motifs réagissent aux émotions de la foule. Sur les écrans, c'est impressionnant. En vrai, c'est écrasant. Les fractales changent de forme autour de toi, et tu jures qu'elles te voient."},
+  {text: "Tu regardes les autres candidats. Tu en reconnais certains — leurs visages étaient dans le dossier préliminaire que Morkar t'a transmis. Des champions comme toi, portés par leurs mondes. Mais aussi des isolés — des visages perdus, terrifiés, qui n'ont visiblement jamais rien vu de tout ça. Tu te demandes ce qu'ils ressentent. Tu te demandes aussi combien d'entre vous seront encore là à la fin."},
+  {text: "Le spectacle atteint son apogée. La musique se tait d'un coup. Le silence est brutal — tu le connais, tu l'as entendu dans chaque retransmission, mais le vivre est différent. L'obscurité totale tombe sur l'arène. Tu n'entends plus que ton propre souffle et les battements de ton cœur."},
+  {text: "Un faisceau doré transperce le centre de l'arène. L'emblème de Morkar apparaît — le losange que tout le Réseau connaît, celui qui figure sur chaque contrat, chaque retransmission, chaque décision qui a façonné l'univers connecté. Tu sais exactement ce qui va suivre. Et pourtant, ton cœur accélère."},
+  {text: "Le rugissement de la foule monte comme une vague. Tu l'as entendu des dizaines de fois à travers les haut-parleurs de ta planète. Mais le sentir vibrer dans ta poitrine, porté par des centaines de milliers de voix réelles, c'est une sensation que les écrans ne pourront jamais transmettre."},
+  {text: "Les silhouettes du groupe Morkar apparaissent sur la scène, portées par la lumière. Tu connais leurs noms. Tu connais leurs visages. Tu as grandi en les regardant diriger le Tournoi depuis les retransmissions. Ceux qui organisent tout. Ceux qui décident de tout. Et maintenant, pour la première fois, ils ne sont pas derrière un écran. Ils sont là, devant toi. Et toi, tu es devant eux."},
+  {text: "La voix qui s'élève alors, tu l'as entendue cent fois. Mais jamais comme ça. Jamais en vrai. Et quand elle résonne dans l'arène, le silence qui se fait n'est pas celui d'un public — c'est celui d'un univers entier qui écoute.", cls: "ic-final"},
+  {text: "", cls: "ic-morkar-announce"}
+];
+
 /* ── Resolve ceremony paragraphs based on chosen scenario ── */
 var IC_PARAGRAPHS = IC_PARAGRAPHS_DEFAULT;
 
 var _icMuted = false;
 
 function showIntroCrawl(onDone){
-  // Pick scenario-specific ceremony paragraphs
-  var sc = window._chosenScenario;
-  if(sc === "lambda"){
+  // Pick scenario-specific ceremony paragraphs based on origin type
+  var origin = window._scOriginType; // "connecte" or "isole"
+  if(origin === "isole"){
     IC_PARAGRAPHS = IC_PARAGRAPHS_ISOLE;
+  } else if(origin === "connecte"){
+    IC_PARAGRAPHS = IC_PARAGRAPHS_CONNECTE;
   } else {
     IC_PARAGRAPHS = IC_PARAGRAPHS_DEFAULT;
   }
@@ -692,17 +714,17 @@ function showScenarioChoice(onChosen){
   ];
 
   /* ── STEP 1: pick type (click) ── */
-  var btnChampion = document.getElementById("sc-pick-champion");
+  var btnConnecte = document.getElementById("sc-pick-connecte");
   var btnIsole = document.getElementById("sc-pick-isole");
 
   function goToStep2(type){
-    var subs = (type === "champion") ? SUB_CHAMPION : SUB_ISOLE;
-    window._scOriginType = type; // "champion" or "isole"
+    var subs = (type === "connecte") ? SUB_CHAMPION : SUB_ISOLE;
+    window._scOriginType = type; // "connecte" or "isole"
 
     // Set title
     if(step2Title){
-      step2Title.textContent = (type === "champion")
-        ? "Quel champion es-tu ?"
+      step2Title.textContent = (type === "connecte")
+        ? "Quel connecté es-tu ?"
         : "Quel isolé es-tu ?";
     }
 
@@ -790,7 +812,7 @@ function showScenarioChoice(onChosen){
   }
   if(backBtn) backBtn.onclick = goBackToStep1;
 
-  if(btnChampion) btnChampion.onclick = function(){ goToStep2("champion"); };
+  if(btnConnecte) btnConnecte.onclick = function(){ goToStep2("connecte"); };
   if(btnIsole) btnIsole.onclick = function(){ goToStep2("isole"); };
 
   /* ── STEP 2: drag guide to circle ── */
