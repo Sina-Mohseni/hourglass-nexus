@@ -658,24 +658,20 @@ function completeCCOrigin(){
 }
 
 function enterMainApp(){
-  // Fade out any intro music still playing, ensure extelua is playing
+  // Fade out any intro music still playing, then start ambient music
   var icAudio = document.getElementById("ic-music");
   var extAudio = document.getElementById("extelua-music");
   if(icAudio && !icAudio.paused){
-    if(extAudio && !extAudio.paused) {
-      // Both playing — just fade out intro music
-      audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
-    } else if(extAudio) {
-      audioCrossfade(icAudio, extAudio, 0.4, 1500, 0.5);
-    } else {
-      audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
+    if(extAudio) audioCrossfade(icAudio, extAudio, 0.4, 1500, 0.5);
+    else audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
+  } else if(extAudio){
+    if(extAudio.paused){
+      extAudio.currentTime = 0;
+      extAudio.volume = 0;
+      extAudio.play().catch(function(){});
+      audioFade(extAudio, 0.4, 1500);
     }
-  } else if(extAudio && extAudio.paused){
-    // Extelua not yet playing — start it
-    extAudio.currentTime = 0;
-    extAudio.volume = 0;
-    extAudio.play().catch(function(){});
-    audioFade(extAudio, 0.4, 1500);
+    // If extelua already playing (started on lock screen), leave it
   }
 
   showAppBackgrounds();
