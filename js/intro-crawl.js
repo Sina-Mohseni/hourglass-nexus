@@ -20,6 +20,10 @@ function showIntroCrawl(onDone){
   if(!overlay){ onDone(); return; }
   overlay.style.display = "";
 
+  // Start background video
+  var video = document.getElementById("ic-bg-video");
+  if(video){ video.currentTime = 0; video.play().catch(function(){}); }
+
   var audio = document.getElementById("ic-music");
   var nextBtn = document.getElementById("ic-next-btn");
   var skipBtn = document.getElementById("ic-skip-btn");

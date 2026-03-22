@@ -231,19 +231,6 @@ function initLock(){
 
 /* ══════════ CHARACTER CREATION GATE ══════════ */
 function checkCharCreate(){
-  // Start guide music with fade-in (crossfade from intro music if still playing)
-  var guideAudio = document.getElementById("guide-music");
-  if(guideAudio){
-    guideAudio.currentTime = 0;
-    var icAudio = document.getElementById("ic-music");
-    if(icAudio && !icAudio.paused){
-      audioCrossfade(icAudio, guideAudio, 0.4, 1200, 0.5);
-    } else {
-      guideAudio.volume = 0;
-      guideAudio.play().catch(function(){});
-      audioFade(guideAudio, 0.4, 1000);
-    }
-  }
   // For new voyage, always start fresh char creation (skip the choice phase)
   initCharCreateNewVoyage();
 }

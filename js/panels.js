@@ -385,7 +385,7 @@ function wireMusicPlayer(body){
 function _mpPlayTrack(track){
   var audio = _getMpAudio();
   // Fade out any other site audio
-  ["bg-music","ic-music","guide-music"].forEach(function(id){
+  ["bg-music","ic-music","extelua-music"].forEach(function(id){
     var a = document.getElementById(id);
     if(a && !a.paused) audioFade(a, 0, 800, function(){ a.volume = 0.4; });
   });
