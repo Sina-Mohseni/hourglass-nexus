@@ -630,40 +630,35 @@
         </div>
       </div>
 
-      <!-- ═══════ SCENARIO CHOICE ═══════ -->
+      <!-- ═══════ SCENARIO CHOICE (2-step) ═══════ -->
       <div class="scenario-overlay" id="scenario-choice" style="display:none">
         <div class="sc-vignette"></div>
-        <div class="sc-content">
-          <div class="sc-title">Choisis ton destin</div>
-          <div class="sc-subtitle">Déplace le guide vers le chemin que tu veux emprunter</div>
+
+        <!-- STEP 1 : Champion or Émissaire -->
+        <div class="sc-content sc-step" id="sc-step1">
+          <div class="sc-title">Qui es-tu ?</div>
+          <div class="sc-subtitle">Choisis ton origine dans le Tournoi</div>
+          <div class="sc-type-choices">
+            <button class="sc-type-btn" id="sc-pick-champion">
+              <span class="sc-type-icon">&#x2B50;</span>
+              <span class="sc-type-name">Champion</span>
+              <span class="sc-type-desc">Représentant officiel d'une planète connectée au Réseau Universel</span>
+            </button>
+            <button class="sc-type-btn" id="sc-pick-emissaire">
+              <span class="sc-type-icon">&#x1F310;</span>
+              <span class="sc-type-name">Émissaire isolé</span>
+              <span class="sc-type-desc">Candidat d'une planète coupée des réseaux, invité par Morkar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 : Sub-scenario circles + draggable guide -->
+        <div class="sc-content sc-step" id="sc-step2" style="display:none">
+          <div class="sc-title" id="sc-step2-title"></div>
+          <div class="sc-subtitle">Déplace le guide vers ton véritable destin</div>
 
           <div class="sc-arena" id="sc-arena">
-            <!-- 5 scenario circles -->
-            <div class="sc-circle" data-scenario="lambda" id="sc-c-lambda">
-              <span class="sc-circle-icon">&#x1F310;</span>
-              <span class="sc-circle-name">Émissaire isolé</span>
-              <span class="sc-circle-desc">Candidat d'une planète coupée des réseaux</span>
-            </div>
-            <div class="sc-circle" data-scenario="champion" id="sc-c-champion">
-              <span class="sc-circle-icon">&#x2B50;</span>
-              <span class="sc-circle-name">Champion connecté</span>
-              <span class="sc-circle-desc">Représentant officiel d'un monde du Réseau</span>
-            </div>
-            <div class="sc-circle" data-scenario="rebelle" id="sc-c-rebelle">
-              <span class="sc-circle-icon">&#x26A1;</span>
-              <span class="sc-circle-name">Dissident</span>
-              <span class="sc-circle-desc">Opposant infiltré dans le Tournoi</span>
-            </div>
-            <div class="sc-circle" data-scenario="apprenti-morkar" id="sc-c-apprenti-morkar">
-              <span class="sc-circle-icon">&#x1F4E1;</span>
-              <span class="sc-circle-name">Recrue Morkar</span>
-              <span class="sc-circle-desc">Nouvel agent du groupe Morkar</span>
-            </div>
-            <div class="sc-circle" data-scenario="veteran-morkar" id="sc-c-veteran-morkar">
-              <span class="sc-circle-icon">&#x1F6E1;&#xFE0F;</span>
-              <span class="sc-circle-name">Vétéran Morkar</span>
-              <span class="sc-circle-desc">Membre expérimenté de l'organisation</span>
-            </div>
+            <!-- Circles injected dynamically -->
 
             <!-- Draggable sleeping guide -->
             <div class="sc-guide" id="sc-guide">
@@ -700,7 +695,7 @@
     <source src="assets/music/extelua-tournament-main-menu.mp3" type="audio/mpeg">
   </audio>
   <audio id="extelua-music" loop preload="auto">
-    <source src="assets/music/extelua.mp3" type="audio/mpeg">
+    <source id="extelua-music-src" src="assets/music/dissident.mp3" type="audio/mpeg">
   </audio>
 
   <!-- JS Split Files (order matters) -->
