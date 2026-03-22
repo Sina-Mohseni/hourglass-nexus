@@ -670,13 +670,7 @@ function enterMainApp(){
   // Fade out guide music if playing
   var guideAudio = document.getElementById("guide-music");
   if(guideAudio && !guideAudio.paused){
-    var gVol = guideAudio.volume;
-    var gSteps = 0;
-    var gFade = setInterval(function(){
-      gSteps++;
-      guideAudio.volume = Math.max(0, gVol * (1 - gSteps / 15));
-      if(gSteps >= 15){ clearInterval(gFade); guideAudio.pause(); guideAudio.volume = gVol; }
-    }, 40);
+    audioFade(guideAudio, 0, 1200, function(){ guideAudio.volume = 0.4; });
   }
   showAppBackgrounds();
   buildAccueil();

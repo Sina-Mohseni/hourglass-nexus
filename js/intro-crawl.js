@@ -31,12 +31,18 @@ function showIntroCrawl(onDone){
   var paraIdx = 0;
   var transitioning = false;
 
-  // Start music
+  // Start music with fade-in (crossfade from any playing menu music)
   if(audio){
     audio.currentTime = 0;
-    audio.volume = 0.5;
     _icMuted = false;
-    audio.play().catch(function(){});
+    var bgMusic = document.getElementById("bg-music");
+    if(bgMusic && !bgMusic.paused){
+      audioCrossfade(bgMusic, audio, 0.5, 1200, 0.4);
+    } else {
+      audio.volume = 0;
+      audio.play().catch(function(){});
+      audioFade(audio, 0.5, 1000);
+    }
   }
 
   // Volume toggle
@@ -181,19 +187,9 @@ function showScenarioChoice(onChosen){
       var scenario = btn.getAttribute("data-scenario");
       window._chosenScenario = scenario;
 
-      // Fade out music
+      // Fade out music (crossfade with guide music will happen in checkCharCreate)
       if(audio && !audio.paused){
-        var vol = audio.volume;
-        var steps = 0;
-        var fade = setInterval(function(){
-          steps++;
-          audio.volume = Math.max(0, vol * (1 - steps / 20));
-          if(steps >= 20){
-            clearInterval(fade);
-            audio.pause();
-            audio.volume = vol;
-          }
-        }, 40);
+        audioFade(audio, 0, 1200, function(){ audio.volume = 0.5; });
       }
 
       // Fade out overlay
