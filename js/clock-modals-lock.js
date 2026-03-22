@@ -61,30 +61,30 @@ var LOCK_INFOS = {
       body: "Comme pour chaque édition, le groupe Morkar met à disposition des champions connectés un dossier préliminaire " +
         "sur les autres candidats. Cette année, 30 champions représentent les planètes du Réseau — parmi eux, plusieurs " +
         "athlètes de haut niveau, deux anciens finalistes du Cycle 45, et un scientifique de la planète Veruhn dont les " +
-        "capacités analytiques sont jugées exceptionnelles. Les 10 émissaires des planètes isolées sont, comme d'habitude, " +
-        "des profils inconnus. Morkar rappelle que malgré leur inexpérience, certains émissaires ont atteint les phases " +
+        "capacités analytiques sont jugées exceptionnelles. Les 10 isolés des planètes coupées du Réseau sont, comme d'habitude, " +
+        "des profils inconnus. Morkar rappelle que malgré leur inexpérience, certains isolés ont atteint les phases " +
         "avancées lors des éditions précédentes. Ne sous-estimez personne. Les dossiers complets seront accessibles après " +
         "la cérémonie d'ouverture."
     }
   ],
   "lambda": [
-    { title: "Message de bienvenue — Émissaire",
+    { title: "Message de bienvenue — Isolé",
       sub: "Groupe Morkar — Relations extérieures",
-      body: "Bienvenue, Émissaire. Vous avez été sélectionné par nos éclaireurs parmi les habitants de votre planète pour " +
+      body: "Bienvenue, Isolé. Vous avez été sélectionné par nos éclaireurs parmi les habitants de votre planète pour " +
         "participer à un événement qui dépasse tout ce que vous avez pu connaître jusqu'ici. Le Tournoi d'Extelua est " +
         "la plus grande compétition de l'univers connu. Pendant quinze lunes, vous affronterez d'autres candidats venus " +
         "de mondes très différents du vôtre. Nous comprenons que cette situation peut être déstabilisante. C'est pourquoi " +
-        "le groupe Morkar a mis en place un programme d'accompagnement spécifique pour les émissaires des planètes isolées. " +
+        "le groupe Morkar a mis en place un programme d'accompagnement spécifique pour les isolés des planètes coupées du Réseau. " +
         "Un guide vous sera assigné pour vous aider à comprendre les règles, les technologies et les enjeux du Tournoi. " +
         "Votre monde mérite cette chance. Saisissez-la."
     },
     { title: "Note d'information — Ce qui vous attend",
-      sub: "Groupe Morkar — Protocole émissaire",
-      body: "En tant qu'émissaire d'une planète non connectée au Réseau Universel, vous découvrirez des technologies, " +
+      sub: "Groupe Morkar — Protocole isolé",
+      body: "En tant qu'isolé d'une planète non connectée au Réseau Universel, vous découvrirez des technologies, " +
         "des civilisations et des modes de vie radicalement différents de ce que vous connaissez. Ne vous laissez pas " +
         "intimider. Les épreuves du Tournoi ne sont pas uniquement physiques — elles testent aussi l'intelligence, " +
         "l'adaptabilité et la capacité à forger des alliances. Ce sont des qualités que les habitants des mondes isolés " +
-        "possèdent souvent en abondance. Sur les 46 éditions précédentes, des émissaires ont régulièrement surpris les " +
+        "possèdent souvent en abondance. Sur les 46 éditions précédentes, des isolés ont régulièrement surpris les " +
         "pronostics en atteignant les phases intermédiaires. La récompense pour le vainqueur est l'intégration totale de " +
         "sa planète d'origine au Réseau Universel. Pour votre monde, cela signifierait l'accès aux Routes Sillonnées, " +
         "aux technologies médicales avancées et à un siège au Conseil des Mondes."
@@ -97,7 +97,7 @@ var LOCK_INFOS = {
         "officiel de votre planète, mais votre mission va au-delà de la compétition. Le renseignement interne de Morkar " +
         "a détecté des signaux indiquant qu'un ou plusieurs éléments dissidents pourraient tenter de s'infiltrer dans " +
         "cette édition, comme cela s'est produit lors des Cycles 39 et 44. Votre rôle est d'observer, d'écouter et de " +
-        "repérer tout comportement suspect parmi les candidats — champions comme émissaires. Vous devez maintenir votre " +
+        "repérer tout comportement suspect parmi les candidats — champions comme isolés. Vous devez maintenir votre " +
         "couverture de champion ordinaire en toutes circonstances. Si vous identifiez un dissident potentiel, transmettez " +
         "l'information via le canal sécurisé qui vous a été communiqué lors de votre briefing. En cas de succès, la " +
         "récompense d'intégration sera garantie pour votre monde, indépendamment de votre classement dans le Tournoi."
@@ -108,7 +108,7 @@ var LOCK_INFOS = {
         "par le groupe Morkar. Leurs motivations sont variées : certains croient que le Tournoi est truqué, d'autres " +
         "remettent en question la légitimité de Morkar à organiser l'événement. Lors du Cycle 39, un dissident infiltré " +
         "parmi les champions a tenté de diffuser un message pirate pendant une retransmission en direct. L'incident a été " +
-        "contenu. Lors du Cycle 44, deux agents présumés ont été identifiés parmi les émissaires — l'un d'eux avait " +
+        "contenu. Lors du Cycle 44, deux agents présumés ont été identifiés parmi les isolés — l'un d'eux avait " +
         "falsifié son origine planétaire. Les dissidents sont généralement bien préparés et difficiles à détecter. " +
         "Méfiez-vous des candidats qui posent trop de questions sur le fonctionnement interne de Morkar, qui cherchent " +
         "à accéder à des zones restreintes, ou qui tissent des alliances inhabituelles. Tout détail peut être significatif."
@@ -130,11 +130,11 @@ var LOCK_INFOS = {
       sub: "Groupe Morkar — Archives",
       body: "Pour mémoire : sur les 10 dernières éditions, 7 infiltrations dissidentes ont été confirmées. Dans 4 cas, " +
         "les agents se sont fait passer pour des champions ordinaires. Dans 2 cas, ils se sont infiltrés via le programme " +
-        "émissaire en falsifiant leur origine planétaire. Le dernier cas, lors du Cycle 44, impliquait un ancien employé " +
+        "isolé en falsifiant leur origine planétaire. Le dernier cas, lors du Cycle 44, impliquait un ancien employé " +
         "de Morkar retourné. Les méthodes évoluent. Les dissidents ne se contentent plus de saboter les épreuves — " +
         "ils cherchent désormais à collecter des preuves sur le fonctionnement interne du Tournoi pour les diffuser " +
         "publiquement. C'est cette menace informationnelle qui constitue le risque principal. La récompense promise aux " +
-        "vainqueurs, les conditions d'intégration au Réseau, les critères de sélection des émissaires — autant de sujets " +
+        "vainqueurs, les conditions d'intégration au Réseau, les critères de sélection des isolés — autant de sujets " +
         "sensibles que les dissidents cherchent à exposer. Votre mission est de vous assurer que cela n'arrive pas."
     }
   ]
@@ -151,11 +151,11 @@ function populateLockInfoZone(){
   // Determine which infos to show
   var infos = [];
   var isDissident = (scenario === "rebelle");
-  var origin = window._scOriginType; // "champion" or "emissaire"
+  var origin = window._scOriginType; // "champion" or "isole"
 
   if(isDissident){
     // Dissident gets same infos as their cover identity + journal
-    var coverKey = (origin === "emissaire") ? "lambda" : "champion";
+    var coverKey = (origin === "isole") ? "lambda" : "champion";
     infos = (LOCK_INFOS[coverKey] || []).slice();
   } else {
     infos = (LOCK_INFOS[scenario] || []).slice();
