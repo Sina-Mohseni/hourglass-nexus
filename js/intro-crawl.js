@@ -2,6 +2,22 @@
 
 /* ══════════ INTRO NARRATION + SCENARIO CHOICE ══════════ */
 
+/* ── Pre-identity intro (before profile/name) ── */
+var PRE_IDENTITY_PARAGRAPHS = [
+  {text: "LE TOURNOI D'EXTELUA", cls: "ic-title"},
+  {text: "Quelque part au-delà des mondes connus, un événement se prépare. Le plus grand spectacle que l'univers ait jamais engendré. On l'appelle le Tournoi d'Extelua."},
+  {text: "Tous les cycles, quarante candidats venus de tous les horizons sont rassemblés pour s'affronter dans des épreuves qui testent le corps, l'esprit et la volonté. Le vainqueur obtient le pouvoir de changer le destin de tout un monde."},
+  {text: "L'organisation qui contrôle tout — le groupe Morkar — a lancé l'appel. Les mondes ont répondu. Et toi… tu as été choisi.", cls: "ic-final"}
+];
+
+/* ── Pre-scenario intro (before scenario choice) ── */
+var PRE_SCENARIO_PARAGRAPHS = [
+  {text: "TON RÔLE", cls: "ic-title"},
+  {text: "Dans ce Tournoi, chacun arrive avec son histoire. Certains sont des champions désignés par leur peuple, portés par la gloire et les attentes de milliards d'êtres. D'autres sont des émissaires — des inconnus arrachés à des mondes isolés, qui ne savaient même pas que l'univers était si vaste."},
+  {text: "Mais tous ne jouent pas le même jeu. Derrière les caméras et les acclamations, des forces s'opposent. Morkar surveille. Des dissidents conspirent dans l'ombre. Et certains candidats portent des missions secrètes qu'ils ne peuvent révéler à personne."},
+  {text: "Avant que la cérémonie ne commence, une question se pose…", cls: "ic-final"}
+];
+
 var IC_PARAGRAPHS = [
   {text: "CÉRÉMONIE D'OUVERTURE", cls: "ic-title"},
   {text: "La lumière t'aveugle. Des milliers de projecteurs percent l'obscurité en même temps, révélant une arène colossale taillée dans la roche d'un astéroïde artificiel. Tu es là, au milieu de la foule, le cœur battant — et rien de ce que tu as imaginé ne t'avait préparé à ça."},
@@ -43,13 +59,17 @@ function showIntroCrawl(onDone){
   var paraIdx = 0;
   var transitioning = false;
 
-  // Start music with fade-in (crossfade from any playing menu music)
+  // Start music with fade-in (crossfade from any playing music)
   if(audio){
     audio.currentTime = 0;
     _icMuted = false;
     var bgMusic = document.getElementById("bg-music");
-    if(bgMusic && !bgMusic.paused){
-      audioCrossfade(bgMusic, audio, 0.5, 1200, 0.4);
+    var scMusic = document.getElementById("extelua-music");
+    var activeMusic = (scMusic && !scMusic.paused) ? scMusic
+                    : (bgMusic && !bgMusic.paused) ? bgMusic
+                    : null;
+    if(activeMusic){
+      audioCrossfade(activeMusic, audio, 0.5, 1200, activeMusic === bgMusic ? 0.4 : 0);
     } else {
       audio.volume = 0;
       audio.play().catch(function(){});
@@ -858,6 +878,12 @@ function showScenarioChoice(onChosen){
           audioFade(icAudio, 0, 1200, function(){ icAudio.pause(); icAudio.volume = 0.5; });
         }
 
+        // Fade out bg-music if still playing (new game flow)
+        var bgMusic = document.getElementById("bg-music");
+        if(bgMusic && !bgMusic.paused){
+          audioFade(bgMusic, 0, 1200, function(){ bgMusic.pause(); bgMusic.volume = 0.4; });
+        }
+
         // Transition out after a beat
         setTimeout(function(){
           overlay.classList.add("fading-out");
@@ -893,18 +919,95 @@ function showScenarioChoice(onChosen){
   }
 }
 
+/* ══════════ LIGHTWEIGHT NARRATION (no video, no music) ══════════ */
+function showNarration(paragraphs, onDone){
+  var screen = document.querySelector(".screen");
+  if(!screen){ onDone(); return; }
+
+  var overlay = document.createElement("div");
+  overlay.className = "intro-crawl-overlay narration-only";
+  overlay.innerHTML =
+    '<div class="ic-vignette"></div>' +
+    '<div class="ic-text-zone"></div>' +
+    '<button class="ic-next-btn">Suivant \u25BC</button>' +
+    '<button class="ic-skip-btn">Passer \u203A</button>';
+  screen.appendChild(overlay);
+
+  var textZone = overlay.querySelector(".ic-text-zone");
+  var nextBtn = overlay.querySelector(".ic-next-btn");
+  var skipBtn = overlay.querySelector(".ic-skip-btn");
+  var paraIdx = 0;
+  var transitioning = false;
+
+  function showParagraph(idx){
+    if(!textZone) return;
+    textZone.innerHTML = "";
+    var data = paragraphs[idx];
+    var p = document.createElement("div");
+    p.className = "ic-paragraph" + (data.cls ? " " + data.cls : "");
+    p.textContent = data.text;
+    textZone.appendChild(p);
+  }
+
+  function nextParagraph(){
+    if(transitioning) return;
+    if(paraIdx >= paragraphs.length - 1){ endNarration(); return; }
+    var currentP = textZone.querySelector(".ic-paragraph");
+    if(currentP){
+      transitioning = true;
+      currentP.classList.add("fading-out");
+      setTimeout(function(){
+        paraIdx++;
+        showParagraph(paraIdx);
+        transitioning = false;
+      }, 500);
+    } else {
+      paraIdx++;
+      showParagraph(paraIdx);
+    }
+  }
+
+  var dismissed = false;
+  function endNarration(){
+    if(dismissed) return;
+    dismissed = true;
+    overlay.classList.add("fading-out");
+    setTimeout(function(){
+      overlay.remove();
+      onDone();
+    }, 800);
+  }
+
+  nextBtn.onclick = nextParagraph;
+  skipBtn.onclick = endNarration;
+  if(textZone) textZone.onclick = nextParagraph;
+
+  showParagraph(0);
+}
+
 /* Full intro sequence
-   mode "new" : crawl → identity → scenario → lock → guide (region/city/job)
-   mode "participation" : crawl → scenario → lock → guide (region/city/job) */
+   mode "new" : preIntro1 → identity → preIntro2 → scenario → ceremony (crawl)
+   mode "participation" : crawl → scenario → done */
 function startIntroSequence(onNewVoyage, mode){
   var isNew = (mode !== "participation");
-  showIntroCrawl(function(){
-    if(isNew){
+  if(isNew){
+    // 1) Short narration (no video/music, bg-music continues)
+    showNarration(PRE_IDENTITY_PARAGRAPHS, function(){
+      // 2) Identity (profile + name)
       showIdentityScreen(function(){
-        showScenarioChoice(function(){ onNewVoyage(); });
+        // 3) Pre-scenario narration
+        showNarration(PRE_SCENARIO_PARAGRAPHS, function(){
+          // 4) Scenario choice
+          showScenarioChoice(function(){
+            // 5) Ceremony with video + music + paragraphs
+            showIntroCrawl(function(){ onNewVoyage(); });
+          });
+        });
       });
-    } else {
+    });
+  } else {
+    showIntroCrawl(function(){
       showScenarioChoice(function(){ onNewVoyage(); });
-    }
-  });
+    });
+  }
 }
