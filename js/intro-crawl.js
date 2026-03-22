@@ -194,6 +194,27 @@ function showMorkarPresentation(){
           'accès aux Routes Sillonnées, siège au Conseil des Mondes, et les technologies qui en découlent. ' +
           'Un monde entier transformé par la victoire d\'un seul être.</p>' +
 
+        '<h3 class="ic-modal-section">CLAUSES DU CONTRAT — ENGAGEMENTS DU CANDIDAT</h3>' +
+        '<p class="ic-modal-footnote" style="margin-bottom:8px;font-style:normal">' +
+          '<em>Extrait du Contrat de Participation au Tournoi d\'Extelua — Article IX, ' +
+          'dit « Clause de Contrepartie »</em></p>' +
+        '<p>La grandeur de la récompense exige un sacrifice à la mesure de son éclat. ' +
+          'Nul monde ne saurait être élevé sans que celui qui l\'a porté n\'en paie le prix.</p>' +
+        '<p><strong>Article IX-1 — En cas de victoire (Champion ou Émissaire) :</strong><br>' +
+          'La planète d\'origine du vainqueur obtient l\'intégration pleine et immédiate au Réseau Universel, ' +
+          'avec tous les privilèges qui en découlent. En contrepartie, le vainqueur s\'engage à renoncer ' +
+          'définitivement à toute identité publique. Il sera effacé des registres, coupé de tout contact ' +
+          'avec les mondes extérieurs, et replacé dans l\'anonymat le plus total. Son nom ne sera plus ' +
+          'prononcé. Son visage ne sera plus diffusé. Il vivra, mais comme un inconnu — ' +
+          'y compris pour ceux qui l\'auront vu triompher.</p>' +
+        '<p style="font-size:10px;color:var(--bone-dim);font-style:italic;margin-top:4px">' +
+          'Le sacrifice d\'un seul être pour l\'avenir de tout un peuple : telle est la promesse, ' +
+          'tel est le prix. Le vainqueur offre sa gloire en échange de celle de son monde.</p>' +
+        '<p><strong>Article IX-2 — En cas d\'élimination :</strong><br>' +
+          'Le candidat éliminé retourne sur sa planète d\'origine et reprend le cours de son existence. ' +
+          'Aucune sanction, aucune conséquence. Le Tournoi considère que la participation elle-même ' +
+          'est un honneur suffisant.</p>' +
+
         '<p class="ic-modal-closing">« Que le Sablier guide vos pas. Morkar veille. »</p>' +
 
         '<p class="ic-modal-footnote">' +
@@ -251,6 +272,22 @@ function showJournalArticle(){
           'Mais les archives du Conseil des Mondes — que notre rédaction a pu consulter — ' +
           'montrent que les conditions d\'intégration comportent des clauses que Morkar ne mentionne jamais ' +
           'dans ses retransmissions. Le détail de ces clauses reste classifié.</p>' +
+
+        '<h4 class="ic-journal-sub">Ce qu\'on ne dit pas aux perdants</h4>' +
+        '<p>Morkar assure que les candidats éliminés « retournent chez eux sans conséquence ». ' +
+          'C\'est vrai — du moins pour les champions des planètes connectées, qui rentrent et reprennent leur vie publique. ' +
+          'Mais pour les émissaires des planètes isolées, nos sources décrivent un protocole bien différent.</p>' +
+        '<p>Selon un ancien technicien de Morkar ayant requis l\'anonymat, les émissaires éliminés ' +
+          'ne repartent pas avec leurs souvenirs. Avant d\'être renvoyés sur leur monde d\'origine, ' +
+          'ils passeraient par ce que l\'organisation appelle en interne le « Protocole de Réinitialisation ». ' +
+          'Une procédure de réécriture mémorielle. L\'émissaire reçoit des souvenirs fabriqués — une année ' +
+          'ordinaire, sans tournoi, sans voyage, sans Morkar. Comme si rien ne s\'était jamais passé.</p>' +
+        '<p>La justification officieuse ? « Préserver l\'ordre établi. » Un individu issu d\'une planète isolée ' +
+          'qui reviendrait chez lui avec la connaissance de l\'univers connecté, des Routes Sillonnées et des ' +
+          'technologies interstellaires représenterait, selon Morkar, un « risque de déstabilisation culturelle ». ' +
+          'Mieux vaut qu\'il oublie tout. Mieux vaut qu\'il n\'ait jamais su.</p>' +
+        '<p style="font-style:italic;color:var(--bone-dim)">Notre rédaction n\'a pas été en mesure de vérifier ' +
+          'ces allégations de manière indépendante. Le groupe Morkar n\'a pas répondu à nos demandes de commentaire.</p>' +
 
         '<h4 class="ic-journal-sub">Les audiences au plus haut</h4>' +
         '<p>Avec 4,2 milliards de spectateurs lors de la finale du Cycle 46, le Tournoi ' +
