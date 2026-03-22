@@ -73,24 +73,17 @@ function showIntroCrawl(onDone){
       var wrap = document.createElement("div");
       wrap.className = "ic-paragraph ic-choices-zone";
       wrap.innerHTML =
-        '<div class="ic-choices-label">Informations facultatives</div>' +
+        '<div class="ic-choices-label">Informations envoyées par le groupe Morkar</div>' +
         '<button class="ic-info-btn" id="ic-btn-morkar">' +
           '<span class="ic-info-icon">\u25B6</span>' +
           '<span class="ic-info-text">Présentation officielle Morkar</span>' +
           '<span class="ic-info-sub">Retransmission universelle</span>' +
-        '</button>' +
-        '<button class="ic-info-btn" id="ic-btn-journal">' +
-          '<span class="ic-info-icon">\u2756</span>' +
-          '<span class="ic-info-text">L\'Écho des Sillons — Édition spéciale</span>' +
-          '<span class="ic-info-sub">Journal indépendant</span>' +
         '</button>';
       textZone.appendChild(wrap);
 
-      // Wire buttons
+      // Wire button
       var btnMorkar = document.getElementById("ic-btn-morkar");
-      var btnJournal = document.getElementById("ic-btn-journal");
       if(btnMorkar) btnMorkar.onclick = function(e){ e.stopPropagation(); showMorkarPresentation(); };
-      if(btnJournal) btnJournal.onclick = function(e){ e.stopPropagation(); showJournalArticle(); };
 
       if(nextBtn) nextBtn.textContent = "Continuer \u25BA";
       return;
@@ -278,8 +271,11 @@ function showJournalArticle(){
       '<button class="ic-modal-close" id="ic-modal-close">Fermer</button>' +
     '</div>';
 
-  var crawl = document.getElementById("intro-crawl");
-  (crawl || document.body).appendChild(overlay);
+  // Append to visible parent (intro-crawl or lock-screen or body)
+  var parent = document.getElementById("intro-crawl");
+  if(!parent || parent.style.display === "none") parent = document.getElementById("lock-screen");
+  if(!parent || parent.style.display === "none") parent = document.body;
+  parent.appendChild(overlay);
 
   setTimeout(function(){ overlay.classList.add("visible"); }, 20);
 

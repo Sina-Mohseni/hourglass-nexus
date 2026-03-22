@@ -155,6 +155,36 @@
 .dr-game-play:disabled { opacity:.3; cursor:not-allowed }
 .dr-game-play:active:not(:disabled) { transform:scale(.95) }
 
+/* ═══════════ LOCK INFO ZONE (per-scenario) ═══════════ */
+.lock-info-zone {
+  margin-top: 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  width: 100%;
+}
+.lock-info-label {
+  font-family: var(--font-ui); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone-dim); margin-bottom: 2px;
+}
+.lock-info-btn {
+  width: 90%; max-width: 300px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, rgba(16,12,6,.9), rgba(8,6,3,.95));
+  border: 1px solid rgba(168,132,42,.15);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+  cursor: pointer; transition: all .25s; text-align: left;
+  position: relative;
+}
+.lock-info-btn:active { border-color: var(--gold); transform: scale(.97); }
+.lock-info-btn-title {
+  font-family: var(--font-heading); font-size: 11px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 1px;
+}
+.lock-info-btn-sub {
+  font-family: var(--font-ui); font-size: 8px;
+  color: var(--bone-dim); letter-spacing: 1px;
+}
+
 /* ═══════════ HIDDEN UNTIL MAIN APP ═══════════ */
 .hidden-until-app { display: none !important }
 .hidden-until-app.app-visible { display: block !important }
