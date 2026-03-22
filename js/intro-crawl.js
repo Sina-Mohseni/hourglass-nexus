@@ -7,8 +7,8 @@ var IC_PARAGRAPHS = [
   {text: "Extelua. Un univers de milliards d'étoiles reliées par les Routes Sillonnées — d'immenses corridors de voyage supraluminique qui connectent les civilisations les plus avancées entre elles."},
   {text: "Mais toutes les planètes ne sont pas connectées. Des centaines de mondes isolés, coupés des réseaux universels, vivent sans jamais savoir ce qui se passe au-delà de leur ciel."},
   {text: "Tous les deux cycles solaires, le groupe Morkar — la plus grande organisation médiatique et diplomatique d'Extelua — organise un événement retransmis dans tout l'univers connecté : le Tournoi d'Extelua."},
-  {text: "Quarante participants sont sélectionnés. Vingt sont les champions officiels des planètes connectées — des figures publiques, des athlètes, des scientifiques, des célébrités déjà connues à travers les réseaux."},
-  {text: "Les vingt autres viennent des planètes isolées. Des inconnus. Des gens ordinaires arrachés à leur quotidien par une invitation qu'ils ne comprennent pas toujours. Morkar appelle cela « la main tendue aux oubliés »."},
+  {text: "Quarante participants sont sélectionnés. Trente sont les champions officiels des planètes connectées — des figures publiques, des athlètes, des scientifiques, des célébrités déjà connues à travers les réseaux."},
+  {text: "Les dix autres viennent des planètes isolées. Des inconnus. Des gens ordinaires arrachés à leur quotidien par une invitation qu'ils ne comprennent pas toujours. Morkar appelle cela « la main tendue aux oubliés »."},
   {text: "Pendant quinze lunes — une année complète d'Extelua — les quarante candidats traversent des mondes, affrontent des épreuves physiques et mentales, forgent des alliances et se trahissent."},
   {text: "Le tournoi est diffusé en direct sur tous les écrans de l'univers connecté. C'est le plus grand spectacle jamais créé. Des milliards de spectateurs suivent chaque élimination, chaque victoire, chaque drame."},
   {text: "Morkar présente le tournoi comme un symbole d'unité et de justice — une chance égale offerte à tous les peuples, connectés ou non, de prouver leur valeur et de changer leur destin."},
@@ -185,12 +185,12 @@ function showMorkarPresentation(){
           'l\'organisation, la retransmission et l\'arbitrage du Tournoi depuis sa 12e édition.</p>' +
 
         '<h3 class="ic-modal-section">LES CANDIDATS — CHAMPIONS DES PLANÈTES CONNECTÉES</h3>' +
-        '<p>Vingt candidats sont désignés par les planètes membres du Réseau des Routes Sillonnées. ' +
+        '<p>Trente candidats sont désignés par les planètes membres du Réseau des Routes Sillonnées. ' +
           'Chaque monde connecté envoie son représentant — élu, tiré au sort ou désigné selon les coutumes locales. ' +
           'Ils arrivent avec leur histoire, leurs sponsors et leurs millions de supporters.</p>' +
 
         '<h3 class="ic-modal-section">LES CANDIDATS — ÉMISSAIRES DES PLANÈTES ISOLÉES</h3>' +
-        '<p>Vingt places sont réservées aux planètes non connectées aux réseaux universels. ' +
+        '<p>Dix places sont réservées aux planètes non connectées aux réseaux universels. ' +
           'Des mondes qui n\'ont parfois jamais eu de contact avec l\'extérieur. Morkar envoie des éclaireurs ' +
           'pour identifier et inviter des individus au potentiel remarquable.</p>' +
         '<p>C\'est la promesse fondatrice du Tournoi : offrir une chance égale à ceux que l\'univers a oubliés. ' +
@@ -343,17 +343,28 @@ function showIdentityScreen(onDone){
   };
 }
 
-/* ══════════ SCENARIO CHOICE (drag guide onto circle) ══════════ */
+/* ══════════ SCENARIO MUSIC MAP ══════════ */
+var SC_MUSIC = {
+  "champion":       "assets/music/champion.mp3",
+  "lambda":         "assets/music/emissaire.mp3",
+  "rebelle":        "assets/music/dissident.mp3",
+  "apprenti-morkar":"assets/music/recrue.mp3",
+  "veteran-morkar": "assets/music/veteran.mp3"
+};
+
+/* ══════════ SCENARIO CHOICE (2-step: type → sub-scenario) ══════════ */
 function showScenarioChoice(onChosen){
   var overlay = document.getElementById("scenario-choice");
   if(!overlay){ onChosen("lambda"); return; }
   overlay.style.display = "";
 
+  var step1 = document.getElementById("sc-step1");
+  var step2 = document.getElementById("sc-step2");
+  var step2Title = document.getElementById("sc-step2-title");
   var arena = document.getElementById("sc-arena");
   var guide = document.getElementById("sc-guide");
   var guideLabel = document.getElementById("sc-guide-label");
   var guideImg = document.getElementById("sc-guide-img");
-  if(!arena || !guide){ onChosen("lambda"); return; }
 
   // Set guide avatar
   var persona = getGuidePersona();
@@ -361,122 +372,238 @@ function showScenarioChoice(onChosen){
     guideImg.innerHTML = '<img src="' + persona.avatar + '" alt="">';
   }
 
-  // Reset guide to center-bottom position
-  guide.style.left = "50%";
-  guide.style.top = "78%";
-  guide.classList.remove("sc-guide-awake");
-  if(guideLabel) guideLabel.textContent = "Endormi";
+  // Show step 1, hide step 2
+  if(step1) step1.style.display = "";
+  if(step2) step2.style.display = "none";
 
-  var circles = arena.querySelectorAll(".sc-circle");
-  var SNAP = 50; // px threshold
-  var isDrag = false, offX = 0, offY = 0;
-  var chosen = false;
+  // Sub-scenario definitions per type
+  var SUB_CHAMPION = [
+    {scenario:"champion",       icon:"\u2B50",     name:"Champion",       desc:"Représentant officiel de ta planète connectée"},
+    {scenario:"rebelle",        icon:"\u26A1",     name:"Dissident",      desc:"Opposant infiltré parmi les champions"},
+    {scenario:"apprenti-morkar",icon:"\uD83D\uDCE1",name:"Recrue Morkar", desc:"Nouvel agent du groupe Morkar"},
+    {scenario:"veteran-morkar", icon:"\uD83D\uDEE1\uFE0F",name:"Vétéran Morkar",desc:"Membre expérimenté de l'organisation"}
+  ];
+  var SUB_EMISSAIRE = [
+    {scenario:"lambda",   icon:"\uD83C\uDF10", name:"Émissaire isolé", desc:"Candidat ordinaire d'une planète coupée des réseaux"},
+    {scenario:"rebelle",  icon:"\u26A1",        name:"Dissident",       desc:"Faux émissaire — infiltré depuis une planète connectée"}
+  ];
 
-  function gxy(e){
-    if(e.clientX != null) return {x: e.clientX, y: e.clientY};
-    var t = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]);
-    return t ? {x: t.clientX, y: t.clientY} : {x: 0, y: 0};
-  }
+  /* ── STEP 1: pick type (click) ── */
+  var btnChampion = document.getElementById("sc-pick-champion");
+  var btnEmissaire = document.getElementById("sc-pick-emissaire");
 
-  function guideCenter(){
-    var r = guide.getBoundingClientRect();
-    return {x: r.left + r.width / 2, y: r.top + r.height / 2};
-  }
+  function goToStep2(type){
+    var subs = (type === "champion") ? SUB_CHAMPION : SUB_EMISSAIRE;
+    window._scOriginType = type; // "champion" or "emissaire"
 
-  function nearestCircle(){
-    var gc = guideCenter();
-    var best = null, bestDist = Infinity;
-    circles.forEach(function(c){
-      var r = c.getBoundingClientRect();
-      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-      var d = Math.hypot(gc.x - cx, gc.y - cy);
-      if(d < bestDist){ bestDist = d; best = c; }
-    });
-    return (best && bestDist < SNAP) ? best : null;
-  }
+    // Set title
+    if(step2Title){
+      step2Title.textContent = (type === "champion")
+        ? "Quel champion es-tu ?"
+        : "Quel émissaire es-tu ?";
+    }
 
-  function clearHighlights(){
-    circles.forEach(function(c){ c.classList.remove("sc-circle-hover"); });
-  }
+    // Inject circles into arena
+    var existingCircles = arena.querySelectorAll(".sc-circle");
+    existingCircles.forEach(function(c){ c.remove(); });
 
-  function onStart(e){
-    if(chosen) return;
-    e.preventDefault(); e.stopPropagation();
-    isDrag = true;
-    guide.classList.add("dragging");
-    if(guideLabel) guideLabel.textContent = "Réveillé !";
-    var p = gxy(e);
-    var r = guide.getBoundingClientRect();
-    offX = (r.left + r.width / 2) - p.x;
-    offY = (r.top + r.height / 2) - p.y;
-  }
-
-  function onMove(e){
-    if(!isDrag) return;
-    e.preventDefault();
-    var p = gxy(e);
-    var ar = arena.getBoundingClientRect();
-    var nx = p.x + offX - ar.left;
-    var ny = p.y + offY - ar.top;
-    guide.style.left = (nx / ar.width * 100) + "%";
-    guide.style.top = (ny / ar.height * 100) + "%";
-
-    clearHighlights();
-    var hit = nearestCircle();
-    if(hit) hit.classList.add("sc-circle-hover");
-  }
-
-  function onEnd(){
-    if(!isDrag) return;
-    isDrag = false;
-    guide.classList.remove("dragging");
-
-    clearHighlights();
-    var hit = nearestCircle();
-
-    if(hit){
-      chosen = true;
-      var scenario = hit.getAttribute("data-scenario");
-      window._chosenScenario = scenario;
-
-      // Snap guide into circle center
-      var ar = arena.getBoundingClientRect();
-      var cr = hit.getBoundingClientRect();
-      var cx = (cr.left + cr.width / 2 - ar.left) / ar.width * 100;
-      var cy = (cr.top + cr.height / 2 - ar.top) / ar.height * 100;
-      guide.style.left = cx + "%";
-      guide.style.top = cy + "%";
-      guide.classList.add("sc-guide-awake");
-      hit.classList.add("sc-circle-chosen");
-      if(guideLabel) guideLabel.textContent = persona ? persona.name : "Prêt";
-
-      // Transition out after a beat
-      setTimeout(function(){
-        overlay.classList.add("fading-out");
-        setTimeout(function(){
-          overlay.style.display = "none";
-          overlay.classList.remove("fading-out");
-          // Reset state for potential replay
-          guide.classList.remove("sc-guide-awake");
-          hit.classList.remove("sc-circle-chosen");
-          onChosen(scenario);
-        }, 800);
-      }, 1200);
+    // Layout positions depending on count
+    var positions;
+    if(subs.length === 4){
+      positions = [
+        {left:"25%", top:"20%"},
+        {left:"75%", top:"20%"},
+        {left:"25%", top:"55%"},
+        {left:"75%", top:"55%"}
+      ];
     } else {
-      // Snap back to center-bottom
-      if(guideLabel) guideLabel.textContent = "Endormi";
-      guide.style.left = "50%";
-      guide.style.top = "78%";
+      positions = [
+        {left:"30%", top:"35%"},
+        {left:"70%", top:"35%"}
+      ];
+    }
+
+    subs.forEach(function(s, i){
+      var div = document.createElement("div");
+      div.className = "sc-circle";
+      div.setAttribute("data-scenario", s.scenario);
+      div.style.left = positions[i].left;
+      div.style.top = positions[i].top;
+      div.innerHTML =
+        '<span class="sc-circle-icon">' + s.icon + '</span>' +
+        '<span class="sc-circle-name">' + s.name + '</span>' +
+        '<span class="sc-circle-desc">' + s.desc + '</span>';
+      arena.insertBefore(div, guide);
+    });
+
+    // Reset guide
+    guide.style.left = "50%";
+    guide.style.top = "82%";
+    guide.classList.remove("sc-guide-awake");
+    if(guideLabel) guideLabel.textContent = "Endormi";
+
+    // Transition
+    if(step1){
+      step1.classList.add("fading-out");
+      setTimeout(function(){
+        step1.style.display = "none";
+        step1.classList.remove("fading-out");
+        if(step2) step2.style.display = "";
+        initStep2Drag();
+      }, 500);
     }
   }
 
-  // Wire events
-  guide.addEventListener("pointerdown", onStart, {passive: false});
-  guide.addEventListener("touchstart", function(e){ onStart(e); }, {passive: false});
-  document.addEventListener("pointermove", onMove, {passive: false});
-  document.addEventListener("touchmove", onMove, {passive: false});
-  document.addEventListener("pointerup", onEnd);
-  document.addEventListener("touchend", onEnd);
+  if(btnChampion) btnChampion.onclick = function(){ goToStep2("champion"); };
+  if(btnEmissaire) btnEmissaire.onclick = function(){ goToStep2("emissaire"); };
+
+  /* ── STEP 2: drag guide to circle ── */
+  function initStep2Drag(){
+    var circles = arena.querySelectorAll(".sc-circle");
+    var SNAP = 55;
+    var isDrag = false, offX = 0, offY = 0;
+    var chosen = false;
+
+    function gxy(e){
+      if(e.clientX != null) return {x: e.clientX, y: e.clientY};
+      var t = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]);
+      return t ? {x: t.clientX, y: t.clientY} : {x: 0, y: 0};
+    }
+
+    function guideCenter(){
+      var r = guide.getBoundingClientRect();
+      return {x: r.left + r.width / 2, y: r.top + r.height / 2};
+    }
+
+    function nearestCircle(){
+      var gc = guideCenter();
+      var best = null, bestDist = Infinity;
+      circles.forEach(function(c){
+        var r = c.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var d = Math.hypot(gc.x - cx, gc.y - cy);
+        if(d < bestDist){ bestDist = d; best = c; }
+      });
+      return (best && bestDist < SNAP) ? best : null;
+    }
+
+    function clearHighlights(){
+      circles.forEach(function(c){ c.classList.remove("sc-circle-hover"); });
+    }
+
+    function onStart(e){
+      if(chosen) return;
+      e.preventDefault(); e.stopPropagation();
+      isDrag = true;
+      guide.classList.add("dragging");
+      if(guideLabel) guideLabel.textContent = "Réveillé !";
+      var p = gxy(e);
+      var r = guide.getBoundingClientRect();
+      offX = (r.left + r.width / 2) - p.x;
+      offY = (r.top + r.height / 2) - p.y;
+    }
+
+    function onMove(e){
+      if(!isDrag) return;
+      e.preventDefault();
+      var p = gxy(e);
+      var ar = arena.getBoundingClientRect();
+      var nx = p.x + offX - ar.left;
+      var ny = p.y + offY - ar.top;
+      guide.style.left = (nx / ar.width * 100) + "%";
+      guide.style.top = (ny / ar.height * 100) + "%";
+
+      clearHighlights();
+      var hit = nearestCircle();
+      if(hit) hit.classList.add("sc-circle-hover");
+    }
+
+    function cleanup(){
+      guide.removeEventListener("pointerdown", onStart);
+      guide.removeEventListener("touchstart", onStartTouch);
+      document.removeEventListener("pointermove", onMove);
+      document.removeEventListener("touchmove", onMove);
+      document.removeEventListener("pointerup", onEnd);
+      document.removeEventListener("touchend", onEnd);
+    }
+
+    function startScenarioMusic(scenario){
+      var src = SC_MUSIC[scenario] || SC_MUSIC["champion"];
+      var extAudio = document.getElementById("extelua-music");
+      var extSrc = document.getElementById("extelua-music-src");
+      if(!extAudio) return;
+      // Set the right track
+      if(extSrc) extSrc.src = src;
+      extAudio.load();
+      extAudio.currentTime = 0;
+      extAudio.volume = 0;
+      extAudio.play().catch(function(){});
+      audioFade(extAudio, 0.4, 2000);
+    }
+
+    function onEnd(){
+      if(!isDrag) return;
+      isDrag = false;
+      guide.classList.remove("dragging");
+
+      clearHighlights();
+      var hit = nearestCircle();
+
+      if(hit){
+        chosen = true;
+        var scenario = hit.getAttribute("data-scenario");
+        window._chosenScenario = scenario;
+
+        // Snap guide into circle
+        var ar = arena.getBoundingClientRect();
+        var cr = hit.getBoundingClientRect();
+        var cx = (cr.left + cr.width / 2 - ar.left) / ar.width * 100;
+        var cy = (cr.top + cr.height / 2 - ar.top) / ar.height * 100;
+        guide.style.left = cx + "%";
+        guide.style.top = cy + "%";
+        guide.classList.add("sc-guide-awake");
+        hit.classList.add("sc-circle-chosen");
+        if(guideLabel) guideLabel.textContent = persona ? persona.name : "Prêt";
+
+        // Start scenario music
+        startScenarioMusic(scenario);
+
+        // Fade out ic-music if still playing
+        var icAudio = document.getElementById("ic-music");
+        if(icAudio && !icAudio.paused){
+          audioFade(icAudio, 0, 1200, function(){ icAudio.pause(); icAudio.volume = 0.5; });
+        }
+
+        // Transition out after a beat
+        setTimeout(function(){
+          overlay.classList.add("fading-out");
+          setTimeout(function(){
+            overlay.style.display = "none";
+            overlay.classList.remove("fading-out");
+            // Reset state for potential replay
+            guide.classList.remove("sc-guide-awake");
+            hit.classList.remove("sc-circle-chosen");
+            cleanup();
+            onChosen(scenario);
+          }, 800);
+        }, 1200);
+      } else {
+        // Snap back
+        if(guideLabel) guideLabel.textContent = "Endormi";
+        guide.style.left = "50%";
+        guide.style.top = "82%";
+      }
+    }
+
+    function onStartTouch(e){ onStart(e); }
+
+    guide.addEventListener("pointerdown", onStart, {passive: false});
+    guide.addEventListener("touchstart", onStartTouch, {passive: false});
+    document.addEventListener("pointermove", onMove, {passive: false});
+    document.addEventListener("touchmove", onMove, {passive: false});
+    document.addEventListener("pointerup", onEnd);
+    document.addEventListener("touchend", onEnd);
+  }
 }
 
 /* Full intro sequence

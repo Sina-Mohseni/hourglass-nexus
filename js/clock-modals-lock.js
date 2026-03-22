@@ -62,14 +62,17 @@ function initLock(){
     audioFade(icAudio, 0, 1500, function(){ icAudio.pause(); icAudio.volume = 0.5; });
   }
 
-  // Extelua music will start on first drag of the guide (user gesture required)
+  // Scenario music already started during scenario choice — keep it playing
+  // Only start if not already playing (e.g. resume voyage with no scenario step)
   var _lockMusicStarted = false;
   function startExteluaMusic(){
     if(_lockMusicStarted) return;
     _lockMusicStarted = true;
-    var bgAudio = document.getElementById("bg-music");
     var extAudio = document.getElementById("extelua-music");
     if(!extAudio) return;
+    // Already playing from scenario choice? Leave it.
+    if(!extAudio.paused) return;
+    var bgAudio = document.getElementById("bg-music");
     if(bgAudio && !bgAudio.paused){
       audioCrossfade(bgAudio, extAudio, 0.4, 2000, 0.4);
     } else {

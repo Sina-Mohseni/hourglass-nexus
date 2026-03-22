@@ -728,7 +728,11 @@ function buildDrawerDiscRebelles(){
 var MUSIC_TRACKS = [
   {id:"main-menu", title:"Tournoi d'Extelua", artist:"Menu Principal", src:"assets/music/extelua-tournament-main-menu.mp3", icon:"\ud83c\udfc6", color:"#c9a04a", duration:""},
   {id:"intro", title:"L'Appel du Nexus", artist:"Intro Narrative", src:"assets/music/extelua-intro.mp3", icon:"\ud83c\udf0c", color:"#9b59b6", duration:""},
-  {id:"extelua", title:"Extelua", artist:"Ambiance du Monde", src:"assets/music/extelua.mp3", icon:"\ud83c\udf0d", color:"#5dade2", duration:""}
+  {id:"champion", title:"Champion", artist:"Scénario", src:"assets/music/champion.mp3", icon:"\u2B50", color:"#f1c40f", duration:""},
+  {id:"emissaire", title:"Émissaire", artist:"Scénario", src:"assets/music/emissaire.mp3", icon:"\uD83C\uDF10", color:"#5dade2", duration:""},
+  {id:"dissident", title:"Dissident", artist:"Scénario", src:"assets/music/dissident.mp3", icon:"\u26A1", color:"#e74c3c", duration:""},
+  {id:"recrue", title:"Recrue Morkar", artist:"Scénario", src:"assets/music/recrue.mp3", icon:"\uD83D\uDCE1", color:"#9b59b6", duration:""},
+  {id:"veteran", title:"Vétéran Morkar", artist:"Scénario", src:"assets/music/veteran.mp3", icon:"\uD83D\uDEE1\uFE0F", color:"#2ecc71", duration:""}
 ];
 
 var _mpCurrentTrack = null;
