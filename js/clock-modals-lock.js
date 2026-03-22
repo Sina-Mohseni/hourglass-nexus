@@ -43,6 +43,182 @@ function showConfirm(txt, onY, onN){
   nb.onclick = function(){ cl(); if(onN) onN() };
 }
 
+/* ══════════ LOCK SCREEN INFO (per-scenario) ══════════ */
+var LOCK_INFOS = {
+  "champion": [
+    { title: "Briefing officiel — Champion désigné",
+      sub: "Groupe Morkar — Communication",
+      body: "Félicitations, Champion. Vous avez été désigné par votre planète pour la représenter lors de la 47e édition " +
+        "du Tournoi d'Extelua. En tant que candidat officiel du Réseau Universel, vous bénéficiez du soutien logistique " +
+        "complet du groupe Morkar : transport via les Routes Sillonnées, hébergement dans les quartiers réservés aux " +
+        "champions, et accès aux centres d'entraînement pré-tournoi. Votre planète compte sur vous. Des milliards de " +
+        "spectateurs suivront votre parcours en direct. Rappelez-vous : vous ne vous battez pas seulement pour vous, " +
+        "mais pour l'honneur et l'avenir de votre monde. Le groupe Morkar vous souhaite bonne chance et reste à votre " +
+        "disposition pour toute question relative au règlement et au déroulement des épreuves."
+    },
+    { title: "Dossier des adversaires — Aperçu",
+      sub: "Groupe Morkar — Renseignement sportif",
+      body: "Comme pour chaque édition, le groupe Morkar met à disposition des champions connectés un dossier préliminaire " +
+        "sur les autres candidats. Cette année, 30 champions représentent les planètes du Réseau — parmi eux, plusieurs " +
+        "athlètes de haut niveau, deux anciens finalistes du Cycle 45, et un scientifique de la planète Veruhn dont les " +
+        "capacités analytiques sont jugées exceptionnelles. Les 10 émissaires des planètes isolées sont, comme d'habitude, " +
+        "des profils inconnus. Morkar rappelle que malgré leur inexpérience, certains émissaires ont atteint les phases " +
+        "avancées lors des éditions précédentes. Ne sous-estimez personne. Les dossiers complets seront accessibles après " +
+        "la cérémonie d'ouverture."
+    }
+  ],
+  "lambda": [
+    { title: "Message de bienvenue — Émissaire",
+      sub: "Groupe Morkar — Relations extérieures",
+      body: "Bienvenue, Émissaire. Vous avez été sélectionné par nos éclaireurs parmi les habitants de votre planète pour " +
+        "participer à un événement qui dépasse tout ce que vous avez pu connaître jusqu'ici. Le Tournoi d'Extelua est " +
+        "la plus grande compétition de l'univers connu. Pendant quinze lunes, vous affronterez d'autres candidats venus " +
+        "de mondes très différents du vôtre. Nous comprenons que cette situation peut être déstabilisante. C'est pourquoi " +
+        "le groupe Morkar a mis en place un programme d'accompagnement spécifique pour les émissaires des planètes isolées. " +
+        "Un guide vous sera assigné pour vous aider à comprendre les règles, les technologies et les enjeux du Tournoi. " +
+        "Votre monde mérite cette chance. Saisissez-la."
+    },
+    { title: "Note d'information — Ce qui vous attend",
+      sub: "Groupe Morkar — Protocole émissaire",
+      body: "En tant qu'émissaire d'une planète non connectée au Réseau Universel, vous découvrirez des technologies, " +
+        "des civilisations et des modes de vie radicalement différents de ce que vous connaissez. Ne vous laissez pas " +
+        "intimider. Les épreuves du Tournoi ne sont pas uniquement physiques — elles testent aussi l'intelligence, " +
+        "l'adaptabilité et la capacité à forger des alliances. Ce sont des qualités que les habitants des mondes isolés " +
+        "possèdent souvent en abondance. Sur les 46 éditions précédentes, des émissaires ont régulièrement surpris les " +
+        "pronostics en atteignant les phases intermédiaires. La récompense pour le vainqueur est l'intégration totale de " +
+        "sa planète d'origine au Réseau Universel. Pour votre monde, cela signifierait l'accès aux Routes Sillonnées, " +
+        "aux technologies médicales avancées et à un siège au Conseil des Mondes."
+    }
+  ],
+  "apprenti-morkar": [
+    { title: "Ordre de mission — Recrue",
+      sub: "Groupe Morkar — Division interne",
+      body: "Agent, votre intégration au programme Morkar est effective. Vous participez au Tournoi en tant que champion " +
+        "officiel de votre planète, mais votre mission va au-delà de la compétition. Le renseignement interne de Morkar " +
+        "a détecté des signaux indiquant qu'un ou plusieurs éléments dissidents pourraient tenter de s'infiltrer dans " +
+        "cette édition, comme cela s'est produit lors des Cycles 39 et 44. Votre rôle est d'observer, d'écouter et de " +
+        "repérer tout comportement suspect parmi les candidats — champions comme émissaires. Vous devez maintenir votre " +
+        "couverture de champion ordinaire en toutes circonstances. Si vous identifiez un dissident potentiel, transmettez " +
+        "l'information via le canal sécurisé qui vous a été communiqué lors de votre briefing. En cas de succès, la " +
+        "récompense d'intégration sera garantie pour votre monde, indépendamment de votre classement dans le Tournoi."
+    },
+    { title: "Profil des menaces — Dissidence",
+      sub: "Groupe Morkar — Renseignement",
+      body: "Les éléments dissidents sont des individus ou des réseaux organisés qui s'opposent au système mis en place " +
+        "par le groupe Morkar. Leurs motivations sont variées : certains croient que le Tournoi est truqué, d'autres " +
+        "remettent en question la légitimité de Morkar à organiser l'événement. Lors du Cycle 39, un dissident infiltré " +
+        "parmi les champions a tenté de diffuser un message pirate pendant une retransmission en direct. L'incident a été " +
+        "contenu. Lors du Cycle 44, deux agents présumés ont été identifiés parmi les émissaires — l'un d'eux avait " +
+        "falsifié son origine planétaire. Les dissidents sont généralement bien préparés et difficiles à détecter. " +
+        "Méfiez-vous des candidats qui posent trop de questions sur le fonctionnement interne de Morkar, qui cherchent " +
+        "à accéder à des zones restreintes, ou qui tissent des alliances inhabituelles. Tout détail peut être significatif."
+    }
+  ],
+  "veteran-morkar": [
+    { title: "Directive opérationnelle — Vétéran",
+      sub: "Groupe Morkar — Commandement",
+      body: "Agent confirmé, vous connaissez la procédure. Le Cycle 47 présente un niveau de menace élevé selon nos " +
+        "analystes. Les réseaux dissidents ont été plus actifs que jamais ces derniers mois — communications interceptées, " +
+        "mouvements suspects dans les secteurs non régulés, tentatives de contact avec d'anciens candidats. Nous pensons " +
+        "qu'une infiltration est non seulement probable, mais planifiée à grande échelle. Votre expérience des éditions " +
+        "précédentes est un atout majeur. Vous avez carte blanche pour mener vos investigations comme vous l'entendez, " +
+        "dans les limites du règlement visible. Les candidats ne doivent pas soupçonner votre véritable rôle. En cas " +
+        "d'identification formelle d'un dissident, vous êtes autorisé à prendre les mesures nécessaires pour neutraliser " +
+        "la menace avant qu'elle ne compromette la retransmission."
+    },
+    { title: "Rapport classifié — Éditions précédentes",
+      sub: "Groupe Morkar — Archives",
+      body: "Pour mémoire : sur les 10 dernières éditions, 7 infiltrations dissidentes ont été confirmées. Dans 4 cas, " +
+        "les agents se sont fait passer pour des champions ordinaires. Dans 2 cas, ils se sont infiltrés via le programme " +
+        "émissaire en falsifiant leur origine planétaire. Le dernier cas, lors du Cycle 44, impliquait un ancien employé " +
+        "de Morkar retourné. Les méthodes évoluent. Les dissidents ne se contentent plus de saboter les épreuves — " +
+        "ils cherchent désormais à collecter des preuves sur le fonctionnement interne du Tournoi pour les diffuser " +
+        "publiquement. C'est cette menace informationnelle qui constitue le risque principal. La récompense promise aux " +
+        "vainqueurs, les conditions d'intégration au Réseau, les critères de sélection des émissaires — autant de sujets " +
+        "sensibles que les dissidents cherchent à exposer. Votre mission est de vous assurer que cela n'arrive pas."
+    }
+  ]
+};
+
+function populateLockInfoZone(){
+  var zone = document.getElementById("lock-info-zone");
+  if(!zone) return;
+  zone.innerHTML = "";
+
+  var scenario = window._chosenScenario;
+  if(!scenario) return;
+
+  // Determine which infos to show
+  var infos = [];
+  var isDissident = (scenario === "rebelle");
+  var origin = window._scOriginType; // "champion" or "emissaire"
+
+  if(isDissident){
+    // Dissident gets same infos as their cover identity + journal
+    var coverKey = (origin === "emissaire") ? "lambda" : "champion";
+    infos = (LOCK_INFOS[coverKey] || []).slice();
+  } else {
+    infos = (LOCK_INFOS[scenario] || []).slice();
+  }
+
+  if(infos.length === 0) return;
+
+  // Label
+  var label = document.createElement("div");
+  label.className = "lock-info-label";
+  label.textContent = "Informations envoyées par le groupe Morkar";
+  zone.appendChild(label);
+
+  // Buttons
+  infos.forEach(function(info){
+    var btn = document.createElement("button");
+    btn.className = "lock-info-btn";
+    btn.innerHTML =
+      '<span class="lock-info-btn-title">' + info.title + '</span>' +
+      '<span class="lock-info-btn-sub">' + info.sub + '</span>';
+    btn.onclick = function(){ showLockInfoModal(info.title, info.body); };
+    zone.appendChild(btn);
+  });
+
+  // Dissident gets the journal as 3rd info
+  if(isDissident){
+    var journalBtn = document.createElement("button");
+    journalBtn.className = "lock-info-btn";
+    journalBtn.innerHTML =
+      '<span class="lock-info-btn-title">L\'Écho des Sillons — Édition spéciale</span>' +
+      '<span class="lock-info-btn-sub">Journal indépendant — Diffusion restreinte</span>';
+    journalBtn.onclick = function(){ showJournalArticle(); };
+    zone.appendChild(journalBtn);
+  }
+}
+
+function showLockInfoModal(title, body){
+  var existing = document.getElementById("lock-info-modal");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "lock-info-modal";
+  overlay.className = "ic-modal-overlay";
+  overlay.innerHTML =
+    '<div class="ic-modal">' +
+      '<div class="ic-modal-header">' +
+        '<span class="ic-modal-logo">\u25C6</span>' +
+        '<span class="ic-modal-title">' + title + '</span>' +
+      '</div>' +
+      '<div class="ic-modal-body"><p>' + body + '</p></div>' +
+      '<button class="ic-modal-close" id="lock-info-close">Fermer</button>' +
+    '</div>';
+
+  var lk = document.getElementById("lock-screen");
+  (lk || document.body).appendChild(overlay);
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("lock-info-close").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
+}
+
 /* ══════════ LOCK SCREEN ══════════ */
 function initLock(){
   var lk = $("#lock-screen"), ho = $("#lock-hole"), gi = $("#lock-guide");
@@ -55,6 +231,9 @@ function initLock(){
   var guide = getGuidePersona();
   var giImg = document.getElementById("lock-guide-img");
   if(guide && guide.avatar && giImg) giImg.src = guide.avatar;
+
+  // Populate per-scenario info buttons
+  populateLockInfoZone();
 
   // Fade out intro crawl music when arriving on lock screen
   var icAudio = document.getElementById("ic-music");

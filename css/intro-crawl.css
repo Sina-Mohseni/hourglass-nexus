@@ -430,8 +430,9 @@
   transition: color .2s, border-color .2s;
 }
 .sc-circle-label-text::after {
-  content: '  \u24D8'; /* circled i */
-  font-size: 10px;
+  content: '  (i)';
+  font-family: var(--font-ui);
+  font-size: 9px; font-style: italic;
   color: rgba(168,132,42,.4);
 }
 .sc-circle-label:active .sc-circle-label-text {
