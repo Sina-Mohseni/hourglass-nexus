@@ -582,3 +582,184 @@
 @keyframes riFadeOut {
   to { opacity: 0 }
 }
+
+/* ═══════════════════════════════════════════════════════
+   SAVE SLOTS SCREEN — Charger overlay
+   ═══════════════════════════════════════════════════════ */
+.save-slots-overlay {
+  position: absolute; inset: 0; z-index: 100;
+  background: rgba(0,0,0,.88); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  animation: saveSlotsIn .35s ease-out;
+}
+@keyframes saveSlotsIn {
+  from { opacity: 0 } to { opacity: 1 }
+}
+.save-slots-overlay.fading {
+  animation: saveSlotsOut .4s ease-in forwards;
+}
+@keyframes saveSlotsOut {
+  to { opacity: 0 }
+}
+.save-slots-panel {
+  width: 100%; max-width: 380px;
+  max-height: 85vh; overflow-y: auto;
+  background: linear-gradient(180deg, rgba(20,16,8,.98), rgba(8,6,4,.99));
+  border: 1px solid rgba(168,132,42,.2);
+  padding: 24px 20px; position: relative;
+  box-shadow: 0 0 60px rgba(0,0,0,.6), 0 0 20px rgba(168,132,42,.08);
+}
+.save-slots-filigree {
+  position: absolute; top: 0; left: 10%; right: 10%; height: 2px;
+  background: var(--filigree-red);
+}
+.save-slots-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 900;
+  letter-spacing: 6px; text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 20px rgba(168,132,42,.4), 0 2px 8px rgba(0,0,0,.95);
+  text-align: center; margin-bottom: 20px;
+}
+.save-slots-list {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.save-slots-empty {
+  font-family: var(--font-body); font-size: 13px;
+  color: var(--bone-dim); text-align: center;
+  padding: 30px 0; opacity: .6;
+}
+.save-slot-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; width: 100%;
+  background: linear-gradient(180deg, rgba(26,20,12,.9), rgba(10,8,6,.95));
+  border: 1px solid rgba(168,132,42,.15);
+  cursor: pointer; transition: all .25s ease;
+  position: relative; text-align: left;
+  color: inherit; font: inherit;
+}
+.save-slot-item::before {
+  content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+  background: var(--filigree-subtle);
+}
+.save-slot-item:active {
+  transform: scale(.97); border-color: var(--gold);
+  box-shadow: 0 0 16px rgba(168,132,42,.15);
+}
+.save-slot-number {
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 16px; font-weight: 900;
+  color: var(--gold-dark);
+  border: 1px solid rgba(168,132,42,.15);
+  background: rgba(0,0,0,.4);
+}
+.save-slot-info {
+  flex: 1; min-width: 0;
+}
+.save-slot-label {
+  font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+  letter-spacing: 1px; color: var(--gold-light);
+  text-shadow: 0 0 8px rgba(168,132,42,.2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.save-slot-meta {
+  font-family: var(--font-ui); font-size: 10px;
+  color: var(--bone-dim); letter-spacing: 1px;
+  margin-top: 2px;
+}
+.save-slot-date {
+  font-family: var(--font-ui); font-size: 10px;
+  color: var(--bone-dim); opacity: .6;
+  margin-top: 2px; letter-spacing: .5px;
+}
+.save-slot-delete {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(5,4,3,.8); border: 1px solid rgba(107,16,16,.3);
+  color: var(--bone-dim); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.save-slot-delete:active {
+  background: var(--blood); border-color: rgba(154,26,26,.6);
+  color: #fff;
+}
+.save-slots-back {
+  margin-top: 16px; padding: 10px 24px; width: 100%;
+  background: rgba(20,16,8,.8);
+  border: 1px solid rgba(168,132,42,.18);
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone-dim); cursor: pointer;
+  transition: all .2s;
+}
+.save-slots-back:active { border-color: var(--gold); color: var(--gold-light) }
+
+/* ═══════════════════════════════════════════════════════
+   SAVE DIALOG — Modal for naming a save
+   ═══════════════════════════════════════════════════════ */
+.save-dialog-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  animation: saveSlotsIn .3s ease-out;
+}
+.save-dialog-box {
+  width: 100%; max-width: 340px;
+  background: linear-gradient(180deg, rgba(20,16,8,.98), rgba(8,6,4,.99));
+  border: 1px solid rgba(168,132,42,.2);
+  padding: 24px 20px; position: relative;
+  box-shadow: 0 0 60px rgba(0,0,0,.6), 0 0 20px rgba(168,132,42,.08);
+}
+.save-dialog-filigree {
+  position: absolute; top: 0; left: 10%; right: 10%; height: 2px;
+  background: var(--filigree-red);
+}
+.save-dialog-title {
+  font-family: var(--font-display); font-size: 18px; font-weight: 900;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 16px rgba(168,132,42,.35);
+  text-align: center; margin-bottom: 6px;
+}
+.save-dialog-date {
+  font-family: var(--font-ui); font-size: 10px;
+  color: var(--bone-dim); letter-spacing: 2px;
+  text-align: center; margin-bottom: 18px; opacity: .6;
+}
+.save-dialog-input {
+  width: 100%; padding: 12px 14px;
+  background: rgba(0,0,0,.5);
+  border: 1px solid rgba(168,132,42,.2);
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--bone); letter-spacing: .5px;
+  outline: none; transition: border-color .2s;
+  box-sizing: border-box;
+}
+.save-dialog-input::placeholder { color: var(--bone-dim); opacity: .4 }
+.save-dialog-input:focus { border-color: var(--gold) }
+.save-dialog-actions {
+  display: flex; gap: 10px; margin-top: 16px;
+}
+.save-dialog-btn {
+  flex: 1; padding: 10px;
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all .2s;
+  border: 1px solid rgba(168,132,42,.18);
+}
+.save-dialog-cancel {
+  background: rgba(20,16,8,.8);
+  color: var(--bone-dim);
+}
+.save-dialog-cancel:active { border-color: var(--gold); color: var(--gold-light) }
+.save-dialog-confirm {
+  background: linear-gradient(180deg, rgba(107,16,16,.25), rgba(20,16,8,.9));
+  color: var(--gold-light);
+  border-color: rgba(107,16,16,.35);
+}
+.save-dialog-confirm:active {
+  background: linear-gradient(180deg, rgba(107,16,16,.4), rgba(20,16,8,.95));
+  border-color: rgba(154,26,26,.5);
+}
