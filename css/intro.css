@@ -46,6 +46,7 @@
   font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900;
   letter-spacing: 8px; color: var(--gold-light);
   text-shadow: 0 0 30px rgba(168,132,42,.45), 0 4px 20px rgba(0,0,0,.95);
+  text-align: center;
   opacity: 0; animation: loadTitleIn 1.2s ease-out .5s forwards;
 }
 @keyframes loadTitleIn {
@@ -285,17 +286,12 @@
   display: flex !important;
 }
 .mm-main-circles, .mm-sub-circles {
-  display: flex; flex-wrap: nowrap; justify-content: center; align-items: flex-start;
-  gap: 16px;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
+  gap: 20px;
 }
 .mm-main-circles {
-  gap: 12px;
-}
-.mm-main-circles .mm-circle-btn .mm-circle-icon {
-  width: 68px; height: 68px; padding: 12px;
-}
-.mm-main-circles .mm-circle-label {
-  font-size: 9px;
+  display: grid; grid-template-columns: repeat(2, auto);
+  gap: 20px; justify-content: center; justify-items: center;
 }
 .mm-sub-circles {
   position: absolute; top: 0; left: 0; right: 0;
