@@ -289,6 +289,28 @@ function showJournalArticle(){
         '<p style="font-style:italic;color:var(--bone-dim)">Notre rédaction n\'a pas été en mesure de vérifier ' +
           'ces allégations de manière indépendante. Le groupe Morkar n\'a pas répondu à nos demandes de commentaire.</p>' +
 
+        '<h4 class="ic-journal-sub">La clause que Morkar voulait garder secrète</h4>' +
+        '<p>Le contrat de participation au Tournoi comporte une clause de confidentialité absolue. ' +
+          'Chaque candidat — champion comme émissaire — s\'engage à ne jamais divulguer les termes exacts ' +
+          'de son engagement envers Morkar. Le contenu du contrat est classifié, et toute fuite est passible ' +
+          'de sanctions dont la nature n\'a jamais été précisée publiquement.</p>' +
+        '<p>Mais Morkar a commis une erreur de conception. Les champions éliminés, contrairement aux émissaires, ' +
+          'rentrent chez eux avec tous leurs souvenirs. Ils perdent le Tournoi, certes — mais ils se souviennent ' +
+          'de chaque ligne qu\'ils ont signée. Et certains ont parlé.</p>' +
+        '<p>D\'après les témoignages recoupés de trois anciens champions issus de planètes connectées — ' +
+          'recueillis sous couvert d\'anonymat sur des fréquences non régulées — le contrat contiendrait ' +
+          'un article stipulant que le vainqueur du Tournoi doit renoncer à toute existence publique. ' +
+          'Plus de nom, plus de visage, plus de contact avec les autres mondes. Une disparition organisée. ' +
+          'Le champion victorieux offrirait l\'avenir à sa planète, mais perdrait le sien.</p>' +
+        '<p>L\'un de nos témoins — un ancien favori du Cycle 39, éliminé en demi-finale — ' +
+          'résume la situation en ces termes : <em>« On signe sans vraiment comprendre. Le contrat est rédigé ' +
+          'pour impressionner, pas pour informer. Ce n\'est qu\'après l\'élimination, une fois rentré chez soi, ' +
+          'qu\'on réalise ce qu\'on a failli accepter. Et ce que le vainqueur, lui, a réellement perdu. »</em></p>' +
+        '<p style="font-style:italic;color:var(--bone-dim)">Morkar a qualifié ces déclarations de ' +
+          '« fabrications malveillantes émanant d\'individus en quête de notoriété ». L\'organisation rappelle ' +
+          'que la clause de confidentialité reste juridiquement contraignante et se réserve le droit de poursuivre ' +
+          'tout contrevenant.</p>' +
+
         '<h4 class="ic-journal-sub">Les audiences au plus haut</h4>' +
         '<p>Avec 4,2 milliards de spectateurs lors de la finale du Cycle 46, le Tournoi ' +
           'reste de loin le programme le plus regardé de l\'univers connecté. Les revenus publicitaires ' +
