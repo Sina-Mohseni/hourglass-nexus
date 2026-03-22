@@ -1,17 +1,17 @@
-/* ═══════════ CALENDAR ═══════════ */
+/* ═══════════ CALENDAR — D4 dark forged ═══════════ */
 .cal-wrap { padding:4px 0 }
 .cal-tabs {
-  display:flex; gap:4px; margin-bottom:10px;
+  display:flex; gap:3px; margin-bottom:10px;
 }
 .cal-tab {
   flex:1; padding:8px 0; text-align:center;
-  font-family:var(--font-heading); font-size:10px; font-weight:600;
-  letter-spacing:1px; text-transform:uppercase;
-  color:var(--bone-dim); background:var(--dark-stone);
-  border:var(--border-stone); border-radius:var(--radius);
+  font-family:var(--font-heading); font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--bone-dim); background:rgba(10,8,6,.9);
+  border:var(--border-stone);
   cursor:pointer; transition:all .2s;
 }
-.cal-tab.active { color:var(--gold-light); border-color:var(--gold); background:var(--stone) }
+.cal-tab.active { color:var(--gold-light); border-color:var(--gold); background:rgba(26,20,14,.95) }
 .cal-tab:active { transform:scale(.96) }
 
 /* Navigation bar */
@@ -20,16 +20,16 @@
   margin-bottom:8px;
 }
 .cal-nav-btn {
-  width:32px; height:32px; border-radius:50%;
-  background:var(--dark-stone); border:var(--border-stone);
+  width:32px; height:32px;
+  background:rgba(10,8,6,.9); border:var(--border-stone);
   color:var(--gold); font-size:16px; cursor:pointer;
   display:flex; align-items:center; justify-content:center;
   transition:all .2s;
 }
-.cal-nav-btn:active { transform:scale(.9); background:var(--stone) }
+.cal-nav-btn:active { transform:scale(.9); background:rgba(26,20,14,.95) }
 .cal-nav-title {
   font-family:var(--font-heading); font-size:13px; font-weight:700;
-  color:var(--gold-light); letter-spacing:1px; text-transform:capitalize;
+  color:var(--gold-light); letter-spacing:2px; text-transform:capitalize;
 }
 
 /* Month grid */
@@ -38,7 +38,7 @@
 }
 .cal-wd {
   text-align:center; font-family:var(--font-ui); font-size:8px;
-  color:var(--gold-dark); letter-spacing:.5px; text-transform:uppercase;
+  color:var(--gold-dark); letter-spacing:1px; text-transform:uppercase;
   padding:4px 0;
 }
 .cal-days {
@@ -48,35 +48,35 @@
   aspect-ratio:1; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
   font-family:var(--font-heading); font-size:12px; font-weight:600;
-  color:var(--bone-dim); border-radius:var(--radius-sm);
+  color:var(--bone-dim);
   cursor:pointer; transition:all .15s; position:relative;
   background:transparent; border:1px solid transparent;
 }
 .cal-day:active { transform:scale(.9) }
-.cal-day.other-month { opacity:.3 }
-.cal-day.today { color:var(--gold-light); border-color:var(--gold-dark); background:rgba(201,160,74,.08) }
+.cal-day.other-month { opacity:.25 }
+.cal-day.today { color:var(--gold-light); border-color:var(--gold-dark); background:rgba(168,132,42,.06) }
 .cal-day.has-events::after {
   content:''; position:absolute; bottom:3px;
-  width:5px; height:5px; border-radius:50%;
-  background:var(--blood-bright);
+  width:5px; height:5px;
+  background:var(--blood-glow);
 }
 .cal-day.selected { background:var(--blood); color:var(--bone); border-color:var(--blood-bright) }
 
 /* Week view */
-.cal-week-grid { display:grid; gap:6px }
+.cal-week-grid { display:grid; gap:4px }
 .cal-week-day {
   display:flex; align-items:stretch; gap:8px;
-  padding:6px 8px; background:var(--dark-stone);
-  border:var(--border-stone); border-radius:var(--radius);
+  padding:6px 8px; background:rgba(10,8,6,.9);
+  border:var(--border-stone);
   cursor:pointer; transition:all .15s; min-height:44px;
 }
 .cal-week-day:active { transform:scale(.98) }
-.cal-week-day.today { border-color:var(--gold-dark); background:rgba(201,160,74,.05) }
+.cal-week-day.today { border-color:var(--gold-dark); background:rgba(168,132,42,.04) }
 .cal-week-day-label {
   width:40px; flex-shrink:0; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
 }
-.cal-week-day-name { font-family:var(--font-ui); font-size:8px; color:var(--gold-dark); text-transform:uppercase }
+.cal-week-day-name { font-family:var(--font-ui); font-size:8px; color:var(--gold-dark); text-transform:uppercase; letter-spacing:1px }
 .cal-week-day-num { font-family:var(--font-heading); font-size:16px; font-weight:700; color:var(--bone) }
 .cal-week-day.today .cal-week-day-num { color:var(--gold-light) }
 .cal-week-events { flex:1; display:flex; flex-direction:column; gap:3px; justify-content:center }
@@ -92,17 +92,17 @@
   color:var(--bone-dim); padding-top:2px;
 }
 .cal-hour-content {
-  flex:1; border-left:1px solid rgba(74,64,48,.3); padding-left:8px;
+  flex:1; border-left:1px solid rgba(60,48,32,.25); padding-left:8px;
   min-height:36px;
 }
 .cal-hour-row.has-event .cal-hour-content { border-left-color:var(--gold) }
-.cal-hour-row.current-hour { background:rgba(201,160,74,.04); border-radius:var(--radius) }
+.cal-hour-row.current-hour { background:rgba(168,132,42,.03) }
 .cal-hour-row.current-hour .cal-hour-label { color:var(--gold-light) }
 
-/* Event chip (shared) */
+/* Event chip */
 .cal-event-chip {
   display:flex; align-items:center; gap:6px;
-  padding:4px 8px; border-radius:var(--radius-sm);
+  padding:4px 8px;
   font-size:10px; color:var(--bone); cursor:pointer;
   transition:all .15s; overflow:hidden;
 }
@@ -110,15 +110,14 @@
 .cal-ev-icon { font-size:12px; flex-shrink:0 }
 .cal-ev-time { font-family:var(--font-heading); font-size:9px; font-weight:600; color:var(--gold); flex-shrink:0 }
 .cal-ev-title { font-family:var(--font-heading); font-size:10px; font-weight:600; flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
-.cal-ev-avatar { width:18px; height:18px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid rgba(201,160,74,.3) }
+.cal-ev-avatar { width:18px; height:18px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid rgba(168,132,42,.25) }
 
-/* Event detail in panel */
+/* Event detail */
 .cal-event-detail { padding:6px }
 .cal-ev-detail-head { display:flex; align-items:center; gap:10px; margin-bottom:10px }
 .cal-ev-detail-avatar { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--gold-dark) }
 .cal-ev-detail-icon { font-size:28px }
 .cal-ev-detail-info { flex:1 }
-.cal-ev-detail-title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--gold-light) }
+.cal-ev-detail-title { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--gold-light); letter-spacing:1px }
 .cal-ev-detail-meta { font-family:var(--font-ui); font-size:10px; color:var(--bone-dim); margin-top:2px }
 .cal-ev-detail-desc { font-size:12px; color:var(--bone-dim); line-height:1.6; margin-top:8px }
-

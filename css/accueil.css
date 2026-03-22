@@ -1,4 +1,4 @@
-/* ═══════════ ACCUEIL CORNER (fixed right, below bgguilde, z:399) ═══════════ */
+/* ═══════════ ACCUEIL CORNER — D4 ═══════════ */
 .accueil-corner {
   position: fixed;
   bottom: 120px; right: 0;
@@ -18,8 +18,7 @@
 .header-clock { display:flex; flex-direction:column; align-items:flex-start; gap:1px }
 .header-time {
   font-family: var(--font-heading); font-size:13px; font-weight:700;
-  color: var(--gold-light); letter-spacing:1px; font-variant-numeric:tabular-nums;
-  text-shadow: 0 0 8px rgba(201,160,74,.3);
+  color: var(--gold-light); letter-spacing:2px; font-variant-numeric:tabular-nums;
+  text-shadow: 0 0 8px rgba(168,132,42,.25);
 }
-.header-date { font-family: var(--font-ui); font-size:8px; color:var(--bone-dim); letter-spacing:.5px }
-
+.header-date { font-family: var(--font-ui); font-size:8px; color:var(--bone-dim); letter-spacing:1px }
