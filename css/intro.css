@@ -285,7 +285,7 @@
   display: flex !important;
 }
 .mm-main-circles, .mm-sub-circles {
-  display: flex; justify-content: center; align-items: flex-start;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
   gap: 20px;
 }
 .mm-sub-circles {
@@ -390,6 +390,14 @@
 .mm-circle-nouvelle:hover .mm-circle-icon {
   border-color: rgba(154,26,26,.6);
   box-shadow: 0 0 28px rgba(107,16,16,.35), inset 0 0 18px rgba(0,0,0,.5);
+}
+.mm-circle-panorama {
+  flex-basis: 100%;
+  display: flex; flex-direction: column; align-items: center;
+}
+.mm-circle-panorama .mm-circle-icon {
+  border-color: rgba(168,132,42,.35);
+  box-shadow: 0 0 20px rgba(168,132,42,.12), inset 0 0 18px rgba(0,0,0,.6);
 }
 .mm-circle-charger .mm-circle-icon {
   border-color: rgba(18,40,74,.45);
