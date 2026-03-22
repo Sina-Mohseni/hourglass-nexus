@@ -634,44 +634,42 @@
       <div class="scenario-overlay" id="scenario-choice" style="display:none">
         <div class="sc-vignette"></div>
         <div class="sc-content">
-          <div class="sc-title">Choisis ton chemin</div>
-          <div class="sc-subtitle">Quel destin veux-tu embrasser ?</div>
-          <div class="sc-choices">
-            <button class="sc-choice" data-scenario="lambda">
-              <span class="sc-choice-icon">&#x1F6B6;</span>
-              <span class="sc-choice-info">
-                <span class="sc-choice-name">Le chemin d'un Lambda</span>
-                <span class="sc-choice-desc">Un simple voyageur, sans gloire ni titre</span>
-              </span>
-            </button>
-            <button class="sc-choice" data-scenario="champion">
-              <span class="sc-choice-icon">&#x1F3C6;</span>
-              <span class="sc-choice-info">
-                <span class="sc-choice-name">Le chemin d'un Champion</span>
-                <span class="sc-choice-desc">Un guerrier d'élite, forgé pour vaincre</span>
-              </span>
-            </button>
-            <button class="sc-choice" data-scenario="rebelle">
-              <span class="sc-choice-icon">&#x1F525;</span>
-              <span class="sc-choice-info">
-                <span class="sc-choice-name">Le chemin d'un Rebelle</span>
-                <span class="sc-choice-desc">Un dissident, qui défie l'ordre établi</span>
-              </span>
-            </button>
-            <button class="sc-choice" data-scenario="apprenti-morkar">
-              <span class="sc-choice-icon">&#x1F9D9;</span>
-              <span class="sc-choice-info">
-                <span class="sc-choice-name">Le chemin d'un Apprenti de Morkar</span>
-                <span class="sc-choice-desc">Un novice dans les arcanes de Morkar</span>
-              </span>
-            </button>
-            <button class="sc-choice" data-scenario="veteran-morkar">
-              <span class="sc-choice-icon">&#x2694;&#xFE0F;</span>
-              <span class="sc-choice-info">
-                <span class="sc-choice-name">Le chemin d'un Vétéran de Morkar</span>
-                <span class="sc-choice-desc">Un maître aguerri des secrets de Morkar</span>
-              </span>
-            </button>
+          <div class="sc-title">Choisis ton destin</div>
+          <div class="sc-subtitle">Déplace le guide vers le chemin que tu veux emprunter</div>
+
+          <div class="sc-arena" id="sc-arena">
+            <!-- 5 scenario circles -->
+            <div class="sc-circle" data-scenario="lambda" id="sc-c-lambda">
+              <span class="sc-circle-icon">&#x1F310;</span>
+              <span class="sc-circle-name">Émissaire isolé</span>
+              <span class="sc-circle-desc">Candidat d'une planète coupée des réseaux</span>
+            </div>
+            <div class="sc-circle" data-scenario="champion" id="sc-c-champion">
+              <span class="sc-circle-icon">&#x2B50;</span>
+              <span class="sc-circle-name">Champion connecté</span>
+              <span class="sc-circle-desc">Représentant officiel d'un monde du Réseau</span>
+            </div>
+            <div class="sc-circle" data-scenario="rebelle" id="sc-c-rebelle">
+              <span class="sc-circle-icon">&#x26A1;</span>
+              <span class="sc-circle-name">Dissident</span>
+              <span class="sc-circle-desc">Opposant infiltré dans le Tournoi</span>
+            </div>
+            <div class="sc-circle" data-scenario="apprenti-morkar" id="sc-c-apprenti-morkar">
+              <span class="sc-circle-icon">&#x1F4E1;</span>
+              <span class="sc-circle-name">Recrue Morkar</span>
+              <span class="sc-circle-desc">Nouvel agent du groupe Morkar</span>
+            </div>
+            <div class="sc-circle" data-scenario="veteran-morkar" id="sc-c-veteran-morkar">
+              <span class="sc-circle-icon">&#x1F6E1;&#xFE0F;</span>
+              <span class="sc-circle-name">Vétéran Morkar</span>
+              <span class="sc-circle-desc">Membre expérimenté de l'organisation</span>
+            </div>
+
+            <!-- Draggable sleeping guide -->
+            <div class="sc-guide" id="sc-guide">
+              <div class="sc-guide-img" id="sc-guide-img"></div>
+              <span class="sc-guide-label" id="sc-guide-label">Endormi</span>
+            </div>
           </div>
         </div>
       </div>

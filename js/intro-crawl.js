@@ -343,30 +343,140 @@ function showIdentityScreen(onDone){
   };
 }
 
-/* ══════════ SCENARIO CHOICE ══════════ */
+/* ══════════ SCENARIO CHOICE (drag guide onto circle) ══════════ */
 function showScenarioChoice(onChosen){
   var overlay = document.getElementById("scenario-choice");
   if(!overlay){ onChosen("lambda"); return; }
   overlay.style.display = "";
 
-  var audio = document.getElementById("ic-music");
+  var arena = document.getElementById("sc-arena");
+  var guide = document.getElementById("sc-guide");
+  var guideLabel = document.getElementById("sc-guide-label");
+  var guideImg = document.getElementById("sc-guide-img");
+  if(!arena || !guide){ onChosen("lambda"); return; }
 
-  overlay.querySelectorAll(".sc-choice").forEach(function(btn){
-    btn.onclick = function(){
-      var scenario = btn.getAttribute("data-scenario");
+  // Set guide avatar
+  var persona = getGuidePersona();
+  if(persona && persona.avatar && guideImg){
+    guideImg.innerHTML = '<img src="' + persona.avatar + '" alt="">';
+  }
+
+  // Reset guide to center-bottom position
+  guide.style.left = "50%";
+  guide.style.top = "78%";
+  guide.classList.remove("sc-guide-awake");
+  if(guideLabel) guideLabel.textContent = "Endormi";
+
+  var circles = arena.querySelectorAll(".sc-circle");
+  var SNAP = 50; // px threshold
+  var isDrag = false, offX = 0, offY = 0;
+  var chosen = false;
+
+  function gxy(e){
+    if(e.clientX != null) return {x: e.clientX, y: e.clientY};
+    var t = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]);
+    return t ? {x: t.clientX, y: t.clientY} : {x: 0, y: 0};
+  }
+
+  function guideCenter(){
+    var r = guide.getBoundingClientRect();
+    return {x: r.left + r.width / 2, y: r.top + r.height / 2};
+  }
+
+  function nearestCircle(){
+    var gc = guideCenter();
+    var best = null, bestDist = Infinity;
+    circles.forEach(function(c){
+      var r = c.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var d = Math.hypot(gc.x - cx, gc.y - cy);
+      if(d < bestDist){ bestDist = d; best = c; }
+    });
+    return (best && bestDist < SNAP) ? best : null;
+  }
+
+  function clearHighlights(){
+    circles.forEach(function(c){ c.classList.remove("sc-circle-hover"); });
+  }
+
+  function onStart(e){
+    if(chosen) return;
+    e.preventDefault(); e.stopPropagation();
+    isDrag = true;
+    guide.classList.add("dragging");
+    if(guideLabel) guideLabel.textContent = "Réveillé !";
+    var p = gxy(e);
+    var r = guide.getBoundingClientRect();
+    offX = (r.left + r.width / 2) - p.x;
+    offY = (r.top + r.height / 2) - p.y;
+  }
+
+  function onMove(e){
+    if(!isDrag) return;
+    e.preventDefault();
+    var p = gxy(e);
+    var ar = arena.getBoundingClientRect();
+    var nx = p.x + offX - ar.left;
+    var ny = p.y + offY - ar.top;
+    guide.style.left = (nx / ar.width * 100) + "%";
+    guide.style.top = (ny / ar.height * 100) + "%";
+
+    clearHighlights();
+    var hit = nearestCircle();
+    if(hit) hit.classList.add("sc-circle-hover");
+  }
+
+  function onEnd(){
+    if(!isDrag) return;
+    isDrag = false;
+    guide.classList.remove("dragging");
+
+    clearHighlights();
+    var hit = nearestCircle();
+
+    if(hit){
+      chosen = true;
+      var scenario = hit.getAttribute("data-scenario");
       window._chosenScenario = scenario;
 
-      // Intro music continues playing through char creation — crossfade happens in enterMainApp
+      // Snap guide into circle center
+      var ar = arena.getBoundingClientRect();
+      var cr = hit.getBoundingClientRect();
+      var cx = (cr.left + cr.width / 2 - ar.left) / ar.width * 100;
+      var cy = (cr.top + cr.height / 2 - ar.top) / ar.height * 100;
+      guide.style.left = cx + "%";
+      guide.style.top = cy + "%";
+      guide.classList.add("sc-guide-awake");
+      hit.classList.add("sc-circle-chosen");
+      if(guideLabel) guideLabel.textContent = persona ? persona.name : "Prêt";
 
-      // Fade out overlay
-      overlay.classList.add("fading-out");
+      // Transition out after a beat
       setTimeout(function(){
-        overlay.style.display = "none";
-        overlay.classList.remove("fading-out");
-        onChosen(scenario);
-      }, 800);
-    };
-  });
+        overlay.classList.add("fading-out");
+        setTimeout(function(){
+          overlay.style.display = "none";
+          overlay.classList.remove("fading-out");
+          // Reset state for potential replay
+          guide.classList.remove("sc-guide-awake");
+          hit.classList.remove("sc-circle-chosen");
+          onChosen(scenario);
+        }, 800);
+      }, 1200);
+    } else {
+      // Snap back to center-bottom
+      if(guideLabel) guideLabel.textContent = "Endormi";
+      guide.style.left = "50%";
+      guide.style.top = "78%";
+    }
+  }
+
+  // Wire events
+  guide.addEventListener("pointerdown", onStart, {passive: false});
+  guide.addEventListener("touchstart", function(e){ onStart(e); }, {passive: false});
+  document.addEventListener("pointermove", onMove, {passive: false});
+  document.addEventListener("touchmove", onMove, {passive: false});
+  document.addEventListener("pointerup", onEnd);
+  document.addEventListener("touchend", onEnd);
 }
 
 /* Full intro sequence
