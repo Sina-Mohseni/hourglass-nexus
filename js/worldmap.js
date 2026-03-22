@@ -154,16 +154,34 @@ function buildWorldmapPage(){
   var p = $("#page-worldmap"); if(!p) return;
   var cities = getCities(), u = loadUser(), avSrc = u.avatar || "";
 
+  // Check if current city is a portal (sky) city
+  var curCity = currentCityId ? cities.find(function(c){ return c.id === currentCityId }) : null;
+  var isSkyMap = curCity && curCity.hidden && curCity.portalFrom;
+  var mapImg = isSkyMap ? (curCity.mapBg || "assets/worldmap.png") : "assets/worldmap.png";
+
   var h = '<div class="worldmap-wrap">'
-    + '<div class="worldmap-page" id="worldmap-page"><div class="worldmap-inner" id="worldmap-inner"><img src="assets/worldmap.png" alt="World Map" id="worldmap-img">';
-  cities.forEach(function(c){
-    if(c.hidden) return;
-    var isActive = (currentCityId === c.id);
-    var cls = "wm-city" + (isActive ? " active" : "");
-    h += '<div class="'+cls+'" data-cid="'+esc(c.id)+'" data-region="'+esc(c.region)+'" style="left:'+c.wx+'%;top:'+c.wy+'%">'
-      + '<div class="wm-city-dot" style="background:'+esc(c.color)+'"></div>'
-      + '<div class="wm-city-name">'+esc(c.name)+'</div></div>';
-  });
+    + '<div class="worldmap-page" id="worldmap-page"><div class="worldmap-inner" id="worldmap-inner"><img src="'+esc(mapImg)+'" alt="World Map" id="worldmap-img">';
+
+  if(isSkyMap){
+    // Sky map: only show hidden cities that share the same region
+    cities.forEach(function(c){
+      if(!c.hidden || c.region !== curCity.region) return;
+      var isActive = (currentCityId === c.id);
+      var cls = "wm-city" + (isActive ? " active" : "");
+      h += '<div class="'+cls+'" data-cid="'+esc(c.id)+'" data-region="'+esc(c.region)+'" style="left:'+c.wx+'%;top:'+c.wy+'%">'
+        + '<div class="wm-city-dot" style="background:'+esc(c.color)+'"></div>'
+        + '<div class="wm-city-name">'+esc(c.name)+'</div></div>';
+    });
+  } else {
+    cities.forEach(function(c){
+      if(c.hidden) return;
+      var isActive = (currentCityId === c.id);
+      var cls = "wm-city" + (isActive ? " active" : "");
+      h += '<div class="'+cls+'" data-cid="'+esc(c.id)+'" data-region="'+esc(c.region)+'" style="left:'+c.wx+'%;top:'+c.wy+'%">'
+        + '<div class="wm-city-dot" style="background:'+esc(c.color)+'"></div>'
+        + '<div class="wm-city-name">'+esc(c.name)+'</div></div>';
+    });
+  }
   // Avatar position: use mapX/mapY if set, else current city
   var avX = u.mapX || 50, avY = u.mapY || 50;
   if(currentCityId && !u.mapX){
@@ -175,9 +193,18 @@ function buildWorldmapPage(){
   else h += '<div class="wma-emoji">\ud83d\udc64</div>';
   h += '</div>';
   h += '</div></div>';
-  h += '<div class="wm-minimap" id="wm-minimap"><img src="assets/worldmap.png">'
+  h += '<div class="wm-minimap" id="wm-minimap"><img src="'+esc(mapImg)+'">'
     + '<div class="wm-minimap-view" id="wm-minimap-view"></div>'
-    + '<div class="wm-minimap-label">'+getGameDateShort(u.gameDay, u.gameHour)+'</div></div></div>';
+    + '<div class="wm-minimap-label">'+getGameDateShort(u.gameDay, u.gameHour)+'</div></div>';
+  // Return button for sky map
+  if(isSkyMap){
+    var originLoc = getLocations().find(function(l){ return l.id === curCity.portalFrom });
+    var originCity = originLoc ? cities.find(function(c){ return c.id === originLoc.city }) : null;
+    if(originCity){
+      h += '<button class="prof-back-btn wm-sky-return" id="wm-sky-return" data-cid="'+esc(originCity.id)+'">\u2193 Redescendre \u00e0 '+esc(originCity.name)+'</button>';
+    }
+  }
+  h += '</div>';
   p.innerHTML = h;
 
   var wmImg = document.getElementById("worldmap-img");
@@ -199,6 +226,15 @@ function buildWorldmapPage(){
   }
 
   initWorldmapAvatarDrag();
+
+  // Wire sky map return button
+  var skyRetBtn = document.getElementById("wm-sky-return");
+  if(skyRetBtn){
+    skyRetBtn.onclick = function(){
+      var cid = skyRetBtn.getAttribute("data-cid");
+      if(cid) selectCity(cid);
+    };
+  }
 }
 
 
