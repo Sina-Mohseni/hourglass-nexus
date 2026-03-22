@@ -168,40 +168,60 @@
 .identity-overlay.fading-out { animation: icFadeOut .8s ease-in forwards; }
 
 /* ═══════════ INTRO CHOICES (2 optional buttons) ═══════════ */
-.ic-choices-zone {
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
+/* Morkar announcement block */
+.ic-morkar-announce {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
   width: 100%;
 }
-.ic-choices-label {
+.ic-morkar-speaker {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 4px;
+}
+.ic-morkar-emblem {
+  font-size: 18px; color: var(--gold);
+  filter: drop-shadow(0 0 8px rgba(168,132,42,.5));
+  animation: morkarEmblemPulse 2s ease-in-out infinite;
+}
+@keyframes morkarEmblemPulse {
+  0%,100% { opacity: .7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+.ic-morkar-label {
   font-family: var(--font-ui); font-size: 10px;
   letter-spacing: 3px; text-transform: uppercase;
-  color: var(--bone-dim); margin-bottom: 6px;
+  color: var(--gold-light);
+  text-shadow: 0 0 12px rgba(168,132,42,.3);
 }
-.ic-info-btn {
-  width: 100%; max-width: 320px;
-  padding: 16px 18px;
-  background: linear-gradient(180deg, rgba(20,16,8,.92), rgba(10,8,6,.96));
-  border: 1px solid rgba(168,132,42,.2);
-  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
-  cursor: pointer; transition: all .25s; text-align: left;
-  position: relative;
+.ic-morkar-play-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 22px;
+  background: rgba(168,132,42,.08);
+  border: 1px solid rgba(168,132,42,.25);
+  color: var(--gold-light);
+  font-family: var(--font-ui); font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer; transition: all .25s;
 }
-.ic-info-btn::before {
-  content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-  background: var(--filigree-subtle);
+.ic-morkar-play-btn:active { border-color: var(--gold); transform: scale(.96); }
+.ic-morkar-play-btn.playing {
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(168,132,42,.2);
 }
-.ic-info-btn:active { border-color: var(--gold); transform: scale(.97); }
-.ic-info-icon {
-  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
-  font-size: 14px; color: rgba(168,132,42,.35);
+.ic-morkar-play-btn svg { opacity: .7; }
+.ic-morkar-speech {
+  max-width: 340px; text-align: center;
+  max-height: 40vh; overflow-y: auto;
+  padding: 0 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168,132,42,.2) transparent;
 }
-.ic-info-text {
-  font-family: var(--font-heading); font-size: 12px; font-weight: 700;
-  color: var(--gold-light); letter-spacing: 1px;
-}
-.ic-info-sub {
-  font-family: var(--font-ui); font-size: 9px;
-  color: var(--bone-dim); letter-spacing: 1px; margin-top: 1px;
+.ic-morkar-speech p {
+  font-family: var(--font-body);
+  font-size: 15px; line-height: 1.8;
+  color: var(--gold-pale);
+  font-style: italic;
+  margin: 0 0 12px;
+  text-shadow: 0 0 10px rgba(168,132,42,.2), 0 2px 8px rgba(0,0,0,.8);
 }
 
 /* ═══════════ INFO MODAL (Morkar + Journal) ═══════════ */

@@ -3,19 +3,22 @@
 /* ══════════ INTRO NARRATION + SCENARIO CHOICE ══════════ */
 
 var IC_PARAGRAPHS = [
-  {text: "LE TOURNOI D'EXTELUA", cls: "ic-title"},
-  {text: "Extelua. Un univers de milliards d'étoiles reliées par les Routes Sillonnées — d'immenses corridors de voyage supraluminique qui connectent les civilisations les plus avancées entre elles."},
-  {text: "Mais toutes les planètes ne sont pas connectées. Des centaines de mondes isolés, coupés des réseaux universels, vivent sans jamais savoir ce qui se passe au-delà de leur ciel."},
-  {text: "Tous les deux cycles solaires, le groupe Morkar — la plus grande organisation médiatique et diplomatique d'Extelua — organise un événement retransmis dans tout l'univers connecté : le Tournoi d'Extelua."},
-  {text: "Quarante participants sont sélectionnés. Trente sont les champions officiels des planètes connectées — des figures publiques, des athlètes, des scientifiques, des célébrités déjà connues à travers les réseaux."},
-  {text: "Les dix autres viennent des planètes isolées. Des inconnus. Des gens ordinaires arrachés à leur quotidien par une invitation qu'ils ne comprennent pas toujours. Morkar appelle cela « la main tendue aux oubliés »."},
-  {text: "Pendant quinze lunes — une année complète d'Extelua — les quarante candidats traversent des mondes, affrontent des épreuves physiques et mentales, forgent des alliances et se trahissent."},
-  {text: "Le tournoi est diffusé en direct sur tous les écrans de l'univers connecté. C'est le plus grand spectacle jamais créé. Des milliards de spectateurs suivent chaque élimination, chaque victoire, chaque drame."},
-  {text: "Morkar présente le tournoi comme un symbole d'unité et de justice — une chance égale offerte à tous les peuples, connectés ou non, de prouver leur valeur et de changer leur destin."},
-  {text: "La récompense promise au vainqueur est légendaire : la citoyenneté universelle pour toute sa planète d'origine, l'accès aux Routes Sillonnées, et une place au Conseil des Mondes."},
-  {text: "Cette année, le sablier se retourne à nouveau. Les invitations ont été envoyées. Les caméras sont prêtes. L'univers entier retient son souffle."},
-  {text: "Et toi… tu as reçu l'appel.", cls: "ic-final"},
-  {text: "", cls: "ic-choices"}
+  {text: "CÉRÉMONIE D'OUVERTURE", cls: "ic-title"},
+  {text: "La lumière t'aveugle. Des milliers de projecteurs percent l'obscurité en même temps, révélant une arène colossale taillée dans la roche d'un astéroïde artificiel. Tu es là, au milieu de la foule, le cœur battant — et rien de ce que tu as imaginé ne t'avait préparé à ça."},
+  {text: "Autour de toi, des centaines de milliers d'êtres venus de tous les horizons d'Extelua. Des silhouettes de toutes formes, de toutes tailles, drapées dans les couleurs de leurs mondes. L'air vibre d'une énergie que tu n'as jamais ressentie — un mélange de ferveur, de peur et d'excitation pure."},
+  {text: "Un grondement sourd monte du sol. La structure entière tremble. Puis la musique explose — un son massif, ancien et futuriste à la fois, qui résonne dans ta poitrine comme un second battement de cœur. Le spectacle commence."},
+  {text: "Des formes holographiques gigantesques se déploient dans le ciel de l'arène. Des constellations entières se dessinent et se défont, racontant sans mots l'histoire d'Extelua — ses âges de ténèbres, ses alliances brisées, ses renaissances. Tu ne comprends pas tout, mais ton corps comprend. Tu frissonnes."},
+  {text: "Sur la scène centrale, des artistes que tu n'as jamais vus exécutent une chorégraphie impossible — leurs corps suspendus dans des champs de gravité inversée, leurs mouvements synchronisés avec les déflagrations de lumière qui balaient la foule."},
+  {text: "Les voix de milliers de spectateurs se mêlent en un chant que tu ne connais pas. Un hymne, peut-être. Ou une prière. Les mots te sont étrangers, mais la mélodie te serre la gorge. Certains autour de toi pleurent. D'autres crient de joie."},
+  {text: "Tu lèves les yeux. Au-dessus de l'arène, un sablier holographique immense flotte, immobile — ses grains de lumière suspendus entre les deux chambres, comme si le temps lui-même retenait son souffle. C'est le symbole que tu as vu sur ton invitation. Celui qui t'a conduit ici."},
+  {text: "Une vague de flammes contrôlées traverse la scène, et la musique s'intensifie jusqu'à un crescendo qui te coupe le souffle. Des drones lumineux dessinent des motifs impossibles dans l'espace — des fractales vivantes qui semblent réagir aux émotions de la foule."},
+  {text: "Tu regardes autour de toi. Parmi les spectateurs, tu devines d'autres visages comme le tien — des visages qui ne sont pas là pour regarder, mais pour participer. Des visages marqués par le doute, l'ambition, ou la résignation. Tu te demandes combien d'entre eux reviendront."},
+  {text: "Le spectacle atteint son apogée. La musique se tait d'un coup. Le silence qui tombe est si brutal qu'il est presque douloureux. L'arène entière retient son souffle dans une obscurité totale."},
+  {text: "Puis une seule lumière s'allume. Un faisceau doré, vertical, qui transperce le centre de l'arène comme une lame. Et dans cette lumière, un emblème apparaît — celui du groupe Morkar. Un symbole que tout Extelua connaît. Un symbole qui, pour toi, ne signifiait rien il y a encore quelques jours."},
+  {text: "Un murmure parcourt la foule. Puis le murmure devient un grondement. Puis le grondement devient un rugissement. Ils les attendent. Ils les appellent."},
+  {text: "Les écrans géants s'illuminent. Des silhouettes apparaissent sur la scène, portées par la lumière. Le groupe Morkar est là — en personne. Ceux qui organisent tout. Ceux qui décident de tout. Ceux entre les mains de qui tu as remis ton destin."},
+  {text: "La voix qui s'élève alors fait taire l'univers entier.", cls: "ic-final"},
+  {text: "", cls: "ic-morkar-announce"}
 ];
 
 var _icMuted = false;
@@ -68,22 +71,51 @@ function showIntroCrawl(onDone){
     var data = IC_PARAGRAPHS[idx];
     textZone.innerHTML = "";
 
-    // Special choices screen at the end
-    if(data.cls === "ic-choices"){
+    // Morkar announcement screen at the end
+    if(data.cls === "ic-morkar-announce"){
       var wrap = document.createElement("div");
-      wrap.className = "ic-paragraph ic-choices-zone";
+      wrap.className = "ic-paragraph ic-morkar-announce";
       wrap.innerHTML =
-        '<div class="ic-choices-label">Informations envoyées par le groupe Morkar</div>' +
-        '<button class="ic-info-btn" id="ic-btn-morkar">' +
-          '<span class="ic-info-icon">\u25B6</span>' +
-          '<span class="ic-info-text">Présentation officielle Morkar</span>' +
-          '<span class="ic-info-sub">Retransmission universelle</span>' +
-        '</button>';
+        '<div class="ic-morkar-speaker">' +
+          '<span class="ic-morkar-emblem">\u25C6</span>' +
+          '<span class="ic-morkar-label">GROUPE MORKAR — DÉCLARATION D\'OUVERTURE</span>' +
+        '</div>' +
+        '<button class="ic-morkar-play-btn" id="ic-morkar-play">' +
+          '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+          '<span>Écouter la déclaration</span>' +
+        '</button>' +
+        '<div class="ic-morkar-speech">' +
+          '<p>« Peuples d\'Extelua. Mondes connectés et mondes oubliés. Vous qui regardez depuis les confins de l\'univers connu, et vous qui êtes ici, debout parmi nous — ce soir, il n\'y a plus de frontières. »</p>' +
+          '<p>« Le Sablier s\'est retourné. Comme il l\'a fait avant nous, comme il le fera après nous. Et avec lui, une promesse se renouvelle — celle que chaque être, quel que soit son monde, quelle que soit son histoire, mérite une chance de tout changer. »</p>' +
+          '<p>« Vous êtes quarante à avoir répondu à l\'appel. Quarante âmes venues de mondes que tout sépare. Certains d\'entre vous sont des légendes. D\'autres sont des inconnus. Ici, cela n\'a aucune importance. »</p>' +
+          '<p>« Ce qui vous attend dépassera tout ce que vous avez connu. Chaque épreuve vous révélera. Chaque choix vous définira. Et quand le dernier grain de sable tombera… un seul d\'entre vous aura le pouvoir de changer le destin de tout un monde. »</p>' +
+          '<p>« Que le Sablier guide vos pas. Le Tournoi d\'Extelua… est officiellement ouvert. »</p>' +
+        '</div>';
       textZone.appendChild(wrap);
 
-      // Wire button
-      var btnMorkar = document.getElementById("ic-btn-morkar");
-      if(btnMorkar) btnMorkar.onclick = function(e){ e.stopPropagation(); showMorkarPresentation(); };
+      // Play Morkar announcement audio
+      var playBtn = document.getElementById("ic-morkar-play");
+      var morkarAudio = document.getElementById("ic-morkar-audio");
+      if(playBtn && morkarAudio){
+        playBtn.onclick = function(e){
+          e.stopPropagation();
+          if(morkarAudio.paused){
+            morkarAudio.currentTime = 0;
+            morkarAudio.volume = 0.7;
+            morkarAudio.play().catch(function(){});
+            playBtn.classList.add("playing");
+            playBtn.querySelector("span").textContent = "Lecture en cours…";
+          } else {
+            morkarAudio.pause();
+            playBtn.classList.remove("playing");
+            playBtn.querySelector("span").textContent = "Écouter la déclaration";
+          }
+        };
+        morkarAudio.onended = function(){
+          playBtn.classList.remove("playing");
+          playBtn.querySelector("span").textContent = "Réécouter";
+        };
+      }
 
       if(nextBtn) nextBtn.textContent = "Continuer \u25BA";
       return;
