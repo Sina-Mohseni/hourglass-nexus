@@ -18,7 +18,8 @@ var PRE_SCENARIO_PARAGRAPHS = [
   {text: "Avant que la cérémonie ne commence, une question se pose…", cls: "ic-final"}
 ];
 
-var IC_PARAGRAPHS = [
+/* ── Default ceremony paragraphs (used as fallback) ── */
+var IC_PARAGRAPHS_DEFAULT = [
   {text: "CÉRÉMONIE D'OUVERTURE", cls: "ic-title"},
   {text: "La lumière t'aveugle. Des milliers de projecteurs percent l'obscurité en même temps, révélant une arène colossale taillée dans la roche d'un astéroïde artificiel. Tu es là, au milieu de la foule, le cœur battant — et rien de ce que tu as imaginé ne t'avait préparé à ça."},
   {text: "Autour de toi, des centaines de milliers d'êtres venus de tous les horizons d'Extelua. Des silhouettes de toutes formes, de toutes tailles, drapées dans les couleurs de leurs mondes. L'air vibre d'une énergie que tu n'as jamais ressentie — un mélange de ferveur, de peur et d'excitation pure."},
@@ -37,9 +38,40 @@ var IC_PARAGRAPHS = [
   {text: "", cls: "ic-morkar-announce"}
 ];
 
+/* ── Isolé ceremony paragraphs ── */
+var IC_PARAGRAPHS_ISOLE = [
+  {text: "CÉRÉMONIE D'OUVERTURE", cls: "ic-title"},
+  {text: "Tu ne sais pas où tu es. Il y a quelques jours encore, le ciel de ton monde était la seule chose au-dessus de ta tête. Maintenant tu es ailleurs — quelque part que ton esprit refuse de comprendre. Une structure impossible, taillée dans la roche d'un astre que tu n'aurais jamais pu voir à l'œil nu depuis chez toi. Et autour de toi, la foule."},
+  {text: "Des êtres. Des centaines de milliers d'êtres. Certains te ressemblent vaguement. D'autres pas du tout. Des silhouettes immenses, des formes que tu n'as pas de mots pour décrire, des visages — si on peut appeler ça des visages — tournés vers une scène que tu ne comprends pas encore. L'air lui-même est différent. Il vibre. Il pulse. Comme si l'endroit entier était vivant."},
+  {text: "Quelque chose gronde sous tes pieds. Le sol tremble et tu manques de perdre l'équilibre. Puis le son te frappe — un mur de musique qui t'écrase la poitrine, un son qui n'a rien à voir avec ce que tu as connu. Pas d'instruments que tu reconnais. Pas de mélodie familière. Juste une puissance brute, ancienne et terrifiante, qui résonne dans tes os."},
+  {text: "Des images apparaissent dans le vide au-dessus de toi. Tu recules d'un pas. Ce ne sont pas des peintures, pas des projections — ce sont des formes de lumière pure qui flottent dans l'air, immenses, mouvantes. Des étoiles naissent et meurent en quelques secondes. Des mondes se forment, se brisent, se reforment. C'est beau. C'est terrifiant. Tu ne comprends rien, mais quelque chose en toi comprend que c'est important."},
+  {text: "Sur ce qui semble être une scène, des corps flottent. Ils flottent. Sans fil, sans support, suspendus dans le vide comme si la gravité n'existait plus. Ils dansent — ou du moins c'est le mot le plus proche que tu trouves — leurs mouvements synchronisés avec des explosions de lumière qui traversent la foule comme des vagues. Chez toi, on appellerait ça de la magie. Ici, personne ne semble surpris."},
+  {text: "Un chant monte de la foule. Des milliers de voix, peut-être des millions, unies dans quelque chose que tu ne connais pas. Un hymne ? Une prière ? Les mots n'ont aucun sens pour toi, mais la mélodie te serre la gorge quand même. Tu sens tes yeux piquer. Tu ne sais pas pourquoi. Autour de toi, des créatures que tu ne pourrais même pas nommer pleurent ouvertement. D'autres poussent des cris qui ressemblent à de la joie."},
+  {text: "Tu lèves les yeux. Là-haut, quelque chose flotte — un objet immense, fait de lumière, en forme de sablier. Ses grains brillent, suspendus entre deux chambres transparentes, immobiles, comme si le temps s'était arrêté. Tu l'as déjà vu. C'est le symbole gravé sur l'objet que les éclaireurs t'ont donné le jour où ils sont venus te chercher. Le jour où tout a basculé."},
+  {text: "Le spectacle s'intensifie. Du feu traverse la scène — du feu qui ne brûle rien, qui danse et disparaît comme s'il obéissait à une volonté. Des objets lumineux, trop petits pour être des vaisseaux, trop nombreux pour être comptés, dessinent dans le ciel des formes impossibles — des motifs qui changent, qui réagissent aux cris de la foule. Tu te demandes si tu es en train de rêver."},
+  {text: "Tu cherches des repères. Des visages comme le tien. Et tu en trouves — quelques-uns, perdus dans l'immensité de la foule. Des regards aussi perdus que le tien. Des gens qui ne sont pas là pour regarder. Des gens qui, comme toi, vont devoir se battre. Tu vois la peur dans leurs yeux. Tu te demandes s'ils voient la même chose dans les tiens."},
+  {text: "Tout s'arrête. D'un coup. Le son, la lumière, le mouvement — tout disparaît. Le silence qui tombe est le plus violent que tu aies jamais entendu. Plus de musique. Plus de cris. Juste le noir, total, absolu, et le battement de ton propre cœur dans tes oreilles. Tu retiens ton souffle sans t'en rendre compte."},
+  {text: "Une lumière. Une seule. Un rayon doré qui perce l'obscurité comme une lame et frappe le centre de la scène. Dans cette lumière, un symbole apparaît — un losange, simple, géométrique, presque banal. Mais autour de toi, la réaction est immédiate. La foule retient son souffle. Tu ne sais pas ce que ce symbole signifie. Mais tu sens que ceux qui le connaissent en ont peur. Ou le vénèrent. Ou les deux."},
+  {text: "Un murmure parcourt la foule. Puis le murmure enfle. Puis il devient un grondement. Puis un rugissement. Ils appellent quelqu'un. Ou quelque chose. L'énergie est si dense que tu la sens sur ta peau, comme une pression physique."},
+  {text: "Des silhouettes apparaissent dans la lumière. Tu ne les connais pas. Tu ne sais pas leurs noms, leurs titres, leur pouvoir. Mais la façon dont la foule les regarde te dit tout ce que tu as besoin de savoir. Ces gens contrôlent tout. Et toi, tu es entre leurs mains maintenant."},
+  {text: "L'une des silhouettes s'avance. Et quand elle parle, le silence qui se fait est différent de celui d'avant. Ce n'est pas un silence imposé. C'est un silence choisi. Comme si l'univers entier avait décidé d'écouter.", cls: "ic-final"},
+  {text: "", cls: "ic-morkar-announce"}
+];
+
+/* ── Resolve ceremony paragraphs based on chosen scenario ── */
+var IC_PARAGRAPHS = IC_PARAGRAPHS_DEFAULT;
+
 var _icMuted = false;
 
 function showIntroCrawl(onDone){
+  // Pick scenario-specific ceremony paragraphs
+  var sc = window._chosenScenario;
+  if(sc === "lambda"){
+    IC_PARAGRAPHS = IC_PARAGRAPHS_ISOLE;
+  } else {
+    IC_PARAGRAPHS = IC_PARAGRAPHS_DEFAULT;
+  }
+
   var overlay = document.getElementById("intro-crawl");
   if(!overlay){ onDone(); return; }
   overlay.style.display = "";
