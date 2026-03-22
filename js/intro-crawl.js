@@ -352,6 +352,38 @@ var SC_MUSIC = {
   "veteran-morkar": "assets/music/veteran.mp3"
 };
 
+/* ══════════ SCENARIO LORE MODAL ══════════ */
+function showScenarioLore(title, text){
+  var existing = document.getElementById("sc-lore-overlay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "sc-lore-overlay";
+  overlay.className = "ic-modal-overlay";
+
+  overlay.innerHTML =
+    '<div class="ic-modal sc-lore-modal">' +
+      '<div class="ic-modal-header">' +
+        '<span class="ic-modal-logo">\u25C9</span>' +
+        '<span class="ic-modal-title">' + title.toUpperCase() + '</span>' +
+      '</div>' +
+      '<div class="ic-modal-body">' +
+        '<p>' + text + '</p>' +
+      '</div>' +
+      '<button class="ic-modal-close" id="sc-lore-close">Fermer</button>' +
+    '</div>';
+
+  var scenarioOverlay = document.getElementById("scenario-choice");
+  (scenarioOverlay || document.body).appendChild(overlay);
+
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("sc-lore-close").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
+}
+
 /* ══════════ SCENARIO CHOICE (2-step: type → sub-scenario) ══════════ */
 function showScenarioChoice(onChosen){
   var overlay = document.getElementById("scenario-choice");
@@ -378,14 +410,77 @@ function showScenarioChoice(onChosen){
 
   // Sub-scenario definitions per type
   var SUB_CHAMPION = [
-    {scenario:"champion",       icon:"\u2B50",     name:"Champion",       desc:"Représentant officiel de ta planète connectée"},
-    {scenario:"rebelle",        icon:"\u26A1",     name:"Dissident",      desc:"Opposant infiltré parmi les champions"},
-    {scenario:"apprenti-morkar",icon:"\uD83D\uDCE1",name:"Recrue Morkar", desc:"Nouvel agent du groupe Morkar"},
-    {scenario:"veteran-morkar", icon:"\uD83D\uDEE1\uFE0F",name:"Vétéran Morkar",desc:"Membre expérimenté de l'organisation"}
+    {scenario:"champion", name:"Champion", lore:
+      "Tu es le représentant officiel de ta planète connectée au Réseau Universel. Choisi par ton peuple — élu, " +
+      "tiré au sort ou désigné selon les traditions de ton monde — tu portes les espoirs de milliards d'êtres. " +
+      "Tu crois au système mis en place par le groupe Morkar. Le Tournoi est pour toi une institution juste, " +
+      "un symbole de méritocratie universelle où chaque civilisation peut prouver sa valeur. Tu as grandi en " +
+      "regardant les retransmissions, en admirant les anciens champions, et aujourd'hui c'est ton tour de " +
+      "marcher sous les projecteurs. Tu sais que des milliards de spectateurs suivront chacun de tes pas, " +
+      "chacune de tes décisions. La pression est immense, mais la gloire qui attend le vainqueur l'est encore " +
+      "plus. Tu te bats pour la récompense promise : l'intégration totale de ton monde au Réseau, un siège " +
+      "au Conseil des Mondes, et l'accès aux technologies qui transformeront la vie de ton peuple pour toujours."},
+    {scenario:"rebelle", name:"Dissident", lore:
+      "Tu fais partie d'un groupe secret qui ne croit pas au système de Morkar. Derrière la façade de paix " +
+      "et de justice universelle, tu as vu — ou on t'a montré — ce que personne ne devrait voir. Les promesses " +
+      "creuses, les candidats des planètes isolées qui ne gagnent jamais, les clauses cachées de la récompense, " +
+      "les anciens participants qui disparaissent quand ils parlent trop. Tu t'es infiltré dans le Tournoi en " +
+      "tant que champion officiel de ta planète connectée, mais ta véritable mission est ailleurs. Tu dois " +
+      "rassembler des preuves, établir des contacts avec d'autres dissidents potentiels, et surtout survivre " +
+      "assez longtemps pour que la vérité éclate. Le réseau de résistance compte sur toi. Chaque geste que " +
+      "tu feras sera scruté par les caméras de Morkar — il faudra jouer le jeu parfaitement, sourire devant " +
+      "les écrans, tout en œuvrant dans l'ombre. Un faux pas et tu rejoindras la liste de ceux dont on " +
+      "n'entend plus jamais parler."},
+    {scenario:"apprenti-morkar", name:"Recrue Morkar", lore:
+      "Tu viens d'être recruté par le groupe Morkar. Comme les autres champions, tu représentes une planète " +
+      "connectée au Réseau, mais tu as accepté une mission supplémentaire : servir les intérêts de l'organisation " +
+      "qui dirige le Tournoi depuis des décennies. En plus de te battre pour gagner et obtenir la récompense " +
+      "pour ton monde, tu as reçu un briefing confidentiel. Morkar soupçonne que des éléments dissidents " +
+      "pourraient tenter de s'infiltrer dans cette édition, comme ils l'ont fait lors de tournois précédents. " +
+      "Ta mission secondaire est de les débusquer. Observer, écouter, repérer les comportements suspects, " +
+      "les conversations à voix basse, les alliances qui n'ont pas de sens stratégique. Tu es nouveau dans " +
+      "ce rôle et tu ne connais pas encore tous les rouages de Morkar, mais on t'a promis que si tu réussis " +
+      "à identifier un dissident, la récompense sera assurée pour ton monde — que tu gagnes le Tournoi ou non. " +
+      "Une double chance que peu de candidats possèdent."},
+    {scenario:"veteran-morkar", name:"Vétéran Morkar", lore:
+      "Tu fais partie du groupe Morkar depuis des années. Tu connais ses secrets, ses méthodes, ses véritables " +
+      "objectifs. Tu as déjà participé à des éditions précédentes — pas en tant que simple candidat, mais en " +
+      "tant qu'agent de l'organisation. Cette fois encore, tu es là pour surveiller. Le Tournoi est un " +
+      "spectacle, certes, mais c'est aussi un terrain de chasse. Des dissidents ont tenté par le passé de " +
+      "saboter l'événement, de révéler au public des informations que Morkar préfère garder dans l'ombre. " +
+      "Certains ont été neutralisés. D'autres ont disparu avant qu'on puisse les atteindre. Ton expérience " +
+      "te donne un avantage considérable : tu sais lire les gens, détecter les mensonges, repérer les " +
+      "infiltrés. Tu participes au Tournoi pour t'amuser, bien sûr — les épreuves restent un défi plaisant — " +
+      "mais ta priorité est ailleurs. Tu es les yeux et les oreilles de Morkar sur le terrain. Et cette " +
+      "année, les rapports de renseignement suggèrent que la menace dissidente est plus forte que jamais."}
   ];
   var SUB_EMISSAIRE = [
-    {scenario:"lambda",   icon:"\uD83C\uDF10", name:"Émissaire isolé", desc:"Candidat ordinaire d'une planète coupée des réseaux"},
-    {scenario:"rebelle",  icon:"\u26A1",        name:"Dissident",       desc:"Faux émissaire — infiltré depuis une planète connectée"}
+    {scenario:"lambda", name:"Émissaire isolé", lore:
+      "Tu viens d'une planète qui n'a jamais été connectée au Réseau Universel. Ton monde vit en autarcie " +
+      "depuis toujours — pas de Routes Sillonnées, pas de communication avec les autres civilisations, pas " +
+      "de technologie venue d'ailleurs. Tu ne savais même pas que d'autres mondes habités existaient jusqu'au " +
+      "jour où les éclaireurs de Morkar sont arrivés. Ils t'ont choisi — toi, parmi tous les habitants de ta " +
+      "planète — pour participer à un événement dont tu ignores tout. Le Tournoi d'Extelua. Tu ne connais " +
+      "pas Morkar, tu ne connais pas les règles du jeu galactique, tu ne sais pas qui sont tes adversaires " +
+      "ni pourquoi des milliards d'êtres te regarderont à travers des écrans. Tu es complètement indépendant " +
+      "du système. Tout ce que tu sais, c'est qu'on t'a promis que si tu gagnes, ton monde entier sera " +
+      "transformé. L'accès au Réseau, aux technologies, à un avenir que ton peuple n'aurait jamais pu " +
+      "imaginer. Tu pars de rien, sans sponsor, sans supporters, sans connaissance des intrigues politiques " +
+      "qui entourent le Tournoi. Mais c'est peut-être là ta plus grande force."},
+    {scenario:"rebelle", name:"Dissident", lore:
+      "Tu fais partie d'un groupe secret qui ne croit pas au système de Morkar. Mais contrairement aux " +
+      "dissidents qui s'infiltrent parmi les champions des planètes connectées, toi tu as choisi une " +
+      "couverture encore plus profonde. Tu as fait semblant de te retrouver sur une planète isolée, coupée " +
+      "du Réseau, pour être sélectionné comme émissaire — un candidat lambda que personne ne soupçonnera. " +
+      "Après tout, comment un habitant d'un monde primitif pourrait-il être un agent de la résistance ? " +
+      "C'est le leurre parfait. Morkar surveille de près les champions connectés, car c'est là que les " +
+      "dissidents se sont infiltrés par le passé. Personne ne pense à vérifier les émissaires des planètes " +
+      "isolées — ces pauvres inconnus arrachés à leur quotidien. Ton déguisement est ta meilleure arme. " +
+      "Tu devras jouer le rôle de l'innocent qui découvre l'univers, poser les questions naïves, feindre " +
+      "l'émerveillement face aux technologies. Pendant ce temps, tu rassembleras des preuves, tu contacteras " +
+      "d'éventuels alliés, et tu attendras le bon moment pour frapper. Un faux émissaire parmi les vrais, " +
+      "invisible aux yeux de ceux qui cherchent — c'est la stratégie la plus audacieuse que la résistance " +
+      "ait jamais tentée."}
   ];
 
   /* ── STEP 1: pick type (click) ── */
@@ -404,8 +499,8 @@ function showScenarioChoice(onChosen){
     }
 
     // Inject circles into arena
-    var existingCircles = arena.querySelectorAll(".sc-circle");
-    existingCircles.forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
     // Layout positions depending on count
     var positions;
@@ -424,16 +519,27 @@ function showScenarioChoice(onChosen){
     }
 
     subs.forEach(function(s, i){
+      // Empty circle (drop target)
       var div = document.createElement("div");
       div.className = "sc-circle";
       div.setAttribute("data-scenario", s.scenario);
       div.style.left = positions[i].left;
       div.style.top = positions[i].top;
-      div.innerHTML =
-        '<span class="sc-circle-icon">' + s.icon + '</span>' +
-        '<span class="sc-circle-name">' + s.name + '</span>' +
-        '<span class="sc-circle-desc">' + s.desc + '</span>';
       arena.insertBefore(div, guide);
+
+      // Label below circle (clickable for lore)
+      var label = document.createElement("div");
+      label.className = "sc-circle-label";
+      label.style.left = positions[i].left;
+      label.style.top = positions[i].top;
+      label.innerHTML = '<span class="sc-circle-label-text">' + s.name + '</span>';
+      arena.insertBefore(label, guide);
+
+      // Click on label → show lore modal
+      label.onclick = function(e){
+        e.stopPropagation();
+        showScenarioLore(s.name, s.lore);
+      };
     });
 
     // Reset guide

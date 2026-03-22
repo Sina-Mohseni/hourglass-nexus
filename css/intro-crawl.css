@@ -397,59 +397,61 @@
   opacity: 0; animation: scFadeIn .6s ease-out .3s forwards;
 }
 
-/* Scenario circles — dynamically positioned via JS */
+/* Scenario circles — empty drop targets */
 .sc-circle {
   position: absolute;
-  width: 86px; height: 86px;
+  width: 80px; height: 80px;
   border-radius: 50%;
-  border: 1.5px solid rgba(168,132,42,.2);
-  background: radial-gradient(circle, rgba(18,14,8,.95), rgba(6,5,3,.98));
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border: 1.5px dashed rgba(168,132,42,.22);
+  background: radial-gradient(circle, rgba(12,10,6,.5), rgba(6,5,3,.7));
   transform: translate(-50%, -50%);
-  transition: border-color .3s, box-shadow .3s, transform .3s;
+  transition: border-color .3s, box-shadow .3s, transform .3s, border-style .3s;
   z-index: 2;
 }
 .sc-circle::after {
   content: '';
-  position: absolute; inset: -6px; border-radius: 50%;
-  border: 1px dashed rgba(168,132,42,.08);
+  position: absolute; inset: -8px; border-radius: 50%;
+  border: 1px dashed rgba(168,132,42,.06);
   pointer-events: none;
 }
-.sc-circle-icon {
-  font-size: 22px; line-height: 1;
-  margin-bottom: 3px;
+
+/* Clickable label below circle */
+.sc-circle-label {
+  position: absolute; z-index: 3;
+  transform: translate(-50%, 0);
+  margin-top: 48px; /* offset below circle center */
+  text-align: center; cursor: pointer;
+  transition: color .2s;
 }
-.sc-circle-name {
-  font-family: var(--font-heading); font-size: 8px;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: var(--gold-pale); text-align: center;
-  line-height: 1.2; max-width: 74px;
+.sc-circle-label-text {
+  font-family: var(--font-heading); font-size: 10px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-pale);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(168,132,42,.25);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
 }
-.sc-circle-desc {
-  display: none; /* shown on hover/chosen */
-  font-family: var(--font-ui); font-size: 9px;
-  color: var(--bone-dim); text-align: center;
-  position: absolute; top: 105%; left: 50%;
-  transform: translateX(-50%);
-  width: 140px; line-height: 1.3;
-  pointer-events: none;
+.sc-circle-label:active .sc-circle-label-text {
+  color: var(--gold);
+  border-color: var(--gold);
 }
 
 /* Hover highlight when guide is near */
 .sc-circle-hover {
   border-color: var(--gold) !important;
+  border-style: solid !important;
   box-shadow: 0 0 20px rgba(168,132,42,.35), 0 0 40px rgba(168,132,42,.15);
   transform: translate(-50%, -50%) scale(1.1);
 }
-.sc-circle-hover .sc-circle-desc { display: block; }
 
 /* Chosen state */
 .sc-circle-chosen {
   border-color: var(--gold) !important;
+  border-style: solid !important;
   box-shadow: 0 0 30px rgba(168,132,42,.5), 0 0 60px rgba(168,132,42,.2);
   transform: translate(-50%, -50%) scale(1.15);
 }
-.sc-circle-chosen .sc-circle-desc { display: block; color: var(--gold-pale); }
 
 /* Draggable guide */
 .sc-guide {
