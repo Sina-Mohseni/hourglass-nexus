@@ -56,6 +56,12 @@ function initLock(){
   var giImg = document.getElementById("lock-guide-img");
   if(guide && guide.avatar && giImg) giImg.src = guide.avatar;
 
+  // Fade out intro crawl music when arriving on lock screen
+  var icAudio = document.getElementById("ic-music");
+  if(icAudio && !icAudio.paused){
+    audioFade(icAudio, 0, 1500, function(){ icAudio.pause(); icAudio.volume = 0.5; });
+  }
+
   // Extelua music will start on first drag of the guide (user gesture required)
   var _lockMusicStarted = false;
   function startExteluaMusic(){
