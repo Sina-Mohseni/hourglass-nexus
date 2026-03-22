@@ -387,6 +387,20 @@
   max-width: 300px;
 }
 
+/* Back button */
+.sc-back-btn {
+  position: absolute; top: 16px; left: 14px; z-index: 10;
+  padding: 8px 14px;
+  background: rgba(10,8,6,.7);
+  border: 1px solid rgba(168,132,42,.15);
+  font-family: var(--font-ui); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone-dim);
+  cursor: pointer; transition: all .2s;
+  backdrop-filter: blur(4px);
+}
+.sc-back-btn:active { border-color: var(--gold); color: var(--gold-light); }
+
 /* ── Step 2: Arena — contains circles + guide ── */
 .sc-arena {
   position: relative; flex: 1;
@@ -425,19 +439,22 @@
   font-family: var(--font-heading); font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--gold-light);
-  border-bottom: 1px dotted rgba(168,132,42,.35);
-  padding-bottom: 2px;
-  transition: color .2s, border-color .2s;
+  transition: color .2s;
 }
-.sc-circle-label-text::after {
-  content: '  (i)';
-  font-family: var(--font-ui);
-  font-size: 9px; font-style: italic;
-  color: rgba(168,132,42,.4);
+.sc-circle-label-plus {
+  display: flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid rgba(168,132,42,.3);
+  background: rgba(168,132,42,.06);
+  font-family: var(--font-heading); font-size: 14px; font-weight: 300;
+  color: var(--gold-pale); line-height: 1;
+  transition: all .2s;
 }
-.sc-circle-label:active .sc-circle-label-text {
-  color: var(--gold);
+.sc-circle-label:active .sc-circle-label-text { color: var(--gold); }
+.sc-circle-label:active .sc-circle-label-plus {
   border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.1);
 }
 
 /* Hover highlight when guide is near */
