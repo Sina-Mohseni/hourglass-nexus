@@ -1,0 +1,17 @@
+{
+  "name": "Hourglass Nexus",
+  "short_name": "HG Nexus",
+  "description": "Le Tournoi d'Extelua",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0a0806",
+  "theme_color": "#0a0806",
+  "icons": [
+    {
+      "src": "assets/ealogo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
