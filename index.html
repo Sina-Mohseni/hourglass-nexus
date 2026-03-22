@@ -623,7 +623,15 @@
         </button>
       </div>
 
-      <!-- ═══════ INTRO NARRATION ═══════ -->
+      <!-- ═══════ LORE INTRO (sober, before identity/scenario) ═══════ -->
+      <div class="lore-intro-overlay" id="lore-intro" style="display:none">
+        <div class="lore-vignette"></div>
+        <div class="ic-text-zone" id="lore-text-zone"></div>
+        <button class="ic-next-btn" id="lore-next-btn">Suivant &#x25BC;</button>
+        <button class="ic-skip-btn" id="lore-skip-btn">Passer &#x203a;</button>
+      </div>
+
+      <!-- ═══════ CEREMONY INTRO (scenario-specific, with video) ═══════ -->
       <div class="intro-crawl-overlay" id="intro-crawl" style="display:none">
         <video class="ic-bg-video" id="ic-bg-video" muted playsinline loop>
           <source src="assets/video/hourglass-nexus-intro.mp4" type="video/mp4">
