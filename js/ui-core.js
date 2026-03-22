@@ -110,3 +110,52 @@ function hideAppBackgrounds(){
   });
 }
 
+/* ══════════ AUDIO CROSSFADE UTILITIES ══════════ */
+
+/**
+ * Fade an audio element's volume from current to target over duration ms.
+ * Returns the interval ID so it can be cancelled.
+ */
+function audioFade(audio, targetVol, duration, cb){
+  if(!audio){ if(cb) cb(); return null; }
+  var startVol = audio.volume;
+  var steps = 25;
+  var interval = duration / steps;
+  var step = 0;
+  var id = setInterval(function(){
+    step++;
+    var t = step / steps;
+    audio.volume = Math.max(0, Math.min(1, startVol + (targetVol - startVol) * t));
+    if(step >= steps){
+      clearInterval(id);
+      audio.volume = targetVol;
+      if(targetVol === 0) audio.pause();
+      if(cb) cb();
+    }
+  }, interval);
+  return id;
+}
+
+/**
+ * Crossfade: fade out outAudio while fading in inAudio over duration ms.
+ * inAudio starts at volume 0 and ramps to inVol.
+ * outAudio fades from current volume to 0, then pauses.
+ * restoreOutVol: volume to restore on outAudio after pause (for reuse).
+ */
+function audioCrossfade(outAudio, inAudio, inVol, duration, restoreOutVol){
+  duration = duration || 1200;
+  // Fade out
+  if(outAudio && !outAudio.paused){
+    var savedVol = restoreOutVol !== undefined ? restoreOutVol : outAudio.volume;
+    audioFade(outAudio, 0, duration, function(){
+      outAudio.volume = savedVol;
+    });
+  }
+  // Fade in
+  if(inAudio){
+    inAudio.volume = 0;
+    inAudio.play().catch(function(){});
+    audioFade(inAudio, inVol, duration);
+  }
+}
+

@@ -352,10 +352,12 @@ function wireMusicPlayer(body){
       return;
     }
     if(_mpPlaying){
-      audio.pause();
+      audioFade(audio, 0, 400, function(){ audio.pause(); audio.volume = 0.5; });
       _mpPlaying = false;
     } else {
+      audio.volume = 0;
       audio.play().catch(function(){});
+      audioFade(audio, 0.5, 400);
       _mpPlaying = true;
     }
     updateDrawerContent();
@@ -382,16 +384,30 @@ function wireMusicPlayer(body){
 
 function _mpPlayTrack(track){
   var audio = _getMpAudio();
-  // Stop any other site audio
+  // Fade out any other site audio
   ["bg-music","ic-music","guide-music"].forEach(function(id){
     var a = document.getElementById(id);
-    if(a && !a.paused) a.pause();
+    if(a && !a.paused) audioFade(a, 0, 800, function(){ a.volume = 0.4; });
   });
+  // If already playing a track, crossfade
+  var wasPlaying = _mpPlaying && !audio.paused;
   _mpCurrentTrack = track;
-  audio.src = track.src;
-  audio.volume = 0.5;
-  audio.loop = false;
-  audio.play().catch(function(){});
+  if(wasPlaying){
+    // Fade out current track, then start new one with fade-in
+    audioFade(audio, 0, 600, function(){
+      audio.src = track.src;
+      audio.volume = 0;
+      audio.loop = false;
+      audio.play().catch(function(){});
+      audioFade(audio, 0.5, 800);
+    });
+  } else {
+    audio.src = track.src;
+    audio.volume = 0;
+    audio.loop = false;
+    audio.play().catch(function(){});
+    audioFade(audio, 0.5, 800);
+  }
   _mpPlaying = true;
   // Auto next on end
   audio.onended = function(){ _mpSkip(1); };
