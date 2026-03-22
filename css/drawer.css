@@ -159,6 +159,9 @@
 .mp-ctrl-btn:active { transform: scale(.85); }
 .mp-ctrl-sm { font-size: 18px; opacity: .6; }
 .mp-ctrl-sm:active { opacity: 1; }
+.mp-ctrl-mode { font-size: 15px; opacity: .35; transition: opacity .2s, color .2s; }
+.mp-ctrl-mode:active { opacity: .8; }
+.mp-mode-active { opacity: 1; color: var(--gold); }
 .mp-ctrl-play {
   width: 52px; height: 52px;
   border-radius: 50%;

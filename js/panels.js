@@ -369,6 +369,22 @@ function wireMusicPlayer(body){
   if(prevBtn) prevBtn.onclick = function(){ _mpSkip(-1); };
   if(nextBtn) nextBtn.onclick = function(){ _mpSkip(1); };
 
+  // Repeat one toggle
+  var repeatBtn = body.querySelector("#mp-repeat");
+  if(repeatBtn) repeatBtn.onclick = function(){
+    _mpRepeatOne = !_mpRepeatOne;
+    if(_mpRepeatOne) _mpShuffle = false; // mutually exclusive
+    updateDrawerContent();
+  };
+
+  // Shuffle toggle
+  var shuffleBtn = body.querySelector("#mp-shuffle");
+  if(shuffleBtn) shuffleBtn.onclick = function(){
+    _mpShuffle = !_mpShuffle;
+    if(_mpShuffle) _mpRepeatOne = false; // mutually exclusive
+    updateDrawerContent();
+  };
+
   // Progress bar seek
   var progWrap = body.querySelector("#mp-progress-wrap");
   if(progWrap) progWrap.onclick = function(e){
@@ -409,8 +425,15 @@ function _mpPlayTrack(track){
     audioFade(audio, 0.5, 800);
   }
   _mpPlaying = true;
-  // Auto next on end
-  audio.onended = function(){ _mpSkip(1); };
+  // Auto next on end — respect repeat/shuffle modes
+  audio.onended = function(){
+    if(_mpRepeatOne){
+      audio.currentTime = 0;
+      audio.play().catch(function(){});
+    } else {
+      _mpSkip(1);
+    }
+  };
   updateDrawerContent();
 }
 
@@ -418,9 +441,18 @@ function _mpSkip(dir){
   if(!_mpCurrentTrack) return;
   var idx = -1;
   MUSIC_TRACKS.forEach(function(t,i){ if(t.id === _mpCurrentTrack.id) idx = i; });
-  idx += dir;
-  if(idx < 0) idx = MUSIC_TRACKS.length - 1;
-  if(idx >= MUSIC_TRACKS.length) idx = 0;
+  if(_mpShuffle){
+    // Pick a random track different from current
+    var pick = idx;
+    if(MUSIC_TRACKS.length > 1){
+      while(pick === idx) pick = Math.floor(Math.random() * MUSIC_TRACKS.length);
+    }
+    idx = pick;
+  } else {
+    idx += dir;
+    if(idx < 0) idx = MUSIC_TRACKS.length - 1;
+    if(idx >= MUSIC_TRACKS.length) idx = 0;
+  }
   _mpPlayTrack(MUSIC_TRACKS[idx]);
 }
 

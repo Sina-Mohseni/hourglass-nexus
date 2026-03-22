@@ -734,6 +734,8 @@ var MUSIC_TRACKS = [
 var _mpCurrentTrack = null;
 var _mpAudio = null;
 var _mpPlaying = false;
+var _mpRepeatOne = false;  // repeat single track
+var _mpShuffle = false;    // random order
 
 function _getMpAudio(){
   if(!_mpAudio){
@@ -768,10 +770,14 @@ function buildDrawerMusiques(){
 
   // Controls
   h += '<div class="mp-controls">';
+  h += '<button class="mp-ctrl-btn mp-ctrl-sm mp-ctrl-mode'
+    + (_mpShuffle ? ' mp-mode-active' : '') + '" id="mp-shuffle" title="Al\u00e9atoire">\ud83d\udd00</button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-prev">\u23ee</button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-play" id="mp-play">'
     + (_mpPlaying ? '\u275a\u275a' : '\u25b6') + '</button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-next">\u23ed</button>';
+  h += '<button class="mp-ctrl-btn mp-ctrl-sm mp-ctrl-mode'
+    + (_mpRepeatOne ? ' mp-mode-active' : '') + '" id="mp-repeat" title="R\u00e9p\u00e9ter le morceau">\ud83d\udd02</button>';
   h += '</div>';
 
   // Track list
