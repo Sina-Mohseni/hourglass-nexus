@@ -70,12 +70,12 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   // Level 1 buttons
   var nouvelleBtn = document.getElementById("mm-circle-nouvelle");
   var chargerBtn  = document.getElementById("mm-circle-charger");
+  var codexBtn    = document.getElementById("mm-circle-codex");
 
   // Level 2 buttons
   var subGame   = document.getElementById("mm-sub-game");
   var departBtn = document.getElementById("mm-circle-depart");
   var retourBtn = document.getElementById("mm-circle-retour");
-  var codexBtn  = document.getElementById("mm-circle-codex");
   var tournoisBtn = document.getElementById("mm-circle-tournois");
   var backGame  = document.getElementById("mm-sub-game-back");
 
@@ -221,45 +221,34 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
       closeMainMenu(function(){ onResumeVoyage() });
     };
   }
+  /* ---- Codex (level 1) ---- */
   var codexList = document.getElementById("mm-codex-list");
-  var subButtons = subGame ? subGame.querySelector(".mm-sub-buttons") : null;
 
   if(codexBtn){
     codexBtn.onclick = function(){
-      if(subButtons) subButtons.style.display = "none";
+      if(mainCirc) mainCirc.style.display = "none";
       if(codexList) codexList.style.display = "";
-      if(codexBtn) codexBtn.style.display = "none";
-      if(tournoisBtn) tournoisBtn.style.display = "none";
-      if(departBtn) departBtn.style.display = "none";
-      if(retourBtn) retourBtn.style.display = "none";
     };
   }
+
+  /* ---- Codex back → restore main circles ---- */
+  function closeCodexList(){
+    if(codexList) codexList.style.display = "none";
+    if(mainCirc){ mainCirc.style.display = ""; replayAnimations(mainCirc); }
+  }
+
+  var codexBackBtn = document.getElementById("mm-codex-back");
+  if(codexBackBtn) codexBackBtn.onclick = closeCodexList;
+
   if(tournoisBtn){
     tournoisBtn.onclick = function(){
       // TODO: open Tournois Précédents
     };
   }
 
-  /* ---- Codex back → restore sub-game buttons ---- */
-  function closeCodexList(){
-    if(codexList) codexList.style.display = "none";
-    if(subButtons) subButtons.style.display = "";
-    if(codexBtn) codexBtn.style.display = "";
-    if(tournoisBtn) tournoisBtn.style.display = "";
-    if(departBtn) departBtn.style.display = "";
-    if(retourBtn) retourBtn.style.display = "";
-  }
-
-  var codexBackBtn = document.getElementById("mm-codex-back");
-  if(codexBackBtn) codexBackBtn.onclick = closeCodexList;
-
   /* ---- Back from sub-game to level 1 ---- */
   if(backGame){
     backGame.onclick = function(){
-      if(codexList && codexList.style.display !== "none"){
-        closeCodexList();
-        return;
-      }
       if(mmContent) mmContent.classList.remove("mm-sub-active");
       if(menu) menu.classList.remove("mm-top-align");
       switchTo(subGame, mainCirc);

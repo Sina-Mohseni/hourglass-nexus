@@ -286,7 +286,7 @@
 }
 .mm-main-circles, .mm-sub-circles {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
-  gap: 20px;
+  gap: 20px; max-width: 280px;
 }
 .mm-sub-circles {
   position: absolute; top: 0; left: 0; right: 0;
@@ -337,6 +337,7 @@
 .mm-circle-btn:nth-child(1) { animation-delay: 0s }
 .mm-circle-btn:nth-child(2) { animation-delay: .15s }
 .mm-circle-btn:nth-child(3) { animation-delay: .3s }
+.mm-circle-btn:nth-child(4) { animation-delay: .45s }
 
 @keyframes mmCircleIn {
   from { opacity: 0; transform: scale(.7) translateY(14px) }
@@ -392,7 +393,6 @@
   box-shadow: 0 0 28px rgba(107,16,16,.35), inset 0 0 18px rgba(0,0,0,.5);
 }
 .mm-circle-panorama {
-  flex-basis: 100%;
   display: flex; flex-direction: column; align-items: center;
 }
 .mm-circle-panorama .mm-circle-icon {
