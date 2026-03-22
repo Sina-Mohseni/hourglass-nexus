@@ -770,14 +770,23 @@ function buildDrawerMusiques(){
 
   // Controls
   h += '<div class="mp-controls">';
-  h += '<button class="mp-ctrl-btn mp-ctrl-sm mp-ctrl-mode'
-    + (_mpShuffle ? ' mp-mode-active' : '') + '" id="mp-shuffle" title="Al\u00e9atoire">\ud83d\udd00</button>';
+  h += '<button class="mp-ctrl-btn mp-ctrl-mode'
+    + (_mpShuffle ? ' mp-mode-active' : '') + '" id="mp-shuffle" title="Al\u00e9atoire">'
+    + '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M16 3h5v5"/><path d="M4 20L21 3"/>'
+    + '<path d="M21 16v5h-5"/><path d="M15 15l6 6"/>'
+    + '<path d="M4 4l5 5"/></svg></button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-prev">\u23ee</button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-play" id="mp-play">'
     + (_mpPlaying ? '\u275a\u275a' : '\u25b6') + '</button>';
   h += '<button class="mp-ctrl-btn mp-ctrl-sm" id="mp-next">\u23ed</button>';
-  h += '<button class="mp-ctrl-btn mp-ctrl-sm mp-ctrl-mode'
-    + (_mpRepeatOne ? ' mp-mode-active' : '') + '" id="mp-repeat" title="R\u00e9p\u00e9ter le morceau">\ud83d\udd02</button>';
+  h += '<button class="mp-ctrl-btn mp-ctrl-mode'
+    + (_mpRepeatOne ? ' mp-mode-active' : '') + '" id="mp-repeat" title="R\u00e9p\u00e9ter le morceau">'
+    + '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>'
+    + '<path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>'
+    + '<text x="12" y="15.5" text-anchor="middle" fill="currentColor" stroke="none" font-size="7" font-weight="bold">1</text>'
+    + '</svg></button>';
   h += '</div>';
 
   // Track list
