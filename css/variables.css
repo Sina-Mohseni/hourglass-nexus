@@ -1,43 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap');
 
-/* ══════════ PATH OF EXILE 2 DESIGN SYSTEM ══════════ */
+/* ══════════ DIABLO IV DESIGN SYSTEM ══════════ */
 :root {
-  /* Core palette — PoE2 dark gothic */
-  --blood: #6b1520;
-  --blood-bright: #a82030;
-  --blood-glow: #d43545;
-  --mana: #1a3050;
-  --mana-bright: #2a5580;
-  --mana-glow: #4a8ac0;
-  --gold: #b8964a;
-  --gold-light: #dcc070;
-  --gold-dark: #7a6030;
-  --gold-dim: rgba(184,150,74,.12);
-  --bone: #c4b8a0;
-  --bone-dim: #8a8070;
-  --parchment: #b0a080;
-  --shadow: #08060a;
-  --abyss: #0a080c;
-  --dark-stone: #141218;
-  --stone: #1e1a24;
-  --stone-light: #2a2530;
-  --iron: #3a3540;
-  --ember: #c08030;
-  --ember-glow: rgba(192,128,48,.25);
-  --demon-red: #e02020;
-  --arcane: #7050a0;
-  --arcane-glow: rgba(112,80,160,.35);
-  --frost: #4a90b8;
-  --poison: #20904a;
-
-  /* PoE2-specific accents */
-  --bronze: #5c4a32;
-  --bronze-light: #8a7050;
-  --steel: #606878;
-  --steel-dark: #3a3e48;
-  --corruption: #7d4f69;
-  --corruption-glow: rgba(125,79,105,.3);
-  --void: #1a1a2e;
+  /* Core palette — Diablo IV warm gothic */
+  --blood: #8b1a1a;
+  --blood-bright: #c0392b;
+  --blood-glow: #e74c3c;
+  --mana: #1a3a6b;
+  --mana-bright: #2e5ea6;
+  --mana-glow: #5b8fd4;
+  --gold: #c9a04a;
+  --gold-light: #e8c96a;
+  --gold-dark: #8a6d2b;
+  --gold-dim: rgba(201,160,74,.15);
+  --bone: #d4c8a8;
+  --bone-dim: #a89878;
+  --parchment: #c4b28a;
+  --shadow: #0a0806;
+  --abyss: #0d0b08;
+  --dark-stone: #1a1610;
+  --stone: #2a2318;
+  --stone-light: #3a3020;
+  --iron: #4a4030;
+  --ember: #e8a838;
+  --ember-glow: rgba(232,168,56,.3);
+  --demon-red: #ff3333;
+  --arcane: #9b59b6;
+  --arcane-glow: rgba(155,89,182,.4);
+  --frost: #5dade2;
+  --poison: #27ae60;
 
   /* Typography */
   --font-display: 'Cinzel Decorative', 'Cinzel', serif;
@@ -51,21 +42,20 @@
   --foot-bar-h: 50px;
   --foot-notch-h: 30px;
   --footer-h: 80px;
-  --radius: 2px;
-  --radius-sm: 1px;
+  --radius: 4px;
+  --radius-sm: 2px;
 
-  /* Shadows */
-  --shadow-heavy: 0 8px 32px rgba(0,0,0,.85);
-  --shadow-glow-gold: 0 0 20px rgba(184,150,74,.25);
-  --shadow-glow-red: 0 0 20px rgba(107,21,32,.5);
-  --shadow-glow-blue: 0 0 20px rgba(26,48,80,.5);
-  --shadow-inset: inset 0 2px 8px rgba(0,0,0,.7);
+  /* Shadows — warm Diablo IV tones */
+  --shadow-heavy: 0 8px 32px rgba(0,0,0,.8);
+  --shadow-glow-gold: 0 0 20px rgba(201,160,74,.3);
+  --shadow-glow-red: 0 0 20px rgba(139,26,26,.5);
+  --shadow-glow-blue: 0 0 20px rgba(26,58,107,.5);
+  --shadow-inset: inset 0 2px 8px rgba(0,0,0,.6);
 
-  /* Borders — metallic / angular */
-  --border-stone: 1px solid rgba(58,53,64,.7);
-  --border-gold: 1px solid rgba(184,150,74,.25);
-  --border-ornate: 2px solid rgba(184,150,74,.4);
-  --border-bronze: 1px solid rgba(92,74,50,.6);
+  /* Borders — metallic / ornate */
+  --border-stone: 1px solid rgba(74,64,48,.6);
+  --border-gold: 1px solid rgba(201,160,74,.3);
+  --border-ornate: 2px solid rgba(201,160,74,.5);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent }
@@ -85,23 +75,23 @@ body.intro-active::before,
 body.intro-active::after,
 body.intro-active .bg-decor { display: none; }
 
-/* Stone/void ambient background — PoE2 blueish dark */
+/* Stone/fire ambient background */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 80%, rgba(107,21,32,.06), transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(112,80,160,.04), transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(10,8,12,.96), transparent);
+    radial-gradient(ellipse at 20% 80%, rgba(139,26,26,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(201,160,74,.05), transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(10,8,6,.95), transparent);
   pointer-events: none; z-index: 0;
 }
 
-/* Noise grain overlay — heavier for PoE2 grittiness */
+/* Noise grain overlay */
 body::after {
   content: '';
   position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: .6;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: .5;
 }
 
 /* Fixed day/night background — fullscreen, behind everything */

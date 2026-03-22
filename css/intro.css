@@ -1,19 +1,19 @@
-/* ═══════════ LOADING SCREEN — PoE2 Style ═══════════ */
+/* ═══════════ LOADING SCREEN — Diablo IV ═══════════ */
 .loading-screen {
   position: absolute; inset: 0; z-index: 1100;
-  background: radial-gradient(ellipse at 50% 30%, #141218, #08060a);
+  background: radial-gradient(ellipse at 50% 30%, #1a1610, #0a0806);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .loading-particles {
   position: absolute; inset: 0;
   background:
-    radial-gradient(2px 2px at 15% 25%, rgba(184,150,74,.2), transparent),
-    radial-gradient(1.5px 1.5px at 35% 55%, rgba(107,21,32,.2), transparent),
-    radial-gradient(1px 1px at 55% 15%, rgba(112,80,160,.15), transparent),
-    radial-gradient(1.5px 1.5px at 75% 65%, rgba(184,150,74,.12), transparent),
-    radial-gradient(2px 2px at 25% 75%, rgba(107,21,32,.15), transparent),
-    radial-gradient(1px 1px at 85% 35%, rgba(112,80,160,.1), transparent);
+    radial-gradient(2px 2px at 15% 25%, rgba(232,168,56,.35), transparent),
+    radial-gradient(1.5px 1.5px at 35% 55%, rgba(139,26,26,.3), transparent),
+    radial-gradient(1px 1px at 55% 15%, rgba(201,160,74,.25), transparent),
+    radial-gradient(1.5px 1.5px at 75% 65%, rgba(232,168,56,.2), transparent),
+    radial-gradient(2px 2px at 25% 75%, rgba(139,26,26,.2), transparent),
+    radial-gradient(1px 1px at 85% 35%, rgba(201,160,74,.15), transparent);
   animation: loadParticleDrift 10s linear infinite;
 }
 @keyframes loadParticleDrift {
@@ -22,7 +22,7 @@
 }
 .loading-vignette {
   position: absolute; inset: 0;
-  box-shadow: inset 0 0 150px rgba(0,0,0,.95), inset 0 0 60px rgba(0,0,0,.6);
+  box-shadow: inset 0 0 150px rgba(0,0,0,.95), inset 0 0 60px rgba(0,0,0,.5);
   pointer-events: none;
 }
 .loading-content {
@@ -32,17 +32,17 @@
 }
 .loading-logo {
   width: 100px; height: 100px; object-fit: contain;
-  filter: drop-shadow(0 0 40px rgba(184,150,74,.4)) drop-shadow(0 0 80px rgba(107,21,32,.25));
+  filter: drop-shadow(0 0 40px rgba(201,160,74,.5)) drop-shadow(0 0 80px rgba(139,26,26,.3));
   animation: loadLogoGlow 3s ease-in-out infinite;
 }
 @keyframes loadLogoGlow {
-  0%,100% { filter: drop-shadow(0 0 40px rgba(184,150,74,.4)) drop-shadow(0 0 80px rgba(107,21,32,.25)); transform: scale(1) }
-  50% { filter: drop-shadow(0 0 60px rgba(184,150,74,.6)) drop-shadow(0 0 100px rgba(107,21,32,.4)); transform: scale(1.03) }
+  0%,100% { filter: drop-shadow(0 0 40px rgba(201,160,74,.5)) drop-shadow(0 0 80px rgba(139,26,26,.3)); transform: scale(1) }
+  50% { filter: drop-shadow(0 0 60px rgba(201,160,74,.7)) drop-shadow(0 0 100px rgba(139,26,26,.5)); transform: scale(1.03) }
 }
 .loading-title {
   font-family: var(--font-display); font-size: 20px; font-weight: 900;
   letter-spacing: 6px; color: var(--gold-light);
-  text-shadow: 0 0 24px rgba(184,150,74,.4), 0 4px 16px rgba(0,0,0,.9);
+  text-shadow: 0 0 24px rgba(201,160,74,.5), 0 4px 16px rgba(0,0,0,.9);
   opacity: 0; animation: loadTitleIn 1s ease-out .5s forwards;
 }
 @keyframes loadTitleIn {
@@ -50,16 +50,17 @@
   to { opacity: 1; transform: translateY(0); letter-spacing: 6px }
 }
 .loading-bar-track {
-  width: 200px; height: 2px;
-  background: rgba(92,74,50,.2);
-  overflow: hidden;
+  width: 200px; height: 3px;
+  background: rgba(201,160,74,.1);
+  border-radius: 4px; overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
 }
 .loading-bar-fill {
   width: 0%; height: 100%;
   background: linear-gradient(90deg, var(--blood), var(--gold), var(--gold-light));
+  border-radius: 4px;
   transition: width .3s ease;
-  box-shadow: 0 0 8px rgba(184,150,74,.3);
+  box-shadow: 0 0 8px rgba(201,160,74,.4);
 }
 .loading-subtitle {
   font-family: var(--font-ui); font-size: 10px;
@@ -68,7 +69,7 @@
 }
 @keyframes loadSubIn {
   from { opacity: 0 }
-  to { opacity: .5 }
+  to { opacity: .6 }
 }
 .loading-screen.fading {
   animation: loadFadeOut .8s ease-in forwards;
@@ -78,44 +79,31 @@
   100% { opacity: 0 }
 }
 
-/* ═══════════ MAIN MENU — PoE2 Style ═══════════ */
+/* ═══════════ MAIN MENU — Diablo IV ═══════════ */
 .main-menu {
   position: absolute; inset: 0; z-index: 1050;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  background: #08060a;
+  background: #0a0806;
 }
-/* Angular corner ornaments */
-.main-menu::before,
-.main-menu::after {
+/* Ornate border frame — filigree-style double border */
+.main-menu::before {
   content: '';
-  position: absolute; z-index: 3;
+  position: absolute; inset: 16px; z-index: 3;
+  border: 1px solid rgba(201,160,74,.12);
+  border-radius: 6px;
   pointer-events: none;
 }
-.main-menu::before {
-  inset: 12px;
-  border: 1px solid rgba(92,74,50,.2);
-  clip-path: polygon(
-    0 20px, 20px 0, calc(100% - 20px) 0, 100% 20px,
-    100% calc(100% - 20px), calc(100% - 20px) 100%,
-    20px 100%, 0 calc(100% - 20px)
-  );
-}
 .main-menu::after {
-  top: 10px; left: 10px; right: 10px; bottom: 10px;
-  background:
-    /* Corner ornaments — top-left */
-    linear-gradient(135deg, rgba(92,74,50,.4) 0%, transparent 3%),
-    /* Corner ornaments — top-right */
-    linear-gradient(225deg, rgba(92,74,50,.4) 0%, transparent 3%),
-    /* Corner ornaments — bottom-right */
-    linear-gradient(315deg, rgba(92,74,50,.4) 0%, transparent 3%),
-    /* Corner ornaments — bottom-left */
-    linear-gradient(45deg, rgba(92,74,50,.4) 0%, transparent 3%);
+  content: '';
+  position: absolute; inset: 20px; z-index: 3;
+  border: 1px solid rgba(201,160,74,.06);
+  border-radius: 4px;
+  pointer-events: none;
 }
 .mm-vignette {
   position: absolute; inset: 0; z-index: 1;
-  box-shadow: inset 0 0 200px rgba(0,0,0,.9), inset 0 0 80px rgba(0,0,0,.6);
+  box-shadow: inset 0 0 180px rgba(0,0,0,.85), inset 0 0 60px rgba(0,0,0,.5);
   pointer-events: none;
 }
 .mm-content {
@@ -132,7 +120,7 @@
 .mm-sub-active .mm-menu-circles { margin-top: 0; }
 .mm-sub-active .mm-player-portrait { width: 240px; height: 320px; }
 
-/* Codex dossier list in loaded game */
+/* Codex dossier list */
 .mm-codex-list {
   width: 100%; max-width: 300px;
   display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -141,7 +129,7 @@
   font-family: var(--font-display); font-size: 20px; font-weight: 900;
   letter-spacing: 6px; text-transform: uppercase;
   color: var(--gold-light);
-  text-shadow: 0 0 20px rgba(184,150,74,.4), 0 2px 8px rgba(0,0,0,.9);
+  text-shadow: 0 0 20px rgba(201,160,74,.5), 0 2px 8px rgba(0,0,0,.9);
   margin-bottom: 4px;
   opacity: 0; animation: mmCircleIn .5s ease-out forwards;
 }
@@ -149,50 +137,49 @@
 .mm-codex-item {
   display: flex; align-items: center; gap: 12px;
   padding: 14px 18px; width: 100%;
-  background: linear-gradient(145deg, rgba(20,18,24,.9), rgba(10,8,12,.95));
-  border: 1px solid rgba(92,74,50,.25);
+  background: linear-gradient(145deg, rgba(26,22,16,.85), rgba(13,11,8,.9));
+  border: 1px solid rgba(201,160,74,.2);
+  border-radius: 8px;
   cursor: pointer; transition: all .25s ease;
   opacity: 0; animation: mmCircleIn .5s ease-out forwards;
-  /* Angular clip */
-  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
 }
 .mm-codex-item:nth-child(1) { animation-delay: .05s }
 .mm-codex-item:nth-child(2) { animation-delay: .1s }
 .mm-codex-item:nth-child(3) { animation-delay: .15s }
 .mm-codex-item:nth-child(4) { animation-delay: .2s }
 .mm-codex-item:nth-child(5) { animation-delay: .25s }
-.mm-codex-item:active { border-color: var(--gold); }
+.mm-codex-item:active { transform: scale(.97); border-color: var(--gold); }
 .mm-codex-item-icon {
-  width: 38px; height: 38px;
+  width: 38px; height: 38px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; flex-shrink: 0;
-  background: rgba(0,0,0,.4);
-  border: 1px solid rgba(92,74,50,.3);
-  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(201,160,74,.2);
 }
 .mm-codex-item-name {
   font-family: var(--font-heading); font-size: 12px; font-weight: 700;
   letter-spacing: 1px; text-transform: uppercase;
   color: var(--gold-light);
-  text-shadow: 0 0 8px rgba(184,150,74,.2);
+  text-shadow: 0 0 8px rgba(201,160,74,.3);
   text-align: left;
 }
 .mm-codex-back {
   margin-top: 8px; padding: 10px 24px;
-  background: rgba(20,18,24,.7);
-  border: 1px solid rgba(92,74,50,.2);
+  background: rgba(26,22,16,.7);
+  border: 1px solid rgba(201,160,74,.2);
+  border-radius: 6px;
   font-family: var(--font-heading); font-size: 11px;
   letter-spacing: 1px; text-transform: uppercase;
   color: var(--bone-dim); cursor: pointer;
   transition: all .2s;
   opacity: 0; animation: mmCircleIn .5s ease-out .3s forwards;
-  clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px);
 }
 .mm-codex-back:active { border-color: var(--gold); color: var(--gold-light); }
 
+/* Logo */
 .mm-logo {
   width: 120px; height: 120px; object-fit: contain;
-  filter: drop-shadow(0 0 50px rgba(184,150,74,.4)) drop-shadow(0 0 100px rgba(107,21,32,.25));
+  filter: drop-shadow(0 0 50px rgba(201,160,74,.6)) drop-shadow(0 0 100px rgba(139,26,26,.3));
   opacity: 0; animation: mmLogoIn 1s ease-out .2s forwards, mmLogoFloat 4s ease-in-out 1.2s infinite;
 }
 @keyframes mmLogoIn {
@@ -201,12 +188,12 @@
 }
 @keyframes mmLogoFloat {
   0%,100% { transform: translateY(0) }
-  50% { transform: translateY(-6px) }
+  50% { transform: translateY(-8px) }
 }
 .mm-title {
   font-family: var(--font-display); font-size: 26px; font-weight: 900;
   letter-spacing: 8px; color: var(--gold-light);
-  text-shadow: 0 0 30px rgba(184,150,74,.4), 0 4px 20px rgba(0,0,0,.9);
+  text-shadow: 0 0 30px rgba(201,160,74,.6), 0 4px 20px rgba(0,0,0,.9);
   text-align: center;
   opacity: 0; animation: mmTitleIn 1s ease-out .5s forwards;
 }
@@ -222,19 +209,18 @@
 }
 @keyframes mmTagIn {
   from { opacity: 0; transform: translateY(6px) }
-  to { opacity: .6; transform: translateY(0) }
+  to { opacity: .7; transform: translateY(0) }
 }
 
-
-/* Enter button — PoE2 angular frame */
+/* Enter button — Diablo IV ornate rectangular */
 .mm-enter-btn {
-  margin-top: 30px; padding: 18px 56px;
-  background: linear-gradient(180deg, rgba(92,74,50,.08), rgba(8,6,10,.3));
-  border: 1.5px solid rgba(92,74,50,.4);
+  margin-top: 30px; padding: 18px 50px;
+  background: linear-gradient(180deg, rgba(201,160,74,.06), rgba(139,26,26,.04), rgba(10,8,6,.3));
+  border: 2px solid rgba(201,160,74,.35);
+  border-radius: 4px;
   cursor: pointer;
   position: relative; overflow: hidden;
   opacity: 0; animation: mmEnterIn 1s ease-out 1.2s forwards;
-  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0 50%);
   transition: all .3s;
 }
 @keyframes mmEnterIn {
@@ -243,18 +229,18 @@
 }
 .mm-enter-text {
   font-family: var(--font-heading); font-size: 15px; font-weight: 700;
-  letter-spacing: 5px; text-transform: uppercase;
+  letter-spacing: 4px; text-transform: uppercase;
   color: var(--gold-light);
-  text-shadow: 0 0 12px rgba(184,150,74,.3);
+  text-shadow: 0 0 12px rgba(201,160,74,.4);
   animation: mmEnterPulse 2.5s ease-in-out infinite;
 }
 @keyframes mmEnterPulse {
-  0%,100% { opacity: .6 }
+  0%,100% { opacity: .7 }
   50% { opacity: 1 }
 }
 .mm-enter-btn::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(184,150,74,.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201,160,74,.06), transparent);
   animation: mmEnterShimmer 3s ease-in-out infinite;
 }
 @keyframes mmEnterShimmer {
@@ -264,7 +250,8 @@
 .mm-enter-btn:active {
   transform: scale(.96);
   border-color: var(--gold);
-  background: linear-gradient(180deg, rgba(92,74,50,.15), rgba(8,6,10,.4));
+  background: linear-gradient(180deg, rgba(201,160,74,.12), rgba(139,26,26,.06), rgba(10,8,6,.4));
+  box-shadow: 0 0 24px rgba(201,160,74,.2), inset 0 0 12px rgba(201,160,74,.05);
 }
 .mm-enter-btn.hidden {
   animation: mmEnterOut .4s ease-in forwards;
@@ -304,20 +291,19 @@
 }
 .mm-player-portrait {
   width: 180px; height: 240px;
-  border: 2px solid rgba(92,74,50,.5);
-  background: linear-gradient(180deg, rgba(20,18,24,.9), rgba(8,6,10,.95));
+  border-radius: 8px;
+  border: 2px solid rgba(201,160,74,.4);
+  background: linear-gradient(180deg, rgba(30,25,18,.9), rgba(10,8,6,.95));
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
   font-size: 72px;
-  box-shadow: 0 0 20px rgba(0,0,0,.6), inset 0 0 15px rgba(0,0,0,.5);
+  box-shadow: 0 0 20px rgba(201,160,74,.2), inset 0 0 10px rgba(0,0,0,.5);
   cursor: pointer;
   transition: border-color .3s, box-shadow .3s;
-  /* Angular frame */
-  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
 }
 .mm-player-portrait:hover {
   border-color: var(--gold);
-  box-shadow: 0 0 30px rgba(184,150,74,.2), inset 0 0 15px rgba(0,0,0,.4);
+  box-shadow: 0 0 30px rgba(201,160,74,.35), inset 0 0 10px rgba(0,0,0,.5);
 }
 .mm-player-portrait img {
   width: 100%; height: 100%; object-fit: cover;
@@ -326,10 +312,10 @@
   font-family: var(--font-heading); font-size: 16px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--gold-light);
-  text-shadow: 0 0 12px rgba(184,150,74,.3), 0 1px 8px rgba(0,0,0,.9);
+  text-shadow: 0 0 12px rgba(201,160,74,.4), 0 1px 8px rgba(0,0,0,.9);
 }
 
-/* Individual circle button — PoE2 hexagonal feel */
+/* Individual circle button — Diablo IV round ornate */
 .mm-circle-btn {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   background: none; border: none; cursor: pointer;
@@ -346,69 +332,68 @@
 
 .mm-circle-btn .mm-circle-icon {
   width: 80px; height: 80px; padding: 14px;
-  border: 2px solid rgba(92,74,50,.4);
-  background: radial-gradient(circle at 40% 35%, rgba(20,18,24,.95), rgba(8,6,10,.98));
+  border-radius: 50%;
+  border: 2px solid rgba(201,160,74,.35);
+  background: radial-gradient(circle at 40% 35%, rgba(30,25,18,.9), rgba(10,8,6,.95));
   color: var(--gold-light);
-  box-shadow: 0 0 20px rgba(0,0,0,.5), inset 0 0 20px rgba(0,0,0,.6);
+  box-shadow: 0 0 20px rgba(201,160,74,.15), inset 0 0 15px rgba(0,0,0,.5);
   transition: all .3s ease;
-  /* Octagonal shape */
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 .mm-circle-btn:hover:not(:disabled) .mm-circle-icon {
   border-color: var(--gold);
-  box-shadow: 0 0 30px rgba(184,150,74,.2), inset 0 0 20px rgba(0,0,0,.4);
+  box-shadow: 0 0 30px rgba(201,160,74,.35), inset 0 0 15px rgba(0,0,0,.4);
   transform: scale(1.08);
 }
 .mm-circle-btn:active:not(:disabled) .mm-circle-icon {
   transform: scale(.95);
-  background: radial-gradient(circle at 40% 35%, rgba(30,26,34,.95), rgba(12,10,16,.98));
+  box-shadow: 0 0 40px rgba(201,160,74,.4), inset 0 0 20px rgba(139,26,26,.1);
 }
 .mm-circle-btn:disabled {
-  opacity: .25; cursor: not-allowed;
+  opacity: .3; cursor: not-allowed;
 }
 
 .mm-circle-label {
   font-family: var(--font-heading); font-size: 11px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--bone);
+  color: var(--gold-light);
   text-shadow: 0 1px 8px rgba(0,0,0,.9);
   white-space: nowrap;
 }
 
-/* Special circle colors — PoE2 tones */
+/* Special circle colors */
 .mm-circle-nouvelle .mm-circle-icon {
-  border-color: rgba(107,21,32,.5);
-  box-shadow: 0 0 20px rgba(107,21,32,.2), inset 0 0 20px rgba(0,0,0,.6);
+  border-color: rgba(139,26,26,.5);
+  box-shadow: 0 0 20px rgba(139,26,26,.2), inset 0 0 15px rgba(0,0,0,.5);
 }
 .mm-circle-nouvelle:hover .mm-circle-icon {
-  border-color: rgba(168,32,48,.6);
-  box-shadow: 0 0 30px rgba(107,21,32,.35), inset 0 0 20px rgba(0,0,0,.4);
+  border-color: rgba(200,60,60,.7);
+  box-shadow: 0 0 30px rgba(139,26,26,.4), inset 0 0 15px rgba(0,0,0,.4);
 }
 .mm-circle-charger .mm-circle-icon {
-  border-color: rgba(26,48,80,.5);
-  box-shadow: 0 0 20px rgba(26,48,80,.2), inset 0 0 20px rgba(0,0,0,.6);
+  border-color: rgba(26,58,107,.5);
+  box-shadow: 0 0 20px rgba(26,58,107,.2), inset 0 0 15px rgba(0,0,0,.5);
 }
 .mm-circle-depart .mm-circle-icon {
-  border-color: rgba(107,21,32,.5);
-  box-shadow: 0 0 20px rgba(107,21,32,.2), inset 0 0 20px rgba(0,0,0,.6);
+  border-color: rgba(139,26,26,.5);
+  box-shadow: 0 0 20px rgba(139,26,26,.2), inset 0 0 15px rgba(0,0,0,.5);
 }
 .mm-circle-retour .mm-circle-icon {
-  border-color: rgba(26,48,80,.5);
-  box-shadow: 0 0 20px rgba(26,48,80,.2), inset 0 0 20px rgba(0,0,0,.6);
+  border-color: rgba(26,58,107,.5);
+  box-shadow: 0 0 20px rgba(26,58,107,.2), inset 0 0 15px rgba(0,0,0,.5);
 }
 .mm-circle-codex .mm-circle-icon {
-  border-color: rgba(92,74,50,.5);
+  border-color: rgba(201,160,74,.4);
 }
 .mm-circle-tournois .mm-circle-icon {
-  border-color: rgba(125,79,105,.4);
-  box-shadow: 0 0 20px rgba(125,79,105,.15), inset 0 0 20px rgba(0,0,0,.6);
+  border-color: rgba(160,120,60,.4);
+  box-shadow: 0 0 20px rgba(160,120,60,.15), inset 0 0 15px rgba(0,0,0,.5);
 }
 
-/* Back button (smaller octagon) */
+/* Back button (smaller circle) */
 .mm-circle-back .mm-circle-icon {
   width: 48px; height: 48px; padding: 10px;
-  border-color: rgba(92,74,50,.25);
-  box-shadow: 0 0 10px rgba(0,0,0,.4), inset 0 0 10px rgba(0,0,0,.5);
+  border-color: rgba(201,160,74,.2);
+  box-shadow: 0 0 10px rgba(201,160,74,.1), inset 0 0 10px rgba(0,0,0,.5);
 }
 .mm-circle-icon-sm { width: 48px; height: 48px; }
 .mm-circle-back { align-self: center; margin-top: 4px; }
@@ -432,18 +417,17 @@
 .mm-sub-circles.fading-in .mm-sub-buttons .mm-circle-btn:nth-child(4) { animation-delay: .4s }
 .mm-sub-circles.fading-in .mm-sub-buttons .mm-circle-btn:nth-child(5) { animation-delay: .5s }
 
-/* ── Player info modal — PoE2 angular panel ── */
+/* ── Player info modal ── */
 .mm-player-modal {
   position: absolute; inset: 0; z-index: 100;
-  background: rgba(0,0,0,.85); backdrop-filter: blur(6px);
+  background: rgba(0,0,0,.8); backdrop-filter: blur(6px);
   display: flex; align-items: center; justify-content: center; padding: 16px;
 }
 .mm-player-modal-box {
   position: relative; width: 100%; max-width: 340px;
   background: linear-gradient(180deg, var(--stone), var(--dark-stone));
-  border: var(--border-ornate);
+  border: var(--border-ornate); border-radius: var(--radius);
   padding: 0; box-shadow: var(--shadow-heavy); overflow: hidden;
-  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
 }
 .mm-player-modal-avatar {
   width: 100%; aspect-ratio: 3/4; max-height: 280px;
@@ -473,7 +457,7 @@
 .mm-player-modal-quote {
   font-family: var(--font-ui); font-size: 11px; color: var(--bone);
   font-style: italic; margin-bottom: 12px; line-height: 1.5;
-  opacity: .7;
+  opacity: .8;
 }
 .mm-player-modal-stats {
   display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
@@ -481,37 +465,36 @@
 .mm-player-modal-stat {
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-ui); font-size: 10px; color: var(--bone-dim);
-  padding: 4px 0; border-bottom: 1px solid rgba(92,74,50,.15);
+  padding: 4px 0; border-bottom: 1px solid rgba(201,160,74,.1);
 }
 .mm-player-modal-stat-val {
   font-weight: 600; color: var(--gold-light);
 }
 .mm-player-modal-close {
   position: absolute; top: 8px; right: 8px;
-  width: 28px; height: 28px;
-  background: rgba(8,6,10,.7); border: 1px solid var(--bronze);
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(10,8,6,.7); border: 1px solid var(--gold-dark);
   color: var(--bone-dim); font-size: 14px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   z-index: 2; backdrop-filter: blur(4px);
-  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 .mm-player-modal-close:active { background: var(--blood) }
 
-/* Volume button — PoE2 octagonal */
+/* Volume button */
 .mm-volume-btn {
   position: absolute; bottom: 24px; right: 24px;
   width: 44px; height: 44px;
-  background: rgba(8,6,10,.8);
-  border: 1.5px solid rgba(92,74,50,.3);
+  background: rgba(13,11,8,.7);
+  border: 1.5px solid rgba(201,160,74,.25);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; z-index: 10;
   transition: all .3s;
   backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 .mm-volume-btn:hover {
   border-color: var(--gold);
-  background: rgba(20,18,24,.9);
+  background: rgba(26,22,16,.8);
 }
 .mm-volume-icon {
   width: 20px; height: 20px;
@@ -519,7 +502,7 @@
   transition: color .3s;
 }
 .mm-volume-btn.muted .mm-volume-icon {
-  color: var(--bone-dim);
+  color: var(--gold-dark);
 }
 
 /* Main menu fade out */
@@ -535,7 +518,7 @@
 .resume-intro-overlay {
   position: absolute; inset: 0; z-index: 960;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at 50% 40%, #141218, #08060a);
+  background: radial-gradient(ellipse at 50% 40%, #1a1610, #0a0806);
   overflow: hidden;
 }
 .resume-intro-overlay .ri-vignette {
