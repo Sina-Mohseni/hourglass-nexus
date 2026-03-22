@@ -151,7 +151,7 @@ function populateLockInfoZone(){
   // Determine which infos to show
   var infos = [];
   var isDissident = (scenario === "rebelle");
-  var origin = window._scOriginType; // "champion" or "isole"
+  var origin = window._scOriginType; // "connecte" or "isole"
 
   if(isDissident){
     // Dissident gets same infos as their cover identity + journal
