@@ -32,15 +32,6 @@ function initLoadingScreen(onDone){
     }
   }, msgInterval);
 
-  // Start menu music immediately during loading
-  var bgAudioEarly = document.getElementById("bg-music");
-  if(bgAudioEarly){
-    bgAudioEarly.currentTime = 0;
-    bgAudioEarly.volume = 0;
-    bgAudioEarly.play().catch(function(){});
-    audioFade(bgAudioEarly, 0.4, 2500);
-  }
-
   var start = Date.now();
   function tick(){
     var elapsed = Date.now() - start;
@@ -92,8 +83,19 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(chargerBtn && hasSave) chargerBtn.disabled = false;
   if(retourBtn && hasSave) retourBtn.disabled = false;
 
-  // Volume button visible from the start (music already playing)
-  if(volBtn) volBtn.style.display = "";
+  // Volume button hidden until "Entrer" is clicked
+  if(volBtn) volBtn.style.display = "none";
+
+  /* ---- Play music on first user interaction ---- */
+  function playAll(){
+    if(audio){
+      audio.currentTime = 0;
+      audio.volume = 0;
+      audio.play().catch(function(){});
+      audioFade(audio, 0.4, 1500);
+    }
+    if(volBtn) volBtn.style.display = "";
+  }
 
   /* ---- Replay animations on buttons ---- */
   function replayAnimations(container){
@@ -134,6 +136,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- "Entrer" = start everything ---- */
   if(enterBtn){
     enterBtn.onclick = function(){
+      playAll();
       showCircles();
     };
   }

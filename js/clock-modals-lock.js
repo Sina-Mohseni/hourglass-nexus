@@ -56,12 +56,15 @@ function initLock(){
   var giImg = document.getElementById("lock-guide-img");
   if(guide && guide.avatar && giImg) giImg.src = guide.avatar;
 
-  // Start extelua music when guide appears on lock screen
-  var bgAudio = document.getElementById("bg-music");
-  var extAudio = document.getElementById("extelua-music");
-  if(extAudio){
+  // Extelua music will start on first drag of the guide (user gesture required)
+  var _lockMusicStarted = false;
+  function startExteluaMusic(){
+    if(_lockMusicStarted) return;
+    _lockMusicStarted = true;
+    var bgAudio = document.getElementById("bg-music");
+    var extAudio = document.getElementById("extelua-music");
+    if(!extAudio) return;
     if(bgAudio && !bgAudio.paused){
-      // Crossfade from menu music to extelua
       audioCrossfade(bgAudio, extAudio, 0.4, 2000, 0.4);
     } else {
       extAudio.currentTime = 0;
@@ -217,6 +220,7 @@ function initLock(){
       if(tp==="mouse" && isTouch) return;
       var c=gc(gi),p=gxy(e); off.x=c.x-p.x; off.y=c.y-p.y;
       isDrag=true; gi.classList.add("dragging");
+      startExteluaMusic();
       var label = gi.querySelector(".lock-guide-label");
       if(label) label.textContent = "R\u00e9veill\u00e9 !";
       var mv=tp==="pointer"?"pointermove":tp==="touch"?"touchmove":"mousemove";
