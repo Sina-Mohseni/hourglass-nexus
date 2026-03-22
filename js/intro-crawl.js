@@ -528,10 +528,12 @@ function showScenarioChoice(onChosen){
       label.className = "sc-circle-label";
       label.style.left = positions[i].left;
       label.style.top = positions[i].top;
-      label.innerHTML = '<span class="sc-circle-label-text">' + s.name + '</span>';
+      label.innerHTML =
+        '<span class="sc-circle-label-text">' + s.name + '</span>' +
+        '<span class="sc-circle-label-plus">+</span>';
       arena.insertBefore(label, guide);
 
-      // Click on label → show lore modal
+      // Click on label/plus → show lore modal
       label.onclick = function(e){
         e.stopPropagation();
         showScenarioLore(s.name, s.lore);
@@ -555,6 +557,26 @@ function showScenarioChoice(onChosen){
       }, 500);
     }
   }
+
+  // Back button
+  var backBtn = document.getElementById("sc-back-btn");
+  function goBackToStep1(){
+    // Clean up circles and labels
+    arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+    // Clean up drag listeners
+    if(window._scDragCleanup) window._scDragCleanup();
+
+    if(step2){
+      step2.classList.add("fading-out");
+      setTimeout(function(){
+        step2.style.display = "none";
+        step2.classList.remove("fading-out");
+        if(step1) step1.style.display = "";
+      }, 500);
+    }
+  }
+  if(backBtn) backBtn.onclick = goBackToStep1;
 
   if(btnChampion) btnChampion.onclick = function(){ goToStep2("champion"); };
   if(btnEmissaire) btnEmissaire.onclick = function(){ goToStep2("emissaire"); };
@@ -705,6 +727,9 @@ function showScenarioChoice(onChosen){
     document.addEventListener("touchmove", onMove, {passive: false});
     document.addEventListener("pointerup", onEnd);
     document.addEventListener("touchend", onEnd);
+
+    // Expose cleanup for back button
+    window._scDragCleanup = cleanup;
   }
 }
 
