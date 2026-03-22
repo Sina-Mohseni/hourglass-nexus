@@ -56,6 +56,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   var nouvelleBtn = document.getElementById("mm-circle-nouvelle");
   var chargerBtn  = document.getElementById("mm-circle-charger");
   var codexBtn    = document.getElementById("mm-circle-codex");
+  var introBtn    = document.getElementById("mm-circle-intro");
 
   // Level 2 buttons
   var subGame   = document.getElementById("mm-sub-game");
@@ -141,6 +142,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
         closeMainMenu(function(){ onResumeVoyage() });
       });
     };
+  }
+
+  /* ---- Intro modal ---- */
+  if(introBtn){
+    introBtn.onclick = function(){ showIntroModal(menu); };
   }
 
   /* ---- Player info modal ---- */
