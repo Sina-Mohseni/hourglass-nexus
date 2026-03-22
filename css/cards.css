@@ -1,109 +1,109 @@
-/* ═══════════ TCG CARDS ═══════════ */
+/* ═══════════ TCG CARDS — D4 dark forged ═══════════ */
 .tcg-card {
   position: relative; overflow: hidden;
-  background: linear-gradient(160deg, var(--stone), var(--dark-stone));
-  border: var(--border-ornate); border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(22,18,12,.95), rgba(10,8,6,.98));
+  border: var(--border-ornate);
   cursor: pointer; transition: all .25s;
-  box-shadow: var(--shadow-heavy);
+  box-shadow: var(--shadow-panel);
 }
 .tcg-card:active { transform: scale(.97) }
-.tcg-card.selected { border-color: var(--gold-light); box-shadow: 0 0 20px var(--ember-glow) }
+.tcg-card.selected { border-color: var(--gold-light); box-shadow: 0 0 22px var(--ember-glow) }
 .tcg-card-glow {
   position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 2;
 }
 .tcg-img-wrap {
   position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden;
-  background: var(--abyss);
+  background: #050403;
 }
 .tcg-img-wrap img { width:100%; height:100%; object-fit:cover }
 .tcg-rarity {
   position: absolute; top: 6px; left: 6px;
   font-family: var(--font-ui); font-size: 8px; padding: 2px 6px;
-  border-radius: 2px; color: #000; letter-spacing: .5px; text-transform: uppercase;
+  color: #000; letter-spacing: 1px; text-transform: uppercase;
 }
 .tcg-type {
   position: absolute; top: 6px; right: 6px;
   font-family: var(--font-ui); font-size: 8px; padding: 2px 6px;
-  background: rgba(10,8,6,.7); border-radius: 2px; color: var(--bone);
+  background: rgba(5,4,3,.8); color: var(--bone);
   backdrop-filter: blur(4px);
 }
 .tcg-body { padding: 8px 10px }
 .tcg-name {
   font-family: var(--font-heading); font-size: 12px; font-weight: 700;
-  color: var(--gold-light); letter-spacing: .5px;
+  color: var(--gold-light); letter-spacing: 1px;
 }
 .tcg-desc { font-size: 10px; color: var(--bone-dim); line-height: 1.4; margin-top: 4px }
 .tcg-stats { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px }
 .tcg-stat {
   font-family: var(--font-ui); font-size: 9px;
-  padding: 2px 6px; background: rgba(201,160,74,.1);
-  border: 1px solid rgba(201,160,74,.2); border-radius: 2px;
+  padding: 2px 6px; background: rgba(168,132,42,.06);
+  border: 1px solid rgba(168,132,42,.15);
   color: var(--gold);
 }
 .tcg-quote {
   font-family: var(--font-body); font-style: italic;
   font-size: 10px; color: var(--bone-dim); margin-top: 6px;
-  padding-top: 6px; border-top: 1px solid rgba(74,64,48,.3);
+  padding-top: 6px; border-top: 1px solid rgba(60,48,32,.25);
 }
 
 /* Encyclopedia grid */
-.ency-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px }
+.ency-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px }
 .ency-filters { display:flex; flex-wrap:wrap; gap:4px; padding:0 0 8px }
 .ency-filter {
   font-family: var(--font-ui); font-size: 9px; padding: 4px 8px;
-  background: var(--dark-stone); border: var(--border-stone);
-  border-radius: var(--radius-sm); color: var(--bone-dim);
+  background: rgba(10,8,6,.9); border: var(--border-stone);
+  color: var(--bone-dim);
   cursor: pointer; transition: all .2s;
+  letter-spacing: 1px;
 }
 .ency-filter.active {
-  background: var(--stone); border-color: var(--gold-dark);
+  background: rgba(26,20,14,.95); border-color: var(--gold-dark);
   color: var(--gold-light);
 }
 
-/* ═══════════ PERSONAS ═══════════ */
-.personas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px }
+/* ═══════════ PERSONAS — D4 character cards ═══════════ */
+.personas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px }
 .persona-card {
   position: relative; overflow: hidden;
-  background: linear-gradient(160deg, var(--stone), var(--dark-stone));
-  border: var(--border-stone); border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(22,18,12,.95), rgba(10,8,6,.98));
+  border: var(--border-stone);
   padding: 10px 6px; text-align: center;
   cursor: pointer; transition: all .2s;
 }
 .persona-card:active { transform: scale(.95) }
-.persona-card.selected { border-color: var(--gold); box-shadow: 0 0 12px var(--ember-glow) }
+.persona-card.selected { border-color: var(--gold); box-shadow: 0 0 14px var(--ember-glow) }
 .persona-card.in-team::after {
-  content: '⚔️'; position: absolute; top: 4px; right: 4px; font-size: 10px;
+  content: '\2694\FE0F'; position: absolute; top: 4px; right: 4px; font-size: 10px;
 }
 .pc-avatar {
   width: 40px; height: 40px; border-radius: 50%; margin: 0 auto 6px;
   display: flex; align-items: center; justify-content: center;
   font-size: 16px; font-weight: 700;
-  border: 2px solid rgba(74,64,48,.5); overflow: hidden;
+  border: 2px solid rgba(60,48,32,.45); overflow: hidden;
 }
 .pc-avatar img { width:100%; height:100%; object-fit:cover }
 .pc-name { font-family:var(--font-heading); font-size:10px; font-weight:600; color:var(--bone) }
 .pc-diff { font-family:var(--font-ui); font-size:8px; color:var(--bone-dim); margin-top:2px }
 
-/* Team strip */
+/* Team strip — D4 forged metal bar */
 .team-strip {
   display: flex; align-items: center; gap: 8px;
-  padding: 8px 10px; background: var(--dark-stone);
-  border: var(--border-gold); border-radius: var(--radius);
+  padding: 8px 10px; background: rgba(10,8,6,.9);
+  border: var(--border-gold);
 }
-.ts-label { font-family:var(--font-ui); font-size:10px; color:var(--gold) }
+.ts-label { font-family:var(--font-ui); font-size:10px; color:var(--gold); letter-spacing:1px }
 .ts-slots { display:flex; gap:6px; flex:1 }
 .ts-slot {
   width:36px; height:36px; border-radius:50%;
   border:2px dashed var(--gold-dark);
   display:flex; align-items:center; justify-content:center;
   font-family:var(--font-ui); font-size:12px; color:var(--bone-dim);
-  cursor:pointer; transition:all .2s; background:var(--stone);
+  cursor:pointer; transition:all .2s; background:rgba(10,8,6,.8);
 }
 .ts-slot.filled { border-style:solid; border-color:var(--gold) }
 .ts-slot.filled img { width:100%; height:100%; border-radius:50%; object-fit:cover }
 .ts-auto {
-  background: var(--stone); border: var(--border-gold);
-  border-radius: var(--radius-sm); padding: 4px 8px;
+  background: rgba(20,16,8,.9); border: var(--border-gold);
+  padding: 4px 8px;
   font-size: 14px; cursor: pointer; color: var(--gold);
 }
-

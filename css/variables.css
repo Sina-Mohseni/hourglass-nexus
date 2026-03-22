@@ -1,61 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap');
 
-/* ══════════ DIABLO IV DESIGN SYSTEM ══════════ */
+/* ══════════════════════════════════════════════════════
+   DIABLO IV — DESIGN SYSTEM
+   Dark gothic, forged metal, blood & ember
+   ══════════════════════════════════════════════════════ */
 :root {
-  /* Core palette — Diablo IV warm gothic */
-  --blood: #8b1a1a;
-  --blood-bright: #c0392b;
-  --blood-glow: #e74c3c;
-  --mana: #1a3a6b;
-  --mana-bright: #2e5ea6;
-  --mana-glow: #5b8fd4;
-  --gold: #c9a04a;
-  --gold-light: #e8c96a;
-  --gold-dark: #8a6d2b;
-  --gold-dim: rgba(201,160,74,.15);
-  --bone: #d4c8a8;
-  --bone-dim: #a89878;
-  --parchment: #c4b28a;
-  --shadow: #0a0806;
-  --abyss: #0d0b08;
-  --dark-stone: #1a1610;
-  --stone: #2a2318;
-  --stone-light: #3a3020;
-  --iron: #4a4030;
-  --ember: #e8a838;
-  --ember-glow: rgba(232,168,56,.3);
-  --demon-red: #ff3333;
-  --arcane: #9b59b6;
-  --arcane-glow: rgba(155,89,182,.4);
-  --frost: #5dade2;
-  --poison: #27ae60;
+  /* ── Blood & Health ── */
+  --blood:          #6b1010;
+  --blood-bright:   #9a1a1a;
+  --blood-glow:     #cc2222;
+  --blood-deep:     #3a0808;
+  --demon-red:      #ff2222;
 
-  /* Typography */
-  --font-display: 'Cinzel Decorative', 'Cinzel', serif;
-  --font-heading: 'Cinzel', serif;
-  --font-body: 'Crimson Text', serif;
-  --font-ui: 'MedievalSharp', cursive;
+  /* ── Mana & Arcane ── */
+  --mana:           #12284a;
+  --mana-bright:    #1e4080;
+  --mana-glow:      #4a80c8;
 
-  /* Layout */
-  --head-h: 50px;
-  --head-notch-h: 30px;
-  --foot-bar-h: 50px;
-  --foot-notch-h: 30px;
-  --footer-h: 80px;
-  --radius: 4px;
-  --radius-sm: 2px;
+  /* ── Gold / Metal ── */
+  --gold:           #a8842a;
+  --gold-light:     #d4aa44;
+  --gold-dark:      #6a5020;
+  --gold-dim:       rgba(168,132,42,.12);
+  --gold-pale:      #e8d090;
+  --ember:          #cc8020;
+  --ember-glow:     rgba(204,128,32,.25);
 
-  /* Shadows — warm Diablo IV tones */
-  --shadow-heavy: 0 8px 32px rgba(0,0,0,.8);
-  --shadow-glow-gold: 0 0 20px rgba(201,160,74,.3);
-  --shadow-glow-red: 0 0 20px rgba(139,26,26,.5);
-  --shadow-glow-blue: 0 0 20px rgba(26,58,107,.5);
-  --shadow-inset: inset 0 2px 8px rgba(0,0,0,.6);
+  /* ── Stone / Surfaces ── */
+  --bone:           #c8b898;
+  --bone-dim:       #887860;
+  --parchment:      #b0a078;
+  --shadow:         #060504;
+  --abyss:          #0a0806;
+  --dark-stone:     #141008;
+  --stone:          #1e1810;
+  --stone-light:    #2a2018;
+  --iron:           #3a3028;
 
-  /* Borders — metallic / ornate */
-  --border-stone: 1px solid rgba(74,64,48,.6);
-  --border-gold: 1px solid rgba(201,160,74,.3);
-  --border-ornate: 2px solid rgba(201,160,74,.5);
+  /* ── Accent ── */
+  --arcane:         #7744aa;
+  --arcane-glow:    rgba(119,68,170,.35);
+  --frost:          #4488bb;
+  --poison:         #228844;
+
+  /* ── Typography — Gothic Diablo IV ── */
+  --font-display:   'Cinzel Decorative', 'Cinzel', serif;
+  --font-heading:   'Cinzel', serif;
+  --font-body:      'Crimson Text', Georgia, serif;
+  --font-ui:        'Cinzel', serif;
+
+  /* ── Layout ── */
+  --head-h:         50px;
+  --head-notch-h:   30px;
+  --foot-bar-h:     50px;
+  --foot-notch-h:   30px;
+  --footer-h:       80px;
+  --radius:         2px;
+  --radius-sm:      1px;
+
+  /* ── Shadows — heavy gothic ── */
+  --shadow-heavy:   0 4px 20px rgba(0,0,0,.9), 0 1px 4px rgba(0,0,0,.7);
+  --shadow-glow-gold: 0 0 16px rgba(168,132,42,.25), 0 0 4px rgba(168,132,42,.15);
+  --shadow-glow-red:  0 0 16px rgba(107,16,16,.5), 0 0 4px rgba(107,16,16,.3);
+  --shadow-glow-blue: 0 0 16px rgba(18,40,74,.5);
+  --shadow-inset:   inset 0 2px 10px rgba(0,0,0,.8), inset 0 0 4px rgba(0,0,0,.4);
+  --shadow-panel:   0 0 40px rgba(0,0,0,.95), 0 2px 8px rgba(0,0,0,.8), inset 0 1px 0 rgba(168,132,42,.08);
+
+  /* ── Borders — forged metal ── */
+  --border-stone:   1px solid rgba(60,48,32,.5);
+  --border-gold:    1px solid rgba(168,132,42,.3);
+  --border-ornate:  2px solid rgba(168,132,42,.45);
+  --border-heavy:   3px solid rgba(168,132,42,.5);
+
+  /* ── Filigree gradient (reusable for separators/ornaments) ── */
+  --filigree:       linear-gradient(90deg, transparent 0%, rgba(168,132,42,.05) 10%, rgba(168,132,42,.35) 30%, rgba(168,132,42,.5) 50%, rgba(168,132,42,.35) 70%, rgba(168,132,42,.05) 90%, transparent 100%);
+  --filigree-red:   linear-gradient(90deg, transparent, rgba(107,16,16,.4) 30%, rgba(168,132,42,.5) 50%, rgba(107,16,16,.4) 70%, transparent);
+  --filigree-subtle: linear-gradient(90deg, transparent, rgba(168,132,42,.15) 30%, rgba(168,132,42,.25) 50%, rgba(168,132,42,.15) 70%, transparent);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent }
@@ -63,7 +83,7 @@ html, body { margin:0; padding:0 }
 
 body {
   font-family: var(--font-body);
-  background: var(--abyss);
+  background: #050403;
   color: var(--bone);
   min-height: 100vh; min-height: 100dvh;
   overflow: hidden;
@@ -75,23 +95,23 @@ body.intro-active::before,
 body.intro-active::after,
 body.intro-active .bg-decor { display: none; }
 
-/* Stone/fire ambient background */
+/* Stone/ember ambient background — darker, more oppressive */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 80%, rgba(139,26,26,.08), transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(201,160,74,.05), transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(10,8,6,.95), transparent);
+    radial-gradient(ellipse at 15% 85%, rgba(107,16,16,.06), transparent 45%),
+    radial-gradient(ellipse at 85% 15%, rgba(168,132,42,.03), transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(10,8,6,.98), transparent);
   pointer-events: none; z-index: 0;
 }
 
-/* Noise grain overlay */
+/* Noise grain overlay — heavier, more stone-like */
 body::after {
   content: '';
   position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: .7;
 }
 
 /* Fixed day/night background — fullscreen, behind everything */
@@ -112,7 +132,7 @@ body::after {
   background-image: url('../assets/bg-decor-nuit.png');
   opacity: 0;
 }
-.bg-decor.active { opacity: .55 }
+.bg-decor.active { opacity: .45 }
 
 .sanctuary { width:100vw; height:100vh; height:100dvh; position:relative; overflow:hidden; z-index:5 }
 .screen { position:absolute; inset:0; overflow:hidden; display:flex; flex-direction:column }

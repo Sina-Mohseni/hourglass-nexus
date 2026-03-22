@@ -1,17 +1,21 @@
-/* ═══════════ USER / CHARACTER PAGE ═══════════ */
+/* ═══════════ USER / CHARACTER PAGE — D4 dark panel ═══════════ */
 .user-profile-header {
   position: relative; overflow: hidden;
-  margin: 10px 12px; border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--stone) 0%, var(--dark-stone) 100%);
+  margin: 10px 12px;
+  background: linear-gradient(180deg, var(--stone), var(--dark-stone));
   border: var(--border-ornate);
-  box-shadow: var(--shadow-heavy);
+  box-shadow: var(--shadow-panel);
+}
+.user-profile-header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 5;
+  background: var(--filigree-red);
 }
 .uph-glow {
   position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 2;
 }
 .uph-portrait {
   position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden;
-  background: linear-gradient(180deg, var(--dark-stone), var(--abyss));
+  background: linear-gradient(180deg, var(--dark-stone), #050403);
 }
 .uph-portrait img { width:100%; height:100%; object-fit:cover }
 .uph-empty {
@@ -21,88 +25,88 @@
 }
 .uph-rarity {
   position: absolute; top: 10px; left: 10px; z-index: 3;
-  font-family: var(--font-ui); font-size: 9px; font-weight: 600;
-  padding: 3px 10px; border-radius: 2px; color: #000;
-  letter-spacing: 1px; text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+  font-family: var(--font-ui); font-size: 9px; font-weight: 700;
+  padding: 3px 10px; color: #000;
+  letter-spacing: 2px; text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0,0,0,.6);
 }
 .uph-overlay {
   position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-  padding: 40px 14px 14px;
-  background: linear-gradient(0deg, rgba(10,8,6,.95), transparent);
+  padding: 50px 14px 14px;
+  background: linear-gradient(0deg, rgba(5,4,3,.96), transparent);
 }
 .uph-name {
   font-family: var(--font-display); font-size: 18px; font-weight: 700;
-  letter-spacing: 2px; text-shadow: 0 0 12px currentColor, 0 2px 6px rgba(0,0,0,.8);
+  letter-spacing: 3px; text-shadow: 0 0 14px currentColor, 0 2px 8px rgba(0,0,0,.9);
 }
-.uph-title { font-family:var(--font-ui); font-size:10px; color:var(--bone-dim); margin-top:2px }
+.uph-title { font-family:var(--font-ui); font-size:10px; color:var(--bone-dim); margin-top:2px; letter-spacing:1px }
 .uph-edit {
   position: absolute; top: 10px; right: 10px; z-index: 4;
-  width: 32px; height: 32px; border-radius: 50%;
-  background: rgba(42,35,24,.8); border: 1px solid var(--gold-dark);
+  width: 32px; height: 32px;
+  background: rgba(20,16,8,.85); border: 1px solid var(--gold-dark);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; font-size: 14px; color: var(--gold);
   transition: all .2s;
 }
 .uph-edit:active { background: var(--gold-dark); color: #000 }
 
-/* Stats bar */
+/* Stats bar — D4 forged segments */
 .user-stats-bar {
-  display: flex; gap: 4px;
-  background: var(--dark-stone); border: var(--border-stone);
-  border-radius: var(--radius); overflow: hidden;
+  display: flex; gap: 0;
+  background: rgba(10,8,6,.9); border: var(--border-stone);
+  overflow: hidden;
 }
 .us-stat {
   flex: 1; text-align: center; padding: 8px 4px;
-  border-right: 1px solid rgba(74,64,48,.3);
+  border-right: 1px solid rgba(60,48,32,.3);
 }
 .us-stat:last-child { border-right: none }
 .us-stat-val {
   font-family: var(--font-heading); font-size: 13px; font-weight: 700;
-  color: var(--gold-light); text-shadow: 0 0 6px rgba(201,160,74,.3);
+  color: var(--gold-light); text-shadow: 0 0 6px rgba(168,132,42,.25);
 }
-.us-stat-lbl { font-family: var(--font-ui); font-size: 8px; color: var(--bone-dim); margin-top: 2px }
+.us-stat-lbl { font-family: var(--font-ui); font-size: 8px; color: var(--bone-dim); margin-top: 2px; letter-spacing: 1px }
 
-/* Section grid buttons */
+/* Section grid buttons — D4 forged squares */
 .dr-user-sections {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
   padding: 0 12px;
 }
 .dr-user-section {
   display: flex; flex-direction: column; align-items: center; gap: 4px;
-  padding: 10px 4px; border-radius: var(--radius);
-  background: linear-gradient(145deg, var(--stone), var(--dark-stone));
+  padding: 10px 4px;
+  background: linear-gradient(180deg, rgba(26,20,14,.95), rgba(14,10,6,.98));
   border: var(--border-stone); cursor: pointer; transition: all .2s;
   box-shadow: var(--shadow-inset);
 }
 .dr-user-section:active { transform: scale(.95) }
 .dr-user-section.selected {
-  border-color: var(--gold); background: linear-gradient(145deg, var(--stone-light), var(--stone));
-  box-shadow: 0 0 12px var(--ember-glow);
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(34,28,18,.95), rgba(20,16,10,.98));
+  box-shadow: 0 0 14px var(--ember-glow);
 }
 .us-icon {
-  font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+  font-size: 22px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.6));
   display: flex; align-items: center; justify-content: center;
 }
 .us-icon img { width: 28px; height: 28px; object-fit: contain }
-.us-name { font-family:var(--font-ui); font-size:9px; color:var(--bone-dim); text-align:center }
+.us-name { font-family:var(--font-ui); font-size:9px; color:var(--bone-dim); text-align:center; letter-spacing:.5px }
 
-/* Save button on user page */
+/* Save button — D4 blue action */
 .user-save-btn {
   display: block; width: 100%; padding: 14px;
   font-family: var(--font-heading); font-size: 13px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  letter-spacing: 2px; text-transform: uppercase;
   color: var(--bone);
-  background: linear-gradient(145deg, var(--mana), var(--mana-bright));
-  border: 2px solid var(--gold-dark); border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--mana), rgba(12,20,40,.95));
+  border: 2px solid var(--gold-dark);
   cursor: pointer; transition: all .3s;
-  text-shadow: 0 2px 6px rgba(0,0,0,.6);
-  box-shadow: 0 4px 16px rgba(26,58,107,.3);
+  text-shadow: 0 2px 6px rgba(0,0,0,.7);
+  box-shadow: 0 4px 18px rgba(18,40,74,.25);
 }
 .user-save-btn:active { transform: scale(.97) }
 .user-save-info {
   font-family: var(--font-ui); font-size: 9px;
   color: var(--bone-dim); text-align: center;
-  margin-top: 6px; letter-spacing: .5px;
+  margin-top: 6px; letter-spacing: 1px;
 }
-

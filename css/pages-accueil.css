@@ -1,53 +1,58 @@
-/* ═══════════ ACCUEIL PAGE ═══════════ */
+/* ═══════════ ACCUEIL PAGE — D4 dark cathedral ═══════════ */
 .welcome-hero { text-align:center; padding:6px 16px 6px }
 .logo-container { position:relative; display:inline-block; margin-bottom:6px }
 .logo-container img {
   width: 70px; height: 70px; object-fit: contain;
-  filter: drop-shadow(0 0 24px rgba(201,160,74,.5)) drop-shadow(0 0 48px rgba(139,26,26,.3));
-  animation: logoFlame 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 28px rgba(168,132,42,.4)) drop-shadow(0 0 56px rgba(107,16,16,.25));
+  animation: logoFlame 5s ease-in-out infinite;
 }
 @keyframes logoFlame {
-  0%,100% { filter: drop-shadow(0 0 24px rgba(201,160,74,.5)) drop-shadow(0 0 48px rgba(139,26,26,.3)) }
-  50% { filter: drop-shadow(0 0 32px rgba(201,160,74,.7)) drop-shadow(0 0 56px rgba(139,26,26,.5)) }
+  0%,100% { filter: drop-shadow(0 0 28px rgba(168,132,42,.4)) drop-shadow(0 0 56px rgba(107,16,16,.25)) }
+  50% { filter: drop-shadow(0 0 38px rgba(168,132,42,.55)) drop-shadow(0 0 64px rgba(107,16,16,.4)) }
 }
 .logo-ring {
   position:absolute; inset:-14px; border-radius:50%;
-  border: 1px solid rgba(201,160,74,.15);
-  animation: ringBurn 5s ease-in-out infinite;
+  border: 1px solid rgba(168,132,42,.1);
+  animation: ringBurn 6s ease-in-out infinite;
 }
 @keyframes ringBurn {
-  0%,100% { transform:scale(1) rotate(0deg); opacity:.3 }
-  50% { transform:scale(1.1) rotate(3deg); opacity:.1 }
+  0%,100% { transform:scale(1) rotate(0deg); opacity:.25 }
+  50% { transform:scale(1.08) rotate(2deg); opacity:.08 }
 }
 
 .welcome-title {
-  font-family: var(--font-display); font-size: 18px; font-weight: 900;
-  letter-spacing: 4px; color: var(--gold-light);
-  text-shadow: 0 0 16px rgba(201,160,74,.5), 0 4px 8px rgba(0,0,0,.8);
+  font-family: var(--font-display); font-size: 20px; font-weight: 900;
+  letter-spacing: 5px; color: var(--gold-light);
+  text-shadow: 0 0 20px rgba(168,132,42,.4), 0 4px 10px rgba(0,0,0,.9);
   margin-bottom: 2px;
 }
-.welcome-title .accent { color: var(--blood-bright) }
+.welcome-title .accent { color: var(--blood-glow) }
 .welcome-subtitle {
   font-family: var(--font-ui); font-size: 10px;
-  color: var(--bone-dim); letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone-dim); letter-spacing: 3px; text-transform: uppercase;
 }
 
-/* Story intro card */
+/* Story intro card — D4 dark panel with filigree */
 .story-card {
-  margin: 6px 12px; padding: 12px;
-  background: linear-gradient(160deg, var(--dark-stone), var(--stone));
-  border: var(--border-gold); border-radius: var(--radius);
+  margin: 6px 12px; padding: 14px;
+  background: linear-gradient(180deg, rgba(20,16,8,.95), rgba(10,8,6,.98));
+  border: var(--border-gold);
   position: relative; overflow: hidden;
-  box-shadow: var(--shadow-heavy);
+  box-shadow: var(--shadow-panel);
 }
 .story-card::before {
   content: ''; position:absolute; top:0; left:0; right:0; height:2px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--blood-bright), var(--gold), transparent);
+  background: var(--filigree-red);
+}
+.story-card::after {
+  content: ''; position:absolute; bottom:0; left:10%; right:10%; height:1px;
+  background: var(--filigree-subtle);
 }
 .story-card-title {
   font-family: var(--font-heading); font-size: 13px; font-weight: 700;
-  letter-spacing: 1px; margin-bottom: 8px; color: var(--gold-light);
-  text-shadow: 0 0 8px rgba(201,160,74,.3);
+  letter-spacing: 2px; margin-bottom: 8px; color: var(--gold-light);
+  text-shadow: 0 0 8px rgba(168,132,42,.25);
+  text-transform: uppercase;
 }
 .story-card p {
   font-size: 12px; color: var(--bone-dim); line-height: 1.5; margin-bottom: 4px;
@@ -56,41 +61,46 @@
 .story-card .sg { color: var(--gold-light); font-weight: 600 }
 .story-card .sc { color: var(--frost); font-weight: 600 }
 
-/* Guide card on accueil */
+/* Guide card — D4 dark forged banner */
 .accueil-guide {
   margin: 6px 12px; padding: 12px;
-  background: linear-gradient(145deg, rgba(30,24,18,.9), rgba(20,16,12,.95));
-  border: var(--border-gold); border-radius: var(--radius);
-  box-shadow: var(--shadow-heavy);
+  background: linear-gradient(180deg, rgba(22,18,12,.94), rgba(12,10,6,.97));
+  border: var(--border-gold);
+  box-shadow: var(--shadow-panel);
   transition: border-color .25s, box-shadow .25s, background .25s;
+  position: relative;
+}
+.accueil-guide::before {
+  content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: var(--filigree-subtle);
 }
 .accueil-guide-header { display:flex; align-items:center; gap:10px; margin-bottom:8px }
-.ag-avatar { width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid var(--gold-dark); box-shadow:0 0 12px rgba(201,160,74,.2) }
+.ag-avatar { width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid var(--gold-dark); box-shadow:0 0 14px rgba(168,132,42,.15) }
 .ag-info { flex:1 }
-.ag-name { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--gold-light) }
-.ag-title { font-family:var(--font-ui); font-size:10px; color:var(--bone-dim) }
+.ag-name { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--gold-light); letter-spacing:1px }
+.ag-title { font-family:var(--font-ui); font-size:10px; color:var(--bone-dim); letter-spacing:1px }
 .ag-bio { font-size:12px; color:var(--bone-dim); line-height:1.6 }
 
-/* Active banner state (profil / ATOM on user page) */
+/* Active banner state */
 .accueil-guide.active-banner {
   border-color: var(--gold);
-  background: linear-gradient(145deg, rgba(42,35,24,.95), rgba(26,22,16,.98));
-  box-shadow: var(--shadow-heavy), 0 0 16px rgba(201,160,74,.2);
+  background: linear-gradient(180deg, rgba(34,28,18,.96), rgba(18,14,10,.98));
+  box-shadow: var(--shadow-panel), 0 0 18px rgba(168,132,42,.15);
 }
 .accueil-guide.active-banner .ag-avatar {
   border-color: var(--gold-light);
-  box-shadow: 0 0 14px rgba(201,160,74,.35);
+  box-shadow: 0 0 16px rgba(168,132,42,.3);
 }
 
-/* Accueil team bar */
+/* Camp & job banners */
 .accueil-guide.camp-banner {
   position:relative;
   overflow:hidden;
 }
 .accueil-guide.camp-banner::after {
   content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
-  background: linear-gradient(180deg, transparent, #c9a04a, transparent);
-  opacity:.3;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  opacity:.25;
 }
 .accueil-guide.job-banner {
   position:relative;
@@ -99,15 +109,15 @@
 .accueil-guide.job-banner::after {
   content:''; position:absolute; top:0; right:0; bottom:0; width:3px;
   background: linear-gradient(180deg, transparent, var(--gold-dark), transparent);
-  opacity:.4;
+  opacity:.35;
 }
 .accueil-team-hint { text-align:center; padding:16px; font-size:11px; color:var(--bone-dim); font-style:italic }
 .accueil-team-bar {
   margin:8px 12px; padding:10px 14px;
-  background:var(--dark-stone); border:var(--border-gold);
-  border-radius:var(--radius); display:flex; align-items:center; gap:8px;
+  background:rgba(10,8,6,.9); border:var(--border-gold);
+  display:flex; align-items:center; gap:8px;
 }
-.at-label { font-family:var(--font-ui); font-size:10px; color:var(--gold); letter-spacing:1px }
+.at-label { font-family:var(--font-ui); font-size:10px; color:var(--gold); letter-spacing:2px }
 .at-member {
   width:36px; height:36px; border-radius:50%;
   border:2px solid var(--gold-dark); overflow:hidden;
@@ -116,11 +126,15 @@
 }
 .at-member img { width:100%; height:100%; object-fit:cover }
 
-/* ═══════════ SECTION TITLE ═══════════ */
+/* ═══════════ SECTION TITLE — D4 with filigree ═══════════ */
 .section-title {
   font-family: var(--font-heading); font-size: 12px; font-weight: 700;
-  letter-spacing: 1.5px; color: var(--gold);
+  letter-spacing: 2px; color: var(--gold);
   padding: 12px 14px 6px; text-transform: uppercase;
-  text-shadow: 0 0 8px rgba(201,160,74,.2);
+  text-shadow: 0 0 8px rgba(168,132,42,.18);
+  position: relative;
 }
-
+.section-title::after {
+  content: ''; display: block; height: 1px; margin-top: 4px;
+  background: var(--filigree-subtle);
+}
