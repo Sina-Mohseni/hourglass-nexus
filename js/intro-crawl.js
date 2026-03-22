@@ -13,7 +13,7 @@ var PRE_IDENTITY_PARAGRAPHS = [
 /* ── Pre-scenario intro (before scenario choice) ── */
 var PRE_SCENARIO_PARAGRAPHS = [
   {text: "TON RÔLE", cls: "ic-title"},
-  {text: "Dans ce Tournoi, chacun arrive avec son histoire. Certains sont des champions désignés par leur peuple, portés par la gloire et les attentes de milliards d'êtres. D'autres sont des émissaires — des inconnus arrachés à des mondes isolés, qui ne savaient même pas que l'univers était si vaste."},
+  {text: "Dans ce Tournoi, chacun arrive avec son histoire. Certains sont des champions désignés par leur peuple, portés par la gloire et les attentes de milliards d'êtres. D'autres sont des isolés — des inconnus arrachés à des mondes coupés de tout, qui ne savaient même pas que l'univers était si vaste."},
   {text: "Mais tous ne jouent pas le même jeu. Derrière les caméras et les acclamations, des forces s'opposent. Morkar surveille. Des dissidents conspirent dans l'ombre. Et certains candidats portent des missions secrètes qu'ils ne peuvent révéler à personne."},
   {text: "Avant que la cérémonie ne commence, une question se pose…", cls: "ic-final"}
 ];
@@ -233,7 +233,7 @@ function showIntroModal(parent){
           'au Réseau Universel. Élus, désignés ou tirés au sort selon les traditions de leur monde, ' +
           'ils arrivent avec leurs sponsors, leurs supporters et la pression de milliards de regards.</p>' +
 
-        '<h3 class="ic-modal-section">LES ÉMISSAIRES</h3>' +
+        '<h3 class="ic-modal-section">LES ISOLÉS</h3>' +
         '<p>Dix places sont réservées aux planètes isolées — des mondes coupés du reste de l\'univers, ' +
           'qui n\'ont parfois jamais eu de contact avec l\'extérieur. Des individus au potentiel ' +
           'remarquable, arrachés à leur quotidien par une invitation qu\'ils ne comprennent pas encore.</p>' +
@@ -303,7 +303,7 @@ function showMorkarPresentation(){
           'Chaque monde connecté envoie son représentant — élu, tiré au sort ou désigné selon les coutumes locales. ' +
           'Ils arrivent avec leur histoire, leurs sponsors et leurs millions de supporters.</p>' +
 
-        '<h3 class="ic-modal-section">LES CANDIDATS — ÉMISSAIRES DES PLANÈTES ISOLÉES</h3>' +
+        '<h3 class="ic-modal-section">LES CANDIDATS — ISOLÉS DES PLANÈTES COUPÉES DU RÉSEAU</h3>' +
         '<p>Dix places sont réservées aux planètes non connectées aux réseaux universels. ' +
           'Des mondes qui n\'ont parfois jamais eu de contact avec l\'extérieur. Morkar envoie des éclaireurs ' +
           'pour identifier et inviter des individus au potentiel remarquable.</p>' +
@@ -321,7 +321,7 @@ function showMorkarPresentation(){
           'dit « Clause de Contrepartie »</em></p>' +
         '<p>La grandeur de la récompense exige un sacrifice à la mesure de son éclat. ' +
           'Nul monde ne saurait être élevé sans que celui qui l\'a porté n\'en paie le prix.</p>' +
-        '<p><strong>Article IX-1 — En cas de victoire (Champion ou Émissaire) :</strong><br>' +
+        '<p><strong>Article IX-1 — En cas de victoire (Champion ou Isolé) :</strong><br>' +
           'La planète d\'origine du vainqueur obtient l\'intégration pleine et immédiate au Réseau Universel, ' +
           'avec tous les privilèges qui en découlent. En contrepartie, le vainqueur s\'engage à renoncer ' +
           'définitivement à toute identité publique. Il sera effacé des registres, coupé de tout contact ' +
@@ -397,11 +397,11 @@ function showJournalArticle(){
         '<h4 class="ic-journal-sub">Ce qu\'on ne dit pas aux perdants</h4>' +
         '<p>Morkar assure que les candidats éliminés « retournent chez eux sans conséquence ». ' +
           'C\'est vrai — du moins pour les champions des planètes connectées, qui rentrent et reprennent leur vie publique. ' +
-          'Mais pour les émissaires des planètes isolées, nos sources décrivent un protocole bien différent.</p>' +
-        '<p>Selon un ancien technicien de Morkar ayant requis l\'anonymat, les émissaires éliminés ' +
+          'Mais pour les isolés des planètes coupées du Réseau, nos sources décrivent un protocole bien différent.</p>' +
+        '<p>Selon un ancien technicien de Morkar ayant requis l\'anonymat, les isolés éliminés ' +
           'ne repartent pas avec leurs souvenirs. Avant d\'être renvoyés sur leur monde d\'origine, ' +
           'ils passeraient par ce que l\'organisation appelle en interne le « Protocole de Réinitialisation ». ' +
-          'Une procédure de réécriture mémorielle. L\'émissaire reçoit des souvenirs fabriqués — une année ' +
+          'Une procédure de réécriture mémorielle. L\'isolé reçoit des souvenirs fabriqués — une année ' +
           'ordinaire, sans tournoi, sans voyage, sans Morkar. Comme si rien ne s\'était jamais passé.</p>' +
         '<p>La justification officieuse ? « Préserver l\'ordre établi. » Un individu issu d\'une planète isolée ' +
           'qui reviendrait chez lui avec la connaissance de l\'univers connecté, des Routes Sillonnées et des ' +
@@ -412,10 +412,10 @@ function showJournalArticle(){
 
         '<h4 class="ic-journal-sub">La clause que Morkar voulait garder secrète</h4>' +
         '<p>Le contrat de participation au Tournoi comporte une clause de confidentialité absolue. ' +
-          'Chaque candidat — champion comme émissaire — s\'engage à ne jamais divulguer les termes exacts ' +
+          'Chaque candidat — champion comme isolé — s\'engage à ne jamais divulguer les termes exacts ' +
           'de son engagement envers Morkar. Le contenu du contrat est classifié, et toute fuite est passible ' +
           'de sanctions dont la nature n\'a jamais été précisée publiquement.</p>' +
-        '<p>Mais Morkar a commis une erreur de conception. Les champions éliminés, contrairement aux émissaires, ' +
+        '<p>Mais Morkar a commis une erreur de conception. Les champions éliminés, contrairement aux isolés, ' +
           'rentrent chez eux avec tous leurs souvenirs. Ils perdent le Tournoi, certes — mais ils se souviennent ' +
           'de chaque ligne qu\'ils ont signée. Et certains ont parlé.</p>' +
         '<p>D\'après les témoignages recoupés de trois anciens champions issus de planètes connectées — ' +
@@ -630,8 +630,8 @@ function showScenarioChoice(onChosen){
       "mais ta priorité est ailleurs. Tu es les yeux et les oreilles de Morkar sur le terrain. Et cette " +
       "année, les rapports de renseignement suggèrent que la menace dissidente est plus forte que jamais."}
   ];
-  var SUB_EMISSAIRE = [
-    {scenario:"lambda", name:"Émissaire isolé", lore:
+  var SUB_ISOLE = [
+    {scenario:"lambda", name:"Isolé", lore:
       "Tu viens d'une planète qui n'a jamais été connectée au Réseau Universel. Ton monde vit en autarcie " +
       "depuis toujours — pas de Routes Sillonnées, pas de communication avec les autres civilisations, pas " +
       "de technologie venue d'ailleurs. Tu ne savais même pas que d'autres mondes habités existaient jusqu'au " +
@@ -647,31 +647,31 @@ function showScenarioChoice(onChosen){
       "Tu fais partie d'un groupe secret qui ne croit pas au système de Morkar. Mais contrairement aux " +
       "dissidents qui s'infiltrent parmi les champions des planètes connectées, toi tu as choisi une " +
       "couverture encore plus profonde. Tu as fait semblant de te retrouver sur une planète isolée, coupée " +
-      "du Réseau, pour être sélectionné comme émissaire — un candidat lambda que personne ne soupçonnera. " +
+      "du Réseau, pour être sélectionné comme isolé — un candidat lambda que personne ne soupçonnera. " +
       "Après tout, comment un habitant d'un monde primitif pourrait-il être un agent de la résistance ? " +
       "C'est le leurre parfait. Morkar surveille de près les champions connectés, car c'est là que les " +
-      "dissidents se sont infiltrés par le passé. Personne ne pense à vérifier les émissaires des planètes " +
-      "isolées — ces pauvres inconnus arrachés à leur quotidien. Ton déguisement est ta meilleure arme. " +
+      "dissidents se sont infiltrés par le passé. Personne ne pense à vérifier les isolés des planètes " +
+      "coupées du Réseau — ces pauvres inconnus arrachés à leur quotidien. Ton déguisement est ta meilleure arme. " +
       "Tu devras jouer le rôle de l'innocent qui découvre l'univers, poser les questions naïves, feindre " +
       "l'émerveillement face aux technologies. Pendant ce temps, tu rassembleras des preuves, tu contacteras " +
-      "d'éventuels alliés, et tu attendras le bon moment pour frapper. Un faux émissaire parmi les vrais, " +
+      "d'éventuels alliés, et tu attendras le bon moment pour frapper. Un faux isolé parmi les vrais, " +
       "invisible aux yeux de ceux qui cherchent — c'est la stratégie la plus audacieuse que la résistance " +
       "ait jamais tentée."}
   ];
 
   /* ── STEP 1: pick type (click) ── */
   var btnChampion = document.getElementById("sc-pick-champion");
-  var btnEmissaire = document.getElementById("sc-pick-emissaire");
+  var btnIsole = document.getElementById("sc-pick-isole");
 
   function goToStep2(type){
-    var subs = (type === "champion") ? SUB_CHAMPION : SUB_EMISSAIRE;
-    window._scOriginType = type; // "champion" or "emissaire"
+    var subs = (type === "champion") ? SUB_CHAMPION : SUB_ISOLE;
+    window._scOriginType = type; // "champion" or "isole"
 
     // Set title
     if(step2Title){
       step2Title.textContent = (type === "champion")
         ? "Quel champion es-tu ?"
-        : "Quel émissaire es-tu ?";
+        : "Quel isolé es-tu ?";
     }
 
     // Inject circles into arena
@@ -759,7 +759,7 @@ function showScenarioChoice(onChosen){
   if(backBtn) backBtn.onclick = goBackToStep1;
 
   if(btnChampion) btnChampion.onclick = function(){ goToStep2("champion"); };
-  if(btnEmissaire) btnEmissaire.onclick = function(){ goToStep2("emissaire"); };
+  if(btnIsole) btnIsole.onclick = function(){ goToStep2("isole"); };
 
   /* ── STEP 2: drag guide to circle ── */
   function initStep2Drag(){
