@@ -658,13 +658,20 @@ function completeCCOrigin(){
 }
 
 function enterMainApp(){
-  // Fade out any intro music still playing, then start ambient music
+  // Fade out any intro music still playing, ensure extelua is playing
   var icAudio = document.getElementById("ic-music");
   var extAudio = document.getElementById("extelua-music");
   if(icAudio && !icAudio.paused){
-    if(extAudio) audioCrossfade(icAudio, extAudio, 0.4, 1500, 0.5);
-    else audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
-  } else if(extAudio){
+    if(extAudio && !extAudio.paused) {
+      // Both playing — just fade out intro music
+      audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
+    } else if(extAudio) {
+      audioCrossfade(icAudio, extAudio, 0.4, 1500, 0.5);
+    } else {
+      audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
+    }
+  } else if(extAudio && extAudio.paused){
+    // Extelua not yet playing — start it
     extAudio.currentTime = 0;
     extAudio.volume = 0;
     extAudio.play().catch(function(){});
