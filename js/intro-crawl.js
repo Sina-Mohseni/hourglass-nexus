@@ -4,13 +4,18 @@
 
 var IC_PARAGRAPHS = [
   {text: "LE TOURNOI D'EXTELUA", cls: "ic-title"},
-  {text: "Depuis des temps immémoriaux, le monde d'Extelua organise le plus grand tournoi que les terres aient jamais connu."},
-  {text: "Tous les deux ans, quarante participants sont choisis parmi les peuples des contrées — guerriers, mages, artisans, rebelles et vagabonds — pour s'affronter dans une épreuve qui dure une année entière."},
-  {text: "Pendant douze lunes, les champions traversent les cités, affrontent des créatures légendaires, résolvent des énigmes ancestrales et forgent des alliances fragiles."},
-  {text: "Le tournoi est bien plus qu'une compétition. C'est un rite sacré, un héritage que chaque génération préserve avec ferveur. Les vainqueurs entrent dans la légende. Les vaincus repartent transformés."},
-  {text: "Nul ne sait exactement comment les quarante sont choisis. Certains reçoivent un sceau marqué du symbole du Nexus. D'autres sont convoqués en rêve. Mais tous ressentent l'appel — une vibration dans les os, un murmure dans le vent."},
-  {text: "Cette année, l'appel résonne à nouveau. Les portes du Nexus s'ouvrent. Le sablier se retourne."},
-  {text: "Et toi, voyageur… tu as été choisi.", cls: "ic-final"}
+  {text: "Extelua. Un univers de milliards d'étoiles reliées par les Routes Sillonnées — d'immenses corridors de voyage supraluminique qui connectent les civilisations les plus avancées entre elles."},
+  {text: "Mais toutes les planètes ne sont pas connectées. Des centaines de mondes isolés, coupés des réseaux universels, vivent sans jamais savoir ce qui se passe au-delà de leur ciel."},
+  {text: "Tous les deux cycles solaires, le groupe Morkar — la plus grande organisation médiatique et diplomatique d'Extelua — organise un événement retransmis dans tout l'univers connecté : le Tournoi d'Extelua."},
+  {text: "Quarante participants sont sélectionnés. Vingt sont les champions officiels des planètes connectées — des figures publiques, des athlètes, des scientifiques, des célébrités déjà connues à travers les réseaux."},
+  {text: "Les vingt autres viennent des planètes isolées. Des inconnus. Des gens ordinaires arrachés à leur quotidien par une invitation qu'ils ne comprennent pas toujours. Morkar appelle cela « la main tendue aux oubliés »."},
+  {text: "Pendant quinze lunes — une année complète d'Extelua — les quarante candidats traversent des mondes, affrontent des épreuves physiques et mentales, forgent des alliances et se trahissent."},
+  {text: "Le tournoi est diffusé en direct sur tous les écrans de l'univers connecté. C'est le plus grand spectacle jamais créé. Des milliards de spectateurs suivent chaque élimination, chaque victoire, chaque drame."},
+  {text: "Morkar présente le tournoi comme un symbole d'unité et de justice — une chance égale offerte à tous les peuples, connectés ou non, de prouver leur valeur et de changer leur destin."},
+  {text: "La récompense promise au vainqueur est légendaire : la citoyenneté universelle pour toute sa planète d'origine, l'accès aux Routes Sillonnées, et une place au Conseil des Mondes."},
+  {text: "Cette année, le sablier se retourne à nouveau. Les invitations ont été envoyées. Les caméras sont prêtes. L'univers entier retient son souffle."},
+  {text: "Et toi… tu as reçu l'appel.", cls: "ic-final"},
+  {text: "", cls: "ic-choices"}
 ];
 
 var _icMuted = false;
@@ -61,15 +66,44 @@ function showIntroCrawl(onDone){
   function showParagraph(idx){
     if(!textZone) return;
     var data = IC_PARAGRAPHS[idx];
+    textZone.innerHTML = "";
+
+    // Special choices screen at the end
+    if(data.cls === "ic-choices"){
+      var wrap = document.createElement("div");
+      wrap.className = "ic-paragraph ic-choices-zone";
+      wrap.innerHTML =
+        '<div class="ic-choices-label">Informations facultatives</div>' +
+        '<button class="ic-info-btn" id="ic-btn-morkar">' +
+          '<span class="ic-info-icon">\u25B6</span>' +
+          '<span class="ic-info-text">Présentation officielle Morkar</span>' +
+          '<span class="ic-info-sub">Retransmission universelle</span>' +
+        '</button>' +
+        '<button class="ic-info-btn" id="ic-btn-journal">' +
+          '<span class="ic-info-icon">\u2756</span>' +
+          '<span class="ic-info-text">L\'Écho des Sillons — Édition spéciale</span>' +
+          '<span class="ic-info-sub">Journal indépendant</span>' +
+        '</button>';
+      textZone.appendChild(wrap);
+
+      // Wire buttons
+      var btnMorkar = document.getElementById("ic-btn-morkar");
+      var btnJournal = document.getElementById("ic-btn-journal");
+      if(btnMorkar) btnMorkar.onclick = function(e){ e.stopPropagation(); showMorkarPresentation(); };
+      if(btnJournal) btnJournal.onclick = function(e){ e.stopPropagation(); showJournalArticle(); };
+
+      if(nextBtn) nextBtn.textContent = "Continuer \u25BA";
+      return;
+    }
+
     var p = document.createElement("div");
     p.className = "ic-paragraph" + (data.cls ? " " + data.cls : "");
     p.textContent = data.text;
-    textZone.innerHTML = "";
     textZone.appendChild(p);
 
-    // Update button text on last paragraph
-    if(idx >= IC_PARAGRAPHS.length - 1 && nextBtn){
-      nextBtn.textContent = "Continuer \u25BA";
+    // Update button text on the "Et toi…" paragraph (second to last)
+    if(data.cls === "ic-final" && nextBtn){
+      nextBtn.textContent = "Suivant \u25BC";
     }
   }
 
@@ -79,7 +113,6 @@ function showIntroCrawl(onDone){
     var currentP = textZone ? textZone.querySelector(".ic-paragraph") : null;
 
     if(paraIdx >= IC_PARAGRAPHS.length - 1){
-      // Last paragraph was showing → end
       endIntro();
       return;
     }
@@ -122,6 +155,138 @@ function showIntroCrawl(onDone){
 
   // Show first paragraph
   showParagraph(0);
+}
+
+/* ══════════ MORKAR PRESENTATION MODAL ══════════ */
+function showMorkarPresentation(){
+  var existing = document.getElementById("ic-modal-overlay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "ic-modal-overlay";
+  overlay.className = "ic-modal-overlay";
+
+  overlay.innerHTML =
+    '<div class="ic-modal">' +
+      '<div class="ic-modal-header">' +
+        '<span class="ic-modal-logo">\u25C6</span>' +
+        '<span class="ic-modal-title">GROUPE MORKAR — RETRANSMISSION OFFICIELLE</span>' +
+      '</div>' +
+      '<div class="ic-modal-body">' +
+        '<p class="ic-modal-intro">' +
+          '« Peuples d\'Extelua, le moment est venu. Le Tournoi ouvre ses portes pour sa 47e édition. »' +
+        '</p>' +
+
+        '<h3 class="ic-modal-section">LE TOURNOI</h3>' +
+        '<p>Créé il y a près d\'un siècle par le Conseil Fondateur, le Tournoi d\'Extelua est ' +
+          'le plus grand événement compétitif de l\'univers connu. Pendant quinze lunes, quarante candidats ' +
+          'venus de tous les horizons s\'affrontent dans des épreuves qui testent le corps, l\'esprit et la volonté.</p>' +
+        '<p>Le groupe Morkar, garant de la transparence et de la paix entre les mondes, assure ' +
+          'l\'organisation, la retransmission et l\'arbitrage du Tournoi depuis sa 12e édition.</p>' +
+
+        '<h3 class="ic-modal-section">LES CANDIDATS — CHAMPIONS DES PLANÈTES CONNECTÉES</h3>' +
+        '<p>Vingt candidats sont désignés par les planètes membres du Réseau des Routes Sillonnées. ' +
+          'Chaque monde connecté envoie son représentant — élu, tiré au sort ou désigné selon les coutumes locales. ' +
+          'Ils arrivent avec leur histoire, leurs sponsors et leurs millions de supporters.</p>' +
+
+        '<h3 class="ic-modal-section">LES CANDIDATS — ÉMISSAIRES DES PLANÈTES ISOLÉES</h3>' +
+        '<p>Vingt places sont réservées aux planètes non connectées aux réseaux universels. ' +
+          'Des mondes qui n\'ont parfois jamais eu de contact avec l\'extérieur. Morkar envoie des éclaireurs ' +
+          'pour identifier et inviter des individus au potentiel remarquable.</p>' +
+        '<p>C\'est la promesse fondatrice du Tournoi : offrir une chance égale à ceux que l\'univers a oubliés. ' +
+          'Une main tendue vers l\'inconnu.</p>' +
+
+        '<h3 class="ic-modal-section">LA RÉCOMPENSE</h3>' +
+        '<p>Le vainqueur obtient pour sa planète d\'origine l\'intégration au Réseau Universel — ' +
+          'accès aux Routes Sillonnées, siège au Conseil des Mondes, et les technologies qui en découlent. ' +
+          'Un monde entier transformé par la victoire d\'un seul être.</p>' +
+
+        '<p class="ic-modal-closing">« Que le Sablier guide vos pas. Morkar veille. »</p>' +
+
+        '<p class="ic-modal-footnote">' +
+          'Note : Le groupe Morkar condamne fermement les actes de sabotage perpétrés ' +
+          'par des éléments dissidents lors des précédentes éditions. Des mesures de sécurité ' +
+          'renforcées ont été mises en place pour garantir le bon déroulement du Tournoi. ' +
+          'Toute tentative de perturbation sera traitée avec la plus grande fermeté.' +
+        '</p>' +
+      '</div>' +
+      '<button class="ic-modal-close" id="ic-modal-close">Fermer</button>' +
+    '</div>';
+
+  var crawl = document.getElementById("intro-crawl");
+  (crawl || document.body).appendChild(overlay);
+
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("ic-modal-close").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
+}
+
+/* ══════════ JOURNAL ARTICLE MODAL ══════════ */
+function showJournalArticle(){
+  var existing = document.getElementById("ic-modal-overlay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "ic-modal-overlay";
+  overlay.className = "ic-modal-overlay";
+
+  overlay.innerHTML =
+    '<div class="ic-modal ic-modal-journal">' +
+      '<div class="ic-modal-header ic-journal-header">' +
+        '<span class="ic-journal-name">L\'ÉCHO DES SILLONS</span>' +
+        '<span class="ic-journal-edition">Édition spéciale — Cycle 47</span>' +
+      '</div>' +
+      '<div class="ic-modal-body">' +
+        '<h3 class="ic-journal-headline">TOURNOI D\'EXTELUA : CE QU\'ON NE VOUS DIT PAS</h3>' +
+
+        '<p class="ic-journal-lead">' +
+          'Alors que le groupe Morkar lance sa campagne de communication pour la 47e édition, ' +
+          'notre rédaction revient sur les zones d\'ombre qui entourent le plus grand spectacle de l\'univers.' +
+        '</p>' +
+
+        '<h4 class="ic-journal-sub">Des candidats isolés vraiment « choisis au hasard » ?</h4>' +
+        '<p>Morkar affirme que ses éclaireurs sélectionnent les candidats des planètes isolées ' +
+          'sur la base de « leur potentiel et leur détermination ». Pourtant, sur les 20 dernières éditions, ' +
+          'aucun candidat d\'une planète isolée n\'a jamais remporté le Tournoi. Pas un seul. ' +
+          'La plupart sont éliminés avant la cinquième lune.</p>' +
+
+        '<h4 class="ic-journal-sub">La récompense : un rêve accessible ?</h4>' +
+        '<p>L\'intégration au Réseau Universel est présentée comme le prix ultime. ' +
+          'Mais les archives du Conseil des Mondes — que notre rédaction a pu consulter — ' +
+          'montrent que les conditions d\'intégration comportent des clauses que Morkar ne mentionne jamais ' +
+          'dans ses retransmissions. Le détail de ces clauses reste classifié.</p>' +
+
+        '<h4 class="ic-journal-sub">Les audiences au plus haut</h4>' +
+        '<p>Avec 4,2 milliards de spectateurs lors de la finale du Cycle 46, le Tournoi ' +
+          'reste de loin le programme le plus regardé de l\'univers connecté. Les revenus publicitaires ' +
+          'du groupe Morkar ont augmenté de 340% depuis qu\'il a pris le contrôle de l\'organisation.</p>' +
+
+        '<h4 class="ic-journal-sub">Les « éléments dissidents »</h4>' +
+        '<p>Morkar mentionne régulièrement des « actes de sabotage » sans jamais nommer ' +
+          'de groupe ni préciser la nature des incidents. Nos sources indiquent que certains anciens ' +
+          'candidats auraient tenté de rendre publiques des informations sur le fonctionnement interne ' +
+          'du Tournoi. Aucun d\'entre eux n\'a donné suite à nos demandes d\'interview.</p>' +
+
+        '<p class="ic-journal-footer">' +
+          'L\'Écho des Sillons — Indépendant depuis le Cycle 11. ' +
+          'Diffusion restreinte aux secteurs non régulés.' +
+        '</p>' +
+      '</div>' +
+      '<button class="ic-modal-close" id="ic-modal-close">Fermer</button>' +
+    '</div>';
+
+  var crawl = document.getElementById("intro-crawl");
+  (crawl || document.body).appendChild(overlay);
+
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("ic-modal-close").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
 }
 
 /* ══════════ IDENTITY SCREEN (portrait + name) ══════════ */

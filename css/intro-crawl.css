@@ -24,7 +24,7 @@
 /* Text zone */
 .ic-text-zone {
   position: relative; z-index: 2;
-  max-width: 360px; width: 90%;
+  max-width: 400px; width: 90%;
   text-align: center; padding: 20px;
 }
 .ic-paragraph {
@@ -166,6 +166,145 @@
 }
 .id-confirm-btn:active { border-color: var(--gold); transform: scale(.95); }
 .identity-overlay.fading-out { animation: icFadeOut .8s ease-in forwards; }
+
+/* ═══════════ INTRO CHOICES (2 optional buttons) ═══════════ */
+.ic-choices-zone {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  width: 100%;
+}
+.ic-choices-label {
+  font-family: var(--font-ui); font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--bone-dim); margin-bottom: 6px;
+}
+.ic-info-btn {
+  width: 100%; max-width: 320px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, rgba(20,16,8,.92), rgba(10,8,6,.96));
+  border: 1px solid rgba(168,132,42,.2);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  cursor: pointer; transition: all .25s; text-align: left;
+  position: relative;
+}
+.ic-info-btn::before {
+  content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: var(--filigree-subtle);
+}
+.ic-info-btn:active { border-color: var(--gold); transform: scale(.97); }
+.ic-info-icon {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  font-size: 14px; color: rgba(168,132,42,.35);
+}
+.ic-info-text {
+  font-family: var(--font-heading); font-size: 12px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 1px;
+}
+.ic-info-sub {
+  font-family: var(--font-ui); font-size: 9px;
+  color: var(--bone-dim); letter-spacing: 1px; margin-top: 1px;
+}
+
+/* ═══════════ INFO MODAL (Morkar + Journal) ═══════════ */
+.ic-modal-overlay {
+  position: absolute; inset: 0; z-index: 1200;
+  background: rgba(2,2,1,.85);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; transition: opacity .35s ease;
+  backdrop-filter: blur(6px);
+}
+.ic-modal-overlay.visible { opacity: 1; }
+.ic-modal {
+  width: 100%; max-width: 380px; max-height: 80vh;
+  background: linear-gradient(180deg, rgba(18,14,8,.98), rgba(8,6,4,.99));
+  border: 1px solid rgba(168,132,42,.25);
+  overflow-y: auto; overflow-x: hidden;
+  display: flex; flex-direction: column;
+}
+.ic-modal-header {
+  padding: 18px 20px 12px;
+  border-bottom: 1px solid rgba(168,132,42,.12);
+  display: flex; align-items: center; gap: 10px;
+}
+.ic-modal-logo {
+  font-size: 18px; color: var(--gold);
+}
+.ic-modal-title {
+  font-family: var(--font-heading); font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-light);
+}
+.ic-modal-body {
+  padding: 18px 20px; flex: 1;
+  font-family: var(--font-body); font-size: 13px;
+  line-height: 1.8; color: var(--bone);
+}
+.ic-modal-body p { margin: 0 0 12px; }
+.ic-modal-intro {
+  font-style: italic; font-size: 14px;
+  color: var(--gold-pale);
+  border-left: 2px solid rgba(168,132,42,.3);
+  padding-left: 14px; margin-bottom: 16px !important;
+}
+.ic-modal-section {
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-light); margin: 18px 0 8px;
+}
+.ic-modal-closing {
+  font-style: italic; text-align: center;
+  color: var(--gold-pale); margin-top: 16px !important;
+}
+.ic-modal-footnote {
+  font-size: 11px; color: var(--bone-dim);
+  border-top: 1px solid rgba(168,132,42,.1);
+  padding-top: 12px; margin-top: 16px !important;
+  line-height: 1.7;
+}
+.ic-modal-close {
+  margin: 12px 20px 18px;
+  padding: 12px 30px; align-self: center;
+  background: rgba(168,132,42,.06);
+  border: 1px solid rgba(168,132,42,.25);
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-light);
+  cursor: pointer; transition: all .2s;
+}
+.ic-modal-close:active { border-color: var(--gold); transform: scale(.95); }
+
+/* Journal variant */
+.ic-journal-header {
+  flex-direction: column; align-items: flex-start; gap: 2px;
+}
+.ic-journal-name {
+  font-family: var(--font-display); font-size: 16px;
+  letter-spacing: 5px; color: var(--gold-light);
+}
+.ic-journal-edition {
+  font-family: var(--font-ui); font-size: 9px;
+  letter-spacing: 2px; color: var(--bone-dim);
+}
+.ic-journal-headline {
+  font-family: var(--font-heading); font-size: 15px;
+  letter-spacing: 1px; color: var(--gold-light);
+  margin: 14px 0 10px; line-height: 1.4;
+}
+.ic-journal-lead {
+  font-size: 13px; font-style: italic;
+  color: var(--bone); margin-bottom: 14px !important;
+}
+.ic-journal-sub {
+  font-family: var(--font-heading); font-size: 11px;
+  color: var(--gold-pale); margin: 16px 0 6px;
+  letter-spacing: 1px;
+}
+.ic-journal-footer {
+  font-size: 10px; color: var(--bone-dim);
+  text-align: center; font-style: italic;
+  border-top: 1px solid rgba(168,132,42,.1);
+  padding-top: 12px; margin-top: 16px !important;
+}
 
 /* Fade out */
 .intro-crawl-overlay.fading-out {
