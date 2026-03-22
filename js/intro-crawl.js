@@ -191,10 +191,7 @@ function showScenarioChoice(onChosen){
       var scenario = btn.getAttribute("data-scenario");
       window._chosenScenario = scenario;
 
-      // Fade out music (crossfade with guide music will happen in checkCharCreate)
-      if(audio && !audio.paused){
-        audioFade(audio, 0, 1200, function(){ audio.volume = 0.5; });
-      }
+      // Intro music continues playing through char creation — crossfade happens in enterMainApp
 
       // Fade out overlay
       overlay.classList.add("fading-out");
