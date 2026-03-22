@@ -58,7 +58,6 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(!menu) return;
   menu.style.display = "";
 
-  var video     = document.getElementById("mm-bg-video");
   var audio     = document.getElementById("bg-music");
   var enterBtn  = document.getElementById("mm-enter-btn");
   var circles   = document.getElementById("mm-menu-circles");
@@ -84,17 +83,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(chargerBtn && hasSave) chargerBtn.disabled = false;
   if(retourBtn && hasSave) retourBtn.disabled = false;
 
-  // Video + volume button hidden until "Entrer" is clicked
-  if(video) video.style.display = "none";
+  // Volume button hidden until "Entrer" is clicked
   if(volBtn) volBtn.style.display = "none";
 
-  /* ---- Play video + music ---- */
+  /* ---- Play music ---- */
   function playAll(){
-    if(video){
-      video.style.display = "";
-      video.currentTime = 0;
-      video.play();
-    }
     if(audio){
       audio.currentTime = 0;
       audio.volume = 0;

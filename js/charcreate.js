@@ -136,18 +136,9 @@ function initCharCreateNewVoyage(){
 function _prepareCharCreateScreen(screen){
   screen.style.display = "";
 
-  // Wire guide music volume toggle
+  // Hide volume toggle (no guide music in char creation)
   var ccVolBtn = document.getElementById("cc-volume-btn");
-  var ccVolOn = document.getElementById("cc-vol-on");
-  var ccVolOff = document.getElementById("cc-vol-off");
-  var guideAudio = document.getElementById("guide-music");
-  if(ccVolBtn && guideAudio){
-    ccVolBtn.onclick = function(){
-      guideAudio.muted = !guideAudio.muted;
-      if(ccVolOn) ccVolOn.style.display = guideAudio.muted ? "none" : "";
-      if(ccVolOff) ccVolOff.style.display = guideAudio.muted ? "" : "none";
-    };
-  }
+  if(ccVolBtn) ccVolBtn.style.display = "none";
 
   // Inject CC region/city animations if not already present
   if(!document.getElementById("cc-extra-styles")){
@@ -667,11 +658,19 @@ function completeCCOrigin(){
 }
 
 function enterMainApp(){
-  // Fade out guide music if playing
-  var guideAudio = document.getElementById("guide-music");
-  if(guideAudio && !guideAudio.paused){
-    audioFade(guideAudio, 0, 1200, function(){ guideAudio.volume = 0.4; });
+  // Fade out any intro music still playing, then start ambient music
+  var icAudio = document.getElementById("ic-music");
+  var extAudio = document.getElementById("extelua-music");
+  if(icAudio && !icAudio.paused){
+    if(extAudio) audioCrossfade(icAudio, extAudio, 0.4, 1500, 0.5);
+    else audioFade(icAudio, 0, 1200, function(){ icAudio.volume = 0.5; });
+  } else if(extAudio){
+    extAudio.currentTime = 0;
+    extAudio.volume = 0;
+    extAudio.play().catch(function(){});
+    audioFade(extAudio, 0.4, 1500);
   }
+
   showAppBackgrounds();
   buildAccueil();
   buildUserPage();

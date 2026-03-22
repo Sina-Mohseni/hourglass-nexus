@@ -728,7 +728,7 @@ function buildDrawerDiscRebelles(){
 var MUSIC_TRACKS = [
   {id:"main-menu", title:"Tournoi d'Extelua", artist:"Menu Principal", src:"assets/music/extelua-tournament-main-menu.mp3", icon:"\ud83c\udfc6", color:"#c9a04a", duration:""},
   {id:"intro", title:"L'Appel du Nexus", artist:"Intro Narrative", src:"assets/music/extelua-intro.mp3", icon:"\ud83c\udf0c", color:"#9b59b6", duration:""},
-  {id:"guide", title:"Le Guide S'\u00c9veille", artist:"Cr\u00e9ation du Personnage", src:"assets/music/guide.mp3", icon:"\ud83e\uddd9", color:"#5dade2", duration:""}
+  {id:"extelua", title:"Extelua", artist:"Ambiance du Monde", src:"assets/music/extelua.mp3", icon:"\ud83c\udf0d", color:"#5dade2", duration:""}
 ];
 
 var _mpCurrentTrack = null;
