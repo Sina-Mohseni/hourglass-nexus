@@ -130,7 +130,7 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   /* ---- Level 1 actions ---- */
   if(nouvelleBtn){
     nouvelleBtn.onclick = function(){
-      closeMainMenu(function(){ startIntroSequence(onNewVoyage, "new") });
+      closeMainMenu(function(){ startIntroSequence(onNewVoyage, "new") }, true);
     };
   }
   if(chargerBtn){
@@ -267,13 +267,15 @@ function fadeOutMusic(duration, cb){
   }, interval);
 }
 
-function closeMainMenu(cb){
+function closeMainMenu(cb, keepMusic){
   var menu = document.getElementById("main-menu");
   if(!menu){ if(cb) cb(); return }
   menu.classList.add("fading");
-  // Fade out bg-music (will be overridden by crossfade if intro crawl starts)
-  var bgAudio = document.getElementById("bg-music");
-  if(bgAudio && !bgAudio.paused) audioFade(bgAudio, 0, 1200, function(){ bgAudio.volume = 0.4; });
+  // Fade out bg-music unless keepMusic is set
+  if(!keepMusic){
+    var bgAudio = document.getElementById("bg-music");
+    if(bgAudio && !bgAudio.paused) audioFade(bgAudio, 0, 1200, function(){ bgAudio.volume = 0.4; });
+  }
   setTimeout(function(){
     menu.remove();
     document.body.classList.remove("intro-active");
