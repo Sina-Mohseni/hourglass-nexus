@@ -9,38 +9,23 @@ var _musicMuted = false;
 /* ── Loading Screen ── */
 function initLoadingScreen(onDone){
   var screen = document.getElementById("loading-screen");
-  var bar = document.getElementById("loading-bar-fill");
-  var sub = document.getElementById("loading-subtitle");
+  var arc = document.getElementById("loading-ring-arc");
   if(!screen){ onDone(); return }
 
   var hasVisited = acDB.get("ac_hasVisited") === "1";
   var duration = hasVisited ? (2000 + Math.random() * 1000) : (6000 + Math.random() * 1000);
 
-  var messages = hasVisited
-    ? ["Reconnexion au Nexus…", "Restauration des portails…"]
-    : ["Initialisation du Nexus…", "Invocation des portails…", "Chargement des chroniques…", "Préparation du sanctuaire…", "Éveil des runes ancestrales…", "Synchronisation temporelle…"];
-
-  var msgIdx = 0;
-  var msgInterval = duration / messages.length;
-  var msgTimer = setInterval(function(){
-    msgIdx++;
-    if(msgIdx < messages.length && sub){
-      sub.style.animation = "none";
-      sub.offsetHeight;
-      sub.textContent = messages[msgIdx];
-      sub.style.animation = "loadSubIn .4s ease-out forwards";
-    }
-  }, msgInterval);
+  // Full circumference of the arc (r=90)
+  var circumference = 2 * Math.PI * 90; // ~565.49
 
   var start = Date.now();
   function tick(){
     var elapsed = Date.now() - start;
-    var pct = Math.min(100, (elapsed / duration) * 100);
-    if(bar) bar.style.width = pct + "%";
+    var pct = Math.min(1, elapsed / duration);
+    if(arc) arc.style.strokeDashoffset = circumference * (1 - pct);
     if(elapsed < duration){
       requestAnimationFrame(tick);
     } else {
-      clearInterval(msgTimer);
       acDB.set("ac_hasVisited", "1");
       screen.classList.add("fading");
       setTimeout(function(){
