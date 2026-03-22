@@ -495,6 +495,47 @@
                 </svg>
                 <span class="mm-circle-label">Panorama</span>
               </button>
+              <button class="mm-circle-btn mm-circle-codex" id="mm-circle-codex">
+                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="14" y="10" width="36" height="44" rx="3" fill="rgba(201,160,74,.1)"/>
+                  <path d="M14 10c0 0 4-2 18-2s18 2 18 2" stroke-width="1.5"/>
+                  <path d="M14 54c0 0 4 2 18 2s18-2 18-2" stroke-width="1.5"/>
+                  <line x1="22" y1="22" x2="42" y2="22" stroke-width="1.5" opacity=".7"/>
+                  <line x1="22" y1="28" x2="42" y2="28" stroke-width="1.5" opacity=".5"/>
+                  <line x1="22" y1="34" x2="38" y2="34" stroke-width="1.5" opacity=".5"/>
+                  <circle cx="32" cy="46" r="4" stroke-width="1.5" opacity=".6"/>
+                  <path d="M30 46l2 2 4-4" stroke-width="1.5" opacity=".6"/>
+                </svg>
+                <span class="mm-circle-label">Codex</span>
+              </button>
+            </div>
+
+            <!-- Codex dossier list (level 1 sub-view) -->
+            <div class="mm-codex-list" id="mm-codex-list" style="display:none">
+              <div class="mm-codex-title">Codex</div>
+              <div class="mm-codex-grid">
+                <button class="mm-codex-item" data-dossier="extelua">
+                  <span class="mm-codex-item-icon" style="color:var(--gold)">&#x1F30D;</span>
+                  <span class="mm-codex-item-name">Dossier Extelua</span>
+                </button>
+                <button class="mm-codex-item" data-dossier="personas">
+                  <span class="mm-codex-item-icon" style="color:#9b59b6">&#x1F464;</span>
+                  <span class="mm-codex-item-name">Dossier Personas</span>
+                </button>
+                <button class="mm-codex-item" data-dossier="morkar">
+                  <span class="mm-codex-item-icon" style="color:#e8a838">&#x1F3D9;&#xFE0F;</span>
+                  <span class="mm-codex-item-name">Dossier Morkar</span>
+                </button>
+                <button class="mm-codex-item" data-dossier="rebelles">
+                  <span class="mm-codex-item-icon" style="color:#e74c3c">&#x2694;&#xFE0F;</span>
+                  <span class="mm-codex-item-name">Dossier des Rebelles</span>
+                </button>
+                <button class="mm-codex-item" data-dossier="jeux">
+                  <span class="mm-codex-item-icon" style="color:#5dade2">&#x1F3AE;</span>
+                  <span class="mm-codex-item-name">Dossier Jeux</span>
+                </button>
+              </div>
+              <button class="mm-codex-back" id="mm-codex-back">&#x2190; Retour</button>
             </div>
 
             <!-- Level 2: Player header + options -->
@@ -525,19 +566,6 @@
                 </svg>
                 <span class="mm-circle-label">Retour au Tournoi</span>
               </button>
-              <button class="mm-circle-btn mm-circle-codex" id="mm-circle-codex">
-                <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="14" y="10" width="36" height="44" rx="3" fill="rgba(201,160,74,.1)"/>
-                  <path d="M14 10c0 0 4-2 18-2s18 2 18 2" stroke-width="1.5"/>
-                  <path d="M14 54c0 0 4 2 18 2s18-2 18-2" stroke-width="1.5"/>
-                  <line x1="22" y1="22" x2="42" y2="22" stroke-width="1.5" opacity=".7"/>
-                  <line x1="22" y1="28" x2="42" y2="28" stroke-width="1.5" opacity=".5"/>
-                  <line x1="22" y1="34" x2="38" y2="34" stroke-width="1.5" opacity=".5"/>
-                  <circle cx="32" cy="46" r="4" stroke-width="1.5" opacity=".6"/>
-                  <path d="M30 46l2 2 4-4" stroke-width="1.5" opacity=".6"/>
-                </svg>
-                <span class="mm-circle-label">Codex</span>
-              </button>
               <button class="mm-circle-btn mm-circle-tournois" id="mm-circle-tournois">
                 <svg class="mm-circle-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M22 14h20v6c0 8-4 12-10 16c-6-4-10-8-10-16v-6z" fill="rgba(201,160,74,.15)" stroke-width="2"/>
@@ -548,33 +576,6 @@
                 </svg>
                 <span class="mm-circle-label">Tournois Précédents</span>
               </button>
-              </div>
-              <!-- Level 3: Codex dossier list -->
-              <div class="mm-codex-list" id="mm-codex-list" style="display:none">
-                <div class="mm-codex-title">Codex</div>
-                <div class="mm-codex-grid">
-                  <button class="mm-codex-item" data-dossier="extelua">
-                    <span class="mm-codex-item-icon" style="color:var(--gold)">&#x1F30D;</span>
-                    <span class="mm-codex-item-name">Dossier Extelua</span>
-                  </button>
-                  <button class="mm-codex-item" data-dossier="personas">
-                    <span class="mm-codex-item-icon" style="color:#9b59b6">&#x1F464;</span>
-                    <span class="mm-codex-item-name">Dossier Personas</span>
-                  </button>
-                  <button class="mm-codex-item" data-dossier="morkar">
-                    <span class="mm-codex-item-icon" style="color:#e8a838">&#x1F3D9;&#xFE0F;</span>
-                    <span class="mm-codex-item-name">Dossier Morkar</span>
-                  </button>
-                  <button class="mm-codex-item" data-dossier="rebelles">
-                    <span class="mm-codex-item-icon" style="color:#e74c3c">&#x2694;&#xFE0F;</span>
-                    <span class="mm-codex-item-name">Dossier des Rebelles</span>
-                  </button>
-                  <button class="mm-codex-item" data-dossier="jeux">
-                    <span class="mm-codex-item-icon" style="color:#5dade2">&#x1F3AE;</span>
-                    <span class="mm-codex-item-name">Dossier Jeux</span>
-                  </button>
-                </div>
-                <button class="mm-codex-back" id="mm-codex-back">&#x2190; Retour</button>
               </div>
               <button class="mm-circle-btn mm-circle-back" id="mm-sub-game-back">
                 <svg class="mm-circle-icon mm-circle-icon-sm" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
