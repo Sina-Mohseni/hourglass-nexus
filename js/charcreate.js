@@ -223,41 +223,65 @@ function advanceCCDialog(){
   }
 }
 
-/* ══════════ SAVE / LOAD SYSTEM ══════════ */
-function saveGame(){
+/* ══════════ SAVE / LOAD SYSTEM (multi-slot) ══════════ */
+var MAX_SAVE_SLOTS = 5;
+
+function getSaveSlots(){
+  var raw = acDB.get("ac_saveSlots");
+  if(!raw) return [];
+  try { return JSON.parse(raw) } catch(e){ return [] }
+}
+
+function saveSlotsToStore(slots){
+  acDB.set("ac_saveSlots", JSON.stringify(slots));
+  acDB.set("ac_saveExists", slots.length > 0 ? "1" : "");
+}
+
+function saveGameToSlot(label){
   var u = loadUser();
+  var now = new Date();
   var saveData = {
+    id: Date.now(),
+    label: label || "Sauvegarde",
+    date: String(now.getDate()).padStart(2,"0") + "/"
+        + String(now.getMonth()+1).padStart(2,"0") + "/"
+        + now.getFullYear() + " "
+        + String(now.getHours()).padStart(2,"0") + ":"
+        + String(now.getMinutes()).padStart(2,"0"),
     user: u,
     team: teamIds,
     city: currentCityId,
     activeLoc: activeLocId,
     page: curPage,
-    timestamp: new Date().toISOString()
+    timestamp: now.toISOString()
   };
-  acDB.set("ac_gameSave", JSON.stringify(saveData));
-  acDB.set("ac_saveExists", "1");
+  var slots = getSaveSlots();
+  slots.unshift(saveData);
+  if(slots.length > MAX_SAVE_SLOTS) slots = slots.slice(0, MAX_SAVE_SLOTS);
+  saveSlotsToStore(slots);
   return saveData;
 }
 
-function loadGameSave(){
-  var raw = acDB.get("ac_gameSave");
-  if(!raw) return;
+function deleteSaveSlot(id){
+  var slots = getSaveSlots().filter(function(s){ return s.id !== id });
+  saveSlotsToStore(slots);
+}
+
+function loadGameSaveFromSlot(slot){
   try {
-    var save = JSON.parse(raw);
-    // Restore user data
-    if(save.user){
+    if(slot.user){
       var pairs = [];
       Object.keys(USER_KEYS).forEach(function(k){
         if(k === "avatar") return;
-        var v = save.user[k];
+        var v = slot.user[k];
         if(typeof v === "object") v = JSON.stringify(v);
         pairs.push([USER_KEYS[k], String(v != null ? v : "")]);
       });
       acDB.setMany(pairs);
     }
-    if(save.team) { teamIds = save.team; acDB.set("ac_team", JSON.stringify(teamIds)) }
-    if(save.city) { currentCityId = save.city; acDB.set("ac_city", save.city) }
-    if(save.activeLoc) { activeLocId = save.activeLoc; acDB.set("ac_activeLoc", save.activeLoc) }
+    if(slot.team) { teamIds = slot.team; acDB.set("ac_team", JSON.stringify(teamIds)) }
+    if(slot.city) { currentCityId = slot.city; acDB.set("ac_city", slot.city) }
+    if(slot.activeLoc) { activeLocId = slot.activeLoc; acDB.set("ac_activeLoc", slot.activeLoc) }
 
     acDB.set("ac_charCreated", "1");
 
@@ -267,6 +291,67 @@ function loadGameSave(){
       setTimeout(function(){ screen.remove(); enterMainApp() }, 600);
     }
   } catch(e){ console.warn("Load save error:", e) }
+}
+
+/* backward compat: old single-slot save → migrated to slot system */
+function loadGameSave(){
+  var slots = getSaveSlots();
+  if(slots.length > 0){
+    loadGameSaveFromSlot(slots[0]);
+    return;
+  }
+  var raw = acDB.get("ac_gameSave");
+  if(!raw) return;
+  try {
+    var save = JSON.parse(raw);
+    loadGameSaveFromSlot(save);
+  } catch(e){ console.warn("Load save error:", e) }
+}
+
+/* ── Save dialog modal ── */
+function showSaveDialog(onDone){
+  var overlay = document.createElement("div");
+  overlay.className = "save-dialog-overlay";
+  var now = new Date();
+  var dateStr = String(now.getDate()).padStart(2,"0") + "/"
+    + String(now.getMonth()+1).padStart(2,"0") + "/"
+    + now.getFullYear() + " "
+    + String(now.getHours()).padStart(2,"0") + ":"
+    + String(now.getMinutes()).padStart(2,"0");
+  overlay.innerHTML =
+    '<div class="save-dialog-box">'
+    + '<div class="save-dialog-filigree"></div>'
+    + '<div class="save-dialog-title">Sauvegarder la partie</div>'
+    + '<div class="save-dialog-date">' + dateStr + '</div>'
+    + '<input class="save-dialog-input" type="text" placeholder="Donne un nom \u00e0 ta sauvegarde\u2026" maxlength="60" autocomplete="off">'
+    + '<div class="save-dialog-actions">'
+    +   '<button class="save-dialog-btn save-dialog-cancel">Annuler</button>'
+    +   '<button class="save-dialog-btn save-dialog-confirm">Sauvegarder</button>'
+    + '</div>'
+    + '</div>';
+  document.body.appendChild(overlay);
+
+  var input = overlay.querySelector(".save-dialog-input");
+  var confirmBtn = overlay.querySelector(".save-dialog-confirm");
+  var cancelBtn = overlay.querySelector(".save-dialog-cancel");
+
+  setTimeout(function(){ input.focus() }, 100);
+
+  function close(){ if(overlay.parentNode) overlay.parentNode.removeChild(overlay) }
+
+  cancelBtn.onclick = function(){ close(); if(onDone) onDone(null) };
+  overlay.onclick = function(e){ if(e.target === overlay){ close(); if(onDone) onDone(null) } };
+
+  confirmBtn.onclick = function(){
+    var label = input.value.trim() || "Sauvegarde";
+    close();
+    var save = saveGameToSlot(label);
+    if(onDone) onDone(save);
+  };
+
+  input.onkeydown = function(e){
+    if(e.key === "Enter"){ confirmBtn.click() }
+  };
 }
 
 function wireAvatarEvents(){

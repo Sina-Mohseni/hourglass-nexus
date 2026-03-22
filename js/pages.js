@@ -216,14 +216,13 @@ function buildUserPage(){
   // Save button
   var saveBtn = document.getElementById("user-save-btn");
   if(saveBtn) saveBtn.onclick = function(){
-    var save = saveGame();
-    var now = new Date();
-    var ts = String(now.getDate()).padStart(2,"0")+"/"+String(now.getMonth()+1).padStart(2,"0")+"/"+now.getFullYear()
-      +" "+String(now.getHours()).padStart(2,"0")+":"+String(now.getMinutes()).padStart(2,"0");
-    acDB.set("ac_saveTimestamp", ts);
-    saveBtn.textContent = "\u2714 Sauvegard\u00e9 !";
-    saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-    setTimeout(function(){ buildUserPage() }, 1500);
+    showSaveDialog(function(save){
+      if(!save) return;
+      acDB.set("ac_saveTimestamp", save.date);
+      saveBtn.textContent = "\u2714 Sauvegard\u00e9 !";
+      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
+      setTimeout(function(){ buildUserPage() }, 1500);
+    });
   };
 }
 

@@ -150,21 +150,11 @@ function initMainMenu(onNewVoyage, onResumeVoyage){
   if(chargerBtn){
     chargerBtn.onclick = function(){
       if(chargerBtn.disabled) return;
-      // Populate player portrait + name in sub-menu header
-      var u = loadUser();
-      var portraitEl = document.getElementById("mm-player-portrait");
-      var nameEl = document.getElementById("mm-player-name");
-      if(portraitEl){
-        if(u.avatar){
-          portraitEl.innerHTML = '<img src="' + u.avatar + '" alt="">';
-        } else {
-          portraitEl.textContent = "\uD83D\uDC64";
-        }
-      }
-      if(nameEl) nameEl.textContent = u.name || "Voyageur";
-      if(mmContent) mmContent.classList.add("mm-sub-active");
-      if(menu) menu.classList.add("mm-top-align");
-      switchTo(mainCirc, subGame);
+      showSaveSlotsScreen(menu, function onSlotPicked(slot){
+        // Store the chosen slot for loading after lock screen
+        window._selectedSaveSlot = slot;
+        closeMainMenu(function(){ onResumeVoyage() });
+      });
     };
   }
 
@@ -351,10 +341,117 @@ function showResumeIntro(){
     overlay.classList.add("fading");
     setTimeout(function(){
       overlay.remove();
-      loadGameSave();
+      if(window._selectedSaveSlot){
+        loadGameSaveFromSlot(window._selectedSaveSlot);
+        window._selectedSaveSlot = null;
+      } else {
+        loadGameSave();
+      }
     }, 600);
   }
 
   overlay.onclick = dismiss;
   setTimeout(dismiss, 2500);
+}
+
+/* ── Save Slots Screen (replaces old Charger sub-menu) ── */
+function showSaveSlotsScreen(menu, onPick){
+  var slots = getSaveSlots();
+
+  // Migrate old single save if no slots exist
+  if(slots.length === 0){
+    var raw = acDB.get("ac_gameSave");
+    if(raw){
+      try {
+        var old = JSON.parse(raw);
+        old.id = old.id || Date.now();
+        old.label = old.label || "Sauvegarde";
+        old.date = old.date || "";
+        if(!old.date && old.timestamp){
+          var d = new Date(old.timestamp);
+          old.date = String(d.getDate()).padStart(2,"0") + "/"
+            + String(d.getMonth()+1).padStart(2,"0") + "/"
+            + d.getFullYear() + " "
+            + String(d.getHours()).padStart(2,"0") + ":"
+            + String(d.getMinutes()).padStart(2,"0");
+        }
+        slots = [old];
+        saveSlotsToStore(slots);
+      } catch(e){}
+    }
+  }
+
+  var overlay = document.createElement("div");
+  overlay.className = "save-slots-overlay";
+
+  var html = '<div class="save-slots-panel">'
+    + '<div class="save-slots-filigree"></div>'
+    + '<div class="save-slots-title">Charger une partie</div>'
+    + '<div class="save-slots-list">';
+
+  if(slots.length === 0){
+    html += '<div class="save-slots-empty">Aucune sauvegarde disponible</div>';
+  } else {
+    for(var i = 0; i < slots.length; i++){
+      var s = slots[i];
+      var userName = (s.user && s.user.name) ? esc(s.user.name) : "Voyageur";
+      var userLevel = (s.user && s.user.level) ? s.user.level : "?";
+      html += '<button class="save-slot-item" data-slot-idx="' + i + '">'
+        + '<div class="save-slot-number">' + (i + 1) + '</div>'
+        + '<div class="save-slot-info">'
+        +   '<div class="save-slot-label">' + esc(s.label) + '</div>'
+        +   '<div class="save-slot-meta">' + userName + ' \u2014 Niv. ' + userLevel + '</div>'
+        +   '<div class="save-slot-date">' + esc(s.date || "") + '</div>'
+        + '</div>'
+        + '<button class="save-slot-delete" data-del-idx="' + i + '" title="Supprimer">&times;</button>'
+        + '</button>';
+    }
+  }
+
+  html += '</div>'
+    + '<button class="save-slots-back">\u2190 Retour</button>'
+    + '</div>';
+
+  overlay.innerHTML = html;
+  menu.appendChild(overlay);
+
+  // Back button
+  overlay.querySelector(".save-slots-back").onclick = function(){
+    overlay.classList.add("fading");
+    setTimeout(function(){ if(overlay.parentNode) overlay.parentNode.removeChild(overlay) }, 400);
+  };
+  overlay.onclick = function(e){
+    if(e.target === overlay){
+      overlay.classList.add("fading");
+      setTimeout(function(){ if(overlay.parentNode) overlay.parentNode.removeChild(overlay) }, 400);
+    }
+  };
+
+  // Slot click
+  var items = overlay.querySelectorAll(".save-slot-item");
+  for(var j = 0; j < items.length; j++){
+    items[j].onclick = function(e){
+      // Ignore if delete button was clicked
+      if(e.target.classList.contains("save-slot-delete")) return;
+      var idx = parseInt(this.getAttribute("data-slot-idx"));
+      var slot = slots[idx];
+      if(!slot) return;
+      overlay.remove();
+      onPick(slot);
+    };
+  }
+
+  // Delete buttons
+  var delBtns = overlay.querySelectorAll(".save-slot-delete");
+  for(var d = 0; d < delBtns.length; d++){
+    delBtns[d].onclick = function(e){
+      e.stopPropagation();
+      var idx = parseInt(this.getAttribute("data-del-idx"));
+      var slot = slots[idx];
+      if(!slot) return;
+      deleteSaveSlot(slot.id);
+      overlay.remove();
+      showSaveSlotsScreen(menu, onPick);
+    };
+  }
 }
