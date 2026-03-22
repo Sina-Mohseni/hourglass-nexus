@@ -382,8 +382,8 @@
   border-color: rgba(154,26,26,.6);
   box-shadow: 0 0 28px rgba(107,16,16,.35), inset 0 0 18px rgba(0,0,0,.5);
 }
-.mm-circle-panorama {}
-.mm-circle-panorama .mm-circle-icon {
+.mm-circle-intro {}
+.mm-circle-intro .mm-circle-icon {
   border-color: rgba(168,132,42,.35);
   box-shadow: 0 0 20px rgba(168,132,42,.12), inset 0 0 18px rgba(0,0,0,.6);
 }

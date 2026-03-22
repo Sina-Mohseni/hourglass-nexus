@@ -182,6 +182,75 @@ function showIntroCrawl(onDone){
   showParagraph(0);
 }
 
+/* ══════════ INTRO MODAL (main menu — short lore overview) ══════════ */
+function showIntroModal(parent){
+  var existing = document.getElementById("intro-modal-overlay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "intro-modal-overlay";
+  overlay.className = "ic-modal-overlay";
+
+  overlay.innerHTML =
+    '<div class="ic-modal">' +
+      '<div class="ic-modal-header">' +
+        '<span class="ic-modal-logo">\u29D6</span>' +
+        '<span class="ic-modal-title">LE TOURNOI D\'EXTELUA</span>' +
+      '</div>' +
+      '<div class="ic-modal-body">' +
+        '<p class="ic-modal-intro">' +
+          '« Le Sablier s\'est retourné. Comme il l\'a fait avant nous, ' +
+          'comme il le fera après nous. »' +
+        '</p>' +
+
+        '<p>Quelque part dans l\'immensité d\'Extelua, un tournoi se prépare. ' +
+          'Le plus grand événement que l\'univers connu ait jamais engendré. ' +
+          'Quarante candidats venus de tous les horizons vont s\'affronter ' +
+          'dans des épreuves qui testent le corps, l\'esprit et la volonté.</p>' +
+
+        '<h3 class="ic-modal-section">LES CHAMPIONS</h3>' +
+        '<p>Trente d\'entre eux sont les représentants officiels des planètes connectées ' +
+          'au Réseau Universel. Élus, désignés ou tirés au sort selon les traditions de leur monde, ' +
+          'ils arrivent avec leurs sponsors, leurs supporters et la pression de milliards de regards.</p>' +
+
+        '<h3 class="ic-modal-section">LES ÉMISSAIRES</h3>' +
+        '<p>Dix places sont réservées aux planètes isolées — des mondes coupés du reste de l\'univers, ' +
+          'qui n\'ont parfois jamais eu de contact avec l\'extérieur. Des individus au potentiel ' +
+          'remarquable, arrachés à leur quotidien par une invitation qu\'ils ne comprennent pas encore.</p>' +
+
+        '<h3 class="ic-modal-section">LE GROUPE MORKAR</h3>' +
+        '<p>L\'organisation qui dirige le Tournoi depuis des décennies. Garant autoproclamé de la paix ' +
+          'et de la transparence entre les mondes, Morkar contrôle l\'arbitrage, la retransmission ' +
+          'et les règles du jeu. Tout passe par eux. Tout leur appartient.</p>' +
+
+        '<h3 class="ic-modal-section">LES DISSIDENTS</h3>' +
+        '<p>Des voix s\'élèvent dans l\'ombre. Certains anciens candidats murmurent que ' +
+          'le Tournoi n\'est pas ce qu\'il prétend être. Que derrière le spectacle se cachent ' +
+          'des vérités que Morkar préfère garder dans l\'obscurité. ' +
+          'Personne ne sait exactement ce qu\'ils savent — ni ce qu\'ils préparent.</p>' +
+
+        '<p class="ic-modal-closing">' +
+          '« Que le Sablier guide vos pas. »' +
+        '</p>' +
+      '</div>' +
+      '<button class="ic-modal-close" id="intro-modal-close">Fermer</button>' +
+    '</div>';
+
+  (parent || document.body).appendChild(overlay);
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("intro-modal-close").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
+  overlay.onclick = function(e){
+    if(e.target === overlay){
+      overlay.classList.remove("visible");
+      setTimeout(function(){ overlay.remove(); }, 400);
+    }
+  };
+}
+
 /* ══════════ MORKAR PRESENTATION MODAL ══════════ */
 function showMorkarPresentation(){
   var existing = document.getElementById("ic-modal-overlay");
