@@ -56,6 +56,21 @@ function initLock(){
   var giImg = document.getElementById("lock-guide-img");
   if(guide && guide.avatar && giImg) giImg.src = guide.avatar;
 
+  // Start extelua music when guide appears on lock screen
+  var bgAudio = document.getElementById("bg-music");
+  var extAudio = document.getElementById("extelua-music");
+  if(extAudio){
+    if(bgAudio && !bgAudio.paused){
+      // Crossfade from menu music to extelua
+      audioCrossfade(bgAudio, extAudio, 0.4, 2000, 0.4);
+    } else {
+      extAudio.currentTime = 0;
+      extAudio.volume = 0;
+      extAudio.play().catch(function(){});
+      audioFade(extAudio, 0.4, 2000);
+    }
+  }
+
   // Place guide at random position (not in the circle)
   function randomizeGuidePos(){
     var lkRect = lk.getBoundingClientRect();
