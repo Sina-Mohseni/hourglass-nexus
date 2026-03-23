@@ -588,8 +588,9 @@ function completeCCFinal(){
   // Set initial map position to starting city
   var startC = getCities().find(function(c){ return c.id === ccSelectedCity });
   if(startC){ u.mapX = startC.wx; u.mapY = startC.wy; }
-  u.gameDay = 1;
-  u.gameHour = 8;
+  u.gameDay = EXT_PREGAME_DAY;
+  u.gameHour = EXT_PREGAME_HOUR;
+  u.gameMinute = EXT_PREGAME_MINUTE;
   saveUser(u);
   acDB.set("ac_charCreated", "1");
 

@@ -16,7 +16,7 @@ function getTodayWeather(){
 
 function isNightInGame(){
   var u = loadUser();
-  return u.gameHour < 6 || u.gameHour >= 21;
+  return extIsNight(u.gameHour);
 }
 
 /* ══════════ DAILY INFO / NEWS SYSTEM ══════════ */
@@ -114,9 +114,9 @@ function generateDailyNews(gameDay){
       .replace("%CITY%", c1.name).replace("%CITY2%", c2.name)
       .replace("%PERSONA%", pe ? pe.name : "un inconnu");
 
-    // Generate a hour for the news (spread across the day)
-    var hour = Math.floor(seededRandom(seed + 71) * 20) + 4; // 4h-23h
-    if(hour > 23) hour = 23;
+    // Generate a hour for the news (spread across the Extelua day: 30h)
+    var hour = Math.floor(seededRandom(seed + 71) * 24) + 5; // 5h-28h
+    if(hour >= EXT_HOURS_PER_DAY) hour = EXT_HOURS_PER_DAY - 1;
 
     news.push({
       cat: cat.cat,

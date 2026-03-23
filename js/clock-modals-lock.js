@@ -1,26 +1,18 @@
 "use strict";
 
-/* ══════════ CLOCK + DAY/NIGHT CYCLE ══════════ */
+/* ══════════ CLOCK + DAY/NIGHT CYCLE (Extelua) ══════════ */
 function initClock(){
-  var J = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
-  var M = ["Janvier","F\u00e9vrier","Mars","Avril","Mai","Juin","Juillet","Ao\u00fbt","Septembre","Octobre","Novembre","D\u00e9cembre"];
-  function u(){
-    var n = new Date();
-    var el = $("#header-time");
-    if(el) el.textContent = String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")+":"+String(n.getSeconds()).padStart(2,"0");
-    var d = $("#header-date");
-    if(d) d.textContent = J[n.getDay()]+" "+n.getDate()+" "+M[n.getMonth()]+" "+n.getFullYear();
-    updateDayNight(n.getHours());
-  }
-  u(); setInterval(u, 1000);
+  extRefreshClock();
+  // Rafraîchir toutes les 2s (le temps avance par actions, pas en temps réel)
+  setInterval(extRefreshClock, 2000);
 }
 
 function updateDayNight(hour){
   var jour = document.getElementById("bg-decor-jour");
   var nuit = document.getElementById("bg-decor-nuit");
   if(!jour || !nuit) return;
-  // Jour: 7h–21h / Nuit: 21h–7h
-  var isDay = (hour >= 7 && hour < 21);
+  // Extelua: Jour 6h–22h / Nuit 22h–5h (sur 30h)
+  var isDay = !extIsNight(hour);
   jour.classList.toggle("active", isDay);
   nuit.classList.toggle("active", !isDay);
 }

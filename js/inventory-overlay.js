@@ -108,7 +108,14 @@ var PRE_INV_EQUIP_SLOTS = [
 
 /* ══════════ MAIN OVERLAY (pre-game profile page — fullscreen) ══════════ */
 function showInventoryOverlay(onClose){
+  // Pré-jeu : dernier soir de l'année
   var u = loadUser();
+  u.gameDay = EXT_PREGAME_DAY;
+  u.gameHour = EXT_PREGAME_HOUR;
+  u.gameMinute = EXT_PREGAME_MINUTE;
+  saveUser(u);
+  extRefreshClock();
+
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
   var misc = (SCENARIO_MISC[scenario] || []).slice();
@@ -234,6 +241,13 @@ function showInventoryOverlay(onClose){
   // Continue button (hidden, triggered by footer drawer)
   var closeBtn = document.getElementById("inv-close-btn");
   if(closeBtn) closeBtn.onclick = function(){
+    // Passage au jour 1 — matin de la nouvelle année
+    var uu = loadUser();
+    uu.gameDay = EXT_START_DAY;
+    uu.gameHour = EXT_START_HOUR;
+    uu.gameMinute = EXT_START_MINUTE;
+    saveUser(uu);
+    extRefreshClock();
     // Close drawers first
     closeFooterPanel();
     closeHeaderPanel();

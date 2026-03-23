@@ -32,9 +32,12 @@
   color:var(--gold-light); letter-spacing:2px; text-transform:capitalize;
 }
 
-/* Month grid */
+/* Month grid — Extelua: 10 jours par semaine */
 .cal-weekdays {
   display:grid; grid-template-columns:repeat(7,1fr); gap:2px; margin-bottom:4px;
+}
+.cal-weekdays.cal-weekdays-ext {
+  grid-template-columns:repeat(10,1fr);
 }
 .cal-wd {
   text-align:center; font-family:var(--font-ui); font-size:8px;
@@ -44,16 +47,20 @@
 .cal-days {
   display:grid; grid-template-columns:repeat(7,1fr); gap:2px;
 }
+.cal-days.cal-days-ext {
+  grid-template-columns:repeat(10,1fr);
+}
 .cal-day {
   aspect-ratio:1; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  font-family:var(--font-heading); font-size:12px; font-weight:600;
+  font-family:var(--font-heading); font-size:11px; font-weight:600;
   color:var(--bone-dim);
   cursor:pointer; transition:all .15s; position:relative;
   background:transparent; border:1px solid transparent;
 }
 .cal-day:active { transform:scale(.9) }
 .cal-day.other-month { opacity:.25 }
+.cal-day.future { opacity:.35 }
 .cal-day.today { color:var(--gold-light); border-color:var(--gold-dark); background:rgba(168,132,42,.06) }
 .cal-day.has-events::after {
   content:''; position:absolute; bottom:3px;
