@@ -786,7 +786,7 @@ var CONTRACT_CONTENT = {
       "bénéficiera d'un programme d'accompagnement renforcé. Un guide personnel lui sera " +
       "assigné pour l'aider à comprendre les technologies, les règles et les enjeux du " +
       "Tournoi. Le groupe Morkar fournira également un kit d'adaptation comprenant une " +
-      "pilule de compréhension linguistique et les équipements de base nécessaires à la " +
+      "mini-pilule de compréhension linguistique (durée : 10 heures) et les équipements de base nécessaires à la " +
       "compétition.",
       "Article III — Responsabilité et risques. Le candidat reconnaît que sa participation " +
       "au Tournoi implique des risques importants, notamment en raison de son manque " +
@@ -894,8 +894,8 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   // Pill icon for non-Morkar scenarios (champion, isolé, dissident)
   if(needsPill){
     h += '<div class="contract-pill-row">';
-    h += '<div class="contract-pill" title="Pilule de compr\u00e9hension linguistique">&#128138;</div>';
-    h += '<div class="contract-pill-hint">Pilule de compr\u00e9hension</div>';
+    h += '<div class="contract-pill" title="Mini-Pilule de compr\u00e9hension (10h)">&#128138;</div>';
+    h += '<div class="contract-pill-hint">Mini-Pilule de compr\u00e9hension</div>';
     h += '</div>';
   }
 

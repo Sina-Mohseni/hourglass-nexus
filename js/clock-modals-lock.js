@@ -261,9 +261,10 @@ function initLock(){
   function startExteluaMusic(){
     if(_lockMusicStarted) return;
     _lockMusicStarted = true;
+    // New voyage: music deferred to night dialogue sequence
+    if(mode === "new") return;
     var extAudio = document.getElementById("extelua-music");
     if(!extAudio) return;
-    // Already playing from scenario choice? Leave it.
     if(!extAudio.paused) return;
     var bgAudio = document.getElementById("bg-music");
     if(bgAudio && !bgAudio.paused){
