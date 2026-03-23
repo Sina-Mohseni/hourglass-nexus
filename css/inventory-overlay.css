@@ -1,7 +1,4 @@
-/* ═══════════ PRE-GAME INVENTORY OVERLAY ═══════════
-   Overlay + profile-page structure inside.
-   Vertical portrait, inventory modal, save & continue.
-   ═══════════════════════════════════════════════════ */
+/* ═══════════ PRE-GAME OVERLAY ═══════════ */
 
 /* ── Overlay container ── */
 .inv-overlay {
@@ -25,7 +22,7 @@
 .inv-overlay-inner::-webkit-scrollbar { width: 3px }
 .inv-overlay-inner::-webkit-scrollbar-thumb { background: rgba(168,132,42,.25); border-radius: 4px }
 
-/* ── Vertical portrait (3:4 aspect ratio) ── */
+/* ── Vertical portrait (3:4) ── */
 .inv-header-portrait .inv-avatar-wrap {
   position: relative; width: 100%; aspect-ratio: 3/4;
   overflow: hidden; background: linear-gradient(180deg, var(--dark-stone), #050403);
@@ -57,7 +54,13 @@
   opacity: .7;
 }
 
-/* ── Bottom actions bar (save icon + continue) ── */
+/* ── Actions grid (two cards) ── */
+.inv-actions-grid {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 0 12px 4px;
+}
+
+/* ── Bottom actions bar ── */
 .inv-bottom-actions {
   display: flex; align-items: center; gap: 10px;
   padding: 14px 12px 20px;
@@ -68,8 +71,7 @@
   font-size: 22px;
   background: linear-gradient(145deg, rgba(18,40,74,.6), rgba(12,28,52,.8));
   border: 1px solid rgba(100,140,200,.25);
-  color: var(--bone); cursor: pointer;
-  transition: all .2s;
+  color: var(--bone); cursor: pointer; transition: all .2s;
 }
 .inv-action-icon-btn:hover {
   border-color: rgba(100,140,200,.5);
@@ -83,7 +85,7 @@
   color: var(--gold-light);
 }
 
-/* ═══════════ INVENTORY MODAL (paperdoll + tabs) ═══════════ */
+/* ═══════════ SHARED MODAL BACKDROP ═══════════ */
 .inv-modal-backdrop {
   position: absolute; inset: 0; z-index: 1100;
   background: rgba(5,4,3,.92);
@@ -115,10 +117,10 @@
 }
 .inv-modal-close:hover { border-color: var(--gold-dark); color: var(--gold-light) }
 
-/* Paperdoll inside modal — smaller */
-.inv-modal-paperdoll {
-  margin: 0 auto; width: 90%; max-width: 360px;
-  flex-shrink: 0;
+.inv-modal-title {
+  text-align: center; padding: 0 0 12px;
+  font-family: var(--font-heading); font-size: 16px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 3px; text-transform: uppercase;
 }
 
 /* ── Tabs section ── */
@@ -144,17 +146,11 @@
   border-bottom-color: var(--gold);
   text-shadow: 0 0 12px rgba(168,132,42,.3);
 }
-
-/* Tab content */
-.inv-tab-content {
-  display: none; padding-top: 10px;
-}
+.inv-tab-content { display: none; padding-top: 10px }
 .inv-tab-content.active { display: block }
 
-/* Items grid */
-.inv-items-grid {
-  display: flex; flex-direction: column; gap: 6px;
-}
+/* ── Items grid ── */
+.inv-items-grid { display: flex; flex-direction: column; gap: 6px }
 .inv-item {
   display: flex; align-items: flex-start; gap: 10px;
   padding: 10px;
@@ -171,8 +167,7 @@
   width: 36px; height: 36px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   font-size: 18px;
-  background: rgba(168,132,42,.04);
-  border: 1px solid rgba(168,132,42,.1);
+  background: rgba(168,132,42,.04); border: 1px solid rgba(168,132,42,.1);
 }
 .inv-item-info { flex: 1; min-width: 0 }
 .inv-item-name {
@@ -186,61 +181,243 @@
 }
 .inv-item-desc {
   font-family: var(--font-body); font-size: 10px;
-  color: var(--bone-dim); line-height: 1.5;
-  margin-top: 4px;
+  color: var(--bone-dim); line-height: 1.5; margin-top: 4px;
 }
-
-/* Consumable accent */
 .inv-item-consumable { border-color: rgba(34,136,68,.2) }
 .inv-item-consumable .inv-item-icon { border-color: rgba(34,136,68,.25); background: rgba(34,136,68,.06) }
 .inv-item-consumable .inv-item-name { color: var(--poison) }
-
-/* Misc accent */
 .inv-item-misc .inv-item-name { color: var(--bone) }
-
-/* Empty state */
 .inv-items-empty {
   text-align: center; padding: 28px 16px;
   font-family: var(--font-ui); font-size: 11px;
-  color: var(--bone-dim); letter-spacing: 1px;
-  opacity: .6;
+  color: var(--bone-dim); letter-spacing: 1px; opacity: .6;
 }
 
-/* ═══════════ DRAG & DROP ═══════════ */
+/* ═══════════ EQUIPMENT MODAL ═══════════ */
 
-/* Draggable item */
-.inv-item-draggable { cursor: grab; user-select: none }
-.inv-item-draggable:active { cursor: grabbing }
-.inv-dragging { opacity: .4 }
-
-/* Item equipped (grayed out in list) */
-.inv-item-equipped {
-  opacity: .3; pointer-events: none;
-  border-color: rgba(34,136,68,.2);
+/* ── Portrait zone with overlay slot grid ── */
+.eq-portrait-zone {
+  position: relative; width: 100%; aspect-ratio: 3/4;
+  overflow: hidden;
+  background: linear-gradient(180deg, #050403 0%, var(--dark-stone) 40%, #050403 100%);
+  flex-shrink: 0;
 }
-.inv-item-equipped .inv-item-name::after {
+.eq-portrait-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.eq-portrait-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(.55) saturate(.85);
+}
+.eq-portrait-name {
+  position: absolute; bottom: 8px; left: 0; right: 0; z-index: 3;
+  text-align: center;
+  font-family: var(--font-display); font-size: 16px; font-weight: 900;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-light);
+  text-shadow: 0 0 20px rgba(168,132,42,.5), 0 2px 10px rgba(0,0,0,.95);
+  pointer-events: none;
+}
+
+/* ── 6 transparent slots as 2x3 grid over portrait ── */
+.eq-slots-grid {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.eq-slot {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: rgba(10,8,6,.15);
+  border: 1px solid rgba(168,132,42,.08);
+  cursor: default; transition: all .3s;
+  position: relative;
+}
+.eq-slot::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid transparent; transition: all .3s;
+  pointer-events: none;
+}
+.eq-slot-icon {
+  font-size: 28px; opacity: .25; color: var(--bone-dim);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.7));
+  transition: all .3s;
+}
+.eq-slot-label {
+  font-family: var(--font-ui); font-size: 7px;
+  color: var(--bone-dim); opacity: .4;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-top: 4px;
+  text-shadow: 0 1px 4px rgba(0,0,0,.9);
+  transition: opacity .3s;
+}
+
+/* Slot filled state */
+.eq-slot.filled {
+  background: rgba(10,8,6,.35);
+}
+.eq-slot.filled::after {
+  box-shadow: inset 0 0 30px rgba(var(--slot-color-rgb, 168,132,42), .15);
+  border-color: var(--slot-color, var(--gold));
+}
+.eq-slot.filled .eq-slot-icon { opacity: 1; font-size: 32px }
+.eq-slot.filled .eq-slot-label { opacity: .8; color: var(--gold-light) }
+
+/* ── Drawers ── */
+.eq-drawers {
+  display: flex; flex-direction: column;
+  padding: 8px 0;
+}
+.eq-drawer {
+  border-bottom: 1px solid rgba(168,132,42,.08);
+}
+.eq-drawer-header {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 12px 14px;
+  background: transparent; border: none;
+  cursor: pointer; transition: background .2s;
+  text-align: left;
+}
+.eq-drawer-header:hover { background: rgba(168,132,42,.04) }
+.eq-drawer-icon { font-size: 18px; flex-shrink: 0 }
+.eq-drawer-title {
+  flex: 1;
+  font-family: var(--font-heading); font-size: 12px; font-weight: 700;
+  color: var(--bone); letter-spacing: 1px; text-transform: uppercase;
+}
+.eq-drawer-arrow {
+  font-size: 12px; color: var(--bone-dim);
+  transition: transform .25s;
+}
+.eq-drawer.open .eq-drawer-arrow { transform: rotate(180deg) }
+
+.eq-drawer-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease;
+}
+.eq-drawer.open .eq-drawer-content {
+  max-height: 200px;
+}
+
+/* ── Equipment item inside drawer ── */
+.eq-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: rgba(16,12,6,.6);
+  border-top: 1px solid rgba(168,132,42,.06);
+  transition: opacity .2s;
+}
+.eq-item-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: rgba(168,132,42,.06);
+  border: 1px solid rgba(168,132,42,.15);
+  cursor: grab; user-select: none;
+  transition: all .2s;
+}
+.eq-item-icon:active { cursor: grabbing; transform: scale(.9) }
+.eq-item-info { flex: 1; min-width: 0 }
+.eq-item-name {
+  font-family: var(--font-heading); font-size: 11px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: .5px;
+}
+.eq-item-type {
+  font-family: var(--font-ui); font-size: 8px;
+  color: var(--bone-dim); letter-spacing: 1px; text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Action buttons on items */
+.eq-item-actions {
+  display: flex; gap: 6px; flex-shrink: 0;
+}
+.eq-btn-equip, .eq-btn-view {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  background: rgba(10,8,6,.7);
+  border: 1px solid rgba(168,132,42,.15);
+  color: var(--bone-dim); cursor: pointer;
+  transition: all .2s;
+}
+.eq-btn-equip:hover {
+  border-color: var(--poison); color: var(--poison);
+  box-shadow: 0 0 8px rgba(34,136,68,.3);
+}
+.eq-btn-view:hover {
+  border-color: var(--frost); color: var(--frost);
+  box-shadow: 0 0 8px rgba(90,150,220,.3);
+}
+
+/* Equipped state in drawer */
+.eq-item-equipped {
+  opacity: .35; pointer-events: none;
+}
+.eq-item-equipped .eq-item-name::after {
   content: " \u2714"; color: var(--poison);
 }
+.eq-item-dragging { opacity: .4 }
 
-/* Slot hint (pulsing border when matching item is dragged) */
-.inv-slot-hint {
-  animation: slotPulse 1s ease infinite;
+/* ═══════════ ITEM DETAIL MODAL ═══════════ */
+.eq-detail-backdrop { z-index: 1200 }
+.eq-detail-modal {
+  width: 85%; max-width: 340px;
+  padding: 32px 24px;
+  background: linear-gradient(180deg, rgba(16,12,6,.98), rgba(8,6,3,.99));
+  border: 1px solid rgba(168,132,42,.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.9);
+  text-align: center;
 }
+.eq-detail-icon {
+  font-size: 48px; margin-bottom: 12px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.6));
+}
+.eq-detail-name {
+  font-family: var(--font-heading); font-size: 16px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.eq-detail-type {
+  font-family: var(--font-ui); font-size: 9px;
+  color: var(--bone-dim); letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.eq-detail-desc {
+  font-family: var(--font-body); font-size: 12px;
+  color: var(--bone); line-height: 1.7;
+  margin-bottom: 24px;
+}
+.eq-detail-close {
+  display: inline-block; padding: 10px 28px;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  background: transparent;
+  border: 1px solid rgba(168,132,42,.25);
+  color: var(--gold-light); cursor: pointer;
+  transition: all .2s;
+}
+.eq-detail-close:hover {
+  border-color: var(--gold); background: rgba(168,132,42,.08);
+}
+
+/* ═══════════ DRAG & DROP FEEDBACK ═══════════ */
+.inv-slot-hint { animation: slotPulse 1s ease infinite }
 @keyframes slotPulse {
-  0%, 100% { box-shadow: inset 0 2px 10px rgba(0,0,0,.7), 0 0 8px var(--slot-color, rgba(168,132,42,.3)) }
-  50% { box-shadow: inset 0 2px 10px rgba(0,0,0,.7), 0 0 20px var(--slot-color, rgba(168,132,42,.6)) }
+  0%, 100% { box-shadow: 0 0 12px var(--slot-color, rgba(168,132,42,.3)) }
+  50% { box-shadow: 0 0 28px var(--slot-color, rgba(168,132,42,.6)) }
 }
-
-/* Valid drop target */
 .inv-slot-valid {
+  background: rgba(34,136,68,.15) !important;
   border-color: var(--poison) !important;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,.7), 0 0 18px rgba(34,136,68,.5) !important;
+  box-shadow: inset 0 0 20px rgba(34,136,68,.2) !important;
 }
-
-/* Invalid drop target */
 .inv-slot-invalid {
+  background: rgba(180,40,40,.1) !important;
   border-color: var(--blood-glow) !important;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,.7), 0 0 18px rgba(180,40,40,.4) !important;
+  box-shadow: inset 0 0 20px rgba(180,40,40,.15) !important;
 }
 
 /* Touch drag ghost */
