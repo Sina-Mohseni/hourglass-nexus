@@ -279,6 +279,8 @@ function initHeaderPanel(){
   }
 
   function onStart(e){
+    /* Bloquer le drag/toggle pendant l'overlay pré-jeu */
+    if(window._pgOverlayActive) return;
     e.preventDefault(); e.stopPropagation();
     isDrag = true; hasMoved = false;
     startY = getY(e);
@@ -386,6 +388,8 @@ function initFooterPanel(){
   }
 
   function onStart(e){
+    /* Bloquer le drag/toggle pendant l'overlay pré-jeu */
+    if(window._pgOverlayActive) return;
     e.preventDefault(); e.stopPropagation();
     isDrag = true; hasMoved = false;
     startY = getY(e);
