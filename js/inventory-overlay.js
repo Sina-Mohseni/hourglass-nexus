@@ -113,8 +113,10 @@ function showInventoryOverlay(onClose){
   u.gameDay = EXT_PREGAME_DAY;
   u.gameHour = EXT_PREGAME_HOUR;
   u.gameMinute = EXT_PREGAME_MINUTE;
+  u.gameSecond = EXT_PREGAME_SECOND;
   saveUser(u);
-  extRefreshClock();
+  extRenderClock();
+  window._pgOverlayActive = true;
 
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
@@ -246,8 +248,9 @@ function showInventoryOverlay(onClose){
     uu.gameDay = EXT_START_DAY;
     uu.gameHour = EXT_START_HOUR;
     uu.gameMinute = EXT_START_MINUTE;
+    uu.gameSecond = EXT_START_SECOND;
     saveUser(uu);
-    extRefreshClock();
+    extRenderClock();
     // Close drawers first
     closeFooterPanel();
     closeHeaderPanel();

@@ -9,7 +9,7 @@ function getTodayWeather(){
   var def = weatherData && weatherData.default ? weatherData.default : "eclat";
   // Use game day to cycle weather deterministically
   var weatherKeys = Object.keys(types);
-  if(!weatherKeys.length) return {id:"eclat",name:"Éclat Solaire",icon:"☀️",color:"#fbbf24",desc:"Le ciel est dégagé.",effects:[],stats:{temp:"Doux",vent:"Calme",mana:"Stable"},night_variant:{name:"Nuit Claire",icon:"🌙",desc:"Les étoiles brillent."}};
+  if(!weatherKeys.length) return {id:"eclat",name:"\u00c9clat Solaire",icon:"\u2600\uFE0F",color:"#fbbf24",desc:"Les trois soleils brillent dans un ciel d\u00e9gag\u00e9.",effects:[],stats:{temp:"Doux",vent:"Calme",mana:"Stable"},night_variant:{name:"Veille d\u2019O\u00eblys",icon:"\uD83C\uDF19",desc:"O\u00eblys et Nythir \u00e9clairent la nuit paisible."}};
   var idx = ((u.gameDay * 7 + 3) % weatherKeys.length);
   return types[weatherKeys[idx]] || types[def] || types[weatherKeys[0]];
 }

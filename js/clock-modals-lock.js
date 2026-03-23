@@ -2,9 +2,7 @@
 
 /* ══════════ CLOCK + DAY/NIGHT CYCLE (Extelua) ══════════ */
 function initClock(){
-  extRefreshClock();
-  // Rafraîchir toutes les 2s (le temps avance par actions, pas en temps réel)
-  setInterval(extRefreshClock, 2000);
+  extStartClock();
 }
 
 function updateDayNight(hour){

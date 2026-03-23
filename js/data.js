@@ -89,7 +89,7 @@ var USER_KEYS = {
   statFOR:"ac_for", statAGI:"ac_agi", level:"ac_level", xp:"ac_xp",
   region:"ac_region", startCity:"ac_startCity", borderPasses:"ac_borderPasses",
   job:"ac_job", reputation:"ac_reputation", personaAffinities:"ac_affinities",
-  gameDay:"ac_gameDay", gameHour:"ac_gameHour", gameMinute:"ac_gameMinute", mapX:"ac_mapX", mapY:"ac_mapY",
+  gameDay:"ac_gameDay", gameHour:"ac_gameHour", gameMinute:"ac_gameMinute", gameSecond:"ac_gameSecond", mapX:"ac_mapX", mapY:"ac_mapY",
   worldName:"ac_worldName", className:"ac_className"
 };
 function loadUser(){
@@ -120,6 +120,7 @@ function loadUser(){
     gameDay: parseInt(acDB.get(USER_KEYS.gameDay)) || 1,
     gameHour: parseInt(acDB.get(USER_KEYS.gameHour)) || 8,
     gameMinute: parseInt(acDB.get(USER_KEYS.gameMinute)) || 0,
+    gameSecond: parseInt(acDB.get(USER_KEYS.gameSecond)) || 0,
     mapX: parseFloat(acDB.get(USER_KEYS.mapX)) || 0,
     mapY: parseFloat(acDB.get(USER_KEYS.mapY)) || 0,
     worldName: acDB.get(USER_KEYS.worldName) || "",

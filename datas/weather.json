@@ -34,7 +34,7 @@
       "name": "Éclat Solaire",
       "icon": "☀️",
       "color": "#e8a838",
-      "desc": "Un soleil radieux baigne les terres du Nexus. La lumière dorée renforce les enchantements et revigore les voyageurs.",
+      "desc": "Les trois soleils brillent à l'unisson. Solah inonde les terres de lumière dorée, renforcée par l'éclat bleuté de Veyra. Les enchantements se renforcent.",
       "effects": [
         {
           "icon": "✨",
@@ -48,9 +48,9 @@
         }
       ],
       "night_variant": {
-        "name": "Clair de Lune",
+        "name": "Reflet d'Oëlys",
         "icon": "🌕",
-        "desc": "La pleine lune éclaire les sentiers. Les créatures nocturnes sont calmes, le voyage est sûr."
+        "desc": "Oëlys glisse à l'horizon, baignant les sentiers de sa lumière pâle. Nythir perce le ciel au loin. Le voyage est sûr."
       },
       "stats": {
         "temp": "Chaud",

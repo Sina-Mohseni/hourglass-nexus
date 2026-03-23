@@ -591,6 +591,7 @@ function completeCCFinal(){
   u.gameDay = EXT_PREGAME_DAY;
   u.gameHour = EXT_PREGAME_HOUR;
   u.gameMinute = EXT_PREGAME_MINUTE;
+  u.gameSecond = EXT_PREGAME_SECOND;
   saveUser(u);
   acDB.set("ac_charCreated", "1");
 
