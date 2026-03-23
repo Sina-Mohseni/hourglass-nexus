@@ -106,21 +106,20 @@ var PRE_INV_EQUIP_SLOTS = [
   {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif",      color:"#e67e22"}
 ];
 
-/* ══════════ MAIN OVERLAY (pre-game profile page) ══════════ */
+/* ══════════ MAIN OVERLAY (pre-game profile page — fullscreen) ══════════ */
 function showInventoryOverlay(onClose){
   var u = loadUser();
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
-  var misc = (SCENARIO_MISC[scenario] || []).slice(); // clone
+  var misc = (SCENARIO_MISC[scenario] || []).slice();
 
-  // Add signed contract if available
   if(window._contractSigned){
     var cType = window._contractType || "isole";
     var cData = (typeof CONTRACT_CONTENT !== "undefined") ? CONTRACT_CONTENT[cType] : null;
     if(cData){
       misc.unshift({
         name: cData.title,
-        desc: "Contrat signé lors de votre inscription au tournoi.",
+        desc: "Contrat sign\u00e9 lors de votre inscription au tournoi.",
         body: cData.paragraphs.join("\n\n")
       });
     }
@@ -130,41 +129,144 @@ function showInventoryOverlay(onClose){
   overlay.className = "inv-overlay";
   overlay.id = "inv-overlay";
 
-  var h = '<div class="inv-overlay-inner profile-page">';
+  var roleLabel = SCENARIO_LABELS[scenario] || "Voyageur";
+  var worldLabel = u.worldName || "Monde inconnu";
+  var classLabel = u.className || "Aucun";
+  var quoteLabel = u.quote || "";
 
-  // ── Vertical portrait (clickable to change) ──
-  h += '<div class="prof-header inv-header-portrait">'
-    + '<div class="prof-header-glow" style="background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)"></div>'
-    + '<div class="inv-avatar-wrap" id="inv-avatar-wrap">';
-  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" id="inv-avatar-img">';
-  else h += '<div class="prof-avatar-empty" id="inv-avatar-img">\uD83D\uDC64</div>';
-  h += '<div class="inv-avatar-change-hint">Changer le portrait</div>';
-  h += '</div>'
-    + '<span class="prof-rarity" style="background:var(--gold-dark)">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</span>'
-    + '<div class="prof-info-overlay">'
-    + '<div class="prof-name" style="color:var(--gold-light)" id="inv-display-name">' + esc(u.name || "Voyageur") + '</div>'
-    + '<div class="prof-subtitle">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2022 Niv. ' + u.level + '</div>'
-    + '</div></div>';
-  h += '<input type="file" accept="image/*" id="inv-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">';
+  /* ═══════════ FULLSCREEN PORTRAIT + INFO ═══════════ */
+  var h = '<div class="pg-fullscreen">';
 
-  // ── Editable fields ──
-  h += '<div class="section-title">Identit\u00e9</div>';
-  h += '<div class="inv-edit-form">';
-  h += '<div><label class="prof-field-label">Nom</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-name" value="' + esc(u.name) + '" placeholder="Ton nom\u2026" maxlength="40"></div>';
-  h += '<div><label class="prof-field-label">Slogan</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-quote" value="' + esc(u.quote) + '" placeholder="Ton slogan\u2026" maxlength="80"></div>';
-  h += '<div><label class="prof-field-label">Nom du monde</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-world" value="' + esc(u.worldName) + '" placeholder="D\u2019o\u00f9 viens-tu ?" maxlength="40"></div>';
-  h += '<div><label class="prof-field-label">Classe / M\u00e9tier</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-class" value="' + esc(u.className) + '" placeholder="Ton r\u00f4le\u2026" maxlength="40"></div>';
-  h += '<div><label class="prof-field-label">Sc\u00e9nario</label>'
-    + '<div class="inv-readonly-field">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</div></div>';
+  // Background portrait
+  h += '<div class="pg-bg">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" class="pg-bg-img">';
+  else h += '<div class="pg-bg-empty">\uD83D\uDC64</div>';
   h += '</div>';
 
-  // ── Two action buttons: Inventaire + Équipement ──
-  h += '<div class="section-title">Actions</div>';
-  h += '<div class="inv-actions-grid">';
+  // Overlay gradient
+  h += '<div class="pg-gradient"></div>';
+
+  // Central info block
+  h += '<div class="pg-info">';
+  h += '<div class="pg-role-badge">' + esc(roleLabel) + '</div>';
+  h += '<div class="pg-name" id="pg-display-name">' + esc(u.name || "Voyageur") + '</div>';
+  h += '<div class="pg-details">';
+  h += '<span class="pg-detail"><span class="pg-detail-icon">\uD83C\uDF0D</span> <span id="pg-display-world">' + esc(worldLabel) + '</span></span>';
+  h += '<span class="pg-detail-sep">\u2022</span>';
+  h += '<span class="pg-detail"><span class="pg-detail-icon">\uD83D\uDEE0\uFE0F</span> <span id="pg-display-class">' + esc(classLabel) + '</span></span>';
+  h += '</div>';
+  if(quoteLabel) h += '<div class="pg-quote" id="pg-display-quote">\u201C' + esc(quoteLabel) + '\u201D</div>';
+  else h += '<div class="pg-quote" id="pg-display-quote"></div>';
+  h += '</div>';
+
+  // Bottom action bar (save + start)
+  h += '<div class="pg-actions">';
+  h += '<button class="pg-action-btn pg-save-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
+  h += '<button class="pg-action-btn pg-start-btn" id="inv-close-btn" title="Commencer l\'aventure">\u25B6 Commencer</button>';
+  h += '</div>';
+
+  /* ═══════════ FOOTER ASSEMBLY (profil drawer) ═══════════ */
+  h += '<div class="pg-footer-asm" id="pg-footer-asm">';
+  // Losange
+  h += '<div class="pg-diamond pg-diamond-footer" id="pg-diamond-footer">';
+  h += '<div class="pg-diamond-inner">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" class="pg-diamond-img" id="pg-diamond-avatar">';
+  else h += '<div class="pg-diamond-emoji" id="pg-diamond-avatar">\uD83D\uDC64</div>';
+  h += '</div></div>';
+  // Footer bar
+  h += '<div class="pg-bar pg-bar-bottom"></div>';
+  // Panel
+  h += '<div class="pg-panel pg-panel-bottom" id="pg-footer-panel"></div>';
+  h += '</div>';
+
+  /* ═══════════ HEADER ASSEMBLY (intros drawer) ═══════════ */
+  h += '<div class="pg-header-asm" id="pg-header-asm">';
+  // Panel
+  h += '<div class="pg-panel pg-panel-top" id="pg-header-panel"></div>';
+  // Header bar
+  h += '<div class="pg-bar pg-bar-top"></div>';
+  // Losange
+  h += '<div class="pg-diamond pg-diamond-header" id="pg-diamond-header">';
+  h += '<div class="pg-diamond-inner"><div class="pg-diamond-emoji">\u29D6</div></div>';
+  h += '</div>';
+  h += '</div>';
+
+  h += '</div>'; // .pg-fullscreen
+
+  // Hidden file input
+  h += '<input type="file" accept="image/*" id="inv-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">';
+  overlay.innerHTML = h;
+
+  var screenEl = document.querySelector(".screen");
+  (screenEl || document.body).appendChild(overlay);
+  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
+
+  /* ═══════════ POPULATE DRAWER PANELS ═══════════ */
+  _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip);
+  _buildPgHeaderDrawer();
+
+  /* ═══════════ INIT DRAWER DRAG MECHANICS ═══════════ */
+  _initPgDrawer("pg-footer-asm", "pg-diamond-footer", "bottom");
+  _initPgDrawer("pg-header-asm", "pg-diamond-header", "top");
+
+  /* ═══════════ WIRE ACTIONS ═══════════ */
+
+  // Save button
+  var saveBtn = document.getElementById("inv-save-btn");
+  if(saveBtn) saveBtn.onclick = function(){
+    showSaveDialog(function(save){
+      if(!save) return;
+      acDB.set("ac_saveTimestamp", save.date);
+      saveBtn.textContent = "\u2714";
+      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
+      saveBtn.style.borderColor = "var(--poison)";
+    });
+  };
+
+  // Continue button
+  var closeBtn = document.getElementById("inv-close-btn");
+  if(closeBtn) closeBtn.onclick = function(){
+    overlay.classList.remove("visible");
+    overlay.classList.add("closing");
+    setTimeout(function(){
+      overlay.remove();
+      if(onClose) onClose();
+    }, 500);
+  };
+}
+
+/* ── Footer drawer content: profile fiche ── */
+function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
+  var panel = document.getElementById("pg-footer-panel");
+  if(!panel) return;
+
+  var h = '<div class="pg-drawer-scroll">';
+  h += '<div class="pg-drawer-title">\uD83D\uDC64 Fiche Profil</div>';
+
+  // Avatar (clickable)
+  h += '<div class="pg-drawer-avatar" id="pg-drawer-avatar-wrap">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" id="pg-drawer-avatar-img">';
+  else h += '<div class="prof-avatar-empty" id="pg-drawer-avatar-img">\uD83D\uDC64</div>';
+  h += '<div class="pg-drawer-avatar-hint">Changer le portrait</div>';
+  h += '</div>';
+
+  // Editable fields
+  h += '<div class="inv-edit-form" style="padding:10px 16px">';
+  h += '<div><label class="prof-field-label">Nom</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-name" value="' + esc(u.name) + '" placeholder="Ton nom\u2026" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Nom du monde</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-world" value="' + esc(u.worldName) + '" placeholder="D\u2019o\u00f9 viens-tu ?" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Slogan</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-quote" value="' + esc(u.quote) + '" placeholder="Ton slogan\u2026" maxlength="80"></div>';
+  h += '<div><label class="prof-field-label">Classe / M\u00e9tier (quotidien)</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-class" value="' + esc(u.className) + '" placeholder="Ton r\u00f4le\u2026" maxlength="40"></div>';
+  // Role — read-only
+  h += '<div><label class="prof-field-label">R\u00f4le du sc\u00e9nario</label>'
+    + '<div class="inv-readonly-field">' + esc(roleLabel) + '</div></div>';
+  h += '</div>';
+
+  // Navigation: Inventaire + Équipement
+  h += '<div class="inv-actions-grid" style="padding:4px 16px 16px">';
   h += '<div class="prof-section-card" id="inv-open-inventory-btn">'
     + '<div class="prof-section-icon">\uD83C\uDF92</div>'
     + '<div class="prof-section-info"><div class="prof-section-name">Inventaire</div>'
@@ -177,21 +279,11 @@ function showInventoryOverlay(onClose){
     + '<span class="prof-section-arrow">\u203a</span></div>';
   h += '</div>';
 
-  // ── Bottom buttons: Save + Continue ──
-  h += '<div class="inv-bottom-actions">';
-  h += '<button class="inv-action-icon-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
-  h += '<button class="inv-action-icon-btn inv-continue-icon" id="inv-close-btn" title="Continuer">\u25B6</button>';
   h += '</div>';
+  panel.innerHTML = h;
 
-  h += '</div>';
-  overlay.innerHTML = h;
-
-  var screenEl = document.querySelector(".screen");
-  (screenEl || document.body).appendChild(overlay);
-  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
-
-  // ── Wire: Avatar change ──
-  var avatarWrap = document.getElementById("inv-avatar-wrap");
+  // Wire avatar change
+  var avatarWrap = document.getElementById("pg-drawer-avatar-wrap");
   var fileInput = document.getElementById("inv-file-input");
   if(avatarWrap && fileInput){
     avatarWrap.onclick = function(){ fileInput.click(); };
@@ -202,22 +294,23 @@ function showInventoryOverlay(onClose){
         var ok = await saveAvatar(ev.target.result);
         if(ok){
           var u2 = loadUser();
-          var imgEl = document.getElementById("inv-avatar-img");
-          if(imgEl){
-            if(imgEl.tagName === "IMG"){ imgEl.src = u2.avatar; }
-            else {
-              var img = document.createElement("img");
-              img.id = "inv-avatar-img"; img.src = u2.avatar;
-              imgEl.parentNode.replaceChild(img, imgEl);
-            }
-          }
+          // Update drawer avatar
+          var di = document.getElementById("pg-drawer-avatar-img");
+          if(di){ if(di.tagName==="IMG") di.src=u2.avatar; else { var img=document.createElement("img"); img.id="pg-drawer-avatar-img"; img.src=u2.avatar; di.parentNode.replaceChild(img,di); } }
+          // Update background portrait
+          var bgImg = document.querySelector(".pg-bg-img");
+          if(bgImg) bgImg.src = u2.avatar;
+          else { var bg = document.querySelector(".pg-bg"); if(bg){ bg.innerHTML = '<img src="'+u2.avatar+'" class="pg-bg-img">'; } }
+          // Update diamond avatar
+          var da = document.getElementById("pg-diamond-avatar");
+          if(da){ if(da.tagName==="IMG") da.src=u2.avatar; else { var img2=document.createElement("img"); img2.id="pg-diamond-avatar"; img2.className="pg-diamond-img"; img2.src=u2.avatar; da.parentNode.replaceChild(img2,da); } }
         }
       };
       reader.readAsDataURL(file);
     };
   }
 
-  // ── Wire: Auto-save fields ──
+  // Wire auto-save fields
   function saveFields(){
     var cu = loadUser();
     var ni = document.getElementById("inv-edit-name");
@@ -229,45 +322,200 @@ function showInventoryOverlay(onClose){
     if(wi) cu.worldName = wi.value;
     if(ci) cu.className = ci.value;
     saveUser(cu);
-    var dn = document.getElementById("inv-display-name");
+    // Update fullscreen display
+    var dn = document.getElementById("pg-display-name");
     if(dn && ni) dn.textContent = ni.value || "Voyageur";
+    var dw = document.getElementById("pg-display-world");
+    if(dw && wi) dw.textContent = wi.value || "Monde inconnu";
+    var dc = document.getElementById("pg-display-class");
+    if(dc && ci) dc.textContent = ci.value || "Aucun";
+    var dq = document.getElementById("pg-display-quote");
+    if(dq && qi) dq.textContent = qi.value ? ("\u201C" + qi.value + "\u201D") : "";
   }
   ["inv-edit-name","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener("input", saveFields);
   });
 
-  // ── Wire: Inventory modal ──
-  document.getElementById("inv-open-inventory-btn").onclick = function(){
-    openInventoryModal(misc, equip);
-  };
+  // Wire inventory + equipment
+  var invBtn = document.getElementById("inv-open-inventory-btn");
+  if(invBtn) invBtn.onclick = function(){ openInventoryModal(misc, equip); };
+  var eqBtn = document.getElementById("inv-open-equip-btn");
+  if(eqBtn) eqBtn.onclick = function(){ openEquipmentModal(loadUser(), scenario, equip); };
+}
 
-  // ── Wire: Equipment modal ──
-  document.getElementById("inv-open-equip-btn").onclick = function(){
-    openEquipmentModal(loadUser(), scenario, equip);
-  };
+/* ── Header drawer content: intro replay gallery ── */
+function _buildPgHeaderDrawer(){
+  var panel = document.getElementById("pg-header-panel");
+  if(!panel) return;
 
-  // ── Wire: Save button ──
-  var saveBtn = document.getElementById("inv-save-btn");
-  if(saveBtn) saveBtn.onclick = function(){
-    showSaveDialog(function(save){
-      if(!save) return;
-      acDB.set("ac_saveTimestamp", save.date);
-      saveBtn.textContent = "\u2714";
-      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-      saveBtn.style.borderColor = "var(--poison)";
-    });
-  };
+  var intros = [
+    {id:"tournoi", icon:"\u29D6", title:"Le Tournoi d\u2019Extelua", desc:"Pr\u00e9sentation g\u00e9n\u00e9rale du Tournoi, des Champions et des Isol\u00e9s."},
+    {id:"morkar",  icon:"\u25C6", title:"Pr\u00e9sentation Morkar",  desc:"Retransmission officielle du groupe Morkar : r\u00e8gles, candidats, r\u00e9compenses."},
+    {id:"narr1",   icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant l\u2019identit\u00e9", desc:"Les paragraphes d\u2019introduction avant le choix du nom."},
+    {id:"narr2",   icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant le sc\u00e9nario",  desc:"Les paragraphes sur les r\u00f4les possibles dans le Tournoi."}
+  ];
 
-  // ── Wire: Continue button ──
-  document.getElementById("inv-close-btn").onclick = function(){
+  var h = '<div class="pg-drawer-scroll">';
+  h += '<div class="pg-drawer-title">\uD83D\uDCDA Revoir les intros</div>';
+  h += '<div class="pg-intro-gallery">';
+  intros.forEach(function(intro){
+    h += '<div class="pg-intro-card" data-intro="' + intro.id + '">'
+      + '<div class="pg-intro-icon">' + intro.icon + '</div>'
+      + '<div class="pg-intro-info">'
+      + '<div class="pg-intro-name">' + intro.title + '</div>'
+      + '<div class="pg-intro-desc">' + intro.desc + '</div>'
+      + '</div>'
+      + '<span class="prof-section-arrow">\u203a</span>'
+      + '</div>';
+  });
+  h += '</div></div>';
+  panel.innerHTML = h;
+
+  // Wire click events
+  panel.querySelectorAll(".pg-intro-card").forEach(function(card){
+    card.onclick = function(){
+      var id = card.getAttribute("data-intro");
+      if(id === "tournoi") showIntroModal(document.getElementById("inv-overlay"));
+      else if(id === "morkar") showMorkarPresentation();
+      else if(id === "narr1") _showNarrationReplay(PRE_IDENTITY_PARAGRAPHS, "Avant l\u2019identit\u00e9");
+      else if(id === "narr2") _showNarrationReplay(PRE_SCENARIO_PARAGRAPHS, "Avant le sc\u00e9nario");
+    };
+  });
+}
+
+/* ── Narration replay in a modal ── */
+function _showNarrationReplay(paragraphs, title){
+  var existing = document.getElementById("pg-narr-replay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "pg-narr-replay";
+  overlay.className = "ic-modal-overlay";
+
+  var body = '';
+  paragraphs.forEach(function(p){
+    if(p.cls === "ic-title") body += '<h3 class="ic-modal-section">' + p.text + '</h3>';
+    else if(p.cls === "ic-final") body += '<p class="ic-modal-closing">' + p.text + '</p>';
+    else if(p.text) body += '<p>' + p.text + '</p>';
+  });
+
+  overlay.innerHTML =
+    '<div class="ic-modal">'
+    + '<div class="ic-modal-header">'
+    + '<span class="ic-modal-logo">\uD83D\uDCDC</span>'
+    + '<span class="ic-modal-title">' + title.toUpperCase() + '</span>'
+    + '</div>'
+    + '<div class="ic-modal-body">' + body + '</div>'
+    + '<button class="ic-modal-close" id="pg-narr-close">Fermer</button>'
+    + '</div>';
+
+  var target = document.getElementById("inv-overlay") || document.body;
+  target.appendChild(overlay);
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  document.getElementById("pg-narr-close").onclick = function(){
     overlay.classList.remove("visible");
-    overlay.classList.add("closing");
-    setTimeout(function(){
-      overlay.remove();
-      if(onClose) onClose();
-    }, 500);
+    setTimeout(function(){ overlay.remove(); }, 400);
   };
+  overlay.onclick = function(e){
+    if(e.target === overlay){
+      overlay.classList.remove("visible");
+      setTimeout(function(){ overlay.remove(); }, 400);
+    }
+  };
+}
+
+/* ── Drawer drag mechanics (reusable for header/footer) ── */
+function _initPgDrawer(asmId, diamondId, side){
+  var asm = document.getElementById(asmId);
+  var diamond = document.getElementById(diamondId);
+  if(!asm || !diamond) return;
+
+  var isBottom = (side === "bottom");
+  var travel = window.innerHeight - 110;
+  if(travel < 100) travel = 100;
+
+  var panelEl = asm.querySelector(".pg-panel");
+  if(panelEl) panelEl.style.height = travel + "px";
+
+  // Start closed
+  var isOpen = false;
+  asm.style.transform = isBottom
+    ? "translateY(" + travel + "px)"
+    : "translateY(" + (-travel) + "px)";
+
+  var isDrag = false, startY = 0, hasMoved = false, startT = 0;
+
+  function getY(e){ return (e.touches ? e.touches[0] : e).clientY; }
+  function currentT(){
+    var st = asm.style.transform;
+    var m = st.match(/translateY\(([^)]+)px\)/);
+    return m ? parseFloat(m[1]) : (isBottom ? travel : -travel);
+  }
+
+  function onStart(e){
+    e.preventDefault(); e.stopPropagation();
+    isDrag = true; hasMoved = false;
+    startY = getY(e);
+    startT = currentT();
+    asm.classList.remove("snapping");
+    asm.style.zIndex = "1050";
+    document.addEventListener("touchmove", onMove, {passive:false});
+    document.addEventListener("touchend", onEnd, {passive:true});
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onEnd);
+  }
+
+  function onMove(e){
+    if(!isDrag) return; e.preventDefault();
+    var delta = getY(e) - startY;
+    if(Math.abs(delta) > 5) hasMoved = true;
+    var newT;
+    if(isBottom){
+      newT = Math.max(0, Math.min(travel, startT + delta));
+    } else {
+      newT = Math.max(-travel, Math.min(0, startT + delta));
+    }
+    asm.style.transform = "translateY(" + newT + "px)";
+  }
+
+  function onEnd(){
+    if(!isDrag) return; isDrag = false;
+    var endT = currentT();
+    asm.classList.add("snapping");
+
+    if(!hasMoved){
+      // Tap = toggle
+      if(isOpen){
+        asm.style.transform = isBottom ? "translateY("+travel+"px)" : "translateY("+(-travel)+"px)";
+        isOpen = false;
+      } else {
+        asm.style.transform = "translateY(0px)";
+        isOpen = true;
+      }
+    } else {
+      if(isBottom){
+        if(endT < travel * 0.5){ asm.style.transform="translateY(0px)"; isOpen=true; }
+        else { asm.style.transform="translateY("+travel+"px)"; isOpen=false; }
+      } else {
+        if(endT > -travel * 0.5){ asm.style.transform="translateY(0px)"; isOpen=true; }
+        else { asm.style.transform="translateY("+(-travel)+"px)"; isOpen=false; }
+      }
+    }
+
+    setTimeout(function(){
+      asm.classList.remove("snapping");
+      if(!isOpen) asm.style.zIndex = "";
+    }, 450);
+    document.removeEventListener("touchmove", onMove);
+    document.removeEventListener("touchend", onEnd);
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup", onEnd);
+  }
+
+  diamond.addEventListener("touchstart", onStart, {passive:false});
+  diamond.addEventListener("mousedown", onStart);
 }
 
 /* ══════════ INVENTORY MODAL ══════════ */
