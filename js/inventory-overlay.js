@@ -110,42 +110,34 @@ function showInventoryOverlay(onClose){
 
   var h = '<div class="inv-overlay-inner profile-page">';
 
-  // ── Vertical portrait header ──
+  // ── Vertical portrait (clickable to change) ──
   h += '<div class="prof-header inv-header-portrait">'
     + '<div class="prof-header-glow" style="background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)"></div>'
-    + '<div class="inv-avatar-wrap">';
-  if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
-  else h += '<div class="prof-avatar-empty">\uD83D\uDC64</div>';
+    + '<div class="inv-avatar-wrap" id="inv-avatar-wrap">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" id="inv-avatar-img">';
+  else h += '<div class="prof-avatar-empty" id="inv-avatar-img">\uD83D\uDC64</div>';
+  h += '<div class="inv-avatar-change-hint">Changer le portrait</div>';
   h += '</div>'
     + '<span class="prof-rarity" style="background:var(--gold-dark)">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</span>'
     + '<div class="prof-info-overlay">'
-    + '<div class="prof-name" style="color:var(--gold-light)">' + esc(u.name || "Voyageur") + '</div>'
+    + '<div class="prof-name" style="color:var(--gold-light)" id="inv-display-name">' + esc(u.name || "Voyageur") + '</div>'
     + '<div class="prof-subtitle">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2022 Niv. ' + u.level + '</div>'
     + '</div></div>';
+  h += '<input type="file" accept="image/*" id="inv-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">';
 
-  // ── Stats summary ──
-  h += '<div class="prof-stats-grid">'
-    + '<div class="prof-stat-cell"><div class="prof-stat-val">Niv. ' + u.level + '</div><div class="prof-stat-lbl">Niveau</div></div>'
-    + '<div class="prof-stat-cell"><div class="prof-stat-val">\uD83D\uDCB0 ' + u.coins + '</div><div class="prof-stat-lbl">Or</div></div>'
-    + '<div class="prof-stat-cell"><div class="prof-stat-val">6</div><div class="prof-stat-lbl">\u00c9quip\u00e9s</div></div>'
-    + '<div class="prof-stat-cell"><div class="prof-stat-val">1</div><div class="prof-stat-lbl">Conso.</div></div></div>';
-
-  // ── Attributes ──
-  h += '<div class="section-title">Attributs</div>';
-  h += '<div class="prof-attrs">';
-  var stats = [
-    {key:"CRE", val:u.statCRE, color:"#9b59b6"},
-    {key:"SAG", val:u.statSAG, color:"#5dade2"},
-    {key:"CHA", val:u.statCHA, color:"#e8a838"},
-    {key:"FOR", val:u.statFOR, color:"#e74c3c"},
-    {key:"AGI", val:u.statAGI, color:"#27ae60"}
-  ];
-  for(var s = 0; s < stats.length; s++){
-    h += '<div class="dr-stat-bar">'
-      + '<span class="dr-stat-label">' + stats[s].key + '</span>'
-      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:' + stats[s].val + '%;background:linear-gradient(90deg,' + stats[s].color + ',' + stats[s].color + '88)"></div></div>'
-      + '<span class="dr-stat-val">' + stats[s].val + '</span></div>';
-  }
+  // ── Editable fields ──
+  h += '<div class="section-title">Identit\u00e9</div>';
+  h += '<div class="inv-edit-form">';
+  h += '<div><label class="prof-field-label">Nom</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-name" value="' + esc(u.name) + '" placeholder="Ton nom\u2026" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Slogan</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-quote" value="' + esc(u.quote) + '" placeholder="Ton slogan\u2026" maxlength="80"></div>';
+  h += '<div><label class="prof-field-label">Nom du monde</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-world" value="' + esc(u.worldName) + '" placeholder="D\u2019o\u00f9 viens-tu ?" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Classe / M\u00e9tier</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-class" value="' + esc(u.className) + '" placeholder="Ton r\u00f4le\u2026" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Sc\u00e9nario</label>'
+    + '<div class="inv-readonly-field">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</div></div>';
   h += '</div>';
 
   // ── Inventory button (opens modal) ──
@@ -169,10 +161,60 @@ function showInventoryOverlay(onClose){
   (screenEl || document.body).appendChild(overlay);
   setTimeout(function(){ overlay.classList.add("visible"); }, 30);
 
+  // ── Wire: Avatar change ──
+  var avatarWrap = document.getElementById("inv-avatar-wrap");
+  var fileInput = document.getElementById("inv-file-input");
+  if(avatarWrap && fileInput){
+    avatarWrap.onclick = function(){ fileInput.click(); };
+    fileInput.onchange = function(){
+      var file = fileInput.files[0]; if(!file) return;
+      var reader = new FileReader();
+      reader.onload = async function(ev){
+        var ok = await saveAvatar(ev.target.result);
+        if(ok){
+          var u2 = loadUser();
+          var imgEl = document.getElementById("inv-avatar-img");
+          if(imgEl){
+            if(imgEl.tagName === "IMG"){ imgEl.src = u2.avatar; }
+            else {
+              var img = document.createElement("img");
+              img.id = "inv-avatar-img";
+              img.src = u2.avatar;
+              imgEl.parentNode.replaceChild(img, imgEl);
+            }
+          }
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+  }
+
+  // ── Wire: Save fields on change (auto-save) ──
+  function saveFields(){
+    var cu = loadUser();
+    var ni = document.getElementById("inv-edit-name");
+    var qi = document.getElementById("inv-edit-quote");
+    var wi = document.getElementById("inv-edit-world");
+    var ci = document.getElementById("inv-edit-class");
+    if(ni) cu.name = ni.value;
+    if(qi) cu.quote = qi.value;
+    if(wi) cu.worldName = wi.value;
+    if(ci) cu.className = ci.value;
+    saveUser(cu);
+    // Update display name in portrait
+    var dn = document.getElementById("inv-display-name");
+    if(dn && ni) dn.textContent = ni.value || "Voyageur";
+  }
+  ["inv-edit-name","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener("input", saveFields);
+  });
+
   // ── Wire: Inventory modal button ──
   var invBtn = document.getElementById("inv-open-modal-btn");
   if(invBtn) invBtn.onclick = function(){
-    openInventoryModal(u, scenario, equip, misc);
+    var cu = loadUser();
+    openInventoryModal(cu, scenario, equip, misc);
   };
 
   // ── Wire: Save button (opens save dialog) ──
