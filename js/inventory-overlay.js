@@ -251,6 +251,47 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<div class="inv-readonly-field">' + esc(roleLabel) + '</div></div>';
   h += '</div>';
 
+  // ── Stats (5 attributes, editable via range sliders) ──
+  var stats = [
+    {key:"statCRE", label:"CRE", color:"#9b59b6", val:u.statCRE},
+    {key:"statSAG", label:"SAG", color:"#5dade2", val:u.statSAG},
+    {key:"statCHA", label:"CHA", color:"#e8a838", val:u.statCHA},
+    {key:"statFOR", label:"FOR", color:"#e74c3c", val:u.statFOR},
+    {key:"statAGI", label:"AGI", color:"#27ae60", val:u.statAGI}
+  ];
+  h += '<div class="pg-stats-section" style="padding:8px 16px">';
+  h += '<div class="pg-drawer-subtitle">Attributs</div>';
+  stats.forEach(function(s){
+    h += '<div class="pg-stat-row">'
+      + '<span class="pg-stat-label" style="color:' + s.color + '">' + s.label + '</span>'
+      + '<input type="range" class="pg-stat-range" id="pg-stat-' + s.key + '" min="0" max="100" value="' + s.val + '" style="accent-color:' + s.color + '">'
+      + '<span class="pg-stat-val" id="pg-stat-val-' + s.key + '">' + s.val + '</span>'
+      + '</div>';
+  });
+  h += '</div>';
+
+  // ── Info row: Niveau, Monnaie, Équipements possédés ──
+  var currency = getCurrency();
+  var equippedCount = 0;
+  PRE_INV_EQUIP_SLOTS.forEach(function(slot){
+    if(equip[slot.key]) equippedCount++;
+  });
+  h += '<div class="pg-info-row" style="display:flex;gap:8px;padding:4px 16px 8px">';
+  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">\u2B50</span> Niv. ' + u.level + '</div>';
+  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">' + currency.icon + '</span> ' + u.coins + '</div>';
+  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">\uD83D\uDEE1\uFE0F</span> ' + equippedCount + '/6</div>';
+  h += '</div>';
+
+  // ── Color picker ──
+  h += '<div style="padding:4px 16px 12px">';
+  h += '<div class="pg-drawer-subtitle">Couleur dominante</div>';
+  h += '<div class="pg-color-picker" id="pg-color-picker">';
+  CARD_COLORS.forEach(function(c){
+    var sel = (u.cardColor === c.id) ? " pg-color-sel" : "";
+    h += '<div class="pg-color-swatch' + sel + '" data-color="' + c.id + '" title="' + esc(c.name) + '" style="background:' + c.id + '"></div>';
+  });
+  h += '</div></div>';
+
   // Navigation: Inventaire + Équipement
   h += '<div class="inv-actions-grid" style="padding:4px 16px 16px">';
   h += '<div class="prof-section-card" id="inv-open-inventory-btn">'
@@ -326,6 +367,30 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   ["inv-edit-name","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener("input", saveFields);
+  });
+
+  // Wire stat sliders
+  ["statCRE","statSAG","statCHA","statFOR","statAGI"].forEach(function(key){
+    var slider = document.getElementById("pg-stat-" + key);
+    var valEl = document.getElementById("pg-stat-val-" + key);
+    if(slider) slider.addEventListener("input", function(){
+      if(valEl) valEl.textContent = slider.value;
+      var cu = loadUser();
+      cu[key] = parseInt(slider.value);
+      saveUser(cu);
+    });
+  });
+
+  // Wire color picker
+  var colorPicker = document.getElementById("pg-color-picker");
+  if(colorPicker) colorPicker.addEventListener("click", function(e){
+    var swatch = e.target.closest(".pg-color-swatch");
+    if(!swatch) return;
+    colorPicker.querySelectorAll(".pg-color-swatch").forEach(function(s){ s.classList.remove("pg-color-sel") });
+    swatch.classList.add("pg-color-sel");
+    var cu = loadUser();
+    cu.cardColor = swatch.getAttribute("data-color");
+    saveUser(cu);
   });
 
   // Wire inventory + equipment
