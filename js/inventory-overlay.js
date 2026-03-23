@@ -156,17 +156,11 @@ function showInventoryOverlay(onClose){
     + '<div class="prof-section-desc">\u00c9quipement, consommables & documents</div></div>'
     + '<span class="prof-section-arrow">\u203a</span></div>';
 
-  // ── Save section ──
-  h += '<div class="section-title">Sauvegarde</div>';
-  h += '<div class="inv-save-section">';
-  h += '<label class="prof-field-label">Titre de la sauvegarde</label>';
-  h += '<input type="text" class="prof-input" id="inv-save-title" placeholder="Donne un nom \u00e0 ta sauvegarde\u2026" maxlength="60" autocomplete="off">';
-  h += '<button class="user-save-btn" id="inv-save-btn">\uD83D\uDCBE Sauvegarder</button>';
-  h += '<div class="inv-save-status" id="inv-save-status"></div>';
+  // ── Bottom buttons: Save (icon) + Continue ──
+  h += '<div class="inv-bottom-actions">';
+  h += '<button class="inv-action-icon-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
+  h += '<button class="prof-save-btn inv-continue-btn" id="inv-close-btn">Continuer</button>';
   h += '</div>';
-
-  // ── Continue button ──
-  h += '<button class="prof-save-btn" id="inv-close-btn">Continuer</button>';
 
   h += '</div>';
   overlay.innerHTML = h;
@@ -181,20 +175,16 @@ function showInventoryOverlay(onClose){
     openInventoryModal(u, scenario, equip, misc);
   };
 
-  // ── Wire: Save button ──
+  // ── Wire: Save button (opens save dialog) ──
   var saveBtn = document.getElementById("inv-save-btn");
   if(saveBtn) saveBtn.onclick = function(){
-    var titleInput = document.getElementById("inv-save-title");
-    var label = titleInput ? titleInput.value.trim() : "";
-    if(!label) label = "Sauvegarde";
-    var save = saveGameToSlot(label);
-    if(save){
+    showSaveDialog(function(save){
+      if(!save) return;
       acDB.set("ac_saveTimestamp", save.date);
-      var status = document.getElementById("inv-save-status");
-      if(status) status.innerHTML = '<span style="color:var(--poison)">\u2714 Sauvegard\u00e9 !</span>';
-      saveBtn.textContent = "\u2714 Sauvegard\u00e9 !";
+      saveBtn.textContent = "\u2714";
       saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-    }
+      saveBtn.style.borderColor = "var(--poison)";
+    });
   };
 
   // ── Wire: Continue button ──
