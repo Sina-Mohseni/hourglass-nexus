@@ -90,14 +90,14 @@ var USER_KEYS = {
   region:"ac_region", startCity:"ac_startCity", borderPasses:"ac_borderPasses",
   job:"ac_job", reputation:"ac_reputation", personaAffinities:"ac_affinities",
   gameDay:"ac_gameDay", gameHour:"ac_gameHour", gameMinute:"ac_gameMinute", gameSecond:"ac_gameSecond", mapX:"ac_mapX", mapY:"ac_mapY",
-  worldName:"ac_worldName", className:"ac_className"
+  worldName:"ac_worldName", className:"ac_className", statsLocked:"ac_statsLocked"
 };
 function loadUser(){
   return {
     name: acDB.get(USER_KEYS.name) || "",
     avatar: acDB.get(USER_KEYS.avatar) || "",
     floor: parseInt(acDB.get(USER_KEYS.floor)) || 0,
-    coins: parseInt(acDB.get(USER_KEYS.coins)) || 250,
+    coins: parseInt(acDB.get(USER_KEYS.coins)) || 100,
     visited: JSON.parse(acDB.get(USER_KEYS.visited) || "{}"),
     floorsUp: parseInt(acDB.get(USER_KEYS.floorsUp)) || 0,
     floorsDown: parseInt(acDB.get(USER_KEYS.floorsDown)) || 0,
@@ -124,7 +124,8 @@ function loadUser(){
     mapX: parseFloat(acDB.get(USER_KEYS.mapX)) || 0,
     mapY: parseFloat(acDB.get(USER_KEYS.mapY)) || 0,
     worldName: acDB.get(USER_KEYS.worldName) || "",
-    className: acDB.get(USER_KEYS.className) || ""
+    className: acDB.get(USER_KEYS.className) || "",
+    statsLocked: acDB.get(USER_KEYS.statsLocked) === "1"
   };
 }
 function saveUser(u){
@@ -132,7 +133,8 @@ function saveUser(u){
   Object.keys(USER_KEYS).forEach(function(k){
     if(k === "avatar") return;
     var v = u[k];
-    if(typeof v === "object") v = JSON.stringify(v);
+    if(typeof v === "boolean") v = v ? "1" : "0";
+    else if(typeof v === "object") v = JSON.stringify(v);
     pairs.push([USER_KEYS[k], String(v != null ? v : "")]);
   });
   acDB.setMany(pairs);

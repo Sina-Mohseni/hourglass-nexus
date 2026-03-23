@@ -270,6 +270,11 @@
   font-family: var(--font-ui); font-size: 10px; font-weight: 700;
   color: var(--bone-dim);
 }
+.pg-stat-range:disabled {
+  opacity: .4; cursor: not-allowed;
+}
+.pg-stat-range:disabled::-webkit-slider-thumb { cursor: not-allowed }
+.pg-stat-range:disabled::-moz-range-thumb { cursor: not-allowed }
 
 /* Color picker */
 .pg-color-picker {
