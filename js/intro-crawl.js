@@ -918,20 +918,21 @@ function showScenarioChoice(onChosen){
     var subs = (type === "connecte") ? SUB_CHAMPION : SUB_ISOLE;
     window._scOriginType = type; // "connecte" or "isole"
 
-    // Set title — contract phase first
+    // Set title
     if(step2Title){
-      step2Title.textContent = "Avant de poursuivre\u2026";
+      step2Title.textContent = (type === "connecte")
+        ? "Quel connecté es-tu ?"
+        : "Quel isolé es-tu ?";
     }
 
-    // Hide subtitle during contract phase
+    // Subtitle reference
     var subtitle = step2 ? step2.querySelector(".sc-subtitle") : null;
-    if(subtitle) subtitle.style.display = "none";
+    if(subtitle) subtitle.textContent = "Choisis ton scénario";
 
-    // Inject circles into arena (hidden initially)
+    // Inject scenario circles into arena (clickable, NOT drag targets)
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
-    // Layout positions depending on count
     var positions;
     if(subs.length === 4){
       positions = [
@@ -947,15 +948,19 @@ function showScenarioChoice(onChosen){
       ];
     }
 
+    // Hide guide during scenario selection phase
+    guide.style.display = "none";
+
     subs.forEach(function(s, i){
+      // Scenario circle (clickable to select)
       var div = document.createElement("div");
-      div.className = "sc-circle";
+      div.className = "sc-circle sc-circle-clickable";
       div.setAttribute("data-scenario", s.scenario);
       div.style.left = positions[i].left;
       div.style.top = positions[i].top;
-      div.style.display = "none"; // hidden until contract signed
-      arena.insertBefore(div, guide);
+      arena.appendChild(div);
 
+      // Label below circle
       var label = document.createElement("div");
       label.className = "sc-circle-label";
       label.style.left = positions[i].left;
@@ -963,56 +968,55 @@ function showScenarioChoice(onChosen){
       label.innerHTML =
         '<span class="sc-circle-label-text">' + s.name + '</span>' +
         '<span class="sc-circle-label-plus">+</span>';
-      label.style.display = "none"; // hidden until contract signed
-      arena.insertBefore(label, guide);
+      arena.appendChild(label);
 
-      label.onclick = function(e){
+      // Click circle → select scenario → show contract
+      div.onclick = function(){
+        var scenario = s.scenario;
+        window._chosenScenario = scenario;
+
+        // Highlight chosen circle
+        arena.querySelectorAll(".sc-circle").forEach(function(c){ c.classList.remove("sc-circle-chosen"); });
+        div.classList.add("sc-circle-chosen");
+
+        // Show contract modal
+        showContractModal(type, function(){
+          // Contract signed → remove all scenario circles, show single circle + guide
+          arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
+          arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+
+          // Update title & subtitle for guide placement phase
+          if(step2Title) step2Title.textContent = "Place ton guide";
+          if(subtitle){
+            subtitle.textContent = "Déplace le guide vers le cercle";
+          }
+
+          // Create single target circle in center
+          var target = document.createElement("div");
+          target.className = "sc-circle";
+          target.setAttribute("data-scenario", scenario);
+          target.style.left = "50%";
+          target.style.top = "35%";
+          arena.appendChild(target);
+
+          // Reveal guide
+          guide.style.display = "";
+          guide.style.left = "50%";
+          guide.style.top = "82%";
+          guide.classList.remove("sc-guide-awake");
+          if(guideLabel) guideLabel.textContent = "Endormi";
+
+          // Init drag for guide placement
+          initGuideDrag(scenario);
+        });
+      };
+
+      // Click on "+" → show lore modal
+      label.querySelector(".sc-circle-label-plus").onclick = function(e){
         e.stopPropagation();
         showScenarioLore(s.name, s.lore);
       };
     });
-
-    // Hide guide until contract signed
-    guide.style.display = "none";
-    guide.style.left = "50%";
-    guide.style.top = "82%";
-    guide.classList.remove("sc-guide-awake");
-    if(guideLabel) guideLabel.textContent = "Endormi";
-
-    // Inject contract link into arena
-    var contractLink = document.createElement("div");
-    contractLink.className = "sc-contract-link";
-    contractLink.innerHTML =
-      '<div class="sc-contract-icon">\uD83D\uDCDC</div>' +
-      '<div class="sc-contract-text">Lire et signer le contrat de participation</div>';
-    arena.appendChild(contractLink);
-
-    contractLink.onclick = function(){
-      showContractModal(type, function(){
-        // Contract signed — remove link, reveal circles + guide
-        contractLink.classList.add("fading-out");
-        setTimeout(function(){
-          contractLink.remove();
-
-          // Update title
-          if(step2Title){
-            step2Title.textContent = (type === "connecte")
-              ? "Quel connecté es-tu ?"
-              : "Quel isolé es-tu ?";
-          }
-          // Show subtitle
-          if(subtitle) subtitle.style.display = "";
-
-          // Reveal circles + labels
-          arena.querySelectorAll(".sc-circle").forEach(function(c){ c.style.display = ""; });
-          arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.style.display = ""; });
-
-          // Reveal guide
-          guide.style.display = "";
-          initStep2Drag();
-        }, 400);
-      });
-    };
 
     // Transition from step 1
     if(step1){
@@ -1028,10 +1032,9 @@ function showScenarioChoice(onChosen){
   // Back button
   var backBtn = document.getElementById("sc-back-btn");
   function goBackToStep1(){
-    // Clean up circles, labels and contract link
+    // Clean up circles, labels
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
-    arena.querySelectorAll(".sc-contract-link").forEach(function(c){ c.remove(); });
     guide.style.display = "";
     // Clean up drag listeners
     if(window._scDragCleanup) window._scDragCleanup();
@@ -1050,8 +1053,8 @@ function showScenarioChoice(onChosen){
   if(btnConnecte) btnConnecte.onclick = function(){ goToStep2("connecte"); };
   if(btnIsole) btnIsole.onclick = function(){ goToStep2("isole"); };
 
-  /* ── STEP 2: drag guide to circle ── */
-  function initStep2Drag(){
+  /* ── Guide drag to single circle (after contract signed) ── */
+  function initGuideDrag(scenario){
     var circles = arena.querySelectorAll(".sc-circle");
     var SNAP = 55;
     var isDrag = false, offX = 0, offY = 0;
@@ -1120,12 +1123,11 @@ function showScenarioChoice(onChosen){
       document.removeEventListener("touchend", onEnd);
     }
 
-    function startScenarioMusic(scenario){
-      var src = SC_MUSIC[scenario] || SC_MUSIC["champion"];
+    function startScenarioMusic(sc){
+      var src = SC_MUSIC[sc] || SC_MUSIC["champion"];
       var extAudio = document.getElementById("extelua-music");
       var extSrc = document.getElementById("extelua-music-src");
       if(!extAudio) return;
-      // Set the right track
       if(extSrc) extSrc.src = src;
       extAudio.load();
       extAudio.currentTime = 0;
@@ -1144,8 +1146,6 @@ function showScenarioChoice(onChosen){
 
       if(hit){
         chosen = true;
-        var scenario = hit.getAttribute("data-scenario");
-        window._chosenScenario = scenario;
 
         // Snap guide into circle
         var ar = arena.getBoundingClientRect();
@@ -1179,7 +1179,6 @@ function showScenarioChoice(onChosen){
           setTimeout(function(){
             overlay.style.display = "none";
             overlay.classList.remove("fading-out");
-            // Reset state for potential replay
             guide.classList.remove("sc-guide-awake");
             hit.classList.remove("sc-circle-chosen");
             cleanup();

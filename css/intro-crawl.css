@@ -479,6 +479,17 @@
   transform: scale(1.1);
 }
 
+/* Clickable scenario circles */
+.sc-circle-clickable {
+  cursor: pointer;
+}
+.sc-circle-clickable:hover {
+  border-color: var(--gold) !important;
+  border-style: solid !important;
+  box-shadow: 0 0 20px rgba(168,132,42,.35), 0 0 40px rgba(168,132,42,.15);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 /* Hover highlight when guide is near */
 .sc-circle-hover {
   border-color: var(--gold) !important;
@@ -538,28 +549,6 @@
 .sc-guide-awake .sc-guide-label {
   color: var(--gold);
   font-weight: 700;
-}
-
-/* ── Contract link in arena ── */
-.sc-contract-link {
-  position: absolute; left: 50%; top: 45%;
-  transform: translate(-50%, -50%);
-  display: flex; flex-direction: column; align-items: center;
-  gap: 12px; cursor: pointer;
-  animation: contractPulse 2.5s ease-in-out infinite;
-  transition: opacity .4s;
-}
-.sc-contract-link.fading-out { opacity: 0 }
-.sc-contract-icon { font-size: 48px; filter: drop-shadow(0 0 12px rgba(168,132,42,.5)) }
-.sc-contract-text {
-  font-family: var(--font-heading); font-size: 11px;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--gold-light); text-align: center;
-  text-shadow: 0 0 8px rgba(168,132,42,.4);
-}
-@keyframes contractPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1) }
-  50% { transform: translate(-50%, -50%) scale(1.05) }
 }
 
 /* ── Contract modal ── */
