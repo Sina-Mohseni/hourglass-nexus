@@ -894,7 +894,8 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   // Pill icon for non-Morkar scenarios (champion, isolé, dissident)
   if(needsPill){
     h += '<div class="contract-pill-row">';
-    h += '<div class="contract-pill" title="Pilule">&#128138;</div>';
+    h += '<div class="contract-pill" title="Pilule de compr\u00e9hension linguistique">&#128138;</div>';
+    h += '<div class="contract-pill-hint">Pilule de compr\u00e9hension</div>';
     h += '</div>';
   }
 
