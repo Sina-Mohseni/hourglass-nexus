@@ -839,8 +839,7 @@ function showContractModal(type, onSigned, isMorkar){
   h += '<div class="contract-signature">';
   h += '<div class="contract-sig-label">Signature du candidat</div>';
   h += '<div class="contract-sig-line"></div>';
-  h += '<button class="contract-sign-btn" id="contract-sign-btn"' +
-    (needsPill ? ' disabled' : '') + '>Signer le contrat</button>';
+  h += '<button class="contract-sign-btn" id="contract-sign-btn">Signer le contrat</button>';
   h += '</div>';
   h += '</div>';
 
@@ -848,11 +847,15 @@ function showContractModal(type, onSigned, isMorkar){
   screen.appendChild(backdrop);
   setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
 
+  // Track whether pill was consumed during this modal
+  var pillConsumed = false;
+
   // Pill click → reveal real text
   if(needsPill){
     var pill = backdrop.querySelector(".contract-pill");
     var pillHint = backdrop.querySelector(".contract-pill-hint");
     if(pill) pill.onclick = function(){
+      pillConsumed = true;
       pill.classList.add("consumed");
       if(pillHint) pillHint.textContent = "Pilule consommée — traduction en cours…";
 
@@ -869,20 +872,19 @@ function showContractModal(type, onSigned, isMorkar){
         }, idx * 350);
       });
 
-      // Enable sign button after all paragraphs revealed
       setTimeout(function(){
-        var signBtn = document.getElementById("contract-sign-btn");
-        if(signBtn){ signBtn.disabled = false; signBtn.classList.add("ready"); }
         if(pillHint) pillHint.textContent = "Traduction complète";
       }, paras.length * 350 + 500);
     };
   }
 
   document.getElementById("contract-sign-btn").onclick = function(){
-    if(this.disabled) return;
     // Mark as signed
     window._contractSigned = true;
     window._contractType = type;
+    // Pill in inventory only if NOT consumed during contract signing
+    // Morkar scenarios: pillConsumed stays false → pill available in inventory for later use
+    window._pillConsumed = pillConsumed;
 
     // Animate signature
     var sigLine = backdrop.querySelector(".contract-sig-line");
