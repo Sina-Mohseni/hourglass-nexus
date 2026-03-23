@@ -409,7 +409,9 @@
 
 /* Back button */
 .sc-back-btn {
-  position: absolute; top: 16px; left: 14px; z-index: 10;
+  z-index: 10;
+  margin-top: auto;
+  margin-bottom: 24px;
   padding: 8px 14px;
   background: rgba(10,8,6,.7);
   border: 1px solid rgba(168,132,42,.15);
