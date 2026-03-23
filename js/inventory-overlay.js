@@ -305,7 +305,6 @@ function openInventoryModal(misc){
     h += '<div class="inv-item-type">Document</div>';
     h += '</div>';
     h += '<div class="eq-item-actions">';
-    h += '<button class="eq-btn-equip inv-btn-use" data-inv-type="misc" data-inv-i="' + m + '" title="Utiliser">\u25B6</button>';
     h += '<button class="eq-btn-view inv-btn-view" data-inv-type="misc" data-inv-i="' + m + '" title="Voir">\uD83D\uDD0D</button>';
     h += '</div></div>';
   }
