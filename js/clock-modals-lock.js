@@ -257,8 +257,7 @@ function initLock(){
     if(roleEl) roleEl.style.display = "none";
   }
 
-  // Populate per-scenario info buttons
-  populateLockInfoZone();
+  // Info zone removed — infos are in the inventory overlay
 
   // Fade out intro crawl music when arriving on lock screen
   var icAudio = document.getElementById("ic-music");

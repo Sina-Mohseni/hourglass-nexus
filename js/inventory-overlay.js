@@ -159,7 +159,7 @@ function showInventoryOverlay(onClose){
   // ── Bottom buttons: Save (icon) + Continue ──
   h += '<div class="inv-bottom-actions">';
   h += '<button class="inv-action-icon-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
-  h += '<button class="prof-save-btn inv-continue-btn" id="inv-close-btn">Continuer</button>';
+  h += '<button class="inv-action-icon-btn inv-continue-icon" id="inv-close-btn" title="Continuer">\u25B6</button>';
   h += '</div>';
 
   h += '</div>';
