@@ -175,13 +175,25 @@ var NIGHT_DIALOGUES = {
   }
 };
 
-/* ── Night intro narration paragraphs ── */
-var NIGHT_INTRO_PARAGRAPHS = [
-  "La cérémonie est terminée. Les derniers échos de la foule se sont tus. Le campement s'installe dans un silence que seul le vent ose briser.",
-  "Au-dessus de toi, deux lunes se lèvent — l'une pâle, l'autre cuivrée — projetant des ombres longues entre les tentes des candidats.",
-  "Tu ne dors pas. Impossible. Demain, les soleils se lèveront sur le premier jour du Tournoi. Demain, tout change.",
-  "Tu t'assieds à l'écart, face aux braises mourantes d'un feu de camp. L'air est frais. Le silence est épais. Et puis…",
-  "Des pas. Quelqu'un approche dans l'obscurité."
+/* ── Night intro narration builder ── */
+function _buildNightIntro(cityName, regionName){
+  return [
+    "La téléportation s'achève. Ton corps se reconstitue, particule par particule, dans un lieu que tu ne connais pas. L'air est différent ici. Plus dense. Plus ancien.",
+    "Tu es à " + cityName + ", en " + regionName + ". C'est ici que le Tournoi t'a assigné ta zone de repos — un recoin du monde choisi au hasard, loin de tout, loin de tous.",
+    "Le ciel nocturne d'Extelua s'étend au-dessus de toi. Deux lunes — l'une pâle, l'autre cuivrée — projettent des ombres longues sur un paysage que tu découvres pour la première fois.",
+    "Tu es seul. Complètement seul. Demain, le Tournoi commence. Demain, tout change. Mais ce soir, il n'y a que toi et le silence.",
+    "Tu t'allonges. Tu fermes les yeux. Tu essaies de dormir. Le sommeil ne vient pas. Quelque chose te maintient éveillé — une tension dans l'air, un instinct qui refuse de se taire.",
+    "Et puis tu la sens. Une présence. Quelqu'un est là, dans l'obscurité, tout près. Quelqu'un qui ne devrait pas être là."
+  ];
+}
+
+/* ── Night outro narration ── */
+var NIGHT_OUTRO_PARAGRAPHS = [
+  "Le silence revient, plus doux qu'avant. La présence s'éloigne et disparaît dans la nuit comme elle était venue — sans prévenir.",
+  "Tu restes là un moment, seul à nouveau, les yeux tournés vers les étoiles. Les mots échangés résonnent encore.",
+  "Puis la fatigue arrive enfin, d'un coup, comme une vague. Tu fermes les yeux. Cette fois, le sommeil t'emporte.",
+  "…",
+  "Les premiers rayons des soleils d'Extelua percent l'horizon. Le Tournoi commence."
 ];
 
 /* ── Fade out all site music ── */
@@ -218,14 +230,15 @@ function _ndlgStartScenarioMusic(){
   audioFade(extAudio, 0.35, 3000);
 }
 
-/* ── Show cinematic night intro, then NPC dialogue ── */
-function showNightDialogue(onDone){
+/* ── Show cinematic night intro, then NPC dialogue, then outro ── */
+function showNightDialogue(onDone, cityName, regionName){
   var personas = getNonGuidePersonas();
   var available = personas.filter(function(p){ return NIGHT_DIALOGUES[p.id] });
   if(available.length === 0){ if(onDone) onDone(); return; }
 
   var npc = available[Math.floor(Math.random() * available.length)];
   var tree = NIGHT_DIALOGUES[npc.id];
+  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contrée lointaine");
 
   // Create fullscreen overlay
   var overlay = document.createElement("div");
@@ -240,7 +253,7 @@ function showNightDialogue(onDone){
     + '</div>'
     + '<div class="ndlg-scene ndlg-scene-hidden" id="ndlg-dialogue-scene">'
     +   '<div class="ndlg-header">'
-    +     '<div class="ndlg-setting">Campement \u2014 Veille du Tournoi</div>'
+    +     '<div class="ndlg-setting">' + esc(cityName || "Zone de repos") + ' \u2014 Nuit</div>'
     +   '</div>'
     +   '<div class="ndlg-portrait-area">'
     +     '<div class="ndlg-portrait" id="ndlg-portrait">'
@@ -252,6 +265,10 @@ function showNightDialogue(onDone){
     +   '<div class="ndlg-bubble" id="ndlg-bubble"></div>'
     +   '<div class="ndlg-choices" id="ndlg-choices"></div>'
     +   '<div class="ndlg-tap-hint" id="ndlg-tap-hint">\u25BC</div>'
+    + '</div>'
+    + '<div class="ndlg-intro-scene ndlg-scene-hidden" id="ndlg-outro-scene">'
+    +   '<div class="ndlg-intro-text" id="ndlg-outro-text"></div>'
+    +   '<div class="ndlg-tap-hint" id="ndlg-outro-tap">\u25BC</div>'
     + '</div>';
 
   var screen = document.querySelector(".screen");
@@ -263,24 +280,19 @@ function showNightDialogue(onDone){
   var introTap   = overlay.querySelector("#ndlg-intro-tap");
   var paraIdx = 0;
 
-  function showIntroParagraph(idx){
-    if(idx >= NIGHT_INTRO_PARAGRAPHS.length){
-      // Transition to dialogue phase
-      introScene.classList.add("ndlg-intro-fading");
-      setTimeout(function(){
-        introScene.style.display = "none";
-        _startDialoguePhase();
-      }, 700);
+  function _showNarrationParagraph(textEl, tapEl, paragraphs, idx, onEnd){
+    if(idx >= paragraphs.length){
+      if(onEnd) onEnd();
       return;
     }
-    introText.style.opacity = "0";
-    introText.style.transform = "translateY(10px)";
+    textEl.style.opacity = "0";
+    textEl.style.transform = "translateY(10px)";
     setTimeout(function(){
-      introText.textContent = NIGHT_INTRO_PARAGRAPHS[idx];
-      introText.style.transition = "opacity .6s, transform .6s";
-      introText.style.opacity = "1";
-      introText.style.transform = "translateY(0)";
-      introTap.classList.add("visible");
+      textEl.textContent = paragraphs[idx];
+      textEl.style.transition = "opacity .6s, transform .6s";
+      textEl.style.opacity = "1";
+      textEl.style.transform = "translateY(0)";
+      tapEl.classList.add("visible");
     }, 200);
   }
 
@@ -288,10 +300,16 @@ function showNightDialogue(onDone){
     overlay.removeEventListener("click", advanceIntro);
     introTap.classList.remove("visible");
     paraIdx++;
-    showIntroParagraph(paraIdx);
-    setTimeout(function(){
-      overlay.addEventListener("click", advanceIntro);
-    }, 400);
+    if(paraIdx >= introParagraphs.length){
+      introScene.classList.add("ndlg-intro-fading");
+      setTimeout(function(){
+        introScene.style.display = "none";
+        _startDialoguePhase();
+      }, 700);
+    } else {
+      _showNarrationParagraph(introText, introTap, introParagraphs, paraIdx);
+      setTimeout(function(){ overlay.addEventListener("click", advanceIntro) }, 400);
+    }
   }
 
   // Fade all existing music, then start intro
@@ -299,15 +317,12 @@ function showNightDialogue(onDone){
     overlay.classList.add("visible");
 
     _ndlgFadeAllMusic(function(){
-      // Start scenario music softly
       setTimeout(_ndlgStartScenarioMusic, 800);
     });
 
     setTimeout(function(){
-      showIntroParagraph(0);
-      setTimeout(function(){
-        overlay.addEventListener("click", advanceIntro);
-      }, 600);
+      _showNarrationParagraph(introText, introTap, introParagraphs, 0);
+      setTimeout(function(){ overlay.addEventListener("click", advanceIntro) }, 600);
     }, 800);
   });
 
@@ -355,9 +370,7 @@ function showNightDialogue(onDone){
                 tapHint.classList.remove("visible");
                 nextBeat();
               };
-              setTimeout(function(){
-                overlay.addEventListener("click", advance);
-              }, 400);
+              setTimeout(function(){ overlay.addEventListener("click", advance) }, 400);
             }, 600);
           };
           choicesEl.appendChild(btn);
@@ -370,11 +383,12 @@ function showNightDialogue(onDone){
     function nextBeat(){
       beatIdx++;
       if(beatIdx >= tree.beats.length){
-        overlay.classList.add("ndlg-fading");
+        // Transition to outro
+        dlgScene.classList.add("ndlg-intro-fading");
         setTimeout(function(){
-          overlay.remove();
-          if(onDone) onDone();
-        }, 800);
+          dlgScene.style.display = "none";
+          _startOutroPhase();
+        }, 700);
         return;
       }
 
@@ -385,20 +399,19 @@ function showNightDialogue(onDone){
         tapHint.classList.remove("visible");
         showChoices(beat.choices);
       } else {
+        // Final NPC text, tap to go to outro
         tapHint.classList.add("visible");
-        var finish = function(ev){
+        var toOutro = function(ev){
           if(ev.target.closest(".ndlg-choice-btn")) return;
-          overlay.removeEventListener("click", finish);
+          overlay.removeEventListener("click", toOutro);
           tapHint.classList.remove("visible");
-          overlay.classList.add("ndlg-fading");
+          dlgScene.classList.add("ndlg-intro-fading");
           setTimeout(function(){
-            overlay.remove();
-            if(onDone) onDone();
-          }, 800);
+            dlgScene.style.display = "none";
+            _startOutroPhase();
+          }, 700);
         };
-        setTimeout(function(){
-          overlay.addEventListener("click", finish);
-        }, 600);
+        setTimeout(function(){ overlay.addEventListener("click", toOutro) }, 600);
       }
     }
 
@@ -412,10 +425,38 @@ function showNightDialogue(onDone){
         tapHint.classList.remove("visible");
         nextBeat();
       };
-      setTimeout(function(){
-        overlay.addEventListener("click", startDialogue);
-      }, 400);
+      setTimeout(function(){ overlay.addEventListener("click", startDialogue) }, 400);
     }, 500);
+  }
+
+  /* ═══════ PHASE 3 : Outro narration ═══════ */
+  function _startOutroPhase(){
+    var outroScene = overlay.querySelector("#ndlg-outro-scene");
+    var outroText  = overlay.querySelector("#ndlg-outro-text");
+    var outroTap   = overlay.querySelector("#ndlg-outro-tap");
+    outroScene.classList.remove("ndlg-scene-hidden");
+    var outIdx = 0;
+
+    function advanceOutro(){
+      overlay.removeEventListener("click", advanceOutro);
+      outroTap.classList.remove("visible");
+      outIdx++;
+      if(outIdx >= NIGHT_OUTRO_PARAGRAPHS.length){
+        overlay.classList.add("ndlg-fading");
+        setTimeout(function(){
+          overlay.remove();
+          if(onDone) onDone();
+        }, 1000);
+      } else {
+        _showNarrationParagraph(outroText, outroTap, NIGHT_OUTRO_PARAGRAPHS, outIdx);
+        setTimeout(function(){ overlay.addEventListener("click", advanceOutro) }, 400);
+      }
+    }
+
+    setTimeout(function(){
+      _showNarrationParagraph(outroText, outroTap, NIGHT_OUTRO_PARAGRAPHS, 0);
+      setTimeout(function(){ overlay.addEventListener("click", advanceOutro) }, 600);
+    }, 400);
   }
 }
 
@@ -466,9 +507,15 @@ function startNightSequence(onDone){
   saveUser(u);
   acDB.set("ac_charCreated", "1");
 
+  // Resolve city/region names for intro narration
+  var cityObj = getCities().find(function(c){ return c.id === u.startCity });
+  var regionObj = getRegionById(u.region);
+  var cName = cityObj ? cityObj.name : "un lieu inconnu";
+  var rName = regionObj ? regionObj.name : "une contrée lointaine";
+
   // Show night dialogue, then enter main app
   showNightDialogue(function(){
     enterMainApp();
     if(onDone) onDone();
-  });
+  }, cName, rName);
 }
