@@ -505,11 +505,53 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     });
   };
 
-  // Wire footer start button (same as main close button)
+  // Wire start button — confirmation dialog before passing the night
   var fpStart = document.getElementById("fp-start-btn");
   if(fpStart) fpStart.onclick = function(){
-    var mainClose = document.getElementById("inv-close-btn");
-    if(mainClose) mainClose.click();
+    _showNightConfirm(function(){
+      var mainClose = document.getElementById("inv-close-btn");
+      if(mainClose) mainClose.click();
+    });
+  };
+}
+
+/* ── Confirmation "Passer la nuit" ── */
+function _showNightConfirm(onConfirm){
+  var existing = document.getElementById("pg-night-confirm");
+  if(existing) existing.remove();
+
+  var d = document.createElement("div");
+  d.id = "pg-night-confirm";
+  d.className = "pg-night-overlay";
+  d.innerHTML =
+    '<div class="pg-night-box">'
+    + '<div class="pg-night-icon">\uD83C\uDF19</div>'
+    + '<div class="pg-night-title">Passer la nuit</div>'
+    + '<div class="pg-night-desc">Le soir touche \u00e0 sa fin. Souhaitez-vous vous reposer et commencer l\u2019aventure au lever des soleils\u00a0?</div>'
+    + '<div class="pg-night-btns">'
+    + '<button class="pg-night-btn pg-night-go" id="pg-night-yes">\u2600\uFE0F Commencer l\u2019aventure</button>'
+    + '<button class="pg-night-btn pg-night-back" id="pg-night-no">Retour</button>'
+    + '</div>'
+    + '</div>';
+
+  var screen = document.querySelector(".screen");
+  (screen || document.body).appendChild(d);
+  requestAnimationFrame(function(){ d.classList.add("visible") });
+
+  document.getElementById("pg-night-yes").onclick = function(){
+    d.classList.remove("visible");
+    setTimeout(function(){ d.remove() }, 300);
+    if(onConfirm) onConfirm();
+  };
+  document.getElementById("pg-night-no").onclick = function(){
+    d.classList.remove("visible");
+    setTimeout(function(){ d.remove() }, 300);
+  };
+  d.onclick = function(e){
+    if(e.target === d){
+      d.classList.remove("visible");
+      setTimeout(function(){ d.remove() }, 300);
+    }
   };
 }
 
