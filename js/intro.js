@@ -278,7 +278,6 @@ function closeMainMenu(cb, keepMusic){
   }
   setTimeout(function(){
     menu.remove();
-    document.body.classList.remove("intro-active");
     if(cb) cb();
   }, 800);
 }
