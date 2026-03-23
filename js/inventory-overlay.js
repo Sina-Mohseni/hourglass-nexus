@@ -158,6 +158,13 @@ function showInventoryOverlay(onClose){
 
   // Central info block
   h += '<div class="pg-info">';
+
+  // Action buttons: save (left circle) + start (right circle) above role badge
+  h += '<div class="pg-top-actions">';
+  h += '<button class="pg-circle-btn pg-circle-save" id="fp-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
+  h += '<button class="pg-circle-btn pg-circle-start" id="fp-start-btn" title="Commencer">\u25B6</button>';
+  h += '</div>';
+
   h += '<div class="pg-role-badge">' + esc(roleLabel) + '</div>';
   h += '<div class="pg-name" id="pg-display-name">' + esc(u.name || "Voyageur") + '</div>';
   h += '<div class="pg-details">';
@@ -354,11 +361,7 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<span class="prof-section-arrow">\u203a</span></div>';
   h += '</div>';
 
-  // Save + Start buttons (duplicated from main overlay for quick access)
-  h += '<div class="pg-drawer-actions" style="display:flex;gap:10px;padding:8px 16px 16px">';
-  h += '<button class="pg-action-btn pg-save-btn" id="fp-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
-  h += '<button class="pg-action-btn pg-start-btn" id="fp-start-btn">\u25B6 Commencer</button>';
-  h += '</div>';
+  // (Save + Start buttons moved to main overlay pg-top-actions)
 
   // Use the real footer panel
   setFooterPanelContent(h);
