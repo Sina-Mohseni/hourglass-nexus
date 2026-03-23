@@ -280,6 +280,12 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<span class="prof-section-arrow">\u203a</span></div>';
   h += '</div>';
 
+  // Save + Start buttons (duplicated from main overlay for quick access)
+  h += '<div class="pg-drawer-actions" style="display:flex;gap:10px;padding:8px 16px 16px">';
+  h += '<button class="pg-action-btn pg-save-btn" id="fp-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
+  h += '<button class="pg-action-btn pg-start-btn" id="fp-start-btn">\u25B6 Commencer</button>';
+  h += '</div>';
+
   // Use the real footer panel
   setFooterPanelContent(h);
 
@@ -342,6 +348,32 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   if(invBtn) invBtn.onclick = function(){ openInventoryModal(misc, equip); };
   var eqBtn = document.getElementById("inv-open-equip-btn");
   if(eqBtn) eqBtn.onclick = function(){ openEquipmentModal(loadUser(), scenario, equip); };
+
+  // Wire footer save button (same logic as main overlay save)
+  var fpSave = document.getElementById("fp-save-btn");
+  if(fpSave) fpSave.onclick = function(){
+    showSaveDialog(function(save){
+      if(!save) return;
+      acDB.set("ac_saveTimestamp", save.date);
+      fpSave.textContent = "\u2714";
+      fpSave.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
+      fpSave.style.borderColor = "var(--poison)";
+      // Also update main overlay save button if present
+      var mainSave = document.getElementById("inv-save-btn");
+      if(mainSave){
+        mainSave.textContent = "\u2714";
+        mainSave.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
+        mainSave.style.borderColor = "var(--poison)";
+      }
+    });
+  };
+
+  // Wire footer start button (same as main close button)
+  var fpStart = document.getElementById("fp-start-btn");
+  if(fpStart) fpStart.onclick = function(){
+    var mainClose = document.getElementById("inv-close-btn");
+    if(mainClose) mainClose.click();
+  };
 }
 
 /* ── Header drawer content: intro replay gallery ── */
@@ -376,54 +408,109 @@ function _buildPgHeaderDrawer(){
   if(hpBody) hpBody.querySelectorAll(".pg-intro-card").forEach(function(card){
     card.onclick = function(){
       var id = card.getAttribute("data-intro");
-      if(id === "tournoi") showIntroModal(document.getElementById("inv-overlay"));
-      else if(id === "morkar") showMorkarPresentation();
-      else if(id === "narr1") _showNarrationReplay(PRE_IDENTITY_PARAGRAPHS, "Avant l\u2019identit\u00e9");
-      else if(id === "narr2") _showNarrationReplay(PRE_SCENARIO_PARAGRAPHS, "Avant le sc\u00e9nario");
+      if(id === "tournoi") _showIntroReplayFS("tournoi");
+      else if(id === "morkar") _showIntroReplayFS("morkar");
+      else if(id === "narr1") _showIntroReplayFS("narr1");
+      else if(id === "narr2") _showIntroReplayFS("narr2");
     };
   });
 }
 
-/* ── Narration replay in a modal ── */
-function _showNarrationReplay(paragraphs, title){
-  var existing = document.getElementById("pg-narr-replay");
+/* ── Fullscreen intro replay with video + music ── */
+function _showIntroReplayFS(introId){
+  var existing = document.getElementById("pg-intro-replay");
   if(existing) existing.remove();
 
-  var overlay = document.createElement("div");
-  overlay.id = "pg-narr-replay";
-  overlay.className = "ic-modal-overlay";
+  /* Build body HTML depending on intro type */
+  var body = "", logo = "", title = "";
+  if(introId === "tournoi"){
+    logo = "\u29D6"; title = "LE TOURNOI D\u2019EXTELUA";
+    body = _getIntroModalBody();
+  } else if(introId === "morkar"){
+    logo = "\u25C6"; title = "GROUPE MORKAR";
+    body = _getMorkarModalBody();
+  } else if(introId === "narr1"){
+    logo = "\uD83D\uDCDC"; title = "AVANT L\u2019IDENTIT\u00C9";
+    body = _paragraphsToHTML(PRE_IDENTITY_PARAGRAPHS);
+  } else if(introId === "narr2"){
+    logo = "\uD83D\uDCDC"; title = "AVANT LE SC\u00C9NARIO";
+    body = _paragraphsToHTML(PRE_SCENARIO_PARAGRAPHS);
+  }
 
-  var body = '';
-  paragraphs.forEach(function(p){
-    if(p.cls === "ic-title") body += '<h3 class="ic-modal-section">' + p.text + '</h3>';
-    else if(p.cls === "ic-final") body += '<p class="ic-modal-closing">' + p.text + '</p>';
-    else if(p.text) body += '<p>' + p.text + '</p>';
-  });
+  var overlay = document.createElement("div");
+  overlay.id = "pg-intro-replay";
+  overlay.className = "intro-replay-fs";
 
   overlay.innerHTML =
-    '<div class="ic-modal">'
-    + '<div class="ic-modal-header">'
-    + '<span class="ic-modal-logo">\uD83D\uDCDC</span>'
-    + '<span class="ic-modal-title">' + title.toUpperCase() + '</span>'
-    + '</div>'
+    '<video class="ir-bg-video" muted playsinline loop><source src="assets/video/hourglass-nexus-intro.mp4" type="video/mp4"></video>'
+    + '<div class="ir-vignette"></div>'
+    + '<div class="ir-content">'
+    + '<div class="ic-modal-header"><span class="ic-modal-logo">' + logo + '</span>'
+    + '<span class="ic-modal-title">' + title + '</span></div>'
     + '<div class="ic-modal-body">' + body + '</div>'
-    + '<button class="ic-modal-close" id="pg-narr-close">Fermer</button>'
-    + '</div>';
+    + '<button class="ic-modal-close" id="ir-close-btn">Fermer</button>'
+    + '</div>'
+    + '<audio id="ir-music" loop preload="auto"><source src="assets/music/extelua-intro.mp3" type="audio/mpeg"></audio>';
 
-  var target = document.getElementById("inv-overlay") || document.body;
-  target.appendChild(overlay);
-  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+  var screen = document.querySelector(".screen");
+  (screen || document.body).appendChild(overlay);
 
-  document.getElementById("pg-narr-close").onclick = function(){
+  /* Start video + music */
+  var video = overlay.querySelector(".ir-bg-video");
+  var music = overlay.querySelector("#ir-music");
+  if(video) video.play().catch(function(){});
+  if(music){ music.volume = 0; music.play().catch(function(){}); audioFade(music, 0.35, 1200); }
+
+  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
+
+  function closeReplay(){
     overlay.classList.remove("visible");
-    setTimeout(function(){ overlay.remove(); }, 400);
-  };
-  overlay.onclick = function(e){
-    if(e.target === overlay){
-      overlay.classList.remove("visible");
-      setTimeout(function(){ overlay.remove(); }, 400);
-    }
-  };
+    if(music) audioFade(music, 0, 600, function(){ music.pause(); });
+    setTimeout(function(){
+      if(video) video.pause();
+      overlay.remove();
+    }, 500);
+  }
+
+  document.getElementById("ir-close-btn").onclick = closeReplay;
+}
+
+function _paragraphsToHTML(paragraphs){
+  var h = '';
+  paragraphs.forEach(function(p){
+    if(p.cls === "ic-title") h += '<h3 class="ic-modal-section">' + p.text + '</h3>';
+    else if(p.cls === "ic-final") h += '<p class="ic-modal-closing">' + p.text + '</p>';
+    else if(p.text) h += '<p>' + p.text + '</p>';
+  });
+  return h;
+}
+
+function _getIntroModalBody(){
+  return '<p class="ic-modal-intro">\u00AB Le Sablier s\u2019est retourn\u00e9. Comme il l\u2019a fait avant nous, comme il le fera apr\u00e8s nous. \u00BB</p>'
+    + '<p>Quelque part dans l\u2019immensit\u00e9 d\u2019Extelua, un tournoi se pr\u00e9pare. Le plus grand \u00e9v\u00e9nement que l\u2019univers connu ait jamais engendr\u00e9. Quarante candidats venus de tous les horizons vont s\u2019affronter dans des \u00e9preuves qui testent le corps, l\u2019esprit et la volont\u00e9.</p>'
+    + '<h3 class="ic-modal-section">LES CHAMPIONS</h3>'
+    + '<p>Trente d\u2019entre eux sont les repr\u00e9sentants officiels des plan\u00e8tes connect\u00e9es au R\u00e9seau Universel. \u00c9lus, d\u00e9sign\u00e9s ou tir\u00e9s au sort selon les traditions de leur monde, ils arrivent avec leurs sponsors, leurs supporters et la pression de milliards de regards.</p>'
+    + '<h3 class="ic-modal-section">LES ISOL\u00c9S</h3>'
+    + '<p>Dix places sont r\u00e9serv\u00e9es aux plan\u00e8tes isol\u00e9es \u2014 des mondes coup\u00e9s du reste de l\u2019univers, qui n\u2019ont parfois jamais eu de contact avec l\u2019ext\u00e9rieur. Des individus au potentiel remarquable, arrach\u00e9s \u00e0 leur quotidien par une invitation qu\u2019ils ne comprennent pas encore.</p>'
+    + '<h3 class="ic-modal-section">LE GROUPE MORKAR</h3>'
+    + '<p>L\u2019organisation qui dirige le Tournoi depuis des d\u00e9cennies. Garant autoproclam\u00e9 de la paix et de la transparence entre les mondes, Morkar contr\u00f4le l\u2019arbitrage, la retransmission et les r\u00e8gles du jeu. Tout passe par eux. Tout leur appartient.</p>'
+    + '<h3 class="ic-modal-section">LES DISSIDENTS</h3>'
+    + '<p>Des voix s\u2019\u00e9l\u00e8vent dans l\u2019ombre. Certains anciens candidats murmurent que le Tournoi n\u2019est pas ce qu\u2019il pr\u00e9tend \u00eatre. Que derri\u00e8re le spectacle se cachent des v\u00e9rit\u00e9s que Morkar pr\u00e9f\u00e8re garder dans l\u2019obscurit\u00e9. Personne ne sait exactement ce qu\u2019ils savent \u2014 ni ce qu\u2019ils pr\u00e9parent.</p>'
+    + '<p class="ic-modal-closing">\u00AB Que le Sablier guide vos pas. \u00BB</p>';
+}
+
+function _getMorkarModalBody(){
+  return '<p class="ic-modal-intro">\u00AB Peuples d\u2019Extelua, le moment est venu. Le Tournoi ouvre ses portes pour sa 47e \u00e9dition. \u00BB</p>'
+    + '<h3 class="ic-modal-section">LE TOURNOI</h3>'
+    + '<p>Cr\u00e9\u00e9 il y a pr\u00e8s d\u2019un si\u00e8cle par le Conseil Fondateur, le Tournoi d\u2019Extelua est le plus grand \u00e9v\u00e9nement comp\u00e9titif de l\u2019univers connu. Pendant quinze lunes, quarante candidats venus de tous les horizons s\u2019affrontent dans des \u00e9preuves qui testent le corps, l\u2019esprit et la volont\u00e9.</p>'
+    + '<p>Le groupe Morkar, garant de la transparence et de la paix entre les mondes, assure l\u2019organisation, la retransmission et l\u2019arbitrage du Tournoi depuis sa 12e \u00e9dition.</p>'
+    + '<h3 class="ic-modal-section">LES CANDIDATS \u2014 CHAMPIONS</h3>'
+    + '<p>Trente candidats sont d\u00e9sign\u00e9s par les plan\u00e8tes membres du R\u00e9seau des Routes Sillonn\u00e9es. Chaque monde connect\u00e9 envoie son repr\u00e9sentant.</p>'
+    + '<h3 class="ic-modal-section">LES CANDIDATS \u2014 ISOL\u00c9S</h3>'
+    + '<p>Dix places sont r\u00e9serv\u00e9es aux plan\u00e8tes non connect\u00e9es aux r\u00e9seaux universels. Morkar envoie des \u00e9claireurs pour identifier et inviter des individus au potentiel remarquable.</p>'
+    + '<h3 class="ic-modal-section">LA R\u00c9COMPENSE</h3>'
+    + '<p>Le vainqueur obtient pour sa plan\u00e8te d\u2019origine l\u2019int\u00e9gration au R\u00e9seau Universel \u2014 acc\u00e8s aux Routes Sillonn\u00e9es, si\u00e8ge au Conseil des Mondes, et les technologies qui en d\u00e9coulent.</p>'
+    + '<p class="ic-modal-closing">\u00AB Que le Sablier guide vos pas. Morkar veille. \u00BB</p>';
 }
 
 /* ══════════ INVENTORY MODAL ══════════ */

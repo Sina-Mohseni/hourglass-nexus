@@ -286,7 +286,10 @@ function initHeaderPanel(){
     asm.classList.remove("snapping");
     /* Fermer le footer-panel et mettre le header au-dessus */
     if(window._fpOpen) closeFooterPanel();
-    asm.style.zIndex = window._pgOverlayActive ? "1010" : "510";
+    var base = window._pgOverlayActive ? 1010 : 510;
+    asm.style.zIndex = base;
+    var otherAsm = document.getElementById("footer-assembly");
+    if(otherAsm) otherAsm.style.zIndex = base - 1;
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
@@ -393,7 +396,10 @@ function initFooterPanel(){
     asm.classList.remove("snapping");
     /* Fermer le header-panel et mettre le footer au-dessus */
     if(window._hpOpen) closeHeaderPanel();
-    asm.style.zIndex = window._pgOverlayActive ? "1010" : "510";
+    var base = window._pgOverlayActive ? 1010 : 510;
+    asm.style.zIndex = base;
+    var otherAsm = document.getElementById("header-assembly");
+    if(otherAsm) otherAsm.style.zIndex = base - 1;
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
