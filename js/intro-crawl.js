@@ -761,24 +761,86 @@ var CONTRACT_CONTENT = {
   }
 };
 
-function showContractModal(type, onSigned){
+/* ── Contract preview page (portrait + name + scenario + contract icon) ── */
+function showContractPreview(arena, persona, scenarioObj, type, onSigned){
+  var preview = document.createElement("div");
+  preview.className = "sc-contract-preview";
+
+  var avatarSrc = (persona && persona.avatar) ? persona.avatar : "assets/settings.png";
+  var playerName = (persona && persona.name) ? persona.name : "Candidat";
+
+  var h = '<div class="scp-portrait">';
+  h += '<img src="' + avatarSrc + '" alt="">';
+  h += '</div>';
+  h += '<div class="scp-name">' + playerName + '</div>';
+  h += '<div class="scp-scenario">' + scenarioObj.name + '</div>';
+  h += '<div class="scp-contract-icon" title="Ouvrir le contrat">&#128220;</div>';
+  h += '<div class="scp-contract-hint">Contrat</div>';
+
+  preview.innerHTML = h;
+  arena.appendChild(preview);
+
+  // Fade in
+  setTimeout(function(){ preview.classList.add("visible"); }, 20);
+
+  // Click contract icon → open contract modal
+  preview.querySelector(".scp-contract-icon").onclick = function(){
+    var isMorkar = (scenarioObj.scenario === "apprenti-morkar" || scenarioObj.scenario === "veteran-morkar");
+    showContractModal(type, onSigned, isMorkar);
+  };
+}
+
+/* Generate alien gibberish from real text (preserving word structure) */
+function toAlienText(text){
+  var alien = "ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛈᛇᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟᛠᛡᛢᛣᛤᛥᛦᛧᛨᛩᛪ";
+  var result = "";
+  for(var i = 0; i < text.length; i++){
+    var ch = text[i];
+    if(ch === " " || ch === "\n" || ch === "." || ch === "," || ch === "—" || ch === ":" || ch === "'"){
+      result += ch;
+    } else {
+      result += alien[Math.floor(Math.random() * alien.length)];
+    }
+  }
+  return result;
+}
+
+function showContractModal(type, onSigned, isMorkar){
   var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
   var screen = document.querySelector(".screen") || document.body;
+  var needsPill = !isMorkar;
 
   var backdrop = document.createElement("div");
   backdrop.className = "contract-modal-backdrop";
 
   var h = '<div class="contract-modal">';
   h += '<div class="contract-header">' + contract.title + '</div>';
+
+  // Pill icon for non-Morkar scenarios
+  if(needsPill){
+    h += '<div class="contract-pill-row">';
+    h += '<div class="contract-pill" title="Pilule de compréhension linguistique">&#128138;</div>';
+    h += '<div class="contract-pill-hint">Langue inconnue — consomme la pilule pour comprendre</div>';
+    h += '</div>';
+  }
+
   h += '<div class="contract-body">';
   for(var i = 0; i < contract.paragraphs.length; i++){
-    h += '<p class="contract-para">' + contract.paragraphs[i] + '</p>';
+    if(needsPill){
+      // Alien text initially, real text hidden
+      h += '<p class="contract-para contract-para-alien" data-real="' +
+        contract.paragraphs[i].replace(/"/g, '&quot;') + '">' +
+        toAlienText(contract.paragraphs[i]) + '</p>';
+    } else {
+      h += '<p class="contract-para">' + contract.paragraphs[i] + '</p>';
+    }
   }
   h += '</div>';
   h += '<div class="contract-signature">';
   h += '<div class="contract-sig-label">Signature du candidat</div>';
   h += '<div class="contract-sig-line"></div>';
-  h += '<button class="contract-sign-btn" id="contract-sign-btn">Signer le contrat</button>';
+  h += '<button class="contract-sign-btn" id="contract-sign-btn"' +
+    (needsPill ? ' disabled' : '') + '>Signer le contrat</button>';
   h += '</div>';
   h += '</div>';
 
@@ -786,7 +848,38 @@ function showContractModal(type, onSigned){
   screen.appendChild(backdrop);
   setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
 
+  // Pill click → reveal real text
+  if(needsPill){
+    var pill = backdrop.querySelector(".contract-pill");
+    var pillHint = backdrop.querySelector(".contract-pill-hint");
+    if(pill) pill.onclick = function(){
+      pill.classList.add("consumed");
+      if(pillHint) pillHint.textContent = "Pilule consommée — traduction en cours…";
+
+      // Reveal paragraphs one by one with a cascade effect
+      var paras = backdrop.querySelectorAll(".contract-para-alien");
+      paras.forEach(function(p, idx){
+        setTimeout(function(){
+          p.classList.add("revealing");
+          setTimeout(function(){
+            p.textContent = p.getAttribute("data-real");
+            p.classList.remove("contract-para-alien", "revealing");
+            p.classList.add("contract-para-revealed");
+          }, 400);
+        }, idx * 350);
+      });
+
+      // Enable sign button after all paragraphs revealed
+      setTimeout(function(){
+        var signBtn = document.getElementById("contract-sign-btn");
+        if(signBtn){ signBtn.disabled = false; signBtn.classList.add("ready"); }
+        if(pillHint) pillHint.textContent = "Traduction complète";
+      }, paras.length * 350 + 500);
+    };
+  }
+
   document.getElementById("contract-sign-btn").onclick = function(){
+    if(this.disabled) return;
     // Mark as signed
     window._contractSigned = true;
     window._contractType = type;
@@ -970,26 +1063,26 @@ function showScenarioChoice(onChosen){
         '<span class="sc-circle-label-plus">+</span>';
       arena.appendChild(label);
 
-      // Click circle → select scenario → show contract
+      // Click circle → select scenario → show contract preview page
       div.onclick = function(){
         var scenario = s.scenario;
         window._chosenScenario = scenario;
 
-        // Highlight chosen circle
-        arena.querySelectorAll(".sc-circle").forEach(function(c){ c.classList.remove("sc-circle-chosen"); });
-        div.classList.add("sc-circle-chosen");
+        // Remove all scenario circles and labels
+        arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
+        arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
-        // Show contract modal
-        showContractModal(type, function(){
-          // Contract signed → remove all scenario circles, show single circle + guide
-          arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
-          arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+        // Update title
+        if(step2Title) step2Title.textContent = s.name;
+        if(subtitle) subtitle.textContent = "";
 
-          // Update title & subtitle for guide placement phase
+        // Show contract preview page (portrait + name + title + contract icon)
+        showContractPreview(arena, persona, s, type, function(){
+          // Contract signed → remove preview, show guide placement
+          arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+
           if(step2Title) step2Title.textContent = "Place ton guide";
-          if(subtitle){
-            subtitle.textContent = "Déplace le guide vers le cercle";
-          }
+          if(subtitle) subtitle.textContent = "Déplace le guide vers le cercle";
 
           // Create single target circle in center
           var target = document.createElement("div");
