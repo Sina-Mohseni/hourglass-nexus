@@ -266,12 +266,15 @@ function openInventoryModal(misc){
   // Consumables
   h += '<div class="inv-tab-content active" id="inv-tc-m-consommables">';
   h += '<div class="inv-items-grid">';
-  h += '<div class="inv-item inv-item-consumable">';
+  h += '<div class="inv-item inv-item-consumable" data-inv-idx="conso-0">';
   h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
   h += '<div class="inv-item-info">';
   h += '<div class="inv-item-name">' + esc(CONSUMABLE_ITEM.name) + '</div>';
   h += '<div class="inv-item-type">Consommable</div>';
-  h += '<div class="inv-item-desc">' + esc(CONSUMABLE_ITEM.desc) + '</div>';
+  h += '</div>';
+  h += '<div class="eq-item-actions">';
+  h += '<button class="eq-btn-equip inv-btn-use" data-inv-type="conso" data-inv-i="0" title="Utiliser">\u25B6</button>';
+  h += '<button class="eq-btn-view inv-btn-view" data-inv-type="conso" data-inv-i="0" title="Voir">\uD83D\uDD0D</button>';
   h += '</div></div>';
   h += '</div></div>';
 
@@ -284,12 +287,15 @@ function openInventoryModal(misc){
   h += '<div class="inv-tab-content" id="inv-tc-m-divers">';
   h += '<div class="inv-items-grid">';
   for(var m = 0; m < misc.length; m++){
-    h += '<div class="inv-item inv-item-misc">';
+    h += '<div class="inv-item inv-item-misc" data-inv-idx="misc-' + m + '">';
     h += '<div class="inv-item-icon">\uD83D\uDCC4</div>';
     h += '<div class="inv-item-info">';
     h += '<div class="inv-item-name">' + esc(misc[m].name) + '</div>';
     h += '<div class="inv-item-type">Document</div>';
-    h += '<div class="inv-item-desc">' + esc(misc[m].desc) + '</div>';
+    h += '</div>';
+    h += '<div class="eq-item-actions">';
+    h += '<button class="eq-btn-equip inv-btn-use" data-inv-type="misc" data-inv-i="' + m + '" title="Utiliser">\u25B6</button>';
+    h += '<button class="eq-btn-view inv-btn-view" data-inv-type="misc" data-inv-i="' + m + '" title="Voir">\uD83D\uDD0D</button>';
     h += '</div></div>';
   }
   h += '</div></div>';
@@ -311,6 +317,35 @@ function openInventoryModal(misc){
       this.classList.add("active");
       var content = document.getElementById("inv-tc-" + tabId);
       if(content) content.classList.add("active");
+    };
+  });
+
+  // ── Wire: Voir buttons ──
+  modal.querySelectorAll(".inv-btn-view").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var type = btn.getAttribute("data-inv-type");
+      var idx = parseInt(btn.getAttribute("data-inv-i"));
+      var item, slotDef;
+      if(type === "conso"){
+        item = {name: CONSUMABLE_ITEM.name, desc: CONSUMABLE_ITEM.desc, icon: "\uD83D\uDC8A"};
+        slotDef = {label: "Consommable", color: "#228844"};
+      } else {
+        item = misc[idx];
+        if(!item) return;
+        item = {name: item.name, desc: item.desc, icon: "\uD83D\uDCC4"};
+        slotDef = {label: "Document", color: "#a8842a"};
+      }
+      showItemDetailModal(item, slotDef);
+    };
+  });
+
+  // ── Wire: Utiliser buttons ──
+  modal.querySelectorAll(".inv-btn-use").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var itemEl = btn.closest(".inv-item");
+      if(itemEl) itemEl.classList.add("eq-item-equipped");
     };
   });
 
@@ -414,106 +449,6 @@ function openEquipmentModal(u, scenario, equip){
       var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
       if(item && slotDef) showItemDetailModal(item, slotDef);
     };
-  });
-
-  // ── Wire: long-press drag on item icons ──
-  modal.querySelectorAll(".eq-item-icon").forEach(function(iconEl){
-    var itemEl = iconEl.closest(".eq-item");
-    var key = itemEl.getAttribute("data-item-key");
-    var holdTimer = null;
-    var isDragging = false;
-    var ghost = null;
-
-    function startDrag(x, y){
-      isDragging = true;
-      itemEl.classList.add("eq-item-dragging");
-      ghost = document.createElement("div");
-      ghost.className = "inv-touch-ghost";
-      ghost.textContent = iconEl.getAttribute("data-icon");
-      ghost.style.left = (x - 24) + "px";
-      ghost.style.top = (y - 24) + "px";
-      document.body.appendChild(ghost);
-      // Highlight target slot
-      var targetSlot = modal.querySelector('.eq-slot[data-slot="' + key + '"]');
-      if(targetSlot && !targetSlot.classList.contains("filled")) targetSlot.classList.add("inv-slot-hint");
-    }
-
-    function moveDrag(x, y){
-      if(!isDragging) return;
-      if(ghost){ ghost.style.left = (x - 24) + "px"; ghost.style.top = (y - 24) + "px"; }
-      modal.querySelectorAll(".eq-slot").forEach(function(s){
-        s.classList.remove("inv-slot-valid","inv-slot-invalid");
-        var r = s.getBoundingClientRect();
-        if(x >= r.left && x <= r.right && y >= r.top && y <= r.bottom){
-          if(s.getAttribute("data-slot") === key && !s.classList.contains("filled"))
-            s.classList.add("inv-slot-valid");
-          else
-            s.classList.add("inv-slot-invalid");
-        }
-      });
-    }
-
-    function endDrag(x, y){
-      if(ghost){ ghost.remove(); ghost = null; }
-      itemEl.classList.remove("eq-item-dragging");
-      modal.querySelectorAll(".eq-slot").forEach(function(s){
-        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
-      });
-      if(!isDragging) return;
-      isDragging = false;
-      // Check drop
-      modal.querySelectorAll(".eq-slot").forEach(function(s){
-        var r = s.getBoundingClientRect();
-        if(x >= r.left && x <= r.right && y >= r.top && y <= r.bottom){
-          if(s.getAttribute("data-slot") === key && !s.classList.contains("filled")){
-            doEquip(key);
-          }
-        }
-      });
-    }
-
-    // Touch events (long press to start)
-    iconEl.addEventListener("touchstart", function(ev){
-      var t = ev.touches[0];
-      holdTimer = setTimeout(function(){ startDrag(t.clientX, t.clientY); }, 400);
-    }, {passive: true});
-    iconEl.addEventListener("touchmove", function(ev){
-      if(isDragging){
-        ev.preventDefault();
-        var t = ev.touches[0];
-        moveDrag(t.clientX, t.clientY);
-      } else {
-        // Cancel hold if finger moved too much
-        clearTimeout(holdTimer);
-      }
-    }, {passive: false});
-    iconEl.addEventListener("touchend", function(ev){
-      clearTimeout(holdTimer);
-      var t = ev.changedTouches[0];
-      endDrag(t.clientX, t.clientY);
-    });
-    iconEl.addEventListener("touchcancel", function(){
-      clearTimeout(holdTimer);
-      endDrag(0, 0);
-    });
-
-    // Mouse events (long press to start)
-    iconEl.addEventListener("mousedown", function(ev){
-      if(ev.button !== 0) return;
-      holdTimer = setTimeout(function(){ startDrag(ev.clientX, ev.clientY); }, 400);
-      function onMove(e){
-        if(isDragging) moveDrag(e.clientX, e.clientY);
-        else clearTimeout(holdTimer);
-      }
-      function onUp(e){
-        clearTimeout(holdTimer);
-        endDrag(e.clientX, e.clientY);
-        document.removeEventListener("mousemove", onMove);
-        document.removeEventListener("mouseup", onUp);
-      }
-      document.addEventListener("mousemove", onMove);
-      document.addEventListener("mouseup", onUp);
-    });
   });
 
   function doEquip(key){
