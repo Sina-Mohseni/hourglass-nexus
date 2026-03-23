@@ -32,17 +32,26 @@
 }
 .inv-avatar-wrap img { width: 100%; height: 100%; object-fit: cover }
 
-/* ── Save section ── */
-.inv-save-section {
-  margin-bottom: 14px;
+/* ── Bottom actions bar (save icon + continue) ── */
+.inv-bottom-actions {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 12px 20px;
 }
-.inv-save-section .prof-input {
-  margin-bottom: 8px;
+.inv-action-icon-btn {
+  width: 48px; height: 48px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: linear-gradient(145deg, rgba(18,40,74,.6), rgba(12,28,52,.8));
+  border: 1px solid rgba(100,140,200,.25);
+  color: var(--bone); cursor: pointer;
+  transition: all .2s;
 }
-.inv-save-status {
-  text-align: center; font-family: var(--font-ui); font-size: 10px;
-  min-height: 16px; margin-top: 6px;
+.inv-action-icon-btn:hover {
+  border-color: rgba(100,140,200,.5);
+  box-shadow: 0 0 12px rgba(100,140,200,.15);
 }
+.inv-action-icon-btn:active { transform: scale(.93) }
+.inv-continue-btn { flex: 1 }
 
 /* ═══════════ INVENTORY MODAL (paperdoll + tabs) ═══════════ */
 .inv-modal-backdrop {
