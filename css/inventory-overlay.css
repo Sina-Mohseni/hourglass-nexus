@@ -178,6 +178,72 @@
   font-size: 10px; color: var(--bone-dim); margin-top: 2px; line-height: 1.4;
 }
 
+/* ═══════════ PRE-GAME STATS / INFO / COLOR ═══════════ */
+.pg-drawer-subtitle {
+  font-family: var(--font-ui); font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--bone-dim); margin-bottom: 8px;
+}
+.pg-stat-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 6px;
+}
+.pg-stat-label {
+  width: 28px; flex-shrink: 0;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px;
+}
+.pg-stat-range {
+  flex: 1; height: 4px;
+  -webkit-appearance: none; appearance: none;
+  background: rgba(168,132,42,.1); border-radius: 2px;
+  outline: none; cursor: pointer;
+}
+.pg-stat-range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: currentColor; border: 2px solid rgba(5,4,3,.8);
+  cursor: pointer;
+}
+.pg-stat-range::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: currentColor; border: 2px solid rgba(5,4,3,.8);
+  cursor: pointer;
+}
+.pg-stat-val {
+  width: 24px; text-align: right; flex-shrink: 0;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+  color: var(--bone-dim);
+}
+
+/* Info chips (level, coins, equip count) */
+.pg-info-chip {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 6px 0;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+  color: var(--bone); letter-spacing: .5px;
+  background: rgba(168,132,42,.04);
+  border: 1px solid rgba(168,132,42,.1);
+}
+.pg-info-chip-icon { font-size: 12px }
+
+/* Color picker */
+.pg-color-picker {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.pg-color-swatch {
+  width: 28px; height: 28px; cursor: pointer;
+  border: 2px solid transparent;
+  transition: all .2s; opacity: .6;
+}
+.pg-color-swatch:hover { opacity: 1 }
+.pg-color-swatch.pg-color-sel {
+  opacity: 1;
+  border-color: var(--bone);
+  box-shadow: 0 0 10px rgba(255,255,255,.15);
+}
+
 /* ═══════════ LEGACY (kept for inventory/equipment modals) ═══════════ */
 
 /* ── Editable form ── */
