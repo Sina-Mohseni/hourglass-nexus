@@ -243,12 +243,13 @@ function showInventoryOverlay(onClose){
   // Continue button (hidden, triggered by footer drawer)
   var closeBtn = document.getElementById("inv-close-btn");
   if(closeBtn) closeBtn.onclick = function(){
-    // Passage au jour 1 — matin de la nouvelle année
+    // Passage au jour 1 — matin de la nouvelle année + verrouillage des stats
     var uu = loadUser();
     uu.gameDay = EXT_START_DAY;
     uu.gameHour = EXT_START_HOUR;
     uu.gameMinute = EXT_START_MINUTE;
     uu.gameSecond = EXT_START_SECOND;
+    uu.statsLocked = true;
     saveUser(uu);
     extRenderClock();
     // Close drawers first
@@ -298,7 +299,10 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<div class="inv-readonly-field">' + esc(roleLabel) + '</div></div>';
   h += '</div>';
 
-  // ── Stats (5 attributes, editable via range sliders) ──
+  // ── Stats (5 attributes, editable via range sliders, 100-point pool) ──
+  var PG_STAT_BASE = 50;    // valeur initiale par attribut
+  var PG_STAT_POOL = 100;   // points bonus à répartir
+  var pgStatsLocked = u.statsLocked;
   var stats = [
     {key:"statCRE", label:"CRE", color:"#9b59b6", val:u.statCRE},
     {key:"statSAG", label:"SAG", color:"#5dade2", val:u.statSAG},
@@ -306,12 +310,21 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     {key:"statFOR", label:"FOR", color:"#e74c3c", val:u.statFOR},
     {key:"statAGI", label:"AGI", color:"#27ae60", val:u.statAGI}
   ];
+  var totalUsed = 0;
+  stats.forEach(function(s){ totalUsed += s.val });
+  var totalBase = PG_STAT_BASE * 5;
+  var remaining = PG_STAT_POOL - (totalUsed - totalBase);
   h += '<div class="pg-stats-section" style="padding:8px 16px">';
-  h += '<div class="pg-drawer-subtitle">Attributs</div>';
+  h += '<div class="pg-drawer-subtitle">Attributs' + (pgStatsLocked ? ' <span style="font-size:9px;color:var(--bone-dim);font-weight:400">\uD83D\uDD12 verrouill\u00e9s</span>' : '') + '</div>';
+  if(!pgStatsLocked){
+    h += '<div class="pg-stat-pool" id="pg-stat-pool" style="text-align:center;font-size:11px;color:var(--gold-light);padding:4px 0 8px;font-family:var(--font-heading);letter-spacing:1px">'
+      + 'Points restants : <span id="pg-pool-count" style="font-weight:700;color:' + (remaining > 0 ? 'var(--gold)' : remaining === 0 ? 'var(--bone-dim)' : 'var(--blood-bright)') + '">' + remaining + '</span> / ' + PG_STAT_POOL
+      + '</div>';
+  }
   stats.forEach(function(s){
     h += '<div class="pg-stat-row">'
       + '<span class="pg-stat-label" style="color:' + s.color + '">' + s.label + '</span>'
-      + '<input type="range" class="pg-stat-range" id="pg-stat-' + s.key + '" min="0" max="100" value="' + s.val + '" style="accent-color:' + s.color + '">'
+      + '<input type="range" class="pg-stat-range" id="pg-stat-' + s.key + '" min="0" max="100" value="' + s.val + '" style="accent-color:' + s.color + '"' + (pgStatsLocked ? ' disabled' : '') + '>'
       + '<span class="pg-stat-val" id="pg-stat-val-' + s.key + '">' + s.val + '</span>'
       + '</div>';
   });
@@ -404,19 +417,58 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     if(el) el.addEventListener("input", saveFields);
   });
 
-  // Wire stat sliders — update overlay bars + save
-  ["statCRE","statSAG","statCHA","statFOR","statAGI"].forEach(function(key){
+  // Wire stat sliders — enforce 100-point pool + update overlay bars + save
+  var PG_STAT_BASE_VAL = 50, PG_STAT_POOL_VAL = 100;
+  var statKeys = ["statCRE","statSAG","statCHA","statFOR","statAGI"];
+
+  function pgCalcRemaining(){
+    var total = 0;
+    statKeys.forEach(function(k){
+      var sl = document.getElementById("pg-stat-" + k);
+      if(sl) total += parseInt(sl.value);
+    });
+    return PG_STAT_POOL_VAL - (total - PG_STAT_BASE_VAL * 5);
+  }
+
+  function pgUpdatePoolDisplay(){
+    var rem = pgCalcRemaining();
+    var el = document.getElementById("pg-pool-count");
+    if(el){
+      el.textContent = rem;
+      el.style.color = rem > 0 ? "var(--gold)" : rem === 0 ? "var(--bone-dim)" : "var(--blood-bright)";
+    }
+  }
+
+  statKeys.forEach(function(key){
     var slider = document.getElementById("pg-stat-" + key);
     var valEl = document.getElementById("pg-stat-val-" + key);
-    if(slider) slider.addEventListener("input", function(){
-      if(valEl) valEl.textContent = slider.value;
+    if(!slider) return;
+    slider.addEventListener("input", function(){
+      var newVal = parseInt(slider.value);
+      // Calculer combien de points les AUTRES stats utilisent
+      var othersTotal = 0;
+      statKeys.forEach(function(k){
+        if(k !== key){
+          var sl = document.getElementById("pg-stat-" + k);
+          if(sl) othersTotal += parseInt(sl.value);
+        }
+      });
+      var maxAllowed = (PG_STAT_BASE_VAL * 5 + PG_STAT_POOL_VAL) - othersTotal;
+      if(newVal > maxAllowed) newVal = maxAllowed;
+      if(newVal < 0) newVal = 0;
+      slider.value = newVal;
+
+      if(valEl) valEl.textContent = newVal;
       // Sync overlay bar
       var fill = document.getElementById("pg-ostat-fill-" + key);
       var oVal = document.getElementById("pg-ostat-val-" + key);
-      if(fill) fill.style.width = slider.value + "%";
-      if(oVal) oVal.textContent = slider.value;
+      if(fill) fill.style.width = newVal + "%";
+      if(oVal) oVal.textContent = newVal;
+      // Update pool counter
+      pgUpdatePoolDisplay();
+      // Save
       var cu = loadUser();
-      cu[key] = parseInt(slider.value);
+      cu[key] = newVal;
       saveUser(cu);
     });
   });
