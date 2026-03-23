@@ -108,12 +108,13 @@ var PRE_INV_EQUIP_SLOTS = [
 
 /* ══════════ MAIN OVERLAY (pre-game profile page — fullscreen) ══════════ */
 function showInventoryOverlay(onClose){
-  // Pré-jeu : dernier soir de l'année
+  // Pré-jeu : dernier soir de l'année, stats déverrouillées
   var u = loadUser();
   u.gameDay = EXT_PREGAME_DAY;
   u.gameHour = EXT_PREGAME_HOUR;
   u.gameMinute = EXT_PREGAME_MINUTE;
   u.gameSecond = EXT_PREGAME_SECOND;
+  u.statsLocked = false;
   saveUser(u);
   extRenderClock();
   window._pgOverlayActive = true;
@@ -158,6 +159,13 @@ function showInventoryOverlay(onClose){
 
   // Central info block
   h += '<div class="pg-info">';
+
+  // Action buttons: save (left circle) + start (right circle) above role badge
+  h += '<div class="pg-top-actions">';
+  h += '<button class="pg-circle-btn pg-circle-save" id="fp-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
+  h += '<button class="pg-circle-btn pg-circle-start" id="fp-start-btn" title="Passer la nuit">\uD83C\uDF19</button>';
+  h += '</div>';
+
   h += '<div class="pg-role-badge">' + esc(roleLabel) + '</div>';
   h += '<div class="pg-name" id="pg-display-name">' + esc(u.name || "Voyageur") + '</div>';
   h += '<div class="pg-details">';
@@ -243,15 +251,9 @@ function showInventoryOverlay(onClose){
   // Continue button (hidden, triggered by footer drawer)
   var closeBtn = document.getElementById("inv-close-btn");
   if(closeBtn) closeBtn.onclick = function(){
-    // Passage au jour 1 — matin de la nouvelle année + verrouillage des stats
+    // Fermer l'overlay pré-jeu (le temps sera mis à jour à l'entrée du jeu)
     var uu = loadUser();
-    uu.gameDay = EXT_START_DAY;
-    uu.gameHour = EXT_START_HOUR;
-    uu.gameMinute = EXT_START_MINUTE;
-    uu.gameSecond = EXT_START_SECOND;
-    uu.statsLocked = true;
     saveUser(uu);
-    extRenderClock();
     // Close drawers first
     closeFooterPanel();
     closeHeaderPanel();
@@ -315,7 +317,7 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   var totalBase = PG_STAT_BASE * 5;
   var remaining = PG_STAT_POOL - (totalUsed - totalBase);
   h += '<div class="pg-stats-section" style="padding:8px 16px">';
-  h += '<div class="pg-drawer-subtitle">Attributs' + (pgStatsLocked ? ' <span style="font-size:9px;color:var(--bone-dim);font-weight:400">\uD83D\uDD12 verrouill\u00e9s</span>' : '') + '</div>';
+  h += '<div class="pg-drawer-subtitle">Attributs</div>';
   if(!pgStatsLocked){
     h += '<div class="pg-stat-pool" id="pg-stat-pool" style="text-align:center;font-size:11px;color:var(--gold-light);padding:4px 0 8px;font-family:var(--font-heading);letter-spacing:1px">'
       + 'Points restants : <span id="pg-pool-count" style="font-weight:700;color:' + (remaining > 0 ? 'var(--gold)' : remaining === 0 ? 'var(--bone-dim)' : 'var(--blood-bright)') + '">' + remaining + '</span> / ' + PG_STAT_POOL
@@ -354,11 +356,7 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<span class="prof-section-arrow">\u203a</span></div>';
   h += '</div>';
 
-  // Save + Start buttons (duplicated from main overlay for quick access)
-  h += '<div class="pg-drawer-actions" style="display:flex;gap:10px;padding:8px 16px 16px">';
-  h += '<button class="pg-action-btn pg-save-btn" id="fp-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
-  h += '<button class="pg-action-btn pg-start-btn" id="fp-start-btn">\u25B6 Commencer</button>';
-  h += '</div>';
+  // (Save + Start buttons moved to main overlay pg-top-actions)
 
   // Use the real footer panel
   setFooterPanelContent(h);

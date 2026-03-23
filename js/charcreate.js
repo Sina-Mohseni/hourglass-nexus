@@ -745,6 +745,18 @@ function completeCCOrigin(){
 }
 
 function enterMainApp(){
+  // Pour un nouveau voyage : passage au jour 1, matin + verrouillage des stats
+  // Pour une reprise : garder le temps de jeu existant, juste verrouiller
+  var eu = loadUser();
+  if(!eu.statsLocked){
+    eu.gameDay = EXT_START_DAY;
+    eu.gameHour = EXT_START_HOUR;
+    eu.gameMinute = EXT_START_MINUTE;
+    eu.gameSecond = EXT_START_SECOND;
+    eu.statsLocked = true;
+    saveUser(eu);
+  }
+
   // Fade out any intro music still playing, then start ambient music
   var icAudio = document.getElementById("ic-music");
   var extAudio = document.getElementById("extelua-music");
@@ -762,6 +774,7 @@ function enterMainApp(){
   }
 
   document.body.classList.remove("intro-active");
+  extRenderClock(); // Rafraîchir horloge + jour/nuit après suppression de intro-active
   showAppBackgrounds();
   buildAccueil();
   buildUserPage();
