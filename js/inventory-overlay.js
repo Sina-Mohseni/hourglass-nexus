@@ -1,10 +1,10 @@
 "use strict";
 
-/* ══════════ PRE-GAME INVENTORY OVERLAY ══════════
-   Shown after guide placement on lock screen (new voyage).
-   Profile page structure: vertical portrait, stats, attributes,
-   inventory button (opens modal), save & continue buttons.
-   ═══════════════════════════════════════════════════ */
+/* ══════════ PRE-GAME OVERLAY ══════════
+   Profile page: vertical portrait, editable fields,
+   two action buttons (Inventaire + Équipement),
+   save & continue at the bottom.
+   ═══════════════════════════════════════ */
 
 var SCENARIO_LABELS = {
   "champion":"Champion", "lambda":"Isolé", "rebelle":"Dissident",
@@ -14,54 +14,52 @@ var SCENARIO_LABELS = {
 /* ── Equipment items per scenario (6 slots) ── */
 var SCENARIO_EQUIPMENT = {
   "champion": {
-    decors:   {name:"Arène Impériale",  desc:"Décors officiels du tournoi, tribunes monumentales et drapeaux planétaires."},
-    epoque:   {name:"Ère Connectée",    desc:"Époque de prospérité technologique et d'échanges inter-mondes."},
-    theme:    {name:"Gloire & Honneur",  desc:"Le champion porte les espoirs de son peuple sous les projecteurs."},
-    capacite: {name:"Charisme Médiatique",desc:"Capacité à galvaniser les foules et attirer les sponsors."},
-    scenario: {name:"Épreuve Officielle", desc:"Scénario sanctionné par le groupe Morkar, retransmis en direct."},
-    objectif: {name:"Victoire Totale",   desc:"Remporter le tournoi et obtenir l'intégration au Réseau Universel."}
+    decors:   {name:"Arène Impériale",  desc:"Décors officiels du tournoi, tribunes monumentales et drapeaux planétaires.", icon:"\uD83C\uDFAD"},
+    epoque:   {name:"Ère Connectée",    desc:"Époque de prospérité technologique et d'échanges inter-mondes.", icon:"\u23F3"},
+    theme:    {name:"Gloire & Honneur",  desc:"Le champion porte les espoirs de son peuple sous les projecteurs.", icon:"\u2726"},
+    capacite: {name:"Charisme Médiatique",desc:"Capacité à galvaniser les foules et attirer les sponsors.", icon:"\u26A1"},
+    scenario: {name:"Épreuve Officielle", desc:"Scénario sanctionné par le groupe Morkar, retransmis en direct.", icon:"\uD83D\uDCDC"},
+    objectif: {name:"Victoire Totale",   desc:"Remporter le tournoi et obtenir l'intégration au Réseau Universel.", icon:"\uD83C\uDFAF"}
   },
   "lambda": {
-    decors:   {name:"Terres Inconnues",  desc:"Paysages étranges et technologies jamais vues par ton peuple."},
-    epoque:   {name:"Ère Primitive",     desc:"Ton monde vit en autarcie, sans contact avec le Réseau."},
-    theme:    {name:"Découverte & Survie",desc:"Tout est nouveau, tout est dangereux, tout est fascinant."},
-    capacite: {name:"Instinct Brut",     desc:"Capacité d'adaptation forgée par une vie sans technologie."},
-    scenario: {name:"Candidat Isolé",    desc:"Sélectionné par les éclaireurs de Morkar sur une planète coupée."},
-    objectif: {name:"Transformation",    desc:"Gagner pour offrir l'accès au Réseau à ton monde entier."}
+    decors:   {name:"Terres Inconnues",  desc:"Paysages étranges et technologies jamais vues par ton peuple.", icon:"\uD83C\uDFAD"},
+    epoque:   {name:"Ère Primitive",     desc:"Ton monde vit en autarcie, sans contact avec le Réseau.", icon:"\u23F3"},
+    theme:    {name:"Découverte & Survie",desc:"Tout est nouveau, tout est dangereux, tout est fascinant.", icon:"\u2726"},
+    capacite: {name:"Instinct Brut",     desc:"Capacité d'adaptation forgée par une vie sans technologie.", icon:"\u26A1"},
+    scenario: {name:"Candidat Isolé",    desc:"Sélectionné par les éclaireurs de Morkar sur une planète coupée.", icon:"\uD83D\uDCDC"},
+    objectif: {name:"Transformation",    desc:"Gagner pour offrir l'accès au Réseau à ton monde entier.", icon:"\uD83C\uDFAF"}
   },
   "rebelle": {
-    decors:   {name:"Coulisses du Tournoi",desc:"Les zones d'ombre que les caméras ne montrent jamais."},
-    epoque:   {name:"Ère du Soupçon",   desc:"Les dissidents s'organisent dans l'ombre depuis des décennies."},
-    theme:    {name:"Infiltration",      desc:"Chaque geste est calculé, chaque sourire est un masque."},
-    capacite: {name:"Double Jeu",        desc:"Capacité à maintenir une couverture parfaite sous pression."},
-    scenario: {name:"Mission Secrète",   desc:"Rassembler des preuves de la corruption du groupe Morkar."},
-    objectif: {name:"Révélation",        desc:"Faire éclater la vérité sur les mensonges de Morkar."}
+    decors:   {name:"Coulisses du Tournoi",desc:"Les zones d'ombre que les caméras ne montrent jamais.", icon:"\uD83C\uDFAD"},
+    epoque:   {name:"Ère du Soupçon",   desc:"Les dissidents s'organisent dans l'ombre depuis des décennies.", icon:"\u23F3"},
+    theme:    {name:"Infiltration",      desc:"Chaque geste est calculé, chaque sourire est un masque.", icon:"\u2726"},
+    capacite: {name:"Double Jeu",        desc:"Capacité à maintenir une couverture parfaite sous pression.", icon:"\u26A1"},
+    scenario: {name:"Mission Secrète",   desc:"Rassembler des preuves de la corruption du groupe Morkar.", icon:"\uD83D\uDCDC"},
+    objectif: {name:"Révélation",        desc:"Faire éclater la vérité sur les mensonges de Morkar.", icon:"\uD83C\uDFAF"}
   },
   "apprenti-morkar": {
-    decors:   {name:"Quartier Général",  desc:"Les installations secrètes du groupe Morkar, sous le tournoi."},
-    epoque:   {name:"Ère de Contrôle",   desc:"Morkar étend son influence sur chaque monde connecté."},
-    theme:    {name:"Loyauté & Ambition", desc:"Servir Morkar est un honneur — et une voie vers le pouvoir."},
-    capacite: {name:"Observation Tactique",desc:"Capacité à détecter les comportements suspects et les infiltrés."},
-    scenario: {name:"Recrutement Actif", desc:"Ta première mission de terrain pour le groupe Morkar."},
-    objectif: {name:"Débusquer les Dissidents",desc:"Identifier et signaler tout agent de la résistance."}
+    decors:   {name:"Quartier Général",  desc:"Les installations secrètes du groupe Morkar, sous le tournoi.", icon:"\uD83C\uDFAD"},
+    epoque:   {name:"Ère de Contrôle",   desc:"Morkar étend son influence sur chaque monde connecté.", icon:"\u23F3"},
+    theme:    {name:"Loyauté & Ambition", desc:"Servir Morkar est un honneur — et une voie vers le pouvoir.", icon:"\u2726"},
+    capacite: {name:"Observation Tactique",desc:"Capacité à détecter les comportements suspects et les infiltrés.", icon:"\u26A1"},
+    scenario: {name:"Recrutement Actif", desc:"Ta première mission de terrain pour le groupe Morkar.", icon:"\uD83D\uDCDC"},
+    objectif: {name:"Débusquer les Dissidents",desc:"Identifier et signaler tout agent de la résistance.", icon:"\uD83C\uDFAF"}
   },
   "veteran-morkar": {
-    decors:   {name:"Salle des Archives",desc:"Accès aux dossiers classifiés des éditions précédentes."},
-    epoque:   {name:"Ère de Domination", desc:"Morkar contrôle le Tournoi depuis sa création."},
-    theme:    {name:"Ordre & Terreur",   desc:"Ceux qui défient Morkar disparaissent sans laisser de traces."},
-    capacite: {name:"Maîtrise du Terrain",desc:"Années d'expérience à traquer les dissidents en mission."},
-    scenario: {name:"Opération Nettoyage",desc:"Éliminer toute menace dissidente avant qu'elle ne grandisse."},
-    objectif: {name:"Neutralisation Totale",desc:"Aucun dissident ne doit quitter le tournoi libre."}
+    decors:   {name:"Salle des Archives",desc:"Accès aux dossiers classifiés des éditions précédentes.", icon:"\uD83C\uDFAD"},
+    epoque:   {name:"Ère de Domination", desc:"Morkar contrôle le Tournoi depuis sa création.", icon:"\u23F3"},
+    theme:    {name:"Ordre & Terreur",   desc:"Ceux qui défient Morkar disparaissent sans laisser de traces.", icon:"\u2726"},
+    capacite: {name:"Maîtrise du Terrain",desc:"Années d'expérience à traquer les dissidents en mission.", icon:"\u26A1"},
+    scenario: {name:"Opération Nettoyage",desc:"Éliminer toute menace dissidente avant qu'elle ne grandisse.", icon:"\uD83D\uDCDC"},
+    objectif: {name:"Neutralisation Totale",desc:"Aucun dissident ne doit quitter le tournoi libre.", icon:"\uD83C\uDFAF"}
   }
 };
 
-/* ── Consumable (same for all) ── */
 var CONSUMABLE_ITEM = {
   name: "Pilule de Compréhension",
   desc: "Permet de comprendre tous les langages de l'univers — à l'oral, à l'écrit et au parler. Effet permanent."
 };
 
-/* ── Misc items (scenario-dependent info documents) ── */
 var SCENARIO_MISC = {
   "champion": [
     {name:"Briefing Officiel", desc:"Document du groupe Morkar détaillant les règles et attentes du tournoi."},
@@ -87,17 +85,17 @@ var SCENARIO_MISC = {
   ]
 };
 
-/* ── Equipment slot config for paperdoll ── */
+/* ── Equipment slot definitions ── */
 var PRE_INV_EQUIP_SLOTS = [
-  {key:"decors",   icon:"\uD83C\uDFAD", label:"D\u00e9cors",   cls:"inv-slot-top-l",  color:"#9b59b6"},
-  {key:"epoque",   icon:"\u23F3",        label:"\u00c9poque",   cls:"inv-slot-top-r",  color:"#5dade2"},
-  {key:"theme",    icon:"\u2726",        label:"Th\u00e8me",    cls:"inv-slot-mid-l",  color:"#e8a838"},
-  {key:"capacite", icon:"\u26A1",        label:"Capacit\u00e9", cls:"inv-slot-mid-r",  color:"#e74c3c"},
-  {key:"scenario", icon:"\uD83D\uDCDC", label:"Sc\u00e9nario", cls:"inv-slot-bot-l",  color:"#27ae60"},
-  {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif",      cls:"inv-slot-bot-r",  color:"#e67e22"}
+  {key:"decors",   icon:"\uD83C\uDFAD", label:"D\u00e9cors",   color:"#9b59b6"},
+  {key:"epoque",   icon:"\u23F3",        label:"\u00c9poque",   color:"#5dade2"},
+  {key:"theme",    icon:"\u2726",        label:"Th\u00e8me",    color:"#e8a838"},
+  {key:"capacite", icon:"\u26A1",        label:"Capacit\u00e9", color:"#e74c3c"},
+  {key:"scenario", icon:"\uD83D\uDCDC", label:"Sc\u00e9nario", color:"#27ae60"},
+  {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif",      color:"#e67e22"}
 ];
 
-/* ══════════ SHOW INVENTORY OVERLAY ══════════ */
+/* ══════════ MAIN OVERLAY (pre-game profile page) ══════════ */
 function showInventoryOverlay(onClose){
   var u = loadUser();
   var scenario = window._chosenScenario || "lambda";
@@ -140,15 +138,22 @@ function showInventoryOverlay(onClose){
     + '<div class="inv-readonly-field">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</div></div>';
   h += '</div>';
 
-  // ── Inventory button (opens modal) ──
+  // ── Two action buttons: Inventaire + Équipement ──
   h += '<div class="section-title">Actions</div>';
-  h += '<div class="prof-section-card" id="inv-open-modal-btn">'
+  h += '<div class="inv-actions-grid">';
+  h += '<div class="prof-section-card" id="inv-open-inventory-btn">'
     + '<div class="prof-section-icon">\uD83C\uDF92</div>'
     + '<div class="prof-section-info"><div class="prof-section-name">Inventaire</div>'
-    + '<div class="prof-section-desc">\u00c9quipement, consommables & documents</div></div>'
+    + '<div class="prof-section-desc">Consommables & documents</div></div>'
     + '<span class="prof-section-arrow">\u203a</span></div>';
+  h += '<div class="prof-section-card" id="inv-open-equip-btn">'
+    + '<div class="prof-section-icon">\uD83D\uDEE1\uFE0F</div>'
+    + '<div class="prof-section-info"><div class="prof-section-name">\u00c9quipement</div>'
+    + '<div class="prof-section-desc">Portrait & objets \u00e9quip\u00e9s</div></div>'
+    + '<span class="prof-section-arrow">\u203a</span></div>';
+  h += '</div>';
 
-  // ── Bottom buttons: Save (icon) + Continue ──
+  // ── Bottom buttons: Save + Continue ──
   h += '<div class="inv-bottom-actions">';
   h += '<button class="inv-action-icon-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
   h += '<button class="inv-action-icon-btn inv-continue-icon" id="inv-close-btn" title="Continuer">\u25B6</button>';
@@ -178,8 +183,7 @@ function showInventoryOverlay(onClose){
             if(imgEl.tagName === "IMG"){ imgEl.src = u2.avatar; }
             else {
               var img = document.createElement("img");
-              img.id = "inv-avatar-img";
-              img.src = u2.avatar;
+              img.id = "inv-avatar-img"; img.src = u2.avatar;
               imgEl.parentNode.replaceChild(img, imgEl);
             }
           }
@@ -189,7 +193,7 @@ function showInventoryOverlay(onClose){
     };
   }
 
-  // ── Wire: Save fields on change (auto-save) ──
+  // ── Wire: Auto-save fields ──
   function saveFields(){
     var cu = loadUser();
     var ni = document.getElementById("inv-edit-name");
@@ -201,7 +205,6 @@ function showInventoryOverlay(onClose){
     if(wi) cu.worldName = wi.value;
     if(ci) cu.className = ci.value;
     saveUser(cu);
-    // Update display name in portrait
     var dn = document.getElementById("inv-display-name");
     if(dn && ni) dn.textContent = ni.value || "Voyageur";
   }
@@ -210,14 +213,17 @@ function showInventoryOverlay(onClose){
     if(el) el.addEventListener("input", saveFields);
   });
 
-  // ── Wire: Inventory modal button ──
-  var invBtn = document.getElementById("inv-open-modal-btn");
-  if(invBtn) invBtn.onclick = function(){
-    var cu = loadUser();
-    openInventoryModal(cu, scenario, equip, misc);
+  // ── Wire: Inventory modal ──
+  document.getElementById("inv-open-inventory-btn").onclick = function(){
+    openInventoryModal(misc);
   };
 
-  // ── Wire: Save button (opens save dialog) ──
+  // ── Wire: Equipment modal ──
+  document.getElementById("inv-open-equip-btn").onclick = function(){
+    openEquipmentModal(loadUser(), scenario, equip);
+  };
+
+  // ── Wire: Save button ──
   var saveBtn = document.getElementById("inv-save-btn");
   if(saveBtn) saveBtn.onclick = function(){
     showSaveDialog(function(save){
@@ -240,65 +246,25 @@ function showInventoryOverlay(onClose){
   };
 }
 
-/* ══════════ INVENTORY MODAL (paperdoll + drag & drop) ══════════ */
-function openInventoryModal(u, scenario, equip, misc){
-  // Track which slots are filled: { slotKey: true }
-  var equipped = {};
-
+/* ══════════ INVENTORY MODAL (consommables, quêtes, divers) ══════════ */
+function openInventoryModal(misc){
   var modal = document.createElement("div");
   modal.className = "inv-modal-backdrop";
 
   var h = '<div class="inv-modal">';
-
-  // ── Close button ──
   h += '<button class="inv-modal-close" id="inv-modal-close-btn">\u2715</button>';
 
-  // ── Paperdoll: portrait + 6 empty slots ──
-  h += '<div class="inv-paperdoll inv-paperdoll-6 inv-modal-paperdoll">';
-  h += '<div class="inv-portrait-full">';
-  if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
-  else h += '<div class="inv-character-empty">\uD83D\uDC64</div>';
-  h += '</div>';
-  h += '<div class="inv-portrait-vignette"></div>';
+  h += '<div class="inv-modal-title">Inventaire</div>';
 
-  for(var i = 0; i < PRE_INV_EQUIP_SLOTS.length; i++){
-    var slot = PRE_INV_EQUIP_SLOTS[i];
-    h += '<div class="inv-slot inv-slot-6 ' + slot.cls + '" data-slot="' + slot.key + '" style="--slot-color:' + slot.color + '">'
-      + '<span class="inv-slot-icon">' + slot.icon + '</span>'
-      + '<span class="inv-slot-label">' + esc(slot.label) + '</span></div>';
-  }
-
-  h += '<div class="inv-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
-  h += '</div>';
-
-  // ── Tabbed inventory below paperdoll ──
   h += '<div class="inv-tabs-section">';
   h += '<div class="inv-tabs">';
-  h += '<button class="inv-tab active" data-tab="m-equipement">\u00C9quipement</button>';
-  h += '<button class="inv-tab" data-tab="m-consommables">Consommables</button>';
+  h += '<button class="inv-tab active" data-tab="m-consommables">Consommables</button>';
   h += '<button class="inv-tab" data-tab="m-quetes">Qu\u00eates</button>';
   h += '<button class="inv-tab" data-tab="m-divers">Divers</button>';
   h += '</div>';
 
-  // Equipment tab — draggable items
-  h += '<div class="inv-tab-content active" id="inv-tc-m-equipement">';
-  h += '<div class="inv-items-grid" id="inv-equip-list">';
-  for(var e = 0; e < PRE_INV_EQUIP_SLOTS.length; e++){
-    var sl = PRE_INV_EQUIP_SLOTS[e];
-    var it = equip[sl.key];
-    if(!it) continue;
-    h += '<div class="inv-item inv-item-draggable" draggable="true" data-slot-key="' + sl.key + '" data-icon="' + sl.icon + '">';
-    h += '<div class="inv-item-icon">' + sl.icon + '</div>';
-    h += '<div class="inv-item-info">';
-    h += '<div class="inv-item-name">' + esc(it.name) + '</div>';
-    h += '<div class="inv-item-type">' + esc(sl.label) + '</div>';
-    h += '<div class="inv-item-desc">' + esc(it.desc) + '</div>';
-    h += '</div></div>';
-  }
-  h += '</div></div>';
-
-  // Consumables tab
-  h += '<div class="inv-tab-content" id="inv-tc-m-consommables">';
+  // Consumables
+  h += '<div class="inv-tab-content active" id="inv-tc-m-consommables">';
   h += '<div class="inv-items-grid">';
   h += '<div class="inv-item inv-item-consumable">';
   h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
@@ -309,12 +275,12 @@ function openInventoryModal(u, scenario, equip, misc){
   h += '</div></div>';
   h += '</div></div>';
 
-  // Quests tab
+  // Quests
   h += '<div class="inv-tab-content" id="inv-tc-m-quetes">';
   h += '<div class="inv-items-empty">Aucun objet de qu\u00eate pour l\'instant.</div>';
   h += '</div>';
 
-  // Misc tab
+  // Misc
   h += '<div class="inv-tab-content" id="inv-tc-m-divers">';
   h += '<div class="inv-items-grid">';
   for(var m = 0; m < misc.length; m++){
@@ -336,125 +302,9 @@ function openInventoryModal(u, scenario, equip, misc){
   (screenEl || document.body).appendChild(modal);
   setTimeout(function(){ modal.classList.add("visible"); }, 20);
 
-  // ── Drag & Drop wiring ──
-  var dragKey = null; // the slot-key being dragged
-
-  // Draggable items
-  modal.querySelectorAll(".inv-item-draggable").forEach(function(item){
-    item.addEventListener("dragstart", function(ev){
-      dragKey = item.getAttribute("data-slot-key");
-      ev.dataTransfer.setData("text/plain", dragKey);
-      ev.dataTransfer.effectAllowed = "move";
-      item.classList.add("inv-dragging");
-      // Highlight matching slot
-      var matchSlot = modal.querySelector('.inv-slot[data-slot="' + dragKey + '"]');
-      if(matchSlot && !matchSlot.classList.contains("filled")) matchSlot.classList.add("inv-slot-hint");
-    });
-    item.addEventListener("dragend", function(){
-      item.classList.remove("inv-dragging");
-      modal.querySelectorAll(".inv-slot").forEach(function(s){
-        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
-      });
-      dragKey = null;
-    });
-
-    // Touch drag support
-    var touchClone = null, touchStartX = 0, touchStartY = 0, touchMoved = false;
-    item.addEventListener("touchstart", function(ev){
-      dragKey = item.getAttribute("data-slot-key");
-      touchMoved = false;
-      var t = ev.touches[0];
-      touchStartX = t.clientX; touchStartY = t.clientY;
-      item.classList.add("inv-dragging");
-      var matchSlot = modal.querySelector('.inv-slot[data-slot="' + dragKey + '"]');
-      if(matchSlot && !matchSlot.classList.contains("filled")) matchSlot.classList.add("inv-slot-hint");
-    }, {passive: true});
-    item.addEventListener("touchmove", function(ev){
-      touchMoved = true;
-      ev.preventDefault();
-      var t = ev.touches[0];
-      if(!touchClone){
-        touchClone = document.createElement("div");
-        touchClone.className = "inv-touch-ghost";
-        touchClone.textContent = item.getAttribute("data-icon");
-        document.body.appendChild(touchClone);
-      }
-      touchClone.style.left = (t.clientX - 24) + "px";
-      touchClone.style.top = (t.clientY - 24) + "px";
-      // Check hover over slots
-      modal.querySelectorAll(".inv-slot").forEach(function(s){
-        s.classList.remove("inv-slot-valid","inv-slot-invalid");
-        var r = s.getBoundingClientRect();
-        if(t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom){
-          if(s.getAttribute("data-slot") === dragKey && !s.classList.contains("filled"))
-            s.classList.add("inv-slot-valid");
-          else
-            s.classList.add("inv-slot-invalid");
-        }
-      });
-    }, {passive: false});
-    item.addEventListener("touchend", function(ev){
-      if(touchClone){ touchClone.remove(); touchClone = null; }
-      item.classList.remove("inv-dragging");
-      modal.querySelectorAll(".inv-slot").forEach(function(s){
-        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
-      });
-      if(!touchMoved){ dragKey = null; return; }
-      var t = ev.changedTouches[0];
-      modal.querySelectorAll(".inv-slot").forEach(function(s){
-        var r = s.getBoundingClientRect();
-        if(t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom){
-          if(s.getAttribute("data-slot") === dragKey && !s.classList.contains("filled")){
-            equipItem(s, item);
-          }
-        }
-      });
-      dragKey = null;
-    });
-  });
-
-  // Drop targets (slots)
-  modal.querySelectorAll(".inv-slot").forEach(function(slot){
-    slot.addEventListener("dragover", function(ev){
-      ev.preventDefault();
-      var slotKey = slot.getAttribute("data-slot");
-      if(slotKey === dragKey && !slot.classList.contains("filled")){
-        ev.dataTransfer.dropEffect = "move";
-        slot.classList.add("inv-slot-valid");
-      } else {
-        ev.dataTransfer.dropEffect = "none";
-        slot.classList.add("inv-slot-invalid");
-      }
-    });
-    slot.addEventListener("dragleave", function(){
-      slot.classList.remove("inv-slot-valid","inv-slot-invalid");
-    });
-    slot.addEventListener("drop", function(ev){
-      ev.preventDefault();
-      slot.classList.remove("inv-slot-valid","inv-slot-invalid");
-      var droppedKey = ev.dataTransfer.getData("text/plain");
-      var slotKey = slot.getAttribute("data-slot");
-      if(slotKey !== droppedKey || slot.classList.contains("filled")) return;
-      var itemEl = modal.querySelector('.inv-item-draggable[data-slot-key="' + droppedKey + '"]');
-      if(itemEl) equipItem(slot, itemEl);
-    });
-  });
-
-  function equipItem(slot, itemEl){
-    var key = slot.getAttribute("data-slot");
-    slot.classList.add("filled");
-    var iconEl = slot.querySelector(".inv-slot-icon");
-    if(iconEl) iconEl.textContent = itemEl.getAttribute("data-icon");
-    equipped[key] = true;
-    // Remove item from list
-    itemEl.classList.add("inv-item-equipped");
-    itemEl.setAttribute("draggable", "false");
-  }
-
   // Tab switching
-  var tabs = modal.querySelectorAll(".inv-tab");
-  for(var t = 0; t < tabs.length; t++){
-    tabs[t].onclick = function(){
+  modal.querySelectorAll(".inv-tab").forEach(function(tab){
+    tab.onclick = function(){
       var tabId = this.getAttribute("data-tab");
       modal.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
       modal.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
@@ -462,13 +312,260 @@ function openInventoryModal(u, scenario, equip, misc){
       var content = document.getElementById("inv-tc-" + tabId);
       if(content) content.classList.add("active");
     };
-  }
+  });
 
-  // Close modal
   function closeModal(){
     modal.classList.remove("visible");
     setTimeout(function(){ modal.remove(); }, 300);
   }
   document.getElementById("inv-modal-close-btn").onclick = closeModal;
   modal.onclick = function(ev){ if(ev.target === modal) closeModal(); };
+}
+
+/* ══════════ EQUIPMENT MODAL (portrait + 6 drawers + drag & drop) ══════════ */
+function openEquipmentModal(u, scenario, equip){
+  var equipped = {}; // { slotKey: true }
+
+  var modal = document.createElement("div");
+  modal.className = "inv-modal-backdrop";
+
+  var h = '<div class="inv-modal">';
+  h += '<button class="inv-modal-close" id="eq-modal-close-btn">\u2715</button>';
+
+  // ── Portrait with 6 transparent overlay slots (2x3 grid) ──
+  h += '<div class="eq-portrait-zone">';
+  h += '<div class="eq-portrait-bg">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
+  else h += '<div class="inv-character-empty">\uD83D\uDC64</div>';
+  h += '</div>';
+  h += '<div class="eq-slots-grid">';
+  for(var i = 0; i < PRE_INV_EQUIP_SLOTS.length; i++){
+    var sl = PRE_INV_EQUIP_SLOTS[i];
+    h += '<div class="eq-slot" data-slot="' + sl.key + '" style="--slot-color:' + sl.color + '">'
+      + '<span class="eq-slot-icon">' + sl.icon + '</span>'
+      + '<span class="eq-slot-label">' + esc(sl.label) + '</span></div>';
+  }
+  h += '</div>'; // eq-slots-grid
+  h += '<div class="eq-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
+  h += '</div>'; // eq-portrait-zone
+
+  // ── 6 drawers, one per equipment type ──
+  h += '<div class="eq-drawers">';
+  for(var d = 0; d < PRE_INV_EQUIP_SLOTS.length; d++){
+    var slot = PRE_INV_EQUIP_SLOTS[d];
+    var item = equip[slot.key];
+    if(!item) continue;
+
+    h += '<div class="eq-drawer" data-drawer="' + slot.key + '">';
+    // Drawer header (click to toggle)
+    h += '<button class="eq-drawer-header" data-drawer-key="' + slot.key + '">'
+      + '<span class="eq-drawer-icon" style="color:' + slot.color + '">' + slot.icon + '</span>'
+      + '<span class="eq-drawer-title">' + esc(slot.label) + '</span>'
+      + '<span class="eq-drawer-arrow">\u25BE</span>'
+      + '</button>';
+    // Drawer content (items of this type)
+    h += '<div class="eq-drawer-content" id="eq-dc-' + slot.key + '">';
+    h += '<div class="eq-item" data-item-key="' + slot.key + '">'
+      + '<div class="eq-item-icon" data-icon="' + item.icon + '">' + item.icon + '</div>'
+      + '<div class="eq-item-info">'
+      + '<div class="eq-item-name">' + esc(item.name) + '</div>'
+      + '<div class="eq-item-type">' + esc(slot.label) + '</div>'
+      + '</div>'
+      + '<div class="eq-item-actions">'
+      + '<button class="eq-btn-equip" data-key="' + slot.key + '" title="\u00c9quiper">\u2714</button>'
+      + '<button class="eq-btn-view" data-key="' + slot.key + '" title="Voir">\uD83D\uDD0D</button>'
+      + '</div>'
+      + '</div>';
+    h += '</div>'; // eq-drawer-content
+    h += '</div>'; // eq-drawer
+  }
+  h += '</div>'; // eq-drawers
+
+  h += '</div>'; // inv-modal
+  modal.innerHTML = h;
+
+  var screenEl = document.querySelector(".screen");
+  (screenEl || document.body).appendChild(modal);
+  setTimeout(function(){ modal.classList.add("visible"); }, 20);
+
+  // ── Wire: drawer toggles ──
+  modal.querySelectorAll(".eq-drawer-header").forEach(function(hdr){
+    hdr.onclick = function(){
+      var drawer = hdr.closest(".eq-drawer");
+      drawer.classList.toggle("open");
+    };
+  });
+
+  // ── Wire: equip buttons (click) ──
+  modal.querySelectorAll(".eq-btn-equip").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var key = btn.getAttribute("data-key");
+      doEquip(key);
+    };
+  });
+
+  // ── Wire: view buttons (click) ──
+  modal.querySelectorAll(".eq-btn-view").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var key = btn.getAttribute("data-key");
+      var item = equip[key];
+      var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+      if(item && slotDef) showItemDetailModal(item, slotDef);
+    };
+  });
+
+  // ── Wire: long-press drag on item icons ──
+  modal.querySelectorAll(".eq-item-icon").forEach(function(iconEl){
+    var itemEl = iconEl.closest(".eq-item");
+    var key = itemEl.getAttribute("data-item-key");
+    var holdTimer = null;
+    var isDragging = false;
+    var ghost = null;
+
+    function startDrag(x, y){
+      isDragging = true;
+      itemEl.classList.add("eq-item-dragging");
+      ghost = document.createElement("div");
+      ghost.className = "inv-touch-ghost";
+      ghost.textContent = iconEl.getAttribute("data-icon");
+      ghost.style.left = (x - 24) + "px";
+      ghost.style.top = (y - 24) + "px";
+      document.body.appendChild(ghost);
+      // Highlight target slot
+      var targetSlot = modal.querySelector('.eq-slot[data-slot="' + key + '"]');
+      if(targetSlot && !targetSlot.classList.contains("filled")) targetSlot.classList.add("inv-slot-hint");
+    }
+
+    function moveDrag(x, y){
+      if(!isDragging) return;
+      if(ghost){ ghost.style.left = (x - 24) + "px"; ghost.style.top = (y - 24) + "px"; }
+      modal.querySelectorAll(".eq-slot").forEach(function(s){
+        s.classList.remove("inv-slot-valid","inv-slot-invalid");
+        var r = s.getBoundingClientRect();
+        if(x >= r.left && x <= r.right && y >= r.top && y <= r.bottom){
+          if(s.getAttribute("data-slot") === key && !s.classList.contains("filled"))
+            s.classList.add("inv-slot-valid");
+          else
+            s.classList.add("inv-slot-invalid");
+        }
+      });
+    }
+
+    function endDrag(x, y){
+      if(ghost){ ghost.remove(); ghost = null; }
+      itemEl.classList.remove("eq-item-dragging");
+      modal.querySelectorAll(".eq-slot").forEach(function(s){
+        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
+      });
+      if(!isDragging) return;
+      isDragging = false;
+      // Check drop
+      modal.querySelectorAll(".eq-slot").forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(x >= r.left && x <= r.right && y >= r.top && y <= r.bottom){
+          if(s.getAttribute("data-slot") === key && !s.classList.contains("filled")){
+            doEquip(key);
+          }
+        }
+      });
+    }
+
+    // Touch events (long press to start)
+    iconEl.addEventListener("touchstart", function(ev){
+      var t = ev.touches[0];
+      holdTimer = setTimeout(function(){ startDrag(t.clientX, t.clientY); }, 400);
+    }, {passive: true});
+    iconEl.addEventListener("touchmove", function(ev){
+      if(isDragging){
+        ev.preventDefault();
+        var t = ev.touches[0];
+        moveDrag(t.clientX, t.clientY);
+      } else {
+        // Cancel hold if finger moved too much
+        clearTimeout(holdTimer);
+      }
+    }, {passive: false});
+    iconEl.addEventListener("touchend", function(ev){
+      clearTimeout(holdTimer);
+      var t = ev.changedTouches[0];
+      endDrag(t.clientX, t.clientY);
+    });
+    iconEl.addEventListener("touchcancel", function(){
+      clearTimeout(holdTimer);
+      endDrag(0, 0);
+    });
+
+    // Mouse events (long press to start)
+    iconEl.addEventListener("mousedown", function(ev){
+      if(ev.button !== 0) return;
+      holdTimer = setTimeout(function(){ startDrag(ev.clientX, ev.clientY); }, 400);
+      function onMove(e){
+        if(isDragging) moveDrag(e.clientX, e.clientY);
+        else clearTimeout(holdTimer);
+      }
+      function onUp(e){
+        clearTimeout(holdTimer);
+        endDrag(e.clientX, e.clientY);
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseup", onUp);
+      }
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", onUp);
+    });
+  });
+
+  function doEquip(key){
+    if(equipped[key]) return;
+    equipped[key] = true;
+    // Fill the slot
+    var slotEl = modal.querySelector('.eq-slot[data-slot="' + key + '"]');
+    if(slotEl){
+      slotEl.classList.add("filled");
+      var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+      var item = equip[key];
+      if(item){
+        var iconEl = slotEl.querySelector(".eq-slot-icon");
+        if(iconEl) iconEl.textContent = item.icon;
+      }
+    }
+    // Gray out the item in the drawer
+    var itemEl = modal.querySelector('.eq-item[data-item-key="' + key + '"]');
+    if(itemEl) itemEl.classList.add("eq-item-equipped");
+  }
+
+  // Close
+  function closeModal(){
+    modal.classList.remove("visible");
+    setTimeout(function(){ modal.remove(); }, 300);
+  }
+  document.getElementById("eq-modal-close-btn").onclick = closeModal;
+  modal.onclick = function(ev){ if(ev.target === modal) closeModal(); };
+}
+
+/* ══════════ ITEM DETAIL MODAL ══════════ */
+function showItemDetailModal(item, slotDef){
+  var detail = document.createElement("div");
+  detail.className = "inv-modal-backdrop eq-detail-backdrop";
+
+  var h = '<div class="eq-detail-modal">';
+  h += '<div class="eq-detail-icon" style="color:' + slotDef.color + '">' + item.icon + '</div>';
+  h += '<div class="eq-detail-name">' + esc(item.name) + '</div>';
+  h += '<div class="eq-detail-type">' + esc(slotDef.label) + '</div>';
+  h += '<div class="eq-detail-desc">' + esc(item.desc) + '</div>';
+  h += '<button class="eq-detail-close" id="eq-detail-close-btn">Fermer</button>';
+  h += '</div>';
+
+  detail.innerHTML = h;
+  var screenEl = document.querySelector(".screen");
+  (screenEl || document.body).appendChild(detail);
+  setTimeout(function(){ detail.classList.add("visible"); }, 20);
+
+  function closeDetail(){
+    detail.classList.remove("visible");
+    setTimeout(function(){ detail.remove(); }, 300);
+  }
+  document.getElementById("eq-detail-close-btn").onclick = closeDetail;
+  detail.onclick = function(ev){ if(ev.target === detail) closeDetail(); };
 }
