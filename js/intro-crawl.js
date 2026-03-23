@@ -945,6 +945,10 @@ function showScenarioChoice(onChosen){
   var step2 = document.getElementById("sc-step2");
   var step2Title = document.getElementById("sc-step2-title");
   var arena = document.getElementById("sc-arena");
+
+  // Track sub-state within step 2 for context-aware back navigation
+  var step2State = "circles"; // "circles" | "contract" | "guide"
+  var currentType = null;     // "connecte" | "isole" — remembers which type was picked
   var guide = document.getElementById("sc-guide");
   var guideLabel = document.getElementById("sc-guide-label");
   var guideImg = document.getElementById("sc-guide-img");
@@ -1041,6 +1045,8 @@ function showScenarioChoice(onChosen){
   function goToStep2(type){
     var subs = (type === "connecte") ? SUB_CHAMPION : SUB_ISOLE;
     window._scOriginType = type; // "connecte" or "isole"
+    currentType = type;
+    step2State = "circles";
 
     // Set title
     if(step2Title){
@@ -1098,6 +1104,7 @@ function showScenarioChoice(onChosen){
       div.onclick = function(){
         var scenario = s.scenario;
         window._chosenScenario = scenario;
+        step2State = "contract";
 
         // Remove all scenario circles and labels
         arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
@@ -1110,6 +1117,7 @@ function showScenarioChoice(onChosen){
         // Show contract preview page (portrait + name + title + contract icon)
         showContractPreview(arena, persona, s, type, function(){
           // Contract signed → remove preview, show guide placement
+          step2State = "guide";
           arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
 
           if(step2Title) step2Title.textContent = "Place ton guide";
@@ -1153,15 +1161,20 @@ function showScenarioChoice(onChosen){
     }
   }
 
-  // Back button
+  // Back button — context-aware navigation
   var backBtn = document.getElementById("sc-back-btn");
-  function goBackToStep1(){
-    // Clean up circles, labels
+  function cleanupArena(){
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
     guide.style.display = "";
-    // Clean up drag listeners
     if(window._scDragCleanup) window._scDragCleanup();
+  }
+  function goBackToStep1(){
+    cleanupArena();
+    guide.style.display = "none";
+    step2State = "circles";
+    currentType = null;
 
     if(step2){
       step2.classList.add("fading-out");
@@ -1172,7 +1185,16 @@ function showScenarioChoice(onChosen){
       }, 500);
     }
   }
-  if(backBtn) backBtn.onclick = goBackToStep1;
+  if(backBtn) backBtn.onclick = function(){
+    if(step2State === "contract"){
+      // From contract preview → go back to scenario circles
+      cleanupArena();
+      goToStep2(currentType);
+    } else {
+      // From circles (or guide) → go back to step 1
+      goBackToStep1();
+    }
+  };
 
   if(btnConnecte) btnConnecte.onclick = function(){ goToStep2("connecte"); };
   if(btnIsole) btnIsole.onclick = function(){ goToStep2("isole"); };
