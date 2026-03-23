@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="css/worldmap.css">
   <link rel="stylesheet" href="css/modals.css">
   <link rel="stylesheet" href="css/lockscreen.css">
+  <link rel="stylesheet" href="css/inventory-overlay.css">
   <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/intro-crawl.css">
   <link rel="stylesheet" href="css/charcreate.css">
@@ -715,15 +716,14 @@
       <div class="lock-screen" id="lock-screen" style="display:none">
         <div class="lock-particles" id="lock-particles"></div>
         <div class="lock-content" id="lock-content">
-          <h2 class="lock-title">HOURGLASS NEXUS</h2>
+          <div class="lock-player-portrait" id="lock-player-portrait"></div>
+          <div class="lock-player-name" id="lock-player-name"></div>
+          <div class="lock-player-role" id="lock-player-role"></div>
+          <div class="hole" id="lock-hole">
+            <div class="hole-rune"></div>
+          </div>
           <p class="lock-hint">Réveillez le guide et placez-le dans le portail</p>
           <div class="lock-info-zone" id="lock-info-zone"></div>
-        </div>
-        <div class="lock-logo-fixed" id="lock-logo-fixed">
-          <img src="assets/ealogo.png" alt="" class="lock-logo-img">
-        </div>
-        <div class="hole" id="lock-hole">
-          <div class="hole-rune"></div>
         </div>
         <div class="lock-guide-drag" id="lock-guide">
           <img src="" alt="" class="lock-guide-img" id="lock-guide-img">
@@ -754,6 +754,7 @@
   <script src="js/drawer-nav.js"></script>
   <script src="js/weather-news.js"></script>
   <script src="js/calendar.js"></script>
+  <script src="js/inventory-overlay.js"></script>
   <script src="js/clock-modals-lock.js"></script>
   <script src="js/intro-crawl.js"></script>
   <script src="js/intro.js"></script>

@@ -232,6 +232,31 @@ function initLock(){
   var giImg = document.getElementById("lock-guide-img");
   if(guide && guide.avatar && giImg) giImg.src = guide.avatar;
 
+  // Populate lock screen content based on mode
+  var mode = window._introMode || "new";
+  var portraitEl = document.getElementById("lock-player-portrait");
+  var nameEl = document.getElementById("lock-player-name");
+  var roleEl = document.getElementById("lock-player-role");
+  if(mode === "new"){
+    var u = loadUser();
+    if(portraitEl){
+      if(u.avatar) portraitEl.innerHTML = '<img src="' + esc(u.avatar) + '" alt="">';
+      else portraitEl.innerHTML = '<div class="lock-player-portrait-empty">\uD83D\uDC64</div>';
+    }
+    if(nameEl) nameEl.textContent = u.name || "Voyageur";
+    var scenario = window._chosenScenario || "";
+    var SC_LABELS = {
+      "champion":"Champion", "lambda":"Isolé", "rebelle":"Dissident",
+      "apprenti-morkar":"Recrue Morkar", "veteran-morkar":"Vétéran Morkar"
+    };
+    if(roleEl) roleEl.textContent = SC_LABELS[scenario] || "Voyageur";
+  } else {
+    // Resume mode: show classic title instead of player portrait
+    if(portraitEl) portraitEl.style.display = "none";
+    if(nameEl){ nameEl.className = "lock-title"; nameEl.textContent = "HOURGLASS NEXUS"; }
+    if(roleEl) roleEl.style.display = "none";
+  }
+
   // Populate per-scenario info buttons
   populateLockInfoZone();
 
@@ -305,9 +330,7 @@ function initLock(){
     if(mode === "resume"){
       // Resume: shorter animation, then resume intro
       var lockContent = document.getElementById("lock-content");
-      var logoFixed = document.getElementById("lock-logo-fixed");
       if(lockContent) setTimeout(function(){ lockContent.style.transition = "opacity .4s"; lockContent.style.opacity = "0" }, 400);
-      if(logoFixed) setTimeout(function(){ logoFixed.style.transition = "opacity .4s"; logoFixed.style.opacity = "0" }, 300);
 
       setTimeout(function(){
         lk.style.transition = "opacity .6s ease";
@@ -325,78 +348,31 @@ function initLock(){
       return;
     }
 
-    // New voyage: full animation to char create
-    // Préparer : cacher portrait et titre du charcreate
-    var ccPortrait = document.getElementById("cc-guide-portrait");
-    var ccTitle = document.getElementById("cc-guide-title");
-    if(ccPortrait) ccPortrait.style.visibility = "hidden";
-    if(ccTitle) { ccTitle.style.opacity = "0"; ccTitle.style.transition = "none" }
-
-    // 2. Guide image fills the hole
+    // New voyage: fade lock screen, then show inventory overlay
     setTimeout(function(){
       var rune = ho.querySelector(".hole-rune");
       if(rune) rune.style.display = "none";
     }, 400);
 
-    // 3. Fade texts and logo
     var lockContent = document.getElementById("lock-content");
-    var logoFixed = document.getElementById("lock-logo-fixed");
     if(lockContent) setTimeout(function(){ lockContent.style.transition = "opacity .4s"; lockContent.style.opacity = "0" }, 600);
-    if(logoFixed) setTimeout(function(){ logoFixed.style.transition = "opacity .5s"; logoFixed.style.opacity = "0" }, 500);
 
-    // 4. Extract hole, animate to char create
     setTimeout(function(){
-      var hoRect = ho.getBoundingClientRect();
-      var startX = hoRect.left + hoRect.width/2;
-      var startY = hoRect.top + hoRect.height/2;
-      var screenEl = document.querySelector(".screen");
-      if(!screenEl) return;
-      gi.remove(); // Remove guide drag element
-      ho.remove();
-      screenEl.appendChild(ho);
-      ho.style.position = "fixed";
-      ho.style.left = startX + "px";
-      ho.style.top = startY + "px";
-      ho.style.bottom = "auto";
-      ho.style.transform = "translate(-50%,-50%)";
-      ho.style.zIndex = "9999";
-      ho.style.transition = "none";
-
-      // Re-add guide avatar into hole
-      if(guide && guide.avatar){
-        var avImg = document.createElement("img");
-        avImg.src = guide.avatar;
-        avImg.style.cssText = "width:100px;height:100px;border-radius:50%;object-fit:cover;position:absolute";
-        ho.appendChild(avImg);
-      }
-
+      gi.remove();
       lk.style.transition = "opacity .6s ease";
       lk.style.opacity = "0";
       var particles = lk.querySelector(".lock-particles");
       if(particles){ particles.style.transition = "opacity .3s"; particles.style.opacity = "0" }
+    }, 1000);
 
-      setTimeout(function(){
-        if(ccPortrait){ ccPortrait.style.visibility = "visible"; ccPortrait.style.opacity = "0" }
-        var targetRect = ccPortrait ? ccPortrait.getBoundingClientRect() : null;
-        var targetX = targetRect ? targetRect.left + targetRect.width/2 : window.innerWidth/2;
-        var targetY = targetRect ? targetRect.top + targetRect.height/2 : 90;
-        if(ccPortrait) ccPortrait.style.visibility = "hidden";
-        ho.style.transition = "left 1s cubic-bezier(.4,0,.2,1), top 1s cubic-bezier(.4,0,.2,1), box-shadow .8s ease";
-        ho.style.left = targetX + "px";
-        ho.style.top = targetY + "px";
-      }, 100);
+    setTimeout(function(){ lk.remove() }, 1600);
 
-      setTimeout(function(){ lk.remove() }, 700);
-
-      setTimeout(function(){
-        acDB.set("ac_unlocked","1");
-        if(ccPortrait){ ccPortrait.style.visibility = "visible"; ccPortrait.style.transition = "opacity .3s"; ccPortrait.style.opacity = "1" }
-        ho.style.transition = "opacity .3s"; ho.style.opacity = "0";
-        setTimeout(function(){ ho.remove() }, 350);
-        if(ccTitle){ ccTitle.style.transition = "opacity .5s ease .15s"; ccTitle.style.opacity = "1" }
+    setTimeout(function(){
+      acDB.set("ac_unlocked","1");
+      showInventoryOverlay(function(){
         checkCharCreate();
-      }, 1200);
-    }, 1200);
+      });
+    }, 1700);
   }
 
   // Drag the guide icon
