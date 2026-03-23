@@ -676,16 +676,6 @@
   border-color: var(--gold);
   color: var(--gold-light);
 }
-.contract-sign-btn:disabled:not(.signed) {
-  opacity: .35; cursor: not-allowed;
-}
-.contract-sign-btn.ready {
-  animation: btnReady .5s ease-out;
-}
-@keyframes btnReady {
-  from { box-shadow: 0 0 0 rgba(168,132,42,0) }
-  to { box-shadow: 0 0 12px rgba(168,132,42,.3) }
-}
 .contract-sign-btn.signed {
   background: rgba(34,136,68,.15);
   border-color: rgba(34,136,68,.4);

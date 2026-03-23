@@ -317,19 +317,23 @@ function openInventoryModal(misc, equip){
   }
   h += '</div></div>';
 
-  // Consumables
+  // Consumables — pill only appears if NOT consumed during contract signing
   h += '<div class="inv-tab-content" id="inv-tc-m-consommables">';
   h += '<div class="inv-items-grid">';
-  h += '<div class="inv-item inv-item-consumable" data-inv-idx="conso-0">';
-  h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
-  h += '<div class="inv-item-info">';
-  h += '<div class="inv-item-name">' + esc(CONSUMABLE_ITEM.name) + '</div>';
-  h += '<div class="inv-item-type">Consommable</div>';
-  h += '</div>';
-  h += '<div class="eq-item-actions">';
-  h += '<button class="eq-btn-equip inv-btn-use" data-inv-type="conso" data-inv-i="0" title="Utiliser">\u25B6</button>';
-  h += '<button class="eq-btn-view inv-btn-view" data-inv-type="conso" data-inv-i="0" title="Voir">\uD83D\uDD0D</button>';
-  h += '</div></div>';
+  if(!window._pillConsumed){
+    h += '<div class="inv-item inv-item-consumable" data-inv-idx="conso-0">';
+    h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
+    h += '<div class="inv-item-info">';
+    h += '<div class="inv-item-name">' + esc(CONSUMABLE_ITEM.name) + '</div>';
+    h += '<div class="inv-item-type">Consommable</div>';
+    h += '</div>';
+    h += '<div class="eq-item-actions">';
+    h += '<button class="eq-btn-equip inv-btn-use" data-inv-type="conso" data-inv-i="0" title="Utiliser">\u25B6</button>';
+    h += '<button class="eq-btn-view inv-btn-view" data-inv-type="conso" data-inv-i="0" title="Voir">\uD83D\uDD0D</button>';
+    h += '</div></div>';
+  } else {
+    h += '<div class="inv-items-empty">Aucun consommable.</div>';
+  }
   h += '</div></div>';
 
   // Quests
