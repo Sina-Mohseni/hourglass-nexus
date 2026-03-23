@@ -1,8 +1,9 @@
 "use strict";
 
-/* ══════════ INVENTORY OVERLAY — Diablo 4 style ══════════
+/* ══════════ PRE-INVENTORY PAGE — Diablo 4 style ══════════
    Shown after guide placement on lock screen (new voyage).
    Displays player portrait, stats, and scenario-based inventory.
+   Now rendered as a standard page (same structure as profile/equipment).
    ═══════════════════════════════════════════════════════════ */
 
 var SCENARIO_LABELS = {
@@ -87,7 +88,7 @@ var SCENARIO_MISC = {
 };
 
 /* ── Equipment slot labels ── */
-var EQUIP_SLOTS = [
+var PRE_INV_EQUIP_SLOTS = [
   {key:"decors",   icon:"\uD83C\uDFAD", label:"Décors"},
   {key:"epoque",   icon:"\u23F3",        label:"Époque"},
   {key:"theme",    icon:"\u2726",        label:"Thème"},
@@ -96,164 +97,161 @@ var EQUIP_SLOTS = [
   {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif"}
 ];
 
-/* ══════════ SHOW INVENTORY OVERLAY ══════════ */
-function showInventoryOverlay(onClose){
+/* ── Callback stored for "Continuer" button ── */
+var _preInvOnClose = null;
+
+/* ══════════ BUILD PRE-INVENTORY PAGE ══════════ */
+function buildPreInventoryPage(onClose){
+  var p = document.getElementById("page-pre-inventory"); if(!p) return;
+  if(onClose) _preInvOnClose = onClose;
+
   var u = loadUser();
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
   var misc = SCENARIO_MISC[scenario] || [];
 
-  var overlay = document.createElement("div");
-  overlay.className = "inv-overlay";
-  overlay.id = "inv-overlay";
+  var h = '<div class="profile-page pre-inv-page">';
 
-  // Build HTML
-  var html = '<div class="inv-overlay-inner">';
+  // ── Header card with avatar (same pattern as profile page) ──
+  h += '<div class="prof-header">'
+    + '<div class="prof-header-glow" style="background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)"></div>'
+    + '<div class="pre-inv-avatar-wrap">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
+  else h += '<div class="prof-avatar-empty">\uD83D\uDC64</div>';
+  h += '</div>'
+    + '<span class="prof-rarity" style="background:var(--gold-dark)">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + '</span>'
+    + '<div class="prof-info-overlay">'
+    + '<div class="prof-name" style="color:var(--gold-light)">' + esc(u.name || "Voyageur") + '</div>'
+    + '<div class="prof-subtitle">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2022 Niv. ' + u.level + '</div>'
+    + '</div></div>';
 
-  // ── Top section: portrait + stats ──
-  html += '<div class="inv-top">';
+  // ── Stats summary (same pattern as profile page) ──
+  h += '<div class="prof-stats-grid">'
+    + '<div class="prof-stat-cell"><div class="prof-stat-val">Niv. ' + u.level + '</div><div class="prof-stat-lbl">Niveau</div></div>'
+    + '<div class="prof-stat-cell"><div class="prof-stat-val">\uD83D\uDCB0 ' + u.coins + '</div><div class="prof-stat-lbl">Or</div></div>'
+    + '<div class="prof-stat-cell"><div class="prof-stat-val">6</div><div class="prof-stat-lbl">\u00c9quip\u00e9s</div></div>'
+    + '<div class="prof-stat-cell"><div class="prof-stat-val">1</div><div class="prof-stat-lbl">Conso.</div></div></div>';
 
-  // Left: Portrait with equipment slots around it
-  html += '<div class="inv-portrait-section">';
-  html += '<div class="inv-portrait-frame">';
-  if(u.avatar) html += '<img src="' + esc(u.avatar) + '" alt="" class="inv-portrait-img">';
-  else html += '<div class="inv-portrait-empty">\uD83D\uDC64</div>';
-  html += '</div>';
-
-  // Equipment slots arranged around portrait
-  html += '<div class="inv-equip-grid">';
-  for(var i = 0; i < EQUIP_SLOTS.length; i++){
-    var slot = EQUIP_SLOTS[i];
-    var item = equip[slot.key];
-    html += '<div class="inv-equip-slot" data-slot="' + slot.key + '" title="' + esc(slot.label) + '">';
-    html += '<div class="inv-equip-slot-icon">' + slot.icon + '</div>';
-    if(item){
-      html += '<div class="inv-equip-slot-name">' + esc(item.name) + '</div>';
-    }
-    html += '</div>';
-  }
-  html += '</div>';
-  html += '</div>'; // inv-portrait-section
-
-  // Right: Name + stats
-  html += '<div class="inv-stats-section">';
-  html += '<div class="inv-char-name">' + esc(u.name || "Voyageur") + '</div>';
-  html += '<div class="inv-char-role">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2014 Niv. ' + u.level + '</div>';
-
-  // Stats block
+  // ── Attributes (same pattern as profile page) ──
+  h += '<div class="section-title">Attributs</div>';
+  h += '<div class="prof-attrs">';
   var stats = [
-    {key:"CRE", val:u.statCRE, color:"var(--gold-light)"},
-    {key:"SAG", val:u.statSAG, color:"var(--mana-glow)"},
-    {key:"CHA", val:u.statCHA, color:"var(--gold-pale)"},
-    {key:"FOR", val:u.statFOR, color:"var(--blood-bright)"},
-    {key:"AGI", val:u.statAGI, color:"var(--poison)"}
+    {key:"CRE", val:u.statCRE, color:"#9b59b6"},
+    {key:"SAG", val:u.statSAG, color:"#5dade2"},
+    {key:"CHA", val:u.statCHA, color:"#e8a838"},
+    {key:"FOR", val:u.statFOR, color:"#e74c3c"},
+    {key:"AGI", val:u.statAGI, color:"#27ae60"}
   ];
-  html += '<div class="inv-stats-grid">';
-  for(var s = 0; s < stats.length; s++){
-    html += '<div class="inv-stat-row">';
-    html += '<span class="inv-stat-label">' + stats[s].key + '</span>';
-    html += '<span class="inv-stat-bar"><span class="inv-stat-fill" style="width:' + stats[s].val + '%;background:' + stats[s].color + '"></span></span>';
-    html += '<span class="inv-stat-val">' + stats[s].val + '</span>';
-    html += '</div>';
-  }
-  html += '</div>';
+  stats.forEach(function(s){
+    h += '<div class="dr-stat-bar">'
+      + '<span class="dr-stat-label">' + s.key + '</span>'
+      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:' + s.val + '%;background:linear-gradient(90deg,' + s.color + ',' + s.color + '88)"></div></div>'
+      + '<span class="dr-stat-val">' + s.val + '</span></div>';
+  });
+  h += '</div>';
 
-  // Gold
-  html += '<div class="inv-gold-row"><span class="inv-gold-icon">\uD83D\uDCB0</span> ' + u.coins + ' Or</div>';
-  html += '</div>'; // inv-stats-section
-  html += '</div>'; // inv-top
-
-  // ── Bottom section: Tabbed inventory ──
-  html += '<div class="inv-tabs-section">';
-  html += '<div class="inv-tabs">';
-  html += '<button class="inv-tab active" data-tab="equipement">\u00C9quipement</button>';
-  html += '<button class="inv-tab" data-tab="consommables">Consommables</button>';
-  html += '<button class="inv-tab" data-tab="quetes">Qu\u00eates</button>';
-  html += '<button class="inv-tab" data-tab="divers">Divers</button>';
-  html += '</div>';
+  // ── Tabbed inventory ──
+  h += '<div class="section-title">Inventaire</div>';
+  h += '<div class="inv-tabs-section">';
+  h += '<div class="inv-tabs">';
+  h += '<button class="inv-tab active" data-tab="equipement">\u00C9quipement</button>';
+  h += '<button class="inv-tab" data-tab="consommables">Consommables</button>';
+  h += '<button class="inv-tab" data-tab="quetes">Qu\u00eates</button>';
+  h += '<button class="inv-tab" data-tab="divers">Divers</button>';
+  h += '</div>';
 
   // Tab content: Equipment
-  html += '<div class="inv-tab-content active" id="inv-tc-equipement">';
-  html += '<div class="inv-items-grid">';
-  for(var e = 0; e < EQUIP_SLOTS.length; e++){
-    var sl = EQUIP_SLOTS[e];
+  h += '<div class="inv-tab-content active" id="inv-tc-equipement">';
+  h += '<div class="inv-items-grid">';
+  for(var e = 0; e < PRE_INV_EQUIP_SLOTS.length; e++){
+    var sl = PRE_INV_EQUIP_SLOTS[e];
     var it = equip[sl.key];
     if(!it) continue;
-    html += '<div class="inv-item">';
-    html += '<div class="inv-item-icon">' + sl.icon + '</div>';
-    html += '<div class="inv-item-info">';
-    html += '<div class="inv-item-name">' + esc(it.name) + '</div>';
-    html += '<div class="inv-item-type">' + esc(sl.label) + '</div>';
-    html += '<div class="inv-item-desc">' + esc(it.desc) + '</div>';
-    html += '</div></div>';
+    h += '<div class="inv-item">';
+    h += '<div class="inv-item-icon">' + sl.icon + '</div>';
+    h += '<div class="inv-item-info">';
+    h += '<div class="inv-item-name">' + esc(it.name) + '</div>';
+    h += '<div class="inv-item-type">' + esc(sl.label) + '</div>';
+    h += '<div class="inv-item-desc">' + esc(it.desc) + '</div>';
+    h += '</div></div>';
   }
-  html += '</div></div>';
+  h += '</div></div>';
 
   // Tab content: Consumables
-  html += '<div class="inv-tab-content" id="inv-tc-consommables">';
-  html += '<div class="inv-items-grid">';
-  html += '<div class="inv-item inv-item-consumable">';
-  html += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
-  html += '<div class="inv-item-info">';
-  html += '<div class="inv-item-name">' + esc(CONSUMABLE_ITEM.name) + '</div>';
-  html += '<div class="inv-item-type">Consommable</div>';
-  html += '<div class="inv-item-desc">' + esc(CONSUMABLE_ITEM.desc) + '</div>';
-  html += '</div></div>';
-  html += '</div></div>';
+  h += '<div class="inv-tab-content" id="inv-tc-consommables">';
+  h += '<div class="inv-items-grid">';
+  h += '<div class="inv-item inv-item-consumable">';
+  h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
+  h += '<div class="inv-item-info">';
+  h += '<div class="inv-item-name">' + esc(CONSUMABLE_ITEM.name) + '</div>';
+  h += '<div class="inv-item-type">Consommable</div>';
+  h += '<div class="inv-item-desc">' + esc(CONSUMABLE_ITEM.desc) + '</div>';
+  h += '</div></div>';
+  h += '</div></div>';
 
   // Tab content: Quests (empty for now)
-  html += '<div class="inv-tab-content" id="inv-tc-quetes">';
-  html += '<div class="inv-items-empty">Aucun objet de qu\u00eate pour l\'instant.</div>';
-  html += '</div>';
+  h += '<div class="inv-tab-content" id="inv-tc-quetes">';
+  h += '<div class="inv-items-empty">Aucun objet de qu\u00eate pour l\'instant.</div>';
+  h += '</div>';
 
   // Tab content: Misc (scenario documents)
-  html += '<div class="inv-tab-content" id="inv-tc-divers">';
-  html += '<div class="inv-items-grid">';
+  h += '<div class="inv-tab-content" id="inv-tc-divers">';
+  h += '<div class="inv-items-grid">';
   for(var m = 0; m < misc.length; m++){
-    html += '<div class="inv-item inv-item-misc">';
-    html += '<div class="inv-item-icon">\uD83D\uDCC4</div>';
-    html += '<div class="inv-item-info">';
-    html += '<div class="inv-item-name">' + esc(misc[m].name) + '</div>';
-    html += '<div class="inv-item-type">Document</div>';
-    html += '<div class="inv-item-desc">' + esc(misc[m].desc) + '</div>';
-    html += '</div></div>';
+    h += '<div class="inv-item inv-item-misc">';
+    h += '<div class="inv-item-icon">\uD83D\uDCC4</div>';
+    h += '<div class="inv-item-info">';
+    h += '<div class="inv-item-name">' + esc(misc[m].name) + '</div>';
+    h += '<div class="inv-item-type">Document</div>';
+    h += '<div class="inv-item-desc">' + esc(misc[m].desc) + '</div>';
+    h += '</div></div>';
   }
-  html += '</div></div>';
+  h += '</div></div>';
 
-  html += '</div>'; // inv-tabs-section
+  h += '</div>'; // inv-tabs-section
 
-  // Close button
-  html += '<button class="inv-close-btn" id="inv-close-btn">Continuer</button>';
+  // ── Continue button (same style as profile save button) ──
+  h += '<button class="prof-save-btn" id="pre-inv-continue-btn">Continuer</button>';
 
-  html += '</div>'; // inv-overlay-inner
-  overlay.innerHTML = html;
+  h += '</div>'; // profile-page pre-inv-page
 
-  var screenEl = document.querySelector(".screen");
-  (screenEl || document.body).appendChild(overlay);
+  p.innerHTML = h;
+  wirePreInventoryPage();
+}
 
-  // Fade in
-  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
+/* ══════════ WIRE PRE-INVENTORY PAGE ══════════ */
+function wirePreInventoryPage(){
+  var p = document.getElementById("page-pre-inventory"); if(!p) return;
 
   // Tab switching
-  var tabs = overlay.querySelectorAll(".inv-tab");
+  var tabs = p.querySelectorAll(".inv-tab");
   for(var t = 0; t < tabs.length; t++){
     tabs[t].onclick = function(){
       var tabId = this.getAttribute("data-tab");
-      overlay.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
-      overlay.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
+      p.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
+      p.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
       this.classList.add("active");
       var content = document.getElementById("inv-tc-" + tabId);
       if(content) content.classList.add("active");
     };
   }
 
-  // Close
-  document.getElementById("inv-close-btn").onclick = function(){
-    overlay.classList.remove("visible");
-    overlay.classList.add("closing");
-    setTimeout(function(){
-      overlay.remove();
-      if(onClose) onClose();
-    }, 500);
+  // Continue button
+  var continueBtn = document.getElementById("pre-inv-continue-btn");
+  if(continueBtn) continueBtn.onclick = function(){
+    if(_preInvOnClose) _preInvOnClose();
+    _preInvOnClose = null;
   };
+}
+
+/* ══════════ SHOW INVENTORY OVERLAY (legacy wrapper) ══════════
+   Keeps the same API for callers: showInventoryOverlay(onClose)
+   Now renders as a page instead of a modal overlay.
+   ═══════════════════════════════════════════════════════════ */
+function showInventoryOverlay(onClose){
+  buildPreInventoryPage(function(){
+    showPage("accueil");
+    if(onClose) onClose();
+  });
+  showPage("pre-inventory");
 }
