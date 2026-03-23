@@ -509,8 +509,12 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   var fpStart = document.getElementById("fp-start-btn");
   if(fpStart) fpStart.onclick = function(){
     _showNightConfirm(function(){
+      // Close overlay without triggering checkCharCreate
+      window._skipCharCreate = true;
       var mainClose = document.getElementById("inv-close-btn");
       if(mainClose) mainClose.click();
+      // Start the night dialogue → random placement → enterMainApp
+      startNightSequence();
     });
   };
 }
