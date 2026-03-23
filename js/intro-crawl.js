@@ -1172,6 +1172,7 @@ function showScenarioChoice(onChosen){
   }
   function goBackToStep1(){
     cleanupArena();
+    guide.style.display = "none";
     step2State = "circles";
     currentType = null;
 
