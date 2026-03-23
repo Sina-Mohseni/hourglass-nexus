@@ -786,7 +786,8 @@ function showContractPreview(arena, persona, scenarioObj, type, onSigned){
   // Click contract icon → open contract modal
   preview.querySelector(".scp-contract-icon").onclick = function(){
     var isMorkar = (scenarioObj.scenario === "apprenti-morkar" || scenarioObj.scenario === "veteran-morkar");
-    showContractModal(type, onSigned, isMorkar);
+    var isRebelle = (scenarioObj.scenario === "rebelle");
+    showContractModal(type, onSigned, isMorkar, isRebelle);
   };
 }
 
@@ -805,10 +806,41 @@ function toAlienText(text){
   return result;
 }
 
-function showContractModal(type, onSigned, isMorkar){
+/* ── Pill confirmation dialog ── */
+function showPillConfirmDialog(parentBackdrop, onConsume){
+  var dialog = document.createElement("div");
+  dialog.className = "pill-confirm-backdrop";
+  dialog.innerHTML =
+    '<div class="pill-confirm-dialog">' +
+      '<div class="pill-confirm-icon">&#128138;</div>' +
+      '<div class="pill-confirm-buttons">' +
+        '<button class="pill-confirm-btn pill-confirm-yes">Consommer</button>' +
+        '<button class="pill-confirm-btn pill-confirm-no">Ne pas consommer</button>' +
+      '</div>' +
+    '</div>';
+
+  parentBackdrop.appendChild(dialog);
+  setTimeout(function(){ dialog.classList.add("visible"); }, 20);
+
+  dialog.querySelector(".pill-confirm-yes").onclick = function(){
+    dialog.classList.remove("visible");
+    setTimeout(function(){ dialog.remove(); }, 300);
+    onConsume();
+  };
+  dialog.querySelector(".pill-confirm-no").onclick = function(){
+    dialog.classList.remove("visible");
+    setTimeout(function(){ dialog.remove(); }, 300);
+  };
+}
+
+function showContractModal(type, onSigned, isMorkar, isRebelle){
   var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
   var screen = document.querySelector(".screen") || document.body;
-  var needsPill = !isMorkar;
+  // Morkar gives the pill to all its candidates (recrue, veteran, dissident)
+  // Champions (non-Morkar, non-rebelle) don't get a pill
+  var showPill = isMorkar || isRebelle;
+  // Only true champions need translation (runes); dissidents and Morkar read French
+  var needsTranslation = !isMorkar && !isRebelle;
 
   var backdrop = document.createElement("div");
   backdrop.className = "contract-modal-backdrop";
@@ -816,17 +848,16 @@ function showContractModal(type, onSigned, isMorkar){
   var h = '<div class="contract-modal">';
   h += '<div class="contract-header">' + contract.title + '</div>';
 
-  // Pill icon for non-Morkar scenarios
-  if(needsPill){
+  // Pill icon for Morkar candidates (recrue, veteran, dissident)
+  if(showPill){
     h += '<div class="contract-pill-row">';
-    h += '<div class="contract-pill" title="Pilule de compréhension linguistique">&#128138;</div>';
-    h += '<div class="contract-pill-hint">Langue inconnue — consomme la pilule pour comprendre</div>';
+    h += '<div class="contract-pill" title="Pilule">&#128138;</div>';
     h += '</div>';
   }
 
   h += '<div class="contract-body">';
   for(var i = 0; i < contract.paragraphs.length; i++){
-    if(needsPill){
+    if(needsTranslation){
       // Alien text initially, real text hidden
       h += '<p class="contract-para contract-para-alien" data-real="' +
         contract.paragraphs[i].replace(/"/g, '&quot;') + '">' +
@@ -850,31 +881,29 @@ function showContractModal(type, onSigned, isMorkar){
   // Track whether pill was consumed during this modal
   var pillConsumed = false;
 
-  // Pill click → reveal real text
-  if(needsPill){
+  // Pill click → confirmation dialog before consuming
+  if(showPill){
     var pill = backdrop.querySelector(".contract-pill");
-    var pillHint = backdrop.querySelector(".contract-pill-hint");
     if(pill) pill.onclick = function(){
-      pillConsumed = true;
-      pill.classList.add("consumed");
-      if(pillHint) pillHint.textContent = "Pilule consommée — traduction en cours…";
+      showPillConfirmDialog(backdrop, function onConsume(){
+        pillConsumed = true;
+        pill.classList.add("consumed");
 
-      // Reveal paragraphs one by one with a cascade effect
-      var paras = backdrop.querySelectorAll(".contract-para-alien");
-      paras.forEach(function(p, idx){
-        setTimeout(function(){
-          p.classList.add("revealing");
-          setTimeout(function(){
-            p.textContent = p.getAttribute("data-real");
-            p.classList.remove("contract-para-alien", "revealing");
-            p.classList.add("contract-para-revealed");
-          }, 400);
-        }, idx * 350);
+        if(needsTranslation){
+          // Reveal paragraphs one by one with a cascade effect
+          var paras = backdrop.querySelectorAll(".contract-para-alien");
+          paras.forEach(function(p, idx){
+            setTimeout(function(){
+              p.classList.add("revealing");
+              setTimeout(function(){
+                p.textContent = p.getAttribute("data-real");
+                p.classList.remove("contract-para-alien", "revealing");
+                p.classList.add("contract-para-revealed");
+              }, 400);
+            }, idx * 350);
+          });
+        }
       });
-
-      setTimeout(function(){
-        if(pillHint) pillHint.textContent = "Traduction complète";
-      }, paras.length * 350 + 500);
     };
   }
 

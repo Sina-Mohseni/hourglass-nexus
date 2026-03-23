@@ -714,6 +714,47 @@
   transition: color .5s;
 }
 
+/* Pill confirmation dialog */
+.pill-confirm-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200;
+  opacity: 0; transition: opacity .3s;
+}
+.pill-confirm-backdrop.visible { opacity: 1 }
+.pill-confirm-dialog {
+  background: rgba(15,20,30,.95);
+  border: 1px solid rgba(120,200,255,.25);
+  border-radius: 12px;
+  padding: 28px 36px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 20px;
+}
+.pill-confirm-icon {
+  font-size: 48px;
+  filter: drop-shadow(0 0 12px rgba(120,200,255,.4));
+  animation: pillFloat 2s ease-in-out infinite;
+}
+.pill-confirm-buttons {
+  display: flex; gap: 16px;
+}
+.pill-confirm-btn {
+  font-family: var(--font-ui);
+  font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 8px 20px;
+  border: 1px solid rgba(120,200,255,.3);
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(200,220,255,.85);
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.pill-confirm-btn:hover {
+  background: rgba(120,200,255,.12);
+  border-color: rgba(120,200,255,.6);
+}
+
 /* Alien text */
 .contract-para-alien {
   font-family: "Segoe UI Symbol", "Noto Sans Runic", monospace;
