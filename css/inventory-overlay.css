@@ -195,13 +195,23 @@
 
 /* ═══════════ EQUIPMENT MODAL ═══════════ */
 
-/* ── Portrait zone with overlay slot grid ── */
+/* ── Fullscreen layout ── */
+.eq-fullscreen {
+  width: 100%; height: 100%;
+  position: relative;
+}
+.eq-fs-close {
+  position: absolute; top: 8px; right: 10px; z-index: 10;
+}
+
+/* ── Portrait zone ── */
 .eq-portrait-zone {
-  position: relative; width: 100%; aspect-ratio: 3/4;
+  position: relative; width: 100%;
   overflow: hidden;
   background: linear-gradient(180deg, #050403 0%, var(--dark-stone) 40%, #050403 100%);
   flex-shrink: 0;
 }
+.eq-portrait-fullscreen { height: 100% }
 .eq-portrait-bg {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -211,7 +221,7 @@
   filter: brightness(.55) saturate(.85);
 }
 .eq-portrait-name {
-  position: absolute; bottom: 8px; left: 0; right: 0; z-index: 3;
+  position: absolute; bottom: 12px; left: 0; right: 0; z-index: 3;
   text-align: center;
   font-family: var(--font-display); font-size: 16px; font-weight: 900;
   letter-spacing: 4px; text-transform: uppercase;
@@ -232,9 +242,10 @@
   align-items: center; justify-content: center;
   background: rgba(10,8,6,.15);
   border: 1px solid rgba(168,132,42,.08);
-  cursor: default; transition: all .3s;
+  cursor: pointer; transition: all .3s;
   position: relative;
 }
+.eq-slot:active { background: rgba(168,132,42,.12) }
 .eq-slot::after {
   content: ''; position: absolute; inset: 0;
   border: 1px solid transparent; transition: all .3s;
@@ -255,58 +266,20 @@
 }
 
 /* Slot filled state */
-.eq-slot.filled {
-  background: rgba(10,8,6,.35);
-}
+.eq-slot.filled { background: rgba(10,8,6,.35) }
 .eq-slot.filled::after {
-  box-shadow: inset 0 0 30px rgba(var(--slot-color-rgb, 168,132,42), .15);
+  box-shadow: inset 0 0 30px rgba(168,132,42,.1);
   border-color: var(--slot-color, var(--gold));
 }
 .eq-slot.filled .eq-slot-icon { opacity: 1; font-size: 32px }
 .eq-slot.filled .eq-slot-label { opacity: .8; color: var(--gold-light) }
 
-/* ── Drawers ── */
-.eq-drawers {
-  display: flex; flex-direction: column;
-  padding: 8px 0;
-}
-.eq-drawer {
-  border-bottom: 1px solid rgba(168,132,42,.08);
-}
-.eq-drawer-header {
-  display: flex; align-items: center; gap: 10px;
-  width: 100%; padding: 12px 14px;
-  background: transparent; border: none;
-  cursor: pointer; transition: background .2s;
-  text-align: left;
-}
-.eq-drawer-header:hover { background: rgba(168,132,42,.04) }
-.eq-drawer-icon { font-size: 18px; flex-shrink: 0 }
-.eq-drawer-title {
-  flex: 1;
-  font-family: var(--font-heading); font-size: 12px; font-weight: 700;
-  color: var(--bone); letter-spacing: 1px; text-transform: uppercase;
-}
-.eq-drawer-arrow {
-  font-size: 12px; color: var(--bone-dim);
-  transition: transform .25s;
-}
-.eq-drawer.open .eq-drawer-arrow { transform: rotate(180deg) }
-
-.eq-drawer-content {
-  max-height: 0; overflow: hidden;
-  transition: max-height .3s ease;
-}
-.eq-drawer.open .eq-drawer-content {
-  max-height: 200px;
-}
-
-/* ── Equipment item inside drawer ── */
+/* ── Equipment item (reused in popups) ── */
 .eq-item {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 14px;
   background: rgba(16,12,6,.6);
-  border-top: 1px solid rgba(168,132,42,.06);
+  border: 1px solid rgba(168,132,42,.06);
   transition: opacity .2s;
 }
 .eq-item-icon {
@@ -315,7 +288,6 @@
   font-size: 22px;
   background: rgba(168,132,42,.06);
   border: 1px solid rgba(168,132,42,.15);
-  transition: all .2s;
 }
 .eq-item-info { flex: 1; min-width: 0 }
 .eq-item-name {
@@ -328,18 +300,15 @@
   margin-top: 2px;
 }
 
-/* Action buttons on items */
-.eq-item-actions {
-  display: flex; gap: 6px; flex-shrink: 0;
-}
+/* Action buttons */
+.eq-item-actions { display: flex; gap: 6px; flex-shrink: 0 }
 .eq-btn-equip, .eq-btn-view {
   width: 32px; height: 32px;
   display: flex; align-items: center; justify-content: center;
   font-size: 14px;
   background: rgba(10,8,6,.7);
   border: 1px solid rgba(168,132,42,.15);
-  color: var(--bone-dim); cursor: pointer;
-  transition: all .2s;
+  color: var(--bone-dim); cursor: pointer; transition: all .2s;
 }
 .eq-btn-equip:hover {
   border-color: var(--poison); color: var(--poison);
@@ -350,13 +319,47 @@
   box-shadow: 0 0 8px rgba(90,150,220,.3);
 }
 
-/* Equipped state in drawer */
 .eq-item-equipped {
   opacity: .35; pointer-events: none;
 }
 .eq-item-equipped .eq-item-name::after {
   content: " \u2714"; color: var(--poison);
 }
+
+/* ── Slot popup (items list or filled options) ── */
+.eq-slot-popup-backdrop { z-index: 1200 }
+.eq-slot-popup {
+  width: 88%; max-width: 360px;
+  padding: 20px 16px;
+  background: linear-gradient(180deg, rgba(16,12,6,.98), rgba(8,6,3,.99));
+  border: 1px solid rgba(168,132,42,.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.9);
+}
+.eq-slot-popup-title {
+  text-align: center; margin-bottom: 14px;
+  font-family: var(--font-heading); font-size: 14px; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase;
+}
+.eq-slot-popup-items, .eq-slot-popup-equipped {
+  margin-bottom: 14px;
+}
+.eq-slot-popup-actions {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 14px;
+}
+.eq-pop-action {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 10px;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  background: rgba(10,8,6,.7);
+  border: 1px solid rgba(168,132,42,.15);
+  color: var(--bone); cursor: pointer; transition: all .2s;
+}
+.eq-pop-action:hover { border-color: rgba(168,132,42,.4); background: rgba(168,132,42,.06) }
+.eq-pop-action-view:hover { border-color: var(--frost); color: var(--frost) }
+.eq-pop-action-replace:hover { border-color: var(--gold); color: var(--gold-light) }
+.eq-pop-action-remove:hover { border-color: var(--blood-glow); color: var(--blood-glow) }
 /* ═══════════ ITEM DETAIL MODAL ═══════════ */
 .eq-detail-backdrop { z-index: 1200 }
 .eq-detail-modal {
