@@ -786,8 +786,7 @@ function showContractPreview(arena, persona, scenarioObj, type, onSigned){
   // Click contract icon → open contract modal
   preview.querySelector(".scp-contract-icon").onclick = function(){
     var isMorkar = (scenarioObj.scenario === "apprenti-morkar" || scenarioObj.scenario === "veteran-morkar");
-    var isRebelle = (scenarioObj.scenario === "rebelle");
-    showContractModal(type, onSigned, isMorkar, isRebelle);
+    showContractModal(type, onSigned, isMorkar);
   };
 }
 
@@ -833,14 +832,13 @@ function showPillConfirmDialog(parentBackdrop, onConsume){
   };
 }
 
-function showContractModal(type, onSigned, isMorkar, isRebelle){
+function showContractModal(type, onSigned, isMorkar){
   var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
   var screen = document.querySelector(".screen") || document.body;
-  // Morkar gives the pill to all its candidates (recrue, veteran, dissident)
-  // Champions (non-Morkar, non-rebelle) don't get a pill
-  var showPill = isMorkar || isRebelle;
-  // Only true champions need translation (runes); dissidents and Morkar read French
-  var needsTranslation = !isMorkar && !isRebelle;
+  // Non-Morkar (champion, isolé, dissident) get the pill + runes on contract
+  // Morkar treats dissidents as regular champions/isolés (doesn't know their identity)
+  // Recrue/Vétéran Morkar read French natively, no pill on contract
+  var needsPill = !isMorkar;
 
   var backdrop = document.createElement("div");
   backdrop.className = "contract-modal-backdrop";
@@ -848,8 +846,8 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   var h = '<div class="contract-modal">';
   h += '<div class="contract-header">' + contract.title + '</div>';
 
-  // Pill icon for Morkar candidates (recrue, veteran, dissident)
-  if(showPill){
+  // Pill icon for non-Morkar scenarios (champion, isolé, dissident)
+  if(needsPill){
     h += '<div class="contract-pill-row">';
     h += '<div class="contract-pill" title="Pilule">&#128138;</div>';
     h += '</div>';
@@ -857,7 +855,7 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
 
   h += '<div class="contract-body">';
   for(var i = 0; i < contract.paragraphs.length; i++){
-    if(needsTranslation){
+    if(needsPill){
       // Alien text initially, real text hidden
       h += '<p class="contract-para contract-para-alien" data-real="' +
         contract.paragraphs[i].replace(/"/g, '&quot;') + '">' +
@@ -882,27 +880,25 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   var pillConsumed = false;
 
   // Pill click → confirmation dialog before consuming
-  if(showPill){
+  if(needsPill){
     var pill = backdrop.querySelector(".contract-pill");
     if(pill) pill.onclick = function(){
       showPillConfirmDialog(backdrop, function onConsume(){
         pillConsumed = true;
         pill.classList.add("consumed");
 
-        if(needsTranslation){
-          // Reveal paragraphs one by one with a cascade effect
-          var paras = backdrop.querySelectorAll(".contract-para-alien");
-          paras.forEach(function(p, idx){
+        // Reveal paragraphs one by one with a cascade effect
+        var paras = backdrop.querySelectorAll(".contract-para-alien");
+        paras.forEach(function(p, idx){
+          setTimeout(function(){
+            p.classList.add("revealing");
             setTimeout(function(){
-              p.classList.add("revealing");
-              setTimeout(function(){
-                p.textContent = p.getAttribute("data-real");
-                p.classList.remove("contract-para-alien", "revealing");
-                p.classList.add("contract-para-revealed");
-              }, 400);
-            }, idx * 350);
-          });
-        }
+              p.textContent = p.getAttribute("data-real");
+              p.classList.remove("contract-para-alien", "revealing");
+              p.classList.add("contract-para-revealed");
+            }, 400);
+          }, idx * 350);
+        });
       });
     };
   }
