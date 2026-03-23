@@ -759,6 +759,7 @@ function enterMainApp(){
     // If extelua already playing (started on lock screen), leave it
   }
 
+  document.body.classList.remove("intro-active");
   showAppBackgrounds();
   buildAccueil();
   buildUserPage();
