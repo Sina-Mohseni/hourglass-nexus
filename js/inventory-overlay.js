@@ -240,8 +240,11 @@ function showInventoryOverlay(onClose){
   };
 }
 
-/* ══════════ INVENTORY MODAL (paperdoll + tabs) ══════════ */
+/* ══════════ INVENTORY MODAL (paperdoll + drag & drop) ══════════ */
 function openInventoryModal(u, scenario, equip, misc){
+  // Track which slots are filled: { slotKey: true }
+  var equipped = {};
+
   var modal = document.createElement("div");
   modal.className = "inv-modal-backdrop";
 
@@ -250,7 +253,7 @@ function openInventoryModal(u, scenario, equip, misc){
   // ── Close button ──
   h += '<button class="inv-modal-close" id="inv-modal-close-btn">\u2715</button>';
 
-  // ── Paperdoll: portrait + 6 slots ──
+  // ── Paperdoll: portrait + 6 empty slots ──
   h += '<div class="inv-paperdoll inv-paperdoll-6 inv-modal-paperdoll">';
   h += '<div class="inv-portrait-full">';
   if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
@@ -260,8 +263,7 @@ function openInventoryModal(u, scenario, equip, misc){
 
   for(var i = 0; i < PRE_INV_EQUIP_SLOTS.length; i++){
     var slot = PRE_INV_EQUIP_SLOTS[i];
-    var item = equip[slot.key];
-    h += '<div class="inv-slot inv-slot-6 ' + slot.cls + ' filled" data-slot="' + slot.key + '" style="--slot-color:' + slot.color + '">'
+    h += '<div class="inv-slot inv-slot-6 ' + slot.cls + '" data-slot="' + slot.key + '" style="--slot-color:' + slot.color + '">'
       + '<span class="inv-slot-icon">' + slot.icon + '</span>'
       + '<span class="inv-slot-label">' + esc(slot.label) + '</span></div>';
   }
@@ -278,14 +280,14 @@ function openInventoryModal(u, scenario, equip, misc){
   h += '<button class="inv-tab" data-tab="m-divers">Divers</button>';
   h += '</div>';
 
-  // Equipment tab
+  // Equipment tab — draggable items
   h += '<div class="inv-tab-content active" id="inv-tc-m-equipement">';
-  h += '<div class="inv-items-grid">';
+  h += '<div class="inv-items-grid" id="inv-equip-list">';
   for(var e = 0; e < PRE_INV_EQUIP_SLOTS.length; e++){
     var sl = PRE_INV_EQUIP_SLOTS[e];
     var it = equip[sl.key];
     if(!it) continue;
-    h += '<div class="inv-item">';
+    h += '<div class="inv-item inv-item-draggable" draggable="true" data-slot-key="' + sl.key + '" data-icon="' + sl.icon + '">';
     h += '<div class="inv-item-icon">' + sl.icon + '</div>';
     h += '<div class="inv-item-info">';
     h += '<div class="inv-item-name">' + esc(it.name) + '</div>';
@@ -333,6 +335,121 @@ function openInventoryModal(u, scenario, equip, misc){
   var screenEl = document.querySelector(".screen");
   (screenEl || document.body).appendChild(modal);
   setTimeout(function(){ modal.classList.add("visible"); }, 20);
+
+  // ── Drag & Drop wiring ──
+  var dragKey = null; // the slot-key being dragged
+
+  // Draggable items
+  modal.querySelectorAll(".inv-item-draggable").forEach(function(item){
+    item.addEventListener("dragstart", function(ev){
+      dragKey = item.getAttribute("data-slot-key");
+      ev.dataTransfer.setData("text/plain", dragKey);
+      ev.dataTransfer.effectAllowed = "move";
+      item.classList.add("inv-dragging");
+      // Highlight matching slot
+      var matchSlot = modal.querySelector('.inv-slot[data-slot="' + dragKey + '"]');
+      if(matchSlot && !matchSlot.classList.contains("filled")) matchSlot.classList.add("inv-slot-hint");
+    });
+    item.addEventListener("dragend", function(){
+      item.classList.remove("inv-dragging");
+      modal.querySelectorAll(".inv-slot").forEach(function(s){
+        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
+      });
+      dragKey = null;
+    });
+
+    // Touch drag support
+    var touchClone = null, touchStartX = 0, touchStartY = 0, touchMoved = false;
+    item.addEventListener("touchstart", function(ev){
+      dragKey = item.getAttribute("data-slot-key");
+      touchMoved = false;
+      var t = ev.touches[0];
+      touchStartX = t.clientX; touchStartY = t.clientY;
+      item.classList.add("inv-dragging");
+      var matchSlot = modal.querySelector('.inv-slot[data-slot="' + dragKey + '"]');
+      if(matchSlot && !matchSlot.classList.contains("filled")) matchSlot.classList.add("inv-slot-hint");
+    }, {passive: true});
+    item.addEventListener("touchmove", function(ev){
+      touchMoved = true;
+      ev.preventDefault();
+      var t = ev.touches[0];
+      if(!touchClone){
+        touchClone = document.createElement("div");
+        touchClone.className = "inv-touch-ghost";
+        touchClone.textContent = item.getAttribute("data-icon");
+        document.body.appendChild(touchClone);
+      }
+      touchClone.style.left = (t.clientX - 24) + "px";
+      touchClone.style.top = (t.clientY - 24) + "px";
+      // Check hover over slots
+      modal.querySelectorAll(".inv-slot").forEach(function(s){
+        s.classList.remove("inv-slot-valid","inv-slot-invalid");
+        var r = s.getBoundingClientRect();
+        if(t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom){
+          if(s.getAttribute("data-slot") === dragKey && !s.classList.contains("filled"))
+            s.classList.add("inv-slot-valid");
+          else
+            s.classList.add("inv-slot-invalid");
+        }
+      });
+    }, {passive: false});
+    item.addEventListener("touchend", function(ev){
+      if(touchClone){ touchClone.remove(); touchClone = null; }
+      item.classList.remove("inv-dragging");
+      modal.querySelectorAll(".inv-slot").forEach(function(s){
+        s.classList.remove("inv-slot-hint","inv-slot-valid","inv-slot-invalid");
+      });
+      if(!touchMoved){ dragKey = null; return; }
+      var t = ev.changedTouches[0];
+      modal.querySelectorAll(".inv-slot").forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom){
+          if(s.getAttribute("data-slot") === dragKey && !s.classList.contains("filled")){
+            equipItem(s, item);
+          }
+        }
+      });
+      dragKey = null;
+    });
+  });
+
+  // Drop targets (slots)
+  modal.querySelectorAll(".inv-slot").forEach(function(slot){
+    slot.addEventListener("dragover", function(ev){
+      ev.preventDefault();
+      var slotKey = slot.getAttribute("data-slot");
+      if(slotKey === dragKey && !slot.classList.contains("filled")){
+        ev.dataTransfer.dropEffect = "move";
+        slot.classList.add("inv-slot-valid");
+      } else {
+        ev.dataTransfer.dropEffect = "none";
+        slot.classList.add("inv-slot-invalid");
+      }
+    });
+    slot.addEventListener("dragleave", function(){
+      slot.classList.remove("inv-slot-valid","inv-slot-invalid");
+    });
+    slot.addEventListener("drop", function(ev){
+      ev.preventDefault();
+      slot.classList.remove("inv-slot-valid","inv-slot-invalid");
+      var droppedKey = ev.dataTransfer.getData("text/plain");
+      var slotKey = slot.getAttribute("data-slot");
+      if(slotKey !== droppedKey || slot.classList.contains("filled")) return;
+      var itemEl = modal.querySelector('.inv-item-draggable[data-slot-key="' + droppedKey + '"]');
+      if(itemEl) equipItem(slot, itemEl);
+    });
+  });
+
+  function equipItem(slot, itemEl){
+    var key = slot.getAttribute("data-slot");
+    slot.classList.add("filled");
+    var iconEl = slot.querySelector(".inv-slot-icon");
+    if(iconEl) iconEl.textContent = itemEl.getAttribute("data-icon");
+    equipped[key] = true;
+    // Remove item from list
+    itemEl.classList.add("inv-item-equipped");
+    itemEl.setAttribute("draggable", "false");
+  }
 
   // Tab switching
   var tabs = modal.querySelectorAll(".inv-tab");
