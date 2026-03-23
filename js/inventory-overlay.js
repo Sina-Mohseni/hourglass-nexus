@@ -374,18 +374,18 @@ function openInventoryModal(misc){
   modal.onclick = function(ev){ if(ev.target === modal) closeModal(); };
 }
 
-/* ══════════ EQUIPMENT MODAL (portrait + 6 drawers + drag & drop) ══════════ */
+/* ══════════ EQUIPMENT MODAL (fullscreen portrait + slot interaction) ══════════ */
 function openEquipmentModal(u, scenario, equip){
-  var equipped = {}; // { slotKey: true }
+  var equipped = {}; // { slotKey: itemObj } or empty
 
   var modal = document.createElement("div");
   modal.className = "inv-modal-backdrop";
 
-  var h = '<div class="inv-modal">';
-  h += '<button class="inv-modal-close" id="eq-modal-close-btn">\u2715</button>';
+  var h = '<div class="eq-fullscreen">';
+  h += '<button class="inv-modal-close eq-fs-close" id="eq-modal-close-btn">\u2715</button>';
 
-  // ── Portrait with 6 transparent overlay slots (2x3 grid) ──
-  h += '<div class="eq-portrait-zone">';
+  // ── Fullscreen portrait with 6 overlay slots ──
+  h += '<div class="eq-portrait-zone eq-portrait-fullscreen">';
   h += '<div class="eq-portrait-bg">';
   if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
   else h += '<div class="inv-character-empty">\uD83D\uDC64</div>';
@@ -397,94 +397,147 @@ function openEquipmentModal(u, scenario, equip){
       + '<span class="eq-slot-icon">' + sl.icon + '</span>'
       + '<span class="eq-slot-label">' + esc(sl.label) + '</span></div>';
   }
-  h += '</div>'; // eq-slots-grid
+  h += '</div>';
   h += '<div class="eq-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
-  h += '</div>'; // eq-portrait-zone
+  h += '</div>';
 
-  // ── 6 drawers, one per equipment type ──
-  h += '<div class="eq-drawers">';
-  for(var d = 0; d < PRE_INV_EQUIP_SLOTS.length; d++){
-    var slot = PRE_INV_EQUIP_SLOTS[d];
-    var item = equip[slot.key];
-    if(!item) continue;
-
-    h += '<div class="eq-drawer" data-drawer="' + slot.key + '">';
-    // Drawer header (click to toggle)
-    h += '<button class="eq-drawer-header" data-drawer-key="' + slot.key + '">'
-      + '<span class="eq-drawer-icon" style="color:' + slot.color + '">' + slot.icon + '</span>'
-      + '<span class="eq-drawer-title">' + esc(slot.label) + '</span>'
-      + '<span class="eq-drawer-arrow">\u25BE</span>'
-      + '</button>';
-    // Drawer content (items of this type)
-    h += '<div class="eq-drawer-content" id="eq-dc-' + slot.key + '">';
-    h += '<div class="eq-item" data-item-key="' + slot.key + '">'
-      + '<div class="eq-item-icon" data-icon="' + item.icon + '">' + item.icon + '</div>'
-      + '<div class="eq-item-info">'
-      + '<div class="eq-item-name">' + esc(item.name) + '</div>'
-      + '<div class="eq-item-type">' + esc(slot.label) + '</div>'
-      + '</div>'
-      + '<div class="eq-item-actions">'
-      + '<button class="eq-btn-equip" data-key="' + slot.key + '" title="\u00c9quiper">\u2714</button>'
-      + '<button class="eq-btn-view" data-key="' + slot.key + '" title="Voir">\uD83D\uDD0D</button>'
-      + '</div>'
-      + '</div>';
-    h += '</div>'; // eq-drawer-content
-    h += '</div>'; // eq-drawer
-  }
-  h += '</div>'; // eq-drawers
-
-  h += '</div>'; // inv-modal
+  h += '</div>';
   modal.innerHTML = h;
 
   var screenEl = document.querySelector(".screen");
   (screenEl || document.body).appendChild(modal);
   setTimeout(function(){ modal.classList.add("visible"); }, 20);
 
-  // ── Wire: drawer toggles ──
-  modal.querySelectorAll(".eq-drawer-header").forEach(function(hdr){
-    hdr.onclick = function(){
-      var drawer = hdr.closest(".eq-drawer");
-      drawer.classList.toggle("open");
+  // ── Wire: slot clicks ──
+  modal.querySelectorAll(".eq-slot").forEach(function(slotEl){
+    slotEl.onclick = function(){
+      var key = slotEl.getAttribute("data-slot");
+      if(equipped[key]){
+        showSlotFilledPopup(key);
+      } else {
+        showSlotItemsPopup(key);
+      }
     };
   });
 
-  // ── Wire: equip buttons (click) ──
-  modal.querySelectorAll(".eq-btn-equip").forEach(function(btn){
-    btn.onclick = function(ev){
-      ev.stopPropagation();
-      var key = btn.getAttribute("data-key");
-      doEquip(key);
-    };
-  });
+  // Show popup with available items for an empty slot
+  function showSlotItemsPopup(key){
+    var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+    var item = equip[key];
+    if(!slotDef || !item) return;
 
-  // ── Wire: view buttons (click) ──
-  modal.querySelectorAll(".eq-btn-view").forEach(function(btn){
-    btn.onclick = function(ev){
-      ev.stopPropagation();
-      var key = btn.getAttribute("data-key");
-      var item = equip[key];
-      var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
-      if(item && slotDef) showItemDetailModal(item, slotDef);
-    };
-  });
+    var pop = document.createElement("div");
+    pop.className = "inv-modal-backdrop eq-slot-popup-backdrop";
 
-  function doEquip(key){
-    if(equipped[key]) return;
-    equipped[key] = true;
-    // Fill the slot
+    var ph = '<div class="eq-slot-popup">';
+    ph += '<div class="eq-slot-popup-title">' + esc(slotDef.label) + '</div>';
+    ph += '<div class="eq-slot-popup-items">';
+    ph += '<div class="eq-item" data-item-key="' + key + '">'
+      + '<div class="eq-item-icon">' + item.icon + '</div>'
+      + '<div class="eq-item-info">'
+      + '<div class="eq-item-name">' + esc(item.name) + '</div>'
+      + '<div class="eq-item-type">' + esc(slotDef.label) + '</div>'
+      + '</div>'
+      + '<div class="eq-item-actions">'
+      + '<button class="eq-btn-equip eq-pop-equip" title="\u00c9quiper">\u2714</button>'
+      + '<button class="eq-btn-view eq-pop-view" title="Voir">\uD83D\uDD0D</button>'
+      + '</div>'
+      + '</div>';
+    ph += '</div>';
+    ph += '<button class="eq-detail-close eq-pop-cancel">Fermer</button>';
+    ph += '</div>';
+
+    pop.innerHTML = ph;
+    (screenEl || document.body).appendChild(pop);
+    setTimeout(function(){ pop.classList.add("visible"); }, 20);
+
+    function closePop(){
+      pop.classList.remove("visible");
+      setTimeout(function(){ pop.remove(); }, 300);
+    }
+
+    pop.querySelector(".eq-pop-equip").onclick = function(){
+      doEquip(key, item);
+      closePop();
+    };
+    pop.querySelector(".eq-pop-view").onclick = function(){
+      showItemDetailModal(item, slotDef);
+    };
+    pop.querySelector(".eq-pop-cancel").onclick = closePop;
+    pop.onclick = function(ev){ if(ev.target === pop) closePop(); };
+  }
+
+  // Show popup with options for a filled slot
+  function showSlotFilledPopup(key){
+    var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+    var item = equipped[key];
+    if(!slotDef || !item) return;
+
+    var pop = document.createElement("div");
+    pop.className = "inv-modal-backdrop eq-slot-popup-backdrop";
+
+    var ph = '<div class="eq-slot-popup">';
+    ph += '<div class="eq-slot-popup-title">' + esc(slotDef.label) + ' \u2014 \u00c9quip\u00e9</div>';
+    ph += '<div class="eq-slot-popup-equipped">';
+    ph += '<div class="eq-item">'
+      + '<div class="eq-item-icon">' + item.icon + '</div>'
+      + '<div class="eq-item-info">'
+      + '<div class="eq-item-name">' + esc(item.name) + '</div>'
+      + '<div class="eq-item-type">' + esc(slotDef.label) + '</div>'
+      + '</div></div>';
+    ph += '</div>';
+    ph += '<div class="eq-slot-popup-actions">';
+    ph += '<button class="eq-pop-action eq-pop-action-view">\uD83D\uDD0D Voir</button>';
+    ph += '<button class="eq-pop-action eq-pop-action-replace">\u21C4 Remplacer</button>';
+    ph += '<button class="eq-pop-action eq-pop-action-remove">\u2716 Enlever</button>';
+    ph += '</div>';
+    ph += '<button class="eq-detail-close eq-pop-cancel">Fermer</button>';
+    ph += '</div>';
+
+    pop.innerHTML = ph;
+    (screenEl || document.body).appendChild(pop);
+    setTimeout(function(){ pop.classList.add("visible"); }, 20);
+
+    function closePop(){
+      pop.classList.remove("visible");
+      setTimeout(function(){ pop.remove(); }, 300);
+    }
+
+    pop.querySelector(".eq-pop-action-view").onclick = function(){
+      showItemDetailModal(item, slotDef);
+    };
+    pop.querySelector(".eq-pop-action-replace").onclick = function(){
+      doUnequip(key);
+      closePop();
+      setTimeout(function(){ showSlotItemsPopup(key); }, 350);
+    };
+    pop.querySelector(".eq-pop-action-remove").onclick = function(){
+      doUnequip(key);
+      closePop();
+    };
+    pop.querySelector(".eq-pop-cancel").onclick = closePop;
+    pop.onclick = function(ev){ if(ev.target === pop) closePop(); };
+  }
+
+  function doEquip(key, item){
+    equipped[key] = item;
     var slotEl = modal.querySelector('.eq-slot[data-slot="' + key + '"]');
     if(slotEl){
       slotEl.classList.add("filled");
-      var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
-      var item = equip[key];
-      if(item){
-        var iconEl = slotEl.querySelector(".eq-slot-icon");
-        if(iconEl) iconEl.textContent = item.icon;
-      }
+      var iconEl = slotEl.querySelector(".eq-slot-icon");
+      if(iconEl) iconEl.textContent = item.icon;
     }
-    // Gray out the item in the drawer
-    var itemEl = modal.querySelector('.eq-item[data-item-key="' + key + '"]');
-    if(itemEl) itemEl.classList.add("eq-item-equipped");
+  }
+
+  function doUnequip(key){
+    delete equipped[key];
+    var slotEl = modal.querySelector('.eq-slot[data-slot="' + key + '"]');
+    var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+    if(slotEl){
+      slotEl.classList.remove("filled");
+      var iconEl = slotEl.querySelector(".eq-slot-icon");
+      if(iconEl && slotDef) iconEl.textContent = slotDef.icon;
+    }
   }
 
   // Close
@@ -493,7 +546,6 @@ function openEquipmentModal(u, scenario, equip){
     setTimeout(function(){ modal.remove(); }, 300);
   }
   document.getElementById("eq-modal-close-btn").onclick = closeModal;
-  modal.onclick = function(ev){ if(ev.target === modal) closeModal(); };
 }
 
 /* ══════════ ITEM DETAIL MODAL ══════════ */
