@@ -403,6 +403,11 @@ function initLock(){
 
 /* ══════════ CHARACTER CREATION GATE ══════════ */
 function checkCharCreate(){
+  // Night dialogue path: skip char creation entirely
+  if(window._skipCharCreate){
+    window._skipCharCreate = false;
+    return;
+  }
   // For new voyage, always start fresh char creation (skip the choice phase)
   initCharCreateNewVoyage();
 }

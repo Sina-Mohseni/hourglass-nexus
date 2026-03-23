@@ -1,0 +1,215 @@
+/* ══════════ NIGHT DIALOGUE — Veille du Tournoi ══════════ */
+
+/* ── Overlay ── */
+.ndlg-overlay {
+  position: fixed; inset: 0; z-index: 2100;
+  display: flex; flex-direction: column;
+  background: rgba(2,2,6,.0);
+  transition: background .6s;
+  overflow: hidden;
+}
+.ndlg-overlay.visible {
+  background: rgba(2,2,6,.95);
+}
+.ndlg-overlay.ndlg-fading {
+  background: rgba(2,2,6,0);
+  transition: background .7s ease-out;
+}
+.ndlg-overlay.ndlg-fading .ndlg-scene {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .6s, transform .6s;
+}
+
+/* ── Animated stars ── */
+.ndlg-stars {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 15%, rgba(212,170,68,.6), transparent),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 40% 10%, rgba(212,170,68,.5), transparent),
+    radial-gradient(1px 1px at 55% 30%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1px 1px at 70% 8%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 80% 25%, rgba(212,170,68,.4), transparent),
+    radial-gradient(1px 1px at 90% 12%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,.25), transparent),
+    radial-gradient(1px 1px at 35% 65%, rgba(212,170,68,.35), transparent),
+    radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,.2), transparent),
+    radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1.5px 1.5px at 50% 5%, rgba(212,170,68,.45), transparent);
+  animation: ndlgTwinkle 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes ndlgTwinkle {
+  0%   { opacity: .6 }
+  50%  { opacity: .9 }
+  100% { opacity: .7 }
+}
+
+/* ── Scene container ── */
+.ndlg-scene {
+  position: relative; z-index: 1;
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px 20px;
+  max-width: 400px; width: 100%; margin: 0 auto;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s .3s, transform .6s .3s;
+}
+.ndlg-overlay.visible .ndlg-scene {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ── Header ── */
+.ndlg-header {
+  text-align: center; margin-bottom: 20px;
+}
+.ndlg-setting {
+  font-family: var(--font-heading);
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  opacity: .7;
+}
+
+/* ── NPC Portrait ── */
+.ndlg-portrait-area {
+  text-align: center; margin-bottom: 24px;
+}
+.ndlg-portrait {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(168,132,42,.3);
+  overflow: hidden;
+  margin: 0 auto 10px;
+  background: rgba(20,16,8,.8);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 30px rgba(168,132,42,.12), 0 4px 20px rgba(0,0,0,.5);
+  animation: ndlgGlow 3s ease-in-out infinite alternate;
+}
+@keyframes ndlgGlow {
+  0%   { box-shadow: 0 0 20px rgba(168,132,42,.1), 0 4px 20px rgba(0,0,0,.5) }
+  100% { box-shadow: 0 0 40px rgba(168,132,42,.2), 0 4px 20px rgba(0,0,0,.5) }
+}
+.ndlg-portrait img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.ndlg-portrait-icon {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  opacity: .8;
+}
+.ndlg-npc-name {
+  font-family: var(--font-heading);
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.ndlg-npc-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--bone-dim);
+  margin-top: 2px;
+}
+
+/* ── Dialogue bubble ── */
+.ndlg-bubble {
+  background: linear-gradient(160deg, rgba(20,16,8,.85), rgba(12,10,6,.9));
+  border: 1px solid rgba(168,132,42,.15);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  width: 100%;
+  min-height: 60px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--bone);
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  transition: opacity .4s, transform .4s;
+}
+.ndlg-npc-tag {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+/* ── Choices ── */
+.ndlg-choices {
+  width: 100%;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  transition: opacity .4s;
+}
+.ndlg-choice-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: linear-gradient(145deg, rgba(168,132,42,.06), rgba(168,132,42,.02));
+  border: 1px solid rgba(168,132,42,.15);
+  border-radius: 10px;
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all .25s;
+  animation: ndlgChoiceFade .4s ease both;
+  position: relative;
+}
+@keyframes ndlgChoiceFade {
+  from { opacity: 0; transform: translateX(-12px) }
+  to   { opacity: 1; transform: translateX(0) }
+}
+.ndlg-choice-btn:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(168,132,42,.15), rgba(168,132,42,.06));
+  border-color: rgba(168,132,42,.35);
+  box-shadow: 0 0 16px rgba(168,132,42,.08);
+  transform: translateX(4px);
+}
+.ndlg-choice-btn:active:not(:disabled) {
+  transform: scale(.97);
+}
+.ndlg-choice-arrow {
+  color: var(--gold-light);
+  font-size: 10px;
+  opacity: .6;
+  margin-right: 4px;
+}
+.ndlg-choice-btn:hover:not(:disabled) .ndlg-choice-arrow {
+  opacity: 1;
+}
+
+/* Selected / used states */
+.ndlg-choice-used {
+  opacity: .2 !important;
+  transform: translateX(-8px) !important;
+  pointer-events: none;
+}
+.ndlg-choice-selected {
+  opacity: 1 !important;
+  transform: translateX(4px) !important;
+  background: linear-gradient(145deg, rgba(168,132,42,.2), rgba(168,132,42,.08)) !important;
+  border-color: rgba(168,132,42,.4) !important;
+  color: var(--gold-light) !important;
+}
+
+/* ── Tap hint ── */
+.ndlg-tap-hint {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--gold-dark);
+  opacity: 0;
+  animation: none;
+  transition: opacity .3s;
+}
+.ndlg-tap-hint.visible {
+  opacity: .5;
+  animation: ndlgBounce 1.5s ease-in-out infinite;
+}
+@keyframes ndlgBounce {
+  0%, 100% { transform: translateY(0) }
+  50%      { transform: translateY(5px) }
+}
