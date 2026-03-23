@@ -1,21 +1,39 @@
-/* ═══════════ PRE-INVENTORY PAGE — Diablo 4 style ═══════════
-   Now uses the same page structure as profile & equipment pages.
-   Reuses .profile-page, .prof-header, .section-title, etc.
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════ INVENTORY OVERLAY — profile/equipment page structure ═══════════
+   Overlay mechanism for visibility during lock flow.
+   Inner content uses the same structure as profile & equipment pages:
+   .profile-page, .prof-header, .section-title, .dr-stat-bar, etc.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Page-specific tweaks ── */
-.pre-inv-page {
-  padding-bottom: 24px;
+/* ── Overlay container (unchanged — needed for lock flow visibility) ── */
+.inv-overlay {
+  position: absolute; inset: 0; z-index: 1000;
+  background: rgba(5,4,3,.97);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .5s ease;
+  overflow: hidden;
 }
+.inv-overlay.visible { opacity: 1 }
+.inv-overlay.closing { opacity: 0; transition: opacity .4s ease }
 
-/* Avatar wrapper (non-clickable, unlike profile) */
-.pre-inv-avatar-wrap {
+/* ── Inner scrollable container — uses profile-page padding ── */
+.inv-overlay-inner {
+  width: 100%; max-width: 480px; height: 100%;
+  display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168,132,42,.25) transparent;
+}
+.inv-overlay-inner::-webkit-scrollbar { width: 3px }
+.inv-overlay-inner::-webkit-scrollbar-thumb { background: rgba(168,132,42,.25); border-radius: 4px }
+
+/* ── Avatar wrapper (non-clickable, reuses prof-header layout) ── */
+.inv-avatar-wrap {
   position: relative; width: 100%; aspect-ratio: 1/1; max-height: 240px;
   overflow: hidden; background: linear-gradient(180deg, var(--dark-stone), #050403);
 }
-.pre-inv-avatar-wrap img { width: 100%; height: 100%; object-fit: cover }
+.inv-avatar-wrap img { width: 100%; height: 100%; object-fit: cover }
 
-/* ── Tabs section (reused from inventory design) ── */
+/* ── Tabs section ── */
 .inv-tabs-section {
   flex: 1; display: flex; flex-direction: column;
   min-height: 0;
