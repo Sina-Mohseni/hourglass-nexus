@@ -1,11 +1,10 @@
 "use strict";
 
-/* ══════════ INVENTORY OVERLAY — profile/equipment page structure ══════════
+/* ══════════ PRE-GAME INVENTORY OVERLAY ══════════
    Shown after guide placement on lock screen (new voyage).
-   Displays player portrait, stats, and scenario-based inventory.
-   Uses overlay mechanism for visibility during lock flow, but inner
-   content follows the same structure as profile & equipment pages.
-   ═══════════════════════════════════════════════════════════════════════ */
+   Profile page structure: vertical portrait, stats, attributes,
+   inventory button (opens modal), save & continue buttons.
+   ═══════════════════════════════════════════════════ */
 
 var SCENARIO_LABELS = {
   "champion":"Champion", "lambda":"Isolé", "rebelle":"Dissident",
@@ -88,14 +87,14 @@ var SCENARIO_MISC = {
   ]
 };
 
-/* ── Equipment slot labels ── */
+/* ── Equipment slot config for paperdoll ── */
 var PRE_INV_EQUIP_SLOTS = [
-  {key:"decors",   icon:"\uD83C\uDFAD", label:"Décors"},
-  {key:"epoque",   icon:"\u23F3",        label:"Époque"},
-  {key:"theme",    icon:"\u2726",        label:"Thème"},
-  {key:"capacite", icon:"\u26A1",        label:"Capacité"},
-  {key:"scenario", icon:"\uD83D\uDCDC", label:"Scénario"},
-  {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif"}
+  {key:"decors",   icon:"\uD83C\uDFAD", label:"D\u00e9cors",   cls:"inv-slot-top-l",  color:"#9b59b6"},
+  {key:"epoque",   icon:"\u23F3",        label:"\u00c9poque",   cls:"inv-slot-top-r",  color:"#5dade2"},
+  {key:"theme",    icon:"\u2726",        label:"Th\u00e8me",    cls:"inv-slot-mid-l",  color:"#e8a838"},
+  {key:"capacite", icon:"\u26A1",        label:"Capacit\u00e9", cls:"inv-slot-mid-r",  color:"#e74c3c"},
+  {key:"scenario", icon:"\uD83D\uDCDC", label:"Sc\u00e9nario", cls:"inv-slot-bot-l",  color:"#27ae60"},
+  {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif",      cls:"inv-slot-bot-r",  color:"#e67e22"}
 ];
 
 /* ══════════ SHOW INVENTORY OVERLAY ══════════ */
@@ -109,11 +108,10 @@ function showInventoryOverlay(onClose){
   overlay.className = "inv-overlay";
   overlay.id = "inv-overlay";
 
-  // ── Inner scrollable container uses profile-page structure ──
   var h = '<div class="inv-overlay-inner profile-page">';
 
-  // ── Header card with avatar (same as profile page .prof-header) ──
-  h += '<div class="prof-header">'
+  // ── Vertical portrait header ──
+  h += '<div class="prof-header inv-header-portrait">'
     + '<div class="prof-header-glow" style="background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)"></div>'
     + '<div class="inv-avatar-wrap">';
   if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
@@ -125,14 +123,14 @@ function showInventoryOverlay(onClose){
     + '<div class="prof-subtitle">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2022 Niv. ' + u.level + '</div>'
     + '</div></div>';
 
-  // ── Stats summary (same as profile page .prof-stats-grid) ──
+  // ── Stats summary ──
   h += '<div class="prof-stats-grid">'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">Niv. ' + u.level + '</div><div class="prof-stat-lbl">Niveau</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">\uD83D\uDCB0 ' + u.coins + '</div><div class="prof-stat-lbl">Or</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">6</div><div class="prof-stat-lbl">\u00c9quip\u00e9s</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">1</div><div class="prof-stat-lbl">Conso.</div></div></div>';
 
-  // ── Attributes (same as profile page .section-title + .dr-stat-bar) ──
+  // ── Attributes ──
   h += '<div class="section-title">Attributs</div>';
   h += '<div class="prof-attrs">';
   var stats = [
@@ -150,18 +148,106 @@ function showInventoryOverlay(onClose){
   }
   h += '</div>';
 
-  // ── Tabbed inventory ──
-  h += '<div class="section-title">Inventaire</div>';
-  h += '<div class="inv-tabs-section">';
-  h += '<div class="inv-tabs">';
-  h += '<button class="inv-tab active" data-tab="equipement">\u00C9quipement</button>';
-  h += '<button class="inv-tab" data-tab="consommables">Consommables</button>';
-  h += '<button class="inv-tab" data-tab="quetes">Qu\u00eates</button>';
-  h += '<button class="inv-tab" data-tab="divers">Divers</button>';
+  // ── Inventory button (opens modal) ──
+  h += '<div class="section-title">Actions</div>';
+  h += '<div class="prof-section-card" id="inv-open-modal-btn">'
+    + '<div class="prof-section-icon">\uD83C\uDF92</div>'
+    + '<div class="prof-section-info"><div class="prof-section-name">Inventaire</div>'
+    + '<div class="prof-section-desc">\u00c9quipement, consommables & documents</div></div>'
+    + '<span class="prof-section-arrow">\u203a</span></div>';
+
+  // ── Save section ──
+  h += '<div class="section-title">Sauvegarde</div>';
+  h += '<div class="inv-save-section">';
+  h += '<label class="prof-field-label">Titre de la sauvegarde</label>';
+  h += '<input type="text" class="prof-input" id="inv-save-title" placeholder="Donne un nom \u00e0 ta sauvegarde\u2026" maxlength="60" autocomplete="off">';
+  h += '<button class="user-save-btn" id="inv-save-btn">\uD83D\uDCBE Sauvegarder</button>';
+  h += '<div class="inv-save-status" id="inv-save-status"></div>';
   h += '</div>';
 
-  // Tab content: Equipment
-  h += '<div class="inv-tab-content active" id="inv-tc-equipement">';
+  // ── Continue button ──
+  h += '<button class="prof-save-btn" id="inv-close-btn">Continuer</button>';
+
+  h += '</div>';
+  overlay.innerHTML = h;
+
+  var screenEl = document.querySelector(".screen");
+  (screenEl || document.body).appendChild(overlay);
+  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
+
+  // ── Wire: Inventory modal button ──
+  var invBtn = document.getElementById("inv-open-modal-btn");
+  if(invBtn) invBtn.onclick = function(){
+    openInventoryModal(u, scenario, equip, misc);
+  };
+
+  // ── Wire: Save button ──
+  var saveBtn = document.getElementById("inv-save-btn");
+  if(saveBtn) saveBtn.onclick = function(){
+    var titleInput = document.getElementById("inv-save-title");
+    var label = titleInput ? titleInput.value.trim() : "";
+    if(!label) label = "Sauvegarde";
+    var save = saveGameToSlot(label);
+    if(save){
+      acDB.set("ac_saveTimestamp", save.date);
+      var status = document.getElementById("inv-save-status");
+      if(status) status.innerHTML = '<span style="color:var(--poison)">\u2714 Sauvegard\u00e9 !</span>';
+      saveBtn.textContent = "\u2714 Sauvegard\u00e9 !";
+      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
+    }
+  };
+
+  // ── Wire: Continue button ──
+  document.getElementById("inv-close-btn").onclick = function(){
+    overlay.classList.remove("visible");
+    overlay.classList.add("closing");
+    setTimeout(function(){
+      overlay.remove();
+      if(onClose) onClose();
+    }, 500);
+  };
+}
+
+/* ══════════ INVENTORY MODAL (paperdoll + tabs) ══════════ */
+function openInventoryModal(u, scenario, equip, misc){
+  var modal = document.createElement("div");
+  modal.className = "inv-modal-backdrop";
+
+  var h = '<div class="inv-modal">';
+
+  // ── Close button ──
+  h += '<button class="inv-modal-close" id="inv-modal-close-btn">\u2715</button>';
+
+  // ── Paperdoll: portrait + 6 slots ──
+  h += '<div class="inv-paperdoll inv-paperdoll-6 inv-modal-paperdoll">';
+  h += '<div class="inv-portrait-full">';
+  if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
+  else h += '<div class="inv-character-empty">\uD83D\uDC64</div>';
+  h += '</div>';
+  h += '<div class="inv-portrait-vignette"></div>';
+
+  for(var i = 0; i < PRE_INV_EQUIP_SLOTS.length; i++){
+    var slot = PRE_INV_EQUIP_SLOTS[i];
+    var item = equip[slot.key];
+    h += '<div class="inv-slot inv-slot-6 ' + slot.cls + ' filled" data-slot="' + slot.key + '" style="--slot-color:' + slot.color + '">'
+      + '<span class="inv-slot-icon">' + slot.icon + '</span>'
+      + '<span class="inv-slot-label">' + esc(slot.label) + '</span></div>';
+  }
+
+  h += '<div class="inv-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
+  h += '</div>';
+
+  // ── Tabbed inventory below paperdoll ──
+  h += '<div class="inv-tabs-section">';
+  h += '<div class="inv-tabs">';
+  h += '<button class="inv-tab active" data-tab="m-equipement">\u00C9quipement</button>';
+  h += '<button class="inv-tab" data-tab="m-consommables">Consommables</button>';
+  h += '<button class="inv-tab" data-tab="m-quetes">Qu\u00eates</button>';
+  h += '<button class="inv-tab" data-tab="m-divers">Divers</button>';
+  h += '</div>';
+
+  // Equipment tab
+  h += '<div class="inv-tab-content active" id="inv-tc-m-equipement">';
   h += '<div class="inv-items-grid">';
   for(var e = 0; e < PRE_INV_EQUIP_SLOTS.length; e++){
     var sl = PRE_INV_EQUIP_SLOTS[e];
@@ -177,8 +263,8 @@ function showInventoryOverlay(onClose){
   }
   h += '</div></div>';
 
-  // Tab content: Consumables
-  h += '<div class="inv-tab-content" id="inv-tc-consommables">';
+  // Consumables tab
+  h += '<div class="inv-tab-content" id="inv-tc-m-consommables">';
   h += '<div class="inv-items-grid">';
   h += '<div class="inv-item inv-item-consumable">';
   h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
@@ -189,13 +275,13 @@ function showInventoryOverlay(onClose){
   h += '</div></div>';
   h += '</div></div>';
 
-  // Tab content: Quests
-  h += '<div class="inv-tab-content" id="inv-tc-quetes">';
+  // Quests tab
+  h += '<div class="inv-tab-content" id="inv-tc-m-quetes">';
   h += '<div class="inv-items-empty">Aucun objet de qu\u00eate pour l\'instant.</div>';
   h += '</div>';
 
-  // Tab content: Misc
-  h += '<div class="inv-tab-content" id="inv-tc-divers">';
+  // Misc tab
+  h += '<div class="inv-tab-content" id="inv-tc-m-divers">';
   h += '<div class="inv-items-grid">';
   for(var m = 0; m < misc.length; m++){
     h += '<div class="inv-item inv-item-misc">';
@@ -209,39 +295,31 @@ function showInventoryOverlay(onClose){
   h += '</div></div>';
 
   h += '</div>'; // inv-tabs-section
-
-  // ── Continue button (same style as profile save button) ──
-  h += '<button class="prof-save-btn" id="inv-close-btn">Continuer</button>';
-
-  h += '</div>'; // inv-overlay-inner profile-page
-  overlay.innerHTML = h;
+  h += '</div>'; // inv-modal
+  modal.innerHTML = h;
 
   var screenEl = document.querySelector(".screen");
-  (screenEl || document.body).appendChild(overlay);
-
-  // Fade in
-  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
+  (screenEl || document.body).appendChild(modal);
+  setTimeout(function(){ modal.classList.add("visible"); }, 20);
 
   // Tab switching
-  var tabs = overlay.querySelectorAll(".inv-tab");
+  var tabs = modal.querySelectorAll(".inv-tab");
   for(var t = 0; t < tabs.length; t++){
     tabs[t].onclick = function(){
       var tabId = this.getAttribute("data-tab");
-      overlay.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
-      overlay.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
+      modal.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
+      modal.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
       this.classList.add("active");
       var content = document.getElementById("inv-tc-" + tabId);
       if(content) content.classList.add("active");
     };
   }
 
-  // Close
-  document.getElementById("inv-close-btn").onclick = function(){
-    overlay.classList.remove("visible");
-    overlay.classList.add("closing");
-    setTimeout(function(){
-      overlay.remove();
-      if(onClose) onClose();
-    }, 500);
-  };
+  // Close modal
+  function closeModal(){
+    modal.classList.remove("visible");
+    setTimeout(function(){ modal.remove(); }, 300);
+  }
+  document.getElementById("inv-modal-close-btn").onclick = closeModal;
+  modal.onclick = function(ev){ if(ev.target === modal) closeModal(); };
 }

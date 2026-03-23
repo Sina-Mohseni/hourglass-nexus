@@ -1,10 +1,9 @@
-/* ═══════════ INVENTORY OVERLAY — profile/equipment page structure ═══════════
-   Overlay mechanism for visibility during lock flow.
-   Inner content uses the same structure as profile & equipment pages:
-   .profile-page, .prof-header, .section-title, .dr-stat-bar, etc.
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════ PRE-GAME INVENTORY OVERLAY ═══════════
+   Overlay + profile-page structure inside.
+   Vertical portrait, inventory modal, save & continue.
+   ═══════════════════════════════════════════════════ */
 
-/* ── Overlay container (unchanged — needed for lock flow visibility) ── */
+/* ── Overlay container ── */
 .inv-overlay {
   position: absolute; inset: 0; z-index: 1000;
   background: rgba(5,4,3,.97);
@@ -15,7 +14,7 @@
 .inv-overlay.visible { opacity: 1 }
 .inv-overlay.closing { opacity: 0; transition: opacity .4s ease }
 
-/* ── Inner scrollable container — uses profile-page padding ── */
+/* ── Inner scrollable container ── */
 .inv-overlay-inner {
   width: 100%; max-width: 480px; height: 100%;
   display: flex; flex-direction: column;
@@ -26,17 +25,67 @@
 .inv-overlay-inner::-webkit-scrollbar { width: 3px }
 .inv-overlay-inner::-webkit-scrollbar-thumb { background: rgba(168,132,42,.25); border-radius: 4px }
 
-/* ── Avatar wrapper (non-clickable, reuses prof-header layout) ── */
-.inv-avatar-wrap {
-  position: relative; width: 100%; aspect-ratio: 1/1; max-height: 240px;
+/* ── Vertical portrait (3:4 aspect ratio) ── */
+.inv-header-portrait .inv-avatar-wrap {
+  position: relative; width: 100%; aspect-ratio: 3/4;
   overflow: hidden; background: linear-gradient(180deg, var(--dark-stone), #050403);
 }
 .inv-avatar-wrap img { width: 100%; height: 100%; object-fit: cover }
 
+/* ── Save section ── */
+.inv-save-section {
+  margin-bottom: 14px;
+}
+.inv-save-section .prof-input {
+  margin-bottom: 8px;
+}
+.inv-save-status {
+  text-align: center; font-family: var(--font-ui); font-size: 10px;
+  min-height: 16px; margin-top: 6px;
+}
+
+/* ═══════════ INVENTORY MODAL (paperdoll + tabs) ═══════════ */
+.inv-modal-backdrop {
+  position: absolute; inset: 0; z-index: 1100;
+  background: rgba(5,4,3,.92);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s ease;
+  overflow: hidden;
+}
+.inv-modal-backdrop.visible { opacity: 1 }
+
+.inv-modal {
+  width: 100%; max-width: 480px; height: 100%;
+  display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168,132,42,.25) transparent;
+}
+.inv-modal::-webkit-scrollbar { width: 3px }
+.inv-modal::-webkit-scrollbar-thumb { background: rgba(168,132,42,.25); border-radius: 4px }
+
+.inv-modal-close {
+  position: sticky; top: 8px; right: 0; z-index: 5;
+  align-self: flex-end; margin-right: 10px;
+  width: 32px; height: 32px;
+  background: rgba(10,8,6,.85); border: 1px solid rgba(168,132,42,.25);
+  color: var(--bone-dim); font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .2s;
+}
+.inv-modal-close:hover { border-color: var(--gold-dark); color: var(--gold-light) }
+
+/* Paperdoll inside modal — smaller */
+.inv-modal-paperdoll {
+  margin: 0 auto; width: 90%; max-width: 360px;
+  flex-shrink: 0;
+}
+
 /* ── Tabs section ── */
 .inv-tabs-section {
   flex: 1; display: flex; flex-direction: column;
-  min-height: 0;
+  min-height: 0; padding: 0 12px 12px;
 }
 .inv-tabs {
   display: flex; gap: 0;

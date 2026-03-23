@@ -146,12 +146,6 @@ function buildUserPage(){
     + '<div class="dr-user-section" data-modal="cites"><div class="us-icon">\ud83c\udfd9\ufe0f</div><div class="us-name">Contr\u00e9es</div></div>'
     + '</div>';
 
-  // Save button
-  var saveTs = acDB.get("ac_saveExists") === "1" ? acDB.get("ac_saveTimestamp") || "" : "";
-  h += '<div style="padding:14px 12px">';
-  h += '<button class="user-save-btn" id="user-save-btn">\ud83d\udcbe Sauvegarder le voyage</button>';
-  if(saveTs) h += '<div class="user-save-info">Derni\u00e8re sauvegarde : '+esc(saveTs)+'</div>';
-  h += '</div>';
 
   p.innerHTML = h;
 
@@ -213,17 +207,6 @@ function buildUserPage(){
   // Appliquer l'état actif initial
   syncUserPageActive(userSection || "profil");
 
-  // Save button
-  var saveBtn = document.getElementById("user-save-btn");
-  if(saveBtn) saveBtn.onclick = function(){
-    showSaveDialog(function(save){
-      if(!save) return;
-      acDB.set("ac_saveTimestamp", save.date);
-      saveBtn.textContent = "\u2714 Sauvegard\u00e9 !";
-      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-      setTimeout(function(){ buildUserPage() }, 1500);
-    });
-  };
 }
 
 /* ══════════ PROFILE PAGE ══════════ */
