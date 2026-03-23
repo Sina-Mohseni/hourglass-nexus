@@ -1,10 +1,11 @@
 "use strict";
 
-/* ══════════ PRE-INVENTORY PAGE — Diablo 4 style ══════════
+/* ══════════ INVENTORY OVERLAY — profile/equipment page structure ══════════
    Shown after guide placement on lock screen (new voyage).
    Displays player portrait, stats, and scenario-based inventory.
-   Now rendered as a standard page (same structure as profile/equipment).
-   ═══════════════════════════════════════════════════════════ */
+   Uses overlay mechanism for visibility during lock flow, but inner
+   content follows the same structure as profile & equipment pages.
+   ═══════════════════════════════════════════════════════════════════════ */
 
 var SCENARIO_LABELS = {
   "champion":"Champion", "lambda":"Isolé", "rebelle":"Dissident",
@@ -97,25 +98,24 @@ var PRE_INV_EQUIP_SLOTS = [
   {key:"objectif", icon:"\uD83C\uDFAF", label:"Objectif"}
 ];
 
-/* ── Callback stored for "Continuer" button ── */
-var _preInvOnClose = null;
-
-/* ══════════ BUILD PRE-INVENTORY PAGE ══════════ */
-function buildPreInventoryPage(onClose){
-  var p = document.getElementById("page-pre-inventory"); if(!p) return;
-  if(onClose) _preInvOnClose = onClose;
-
+/* ══════════ SHOW INVENTORY OVERLAY ══════════ */
+function showInventoryOverlay(onClose){
   var u = loadUser();
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
   var misc = SCENARIO_MISC[scenario] || [];
 
-  var h = '<div class="profile-page pre-inv-page">';
+  var overlay = document.createElement("div");
+  overlay.className = "inv-overlay";
+  overlay.id = "inv-overlay";
 
-  // ── Header card with avatar (same pattern as profile page) ──
+  // ── Inner scrollable container uses profile-page structure ──
+  var h = '<div class="inv-overlay-inner profile-page">';
+
+  // ── Header card with avatar (same as profile page .prof-header) ──
   h += '<div class="prof-header">'
     + '<div class="prof-header-glow" style="background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)"></div>'
-    + '<div class="pre-inv-avatar-wrap">';
+    + '<div class="inv-avatar-wrap">';
   if(u.avatar) h += '<img src="' + esc(u.avatar) + '">';
   else h += '<div class="prof-avatar-empty">\uD83D\uDC64</div>';
   h += '</div>'
@@ -125,14 +125,14 @@ function buildPreInventoryPage(onClose){
     + '<div class="prof-subtitle">' + esc(SCENARIO_LABELS[scenario] || "Voyageur") + ' \u2022 Niv. ' + u.level + '</div>'
     + '</div></div>';
 
-  // ── Stats summary (same pattern as profile page) ──
+  // ── Stats summary (same as profile page .prof-stats-grid) ──
   h += '<div class="prof-stats-grid">'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">Niv. ' + u.level + '</div><div class="prof-stat-lbl">Niveau</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">\uD83D\uDCB0 ' + u.coins + '</div><div class="prof-stat-lbl">Or</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">6</div><div class="prof-stat-lbl">\u00c9quip\u00e9s</div></div>'
     + '<div class="prof-stat-cell"><div class="prof-stat-val">1</div><div class="prof-stat-lbl">Conso.</div></div></div>';
 
-  // ── Attributes (same pattern as profile page) ──
+  // ── Attributes (same as profile page .section-title + .dr-stat-bar) ──
   h += '<div class="section-title">Attributs</div>';
   h += '<div class="prof-attrs">';
   var stats = [
@@ -142,12 +142,12 @@ function buildPreInventoryPage(onClose){
     {key:"FOR", val:u.statFOR, color:"#e74c3c"},
     {key:"AGI", val:u.statAGI, color:"#27ae60"}
   ];
-  stats.forEach(function(s){
+  for(var s = 0; s < stats.length; s++){
     h += '<div class="dr-stat-bar">'
-      + '<span class="dr-stat-label">' + s.key + '</span>'
-      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:' + s.val + '%;background:linear-gradient(90deg,' + s.color + ',' + s.color + '88)"></div></div>'
-      + '<span class="dr-stat-val">' + s.val + '</span></div>';
-  });
+      + '<span class="dr-stat-label">' + stats[s].key + '</span>'
+      + '<div class="dr-stat-track"><div class="dr-stat-fill" style="width:' + stats[s].val + '%;background:linear-gradient(90deg,' + stats[s].color + ',' + stats[s].color + '88)"></div></div>'
+      + '<span class="dr-stat-val">' + stats[s].val + '</span></div>';
+  }
   h += '</div>';
 
   // ── Tabbed inventory ──
@@ -189,12 +189,12 @@ function buildPreInventoryPage(onClose){
   h += '</div></div>';
   h += '</div></div>';
 
-  // Tab content: Quests (empty for now)
+  // Tab content: Quests
   h += '<div class="inv-tab-content" id="inv-tc-quetes">';
   h += '<div class="inv-items-empty">Aucun objet de qu\u00eate pour l\'instant.</div>';
   h += '</div>';
 
-  // Tab content: Misc (scenario documents)
+  // Tab content: Misc
   h += '<div class="inv-tab-content" id="inv-tc-divers">';
   h += '<div class="inv-items-grid">';
   for(var m = 0; m < misc.length; m++){
@@ -211,47 +211,37 @@ function buildPreInventoryPage(onClose){
   h += '</div>'; // inv-tabs-section
 
   // ── Continue button (same style as profile save button) ──
-  h += '<button class="prof-save-btn" id="pre-inv-continue-btn">Continuer</button>';
+  h += '<button class="prof-save-btn" id="inv-close-btn">Continuer</button>';
 
-  h += '</div>'; // profile-page pre-inv-page
+  h += '</div>'; // inv-overlay-inner profile-page
+  overlay.innerHTML = h;
 
-  p.innerHTML = h;
-  wirePreInventoryPage();
-}
+  var screenEl = document.querySelector(".screen");
+  (screenEl || document.body).appendChild(overlay);
 
-/* ══════════ WIRE PRE-INVENTORY PAGE ══════════ */
-function wirePreInventoryPage(){
-  var p = document.getElementById("page-pre-inventory"); if(!p) return;
+  // Fade in
+  setTimeout(function(){ overlay.classList.add("visible"); }, 30);
 
   // Tab switching
-  var tabs = p.querySelectorAll(".inv-tab");
+  var tabs = overlay.querySelectorAll(".inv-tab");
   for(var t = 0; t < tabs.length; t++){
     tabs[t].onclick = function(){
       var tabId = this.getAttribute("data-tab");
-      p.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
-      p.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
+      overlay.querySelectorAll(".inv-tab").forEach(function(tb){ tb.classList.remove("active"); });
+      overlay.querySelectorAll(".inv-tab-content").forEach(function(tc){ tc.classList.remove("active"); });
       this.classList.add("active");
       var content = document.getElementById("inv-tc-" + tabId);
       if(content) content.classList.add("active");
     };
   }
 
-  // Continue button
-  var continueBtn = document.getElementById("pre-inv-continue-btn");
-  if(continueBtn) continueBtn.onclick = function(){
-    if(_preInvOnClose) _preInvOnClose();
-    _preInvOnClose = null;
+  // Close
+  document.getElementById("inv-close-btn").onclick = function(){
+    overlay.classList.remove("visible");
+    overlay.classList.add("closing");
+    setTimeout(function(){
+      overlay.remove();
+      if(onClose) onClose();
+    }, 500);
   };
-}
-
-/* ══════════ SHOW INVENTORY OVERLAY (legacy wrapper) ══════════
-   Keeps the same API for callers: showInventoryOverlay(onClose)
-   Now renders as a page instead of a modal overlay.
-   ═══════════════════════════════════════════════════════════ */
-function showInventoryOverlay(onClose){
-  buildPreInventoryPage(function(){
-    showPage("accueil");
-    if(onClose) onClose();
-  });
-  showPage("pre-inventory");
 }
