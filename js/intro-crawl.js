@@ -836,10 +836,10 @@ function showPillConfirmDialog(parentBackdrop, onConsume){
 function showContractModal(type, onSigned, isMorkar, isRebelle){
   var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
   var screen = document.querySelector(".screen") || document.body;
-  // Morkar gives the pill to all its candidates (recrue, veteran, dissident)
-  // Champions (non-Morkar, non-rebelle) don't get a pill
-  var showPill = isMorkar || isRebelle;
-  // Only true champions need translation (runes); dissidents and Morkar read French
+  // Pill visible for all non-Morkar (champion, isolé, dissident)
+  // Morkar gives the pill thinking they're regular candidates
+  var needsPill = !isMorkar;
+  // Runes only for true champions/isolés — dissidents secretly understand French
   var needsTranslation = !isMorkar && !isRebelle;
 
   var backdrop = document.createElement("div");
@@ -848,8 +848,8 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   var h = '<div class="contract-modal">';
   h += '<div class="contract-header">' + contract.title + '</div>';
 
-  // Pill icon for Morkar candidates (recrue, veteran, dissident)
-  if(showPill){
+  // Pill icon for non-Morkar scenarios (champion, isolé, dissident)
+  if(needsPill){
     h += '<div class="contract-pill-row">';
     h += '<div class="contract-pill" title="Pilule">&#128138;</div>';
     h += '</div>';
@@ -882,7 +882,7 @@ function showContractModal(type, onSigned, isMorkar, isRebelle){
   var pillConsumed = false;
 
   // Pill click → confirmation dialog before consuming
-  if(showPill){
+  if(needsPill){
     var pill = backdrop.querySelector(".contract-pill");
     if(pill) pill.onclick = function(){
       showPillConfirmDialog(backdrop, function onConsume(){
