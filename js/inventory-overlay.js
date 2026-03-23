@@ -165,32 +165,6 @@ function showInventoryOverlay(onClose){
   h += '<button class="pg-action-btn pg-start-btn" id="inv-close-btn" title="Commencer l\'aventure">\u25B6 Commencer</button>';
   h += '</div>';
 
-  /* ═══════════ FOOTER ASSEMBLY (profil drawer) ═══════════ */
-  h += '<div class="pg-footer-asm" id="pg-footer-asm">';
-  // Losange
-  h += '<div class="pg-diamond pg-diamond-footer" id="pg-diamond-footer">';
-  h += '<div class="pg-diamond-inner">';
-  if(u.avatar) h += '<img src="' + esc(u.avatar) + '" class="pg-diamond-img" id="pg-diamond-avatar">';
-  else h += '<div class="pg-diamond-emoji" id="pg-diamond-avatar">\uD83D\uDC64</div>';
-  h += '</div></div>';
-  // Footer bar
-  h += '<div class="pg-bar pg-bar-bottom"></div>';
-  // Panel
-  h += '<div class="pg-panel pg-panel-bottom" id="pg-footer-panel"></div>';
-  h += '</div>';
-
-  /* ═══════════ HEADER ASSEMBLY (intros drawer) ═══════════ */
-  h += '<div class="pg-header-asm" id="pg-header-asm">';
-  // Panel
-  h += '<div class="pg-panel pg-panel-top" id="pg-header-panel"></div>';
-  // Header bar
-  h += '<div class="pg-bar pg-bar-top"></div>';
-  // Losange
-  h += '<div class="pg-diamond pg-diamond-header" id="pg-diamond-header">';
-  h += '<div class="pg-diamond-inner"><div class="pg-diamond-emoji">\u29D6</div></div>';
-  h += '</div>';
-  h += '</div>';
-
   h += '</div>'; // .pg-fullscreen
 
   // Hidden file input
@@ -201,13 +175,30 @@ function showInventoryOverlay(onClose){
   (screenEl || document.body).appendChild(overlay);
   setTimeout(function(){ overlay.classList.add("visible"); }, 30);
 
+  /* ═══════════ REVEAL REAL HEADER/FOOTER ASSEMBLIES ═══════════ */
+  var headerAsm = document.getElementById("header-assembly");
+  var footerAsm = document.getElementById("footer-assembly");
+
+  // Show them above the overlay (overlay is z-index:1000)
+  if(headerAsm){
+    headerAsm.style.visibility = "";
+    headerAsm.style.zIndex = "1010";
+  }
+  if(footerAsm){
+    footerAsm.style.visibility = "";
+    footerAsm.style.zIndex = "1010";
+  }
+
+  // Set footer diamond image = player avatar
+  if(u.avatar) setDiamondImage(u.avatar, null);
+  else setDiamondImage(null, "\uD83D\uDC64");
+
+  // Set header diamond image = hourglass (intros)
+  setHeaderDiamondImage(null, "\u29D6");
+
   /* ═══════════ POPULATE DRAWER PANELS ═══════════ */
   _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip);
   _buildPgHeaderDrawer();
-
-  /* ═══════════ INIT DRAWER DRAG MECHANICS ═══════════ */
-  _initPgDrawer("pg-footer-asm", "pg-diamond-footer", "bottom");
-  _initPgDrawer("pg-header-asm", "pg-diamond-header", "top");
 
   /* ═══════════ WIRE ACTIONS ═══════════ */
 
@@ -226,6 +217,16 @@ function showInventoryOverlay(onClose){
   // Continue button
   var closeBtn = document.getElementById("inv-close-btn");
   if(closeBtn) closeBtn.onclick = function(){
+    // Close drawers first
+    closeFooterPanel();
+    closeHeaderPanel();
+    // Hide assemblies again (they'll be re-shown by charcreate)
+    setTimeout(function(){
+      if(headerAsm) { headerAsm.style.visibility = "hidden"; headerAsm.style.zIndex = ""; }
+      if(footerAsm) { footerAsm.style.visibility = "hidden"; footerAsm.style.zIndex = ""; }
+      clearDiamondImage();
+      clearHeaderDiamondImage();
+    }, 460);
     overlay.classList.remove("visible");
     overlay.classList.add("closing");
     setTimeout(function(){
@@ -237,10 +238,7 @@ function showInventoryOverlay(onClose){
 
 /* ── Footer drawer content: profile fiche ── */
 function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
-  var panel = document.getElementById("pg-footer-panel");
-  if(!panel) return;
-
-  var h = '<div class="pg-drawer-scroll">';
+  var h = '';
   h += '<div class="pg-drawer-title">\uD83D\uDC64 Fiche Profil</div>';
 
   // Avatar (clickable)
@@ -279,8 +277,8 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     + '<span class="prof-section-arrow">\u203a</span></div>';
   h += '</div>';
 
-  h += '</div>';
-  panel.innerHTML = h;
+  // Use the real footer panel
+  setFooterPanelContent(h);
 
   // Wire avatar change
   var avatarWrap = document.getElementById("pg-drawer-avatar-wrap");
@@ -301,9 +299,8 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
           var bgImg = document.querySelector(".pg-bg-img");
           if(bgImg) bgImg.src = u2.avatar;
           else { var bg = document.querySelector(".pg-bg"); if(bg){ bg.innerHTML = '<img src="'+u2.avatar+'" class="pg-bg-img">'; } }
-          // Update diamond avatar
-          var da = document.getElementById("pg-diamond-avatar");
-          if(da){ if(da.tagName==="IMG") da.src=u2.avatar; else { var img2=document.createElement("img"); img2.id="pg-diamond-avatar"; img2.className="pg-diamond-img"; img2.src=u2.avatar; da.parentNode.replaceChild(img2,da); } }
+          // Update footer diamond
+          setDiamondImage(u2.avatar, null);
         }
       };
       reader.readAsDataURL(file);
@@ -346,9 +343,6 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
 
 /* ── Header drawer content: intro replay gallery ── */
 function _buildPgHeaderDrawer(){
-  var panel = document.getElementById("pg-header-panel");
-  if(!panel) return;
-
   var intros = [
     {id:"tournoi", icon:"\u29D6", title:"Le Tournoi d\u2019Extelua", desc:"Pr\u00e9sentation g\u00e9n\u00e9rale du Tournoi, des Champions et des Isol\u00e9s."},
     {id:"morkar",  icon:"\u25C6", title:"Pr\u00e9sentation Morkar",  desc:"Retransmission officielle du groupe Morkar : r\u00e8gles, candidats, r\u00e9compenses."},
@@ -356,7 +350,7 @@ function _buildPgHeaderDrawer(){
     {id:"narr2",   icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant le sc\u00e9nario",  desc:"Les paragraphes sur les r\u00f4les possibles dans le Tournoi."}
   ];
 
-  var h = '<div class="pg-drawer-scroll">';
+  var h = '';
   h += '<div class="pg-drawer-title">\uD83D\uDCDA Revoir les intros</div>';
   h += '<div class="pg-intro-gallery">';
   intros.forEach(function(intro){
@@ -369,11 +363,14 @@ function _buildPgHeaderDrawer(){
       + '<span class="prof-section-arrow">\u203a</span>'
       + '</div>';
   });
-  h += '</div></div>';
-  panel.innerHTML = h;
+  h += '</div>';
+
+  // Use the real header panel
+  setHeaderPanelContent(h);
 
   // Wire click events
-  panel.querySelectorAll(".pg-intro-card").forEach(function(card){
+  var hpBody = document.getElementById("hp-body");
+  if(hpBody) hpBody.querySelectorAll(".pg-intro-card").forEach(function(card){
     card.onclick = function(){
       var id = card.getAttribute("data-intro");
       if(id === "tournoi") showIntroModal(document.getElementById("inv-overlay"));
@@ -424,98 +421,6 @@ function _showNarrationReplay(paragraphs, title){
       setTimeout(function(){ overlay.remove(); }, 400);
     }
   };
-}
-
-/* ── Drawer drag mechanics (reusable for header/footer) ── */
-function _initPgDrawer(asmId, diamondId, side){
-  var asm = document.getElementById(asmId);
-  var diamond = document.getElementById(diamondId);
-  if(!asm || !diamond) return;
-
-  var isBottom = (side === "bottom");
-  var travel = window.innerHeight - 110;
-  if(travel < 100) travel = 100;
-
-  var panelEl = asm.querySelector(".pg-panel");
-  if(panelEl) panelEl.style.height = travel + "px";
-
-  // Start closed
-  var isOpen = false;
-  asm.style.transform = isBottom
-    ? "translateY(" + travel + "px)"
-    : "translateY(" + (-travel) + "px)";
-
-  var isDrag = false, startY = 0, hasMoved = false, startT = 0;
-
-  function getY(e){ return (e.touches ? e.touches[0] : e).clientY; }
-  function currentT(){
-    var st = asm.style.transform;
-    var m = st.match(/translateY\(([^)]+)px\)/);
-    return m ? parseFloat(m[1]) : (isBottom ? travel : -travel);
-  }
-
-  function onStart(e){
-    e.preventDefault(); e.stopPropagation();
-    isDrag = true; hasMoved = false;
-    startY = getY(e);
-    startT = currentT();
-    asm.classList.remove("snapping");
-    asm.style.zIndex = "1050";
-    document.addEventListener("touchmove", onMove, {passive:false});
-    document.addEventListener("touchend", onEnd, {passive:true});
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseup", onEnd);
-  }
-
-  function onMove(e){
-    if(!isDrag) return; e.preventDefault();
-    var delta = getY(e) - startY;
-    if(Math.abs(delta) > 5) hasMoved = true;
-    var newT;
-    if(isBottom){
-      newT = Math.max(0, Math.min(travel, startT + delta));
-    } else {
-      newT = Math.max(-travel, Math.min(0, startT + delta));
-    }
-    asm.style.transform = "translateY(" + newT + "px)";
-  }
-
-  function onEnd(){
-    if(!isDrag) return; isDrag = false;
-    var endT = currentT();
-    asm.classList.add("snapping");
-
-    if(!hasMoved){
-      // Tap = toggle
-      if(isOpen){
-        asm.style.transform = isBottom ? "translateY("+travel+"px)" : "translateY("+(-travel)+"px)";
-        isOpen = false;
-      } else {
-        asm.style.transform = "translateY(0px)";
-        isOpen = true;
-      }
-    } else {
-      if(isBottom){
-        if(endT < travel * 0.5){ asm.style.transform="translateY(0px)"; isOpen=true; }
-        else { asm.style.transform="translateY("+travel+"px)"; isOpen=false; }
-      } else {
-        if(endT > -travel * 0.5){ asm.style.transform="translateY(0px)"; isOpen=true; }
-        else { asm.style.transform="translateY("+(-travel)+"px)"; isOpen=false; }
-      }
-    }
-
-    setTimeout(function(){
-      asm.classList.remove("snapping");
-      if(!isOpen) asm.style.zIndex = "";
-    }, 450);
-    document.removeEventListener("touchmove", onMove);
-    document.removeEventListener("touchend", onEnd);
-    document.removeEventListener("mousemove", onMove);
-    document.removeEventListener("mouseup", onEnd);
-  }
-
-  diamond.addEventListener("touchstart", onStart, {passive:false});
-  diamond.addEventListener("mousedown", onStart);
 }
 
 /* ══════════ INVENTORY MODAL ══════════ */
