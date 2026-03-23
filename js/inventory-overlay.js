@@ -111,7 +111,20 @@ function showInventoryOverlay(onClose){
   var u = loadUser();
   var scenario = window._chosenScenario || "lambda";
   var equip = SCENARIO_EQUIPMENT[scenario] || SCENARIO_EQUIPMENT["lambda"];
-  var misc = SCENARIO_MISC[scenario] || [];
+  var misc = (SCENARIO_MISC[scenario] || []).slice(); // clone
+
+  // Add signed contract if available
+  if(window._contractSigned){
+    var cType = window._contractType || "isole";
+    var cData = (typeof CONTRACT_CONTENT !== "undefined") ? CONTRACT_CONTENT[cType] : null;
+    if(cData){
+      misc.unshift({
+        name: cData.title,
+        desc: "Contrat signé lors de votre inscription au tournoi.",
+        body: cData.paragraphs.join("\n\n")
+      });
+    }
+  }
 
   var overlay = document.createElement("div");
   overlay.className = "inv-overlay";

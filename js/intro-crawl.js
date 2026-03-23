@@ -703,6 +703,114 @@ function showScenarioLore(title, text){
   };
 }
 
+/* ══════════ TOURNAMENT CONTRACT ══════════ */
+var CONTRACT_CONTENT = {
+  connecte: {
+    title: "Contrat de Participation — Candidat Connecté",
+    paragraphs: [
+      "Article I — Engagement. En signant ce contrat, le candidat issu d'une planète " +
+      "connectée au Réseau Universel s'engage à participer au 47e Tournoi d'Extelua " +
+      "organisé par le groupe Morkar. Le candidat reconnaît avoir été désigné par les " +
+      "autorités compétentes de son monde d'origine et accepte de représenter sa planète " +
+      "avec honneur et loyauté pendant toute la durée de la compétition.",
+      "Article II — Droits et obligations. Le candidat bénéficie du soutien logistique " +
+      "complet du groupe Morkar : transport via les Routes Sillonnées, hébergement dans " +
+      "les quartiers réservés, accès aux centres d'entraînement pré-tournoi et assistance " +
+      "médicale de niveau galactique. En contrepartie, le candidat s'engage à respecter " +
+      "le règlement du Tournoi, à se soumettre aux décisions des arbitres désignés par " +
+      "Morkar, et à ne divulguer aucune information confidentielle relative à l'organisation.",
+      "Article III — Responsabilité. Le groupe Morkar décline toute responsabilité en cas " +
+      "de blessure, de disparition ou de décès survenu pendant les épreuves. Le candidat " +
+      "reconnaît que le Tournoi comporte des risques inhérents et renonce à toute poursuite " +
+      "contre l'organisation. Les soins médicaux d'urgence seront néanmoins assurés dans la " +
+      "mesure des moyens disponibles sur le lieu des épreuves.",
+      "Article IV — Récompense. En cas de victoire, le candidat et sa planète d'origine " +
+      "recevront la récompense promise : intégration complète au Réseau Universel, siège " +
+      "permanent au Conseil des Mondes, et accès illimité aux technologies partagées. " +
+      "Les modalités précises de l'intégration seront communiquées au vainqueur après la " +
+      "cérémonie de clôture. Ce contrat est définitif et irrévocable dès sa signature."
+    ]
+  },
+  isole: {
+    title: "Contrat de Participation — Candidat Isolé",
+    paragraphs: [
+      "Article I — Sélection et consentement. Le candidat issu d'une planète non connectée " +
+      "au Réseau Universel a été sélectionné par les éclaireurs du groupe Morkar selon des " +
+      "critères d'aptitude physique, mentale et adaptative. En signant ce contrat, le candidat " +
+      "confirme son consentement libre et éclairé à participer au 47e Tournoi d'Extelua, " +
+      "malgré sa méconnaissance préalable de l'univers galactique et de ses institutions.",
+      "Article II — Accompagnement spécial. En raison de son statut d'isolé, le candidat " +
+      "bénéficiera d'un programme d'accompagnement renforcé. Un guide personnel lui sera " +
+      "assigné pour l'aider à comprendre les technologies, les règles et les enjeux du " +
+      "Tournoi. Le groupe Morkar fournira également un kit d'adaptation comprenant une " +
+      "pilule de compréhension linguistique et les équipements de base nécessaires à la " +
+      "compétition.",
+      "Article III — Responsabilité et risques. Le candidat reconnaît que sa participation " +
+      "au Tournoi implique des risques importants, notamment en raison de son manque " +
+      "d'expérience avec les technologies avancées utilisées pendant les épreuves. Le groupe " +
+      "Morkar ne pourra être tenu responsable des conséquences physiques ou psychologiques " +
+      "liées à l'exposition soudaine à des civilisations et des technologies inconnues. " +
+      "Le candidat renonce à toute réclamation.",
+      "Article IV — Récompense et retour. En cas de victoire, la planète d'origine du " +
+      "candidat sera intégrée au Réseau Universel selon les termes standard. En cas " +
+      "d'élimination, le candidat sera reconduit sur sa planète d'origine dans un délai " +
+      "raisonnable. Le groupe Morkar se réserve le droit de modifier les conditions de " +
+      "retour en fonction des circonstances opérationnelles. Ce contrat est définitif " +
+      "et irrévocable dès sa signature."
+    ]
+  }
+};
+
+function showContractModal(type, onSigned){
+  var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
+  var screen = document.querySelector(".screen") || document.body;
+
+  var backdrop = document.createElement("div");
+  backdrop.className = "contract-modal-backdrop";
+
+  var h = '<div class="contract-modal">';
+  h += '<div class="contract-header">' + contract.title + '</div>';
+  h += '<div class="contract-body">';
+  for(var i = 0; i < contract.paragraphs.length; i++){
+    h += '<p class="contract-para">' + contract.paragraphs[i] + '</p>';
+  }
+  h += '</div>';
+  h += '<div class="contract-signature">';
+  h += '<div class="contract-sig-label">Signature du candidat</div>';
+  h += '<div class="contract-sig-line"></div>';
+  h += '<button class="contract-sign-btn" id="contract-sign-btn">Signer le contrat</button>';
+  h += '</div>';
+  h += '</div>';
+
+  backdrop.innerHTML = h;
+  screen.appendChild(backdrop);
+  setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
+
+  document.getElementById("contract-sign-btn").onclick = function(){
+    // Mark as signed
+    window._contractSigned = true;
+    window._contractType = type;
+
+    // Animate signature
+    var sigLine = backdrop.querySelector(".contract-sig-line");
+    if(sigLine) sigLine.classList.add("signed");
+    var signBtn = document.getElementById("contract-sign-btn");
+    if(signBtn){
+      signBtn.textContent = "Signé \u2714";
+      signBtn.disabled = true;
+      signBtn.classList.add("signed");
+    }
+
+    setTimeout(function(){
+      backdrop.classList.remove("visible");
+      setTimeout(function(){
+        backdrop.remove();
+        if(onSigned) onSigned();
+      }, 400);
+    }, 800);
+  };
+}
+
 /* ══════════ SCENARIO CHOICE (2-step: type → sub-scenario) ══════════ */
 function showScenarioChoice(onChosen){
   var overlay = document.getElementById("scenario-choice");
@@ -810,14 +918,16 @@ function showScenarioChoice(onChosen){
     var subs = (type === "connecte") ? SUB_CHAMPION : SUB_ISOLE;
     window._scOriginType = type; // "connecte" or "isole"
 
-    // Set title
+    // Set title — contract phase first
     if(step2Title){
-      step2Title.textContent = (type === "connecte")
-        ? "Quel connecté es-tu ?"
-        : "Quel isolé es-tu ?";
+      step2Title.textContent = "Avant de poursuivre\u2026";
     }
 
-    // Inject circles into arena
+    // Hide subtitle during contract phase
+    var subtitle = step2 ? step2.querySelector(".sc-subtitle") : null;
+    if(subtitle) subtitle.style.display = "none";
+
+    // Inject circles into arena (hidden initially)
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
@@ -838,15 +948,14 @@ function showScenarioChoice(onChosen){
     }
 
     subs.forEach(function(s, i){
-      // Empty circle (drop target)
       var div = document.createElement("div");
       div.className = "sc-circle";
       div.setAttribute("data-scenario", s.scenario);
       div.style.left = positions[i].left;
       div.style.top = positions[i].top;
+      div.style.display = "none"; // hidden until contract signed
       arena.insertBefore(div, guide);
 
-      // Label below circle (clickable for lore)
       var label = document.createElement("div");
       label.className = "sc-circle-label";
       label.style.left = positions[i].left;
@@ -854,29 +963,64 @@ function showScenarioChoice(onChosen){
       label.innerHTML =
         '<span class="sc-circle-label-text">' + s.name + '</span>' +
         '<span class="sc-circle-label-plus">+</span>';
+      label.style.display = "none"; // hidden until contract signed
       arena.insertBefore(label, guide);
 
-      // Click on label/plus → show lore modal
       label.onclick = function(e){
         e.stopPropagation();
         showScenarioLore(s.name, s.lore);
       };
     });
 
-    // Reset guide
+    // Hide guide until contract signed
+    guide.style.display = "none";
     guide.style.left = "50%";
     guide.style.top = "82%";
     guide.classList.remove("sc-guide-awake");
     if(guideLabel) guideLabel.textContent = "Endormi";
 
-    // Transition
+    // Inject contract link into arena
+    var contractLink = document.createElement("div");
+    contractLink.className = "sc-contract-link";
+    contractLink.innerHTML =
+      '<div class="sc-contract-icon">\uD83D\uDCDC</div>' +
+      '<div class="sc-contract-text">Lire et signer le contrat de participation</div>';
+    arena.appendChild(contractLink);
+
+    contractLink.onclick = function(){
+      showContractModal(type, function(){
+        // Contract signed — remove link, reveal circles + guide
+        contractLink.classList.add("fading-out");
+        setTimeout(function(){
+          contractLink.remove();
+
+          // Update title
+          if(step2Title){
+            step2Title.textContent = (type === "connecte")
+              ? "Quel connecté es-tu ?"
+              : "Quel isolé es-tu ?";
+          }
+          // Show subtitle
+          if(subtitle) subtitle.style.display = "";
+
+          // Reveal circles + labels
+          arena.querySelectorAll(".sc-circle").forEach(function(c){ c.style.display = ""; });
+          arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.style.display = ""; });
+
+          // Reveal guide
+          guide.style.display = "";
+          initStep2Drag();
+        }, 400);
+      });
+    };
+
+    // Transition from step 1
     if(step1){
       step1.classList.add("fading-out");
       setTimeout(function(){
         step1.style.display = "none";
         step1.classList.remove("fading-out");
         if(step2) step2.style.display = "";
-        initStep2Drag();
       }, 500);
     }
   }
@@ -884,9 +1028,11 @@ function showScenarioChoice(onChosen){
   // Back button
   var backBtn = document.getElementById("sc-back-btn");
   function goBackToStep1(){
-    // Clean up circles and labels
+    // Clean up circles, labels and contract link
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-contract-link").forEach(function(c){ c.remove(); });
+    guide.style.display = "";
     // Clean up drag listeners
     if(window._scDragCleanup) window._scDragCleanup();
 
