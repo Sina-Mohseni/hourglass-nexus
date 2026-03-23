@@ -293,6 +293,21 @@
 }
 .ic-modal-close:active { border-color: var(--gold); transform: scale(.95); }
 
+/* Scenario lore choice — two-button layout */
+.sc-lore-actions {
+  display: flex; gap: 10px; justify-content: center;
+  margin: 4px 20px 18px; flex-wrap: wrap;
+}
+.sc-lore-actions .ic-modal-close { margin: 0; flex: 1; min-width: 100px; }
+.sc-lore-accept-btn {
+  background: rgba(107,16,16,.15) !important;
+  border-color: rgba(154,26,26,.4) !important;
+  color: var(--gold-pale) !important;
+}
+.sc-lore-accept-btn:active {
+  border-color: rgba(204,34,34,.6) !important;
+}
+
 /* Journal variant */
 .ic-journal-header {
   flex-direction: column; align-items: flex-start; gap: 2px;

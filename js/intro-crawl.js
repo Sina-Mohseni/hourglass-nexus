@@ -703,6 +703,49 @@ function showScenarioLore(title, text){
   };
 }
 
+/* ── Scenario lore modal with Accept / Back buttons ── */
+function showScenarioLoreChoice(title, text, onAccept){
+  var existing = document.getElementById("sc-lore-overlay");
+  if(existing) existing.remove();
+
+  var overlay = document.createElement("div");
+  overlay.id = "sc-lore-overlay";
+  overlay.className = "ic-modal-overlay";
+
+  overlay.innerHTML =
+    '<div class="ic-modal sc-lore-modal">' +
+      '<div class="ic-modal-header">' +
+        '<span class="ic-modal-logo">\u25C9</span>' +
+        '<span class="ic-modal-title">' + title.toUpperCase() + '</span>' +
+      '</div>' +
+      '<div class="ic-modal-body">' +
+        '<p>' + text + '</p>' +
+      '</div>' +
+      '<div class="sc-lore-actions">' +
+        '<button class="ic-modal-close sc-lore-back-btn">Retour</button>' +
+        '<button class="ic-modal-close sc-lore-accept-btn">Accepter le r\u00f4le</button>' +
+      '</div>' +
+    '</div>';
+
+  var scenarioOverlay = document.getElementById("scenario-choice");
+  (scenarioOverlay || document.body).appendChild(overlay);
+
+  setTimeout(function(){ overlay.classList.add("visible"); }, 20);
+
+  overlay.querySelector(".sc-lore-back-btn").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){ overlay.remove(); }, 400);
+  };
+
+  overlay.querySelector(".sc-lore-accept-btn").onclick = function(){
+    overlay.classList.remove("visible");
+    setTimeout(function(){
+      overlay.remove();
+      if(onAccept) onAccept();
+    }, 400);
+  };
+}
+
 /* ══════════ TOURNAMENT CONTRACT ══════════ */
 var CONTRACT_CONTENT = {
   connecte: {
@@ -1048,6 +1091,10 @@ function showScenarioChoice(onChosen){
     currentType = type;
     step2State = "circles";
 
+    // Ensure back button is visible on the circles screen
+    var _backBtn = document.getElementById("sc-back-btn");
+    if(_backBtn) _backBtn.style.display = "";
+
     // Set title
     if(step2Title){
       step2Title.textContent = (type === "connecte")
@@ -1095,59 +1142,59 @@ function showScenarioChoice(onChosen){
       label.className = "sc-circle-label";
       label.style.left = positions[i].left;
       label.style.top = positions[i].top;
-      label.innerHTML =
-        '<span class="sc-circle-label-text">' + s.name + '</span>' +
-        '<span class="sc-circle-label-plus">+</span>';
+      label.innerHTML = '<span class="sc-circle-label-text">' + s.name + '</span>';
       arena.appendChild(label);
 
-      // Click circle → select scenario → show contract preview page
-      div.onclick = function(){
-        var scenario = s.scenario;
-        window._chosenScenario = scenario;
-        step2State = "contract";
+      // Click circle → show scenario lore modal with accept/back buttons
+      div.onclick = (function(sc){
+        return function(){
+          showScenarioLoreChoice(sc.name, sc.lore, function onAccept(){
+            // Accepted → go to contract preview (no back from here)
+            var scenario = sc.scenario;
+            window._chosenScenario = scenario;
+            step2State = "contract";
 
-        // Remove all scenario circles and labels
-        arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
-        arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
+            // Remove all scenario circles and labels
+            arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
+            arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
-        // Update title
-        if(step2Title) step2Title.textContent = s.name;
-        if(subtitle) subtitle.textContent = "";
+            // Update title
+            if(step2Title) step2Title.textContent = sc.name;
+            if(subtitle) subtitle.textContent = "";
 
-        // Show contract preview page (portrait + name + title + contract icon)
-        showContractPreview(arena, persona, s, type, function(){
-          // Contract signed → remove preview, show guide placement
-          step2State = "guide";
-          arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+            // Hide back button during contract phase
+            if(backBtn) backBtn.style.display = "none";
 
-          if(step2Title) step2Title.textContent = "Place ton guide";
-          if(subtitle) subtitle.textContent = "Déplace le guide vers le cercle";
+            // Show contract preview page (portrait + name + title + contract icon)
+            showContractPreview(arena, persona, sc, type, function(){
+              // Contract signed → remove preview, show guide placement
+              step2State = "guide";
+              arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
 
-          // Create single target circle in center
-          var target = document.createElement("div");
-          target.className = "sc-circle";
-          target.setAttribute("data-scenario", scenario);
-          target.style.left = "50%";
-          target.style.top = "35%";
-          arena.appendChild(target);
+              if(step2Title) step2Title.textContent = "Place ton guide";
+              if(subtitle) subtitle.textContent = "Déplace le guide vers le cercle";
 
-          // Reveal guide
-          guide.style.display = "";
-          guide.style.left = "50%";
-          guide.style.top = "82%";
-          guide.classList.remove("sc-guide-awake");
-          if(guideLabel) guideLabel.textContent = "Endormi";
+              // Create single target circle in center
+              var target = document.createElement("div");
+              target.className = "sc-circle";
+              target.setAttribute("data-scenario", scenario);
+              target.style.left = "50%";
+              target.style.top = "35%";
+              arena.appendChild(target);
 
-          // Init drag for guide placement
-          initGuideDrag(scenario);
-        });
-      };
+              // Reveal guide
+              guide.style.display = "";
+              guide.style.left = "50%";
+              guide.style.top = "82%";
+              guide.classList.remove("sc-guide-awake");
+              if(guideLabel) guideLabel.textContent = "Endormi";
 
-      // Click on "+" → show lore modal
-      label.querySelector(".sc-circle-label-plus").onclick = function(e){
-        e.stopPropagation();
-        showScenarioLore(s.name, s.lore);
-      };
+              // Init drag for guide placement
+              initGuideDrag(scenario);
+            });
+          });
+        };
+      })(s);
     });
 
     // Transition from step 1
@@ -1186,14 +1233,8 @@ function showScenarioChoice(onChosen){
     }
   }
   if(backBtn) backBtn.onclick = function(){
-    if(step2State === "contract"){
-      // From contract preview → go back to scenario circles
-      cleanupArena();
-      goToStep2(currentType);
-    } else {
-      // From circles (or guide) → go back to step 1
-      goBackToStep1();
-    }
+    // From circles → go back to step 1
+    goBackToStep1();
   };
 
   if(btnConnecte) btnConnecte.onclick = function(){ goToStep2("connecte"); };
