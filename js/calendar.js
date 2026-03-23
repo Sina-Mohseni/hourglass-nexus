@@ -1,30 +1,28 @@
 "use strict";
 
-/* ══════════ CALENDAR SYSTEM ══════════ */
+/* ══════════ CALENDAR SYSTEM (Extelua) ══════════
+   Navigation par jour de jeu (1-750).
+   Mois = 50 jours, Semaine = 10 jours, Jour = 30 heures.
+   ════════════════════════════════════════════════ */
 var calView = "month"; // month | week | day
-var calDate = new Date(); // date courante de navigation
+var calNavDay = 1;      // jour de jeu courant pour la navigation
 var calSelectedEvent = null;
-
-var CAL_JOURS = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
-var CAL_JOURS_FULL = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
-var CAL_MOIS = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
 
 function getCalEvents(){ return (calendarData && calendarData.events) || [] }
 
-function getEventsForDate(y, m, d){
-  var ds = y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
-  return getCalEvents().filter(function(e){ return e.date === ds });
+function getEventsForDay(gameDay){
+  return getCalEvents().filter(function(e){ return e.gameDay === gameDay });
 }
 
 function initCalendar(){
-  /* Le calendrier est désormais ouvert via la boule Or (gold orb) */
+  var u = loadUser();
+  calNavDay = u.gameDay || 1;
 }
 
 function openCalendarPanel(){
   var html = buildCalendarHTML();
   setHeaderPanelContent(html);
   wireCalendarActions();
-  /* Ouvrir le header panel */
   var asm = document.getElementById("header-assembly");
   if(asm){
     asm.classList.add("snapping");
@@ -38,7 +36,6 @@ function openCalendarPanel(){
 function buildCalendarHTML(){
   if(calSelectedEvent) return buildCalendarEventDetail(calSelectedEvent);
   var h = '<div class="cal-wrap">';
-  /* Tabs */
   h += '<div class="cal-tabs">'
     + '<div class="cal-tab'+(calView==="month"?" active":"")+'" data-cv="month">Mois</div>'
     + '<div class="cal-tab'+(calView==="week"?" active":"")+'" data-cv="week">Semaine</div>'
@@ -51,77 +48,71 @@ function buildCalendarHTML(){
   return h;
 }
 
-/* ── MONTH VIEW ── */
+/* ── MONTH VIEW (50 jours = 5 semaines × 10 jours) ── */
 function buildCalMonth(){
-  var y = calDate.getFullYear(), m = calDate.getMonth();
-  var today = new Date();
-  var firstDay = new Date(y, m, 1);
-  var lastDay = new Date(y, m+1, 0);
-  var startDow = (firstDay.getDay()+6)%7; // Lun=0
-  var daysInMonth = lastDay.getDate();
-  var prevLast = new Date(y, m, 0).getDate();
+  var u = loadUser();
+  var todayDay = u.gameDay;
+  var ed = extDateFromDay(calNavDay);
+  var monthIdx = ed.month; // 0-14
+  var monthStart = monthIdx * EXT_DAYS_PER_MONTH + 1; // premier jour du mois (game day)
+  var season = EXT_SAISONS[ed.season];
 
   var h = '<div class="cal-nav">'
-    + '<button class="cal-nav-btn" data-cn="prev">‹</button>'
-    + '<div class="cal-nav-title">'+CAL_MOIS[m]+' '+y+'</div>'
-    + '<button class="cal-nav-btn" data-cn="next">›</button></div>';
-  h += '<div class="cal-weekdays">';
-  CAL_JOURS.forEach(function(j){ h += '<div class="cal-wd">'+j+'</div>' });
-  h += '</div><div class="cal-days">';
+    + '<button class="cal-nav-btn" data-cn="prev">\u2039</button>'
+    + '<div class="cal-nav-title">' + EXT_MOIS[monthIdx] + ' <span style="font-size:9px;opacity:.5">(' + season.icon + ' ' + season.name + ')</span></div>'
+    + '<button class="cal-nav-btn" data-cn="next">\u203a</button></div>';
 
-  // Jours mois précédent
-  for(var i=startDow-1; i>=0; i--){
-    var d = prevLast - i;
-    h += '<div class="cal-day other-month" data-cd="'+(m===0?y-1:y)+'-'+String(m===0?12:m).padStart(2,'0')+'-'+String(d).padStart(2,'0')+'">'+d+'</div>';
-  }
-  // Jours courants
-  for(var d=1; d<=daysInMonth; d++){
-    var isToday = (d===today.getDate() && m===today.getMonth() && y===today.getFullYear());
-    var evts = getEventsForDate(y, m, d);
+  // En-têtes des jours de la semaine (10 colonnes)
+  h += '<div class="cal-weekdays cal-weekdays-ext">';
+  EXT_JOURS_SHORT.forEach(function(j){ h += '<div class="cal-wd">'+j+'</div>' });
+  h += '</div><div class="cal-days cal-days-ext">';
+
+  // 50 jours dans le mois (5 semaines × 10 jours)
+  for(var d=1; d<=EXT_DAYS_PER_MONTH; d++){
+    var gd = monthStart + d - 1; // game day absolu
+    var isToday = (gd === todayDay);
+    var evts = getEventsForDay(gd);
     var cls = "cal-day"+(isToday?" today":"")+(evts.length?" has-events":"");
-    h += '<div class="'+cls+'" data-cd="'+y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')+'">'+d+'</div>';
-  }
-  // Jours mois suivant
-  var total = startDow + daysInMonth;
-  var fill = total <= 35 ? 35 - total : 42 - total;
-  for(var i=1; i<=fill; i++){
-    h += '<div class="cal-day other-month" data-cd="'+(m===11?y+1:y)+'-'+String(m===11?1:m+2).padStart(2,'0')+'-'+String(i).padStart(2,'0')+'">'+i+'</div>';
+    if(gd > todayDay) cls += " future";
+    h += '<div class="'+cls+'" data-gd="'+gd+'">'+d+'</div>';
   }
   h += '</div>';
 
-  // Events du jour sélectionné (aujourd'hui par défaut)
-  var selD = today.getMonth()===m && today.getFullYear()===y ? today.getDate() : 1;
-  var selEvts = getEventsForDate(y, m, selD);
+  // Events du jour sélectionné (aujourd'hui par défaut si dans ce mois)
+  var selDay = (todayDay >= monthStart && todayDay < monthStart + EXT_DAYS_PER_MONTH) ? todayDay : monthStart;
   h += '<div id="cal-month-events" style="margin-top:8px">';
-  h += buildEventsListMini(selEvts, y+'-'+String(m+1).padStart(2,'0')+'-'+String(selD).padStart(2,'0'));
+  h += buildEventsListMini(getEventsForDay(selDay), selDay);
   h += '</div>';
   return h;
 }
 
-/* ── WEEK VIEW ── */
+/* ── WEEK VIEW (10 jours) ── */
 function buildCalWeek(){
-  var today = new Date();
-  // Trouver le lundi de la semaine de calDate
-  var d = new Date(calDate);
-  var dow = (d.getDay()+6)%7;
-  d.setDate(d.getDate() - dow);
-  var monday = new Date(d);
+  var u = loadUser();
+  var todayDay = u.gameDay;
+  var ed = extDateFromDay(calNavDay);
+  // Premier jour de la semaine courante
+  var dayInMonth = ed.dayInMonth;
+  var weekStart = ed.day - ed.dayInWeek; // game day du premier jour de cette semaine
 
-  var mStr = CAL_MOIS[monday.getMonth()]+' '+monday.getFullYear();
+  var edStart = extDateFromDay(weekStart);
   var h = '<div class="cal-nav">'
-    + '<button class="cal-nav-btn" data-cn="prev">‹</button>'
-    + '<div class="cal-nav-title">Semaine du '+monday.getDate()+' '+mStr+'</div>'
-    + '<button class="cal-nav-btn" data-cn="next">›</button></div>';
+    + '<button class="cal-nav-btn" data-cn="prev">\u2039</button>'
+    + '<div class="cal-nav-title">Semaine ' + edStart.week + ' \u2014 ' + edStart.monthName + '</div>'
+    + '<button class="cal-nav-btn" data-cn="next">\u203a</button></div>';
+
   h += '<div class="cal-week-grid">';
-  for(var i=0; i<7; i++){
-    var cur = new Date(monday);
-    cur.setDate(monday.getDate()+i);
-    var isToday = (cur.toDateString()===today.toDateString());
-    var evts = getEventsForDate(cur.getFullYear(), cur.getMonth(), cur.getDate());
+  for(var i=0; i<EXT_DAYS_PER_WEEK; i++){
+    var gd = weekStart + i;
+    if(gd < 1) gd = 1;
+    if(gd > EXT_DAYS_PER_YEAR) gd = EXT_DAYS_PER_YEAR;
+    var isToday = (gd === todayDay);
+    var edCur = extDateFromDay(gd);
+    var evts = getEventsForDay(gd);
     var cls = "cal-week-day"+(isToday?" today":"");
-    h += '<div class="'+cls+'" data-cd="'+cur.getFullYear()+'-'+String(cur.getMonth()+1).padStart(2,'0')+'-'+String(cur.getDate()).padStart(2,'0')+'">'
-      + '<div class="cal-week-day-label"><div class="cal-week-day-name">'+CAL_JOURS[i]+'</div>'
-      + '<div class="cal-week-day-num">'+cur.getDate()+'</div></div>'
+    h += '<div class="'+cls+'" data-gd="'+gd+'">'
+      + '<div class="cal-week-day-label"><div class="cal-week-day-name">'+edCur.dayShort+'</div>'
+      + '<div class="cal-week-day-num">'+edCur.dayInMonth+'</div></div>'
       + '<div class="cal-week-events">';
     evts.forEach(function(ev){
       var pe = getPersonaById(ev.persona);
@@ -132,27 +123,27 @@ function buildCalWeek(){
         + (pe && pe.avatar ? '<img class="cal-ev-avatar" src="'+esc(pe.avatar)+'">' : '')
         + '</div>';
     });
-    if(!evts.length) h += '<div style="font-size:9px;color:var(--bone-dim);opacity:.4;font-style:italic">—</div>';
+    if(!evts.length) h += '<div style="font-size:9px;color:var(--bone-dim);opacity:.4;font-style:italic">\u2014</div>';
     h += '</div></div>';
   }
   h += '</div>';
   return h;
 }
 
-/* ── DAY VIEW ── */
+/* ── DAY VIEW (30 heures) ── */
 function buildCalDay(){
-  var today = new Date();
-  var d = calDate;
-  var isToday = (d.toDateString()===today.toDateString());
-  var dayName = CAL_JOURS_FULL[(d.getDay()+6)%7];
-  var title = dayName+' '+d.getDate()+' '+CAL_MOIS[d.getMonth()]+' '+d.getFullYear();
+  var u = loadUser();
+  var todayDay = u.gameDay;
+  var isToday = (calNavDay === todayDay);
+  var ed = extDateFromDay(calNavDay);
+  var title = ed.dayName + ' ' + ed.dayInMonth + ' ' + ed.monthName;
 
   var h = '<div class="cal-nav">'
-    + '<button class="cal-nav-btn" data-cn="prev">‹</button>'
+    + '<button class="cal-nav-btn" data-cn="prev">\u2039</button>'
     + '<div class="cal-nav-title">'+title+'</div>'
-    + '<button class="cal-nav-btn" data-cn="next">›</button></div>';
+    + '<button class="cal-nav-btn" data-cn="next">\u203a</button></div>';
 
-  var evts = getEventsForDate(d.getFullYear(), d.getMonth(), d.getDate());
+  var evts = getEventsForDay(calNavDay);
   var evtByHour = {};
   evts.forEach(function(e){
     var hr = parseInt((e.time||"0").split(":")[0]);
@@ -160,9 +151,9 @@ function buildCalDay(){
     evtByHour[hr].push(e);
   });
 
-  var nowHr = isToday ? today.getHours() : -1;
+  var nowHr = isToday ? u.gameHour : -1;
   h += '<div class="cal-day-hours">';
-  for(var hr=0; hr<24; hr++){
+  for(var hr=0; hr<EXT_HOURS_PER_DAY; hr++){
     var hrEvts = evtByHour[hr] || [];
     var cls = "cal-hour-row"+(hrEvts.length?" has-event":"")+(hr===nowHr?" current-hour":"");
     h += '<div class="'+cls+'">'
@@ -182,10 +173,9 @@ function buildCalDay(){
   return h;
 }
 
-/* ── Events mini list for month view ── */
-function buildEventsListMini(evts, dateStr){
+/* ── Events mini list ── */
+function buildEventsListMini(evts, gameDay){
   var h = '';
-  // Calendar events
   if(evts.length){
     evts.forEach(function(ev){
       var pe = getPersonaById(ev.persona);
@@ -198,22 +188,15 @@ function buildEventsListMini(evts, dateStr){
     });
   }
 
-  // Game day news — convert dateStr (YYYY-MM-DD) to game day number
-  if(dateStr){
-    var parts = dateStr.split("-");
-    var y = parseInt(parts[0]), m = parseInt(parts[1]), d = parseInt(parts[2]);
-    var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
-    var gameDay = d;
-    for(var i = 0; i < m - 1; i++) gameDay += daysInMonth[i];
-
+  // Gazette du jour (news)
+  if(gameDay){
     var u = loadUser();
     if(gameDay <= u.gameDay){
-      // Past or current day — show news
       var news = generateDailyNews(gameDay);
-      var maxHour = (gameDay === u.gameDay) ? u.gameHour : 24;
+      var maxHour = (gameDay === u.gameDay) ? u.gameHour : EXT_HOURS_PER_DAY;
       var visible = news.filter(function(n){ return n.hour <= maxHour });
       if(visible.length){
-        h += '<div style="font-size:9px;font-weight:600;color:var(--gold-light);padding:6px 0 3px;letter-spacing:.5px">📰 GAZETTE DU JOUR</div>';
+        h += '<div style="font-size:9px;font-weight:600;color:var(--gold-light);padding:6px 0 3px;letter-spacing:.5px">\uD83D\uDCF0 GAZETTE DU JOUR</div>';
         visible.forEach(function(n){
           h += '<div style="display:flex;gap:4px;padding:3px 0;font-size:9px;color:var(--bone-dim)">'
             + '<span>'+n.icon+'</span><span style="color:rgba(201,160,74,.5)">'+String(n.hour).padStart(2,"0")+'h</span>'
@@ -221,36 +204,34 @@ function buildEventsListMini(evts, dateStr){
         });
       }
     } else {
-      // Future day — not yet arrived
-      h += '<div style="text-align:center;font-size:10px;color:var(--bone-dim);opacity:.4;padding:8px;font-style:italic">📅 Ce jour n\'est pas encore arrivé dans votre voyage.</div>';
+      h += '<div style="text-align:center;font-size:10px;color:var(--bone-dim);opacity:.4;padding:8px;font-style:italic">\uD83D\uDCC5 Ce jour n\'est pas encore arriv\u00e9 dans votre voyage.</div>';
     }
   }
 
-  if(!h) h = '<div style="text-align:center;font-size:10px;color:var(--bone-dim);opacity:.5;padding:8px;font-style:italic">Aucun événement</div>';
+  if(!h) h = '<div style="text-align:center;font-size:10px;color:var(--bone-dim);opacity:.5;padding:8px;font-style:italic">Aucun \u00e9v\u00e9nement</div>';
   return h;
 }
 
 /* ── Event detail view ── */
 function buildCalendarEventDetail(ev){
   var pe = getPersonaById(ev.persona);
-  var d = ev.date ? ev.date.split("-") : ["","",""];
-  var mIdx = parseInt(d[1])-1;
-  var dateStr = d[2]+' '+(CAL_MOIS[mIdx]||"")+' '+d[0];
+  var ed = extDateFromDay(ev.gameDay || 1);
+  var dateStr = ed.dayInMonth + ' ' + ed.monthName;
   var h = '<div class="cal-event-detail">';
   h += '<div class="cal-ev-detail-head">';
   if(pe && pe.avatar) h += '<img class="cal-ev-detail-avatar" src="'+esc(pe.avatar)+'" style="border-color:'+(ev.color||"var(--gold-dark)")+'">';
   else h += '<div class="cal-ev-detail-icon">'+ev.icon+'</div>';
   h += '<div class="cal-ev-detail-info">'
     + '<div class="cal-ev-detail-title" style="color:'+(ev.color||"var(--gold-light)")+'">'+esc(ev.title)+'</div>'
-    + '<div class="cal-ev-detail-meta">'+ev.icon+' '+(ev.time||"")+' — '+dateStr
-    + (pe ? ' — '+esc(pe.name) : '')+'</div></div></div>';
+    + '<div class="cal-ev-detail-meta">'+ev.icon+' '+(ev.time||"")+' \u2014 '+dateStr
+    + (pe ? ' \u2014 '+esc(pe.name) : '')+'</div></div></div>';
   h += '<div class="cal-ev-detail-desc">'+esc(ev.desc)+'</div>';
   if(pe){
     h += '<div style="margin-top:12px;padding:10px;background:var(--dark-stone);border:var(--border-stone);border-radius:var(--radius)">'
       + '<div style="font-family:var(--font-heading);font-size:11px;font-weight:600;color:'+(ev.color||"var(--gold-light)")+';margin-bottom:4px">'+esc(pe.name)+'</div>'
       + '<div style="font-size:10px;color:var(--bone-dim)">'+esc(pe.title)+'</div></div>';
   }
-  h += '<button class="dr-team-btn" id="cal-back" style="margin-top:10px;background:var(--dark-stone);color:var(--bone-dim)">← Retour au calendrier</button>';
+  h += '<button class="dr-team-btn" id="cal-back" style="margin-top:10px;background:var(--dark-stone);color:var(--bone-dim)">\u2190 Retour au calendrier</button>';
   h += '</div>';
   return h;
 }
@@ -272,24 +253,33 @@ function wireCalendarActions(){
   body.querySelectorAll(".cal-nav-btn").forEach(function(btn){
     btn.onclick = function(){
       var dir = btn.getAttribute("data-cn") === "prev" ? -1 : 1;
-      if(calView === "month") calDate.setMonth(calDate.getMonth() + dir);
-      else if(calView === "week") calDate.setDate(calDate.getDate() + 7 * dir);
-      else calDate.setDate(calDate.getDate() + dir);
+      if(calView === "month"){
+        // Naviguer par mois (±50 jours)
+        calNavDay += dir * EXT_DAYS_PER_MONTH;
+      } else if(calView === "week"){
+        // Naviguer par semaine (±10 jours)
+        calNavDay += dir * EXT_DAYS_PER_WEEK;
+      } else {
+        // Naviguer par jour
+        calNavDay += dir;
+      }
+      // Borner entre 1 et 750
+      if(calNavDay < 1) calNavDay = 1;
+      if(calNavDay > EXT_DAYS_PER_YEAR) calNavDay = EXT_DAYS_PER_YEAR;
       calSelectedEvent = null;
       openCalendarPanel();
     };
   });
 
   // Day click in month view → show events
-  body.querySelectorAll(".cal-day:not(.other-month)").forEach(function(cell){
+  body.querySelectorAll(".cal-day").forEach(function(cell){
     cell.onclick = function(){
       body.querySelectorAll(".cal-day").forEach(function(c){ c.classList.remove("selected") });
       cell.classList.add("selected");
-      var parts = cell.getAttribute("data-cd").split("-");
-      var evts = getEventsForDate(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+      var gd = parseInt(cell.getAttribute("data-gd"));
+      var evts = getEventsForDay(gd);
       var area = document.getElementById("cal-month-events");
-      if(area) area.innerHTML = buildEventsListMini(evts, cell.getAttribute("data-cd"));
-      // Re-wire event chips inside
+      if(area) area.innerHTML = buildEventsListMini(evts, gd);
       if(area) wireEventChips(area);
     };
   });
@@ -298,8 +288,7 @@ function wireCalendarActions(){
   body.querySelectorAll(".cal-week-day").forEach(function(row){
     row.onclick = function(e){
       if(e.target.closest(".cal-event-chip")) return;
-      var parts = row.getAttribute("data-cd").split("-");
-      calDate = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+      calNavDay = parseInt(row.getAttribute("data-gd"));
       calView = "day";
       calSelectedEvent = null;
       openCalendarPanel();
@@ -335,4 +324,3 @@ function wireEventChips(container){
     };
   });
 }
-

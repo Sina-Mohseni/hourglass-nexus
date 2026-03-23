@@ -240,40 +240,18 @@ function buildWorldmapPage(){
 
 /* ══════════ WORLDMAP FREE DRAG + TRAIL + TIME ══════════ */
 function getGameDate(day, hour){
-  // Standard calendar, 1 year = 365 days, starts Jan 1
-  var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
-  var monthNames = ["Janvier","Février","Mars","Avril","Mai","Juin",
-                    "Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-  var d = ((day - 1) % 365) + 1;
-  var m = 0;
-  var rem = d;
-  while(m < 12 && rem > daysInMonth[m]){ rem -= daysInMonth[m]; m++ }
-  if(m >= 12) m = 11;
+  var ed = extDateFromDay(day);
   var hh = (typeof hour === "number") ? String(hour).padStart(2,"0") + "h" : "";
-  return rem + " " + monthNames[m] + (hh ? " — " + hh : "");
+  return ed.dayInMonth + " " + ed.monthName + (hh ? " — " + hh : "");
 }
 
 function getGameDateShort(day, hour){
-  var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
-  var monthShort = ["Jan","Fév","Mar","Avr","Mai","Jun","Jul","Aoû","Sep","Oct","Nov","Déc"];
-  var d = ((day - 1) % 365) + 1;
-  var m = 0, rem = d;
-  while(m < 12 && rem > daysInMonth[m]){ rem -= daysInMonth[m]; m++ }
-  if(m >= 12) m = 11;
-  return rem + " " + monthShort[m] + " " + String(hour).padStart(2,"0") + "h";
+  var ed = extDateFromDay(day);
+  return ed.dayInMonth + " " + ed.monthShort + " " + String(hour).padStart(2,"0") + "h";
 }
 
 function advanceGameTime(hours){
-  if(hours <= 0) return;
-  var u = loadUser();
-  u.gameHour += hours;
-  while(u.gameHour >= 24){
-    u.gameHour -= 24;
-    u.gameDay++;
-  }
-  // Cap at 365 days
-  if(u.gameDay > 365) u.gameDay = 365;
-  saveUser(u);
+  extAdvanceTime(hours);
   updateTimeLabelOnMap();
 }
 
@@ -290,8 +268,8 @@ function calcTravelTime(dist){
   if(dist < 0.5) return {days:0, hours:0, totalHours:0};
   var hours = Math.max(1, Math.round(dist * 1.5));
   return {
-    days: Math.floor(hours / 24),
-    hours: hours % 24,
+    days: Math.floor(hours / EXT_HOURS_PER_DAY),
+    hours: hours % EXT_HOURS_PER_DAY,
     totalHours: hours
   };
 }

@@ -2,7 +2,7 @@
   "events": [
     {
       "id": "ev01",
-      "date": "2026-03-15",
+      "gameDay": 1,
       "time": "10:00",
       "title": "Assemblée du Nexus",
       "desc": "Grande réunion au Sanctuaire. Toutes les personas sont convoquées pour discuter de l'avenir des Épreuves.",
@@ -12,7 +12,7 @@
     },
     {
       "id": "ev02",
-      "date": "2026-03-15",
+      "gameDay": 1,
       "time": "14:00",
       "title": "Cours de stratégie — MINUS",
       "desc": "Miro dispense un atelier de tactiques avancées pour le jeu MINUS. Ouvert à tous les voyageurs.",
@@ -22,7 +22,7 @@
     },
     {
       "id": "ev03",
-      "date": "2026-03-16",
+      "gameDay": 2,
       "time": "09:00",
       "title": "Expédition dans les Ruines",
       "desc": "Brakk organise une expédition dans les ruines de Kael-Norath. Équipement recommandé.",
@@ -32,7 +32,7 @@
     },
     {
       "id": "ev04",
-      "date": "2026-03-17",
+      "gameDay": 3,
       "time": "20:00",
       "title": "Soirée Taverne — Contes",
       "desc": "Lyre raconte les légendes oubliées de l'ère des Sabliers au coin du feu.",
@@ -42,7 +42,7 @@
     },
     {
       "id": "ev05",
-      "date": "2026-03-18",
+      "gameDay": 4,
       "time": "11:00",
       "title": "Marché Ambulant de Zara",
       "desc": "Zara ouvre son étal d'objets rares et d'éléments introuvables. Premier arrivé, premier servi.",
@@ -52,7 +52,7 @@
     },
     {
       "id": "ev06",
-      "date": "2026-03-19",
+      "gameDay": 5,
       "time": "15:00",
       "title": "Duel au Chroma Dices",
       "desc": "Vex défie quiconque ose l'affronter. Le perdant offre un artefact.",
@@ -62,7 +62,7 @@
     },
     {
       "id": "ev07",
-      "date": "2026-03-20",
+      "gameDay": 6,
       "time": "08:00",
       "title": "Équinoxe — Rituel de Naïa",
       "desc": "Naïa invoque les forces de l'eau au lever du soleil. Un événement rare et sacré.",
@@ -72,7 +72,7 @@
     },
     {
       "id": "ev08",
-      "date": "2026-03-21",
+      "gameDay": 7,
       "time": "13:00",
       "title": "Forge d'Iris",
       "desc": "Iris ouvre sa forge légendaire. Apportez vos matériaux bruts pour créer un objet unique.",
@@ -82,7 +82,7 @@
     },
     {
       "id": "ev09",
-      "date": "2026-03-22",
+      "gameDay": 8,
       "time": "16:00",
       "title": "Tournoi Chess & Cards",
       "desc": "Kordo organise le tournoi hebdomadaire. Les vainqueurs gagnent des Sablons et de la gloire.",
@@ -92,7 +92,7 @@
     },
     {
       "id": "ev10",
-      "date": "2026-03-23",
+      "gameDay": 9,
       "time": "19:00",
       "title": "Mystères d'Orphéa",
       "desc": "Orphéa révèle un nouveau chapitre de la prophétie du Nexus à la Taverne.",
@@ -102,7 +102,7 @@
     },
     {
       "id": "ev11",
-      "date": "2026-03-25",
+      "gameDay": 11,
       "time": "10:00",
       "title": "Entraînement avec Solen",
       "desc": "Solen propose un entraînement de survie dans les Marais Noirs. Courage requis.",
@@ -112,7 +112,7 @@
     },
     {
       "id": "ev12",
-      "date": "2026-03-28",
+      "gameDay": 14,
       "time": "12:00",
       "title": "Festival de Tika",
       "desc": "Tika organise un festival de danse et de musique dans la cour du Nexus.",
@@ -122,7 +122,7 @@
     },
     {
       "id": "ev13",
-      "date": "2026-03-30",
+      "gameDay": 16,
       "time": "17:00",
       "title": "Conférence d'Elrand",
       "desc": "Elrand Avicenna partage ses découvertes sur les dimensions cachées du Nexus.",
@@ -132,7 +132,7 @@
     },
     {
       "id": "ev14",
-      "date": "2026-04-01",
+      "gameDay": 20,
       "time": "00:00",
       "title": "Poisson du Nexus",
       "desc": "Pipo prépare ses farces annuelles. Méfiez-vous de tout ce qui brille aujourd'hui.",
@@ -142,7 +142,7 @@
     },
     {
       "id": "ev15",
-      "date": "2026-04-05",
+      "gameDay": 25,
       "time": "14:00",
       "title": "Éclipse — Veille de Shade",
       "desc": "Shade surveille les ombres qui s'allongent. Un passage secret pourrait s'ouvrir.",
@@ -152,7 +152,7 @@
     },
     {
       "id": "ev16",
-      "date": "2026-04-10",
+      "gameDay": 30,
       "time": "11:00",
       "title": "Étude des Runes",
       "desc": "Rune déchiffre d'anciens glyphes trouvés dans les catacombes. Aide bienvenue.",
@@ -162,7 +162,7 @@
     },
     {
       "id": "ev17",
-      "date": "2026-02-28",
+      "gameDay": 10,
       "time": "18:00",
       "title": "Blitz Challenge",
       "desc": "Blitz lance son défi éclair : finir 3 parties de MINUS en moins de 10 minutes.",
@@ -172,7 +172,7 @@
     },
     {
       "id": "ev18",
-      "date": "2026-03-14",
+      "gameDay": 15,
       "time": "21:00",
       "title": "Veillée de Cendre",
       "desc": "Cendre partage les souvenirs des mondes disparus autour des braises mourantes.",
