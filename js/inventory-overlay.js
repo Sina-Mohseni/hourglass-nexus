@@ -226,7 +226,7 @@ function showInventoryOverlay(onClose){
 
   // ── Wire: Inventory modal ──
   document.getElementById("inv-open-inventory-btn").onclick = function(){
-    openInventoryModal(misc);
+    openInventoryModal(misc, equip);
   };
 
   // ── Wire: Equipment modal ──
@@ -257,8 +257,8 @@ function showInventoryOverlay(onClose){
   };
 }
 
-/* ══════════ INVENTORY MODAL (consommables, quêtes, divers) ══════════ */
-function openInventoryModal(misc){
+/* ══════════ INVENTORY MODAL ══════════ */
+function openInventoryModal(misc, equip){
   var modal = document.createElement("div");
   modal.className = "inv-modal-backdrop";
 
@@ -269,13 +269,43 @@ function openInventoryModal(misc){
 
   h += '<div class="inv-tabs-section">';
   h += '<div class="inv-tabs">';
-  h += '<button class="inv-tab active" data-tab="m-consommables">Consommables</button>';
+  h += '<button class="inv-tab active" data-tab="m-equipement">\u00c9quipement</button>';
+  h += '<button class="inv-tab" data-tab="m-consommables">Consommables</button>';
   h += '<button class="inv-tab" data-tab="m-quetes">Qu\u00eates</button>';
   h += '<button class="inv-tab" data-tab="m-divers">Divers</button>';
   h += '</div>';
 
+  // Equipment tab — accordion per slot type
+  h += '<div class="inv-tab-content active" id="inv-tc-m-equipement">';
+  h += '<div class="eq-drawers">';
+  for(var e = 0; e < PRE_INV_EQUIP_SLOTS.length; e++){
+    var sl = PRE_INV_EQUIP_SLOTS[e];
+    var it = equip[sl.key];
+    if(!it) continue;
+    h += '<div class="eq-drawer" data-drawer="' + sl.key + '">';
+    h += '<button class="eq-drawer-header">'
+      + '<span class="eq-drawer-icon" style="color:' + sl.color + '">' + sl.icon + '</span>'
+      + '<span class="eq-drawer-title">' + esc(sl.label) + '</span>'
+      + '<span class="eq-drawer-arrow">\u25BE</span>'
+      + '</button>';
+    h += '<div class="eq-drawer-content">';
+    h += '<div class="eq-item">'
+      + '<div class="eq-item-icon">' + it.icon + '</div>'
+      + '<div class="eq-item-info">'
+      + '<div class="eq-item-name">' + esc(it.name) + '</div>'
+      + '<div class="eq-item-type">' + esc(sl.label) + '</div>'
+      + '</div>'
+      + '<div class="eq-item-actions">'
+      + '<button class="eq-btn-equip inv-eq-equip" data-eq-key="' + sl.key + '" title="\u00c9quiper">\u2714</button>'
+      + '<button class="eq-btn-view inv-eq-view" data-eq-key="' + sl.key + '" title="Voir">\uD83D\uDD0D</button>'
+      + '</div>'
+      + '</div>';
+    h += '</div></div>';
+  }
+  h += '</div></div>';
+
   // Consumables
-  h += '<div class="inv-tab-content active" id="inv-tc-m-consommables">';
+  h += '<div class="inv-tab-content" id="inv-tc-m-consommables">';
   h += '<div class="inv-items-grid">';
   h += '<div class="inv-item inv-item-consumable" data-inv-idx="conso-0">';
   h += '<div class="inv-item-icon">\uD83D\uDC8A</div>';
@@ -366,6 +396,33 @@ function openInventoryModal(misc){
     };
   });
 
+  // ── Wire: Equipment accordion toggles ──
+  modal.querySelectorAll(".eq-drawer-header").forEach(function(hdr){
+    hdr.onclick = function(){
+      hdr.closest(".eq-drawer").classList.toggle("open");
+    };
+  });
+
+  // ── Wire: Equipment equip buttons ──
+  modal.querySelectorAll(".inv-eq-equip").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var itemEl = btn.closest(".eq-item");
+      if(itemEl) itemEl.classList.add("eq-item-equipped");
+    };
+  });
+
+  // ── Wire: Equipment view buttons ──
+  modal.querySelectorAll(".inv-eq-view").forEach(function(btn){
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      var key = btn.getAttribute("data-eq-key");
+      var item = equip[key];
+      var slotDef = PRE_INV_EQUIP_SLOTS.filter(function(s){ return s.key === key; })[0];
+      if(item && slotDef) showItemDetailModal(item, slotDef);
+    };
+  });
+
   function closeModal(){
     modal.classList.remove("visible");
     setTimeout(function(){ modal.remove(); }, 300);
@@ -398,7 +455,6 @@ function openEquipmentModal(u, scenario, equip){
       + '<span class="eq-slot-label">' + esc(sl.label) + '</span></div>';
   }
   h += '</div>';
-  h += '<div class="eq-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
   h += '</div>';
 
   h += '</div>';
