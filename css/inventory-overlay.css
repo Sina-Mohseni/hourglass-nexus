@@ -51,7 +51,12 @@
   box-shadow: 0 0 12px rgba(100,140,200,.15);
 }
 .inv-action-icon-btn:active { transform: scale(.93) }
-.inv-continue-btn { flex: 1 }
+.inv-continue-icon {
+  flex: 1;
+  background: linear-gradient(145deg, rgba(168,132,42,.25), rgba(120,90,20,.35));
+  border-color: rgba(168,132,42,.35);
+  color: var(--gold-light);
+}
 
 /* ═══════════ INVENTORY MODAL (paperdoll + tabs) ═══════════ */
 .inv-modal-backdrop {
