@@ -175,10 +175,52 @@ var NIGHT_DIALOGUES = {
   }
 };
 
-/* ── Pick a random NPC and show the dialogue scene ── */
+/* ── Night intro narration paragraphs ── */
+var NIGHT_INTRO_PARAGRAPHS = [
+  "La cérémonie est terminée. Les derniers échos de la foule se sont tus. Le campement s'installe dans un silence que seul le vent ose briser.",
+  "Au-dessus de toi, deux lunes se lèvent — l'une pâle, l'autre cuivrée — projetant des ombres longues entre les tentes des candidats.",
+  "Tu ne dors pas. Impossible. Demain, les soleils se lèveront sur le premier jour du Tournoi. Demain, tout change.",
+  "Tu t'assieds à l'écart, face aux braises mourantes d'un feu de camp. L'air est frais. Le silence est épais. Et puis…",
+  "Des pas. Quelqu'un approche dans l'obscurité."
+];
+
+/* ── Fade out all site music ── */
+function _ndlgFadeAllMusic(cb){
+  var ids = ["bg-music","ic-music","extelua-music"];
+  var pending = 0;
+  ids.forEach(function(id){
+    var a = document.getElementById(id);
+    if(a && !a.paused){
+      pending++;
+      audioFade(a, 0, 1200, function(){
+        a.pause();
+        a.volume = id === "bg-music" ? 0.4 : 0.5;
+        pending--;
+        if(pending === 0 && cb) cb();
+      });
+    }
+  });
+  if(pending === 0 && cb) setTimeout(cb, 100);
+}
+
+/* ── Start scenario music for night intro ── */
+function _ndlgStartScenarioMusic(){
+  var sc = window._chosenScenario || "lambda";
+  var src = (typeof SC_MUSIC !== "undefined" && SC_MUSIC[sc]) ? SC_MUSIC[sc] : "assets/music/emissaire.mp3";
+  var extAudio = document.getElementById("extelua-music");
+  var extSrc = document.getElementById("extelua-music-src");
+  if(!extAudio) return;
+  if(extSrc) extSrc.src = src;
+  extAudio.load();
+  extAudio.currentTime = 0;
+  extAudio.volume = 0;
+  extAudio.play().catch(function(){});
+  audioFade(extAudio, 0.35, 3000);
+}
+
+/* ── Show cinematic night intro, then NPC dialogue ── */
 function showNightDialogue(onDone){
   var personas = getNonGuidePersonas();
-  // Only use personas that have dialogue trees
   var available = personas.filter(function(p){ return NIGHT_DIALOGUES[p.id] });
   if(available.length === 0){ if(onDone) onDone(); return; }
 
@@ -190,12 +232,15 @@ function showNightDialogue(onDone){
   overlay.id = "night-dlg-overlay";
   overlay.className = "ndlg-overlay";
 
-  // Night sky ambiance
   overlay.innerHTML =
     '<div class="ndlg-stars"></div>'
-    + '<div class="ndlg-scene">'
+    + '<div class="ndlg-intro-scene" id="ndlg-intro-scene">'
+    +   '<div class="ndlg-intro-text" id="ndlg-intro-text"></div>'
+    +   '<div class="ndlg-tap-hint" id="ndlg-intro-tap">\u25BC</div>'
+    + '</div>'
+    + '<div class="ndlg-scene ndlg-scene-hidden" id="ndlg-dialogue-scene">'
     +   '<div class="ndlg-header">'
-    +     '<div class="ndlg-setting">Campement — Veille du Tournoi</div>'
+    +     '<div class="ndlg-setting">Campement \u2014 Veille du Tournoi</div>'
     +   '</div>'
     +   '<div class="ndlg-portrait-area">'
     +     '<div class="ndlg-portrait" id="ndlg-portrait">'
@@ -212,103 +257,157 @@ function showNightDialogue(onDone){
   var screen = document.querySelector(".screen");
   (screen || document.body).appendChild(overlay);
 
-  var bubble = overlay.querySelector("#ndlg-bubble");
-  var choicesEl = overlay.querySelector("#ndlg-choices");
-  var tapHint = overlay.querySelector("#ndlg-tap-hint");
+  /* ═══════ PHASE 1 : Cinematic intro narration ═══════ */
+  var introScene = overlay.querySelector("#ndlg-intro-scene");
+  var introText  = overlay.querySelector("#ndlg-intro-text");
+  var introTap   = overlay.querySelector("#ndlg-intro-tap");
+  var paraIdx = 0;
 
-  var beatIdx = -1; // -1 = greeting
-
-  function showText(html){
-    bubble.style.opacity = "0";
-    bubble.style.transform = "translateY(8px)";
-    setTimeout(function(){
-      bubble.innerHTML = '<span class="ndlg-npc-tag" style="color:'+esc(npc.color)+'">'+esc(npc.name)+'</span> ' + html;
-      bubble.style.transition = "opacity .4s, transform .4s";
-      bubble.style.opacity = "1";
-      bubble.style.transform = "translateY(0)";
-    }, 150);
-  }
-
-  function showChoices(choices){
-    choicesEl.innerHTML = "";
-    choicesEl.style.opacity = "0";
-    setTimeout(function(){
-      choices.forEach(function(c, i){
-        var btn = document.createElement("button");
-        btn.className = "ndlg-choice-btn";
-        btn.style.animationDelay = (i * 0.1) + "s";
-        btn.innerHTML = '<span class="ndlg-choice-arrow">\u25B8</span> ' + esc(c.text);
-        btn.onclick = function(){
-          // Disable all buttons
-          choicesEl.querySelectorAll("button").forEach(function(b){ b.disabled = true; b.classList.add("ndlg-choice-used") });
-          btn.classList.add("ndlg-choice-selected");
-          // Show NPC reply
-          setTimeout(function(){
-            choicesEl.style.opacity = "0";
-            showText(esc(c.reply));
-            // Then advance to next beat on tap
-            tapHint.classList.add("visible");
-            var advance = function(){
-              overlay.removeEventListener("click", advance);
-              tapHint.classList.remove("visible");
-              nextBeat();
-            };
-            setTimeout(function(){
-              overlay.addEventListener("click", advance);
-            }, 400);
-          }, 600);
-        };
-        choicesEl.appendChild(btn);
-      });
-      choicesEl.style.transition = "opacity .4s";
-      choicesEl.style.opacity = "1";
-    }, 500);
-  }
-
-  function nextBeat(){
-    beatIdx++;
-    if(beatIdx >= tree.beats.length){
-      // End: fade out
-      overlay.classList.add("ndlg-fading");
+  function showIntroParagraph(idx){
+    if(idx >= NIGHT_INTRO_PARAGRAPHS.length){
+      // Transition to dialogue phase
+      introScene.classList.add("ndlg-intro-fading");
       setTimeout(function(){
-        overlay.remove();
-        if(onDone) onDone();
-      }, 800);
+        introScene.style.display = "none";
+        _startDialoguePhase();
+      }, 700);
       return;
     }
+    introText.style.opacity = "0";
+    introText.style.transform = "translateY(10px)";
+    setTimeout(function(){
+      introText.textContent = NIGHT_INTRO_PARAGRAPHS[idx];
+      introText.style.transition = "opacity .6s, transform .6s";
+      introText.style.opacity = "1";
+      introText.style.transform = "translateY(0)";
+      introTap.classList.add("visible");
+    }, 200);
+  }
 
-    var beat = tree.beats[beatIdx];
-    showText(esc(beat.npc));
+  function advanceIntro(){
+    overlay.removeEventListener("click", advanceIntro);
+    introTap.classList.remove("visible");
+    paraIdx++;
+    showIntroParagraph(paraIdx);
+    setTimeout(function(){
+      overlay.addEventListener("click", advanceIntro);
+    }, 400);
+  }
 
-    if(beat.choices){
-      tapHint.classList.remove("visible");
-      showChoices(beat.choices);
-    } else {
-      // Final text, tap to finish
-      tapHint.classList.add("visible");
-      var finish = function(){
-        overlay.removeEventListener("click", finish);
-        tapHint.classList.remove("visible");
+  // Fade all existing music, then start intro
+  requestAnimationFrame(function(){
+    overlay.classList.add("visible");
+
+    _ndlgFadeAllMusic(function(){
+      // Start scenario music softly
+      setTimeout(_ndlgStartScenarioMusic, 800);
+    });
+
+    setTimeout(function(){
+      showIntroParagraph(0);
+      setTimeout(function(){
+        overlay.addEventListener("click", advanceIntro);
+      }, 600);
+    }, 800);
+  });
+
+  /* ═══════ PHASE 2 : NPC Dialogue ═══════ */
+  function _startDialoguePhase(){
+    var dlgScene = overlay.querySelector("#ndlg-dialogue-scene");
+    dlgScene.classList.remove("ndlg-scene-hidden");
+
+    var bubble = overlay.querySelector("#ndlg-bubble");
+    var choicesEl = overlay.querySelector("#ndlg-choices");
+    var tapHint = overlay.querySelector("#ndlg-tap-hint");
+    var beatIdx = -1;
+
+    function showText(html){
+      bubble.style.opacity = "0";
+      bubble.style.transform = "translateY(8px)";
+      setTimeout(function(){
+        bubble.innerHTML = '<span class="ndlg-npc-tag" style="color:'+esc(npc.color)+'">'+esc(npc.name)+'</span> ' + html;
+        bubble.style.transition = "opacity .4s, transform .4s";
+        bubble.style.opacity = "1";
+        bubble.style.transform = "translateY(0)";
+      }, 150);
+    }
+
+    function showChoices(choices){
+      choicesEl.innerHTML = "";
+      choicesEl.style.opacity = "0";
+      setTimeout(function(){
+        choices.forEach(function(c, i){
+          var btn = document.createElement("button");
+          btn.className = "ndlg-choice-btn";
+          btn.style.animationDelay = (i * 0.1) + "s";
+          btn.innerHTML = '<span class="ndlg-choice-arrow">\u25B8</span> ' + esc(c.text);
+          btn.onclick = function(e){
+            e.stopPropagation();
+            choicesEl.querySelectorAll("button").forEach(function(b){ b.disabled = true; b.classList.add("ndlg-choice-used") });
+            btn.classList.add("ndlg-choice-selected");
+            setTimeout(function(){
+              choicesEl.style.opacity = "0";
+              showText(esc(c.reply));
+              tapHint.classList.add("visible");
+              var advance = function(ev){
+                if(ev.target.closest(".ndlg-choice-btn")) return;
+                overlay.removeEventListener("click", advance);
+                tapHint.classList.remove("visible");
+                nextBeat();
+              };
+              setTimeout(function(){
+                overlay.addEventListener("click", advance);
+              }, 400);
+            }, 600);
+          };
+          choicesEl.appendChild(btn);
+        });
+        choicesEl.style.transition = "opacity .4s";
+        choicesEl.style.opacity = "1";
+      }, 500);
+    }
+
+    function nextBeat(){
+      beatIdx++;
+      if(beatIdx >= tree.beats.length){
         overlay.classList.add("ndlg-fading");
         setTimeout(function(){
           overlay.remove();
           if(onDone) onDone();
         }, 800);
-      };
-      setTimeout(function(){
-        overlay.addEventListener("click", finish);
-      }, 600);
-    }
-  }
+        return;
+      }
 
-  // Animate in
-  requestAnimationFrame(function(){
-    overlay.classList.add("visible");
-    // Show greeting, then first beat on tap
+      var beat = tree.beats[beatIdx];
+      showText(esc(beat.npc));
+
+      if(beat.choices){
+        tapHint.classList.remove("visible");
+        showChoices(beat.choices);
+      } else {
+        tapHint.classList.add("visible");
+        var finish = function(ev){
+          if(ev.target.closest(".ndlg-choice-btn")) return;
+          overlay.removeEventListener("click", finish);
+          tapHint.classList.remove("visible");
+          overlay.classList.add("ndlg-fading");
+          setTimeout(function(){
+            overlay.remove();
+            if(onDone) onDone();
+          }, 800);
+        };
+        setTimeout(function(){
+          overlay.addEventListener("click", finish);
+        }, 600);
+      }
+    }
+
+    // Show greeting first
     setTimeout(function(){
       showText(esc(tree.greeting));
       tapHint.classList.add("visible");
-      var startDialogue = function(){
+      var startDialogue = function(ev){
+        if(ev.target.closest(".ndlg-choice-btn")) return;
         overlay.removeEventListener("click", startDialogue);
         tapHint.classList.remove("visible");
         nextBeat();
@@ -316,8 +415,8 @@ function showNightDialogue(onDone){
       setTimeout(function(){
         overlay.addEventListener("click", startDialogue);
       }, 400);
-    }, 600);
-  });
+    }, 500);
+  }
 }
 
 /* ── Complete pre-game setup: random city, save data, then show dialogue ── */
