@@ -398,7 +398,6 @@ function openEquipmentModal(u, scenario, equip){
       + '<span class="eq-slot-label">' + esc(sl.label) + '</span></div>';
   }
   h += '</div>';
-  h += '<div class="eq-portrait-name">' + esc(u.name || "Voyageur") + '</div>';
   h += '</div>';
 
   h += '</div>';
