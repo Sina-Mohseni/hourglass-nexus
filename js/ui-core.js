@@ -46,7 +46,7 @@ function closeFooterPanel(){
   window._fpOpen = false;
   setTimeout(function(){
     asm.classList.remove("snapping");
-    asm.style.zIndex = "";
+    asm.style.zIndex = window._pgOverlayActive ? "1010" : "";
   }, 450);
 }
 
@@ -68,7 +68,7 @@ function closeHeaderPanel(){
   window._hpOpen = false;
   setTimeout(function(){
     asm.classList.remove("snapping");
-    asm.style.zIndex = "";
+    asm.style.zIndex = window._pgOverlayActive ? "1010" : "";
   }, 450);
 }
 

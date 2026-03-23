@@ -279,8 +279,6 @@ function initHeaderPanel(){
   }
 
   function onStart(e){
-    /* Bloquer le drag/toggle pendant l'overlay pré-jeu */
-    if(window._pgOverlayActive) return;
     e.preventDefault(); e.stopPropagation();
     isDrag = true; hasMoved = false;
     startY = getY(e);
@@ -288,7 +286,7 @@ function initHeaderPanel(){
     asm.classList.remove("snapping");
     /* Fermer le footer-panel et mettre le header au-dessus */
     if(window._fpOpen) closeFooterPanel();
-    asm.style.zIndex = "510";
+    asm.style.zIndex = window._pgOverlayActive ? "1010" : "510";
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
@@ -331,7 +329,7 @@ function initHeaderPanel(){
 
     setTimeout(function(){
       asm.classList.remove("snapping");
-      if(!window._hpOpen) asm.style.zIndex = "";
+      if(!window._hpOpen) asm.style.zIndex = window._pgOverlayActive ? "1010" : "";
     }, 450);
     document.removeEventListener("touchmove", onMove);
     document.removeEventListener("touchend", onEnd);
@@ -388,8 +386,6 @@ function initFooterPanel(){
   }
 
   function onStart(e){
-    /* Bloquer le drag/toggle pendant l'overlay pré-jeu */
-    if(window._pgOverlayActive) return;
     e.preventDefault(); e.stopPropagation();
     isDrag = true; hasMoved = false;
     startY = getY(e);
@@ -397,7 +393,7 @@ function initFooterPanel(){
     asm.classList.remove("snapping");
     /* Fermer le header-panel et mettre le footer au-dessus */
     if(window._hpOpen) closeHeaderPanel();
-    asm.style.zIndex = "510";
+    asm.style.zIndex = window._pgOverlayActive ? "1010" : "510";
     document.addEventListener("touchmove", onMove, {passive:false});
     document.addEventListener("touchend", onEnd, {passive:true});
     document.addEventListener("mousemove", onMove);
@@ -437,7 +433,7 @@ function initFooterPanel(){
 
     setTimeout(function(){
       asm.classList.remove("snapping");
-      if(!window._fpOpen) asm.style.zIndex = "";
+      if(!window._fpOpen) asm.style.zIndex = window._pgOverlayActive ? "1010" : "";
     }, 450);
     document.removeEventListener("touchmove", onMove);
     document.removeEventListener("touchend", onEnd);
