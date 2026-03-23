@@ -453,7 +453,8 @@ function _buildPgHeaderDrawer(){
     {id:"narr2",    icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant le sc\u00e9nario",  desc:"Les paragraphes sur les r\u00f4les possibles dans le Tournoi."},
     {id:"tournoi",  icon:"\u29D6", title:"Le Tournoi d\u2019Extelua", desc:"Pr\u00e9sentation g\u00e9n\u00e9rale du Tournoi, des Champions et des Isol\u00e9s."},
     {id:"morkar",   icon:"\u25C6", title:"Pr\u00e9sentation Morkar",  desc:"Retransmission officielle du groupe Morkar : r\u00e8gles, candidats, r\u00e9compenses."},
-    {id:"ceremonie",icon:"\uD83C\uDFAD", title:"C\u00e9r\u00e9monie d\u2019ouverture",    desc:"Le d\u00e9but du Tournoi, tel que vous l\u2019avez v\u00e9cu."}
+    {id:"ceremonie",icon:"\uD83C\uDFAD", title:"C\u00e9r\u00e9monie d\u2019ouverture",    desc:"Le d\u00e9but du Tournoi, tel que vous l\u2019avez v\u00e9cu."},
+    {id:"declaration",icon:"\u25C6", title:"D\u00e9claration d\u2019ouverture", desc:"L\u2019annonce officielle de Morkar \u00e0 la fin de la c\u00e9r\u00e9monie."}
   ];
 
   var h = '';
@@ -505,6 +506,9 @@ function _showIntroReplayFS(introId){
   } else if(introId === "ceremonie"){
     logo = "\uD83C\uDFAD"; title = "C\u00c9R\u00c9MONIE D\u2019OUVERTURE";
     body = _paragraphsToHTML(IC_PARAGRAPHS);
+  } else if(introId === "declaration"){
+    logo = "\u25C6"; title = "D\u00c9CLARATION D\u2019OUVERTURE";
+    body = _getMorkarDeclarationBody();
   }
 
   var overlay = document.createElement("div");
@@ -566,6 +570,15 @@ function _getMorkarModalBody(){
     + '<h3 class="ic-modal-section">LA R\u00c9COMPENSE</h3>'
     + '<p>Le vainqueur obtient pour sa plan\u00e8te d\u2019origine l\u2019int\u00e9gration au R\u00e9seau Universel \u2014 acc\u00e8s aux Routes Sillonn\u00e9es, si\u00e8ge au Conseil des Mondes, et les technologies qui en d\u00e9coulent.</p>'
     + '<p class="ic-modal-closing">\u00AB Que le Sablier guide vos pas. Morkar veille. \u00BB</p>';
+}
+
+function _getMorkarDeclarationBody(){
+  return '<p class="ic-modal-intro">\u25C6 GROUPE MORKAR \u2014 D\u00c9CLARATION D\u2019OUVERTURE</p>'
+    + '<p>\u00AB Peuples d\u2019Extelua. Mondes connect\u00e9s et mondes oubli\u00e9s. Vous qui regardez depuis les confins de l\u2019univers connu, et vous qui \u00eates ici, debout parmi nous \u2014 ce soir, il n\u2019y a plus de fronti\u00e8res. \u00BB</p>'
+    + '<p>\u00AB Le Sablier s\u2019est retourn\u00e9. Comme il l\u2019a fait avant nous, comme il le fera apr\u00e8s nous. Et avec lui, une promesse se renouvelle \u2014 celle que chaque \u00eatre, quel que soit son monde, quelle que soit son histoire, m\u00e9rite une chance de tout changer. \u00BB</p>'
+    + '<p>\u00AB Vous \u00eates quarante \u00e0 avoir r\u00e9pondu \u00e0 l\u2019appel. Quarante \u00e2mes venues de mondes que tout s\u00e9pare. Certains d\u2019entre vous sont des l\u00e9gendes. D\u2019autres sont des inconnus. Ici, cela n\u2019a aucune importance. \u00BB</p>'
+    + '<p>\u00AB Ce qui vous attend d\u00e9passera tout ce que vous avez connu. Chaque \u00e9preuve vous r\u00e9v\u00e9lera. Chaque choix vous d\u00e9finira. Et quand le dernier grain de sable tombera\u2026 un seul d\u2019entre vous aura le pouvoir de changer le destin de tout un monde. \u00BB</p>'
+    + '<p class="ic-modal-closing">\u00AB Que le Sablier guide vos pas. Le Tournoi d\u2019Extelua\u2026 est officiellement ouvert. \u00BB</p>';
 }
 
 /* ══════════ INVENTORY MODAL ══════════ */
