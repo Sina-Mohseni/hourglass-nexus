@@ -135,7 +135,8 @@ function showInventoryOverlay(onClose){
   var quoteLabel = u.quote || "";
 
   /* ═══════════ FULLSCREEN PORTRAIT + INFO ═══════════ */
-  var h = '<div class="pg-fullscreen">';
+  var cc = u.cardColor || "#c9a04a";
+  var h = '<div class="pg-fullscreen" style="--pg-accent:' + esc(cc) + '">';
 
   // Background portrait
   h += '<div class="pg-bg">';
@@ -157,7 +158,36 @@ function showInventoryOverlay(onClose){
   h += '</div>';
   if(quoteLabel) h += '<div class="pg-quote" id="pg-display-quote">\u201C' + esc(quoteLabel) + '\u201D</div>';
   else h += '<div class="pg-quote" id="pg-display-quote"></div>';
+
+  // Stat bars (read-only display on overlay, editable in footer drawer)
+  var stats = [
+    {key:"statCRE", label:"CRE", color:"#9b59b6", val:u.statCRE},
+    {key:"statSAG", label:"SAG", color:"#5dade2", val:u.statSAG},
+    {key:"statCHA", label:"CHA", color:"#e8a838", val:u.statCHA},
+    {key:"statFOR", label:"FOR", color:"#e74c3c", val:u.statFOR},
+    {key:"statAGI", label:"AGI", color:"#27ae60", val:u.statAGI}
+  ];
+  h += '<div class="pg-overlay-stats" id="pg-overlay-stats">';
+  stats.forEach(function(s){
+    h += '<div class="pg-ostat">'
+      + '<span class="pg-ostat-lbl" style="color:' + s.color + '">' + s.label + '</span>'
+      + '<div class="pg-ostat-track"><div class="pg-ostat-fill" id="pg-ostat-fill-' + s.key + '" style="width:' + s.val + '%;background:' + s.color + '"></div></div>'
+      + '<span class="pg-ostat-val" id="pg-ostat-val-' + s.key + '">' + s.val + '</span>'
+      + '</div>';
+  });
   h += '</div>';
+
+  // Info chips (level, coins, equip count)
+  var currency = getCurrency();
+  var equippedCount = 0;
+  PRE_INV_EQUIP_SLOTS.forEach(function(slot){ if(equip[slot.key]) equippedCount++ });
+  h += '<div class="pg-overlay-chips" id="pg-overlay-chips">';
+  h += '<div class="pg-ochip"><span class="pg-ochip-icon">\u2B50</span> Niv. ' + u.level + '</div>';
+  h += '<div class="pg-ochip"><span class="pg-ochip-icon">' + currency.icon + '</span> ' + u.coins + '</div>';
+  h += '<div class="pg-ochip"><span class="pg-ochip-icon">\uD83D\uDEE1\uFE0F</span> ' + equippedCount + '/6</div>';
+  h += '</div>';
+
+  h += '</div>'; // .pg-info
 
   // Hidden close button (triggered by footer drawer start button)
   h += '<button id="inv-close-btn" style="display:none"></button>';
@@ -270,18 +300,6 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   });
   h += '</div>';
 
-  // ── Info row: Niveau, Monnaie, Équipements possédés ──
-  var currency = getCurrency();
-  var equippedCount = 0;
-  PRE_INV_EQUIP_SLOTS.forEach(function(slot){
-    if(equip[slot.key]) equippedCount++;
-  });
-  h += '<div class="pg-info-row" style="display:flex;gap:8px;padding:4px 16px 8px">';
-  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">\u2B50</span> Niv. ' + u.level + '</div>';
-  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">' + currency.icon + '</span> ' + u.coins + '</div>';
-  h += '<div class="pg-info-chip"><span class="pg-info-chip-icon">\uD83D\uDEE1\uFE0F</span> ' + equippedCount + '/6</div>';
-  h += '</div>';
-
   // ── Color picker ──
   h += '<div style="padding:4px 16px 12px">';
   h += '<div class="pg-drawer-subtitle">Couleur dominante</div>';
@@ -369,28 +387,37 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     if(el) el.addEventListener("input", saveFields);
   });
 
-  // Wire stat sliders
+  // Wire stat sliders — update overlay bars + save
   ["statCRE","statSAG","statCHA","statFOR","statAGI"].forEach(function(key){
     var slider = document.getElementById("pg-stat-" + key);
     var valEl = document.getElementById("pg-stat-val-" + key);
     if(slider) slider.addEventListener("input", function(){
       if(valEl) valEl.textContent = slider.value;
+      // Sync overlay bar
+      var fill = document.getElementById("pg-ostat-fill-" + key);
+      var oVal = document.getElementById("pg-ostat-val-" + key);
+      if(fill) fill.style.width = slider.value + "%";
+      if(oVal) oVal.textContent = slider.value;
       var cu = loadUser();
       cu[key] = parseInt(slider.value);
       saveUser(cu);
     });
   });
 
-  // Wire color picker
+  // Wire color picker — update --pg-accent + save
   var colorPicker = document.getElementById("pg-color-picker");
   if(colorPicker) colorPicker.addEventListener("click", function(e){
     var swatch = e.target.closest(".pg-color-swatch");
     if(!swatch) return;
     colorPicker.querySelectorAll(".pg-color-swatch").forEach(function(s){ s.classList.remove("pg-color-sel") });
     swatch.classList.add("pg-color-sel");
+    var newColor = swatch.getAttribute("data-color");
     var cu = loadUser();
-    cu.cardColor = swatch.getAttribute("data-color");
+    cu.cardColor = newColor;
     saveUser(cu);
+    // Update accent on overlay
+    var fs = document.querySelector(".pg-fullscreen");
+    if(fs) fs.style.setProperty("--pg-accent", newColor);
   });
 
   // Wire inventory + equipment
