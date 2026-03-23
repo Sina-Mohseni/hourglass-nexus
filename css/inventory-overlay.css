@@ -45,7 +45,7 @@
 
 /* Central info block */
 .pg-info {
-  position: absolute; bottom: 90px; left: 0; right: 0; z-index: 2;
+  position: absolute; bottom: 30px; left: 0; right: 0; z-index: 2;
   display: flex; flex-direction: column; align-items: center;
   padding: 0 24px; text-align: center;
 }
@@ -79,6 +79,61 @@
   font-size: 12px; color: var(--bone-dim);
   max-width: 340px; line-height: 1.5;
   min-height: 18px;
+}
+
+/* ── Overlay stat bars (inside pg-info) ── */
+.pg-overlay-stats {
+  margin-top: 14px; width: 100%; max-width: 260px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.pg-ostat {
+  display: flex; align-items: center; gap: 6px;
+}
+.pg-ostat-lbl {
+  width: 26px; flex-shrink: 0;
+  font-family: var(--font-ui); font-size: 8px; font-weight: 700;
+  letter-spacing: 1px; text-align: right;
+}
+.pg-ostat-track {
+  flex: 1; height: 3px;
+  background: rgba(255,255,255,.06); border-radius: 2px;
+  overflow: hidden;
+}
+.pg-ostat-fill {
+  height: 100%; border-radius: 2px;
+  transition: width .3s ease;
+  opacity: .8;
+}
+.pg-ostat-val {
+  width: 20px; flex-shrink: 0;
+  font-family: var(--font-ui); font-size: 8px; font-weight: 700;
+  color: var(--bone-dim); text-align: left;
+}
+
+/* ── Overlay info chips ── */
+.pg-overlay-chips {
+  display: flex; gap: 8px; margin-top: 10px;
+}
+.pg-ochip {
+  display: flex; align-items: center; gap: 3px;
+  padding: 3px 8px;
+  font-family: var(--font-ui); font-size: 9px; font-weight: 700;
+  color: var(--bone-dim); letter-spacing: .5px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.pg-ochip-icon { font-size: 10px }
+
+/* ── Accent color system ── */
+.pg-fullscreen { --pg-accent: #c9a04a }
+.pg-fullscreen .pg-role-badge {
+  background: color-mix(in srgb, var(--pg-accent) 15%, transparent);
+  border-color: color-mix(in srgb, var(--pg-accent) 30%, transparent);
+  color: var(--pg-accent);
+}
+.pg-fullscreen .pg-name {
+  color: var(--pg-accent);
+  text-shadow: 0 0 30px color-mix(in srgb, var(--pg-accent) 50%, transparent), 0 2px 12px rgba(0,0,0,.9);
 }
 
 /* Bottom action bar */
@@ -215,18 +270,6 @@
   font-family: var(--font-ui); font-size: 10px; font-weight: 700;
   color: var(--bone-dim);
 }
-
-/* Info chips (level, coins, equip count) */
-.pg-info-chip {
-  flex: 1;
-  display: flex; align-items: center; justify-content: center; gap: 4px;
-  padding: 6px 0;
-  font-family: var(--font-ui); font-size: 10px; font-weight: 700;
-  color: var(--bone); letter-spacing: .5px;
-  background: rgba(168,132,42,.04);
-  border: 1px solid rgba(168,132,42,.1);
-}
-.pg-info-chip-icon { font-size: 12px }
 
 /* Color picker */
 .pg-color-picker {
