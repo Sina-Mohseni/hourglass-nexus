@@ -176,6 +176,8 @@ function showInventoryOverlay(onClose){
   setTimeout(function(){ overlay.classList.add("visible"); }, 30);
 
   /* ═══════════ REVEAL REAL HEADER/FOOTER ASSEMBLIES ═══════════ */
+  window._pgOverlayActive = true;
+
   var headerAsm = document.getElementById("header-assembly");
   var footerAsm = document.getElementById("footer-assembly");
 
@@ -227,6 +229,7 @@ function showInventoryOverlay(onClose){
       clearDiamondImage();
       clearHeaderDiamondImage();
     }, 460);
+    window._pgOverlayActive = false;
     overlay.classList.remove("visible");
     overlay.classList.add("closing");
     setTimeout(function(){
