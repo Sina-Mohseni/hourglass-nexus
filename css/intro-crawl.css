@@ -540,6 +540,112 @@
   font-weight: 700;
 }
 
+/* ── Contract link in arena ── */
+.sc-contract-link {
+  position: absolute; left: 50%; top: 45%;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; cursor: pointer;
+  animation: contractPulse 2.5s ease-in-out infinite;
+  transition: opacity .4s;
+}
+.sc-contract-link.fading-out { opacity: 0 }
+.sc-contract-icon { font-size: 48px; filter: drop-shadow(0 0 12px rgba(168,132,42,.5)) }
+.sc-contract-text {
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-light); text-align: center;
+  text-shadow: 0 0 8px rgba(168,132,42,.4);
+}
+@keyframes contractPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1) }
+  50% { transform: translate(-50%, -50%) scale(1.05) }
+}
+
+/* ── Contract modal ── */
+.contract-modal-backdrop {
+  position: absolute; inset: 0; z-index: 1200;
+  background: rgba(5,4,3,.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .4s;
+}
+.contract-modal-backdrop.visible { opacity: 1 }
+.contract-modal {
+  width: 88%; max-width: 420px; max-height: 80%;
+  background: linear-gradient(160deg, #1a1611 0%, #0e0c09 100%);
+  border: 1px solid rgba(168,132,42,.3);
+  border-radius: 8px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,.6), 0 0 12px rgba(168,132,42,.15);
+}
+.contract-header {
+  font-family: var(--font-heading); font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); text-align: center;
+  padding: 18px 16px 12px;
+  border-bottom: 1px solid rgba(168,132,42,.15);
+}
+.contract-body {
+  flex: 1; overflow-y: auto; padding: 16px 18px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168,132,42,.2) transparent;
+}
+.contract-para {
+  font-family: var(--font-ui); font-size: 11px;
+  line-height: 1.7; color: var(--bone-dim);
+  margin: 0 0 14px; text-align: justify;
+}
+.contract-para:last-child { margin-bottom: 0 }
+.contract-signature {
+  padding: 16px 18px 18px;
+  border-top: 1px solid rgba(168,132,42,.15);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.contract-sig-label {
+  font-family: var(--font-heading); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone-dim);
+}
+.contract-sig-line {
+  width: 70%; height: 1px;
+  background: rgba(168,132,42,.3);
+  position: relative; transition: all .5s;
+}
+.contract-sig-line.signed {
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(168,132,42,.5);
+}
+.contract-sig-line.signed::after {
+  content: "\u270D";
+  position: absolute; right: -16px; top: -10px;
+  font-size: 16px;
+  animation: signAppear .5s ease-out;
+}
+@keyframes signAppear {
+  from { opacity: 0; transform: translateY(4px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+.contract-sign-btn {
+  font-family: var(--font-heading); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bone); background: rgba(168,132,42,.15);
+  border: 1px solid rgba(168,132,42,.3);
+  border-radius: 4px; padding: 10px 28px;
+  cursor: pointer; transition: all .3s;
+}
+.contract-sign-btn:hover {
+  background: rgba(168,132,42,.25);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+.contract-sign-btn.signed {
+  background: rgba(34,136,68,.15);
+  border-color: rgba(34,136,68,.4);
+  color: #6fc;
+  cursor: default;
+}
+
 .scenario-overlay.fading-out {
   animation: icFadeOut .8s ease-in forwards;
 }
