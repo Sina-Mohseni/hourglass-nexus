@@ -882,8 +882,9 @@ function showContractModal(type, onSigned, isMorkar){
     // Mark as signed
     window._contractSigned = true;
     window._contractType = type;
-    // Pill in inventory only if NOT consumed (and scenario needed one)
-    window._pillConsumed = needsPill ? pillConsumed : true;
+    // Pill in inventory only if NOT consumed during contract signing
+    // Morkar scenarios: pillConsumed stays false → pill available in inventory for later use
+    window._pillConsumed = pillConsumed;
 
     // Animate signature
     var sigLine = backdrop.querySelector(".contract-sig-line");
