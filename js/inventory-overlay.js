@@ -56,8 +56,8 @@ var SCENARIO_EQUIPMENT = {
 };
 
 var CONSUMABLE_ITEM = {
-  name: "Pilule de Compréhension",
-  desc: "Permet de comprendre tous les langages de l'univers — à l'oral, à l'écrit et au parler. Effet permanent."
+  name: "Mini-Pilule de Compréhension",
+  desc: "Permet de comprendre tous les langages de l'univers — à l'oral, à l'écrit et au parler. Durée : 10 heures."
 };
 
 var SCENARIO_MISC = {

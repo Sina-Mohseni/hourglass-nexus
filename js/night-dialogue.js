@@ -230,6 +230,41 @@ function _ndlgStartScenarioMusic(){
   audioFade(extAudio, 0.35, 3000);
 }
 
+/* ── Convert text to alien runes (same as contract system) ── */
+function _ndlgAlienText(text){
+  var alien = "\u16A0\u16A2\u16A6\u16A8\u16B1\u16B2\u16B7\u16B9\u16BA\u16BE\u16C1\u16C3\u16C8\u16C7\u16C9\u16CA\u16CF\u16D2\u16D6\u16D7\u16DA\u16DC\u16DE\u16DF\u16E0\u16E1\u16E2\u16E3\u16E4\u16E5\u16E6\u16E7\u16E8\u16E9\u16EA";
+  var r = "";
+  for(var i = 0; i < text.length; i++){
+    var c = text[i];
+    if(c === " " || c === "\n" || c === "." || c === "," || c === "\u2014" || c === ":" || c === "\u2019" || c === "'") r += c;
+    else r += alien[Math.floor(Math.random() * alien.length)];
+  }
+  return r;
+}
+
+/* ── NPC departure outro (pill not taken) ── */
+var NIGHT_OUTRO_NOPILL = [
+  "L\u2019inconnu te d\u00e9visage un instant. Tu ne comprends rien de ce qu\u2019il dit. Ses mots sont des sons sans forme, une langue que ton esprit ne peut pas saisir.",
+  "Il secoue la t\u00eate. Quelque chose dans son regard change \u2014 de la d\u00e9ception, peut-\u00eatre. Ou de la piti\u00e9.",
+  "Sans un mot de plus, la silhouette se d\u00e9tourne et dispara\u00eet dans la nuit. Sans se retourner.",
+  "Tu restes seul. Le silence est plus lourd qu\u2019avant. Le sommeil finit par venir, mais il est agit\u00e9.",
+  "\u2026",
+  "Les premiers rayons des soleils d\u2019Extelua percent l\u2019horizon. Le Tournoi commence."
+];
+
+/* ── NPC relief line when pill taken mid-conversation ── */
+var PILL_RELIEF_LINES = {
+  "elrand":  "Ah\u2026 tu m\u2019entends maintenant. Bien. J\u2019ai cru que j\u2019allais devoir mimer tout le Tournoi.",
+  "lux":     "La lumi\u00e8re revient dans tes yeux. Tu me comprends, n\u2019est-ce pas\u00a0? Parfait.",
+  "hyandi":  "Enfin. L\u2019ombre entre nous se dissipe. Tu comprends mes mots maintenant\u00a0?",
+  "pipo":    "OH\u00a0! Tu comprends\u00a0?! G\u00e9nial\u00a0! Parce que je commen\u00e7ais \u00e0 faire des gestes bizarre et je sais pas si \u00e7a aidait\u2026",
+  "brakk":   "Hmph. T\u2019as pris la pilule. Bien. J\u2019aime pas r\u00e9p\u00e9ter.",
+  "tika":    "Ah\u2026 tu m\u2019entends. Tant mieux. Les informations que je te donne n\u2019ont de valeur que si tu les comprends.",
+  "zara":    "Enfin\u00a0! J\u2019ai failli m\u2019enflammer de frustration. Tu comprends ce que je dis maintenant\u00a0?",
+  "naia":    "L\u2019eau coule enfin entre nous. Tu m\u2019entends. C\u2019est mieux ainsi.",
+  "solen":   "\u2026 Bien. Tu comprends."
+};
+
 /* ── Show cinematic night intro, then NPC dialogue, then outro ── */
 function showNightDialogue(onDone, cityName, regionName){
   var personas = getNonGuidePersonas();
@@ -238,12 +273,29 @@ function showNightDialogue(onDone, cityName, regionName){
 
   var npc = available[Math.floor(Math.random() * available.length)];
   var tree = NIGHT_DIALOGUES[npc.id];
-  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contrée lointaine");
+  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contr\u00e9e lointaine");
+
+  // Pill state: comprehensible if pill was consumed during contract
+  var canUnderstand = !!window._pillConsumed;
+  // Has pill in inventory (not consumed during contract = still available)
+  var hasPillInInventory = !window._pillConsumed;
+  var pillUsedDuringDialogue = false;
 
   // Create fullscreen overlay
   var overlay = document.createElement("div");
   overlay.id = "night-dlg-overlay";
   overlay.className = "ndlg-overlay";
+
+  // Pill floating button (only if player has it and doesn't understand yet)
+  var pillBtnHtml = '';
+  if(hasPillInInventory){
+    pillBtnHtml = '<div class="ndlg-pill-float ndlg-scene-hidden" id="ndlg-pill-float">'
+      + '<button class="ndlg-pill-btn" id="ndlg-pill-btn" title="Mini-Pilule de Compr\u00e9hension">'
+      + '\uD83D\uDC8A'
+      + '<span class="ndlg-pill-label">Mini-Pilule</span>'
+      + '</button>'
+      + '</div>';
+  }
 
   overlay.innerHTML =
     '<div class="ndlg-stars"></div>'
@@ -262,6 +314,7 @@ function showNightDialogue(onDone, cityName, regionName){
     +     '<div class="ndlg-npc-name" style="color:'+esc(npc.color)+'">'+esc(npc.name)+'</div>'
     +     '<div class="ndlg-npc-title">'+esc(npc.title)+'</div>'
     +   '</div>'
+    +   pillBtnHtml
     +   '<div class="ndlg-bubble" id="ndlg-bubble"></div>'
     +   '<div class="ndlg-choices" id="ndlg-choices"></div>'
     +   '<div class="ndlg-tap-hint" id="ndlg-tap-hint">\u25BC</div>'
@@ -280,11 +333,8 @@ function showNightDialogue(onDone, cityName, regionName){
   var introTap   = overlay.querySelector("#ndlg-intro-tap");
   var paraIdx = 0;
 
-  function _showNarrationParagraph(textEl, tapEl, paragraphs, idx, onEnd){
-    if(idx >= paragraphs.length){
-      if(onEnd) onEnd();
-      return;
-    }
+  function _showNarrationParagraph(textEl, tapEl, paragraphs, idx){
+    if(idx >= paragraphs.length) return;
     textEl.style.opacity = "0";
     textEl.style.transform = "translateY(10px)";
     setTimeout(function(){
@@ -315,11 +365,9 @@ function showNightDialogue(onDone, cityName, regionName){
   // Fade all existing music, then start intro
   requestAnimationFrame(function(){
     overlay.classList.add("visible");
-
     _ndlgFadeAllMusic(function(){
       setTimeout(_ndlgStartScenarioMusic, 800);
     });
-
     setTimeout(function(){
       _showNarrationParagraph(introText, introTap, introParagraphs, 0);
       setTimeout(function(){ overlay.addEventListener("click", advanceIntro) }, 600);
@@ -334,13 +382,51 @@ function showNightDialogue(onDone, cityName, regionName){
     var bubble = overlay.querySelector("#ndlg-bubble");
     var choicesEl = overlay.querySelector("#ndlg-choices");
     var tapHint = overlay.querySelector("#ndlg-tap-hint");
+    var pillFloat = overlay.querySelector("#ndlg-pill-float");
+    var pillBtn = overlay.querySelector("#ndlg-pill-btn");
     var beatIdx = -1;
 
-    function showText(html){
+    // Show pill button if available and not understanding
+    function updatePillVisibility(){
+      if(pillFloat){
+        if(!canUnderstand && hasPillInInventory && !pillUsedDuringDialogue){
+          pillFloat.classList.remove("ndlg-scene-hidden");
+        } else {
+          pillFloat.classList.add("ndlg-scene-hidden");
+        }
+      }
+    }
+
+    // Wire pill button
+    if(pillBtn){
+      pillBtn.onclick = function(e){
+        e.stopPropagation();
+        _showPillConfirmInDialogue(overlay, function(){
+          pillUsedDuringDialogue = true;
+          canUnderstand = true;
+          window._pillConsumed = true;
+          updatePillVisibility();
+          // Show NPC relief, then continue from next beat
+          var relief = PILL_RELIEF_LINES[npc.id] || "Tu me comprends maintenant\u00a0? Bien.";
+          showText(esc(relief), false);
+          tapHint.classList.add("visible");
+          var cont = function(ev){
+            if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
+            overlay.removeEventListener("click", cont);
+            tapHint.classList.remove("visible");
+            nextBeat();
+          };
+          setTimeout(function(){ overlay.addEventListener("click", cont) }, 400);
+        });
+      };
+    }
+
+    function showText(html, alien){
       bubble.style.opacity = "0";
       bubble.style.transform = "translateY(8px)";
       setTimeout(function(){
-        bubble.innerHTML = '<span class="ndlg-npc-tag" style="color:'+esc(npc.color)+'">'+esc(npc.name)+'</span> ' + html;
+        var displayHtml = alien ? '<span class="ndlg-alien-text">' + html + '</span>' : html;
+        bubble.innerHTML = '<span class="ndlg-npc-tag" style="color:'+esc(npc.color)+'">'+esc(npc.name)+'</span> ' + displayHtml;
         bubble.style.transition = "opacity .4s, transform .4s";
         bubble.style.opacity = "1";
         bubble.style.transform = "translateY(0)";
@@ -362,10 +448,11 @@ function showNightDialogue(onDone, cityName, regionName){
             btn.classList.add("ndlg-choice-selected");
             setTimeout(function(){
               choicesEl.style.opacity = "0";
-              showText(esc(c.reply));
+              var replyText = canUnderstand ? esc(c.reply) : _ndlgAlienText(c.reply);
+              showText(replyText, !canUnderstand);
               tapHint.classList.add("visible");
               var advance = function(ev){
-                if(ev.target.closest(".ndlg-choice-btn")) return;
+                if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
                 overlay.removeEventListener("click", advance);
                 tapHint.classList.remove("visible");
                 nextBeat();
@@ -380,35 +467,61 @@ function showNightDialogue(onDone, cityName, regionName){
       }, 500);
     }
 
+    // NPC departure when player can't understand (no pill)
+    function _npcDeparts(){
+      dlgScene.classList.add("ndlg-intro-fading");
+      setTimeout(function(){
+        dlgScene.style.display = "none";
+        _startOutroPhase(NIGHT_OUTRO_NOPILL);
+      }, 700);
+    }
+
     function nextBeat(){
       beatIdx++;
+
+      // If still can't understand after greeting + 1 beat, NPC leaves
+      if(!canUnderstand && beatIdx >= 1){
+        _npcDeparts();
+        return;
+      }
+
       if(beatIdx >= tree.beats.length){
-        // Transition to outro
         dlgScene.classList.add("ndlg-intro-fading");
         setTimeout(function(){
           dlgScene.style.display = "none";
-          _startOutroPhase();
+          _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
         }, 700);
         return;
       }
 
       var beat = tree.beats[beatIdx];
-      showText(esc(beat.npc));
+      var npcText = canUnderstand ? esc(beat.npc) : _ndlgAlienText(beat.npc);
+      showText(npcText, !canUnderstand);
 
-      if(beat.choices){
+      if(beat.choices && canUnderstand){
         tapHint.classList.remove("visible");
         showChoices(beat.choices);
+      } else if(!canUnderstand){
+        // Incomprehensible: just tap to advance (or take pill)
+        tapHint.classList.add("visible");
+        var adv = function(ev){
+          if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
+          overlay.removeEventListener("click", adv);
+          tapHint.classList.remove("visible");
+          nextBeat();
+        };
+        setTimeout(function(){ overlay.addEventListener("click", adv) }, 400);
       } else {
-        // Final NPC text, tap to go to outro
+        // Final comprehensible text
         tapHint.classList.add("visible");
         var toOutro = function(ev){
-          if(ev.target.closest(".ndlg-choice-btn")) return;
+          if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
           overlay.removeEventListener("click", toOutro);
           tapHint.classList.remove("visible");
           dlgScene.classList.add("ndlg-intro-fading");
           setTimeout(function(){
             dlgScene.style.display = "none";
-            _startOutroPhase();
+            _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
           }, 700);
         };
         setTimeout(function(){ overlay.addEventListener("click", toOutro) }, 600);
@@ -416,11 +529,13 @@ function showNightDialogue(onDone, cityName, regionName){
     }
 
     // Show greeting first
+    updatePillVisibility();
     setTimeout(function(){
-      showText(esc(tree.greeting));
+      var greetText = canUnderstand ? esc(tree.greeting) : _ndlgAlienText(tree.greeting);
+      showText(greetText, !canUnderstand);
       tapHint.classList.add("visible");
       var startDialogue = function(ev){
-        if(ev.target.closest(".ndlg-choice-btn")) return;
+        if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
         overlay.removeEventListener("click", startDialogue);
         tapHint.classList.remove("visible");
         nextBeat();
@@ -430,7 +545,7 @@ function showNightDialogue(onDone, cityName, regionName){
   }
 
   /* ═══════ PHASE 3 : Outro narration ═══════ */
-  function _startOutroPhase(){
+  function _startOutroPhase(paragraphs){
     var outroScene = overlay.querySelector("#ndlg-outro-scene");
     var outroText  = overlay.querySelector("#ndlg-outro-text");
     var outroTap   = overlay.querySelector("#ndlg-outro-tap");
@@ -441,23 +556,55 @@ function showNightDialogue(onDone, cityName, regionName){
       overlay.removeEventListener("click", advanceOutro);
       outroTap.classList.remove("visible");
       outIdx++;
-      if(outIdx >= NIGHT_OUTRO_PARAGRAPHS.length){
+      if(outIdx >= paragraphs.length){
         overlay.classList.add("ndlg-fading");
         setTimeout(function(){
           overlay.remove();
           if(onDone) onDone();
         }, 1000);
       } else {
-        _showNarrationParagraph(outroText, outroTap, NIGHT_OUTRO_PARAGRAPHS, outIdx);
+        _showNarrationParagraph(outroText, outroTap, paragraphs, outIdx);
         setTimeout(function(){ overlay.addEventListener("click", advanceOutro) }, 400);
       }
     }
 
     setTimeout(function(){
-      _showNarrationParagraph(outroText, outroTap, NIGHT_OUTRO_PARAGRAPHS, 0);
+      _showNarrationParagraph(outroText, outroTap, paragraphs, 0);
       setTimeout(function(){ overlay.addEventListener("click", advanceOutro) }, 600);
     }, 400);
   }
+}
+
+/* ── Pill confirm dialog within dialogue ── */
+function _showPillConfirmInDialogue(parentOverlay, onConsume){
+  var dialog = document.createElement("div");
+  dialog.className = "ndlg-pill-confirm";
+  dialog.innerHTML =
+    '<div class="ndlg-pill-confirm-box">'
+    + '<div class="ndlg-pill-confirm-icon">\uD83D\uDC8A</div>'
+    + '<div class="ndlg-pill-confirm-title">Mini-Pilule de Compr\u00e9hension</div>'
+    + '<div class="ndlg-pill-confirm-desc">Dur\u00e9e : 10 heures. Permet de comprendre tous les langages. Consommer maintenant\u00a0?</div>'
+    + '<div class="ndlg-pill-confirm-btns">'
+    + '<button class="ndlg-pill-confirm-yes">Consommer</button>'
+    + '<button class="ndlg-pill-confirm-no">Garder</button>'
+    + '</div>'
+    + '</div>';
+
+  parentOverlay.appendChild(dialog);
+  requestAnimationFrame(function(){ dialog.classList.add("visible") });
+
+  dialog.querySelector(".ndlg-pill-confirm-yes").onclick = function(e){
+    e.stopPropagation();
+    dialog.classList.remove("visible");
+    setTimeout(function(){ dialog.remove() }, 300);
+    onConsume();
+  };
+  dialog.querySelector(".ndlg-pill-confirm-no").onclick = function(e){
+    e.stopPropagation();
+    dialog.classList.remove("visible");
+    setTimeout(function(){ dialog.remove() }, 300);
+  };
+  dialog.onclick = function(e){ e.stopPropagation() };
 }
 
 /* ── Complete pre-game setup: random city, save data, then show dialogue ── */
