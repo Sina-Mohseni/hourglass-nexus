@@ -45,7 +45,39 @@
   100% { opacity: .7 }
 }
 
+/* ── Intro narration scene ── */
+.ndlg-intro-scene {
+  position: relative; z-index: 1;
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 28px;
+  max-width: 380px; width: 100%; margin: 0 auto;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s .3s, transform .6s .3s;
+}
+.ndlg-overlay.visible .ndlg-intro-scene {
+  opacity: 1; transform: translateY(0);
+}
+.ndlg-intro-scene.ndlg-intro-fading {
+  opacity: 0; transform: translateY(-16px);
+  transition: opacity .6s, transform .6s;
+}
+.ndlg-intro-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--bone);
+  text-align: center;
+  max-width: 340px;
+  opacity: 0;
+  transform: translateY(10px);
+  letter-spacing: .3px;
+}
+
 /* ── Scene container ── */
+.ndlg-scene-hidden {
+  display: none !important;
+}
 .ndlg-scene {
   position: relative; z-index: 1;
   flex: 1; display: flex; flex-direction: column;
@@ -53,9 +85,9 @@
   padding: 24px 20px;
   max-width: 400px; width: 100%; margin: 0 auto;
   opacity: 0; transform: translateY(20px);
-  transition: opacity .6s .3s, transform .6s .3s;
+  transition: opacity .6s ease, transform .6s ease;
 }
-.ndlg-overlay.visible .ndlg-scene {
+.ndlg-overlay.visible .ndlg-scene:not(.ndlg-scene-hidden) {
   opacity: 1; transform: translateY(0);
 }
 
