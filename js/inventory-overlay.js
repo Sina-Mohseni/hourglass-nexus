@@ -159,11 +159,8 @@ function showInventoryOverlay(onClose){
   else h += '<div class="pg-quote" id="pg-display-quote"></div>';
   h += '</div>';
 
-  // Bottom action bar (save + start)
-  h += '<div class="pg-actions">';
-  h += '<button class="pg-action-btn pg-save-btn" id="inv-save-btn" title="Sauvegarder">\uD83D\uDCBE</button>';
-  h += '<button class="pg-action-btn pg-start-btn" id="inv-close-btn" title="Commencer l\'aventure">\u25B6 Commencer</button>';
-  h += '</div>';
+  // Hidden close button (triggered by footer drawer start button)
+  h += '<button id="inv-close-btn" style="display:none"></button>';
 
   h += '</div>'; // .pg-fullscreen
 
@@ -204,19 +201,7 @@ function showInventoryOverlay(onClose){
 
   /* ═══════════ WIRE ACTIONS ═══════════ */
 
-  // Save button
-  var saveBtn = document.getElementById("inv-save-btn");
-  if(saveBtn) saveBtn.onclick = function(){
-    showSaveDialog(function(save){
-      if(!save) return;
-      acDB.set("ac_saveTimestamp", save.date);
-      saveBtn.textContent = "\u2714";
-      saveBtn.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-      saveBtn.style.borderColor = "var(--poison)";
-    });
-  };
-
-  // Continue button
+  // Continue button (hidden, triggered by footer drawer)
   var closeBtn = document.getElementById("inv-close-btn");
   if(closeBtn) closeBtn.onclick = function(){
     // Close drawers first
@@ -349,7 +334,7 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   var eqBtn = document.getElementById("inv-open-equip-btn");
   if(eqBtn) eqBtn.onclick = function(){ openEquipmentModal(loadUser(), scenario, equip); };
 
-  // Wire footer save button (same logic as main overlay save)
+  // Wire footer save button
   var fpSave = document.getElementById("fp-save-btn");
   if(fpSave) fpSave.onclick = function(){
     showSaveDialog(function(save){
@@ -358,13 +343,6 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
       fpSave.textContent = "\u2714";
       fpSave.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
       fpSave.style.borderColor = "var(--poison)";
-      // Also update main overlay save button if present
-      var mainSave = document.getElementById("inv-save-btn");
-      if(mainSave){
-        mainSave.textContent = "\u2714";
-        mainSave.style.background = "linear-gradient(145deg, var(--poison), #1a6b3a)";
-        mainSave.style.borderColor = "var(--poison)";
-      }
     });
   };
 
@@ -379,10 +357,11 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
 /* ── Header drawer content: intro replay gallery ── */
 function _buildPgHeaderDrawer(){
   var intros = [
-    {id:"tournoi", icon:"\u29D6", title:"Le Tournoi d\u2019Extelua", desc:"Pr\u00e9sentation g\u00e9n\u00e9rale du Tournoi, des Champions et des Isol\u00e9s."},
-    {id:"morkar",  icon:"\u25C6", title:"Pr\u00e9sentation Morkar",  desc:"Retransmission officielle du groupe Morkar : r\u00e8gles, candidats, r\u00e9compenses."},
-    {id:"narr1",   icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant l\u2019identit\u00e9", desc:"Les paragraphes d\u2019introduction avant le choix du nom."},
-    {id:"narr2",   icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant le sc\u00e9nario",  desc:"Les paragraphes sur les r\u00f4les possibles dans le Tournoi."}
+    {id:"narr1",    icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant l\u2019identit\u00e9", desc:"Les paragraphes d\u2019introduction avant le choix du nom."},
+    {id:"narr2",    icon:"\uD83D\uDCDC", title:"Narration \u2014 Avant le sc\u00e9nario",  desc:"Les paragraphes sur les r\u00f4les possibles dans le Tournoi."},
+    {id:"tournoi",  icon:"\u29D6", title:"Le Tournoi d\u2019Extelua", desc:"Pr\u00e9sentation g\u00e9n\u00e9rale du Tournoi, des Champions et des Isol\u00e9s."},
+    {id:"morkar",   icon:"\u25C6", title:"Pr\u00e9sentation Morkar",  desc:"Retransmission officielle du groupe Morkar : r\u00e8gles, candidats, r\u00e9compenses."},
+    {id:"ceremonie",icon:"\uD83C\uDFAD", title:"C\u00e9r\u00e9monie d\u2019ouverture",    desc:"Le d\u00e9but du Tournoi, tel que vous l\u2019avez v\u00e9cu."}
   ];
 
   var h = '';
@@ -407,16 +386,12 @@ function _buildPgHeaderDrawer(){
   var hpBody = document.getElementById("hp-body");
   if(hpBody) hpBody.querySelectorAll(".pg-intro-card").forEach(function(card){
     card.onclick = function(){
-      var id = card.getAttribute("data-intro");
-      if(id === "tournoi") _showIntroReplayFS("tournoi");
-      else if(id === "morkar") _showIntroReplayFS("morkar");
-      else if(id === "narr1") _showIntroReplayFS("narr1");
-      else if(id === "narr2") _showIntroReplayFS("narr2");
+      _showIntroReplayFS(card.getAttribute("data-intro"));
     };
   });
 }
 
-/* ── Fullscreen intro replay with video + music ── */
+/* ── Fullscreen intro replay ── */
 function _showIntroReplayFS(introId){
   var existing = document.getElementById("pg-intro-replay");
   if(existing) existing.remove();
@@ -435,6 +410,9 @@ function _showIntroReplayFS(introId){
   } else if(introId === "narr2"){
     logo = "\uD83D\uDCDC"; title = "AVANT LE SC\u00C9NARIO";
     body = _paragraphsToHTML(PRE_SCENARIO_PARAGRAPHS);
+  } else if(introId === "ceremonie"){
+    logo = "\uD83C\uDFAD"; title = "C\u00c9R\u00c9MONIE D\u2019OUVERTURE";
+    body = _paragraphsToHTML(IC_PARAGRAPHS);
   }
 
   var overlay = document.createElement("div");
@@ -442,37 +420,22 @@ function _showIntroReplayFS(introId){
   overlay.className = "intro-replay-fs";
 
   overlay.innerHTML =
-    '<video class="ir-bg-video" muted playsinline loop><source src="assets/video/hourglass-nexus-intro.mp4" type="video/mp4"></video>'
-    + '<div class="ir-vignette"></div>'
+    '<div class="ir-vignette"></div>'
     + '<div class="ir-content">'
     + '<div class="ic-modal-header"><span class="ic-modal-logo">' + logo + '</span>'
     + '<span class="ic-modal-title">' + title + '</span></div>'
     + '<div class="ic-modal-body">' + body + '</div>'
     + '<button class="ic-modal-close" id="ir-close-btn">Fermer</button>'
-    + '</div>'
-    + '<audio id="ir-music" loop preload="auto"><source src="assets/music/extelua-intro.mp3" type="audio/mpeg"></audio>';
+    + '</div>';
 
   var screen = document.querySelector(".screen");
   (screen || document.body).appendChild(overlay);
-
-  /* Start video + music */
-  var video = overlay.querySelector(".ir-bg-video");
-  var music = overlay.querySelector("#ir-music");
-  if(video) video.play().catch(function(){});
-  if(music){ music.volume = 0; music.play().catch(function(){}); audioFade(music, 0.35, 1200); }
-
   setTimeout(function(){ overlay.classList.add("visible"); }, 30);
 
-  function closeReplay(){
+  document.getElementById("ir-close-btn").onclick = function(){
     overlay.classList.remove("visible");
-    if(music) audioFade(music, 0, 600, function(){ music.pause(); });
-    setTimeout(function(){
-      if(video) video.pause();
-      overlay.remove();
-    }, 500);
-  }
-
-  document.getElementById("ir-close-btn").onclick = closeReplay;
+    setTimeout(function(){ overlay.remove(); }, 500);
+  };
 }
 
 function _paragraphsToHTML(paragraphs){
