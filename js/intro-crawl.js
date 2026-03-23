@@ -786,7 +786,8 @@ function showContractPreview(arena, persona, scenarioObj, type, onSigned){
   // Click contract icon → open contract modal
   preview.querySelector(".scp-contract-icon").onclick = function(){
     var isMorkar = (scenarioObj.scenario === "apprenti-morkar" || scenarioObj.scenario === "veteran-morkar");
-    showContractModal(type, onSigned, isMorkar);
+    var isRebelle = (scenarioObj.scenario === "rebelle");
+    showContractModal(type, onSigned, isMorkar, isRebelle);
   };
 }
 
@@ -832,13 +833,14 @@ function showPillConfirmDialog(parentBackdrop, onConsume){
   };
 }
 
-function showContractModal(type, onSigned, isMorkar){
+function showContractModal(type, onSigned, isMorkar, isRebelle){
   var contract = CONTRACT_CONTENT[type] || CONTRACT_CONTENT.isole;
   var screen = document.querySelector(".screen") || document.body;
-  // Non-Morkar (champion, isolé, dissident) get the pill + runes on contract
-  // Morkar treats dissidents as regular champions/isolés (doesn't know their identity)
-  // Recrue/Vétéran Morkar read French natively, no pill on contract
+  // Pill visible for all non-Morkar (champion, isolé, dissident)
+  // Morkar gives the pill thinking they're regular candidates
   var needsPill = !isMorkar;
+  // Runes only for true champions/isolés — dissidents secretly understand French
+  var needsTranslation = !isMorkar && !isRebelle;
 
   var backdrop = document.createElement("div");
   backdrop.className = "contract-modal-backdrop";
@@ -855,7 +857,7 @@ function showContractModal(type, onSigned, isMorkar){
 
   h += '<div class="contract-body">';
   for(var i = 0; i < contract.paragraphs.length; i++){
-    if(needsPill){
+    if(needsTranslation){
       // Alien text initially, real text hidden
       h += '<p class="contract-para contract-para-alien" data-real="' +
         contract.paragraphs[i].replace(/"/g, '&quot;') + '">' +
@@ -887,18 +889,20 @@ function showContractModal(type, onSigned, isMorkar){
         pillConsumed = true;
         pill.classList.add("consumed");
 
-        // Reveal paragraphs one by one with a cascade effect
-        var paras = backdrop.querySelectorAll(".contract-para-alien");
-        paras.forEach(function(p, idx){
-          setTimeout(function(){
-            p.classList.add("revealing");
+        if(needsTranslation){
+          // Reveal paragraphs one by one with a cascade effect
+          var paras = backdrop.querySelectorAll(".contract-para-alien");
+          paras.forEach(function(p, idx){
             setTimeout(function(){
-              p.textContent = p.getAttribute("data-real");
-              p.classList.remove("contract-para-alien", "revealing");
-              p.classList.add("contract-para-revealed");
-            }, 400);
-          }, idx * 350);
-        });
+              p.classList.add("revealing");
+              setTimeout(function(){
+                p.textContent = p.getAttribute("data-real");
+                p.classList.remove("contract-para-alien", "revealing");
+                p.classList.add("contract-para-revealed");
+              }, 400);
+            }, idx * 350);
+          });
+        }
       });
     };
   }
