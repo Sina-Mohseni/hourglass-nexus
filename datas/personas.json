@@ -260,7 +260,174 @@
       "inventaire": 6,
       "affinite_joueur": 0,
       "affinites_dynamiques": {},
-      "background": null
+      "background": null,
+      "night_discussions": {
+        "champion": {
+          "intro": [
+            "Une silhouette massive se découpe dans la pénombre. Tu perçois le bruit sourd de poings qui se serrent.",
+            "Deux yeux rouges te fixent. L'Orque ne bouge pas. Il t'évalue.",
+            "Puis une voix grave, comme le grondement d'un volcan lointain, brise le silence."
+          ],
+          "greeting": "T'es debout. Bien. Les faibles dorment la veille d'une guerre.",
+          "beats": [
+            {
+              "npc": "Un champion, hein ? J'en ai vu défiler, des champions. La plupart pensent que le titre suffit. Que le peuple derrière eux les rend invincibles. Ils se trompent.",
+              "choices": [
+                { "text": "Mon peuple me donne une raison de me battre.", "reply": "Une raison. C'est bien. Mais une raison sans force, c'est juste un beau discours avant la défaite." },
+                { "text": "Je ne compte que sur moi-même.", "reply": "Hmph. Au moins t'es honnête. Les champions qui comptent sur les autres tombent les premiers." },
+                { "text": "Et toi, tu te bats pour quoi ?", "reply": "Pour plus jamais porter de chaînes. C'est suffisant pour briser n'importe quoi." }
+              ]
+            },
+            {
+              "npc": "Tu sais ce qui sépare un champion d'un cadavre ? Le moment où tout s'effondre. Là, t'as deux choix : frapper ou tomber.",
+              "choices": [
+                { "text": "Je frapperai.", "reply": "On verra. Les mots coûtent rien. Demain, c'est les actes qui parlent." },
+                { "text": "Il y a d'autres options que la force.", "reply": "Peut-être. Mais quand un poing arrive vers ta gueule, la diplomatie sert plus à grand-chose." }
+              ]
+            },
+            {
+              "npc": "Dors. Ou dors pas. Mais demain, sois prêt. Je déteste perdre contre des gens qui dormaient."
+            }
+          ],
+          "outro": [
+            "L'Orque se détourne sans un mot de plus. Sa silhouette s'enfonce dans la nuit comme une montagne qui s'éloigne.",
+            "Le silence revient. Mais quelque chose a changé dans l'air — une tension, un défi lancé sans être dit.",
+            "Tu fermes les yeux. Le sommeil met du temps à venir. Les mots de Brakk résonnent encore."
+          ]
+        },
+        "lambda": {
+          "intro": [
+            "Un craquement. Puis un grondement sourd, comme un animal qui s'éveille.",
+            "La silhouette qui émerge de l'obscurité est immense. Plus grande que tout ce que tu as vu sur ta planète.",
+            "L'Orque te regarde de haut en bas. Son expression est indéchiffrable."
+          ],
+          "greeting": "T'es un isolé. Ça se voit. T'as cette lueur dans les yeux — celle de quelqu'un qui comprend rien à ce qui lui arrive.",
+          "beats": [
+            {
+              "npc": "D'où tu viens, y'a probablement pas de tournois. Pas de téléportation. Pas d'arènes. Juste la survie au quotidien. C'est ça ?",
+              "choices": [
+                { "text": "Mon monde est simple, oui.", "reply": "Simple. Les gens d'ici diraient 'primitif'. Moi je dis 'honnête'. Les mondes connectés ont oublié ce que c'est, l'honnêteté." },
+                { "text": "On a nos propres épreuves.", "reply": "J'en doute pas. Et c'est exactement pour ça que t'es dangereux. Les gens d'ici ont oublié ce que c'est, la vraie survie." },
+                { "text": "Tout est nouveau pour moi.", "reply": "Nouveau, c'est bien. Ça veut dire que personne sait ce que t'as dans le ventre. Utilise ça." }
+              ]
+            },
+            {
+              "npc": "Écoute-moi bien, isolé. Ici, tout le monde va te sous-estimer. Les champions te regarderont de haut. Morkar te traitera comme du bétail. Mais toi, tu sais un truc qu'ils ont oublié.",
+              "choices": [
+                { "text": "Quoi ?", "reply": "Comment se battre quand on a rien. Et ça, c'est la seule chose qu'on peut pas apprendre dans une arène de luxe." },
+                { "text": "Je ne sais pas si je suis prêt.", "reply": "Personne l'est jamais. La différence entre le brave et le lâche, c'est ce qu'ils font quand ils ont peur. Tous les deux ont peur." }
+              ]
+            },
+            {
+              "npc": "Va dormir, isolé. Demain, montre-leur ce que ça veut dire, venir d'un monde qu'on a oublié."
+            }
+          ],
+          "outro": [
+            "Le géant s'éloigne, chaque pas faisant trembler le sol.",
+            "Tu restes seul avec le silence et les étoiles étrangères. Tout est nouveau. Tout est immense.",
+            "Mais les mots de l'Orque t'ont laissé quelque chose — pas de la peur, mais une étincelle. Tu fermes les yeux."
+          ]
+        },
+        "rebelle": {
+          "intro": [
+            "Tu te figes. Quelqu'un est là. Grand. Massif. Impossible de l'éviter.",
+            "L'Orque est assis sur un rocher, les bras croisés. Il ne dort pas. Il attend.",
+            "Ses yeux rouges se posent sur toi. Quelque chose dans son regard dit qu'il voit plus loin que la surface."
+          ],
+          "greeting": "T'as une drôle de façon de bouger, toi. Comme quelqu'un qui a l'habitude de pas être vu.",
+          "beats": [
+            {
+              "npc": "J'ai connu des gens comme toi. Ceux qui marchent dans l'ombre, qui regardent par-dessus leur épaule. Ceux qui portent un masque par-dessus un autre masque.",
+              "choices": [
+                { "text": "Tu te fais des idées.", "reply": "Peut-être. Ou peut-être que je reconnais les chaînes invisibles quand j'en vois. J'ai porté les miennes assez longtemps." },
+                { "text": "Et si c'était le cas ?", "reply": "Alors fais gaffe. Les gens qui jouent double finissent souvent broyés entre les deux. Je le dis pas pour te menacer. Je le dis parce que j'ai vu." },
+                { "text": "Tout le monde porte un masque ici.", "reply": "Vrai. Mais y'en a qui portent le leur pour survivre, et d'autres pour détruire. J'espère que t'es du bon côté." }
+              ]
+            },
+            {
+              "npc": "Je vais te dire un truc. Les chaînes, c'est pas toujours du métal. Parfois c'est des mensonges, des systèmes, des gens qui te disent que c'est 'pour ton bien'. Si quelqu'un essaie de briser ces chaînes-là… je suis pas contre.",
+              "choices": [
+                { "text": "Tu parles de Morkar ?", "reply": "Je parle de personne en particulier. Et de tout le monde en même temps. Comprends ce que tu veux." },
+                { "text": "Les chaînes se brisent toujours, c'est ça ?", "reply": "… Ouais. Toujours. Mais faut être prêt à saigner pour ça. T'es prêt ?" }
+              ]
+            },
+            {
+              "npc": "Dors bien, ombre. Demain, les masques tomberont. Sois sûr que le tien tienne plus longtemps que les autres."
+            }
+          ],
+          "outro": [
+            "L'Orque se lève. Pour un être aussi massif, il se déplace avec une étrange discrétion.",
+            "Il disparaît dans la nuit. Mais ses mots restent — lourds, dangereux, comme une promesse et un avertissement à la fois.",
+            "Tu inspires longuement. Ta couverture tient. Pour l'instant. Tu fermes les yeux, mais ton esprit ne dort pas."
+          ]
+        },
+        "apprenti-morkar": {
+          "intro": [
+            "Un bruit sourd. Des pas lourds dans l'obscurité.",
+            "L'Orque apparaît, imposant, les poings serrés comme des masses. Il te regarde avec une intensité qui te met mal à l'aise.",
+            "Il s'arrête. Te jauge. Quelque chose dans son regard te fait comprendre qu'il ne te fait pas confiance."
+          ],
+          "greeting": "T'as une posture de soldat. Raide. Disciplinée. Les champions bougent pas comme ça.",
+          "beats": [
+            {
+              "npc": "Tu sais ce que je déteste le plus dans cet univers ? Les chiens de garde. Ceux qui obéissent sans réfléchir parce qu'on leur a promis une récompense. Tu vois de qui je parle ?",
+              "choices": [
+                { "text": "Non, pas vraiment.", "reply": "Menteur. Mais c'est pas grave. Les menteurs finissent toujours par se trahir. Je suis patient." },
+                { "text": "Tu parles des agents de Morkar ?", "reply": "Je parle de quiconque échange sa liberté contre un os. Si le chapeau te va, porte-le." },
+                { "text": "Je ne suis le chien de personne.", "reply": "On verra. Les chaînes dorées restent des chaînes. J'espère pour toi que tu le comprendras avant qu'il soit trop tard." }
+              ]
+            },
+            {
+              "npc": "J'ai été esclave. Je sais reconnaître quelqu'un qui sert un maître — même quand il pense être libre. Tu crois servir une cause. Mais demande-toi : est-ce que ta cause te libère, ou est-ce qu'elle t'enchaîne ?",
+              "choices": [
+                { "text": "La discipline n'est pas de l'esclavage.", "reply": "C'est exactement ce que disaient mes anciens maîtres. Mot pour mot. Réfléchis à ça." },
+                { "text": "Tu ne me connais pas.", "reply": "Non. Mais je connais le regard de ceux qui portent des ordres dans leur poche. Je l'ai vu mille fois." }
+              ]
+            },
+            {
+              "npc": "Dors, soldat. Demain, on verra si tu sers ta conscience ou ton maître. J'espère pour toi que c'est la même chose."
+            }
+          ],
+          "outro": [
+            "L'Orque te tourne le dos. La conversation est terminée — il n'attend pas ta réponse.",
+            "Un frisson te parcourt. Il a vu quelque chose. Ou il soupçonne. Ta mission vient à peine de commencer et quelqu'un te regarde déjà de travers.",
+            "Tu t'allonges. Le sommeil est agité. Les mots de Brakk tournent dans ta tête comme des chaînes qui grincent."
+          ]
+        },
+        "veteran-morkar": {
+          "intro": [
+            "Tu le repères avant qu'il ne te repère. Formation oblige.",
+            "L'Orque est massif, dangereux, imprévisible. Ton dossier le classe comme 'élément instable'. Ancien esclave. Briseur de chaînes.",
+            "Il lève les yeux vers toi. Et dans ce regard, tu vois quelque chose que ton entraînement ne t'a pas appris à gérer : la haine pure."
+          ],
+          "greeting": "Toi. T'as cette odeur. L'odeur de ceux qui ont toujours été du bon côté des chaînes.",
+          "beats": [
+            {
+              "npc": "Je sais pas ce que t'es. Champion, agent, peu importe. Mais je sais ce que tu représentes. L'ordre. Le contrôle. Le silence imposé. Et ça, je le supporte pas.",
+              "choices": [
+                { "text": "L'ordre protège les gens.", "reply": "L'ordre protège ceux qui l'ont créé. Les autres, il les écrase. J'ai les cicatrices pour le prouver." },
+                { "text": "Tu ne sais rien de moi.", "reply": "Je sais que t'es pas un champion ordinaire. Les champions ordinaires ont pas ce calme-là. Ce calme de prédateur." },
+                { "text": "On est dans le même tournoi.", "reply": "Le même tournoi, pas le même combat. Toi, tu te bats pour maintenir. Moi, je me bats pour briser." }
+              ]
+            },
+            {
+              "npc": "Un jour, quelqu'un paiera pour les chaînes que j'ai portées. Pour les forges. Pour les cris qu'on entendait la nuit. Ce jour-là, j'espère que tu seras du bon côté.",
+              "choices": [
+                { "text": "La vengeance ne libère personne.", "reply": "C'est ce que disent ceux qui n'ont jamais été enchaînés. Facile de prêcher la paix quand on a jamais saigné." },
+                { "text": "Le tournoi n'est pas l'endroit pour ça.", "reply": "Tout endroit est l'endroit pour ça. La liberté se prend. Elle se donne pas." }
+              ]
+            },
+            {
+              "npc": "Dégage de ma vue. Le soleil se lève bientôt, et j'ai pas envie que ta tête soit la première chose que je vois demain."
+            }
+          ],
+          "outro": [
+            "L'Orque crache par terre et s'enfonce dans les ténèbres. Chaque pas est une déclaration de guerre silencieuse.",
+            "Tu notes mentalement : Brakk, élément hostile, à surveiller de près. Mais quelque chose dans ses mots t'a touché plus que tu ne voudrais l'admettre.",
+            "Tu fermes les yeux. Le sommeil du vétéran est léger. Toujours."
+          ]
+        }
+      }
     },
     {
       "id": "tika",
