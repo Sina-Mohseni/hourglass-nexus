@@ -293,14 +293,38 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   h += '<div class="inv-edit-form" style="padding:10px 16px">';
   h += '<div><label class="prof-field-label">Nom</label>'
     + '<input type="text" class="prof-input" id="inv-edit-name" value="' + esc(u.name) + '" placeholder="Ton nom\u2026" maxlength="40"></div>';
+  // Race — select from tournament races
+  var raceList = getTournamentRaces();
   h += '<div><label class="prof-field-label">Race</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-race" value="' + esc(u.race || "") + '" placeholder="Humain, Orque, Elfe\u2026" maxlength="32"></div>';
+    + '<select class="prof-input" id="inv-edit-race">'
+    + '<option value="">\u2014 Choisir une race \u2014</option>';
+  raceList.forEach(function(r){
+    h += '<option value="' + esc(r) + '"' + (u.race === r ? ' selected' : '') + '>' + esc(r) + '</option>';
+  });
+  h += '</select></div>';
+
+  // Monde — select from tournament univers (empty for now)
+  var worldList = getTournamentUnivers();
   h += '<div><label class="prof-field-label">Nom du monde</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-world" value="' + esc(u.worldName) + '" placeholder="D\u2019o\u00f9 viens-tu ?" maxlength="40"></div>';
+    + '<select class="prof-input" id="inv-edit-world">'
+    + '<option value="">\u2014 Choisir un monde \u2014</option>';
+  worldList.forEach(function(w){
+    h += '<option value="' + esc(w.name) + '"' + (u.worldName === w.name ? ' selected' : '') + '>' + esc(w.name) + '</option>';
+  });
+  h += '</select></div>';
+
   h += '<div><label class="prof-field-label">Slogan</label>'
     + '<input type="text" class="prof-input" id="inv-edit-quote" value="' + esc(u.quote) + '" placeholder="Ton slogan\u2026" maxlength="80"></div>';
+
+  // Quotidien — select from tournament quotidiens
+  var quotidienList = getTournamentQuotidiens();
   h += '<div><label class="prof-field-label">Classe / M\u00e9tier (quotidien)</label>'
-    + '<input type="text" class="prof-input" id="inv-edit-class" value="' + esc(u.className) + '" placeholder="Ton r\u00f4le\u2026" maxlength="40"></div>';
+    + '<select class="prof-input" id="inv-edit-class">'
+    + '<option value="">\u2014 Choisir un quotidien \u2014</option>';
+  quotidienList.forEach(function(q){
+    h += '<option value="' + esc(q.name) + '"' + (u.className === q.name ? ' selected' : '') + '>' + esc(q.name) + '</option>';
+  });
+  h += '</select></div>';
   // Role — read-only
   h += '<div><label class="prof-field-label">R\u00f4le du sc\u00e9nario</label>'
     + '<div class="inv-readonly-field">' + esc(roleLabel) + '</div></div>';
@@ -425,9 +449,13 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
       if(raceSep && raceSep.classList.contains("pg-detail-sep")) raceSep.style.display = ri.value ? "" : "none";
     }
   }
-  ["inv-edit-name","inv-edit-race","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
+  ["inv-edit-name","inv-edit-quote"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener("input", saveFields);
+  });
+  ["inv-edit-race","inv-edit-world","inv-edit-class"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener("change", saveFields);
   });
 
   // Wire stat sliders — enforce 100-point pool + update overlay bars + save

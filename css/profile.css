@@ -69,6 +69,15 @@
   outline: none; transition: border-color .2s;
 }
 .prof-input:focus { border-color: var(--gold-dark) }
+select.prof-input {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23a89276'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  padding-right: 32px; cursor: pointer;
+}
+select.prof-input option {
+  background: #0a0806; color: var(--bone);
+}
 
 /* Card color picker */
 .prof-colors { display: flex; gap: 6px; flex-wrap: wrap }
