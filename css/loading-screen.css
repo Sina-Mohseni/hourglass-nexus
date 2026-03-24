@@ -1,0 +1,151 @@
+/* ══════════ LOADING SCREEN — Sélection des 40 candidats ══════════ */
+
+.loading-overlay {
+  position: fixed; inset: 0; z-index: 2050;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: rgba(2,2,6,.0);
+  transition: background .8s;
+  overflow: hidden;
+}
+.loading-overlay.visible {
+  background: rgba(2,2,6,.97);
+}
+.loading-overlay.fading-out {
+  background: rgba(2,2,6,0);
+  transition: background .8s ease-out;
+}
+.loading-overlay.fading-out .loading-content {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .6s, transform .6s;
+}
+
+/* ── Stars background ── */
+.loading-stars {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(1px 1px at 12% 20%, rgba(212,170,68,.5), transparent),
+    radial-gradient(1px 1px at 30% 55%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1px 1px at 55% 15%, rgba(212,170,68,.4), transparent),
+    radial-gradient(1px 1px at 70% 70%, rgba(255,255,255,.25), transparent),
+    radial-gradient(1px 1px at 85% 35%, rgba(212,170,68,.35), transparent),
+    radial-gradient(1px 1px at 40% 85%, rgba(255,255,255,.2), transparent),
+    radial-gradient(1px 1px at 95% 60%, rgba(212,170,68,.3), transparent);
+  animation: loading-stars-twinkle 4s ease-in-out infinite alternate;
+}
+@keyframes loading-stars-twinkle {
+  0%   { opacity: .5 }
+  100% { opacity: 1 }
+}
+
+/* ── Content container ── */
+.loading-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 340px;
+  padding: 0 24px;
+  transition: opacity .4s, transform .4s;
+}
+
+/* ── Hourglass icon ── */
+.loading-hourglass {
+  font-size: 48px;
+  margin-bottom: 24px;
+  animation: loading-hourglass-spin 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(212,170,68,.4));
+}
+@keyframes loading-hourglass-spin {
+  0%   { transform: rotate(0deg) }
+  40%  { transform: rotate(180deg) }
+  100% { transform: rotate(180deg) }
+}
+
+/* ── Title ── */
+.loading-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold, #d4aa44);
+  margin-bottom: 8px;
+}
+
+/* ── Subtitle ── */
+.loading-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--bone-dim, #a09880);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* ── Progress bar ── */
+.loading-bar-wrap {
+  width: 100%;
+  height: 3px;
+  background: rgba(212,170,68,.15);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.loading-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold, #d4aa44), #f0d878);
+  border-radius: 2px;
+  transition: width .3s ease-out;
+}
+
+/* ── Counter text ── */
+.loading-counter {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--bone-dim, #a09880);
+}
+.loading-counter-num {
+  color: var(--gold, #d4aa44);
+  font-weight: 700;
+}
+
+/* ── Persona cards appearing ── */
+.loading-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 20px;
+  max-width: 300px;
+}
+.loading-slot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(212,170,68,.08);
+  border: 1px solid rgba(212,170,68,.15);
+  transition: all .3s ease-out;
+  opacity: 0;
+  transform: scale(0.5);
+}
+.loading-slot.filled {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(212,170,68,.4);
+}
+.loading-slot.is-player {
+  border-color: var(--gold, #d4aa44);
+  box-shadow: 0 0 8px rgba(212,170,68,.4);
+}
+
+/* ── Scenario flavor text ── */
+.loading-flavor {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 11px;
+  color: rgba(212,170,68,.5);
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity .6s;
+}
+.loading-flavor.visible {
+  opacity: 1;
+}

@@ -265,15 +265,67 @@ var PILL_RELIEF_LINES = {
   "solen":   "\u2026 Bien. Tu comprends."
 };
 
+/* ── Resolve dialogue tree: prefer scenario-specific night_discussions from JSON ── */
+function _resolveNightTree(npc, playerScenario){
+  // Check if persona has scenario-specific night_discussions in JSON data
+  var personaData = getPersonaById(npc.id);
+  if(personaData && personaData.night_discussions){
+    var scKey = playerScenario || "lambda";
+    // Try exact match, then fallback to "champion" as default
+    var disc = personaData.night_discussions[scKey] || personaData.night_discussions["champion"];
+    if(disc && disc.beats){
+      return {
+        greeting: disc.greeting || "",
+        beats: disc.beats,
+        intro: disc.intro || null,
+        outro: disc.outro || null
+      };
+    }
+  }
+  // Fallback to legacy NIGHT_DIALOGUES
+  if(NIGHT_DIALOGUES[npc.id]){
+    return {
+      greeting: NIGHT_DIALOGUES[npc.id].greeting,
+      beats: NIGHT_DIALOGUES[npc.id].beats,
+      intro: null,
+      outro: null
+    };
+  }
+  return null;
+}
+
 /* ── Show cinematic night intro, then NPC dialogue, then outro ── */
 function showNightDialogue(onDone, cityName, regionName){
-  var personas = getNonGuidePersonas();
-  var available = personas.filter(function(p){ return NIGHT_DIALOGUES[p.id] });
+  var playerScenario = window._chosenScenario || "lambda";
+
+  // Prefer tournament participants (from loading screen), fallback to all
+  var pool = (window._tournamentParticipants && window._tournamentParticipants.length > 0)
+    ? window._tournamentParticipants
+    : getNonGuidePersonas();
+
+  // Filter to those who have dialogue available
+  var available = pool.filter(function(p){
+    return _resolveNightTree(p, playerScenario) !== null;
+  });
+
+  // If no tournament participant has dialogue, try all personas as fallback
+  if(available.length === 0){
+    available = getNonGuidePersonas().filter(function(p){
+      return _resolveNightTree(p, playerScenario) !== null;
+    });
+  }
   if(available.length === 0){ if(onDone) onDone(); return; }
 
   var npc = available[Math.floor(Math.random() * available.length)];
-  var tree = NIGHT_DIALOGUES[npc.id];
-  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contr\u00e9e lointaine");
+  var tree = _resolveNightTree(npc, playerScenario);
+
+  // Use persona-specific intro if available, otherwise generic
+  var introParagraphs = (tree.intro && tree.intro.length > 0)
+    ? _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contrée lointaine").concat(tree.intro)
+    : _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contrée lointaine");
+
+  // Use persona-specific outro if available
+  var outroOverride = (tree.outro && tree.outro.length > 0) ? tree.outro : null;
 
   // Pill state: comprehensible if pill was consumed during contract
   var canUnderstand = !!window._pillConsumed;
@@ -489,7 +541,7 @@ function showNightDialogue(onDone, cityName, regionName){
         dlgScene.classList.add("ndlg-intro-fading");
         setTimeout(function(){
           dlgScene.style.display = "none";
-          _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
+          _startOutroPhase(outroOverride || NIGHT_OUTRO_PARAGRAPHS);
         }, 700);
         return;
       }
@@ -521,7 +573,7 @@ function showNightDialogue(onDone, cityName, regionName){
           dlgScene.classList.add("ndlg-intro-fading");
           setTimeout(function(){
             dlgScene.style.display = "none";
-            _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
+            _startOutroPhase(outroOverride || NIGHT_OUTRO_PARAGRAPHS);
           }, 700);
         };
         setTimeout(function(){ overlay.addEventListener("click", toOutro) }, 600);

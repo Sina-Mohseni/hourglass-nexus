@@ -90,7 +90,8 @@ var USER_KEYS = {
   region:"ac_region", startCity:"ac_startCity", borderPasses:"ac_borderPasses",
   job:"ac_job", reputation:"ac_reputation", personaAffinities:"ac_affinities",
   gameDay:"ac_gameDay", gameHour:"ac_gameHour", gameMinute:"ac_gameMinute", gameSecond:"ac_gameSecond", mapX:"ac_mapX", mapY:"ac_mapY",
-  worldName:"ac_worldName", className:"ac_className", statsLocked:"ac_statsLocked"
+  worldName:"ac_worldName", className:"ac_className", statsLocked:"ac_statsLocked",
+  dialogueMemory:"ac_dialogueMemory"
 };
 function loadUser(){
   return {
@@ -125,7 +126,8 @@ function loadUser(){
     mapY: parseFloat(acDB.get(USER_KEYS.mapY)) || 0,
     worldName: acDB.get(USER_KEYS.worldName) || "",
     className: acDB.get(USER_KEYS.className) || "",
-    statsLocked: acDB.get(USER_KEYS.statsLocked) === "1"
+    statsLocked: acDB.get(USER_KEYS.statsLocked) === "1",
+    dialogueMemory: JSON.parse(acDB.get(USER_KEYS.dialogueMemory) || "{}")
   };
 }
 function saveUser(u){
