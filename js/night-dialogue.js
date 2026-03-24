@@ -322,8 +322,9 @@ function showNightDialogue(onDone, cityName, regionName){
   if(available.length === 0){ if(onDone) onDone(); return; }
 
   // TEMP: Force Brakk until all 6 scenarios are implemented for the 323 other personas
-  var npc = available.find(function(p){ return p.id === "brakk"; })
-         || available[Math.floor(Math.random() * available.length)];
+  // TODO: restore random selection — var npc = available[Math.floor(Math.random() * available.length)];
+  var npc = available.find(function(p){ return p.id === "brakk"; });
+  if(!npc){ if(onDone) onDone(); return; }
   var tree = _resolveNightTree(npc, playerScenario);
 
   // Use persona-specific intro if available, otherwise generic
