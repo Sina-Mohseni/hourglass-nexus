@@ -542,34 +542,70 @@
         "apprenti-morkar": {
           "intro": [
             "Un bruit sourd. Des pas lourds dans l'obscurité.",
-            "L'Orque apparaît, imposant, les poings serrés comme des masses. Il te regarde avec une intensité qui te met mal à l'aise.",
-            "Il s'arrête. Te jauge. Quelque chose dans son regard te fait comprendre qu'il ne te fait pas confiance."
+            "L'Orque apparaît, imposant, les poings serrés comme des masses. Il s'assoit lourdement à quelques mètres de toi.",
+            "Ses yeux rouges se posent sur toi avec curiosité. Un champion de plus qui dort pas. Rien d'anormal. Du moins, c'est ce qu'il doit penser."
           ],
-          "greeting": "T'as une posture de soldat. Raide. Disciplinée. Les champions bougent pas comme ça.",
+          "greeting": "Un autre insomniaque. T'es champion de quel monde ?",
           "beats": [
             {
-              "npc": "Tu sais ce que je déteste le plus dans cet univers ? Les chiens de garde. Ceux qui obéissent sans réfléchir parce qu'on leur a promis une récompense. Tu vois de qui je parle ?",
+              "id": "brakk_appr_b1",
+              "npc": "Tu te tiens droit. Carré. C'est rare, un champion aussi… discipliné. La plupart sont des athlètes, des guerriers, des prodiges. Toi, t'as quelque chose de militaire.",
               "choices": [
-                { "text": "Non, pas vraiment.", "reply": "Menteur. Mais c'est pas grave. Les menteurs finissent toujours par se trahir. Je suis patient." },
-                { "text": "Tu parles des agents de Morkar ?", "reply": "Je parle de quiconque échange sa liberté contre un os. Si le chapeau te va, porte-le." },
-                { "text": "Je ne suis le chien de personne.", "reply": "On verra. Les chaînes dorées restent des chaînes. J'espère pour toi que tu le comprendras avant qu'il soit trop tard." }
+                { "id": "brakk_appr_b1_c1", "text": "J'ai fait l'armée sur mon monde.", "reply": "Ça explique. Un soldat devenu champion. C'est pas courant, mais c'est pas idiot non plus. La discipline, dans l'arène, ça vaut plus que le talent brut.", "tag": "couverture_solide" },
+                { "id": "brakk_appr_b1_c2", "text": "C'est juste du stress. Je suis tendu.", "reply": "Tendu, hein ? Les tendus bougent, s'agitent. Toi, t'es figé comme une sentinelle. C'est pas du stress, ça. C'est de l'entraînement.", "tag": "excuse_percee" },
+                { "id": "brakk_appr_b1_c3", "text": "Mon monde est dur. Ça forge le caractère.", "reply": "Heh. Dur comment ? Dur comme les forges de l'Abysse ? J'en doute. Mais je te taquine. Chaque monde a ses épreuves.", "tag": "deflexion" }
               ]
             },
             {
-              "npc": "J'ai été esclave. Je sais reconnaître quelqu'un qui sert un maître — même quand il pense être libre. Tu crois servir une cause. Mais demande-toi : est-ce que ta cause te libère, ou est-ce qu'elle t'enchaîne ?",
+              "id": "brakk_appr_b2",
+              "npc": "Tu sais ce que j'aime chez Morkar ? Ils ont mis de l'ordre dans le chaos. Avant eux, les mondes se faisaient la guerre pour des routes commerciales, des ressources. Maintenant, on envoie des champions. C'est propre. C'est juste.",
               "choices": [
-                { "text": "La discipline n'est pas de l'esclavage.", "reply": "C'est exactement ce que disaient mes anciens maîtres. Mot pour mot. Réfléchis à ça." },
-                { "text": "Tu ne me connais pas.", "reply": "Non. Mais je connais le regard de ceux qui portent des ordres dans leur poche. Je l'ai vu mille fois." }
+                { "id": "brakk_appr_b2_c1", "text": "Morkar fait un travail admirable.", "reply": "Admirable. Ouais, c'est le mot. T'as l'air de bien les connaître, pour un simple champion. La plupart des gens disent juste 'ouais, le Tournoi c'est cool'. Toi, tu dis 'admirable'. Intéressant.", "tag": "eloge_suspect" },
+                { "id": "brakk_appr_b2_c2", "text": "Le Tournoi est une bonne chose, oui.", "reply": "Une bonne chose. Voilà. Simple, honnête. Le Tournoi m'a sorti de rien. Il peut faire pareil pour n'importe qui.", "tag": "approbation_mesuree" },
+                { "id": "brakk_appr_b2_c3", "text": "Je connais pas bien la politique galactique.", "reply": "Pas besoin. T'es un champion, pas un diplomate. Bats-toi, gagne, et rentre chez toi avec la récompense. Le reste, c'est pour les bureaucrates.", "tag": "feindre_ignorance" }
               ]
             },
             {
-              "npc": "Dors, soldat. Demain, on verra si tu sers ta conscience ou ton maître. J'espère pour toi que c'est la même chose."
+              "id": "brakk_appr_b3",
+              "npc": "Y'a des rumeurs de dissidents cette année. Des infiltrés dans le Tournoi. Tu y crois ? Personnellement, j'aimerais bien en croiser un. J'ai deux ou trois questions à lui poser. Avec mes poings.",
+              "choices": [
+                { "id": "brakk_appr_b3_c1", "text": "Tu as remarqué quelqu'un de suspect ?",  "reply": "Suspect ? Non. Pas encore. Mais la nuit est jeune. Et les dissidents, c'est comme les rats — on les voit pas, mais on sent qu'ils sont là. Pourquoi, toi t'as remarqué quelque chose ?", "tag": "enquete_directe" },
+                { "id": "brakk_appr_b3_c2", "text": "Des rumeurs, rien de plus sûrement.", "reply": "Peut-être. Mais les éditions précédentes ont eu des incidents. Des sabotages. Des champions qui étaient pas ce qu'ils prétendaient être. Faut rester vigilant.", "tag": "minimiser" },
+                { "id": "brakk_appr_b3_c3", "text": "S'il y en a, ils seront trouvés.", "reply": "T'as l'air bien sûr de toi. Comme si t'avais des informations que j'ai pas. Ou alors t'es juste optimiste. J'espère que c'est l'optimisme.", "tag": "certitude_suspecte" }
+              ]
+            },
+            {
+              "id": "brakk_appr_b4",
+              "npc": "Je vais te dire un truc sur les dissidents. Ils se croient malins. Ils pensent qu'ils sont les seuls à voir la vérité. Mais la vérité, c'est que le système marche. Moi, esclave. Aujourd'hui, champion. C'est la preuve que le système marche.",
+              "choices": [
+                { "id": "brakk_appr_b4_c1", "text": "Ton histoire est inspirante, Brakk.", "reply": "Inspirante. Hm. C'est le mot que les gens utilisent quand ils savent pas quoi dire. Mais merci quand même.", "tag": "flatterie" },
+                { "id": "brakk_appr_b4_c2", "text": "Les dissidents comprennent pas ce qu'ils détruiraient.", "reply": "Exactement. Ils veulent brûler la maison parce qu'une fenêtre grince. Si j'en croise un, je lui montrerai mes cicatrices. On verra s'il ose encore cracher sur le système après ça.", "tag": "alignement_fort" },
+                { "id": "brakk_appr_b4_c3", "text": "Chaque système a ses failles, non ?", "reply": "Des failles ? Bien sûr. Mais on répare les failles. On détruit pas le bâtiment. C'est la différence entre un bâtisseur et un destructeur. Toi, t'es quoi ?", "tag": "nuance" }
+              ]
+            },
+            {
+              "id": "brakk_appr_b5",
+              "npc": "Dis-moi, champion. C'est quoi ta stratégie pour demain ? La force brute ? La ruse ? Les alliances ? Je suis curieux. Parce que t'as pas l'air du genre à improviser.",
+              "choices": [
+                { "id": "brakk_appr_b5_c1", "text": "Observer d'abord. Agir ensuite.", "reply": "Observer. C'est une stratégie de chasseur, ça. Pas de combattant. Tu chasses quoi, exactement, champion ?", "tag": "revele_methode" },
+                { "id": "brakk_appr_b5_c2", "text": "Je m'adapterai aux épreuves.", "reply": "Flexible. C'est bien. Moi je suis plus du genre à foncer dedans et voir ce qui se passe. Chacun sa méthode.", "tag": "vague" },
+                { "id": "brakk_appr_b5_c3", "text": "Gagner. C'est la seule stratégie.", "reply": "Hah ! Direct. J'aime ça. T'es peut-être moins compliqué que t'en as l'air. Ou t'es très bon pour simplifier les choses. Les deux se valent.", "tag": "simple" }
+              ]
+            },
+            {
+              "id": "brakk_appr_b6",
+              "npc": "Allez, champion. Assez parlé. Le soleil se lèvera bientôt et j'ai besoin de reposer ces vieux os. T'es pas mal, pour quelqu'un d'aussi… carré. Y'a pire comme compagnie la veille d'un tournoi.",
+              "choices": [
+                { "id": "brakk_appr_b6_c1", "text": "Bonne chance demain, Brakk.", "reply": "La chance, c'est pour ceux qui se préparent pas. Mais merci. Et toi, décontracte-toi un peu. T'as l'air d'un soldat qui attend des ordres. Ici, les seuls ordres, c'est ceux que tu te donnes.", "tag": "cordial" },
+                { "id": "brakk_appr_b6_c2", "text": "Si tu vois quelque chose de suspect, fais-moi signe.", "reply": "… Te faire signe ? C'est une drôle de demande entre champions. D'habitude, on se souhaite bonne chance et c'est tout. Mais bon… d'accord. Si je vois un rat, je te le dirai.", "tag": "mission_exposee" },
+                { "id": "brakk_appr_b6_c3", "text": "À demain dans l'arène.", "reply": "À demain. Et quand on se croisera là-bas, oublie cette conversation. Dans l'arène, y'a pas de nuits partagées. Juste des adversaires.", "tag": "professionnel" }
+              ]
             }
           ],
           "outro": [
-            "L'Orque te tourne le dos. La conversation est terminée — il n'attend pas ta réponse.",
-            "Un frisson te parcourt. Il a vu quelque chose. Ou il soupçonne. Ta mission vient à peine de commencer et quelqu'un te regarde déjà de travers.",
-            "Tu t'allonges. Le sommeil est agité. Les mots de Brakk tournent dans ta tête comme des chaînes qui grincent."
+            "L'Orque se relève avec un grognement et disparaît dans la nuit.",
+            "Tu restes seul. La conversation a été utile — Brakk est clairement pro-Morkar, un allié potentiel sans le savoir. Mais ses remarques sur ta posture 'militaire' te préoccupent. Il faut mieux jouer le champion ordinaire.",
+            "Tu t'allonges. Le briefing de Morkar tournait dans ta tête — observer, repérer, signaler. Mais d'abord, survivre au Tournoi. Le sommeil vient lentement, discipliné, comme tout le reste."
           ]
         },
         "veteran-morkar": {
