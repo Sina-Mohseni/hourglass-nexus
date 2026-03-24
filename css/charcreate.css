@@ -235,6 +235,23 @@
   border-color: var(--gold);
   box-shadow: var(--shadow-inset), 0 0 20px rgba(168,132,42,.15);
 }
+.cc-race-input {
+  width: 100%; padding: 12px 16px;
+  font-family: var(--font-heading); font-size: 14px; font-weight: 600;
+  color: var(--gold-light); text-align: center;
+  background: linear-gradient(180deg, var(--dark-stone), var(--stone));
+  border: 1px solid var(--gold-dark);
+  outline: none; letter-spacing: 1px;
+  box-shadow: var(--shadow-inset);
+  transition: border-color .3s, box-shadow .3s;
+}
+.cc-race-input::placeholder {
+  color: var(--bone-dim); font-weight: 400; font-size: 12px; letter-spacing: 0;
+}
+.cc-race-input:focus {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-inset), 0 0 20px rgba(168,132,42,.15);
+}
 .cc-confirm-btn {
   width: 100%; padding: 14px;
   font-family: var(--font-heading); font-size: 13px; font-weight: 700;
