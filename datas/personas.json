@@ -611,34 +611,70 @@
         "veteran-morkar": {
           "intro": [
             "Tu le repères avant qu'il ne te repère. Formation oblige.",
-            "L'Orque est massif, dangereux, imprévisible. Ton dossier le classe comme 'élément instable'. Ancien esclave. Briseur de chaînes.",
-            "Il lève les yeux vers toi. Et dans ce regard, tu vois quelque chose que ton entraînement ne t'a pas appris à gérer : la haine pure."
+            "L'Orque est massif. Ton dossier le classe comme 'élément loyal, instable en surface'. Ancien esclave des forges de l'Abysse. Champion de Cendreciel. Pro-Morkar convaincu.",
+            "Il lève les yeux vers toi. Un regard franc, direct. Il voit un champion. Toi, tu vois un dossier qui marche."
           ],
-          "greeting": "Toi. T'as cette odeur. L'odeur de ceux qui ont toujours été du bon côté des chaînes.",
+          "greeting": "T'es debout aussi ? Hm. T'as un calme bizarre, toi. Les autres champions, ils stressent, ils bougent. Toi, t'es… immobile. Comme quelqu'un qui a l'habitude d'attendre.",
           "beats": [
             {
-              "npc": "Je sais pas ce que t'es. Champion, agent, peu importe. Mais je sais ce que tu représentes. L'ordre. Le contrôle. Le silence imposé. Et ça, je le supporte pas.",
+              "id": "brakk_vet_b1",
+              "npc": "Je connais deux types de calme. Le calme de celui qui a rien à perdre, et le calme de celui qui sait exactement ce qu'il fait. Toi, c'est le deuxième. T'es champion de quel monde ?",
               "choices": [
-                { "text": "L'ordre protège les gens.", "reply": "L'ordre protège ceux qui l'ont créé. Les autres, il les écrase. J'ai les cicatrices pour le prouver." },
-                { "text": "Tu ne sais rien de moi.", "reply": "Je sais que t'es pas un champion ordinaire. Les champions ordinaires ont pas ce calme-là. Ce calme de prédateur." },
-                { "text": "On est dans le même tournoi.", "reply": "Le même tournoi, pas le même combat. Toi, tu te bats pour maintenir. Moi, je me bats pour briser." }
+                { "id": "brakk_vet_b1_c1", "text": "Un monde qui m'a appris la patience.", "reply": "La patience. Ouais. C'est un mot de diplomate, ça. Mais tes yeux disent autre chose. Ils disent 'contrôle'. C'est pas pareil.", "tag": "deflexion_maitrisee" },
+                { "id": "brakk_vet_b1_c2", "text": "J'ai participé à des compétitions avant.", "reply": "Des compétitions. Quel genre ? Parce que ton regard, c'est pas celui d'un sportif. C'est celui de quelqu'un qui évalue une pièce en entrant dedans. Les sorties, les menaces, les cibles.", "tag": "demi_verite" },
+                { "id": "brakk_vet_b1_c3", "text": "Je suis juste fatigué. Le voyage a été long.", "reply": "Fatigué ? Les fatigués bâillent et s'écroulent. Toi, t'es assis le dos droit et tu surveilles les ombres. Mais bon, si tu le dis.", "tag": "minimiser" }
               ]
             },
             {
-              "npc": "Un jour, quelqu'un paiera pour les chaînes que j'ai portées. Pour les forges. Pour les cris qu'on entendait la nuit. Ce jour-là, j'espère que tu seras du bon côté.",
+              "id": "brakk_vet_b2",
+              "npc": "J'ai été esclave. Quinze ans. Les forges de l'Abysse. Tu sais ce qui m'a libéré ? Morkar. Ils ont mis fin à ça. Aboli l'esclavage sur tout Cendreciel. Alors quand j'entends des gens cracher sur le système, ça me rend… pas content.",
               "choices": [
-                { "text": "La vengeance ne libère personne.", "reply": "C'est ce que disent ceux qui n'ont jamais été enchaînés. Facile de prêcher la paix quand on a jamais saigné." },
-                { "text": "Le tournoi n'est pas l'endroit pour ça.", "reply": "Tout endroit est l'endroit pour ça. La liberté se prend. Elle se donne pas." }
+                { "id": "brakk_vet_b2_c1", "text": "Morkar a fait beaucoup de bien.", "reply": "Beaucoup de bien. Voilà. C'est tout ce qu'il y a à dire. Pourtant, des voix murmurent le contraire. Des dissidents. Tu les as entendus, ces murmures ?", "tag": "accord_operatif" },
+                { "id": "brakk_vet_b2_c2", "text": "Ton histoire force le respect.", "reply": "Le respect, ça se donne pas avec des mots. Ça se prouve. Mais merci quand même. T'es poli, pour un champion. Presque trop poli.", "tag": "flatterie_detectee" },
+                { "id": "brakk_vet_b2_c3", "text": "Les forges de l'Abysse… j'en ai entendu parler.", "reply": "Entendu parler ? Comment ? C'est pas le genre de sujet qu'on aborde sur les mondes connectés. C'est un dossier classé. Qui t'en a parlé ?", "tag": "erreur_info" }
               ]
             },
             {
-              "npc": "Dégage de ma vue. Le soleil se lève bientôt, et j'ai pas envie que ta tête soit la première chose que je vois demain."
+              "id": "brakk_vet_b3",
+              "npc": "Les dissidents. Y'en a qui disent qu'ils sont infiltrés cette année. Dans le Tournoi même. Déguisés en champions. Tu imagines ? Le culot. Le Tournoi, c'est sacré.",
+              "choices": [
+                { "id": "brakk_vet_b3_c1", "text": "S'ils sont là, ils seront débusqués.", "reply": "T'as l'air sûr de toi. Comme si c'était une certitude et pas un espoir. C'est rafraîchissant. Ou inquiétant. J'arrive pas à décider.", "tag": "certitude_pro" },
+                { "id": "brakk_vet_b3_c2", "text": "Comment on reconnaît un dissident ?", "reply": "Bonne question. Ils sont malins. Ils jouent le jeu parfaitement. Mais y'a toujours un détail qui cloche. Un mot de trop. Un regard qui glisse. Toi par contre, t'as aucun détail qui cloche. Et ça, c'est presque le plus suspect de tout.", "tag": "question_tactique" },
+                { "id": "brakk_vet_b3_c3", "text": "Le Tournoi a ses propres défenses, j'imagine.", "reply": "Ses défenses ? Oui. Morkar veille. Mais les meilleures défenses, c'est les champions eux-mêmes. On se connaît entre nous. On repère les faux. Enfin… normalement.", "tag": "sonder" }
+              ]
+            },
+            {
+              "id": "brakk_vet_b4",
+              "npc": "Tu sais ce qui est drôle ? T'es le seul champion qui m'a pas demandé mon palmarès. Pas demandé mes stats. Pas essayé de m'intimider ou de m'impressionner. T'en as rien à foutre de moi en tant qu'adversaire. C'est… inhabituel.",
+              "choices": [
+                { "id": "brakk_vet_b4_c1", "text": "Je respecte tous mes adversaires de la même façon.", "reply": "Tous de la même façon. Clinique. Comme un médecin avec ses patients. C'est efficace, mais c'est froid. T'es un drôle de champion.", "tag": "egalite_froide" },
+                { "id": "brakk_vet_b4_c2", "text": "Je préfère connaître la personne avant le combattant.", "reply": "Heh. Diplomate jusqu'au bout. C'est une technique aussi, ça. Apprendre les faiblesses en discutant. T'es plus dangereux que t'en as l'air.", "tag": "approche_humaine" },
+                { "id": "brakk_vet_b4_c3", "text": "Le combat, c'est demain. Cette nuit, on parle.", "reply": "On parle. Ouais. Sauf que t'as posé trois questions et tu m'as rien dit sur toi. C'est pas une conversation, ça. C'est un interrogatoire poli.", "tag": "demasquage_doux" }
+              ]
+            },
+            {
+              "id": "brakk_vet_b5",
+              "npc": "T'es étrange, champion. J'arrive pas à te cerner. T'es pas nerveux, t'es pas arrogant, t'es pas effrayé. T'es… professionnel. Comme si le Tournoi, c'était pas ta première mission. Ton premier 'tournoi', je veux dire.",
+              "choices": [
+                { "id": "brakk_vet_b5_c1", "text": "J'ai toujours été comme ça.", "reply": "Personne a 'toujours été comme ça'. On le devient. Et pour devenir comme toi, faut passer par des choses que les champions normaux vivent pas. Mais c'est ton histoire. Garde-la.", "tag": "mur" },
+                { "id": "brakk_vet_b5_c2", "text": "Tu lis trop dans les gens, Brakk.", "reply": "Peut-être. Ou peut-être que toi, t'es trop lisible pour quelqu'un qui essaie de pas l'être. L'absence totale de failles, c'est en soi une faille. Retiens ça.", "tag": "retourner" },
+                { "id": "brakk_vet_b5_c3", "text": "On a tous nos secrets.", "reply": "Ça, c'est la première chose honnête que tu m'as dite de toute la nuit. Les secrets, j'en ai aussi. La différence, c'est que les miens sont sur ma peau. Les tiens sont derrière tes yeux.", "tag": "franchise" }
+              ]
+            },
+            {
+              "id": "brakk_vet_b6",
+              "npc": "Bon. Le soleil approche. T'es pas un champion comme les autres, ça c'est sûr. Mais t'es pas un dissident non plus — t'aurais pas ce calme-là. Les dissidents, ils ont de la rage. Toi, t'as du contrôle. C'est différent.",
+              "choices": [
+                { "id": "brakk_vet_b6_c1", "text": "Bonne chance demain, Brakk.", "reply": "Bonne chance à toi aussi, mystère. Quoi que tu sois vraiment, j'espère que t'es du bon côté. Parce que le mauvais côté, il a un problème : moi.", "tag": "cordial" },
+                { "id": "brakk_vet_b6_c2", "text": "On se croisera dans l'arène.", "reply": "Sûrement. Et là-bas, je te regarderai te battre. C'est dans le combat qu'on voit la vérité sur quelqu'un. Les masques tombent quand le sang coule.", "tag": "defi" },
+                { "id": "brakk_vet_b6_c3", "text": "Tu es plus observateur que tu en as l'air.", "reply": "Et toi, t'es plus opaque que n'importe qui que j'ai croisé. C'est un compliment. Ou un avertissement. Prends-le comme tu veux.", "tag": "reconnaissance_mutuelle" }
+              ]
             }
           ],
           "outro": [
-            "L'Orque crache par terre et s'enfonce dans les ténèbres. Chaque pas est une déclaration de guerre silencieuse.",
-            "Tu notes mentalement : Brakk, élément hostile, à surveiller de près. Mais quelque chose dans ses mots t'a touché plus que tu ne voudrais l'admettre.",
-            "Tu fermes les yeux. Le sommeil du vétéran est léger. Toujours."
+            "L'Orque se lève et s'enfonce dans les ténèbres sans se retourner.",
+            "Tu restes immobile. Analyse : Brakk, loyal à Morkar, pas une menace. Mais perceptif. Trop perceptif. Son instinct d'ancien esclave lui donne une lecture des gens que la plupart des champions n'ont pas. À surveiller.",
+            "Tu fermes les yeux. Le sommeil du vétéran est léger, calculé, programmé. Quatre heures suffiront. Demain, la vraie mission commence."
           ]
         }
       }
