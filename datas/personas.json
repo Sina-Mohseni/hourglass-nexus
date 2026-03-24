@@ -341,28 +341,64 @@
           "greeting": "T'es un isolé. Ça se voit. T'as cette lueur dans les yeux — celle de quelqu'un qui comprend rien à ce qui lui arrive.",
           "beats": [
             {
-              "npc": "D'où tu viens, y'a probablement pas de tournois. Pas de téléportation. Pas d'arènes. Juste la survie au quotidien. C'est ça ?",
+              "id": "brakk_lambda_b1",
+              "npc": "D'où tu viens, y'a probablement pas de tournois. Pas de Routes Sillonnées. Pas d'arènes. Ton monde a jamais été connecté au Réseau. C'est ça ?",
               "choices": [
-                { "text": "Mon monde est simple, oui.", "reply": "Simple. Les gens d'ici diraient 'primitif'. Moi je dis 'honnête'. Les mondes connectés ont oublié ce que c'est, l'honnêteté." },
-                { "text": "On a nos propres épreuves.", "reply": "J'en doute pas. Et c'est exactement pour ça que t'es dangereux. Les gens d'ici ont oublié ce que c'est, la vraie survie." },
-                { "text": "Tout est nouveau pour moi.", "reply": "Nouveau, c'est bien. Ça veut dire que personne sait ce que t'as dans le ventre. Utilise ça." }
+                { "id": "brakk_lambda_b1_c1", "text": "Mon monde est simple, oui.", "reply": "Simple. Les gens d'ici diraient 'primitif'. Moi je dis 'pur'. Les mondes connectés, ils ont gagné la technologie mais perdu autre chose en chemin.", "tag": "humble" },
+                { "id": "brakk_lambda_b1_c2", "text": "On a nos propres épreuves.", "reply": "J'en doute pas. La survie, c'est universel. J'ai survécu aux forges de l'Abysse quinze ans. Crois-moi, je sais ce que c'est de se battre sans rien.", "tag": "fier" },
+                { "id": "brakk_lambda_b1_c3", "text": "Je ne savais même pas que d'autres mondes existaient.", "reply": "Heh. Et maintenant t'es là, au milieu de milliers de civilisations, à la veille du Tournoi d'Extelua. La galaxie a le sens de l'humour.", "tag": "naif" }
               ]
             },
             {
-              "npc": "Écoute-moi bien, isolé. Ici, tout le monde va te sous-estimer. Les champions te regarderont de haut. Morkar te traitera comme du bétail. Mais toi, tu sais un truc qu'ils ont oublié.",
+              "id": "brakk_lambda_b2",
+              "npc": "Ici, tout le monde va te sous-estimer. Les autres champions te regarderont comme une curiosité. Mais le Tournoi se fout d'où tu viens. Il mesure ce que t'as dans le ventre. C'est ça qui est beau dans ce système.",
               "choices": [
-                { "text": "Quoi ?", "reply": "Comment se battre quand on a rien. Et ça, c'est la seule chose qu'on peut pas apprendre dans une arène de luxe." },
-                { "text": "Je ne sais pas si je suis prêt.", "reply": "Personne l'est jamais. La différence entre le brave et le lâche, c'est ce qu'ils font quand ils ont peur. Tous les deux ont peur." }
+                { "id": "brakk_lambda_b2_c1", "text": "Tu crois vraiment que c'est juste ?", "reply": "Juste ? C'est la chose la plus juste que cette galaxie ait inventée. Moi, j'étais esclave. Esclave. Et le Tournoi m'a mis au même niveau que des princes et des généraux. Alors oui, c'est juste.", "tag": "questionnement" },
+                { "id": "brakk_lambda_b2_c2", "text": "Je n'ai pas besoin qu'on croie en moi.", "reply": "Bonne mentalité. Parce que personne le fera. Sauf toi. Et c'est suffisant.", "tag": "independant" },
+                { "id": "brakk_lambda_b2_c3", "text": "C'est quoi exactement, le Tournoi ?", "reply": "Le Tournoi d'Extelua. Des épreuves. Des combats. De la stratégie. Chaque monde envoie un champion. Le vainqueur obtient l'intégration au Réseau pour sa planète. Pour ton monde, ça changerait tout. Tout.", "tag": "ignorant" }
               ]
             },
             {
-              "npc": "Va dormir, isolé. Demain, montre-leur ce que ça veut dire, venir d'un monde qu'on a oublié."
+              "id": "brakk_lambda_b3",
+              "npc": "Écoute-moi bien, isolé. Je vais te dire un truc que personne d'autre te dira ici. Morkar — l'organisation qui gère le Tournoi — ils t'ont choisi pour une raison. Ils choisissent personne par hasard.",
+              "choices": [
+                { "id": "brakk_lambda_b3_c1", "text": "Pourquoi moi, alors ?", "reply": "Ça, c'est la question. Ils ont des éclaireurs partout. Même sur les mondes isolés. Si t'es là, c'est qu'ils ont vu quelque chose en toi. À toi de trouver quoi.", "tag": "curieux" },
+                { "id": "brakk_lambda_b3_c2", "text": "C'est quoi, Morkar ?", "reply": "Le groupe qui tient tout ensemble. Le Réseau, les Routes, le Tournoi. Sans eux, ce serait le chaos. Des guerres entre mondes, de l'anarchie. Ils sont pas parfaits, mais ils ont construit quelque chose qui marche.", "tag": "ignorant_morkar" },
+                { "id": "brakk_lambda_b3_c3", "text": "Je me fiche de leurs raisons. Je suis là pour mon peuple.", "reply": "Heh. T'as la bonne motivation. Les meilleures choses que j'ai faites dans ma vie, c'était jamais pour moi. C'était pour Cendreciel.", "tag": "devoue" }
+              ]
+            },
+            {
+              "id": "brakk_lambda_b4",
+              "npc": "Tu sais, j'étais comme toi. Pas isolé, non. Mais j'étais rien. Un esclave dans les forges, enchaîné, brisé. Et un jour, on m'a donné une chance. Une seule. Le Tournoi. Et j'ai tout changé.",
+              "choices": [
+                { "id": "brakk_lambda_b4_c1", "text": "Tu étais esclave ?", "reply": "Quinze ans dans les forges de l'Abysse. Le métal brûlant, les coups, les cris la nuit. Et puis Morkar a aboli l'esclavage sur Cendreciel. Et moi, j'ai brisé mes chaînes. Littéralement. À mains nues.", "tag": "empathique" },
+                { "id": "brakk_lambda_b4_c2", "text": "On se ressemble, alors.", "reply": "… Peut-être. T'as les yeux de quelqu'un qui a rien eu et qui est prêt à tout prendre. Je connais ce regard. C'était le mien.", "tag": "miroir" },
+                { "id": "brakk_lambda_b4_c3", "text": "Une chance, c'est tout ce qu'il me faut.", "reply": "Alors prends-la. Avec les dents s'il le faut. C'est comme ça qu'on fait, nous. Les gens partis de rien.", "tag": "determine" }
+              ]
+            },
+            {
+              "id": "brakk_lambda_b5",
+              "npc": "Demain, fais attention à qui tu fais confiance. Les champions des mondes connectés, ils ont des alliances, des sponsors, des stratégies prévues depuis des mois. Toi, t'arrives les mains vides. C'est un désavantage. Mais c'est aussi une liberté.",
+              "choices": [
+                { "id": "brakk_lambda_b5_c1", "text": "Je peux te faire confiance, à toi ?", "reply": "Dans l'arène ? Non. Je me battrai pour Cendreciel, pas pour toi. Mais cette nuit, entre deux champions qui dorment pas… ouais. Cette nuit, tu peux.", "tag": "confiance" },
+                { "id": "brakk_lambda_b5_c2", "text": "Je ne fais confiance à personne.", "reply": "Sage. Garde ça. La confiance, ici, c'est une arme qu'on retourne contre toi. Mais la solitude aussi, à la longue.", "tag": "mefiant" },
+                { "id": "brakk_lambda_b5_c3", "text": "Comment je reconnais un ennemi d'un allié ?", "reply": "Tu peux pas. Pas tout de suite. Les vrais ennemis sourient. Les vrais alliés te disent des choses que tu veux pas entendre. Comme moi, là, maintenant.", "tag": "conseil" }
+              ]
+            },
+            {
+              "id": "brakk_lambda_b6",
+              "npc": "Allez, isolé. Le soleil se lève dans quelques heures. T'as un monde entier sur les épaules, même si ce monde sait même pas que t'es ici. Une dernière chose ?",
+              "choices": [
+                { "id": "brakk_lambda_b6_c1", "text": "Merci, Brakk.", "reply": "… Me remercie pas. Je t'ai rien donné. Juste des mots. Demain, c'est toi qui devras te donner quelque chose — une raison de pas tomber.", "tag": "reconnaissant" },
+                { "id": "brakk_lambda_b6_c2", "text": "On se reverra.", "reply": "Probablement dans l'arène. Et là-bas, je frapperai. Mais au moins, tu sauras que c'est pas personnel.", "tag": "defi" },
+                { "id": "brakk_lambda_b6_c3", "text": "J'ai peur.", "reply": "Bien. La peur, c'est honnête. C'est ce qui te garde en vie. Ceux qui ont pas peur meurent les premiers. Dors avec ta peur. Demain, transforme-la en rage.", "tag": "vulnerable" }
+              ]
             }
           ],
           "outro": [
             "Le géant s'éloigne, chaque pas faisant trembler le sol.",
             "Tu restes seul avec le silence et les étoiles étrangères. Tout est nouveau. Tout est immense.",
-            "Mais les mots de l'Orque t'ont laissé quelque chose — pas de la peur, mais une étincelle. Tu fermes les yeux."
+            "Mais les mots de l'Orque t'ont laissé quelque chose — pas de la peur, mais une étincelle. Un ancien esclave devenu champion te voit comme un égal. Tu fermes les yeux."
           ]
         },
         "rebelle": {
