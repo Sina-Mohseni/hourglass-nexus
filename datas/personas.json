@@ -470,6 +470,75 @@
             "Tu fermes les yeux. Demain, il faudra jouer le champion loyal face aux caméras. Et face à Brakk. Le sommeil vient difficilement quand on porte un masque même dans le noir."
           ]
         },
+        "rebelle_isole": {
+          "intro": [
+            "Tu te figes. Quelqu'un est là. Grand. Massif. Impossible de l'éviter.",
+            "L'Orque est assis à même le sol, les bras croisés sur ses genoux. Il ne dort pas. Il fixe le ciel.",
+            "Ses yeux rouges se posent sur toi. Tu actives ton rôle — l'isolé perdu, émerveillé, qui découvre tout. Respire. Joue le naïf."
+          ],
+          "greeting": "Hé. Un isolé. T'as l'air perdu. Viens t'asseoir, y'a de la place.",
+          "beats": [
+            {
+              "id": "brakk_rebiso_b1",
+              "npc": "Ton monde est pas connecté au Réseau, c'est ça ? Pas de Routes Sillonnées, pas de technologie intergalactique. T'as dû halluciner quand les éclaireurs de Morkar sont arrivés chez toi.",
+              "choices": [
+                { "id": "brakk_rebiso_b1_c1", "text": "C'était… incroyable. Terrifiant.", "reply": "Heh. Je te crois. La première fois qu'on voit un vaisseau spatial, on oublie comment respirer. T'inquiète, tu t'habitueras. Ou pas. Mais t'es là, c'est ce qui compte.", "tag": "role_parfait" },
+                { "id": "brakk_rebiso_b1_c2", "text": "Je comprends encore rien à tout ça.", "reply": "Normal. Y'a des champions de mondes connectés qui comprennent rien non plus, et eux ils ont grandi avec. Au moins toi t'as une excuse.", "tag": "naif_credible" },
+                { "id": "brakk_rebiso_b1_c3", "text": "Je m'adapte vite.", "reply": "… Vite, hein ? Pour un gars d'un monde sans technologie, tu prends les choses drôlement bien. La plupart des isolés tremblent pendant trois jours. Toi, t'as l'air… calme.", "tag": "trop_assure" }
+              ]
+            },
+            {
+              "id": "brakk_rebiso_b2",
+              "npc": "Écoute, isolé. Je vais t'expliquer un truc parce que personne d'autre le fera. Morkar — le groupe qui organise tout ça — c'est eux qui tiennent la galaxie ensemble. Le Réseau, les Routes, le Tournoi. Sans eux, ce serait la guerre partout.",
+              "choices": [
+                { "id": "brakk_rebiso_b2_c1", "text": "C'est quoi exactement, Morkar ?", "reply": "L'organisation qui gère le Réseau Universel. Ils connectent les mondes, ils arbitrent les conflits, et ils organisent le Tournoi. C'est grâce à eux que l'esclavage a été aboli sur Cendreciel. Mon monde. Ils m'ont libéré.", "tag": "ignorance_jouee" },
+                { "id": "brakk_rebiso_b2_c2", "text": "Ils ont l'air puissants.", "reply": "Puissants, oui. Et nécessaires. Les gens puissants, y'en a deux sortes : ceux qui écrasent et ceux qui construisent. Morkar construit. J'ai les preuves sur ma peau.", "tag": "observation_neutre" },
+                { "id": "brakk_rebiso_b2_c3", "text": "Et personne ne les conteste ?", "reply": "… Contester Morkar ? Pourquoi ? Ah, t'as entendu des choses ? Des rumeurs, sûrement. Y'a toujours des mécontents. Des dissidents qui voudraient tout casser sans rien proposer de mieux. Ignore-les.", "tag": "question_risquee" }
+              ]
+            },
+            {
+              "id": "brakk_rebiso_b3",
+              "npc": "Moi, j'étais esclave. Quinze ans dans les forges de l'Abysse. Le métal en fusion, les coups, les chaînes. Et un jour, Morkar est intervenu. Ils ont mis fin à l'esclavage sur tout Cendreciel. Tu sais ce que ça fait, d'être libéré par quelqu'un que t'as jamais rencontré ?",
+              "choices": [
+                { "id": "brakk_rebiso_b3_c1", "text": "C'est… une belle histoire.", "reply": "Belle ? Non. C'est une histoire de sang et de fer. Mais elle finit bien. Et c'est pour ça que je suis là. Pour rendre à mon monde ce qu'on m'a donné.", "tag": "politesse" },
+                { "id": "brakk_rebiso_b3_c2", "text": "Pourquoi Morkar a fait ça ?", "reply": "Parce que c'est leur mission. Ils amènent l'ordre, la justice. Pas la justice parfaite, mais la justice quand même. C'est plus que ce que j'avais avant.", "tag": "enquete_subtile" },
+                { "id": "brakk_rebiso_b3_c3", "text": "L'esclavage existe encore ailleurs ?", "reply": "Sur certains mondes isolés, oui. Des mondes comme le tien, peut-être. Pas connectés, pas surveillés. C'est pour ça que le Réseau est important. Sans connexion, y'a pas de protection.", "tag": "redirection" }
+              ]
+            },
+            {
+              "id": "brakk_rebiso_b4",
+              "npc": "Tu sais, les isolés, d'habitude ils posent des questions sur les étoiles, les vaisseaux, la nourriture. Des trucs simples. Toi, tes questions sont… différentes. Plus ciblées. C'est rare pour quelqu'un qui découvre tout.",
+              "choices": [
+                { "id": "brakk_rebiso_b4_c1", "text": "Je suis juste curieux de nature.", "reply": "Curieux. Ouais. C'est un bon trait. Les curieux survivent plus longtemps. Mais les trop curieux se font remarquer. Fais gaffe.", "tag": "excuse_faible" },
+                { "id": "brakk_rebiso_b4_c2", "text": "Tu me surestimes. Je comprends la moitié de ce que tu dis.", "reply": "Heh. Peut-être. C'est vrai que je connais rien à ton monde. Peut-être que chez toi, les gens sont juste plus malins que je pensais.", "tag": "humilite_strategique" },
+                { "id": "brakk_rebiso_b4_c3", "text": "Sur mon monde, on apprend à poser les bonnes questions pour survivre.", "reply": "Ça, je comprends. C'est pareil dans les forges. Pose la mauvaise question, tu prends un coup. Pose la bonne, tu manges. On est peut-être pas si différents, isolé.", "tag": "verite_partielle" }
+              ]
+            },
+            {
+              "id": "brakk_rebiso_b5",
+              "npc": "Demain, le Tournoi commence pour de vrai. Les champions des mondes connectés, ils vont te regarder de haut. Ils pensent que les isolés sont là pour remplir les rangs. Prouve-leur le contraire.",
+              "choices": [
+                { "id": "brakk_rebiso_b5_c1", "text": "Je ferai de mon mieux.", "reply": "Ton mieux. C'est ce qu'on dit tous. Mais le Tournoi exige plus que ton mieux. Il exige tout. Sois prêt à tout donner.", "tag": "modeste" },
+                { "id": "brakk_rebiso_b5_c2", "text": "Je ne suis pas là pour prouver quoi que ce soit.", "reply": "Ah non ? Alors t'es là pour quoi ? Le Tournoi, c'est la preuve incarnée. Si t'es pas là pour ça… t'es là pour quoi, isolé ?", "tag": "glissement" },
+                { "id": "brakk_rebiso_b5_c3", "text": "Les apparences sont trompeuses.", "reply": "… Ouais. Ça c'est vrai. Les apparences m'ont trompé toute ma vie. Les maîtres des forges avaient l'air civilisés. Et toi, t'as l'air innocent. On verra ce que ça vaut.", "tag": "aveu_voile" }
+              ]
+            },
+            {
+              "id": "brakk_rebiso_b6",
+              "npc": "Allez, isolé. Dors. T'en as besoin plus que moi. Et un conseil — reste toi-même demain. Les gens qui jouent un rôle finissent toujours par se trahir. J'en ai vu des dizaines dans les forges.",
+              "choices": [
+                { "id": "brakk_rebiso_b6_c1", "text": "Merci pour les conseils, Brakk.", "reply": "De rien, petit. T'as quelque chose, je sais pas quoi. Mais quelque chose. Gâche pas ça demain.", "tag": "gratitude" },
+                { "id": "brakk_rebiso_b6_c2", "text": "Je suis toujours moi-même.", "reply": "Tant mieux. Parce que les menteurs, dans l'arène, le Tournoi les expose. Tôt ou tard.", "tag": "assurance_risquee" },
+                { "id": "brakk_rebiso_b6_c3", "text": "Bonne nuit. Et… merci de m'avoir parlé comme à un égal.", "reply": "… Un égal. Hm. On est tous égaux la veille du Tournoi. C'est après que ça change. Dors bien, isolé.", "tag": "touche_personnelle" }
+              ]
+            }
+          ],
+          "outro": [
+            "L'Orque se lève lentement et s'éloigne dans l'obscurité. Pour un être aussi massif, il fait étonnamment peu de bruit.",
+            "Tu restes immobile un long moment. Ta couverture a tenu — mais jusqu'à quand ? Brakk a l'instinct d'un survivant. Ses derniers mots résonnent : 'les gens qui jouent un rôle finissent toujours par se trahir'.",
+            "Tu fermes les yeux. Le faux-isolé doit dormir comme un vrai isolé. Mal. Avec la peur au ventre. Tu n'as pas besoin de feindre cette partie."
+          ]
+        },
         "apprenti-morkar": {
           "intro": [
             "Un bruit sourd. Des pas lourds dans l'obscurité.",
