@@ -228,6 +228,17 @@
   color: var(--gold-light) !important;
 }
 
+/* ── Choice counter ── */
+.ndlg-choice-counter {
+  text-align: center;
+  font-size: .75rem;
+  color: rgba(168,132,42,.6);
+  letter-spacing: .05em;
+  margin-top: .4rem;
+  opacity: 0;
+  transition: opacity .4s;
+}
+
 /* ── Tap hint ── */
 .ndlg-tap-hint {
   margin-top: 16px;
