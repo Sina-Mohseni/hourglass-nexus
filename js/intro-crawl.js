@@ -619,7 +619,6 @@ function showIdentityScreen(onDone){
   var label = document.getElementById("id-avatar-label");
   var fileInput = document.getElementById("id-file-input");
   var nameInput = document.getElementById("id-name-input");
-  var raceInput = document.getElementById("id-race-input");
   var confirmBtn = document.getElementById("id-confirm-btn");
 
   var avatarData = "";
@@ -643,11 +642,9 @@ function showIdentityScreen(onDone){
     var name = nameInput ? nameInput.value.trim() : "";
     if(name.length < 2){ if(nameInput) nameInput.focus(); return; }
 
-    // Save name + race + avatar immediately
-    var race = raceInput ? raceInput.value.trim() : "";
+    // Save name + avatar immediately
     var u = loadUser();
     u.name = name;
-    if(race) u.race = race;
     saveUser(u);
     if(avatarData) saveAvatar(avatarData);
     window._idAvatarData = avatarData;
@@ -660,7 +657,6 @@ function showIdentityScreen(onDone){
       // Reset for potential replay
       if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
       if(nameInput) nameInput.value = "";
-      if(raceInput) raceInput.value = "";
       onDone();
     }, 800);
   };

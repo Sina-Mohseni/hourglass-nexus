@@ -140,6 +140,7 @@ function showInventoryOverlay(onClose){
   overlay.id = "inv-overlay";
 
   var roleLabel = SCENARIO_LABELS[scenario] || "Voyageur";
+  var raceLabel = u.race || "";
   var worldLabel = u.worldName || "Monde inconnu";
   var classLabel = u.className || "Aucun";
   var quoteLabel = u.quote || "";
@@ -169,6 +170,8 @@ function showInventoryOverlay(onClose){
   h += '<div class="pg-role-badge">' + esc(roleLabel) + '</div>';
   h += '<div class="pg-name" id="pg-display-name">' + esc(u.name || "Voyageur") + '</div>';
   h += '<div class="pg-details">';
+  if(raceLabel) h += '<span class="pg-detail"><span class="pg-detail-icon">\uD83E\uDDEC</span> <span id="pg-display-race">' + esc(raceLabel) + '</span></span><span class="pg-detail-sep">\u2022</span>';
+  else h += '<span class="pg-detail" style="display:none"><span class="pg-detail-icon">\uD83E\uDDEC</span> <span id="pg-display-race"></span></span><span class="pg-detail-sep" id="pg-race-sep" style="display:none">\u2022</span>';
   h += '<span class="pg-detail"><span class="pg-detail-icon">\uD83C\uDF0D</span> <span id="pg-display-world">' + esc(worldLabel) + '</span></span>';
   h += '<span class="pg-detail-sep">\u2022</span>';
   h += '<span class="pg-detail"><span class="pg-detail-icon">\uD83D\uDEE0\uFE0F</span> <span id="pg-display-class">' + esc(classLabel) + '</span></span>';
@@ -413,6 +416,14 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     if(dc && ci) dc.textContent = ci.value || "Aucun";
     var dq = document.getElementById("pg-display-quote");
     if(dq && qi) dq.textContent = qi.value ? ("\u201C" + qi.value + "\u201D") : "";
+    var dr = document.getElementById("pg-display-race");
+    if(dr && ri){
+      dr.textContent = ri.value;
+      var raceParent = dr.closest(".pg-detail");
+      var raceSep = raceParent ? raceParent.nextElementSibling : document.getElementById("pg-race-sep");
+      if(raceParent) raceParent.style.display = ri.value ? "" : "none";
+      if(raceSep && raceSep.classList.contains("pg-detail-sep")) raceSep.style.display = ri.value ? "" : "none";
+    }
   }
   ["inv-edit-name","inv-edit-race","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
     var el = document.getElementById(id);
