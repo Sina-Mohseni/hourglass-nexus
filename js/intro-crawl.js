@@ -608,94 +608,165 @@ function showJournalArticle(){
   };
 }
 
-/* ══════════ IDENTITY SCREEN (portrait + race) ══════════ */
+/* ══════════ IDENTITY SCREEN (race → portrait) ══════════ */
 function showIdentityScreen(onDone){
   var overlay = document.getElementById("identity-screen");
   if(!overlay){ onDone(); return; }
   overlay.style.display = "";
 
+  var phaseRace = document.getElementById("id-phase-race");
+  var phaseAvatar = document.getElementById("id-phase-avatar");
+  var raceGrid = document.getElementById("id-race-grid");
   var ring = document.getElementById("id-avatar-ring");
   var preview = document.getElementById("id-avatar-preview");
   var label = document.getElementById("id-avatar-label");
   var fileInput = document.getElementById("id-file-input");
   var skipBtn = document.getElementById("id-skip-avatar");
-  var raceTitle = document.getElementById("id-race-title");
-  var raceList = document.getElementById("id-race-list");
 
   var avatarData = "";
-  var avatarChosen = false;
+  var BASE_BONUS_POOL = 100;
+  var STAT_NAMES = {CRE:"Créativité",SAG:"Sagesse",CHA:"Charisme",FOR:"Force",AGI:"Agilité",PER:"Perception"};
 
-  // Avatar pick
-  function openFilePicker(){ if(fileInput) fileInput.click(); }
-  if(ring) ring.onclick = function(){ if(!avatarChosen) openFilePicker(); };
-  if(label) label.onclick = function(){ if(!avatarChosen) openFilePicker(); };
-  if(fileInput) fileInput.onchange = function(){
-    var file = fileInput.files[0]; if(!file) return;
-    var reader = new FileReader();
-    reader.onload = function(e){
-      avatarData = e.target.result;
-      if(preview) preview.innerHTML = '<img src="'+avatarData+'">';
-      showRaceSelection();
-    };
-    reader.readAsDataURL(file);
-  };
+  // ── Phase 1: Race grid ──
+  if(phaseRace) phaseRace.style.display = "";
+  if(phaseAvatar) phaseAvatar.style.display = "none";
 
-  // Skip avatar → go straight to race selection
-  if(skipBtn) skipBtn.onclick = function(){ showRaceSelection(); };
+  if(raceGrid){
+    raceGrid.innerHTML = "";
+    var races = getRaceObjects();
 
-  function showRaceSelection(){
-    avatarChosen = true;
-    // Hide avatar label + skip button, show race selection
-    if(label) label.style.display = "none";
-    if(skipBtn) skipBtn.style.display = "none";
-    if(raceTitle) raceTitle.style.display = "";
-    if(raceList){
-      raceList.style.display = "";
-      raceList.innerHTML = "";
+    races.forEach(function(race){
+      var card = document.createElement("button");
+      card.className = "id-race-card";
+      card.innerHTML = '<span class="id-race-card-name">' + esc(race.name) + '</span>';
+      card.onclick = function(e){
+        e.stopPropagation();
+        showRaceDetail(race);
+      };
+      raceGrid.appendChild(card);
+    });
+  }
 
-      var races = getTournamentRaces();
-      races.forEach(function(raceName){
-        var btn = document.createElement("button");
-        btn.className = "id-race-circle";
-        btn.textContent = raceName;
-        btn.onclick = function(e){
-          e.stopPropagation();
-          // Highlight selected
-          raceList.querySelectorAll(".id-race-circle").forEach(function(b){
-            b.classList.remove("selected");
-            b.style.opacity = "0.4";
-          });
-          btn.classList.add("selected");
-          btn.style.opacity = "1";
+  // ── Race detail modal ──
+  function showRaceDetail(race){
+    var existing = overlay.querySelector(".id-race-modal-backdrop");
+    if(existing) existing.remove();
 
-          // Save race + avatar
-          var u = loadUser();
-          u.race = raceName;
-          saveUser(u);
-          if(avatarData) saveAvatar(avatarData);
-          window._idAvatarData = avatarData;
-          window._idRace = raceName;
+    var backdrop = document.createElement("div");
+    backdrop.className = "id-race-modal-backdrop";
 
-          setTimeout(function(){
-            overlay.classList.add("fading-out");
-            setTimeout(function(){
-              overlay.style.display = "none";
-              overlay.classList.remove("fading-out");
-              // Reset for potential replay
-              if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
-              if(raceList) raceList.innerHTML = "";
-              if(raceTitle) raceTitle.style.display = "none";
-              if(raceList) raceList.style.display = "none";
-              if(label) label.style.display = "";
-              if(skipBtn) skipBtn.style.display = "";
-              avatarChosen = false;
-              onDone();
-            }, 800);
-          }, 400);
-        };
-        raceList.appendChild(btn);
-      });
+    var poolMod = race.bonusPoints || 0;
+    var totalPool = BASE_BONUS_POOL + poolMod;
+
+    var h = '<div class="id-race-modal">';
+    h += '<div class="id-race-modal-title">' + esc(race.name) + '</div>';
+    h += '<div class="id-race-modal-desc">' + esc(race.desc) + '</div>';
+
+    // Stats preview
+    h += '<div class="id-race-stats">';
+    ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+      var base = 50;
+      var bonus = (race.bonus && race.bonus[k]) || 0;
+      var malus = (race.malus && race.malus[k]) || 0;
+      var total = base + bonus + malus;
+      var modStr = "";
+      if(bonus > 0) modStr = '<span class="id-stat-bonus">+' + bonus + '</span>';
+      if(malus < 0) modStr += '<span class="id-stat-malus">' + malus + '</span>';
+      h += '<div class="id-stat-row">';
+      h += '<span class="id-stat-label">' + STAT_NAMES[k] + '</span>';
+      h += '<span class="id-stat-bar-wrap"><span class="id-stat-bar" style="width:' + total + '%"></span></span>';
+      h += '<span class="id-stat-value">' + total + '</span>';
+      h += modStr;
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // Bonus points pool
+    h += '<div class="id-race-pool">';
+    if(poolMod > 0){
+      h += 'Points bonus à répartir : <strong>' + totalPool + '</strong> <span class="id-stat-bonus">(+' + poolMod + ')</span>';
+    } else if(poolMod < 0){
+      h += 'Points bonus à répartir : <strong>' + totalPool + '</strong> <span class="id-stat-malus">(' + poolMod + ')</span>';
+    } else {
+      h += 'Points bonus à répartir : <strong>' + totalPool + '</strong>';
     }
+    h += '</div>';
+
+    h += '<div class="id-race-modal-actions">';
+    h += '<button class="id-race-modal-back">Retour</button>';
+    h += '<button class="id-race-modal-accept">Accepter</button>';
+    h += '</div>';
+    h += '</div>';
+
+    backdrop.innerHTML = h;
+    overlay.appendChild(backdrop);
+    setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
+
+    backdrop.querySelector(".id-race-modal-back").onclick = function(){
+      backdrop.classList.remove("visible");
+      setTimeout(function(){ backdrop.remove(); }, 300);
+    };
+
+    backdrop.querySelector(".id-race-modal-accept").onclick = function(){
+      // Save race + base stats
+      var u = loadUser();
+      u.race = race.name;
+      ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+        var base = 50;
+        var bonus = (race.bonus && race.bonus[k]) || 0;
+        var malus = (race.malus && race.malus[k]) || 0;
+        u["stat"+k] = base + bonus + malus;
+      });
+      saveUser(u);
+      window._idRace = race.name;
+      window._raceBonusPool = totalPool;
+
+      backdrop.classList.remove("visible");
+      setTimeout(function(){
+        backdrop.remove();
+        goToAvatarPhase();
+      }, 300);
+    };
+  }
+
+  // ── Phase 2: Avatar upload ──
+  function goToAvatarPhase(){
+    if(phaseRace) phaseRace.style.display = "none";
+    if(phaseAvatar){ phaseAvatar.style.display = ""; phaseAvatar.style.animation = "scFadeIn .4s ease-out both"; }
+
+    function openFilePicker(){ if(fileInput) fileInput.click(); }
+    if(ring) ring.onclick = openFilePicker;
+    if(label) label.onclick = openFilePicker;
+
+    if(fileInput) fileInput.onchange = function(){
+      var file = fileInput.files[0]; if(!file) return;
+      var reader = new FileReader();
+      reader.onload = function(e){
+        avatarData = e.target.result;
+        if(preview) preview.innerHTML = '<img src="'+avatarData+'">';
+        setTimeout(function(){ finishIdentity(); }, 400);
+      };
+      reader.readAsDataURL(file);
+    };
+
+    if(skipBtn) skipBtn.onclick = function(){ finishIdentity(); };
+  }
+
+  function finishIdentity(){
+    if(avatarData) saveAvatar(avatarData);
+    window._idAvatarData = avatarData;
+
+    overlay.classList.add("fading-out");
+    setTimeout(function(){
+      overlay.style.display = "none";
+      overlay.classList.remove("fading-out");
+      // Reset for replay
+      if(phaseRace) phaseRace.style.display = "";
+      if(phaseAvatar) phaseAvatar.style.display = "none";
+      if(raceGrid) raceGrid.innerHTML = "";
+      if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
+      onDone();
+    }, 800);
   }
 }
 

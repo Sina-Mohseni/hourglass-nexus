@@ -658,21 +658,28 @@
         </audio>
       </div>
 
-      <!-- ═══════ IDENTITY (portrait + race, before scenario) ═══════ -->
+      <!-- ═══════ IDENTITY (race → portrait, before scenario) ═══════ -->
       <div class="identity-overlay" id="identity-screen" style="display:none">
         <div class="sc-vignette"></div>
         <div class="id-content">
-          <div class="sc-title">Qui es-tu, voyageur ?</div>
-          <div class="id-avatar-ring" id="id-avatar-ring">
-            <div class="id-avatar-preview" id="id-avatar-preview">
-              <span class="id-avatar-plus">+</span>
-            </div>
+          <!-- Phase 1: Race selection -->
+          <div class="id-phase-race" id="id-phase-race">
+            <div class="sc-title">De quelle esp&egrave;ce es-tu ?</div>
+            <div class="id-race-subtitle">Choisis ta race &mdash; elle d&eacute;finira tes attributs de base</div>
+            <div class="id-race-grid" id="id-race-grid"></div>
           </div>
-          <div class="id-avatar-label" id="id-avatar-label">Choisir un portrait</div>
-          <input type="file" accept="image/*" id="id-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
-          <button class="id-skip-avatar" id="id-skip-avatar">Passer &rsaquo;</button>
-          <div class="id-race-title" id="id-race-title" style="display:none">De quelle esp&egrave;ce es-tu ?</div>
-          <div class="id-race-list" id="id-race-list" style="display:none"></div>
+          <!-- Phase 2: Avatar upload (after race accepted) -->
+          <div class="id-phase-avatar" id="id-phase-avatar" style="display:none">
+            <div class="sc-title">Choisis ton portrait</div>
+            <div class="id-avatar-ring" id="id-avatar-ring">
+              <div class="id-avatar-preview" id="id-avatar-preview">
+                <span class="id-avatar-plus">+</span>
+              </div>
+            </div>
+            <div class="id-avatar-label" id="id-avatar-label">Uploader un portrait</div>
+            <input type="file" accept="image/*" id="id-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
+            <button class="id-skip-avatar" id="id-skip-avatar">Passer &rsaquo;</button>
+          </div>
         </div>
       </div>
 

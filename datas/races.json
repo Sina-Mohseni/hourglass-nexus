@@ -1,44 +1,324 @@
 {
   "races": [
-    "Humain",
-    "Elfe",
-    "Orque",
-    "Nain",
-    "Kitsune",
-    "Djinn",
-    "Drakonide",
-    "Golem",
-    "Cyborg",
-    "Androïde",
-    "Clone",
-    "Mutant",
-    "Synthétique",
-    "Céleste",
-    "Spectre",
-    "Ombre-née",
-    "Forgé",
-    "Naga",
-    "Corallin",
-    "Fungide",
-    "Sylvain",
-    "Changelin",
-    "Chimère",
-    "Fée",
-    "Titan",
-    "Troll",
-    "Abyssal",
-    "Astral",
-    "Géant",
-    "Mort-vivant",
-    "Primitif",
-    "Revenant",
-    "Wendigo",
-    "Yokai",
-    "Élémentaire",
-    "Valkyrie",
-    "Liche",
-    "Bête-garou",
-    "Voidborn",
-    "Greffé"
+    {
+      "id": "humain",
+      "name": "Humain",
+      "desc": "Adaptables et ambitieux, les Humains compensent leur absence de traits exceptionnels par une polyvalence redoutable. Là où d'autres espèces excellent dans un domaine, les Humains s'adaptent à tous.",
+      "bonus": {"CHA": 5},
+      "malus": {},
+      "bonusPoints": 10
+    },
+    {
+      "id": "elfe",
+      "name": "Elfe",
+      "desc": "Êtres millénaires à la grâce surnaturelle, les Elfes possèdent une perception aiguisée par des siècles d'observation. Leur fragilité physique est compensée par une sagesse profonde.",
+      "bonus": {"PER": 10, "SAG": 8},
+      "malus": {"FOR": -8},
+      "bonusPoints": 0
+    },
+    {
+      "id": "orque",
+      "name": "Orque",
+      "desc": "Nés pour le combat, les Orques possèdent une force brute qui terrifie leurs adversaires. Leur nature brutale les rend maladroits dans les subtilités sociales, mais redoutables sur le terrain.",
+      "bonus": {"FOR": 15, "AGI": 5},
+      "malus": {"CHA": -10, "SAG": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "nain",
+      "name": "Nain",
+      "desc": "Artisans légendaires forgés dans la roche et le feu, les Nains allient robustesse et créativité. Leur stature réduite cache une endurance à toute épreuve.",
+      "bonus": {"FOR": 8, "CRE": 8},
+      "malus": {"AGI": -5, "PER": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "kitsune",
+      "name": "Kitsune",
+      "desc": "Esprits-renards métamorphes, les Kitsune sont des manipulateurs nés. Leur charme surnaturel dissimule une intelligence acérée et une agilité féline.",
+      "bonus": {"CHA": 12, "AGI": 8},
+      "malus": {"FOR": -10},
+      "bonusPoints": 0
+    },
+    {
+      "id": "djinn",
+      "name": "Djinn",
+      "desc": "Entités élémentaires semi-corporelles, les Djinns manipulent la réalité par la volonté pure. Leur nature éthérée les rend insaisissables mais physiquement vulnérables.",
+      "bonus": {"CRE": 15, "SAG": 5},
+      "malus": {"FOR": -12},
+      "bonusPoints": 0
+    },
+    {
+      "id": "drakonide",
+      "name": "Drakonide",
+      "desc": "Descendants des dragons anciens, les Drakonides portent le feu dans leurs veines. Leur présence imposante et leur force draconique inspirent la terreur et le respect.",
+      "bonus": {"FOR": 10, "CHA": 5},
+      "malus": {"AGI": -8},
+      "bonusPoints": 0
+    },
+    {
+      "id": "golem",
+      "name": "Golem",
+      "desc": "Constructs animés par une magie ancienne, les Golems sont des forteresses vivantes. Leur corps de pierre ou de métal est quasi indestructible, mais leur esprit reste rudimentaire.",
+      "bonus": {"FOR": 20},
+      "malus": {"CRE": -10, "CHA": -8, "AGI": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "cyborg",
+      "name": "Cyborg",
+      "desc": "Mi-organiques mi-mécaniques, les Cyborgs ont transcendé les limites de la chair grâce à la technologie. Leurs implants augmentent leurs capacités au prix de leur humanité.",
+      "bonus": {"PER": 10, "AGI": 5},
+      "malus": {"CHA": -5},
+      "bonusPoints": 5
+    },
+    {
+      "id": "androide",
+      "name": "Androïde",
+      "desc": "Machines à intelligence artificielle avancée, les Androïdes calculent là où d'autres ressentent. Leur logique froide et leur précision mécanique en font des analystes parfaits.",
+      "bonus": {"SAG": 12, "PER": 8},
+      "malus": {"CHA": -8, "CRE": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "clone",
+      "name": "Clone",
+      "desc": "Répliques génétiques optimisées, les Clones sont conçus pour la perfection. Leur ADN modifié leur confère des aptitudes équilibrées, mais leur identité fragmentée les fragilise.",
+      "bonus": {"AGI": 5, "FOR": 5},
+      "malus": {"SAG": -3},
+      "bonusPoints": 5
+    },
+    {
+      "id": "mutant",
+      "name": "Mutant",
+      "desc": "Transformés par des radiations, virus ou expériences, les Mutants portent des mutations imprévisibles. Chaque Mutant est unique — une arme vivante façonnée par le chaos.",
+      "bonus": {"CRE": 8, "FOR": 5},
+      "malus": {"CHA": -8},
+      "bonusPoints": 5
+    },
+    {
+      "id": "synthetique",
+      "name": "Synthétique",
+      "desc": "Êtres entièrement artificiels mais dotés de conscience, les Synthétiques sont la quintessence de l'ingénierie. Leur corps modulaire peut être reconfiguré à volonté.",
+      "bonus": {"SAG": 10, "AGI": 5},
+      "malus": {"CRE": -5, "CHA": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "celeste",
+      "name": "Céleste",
+      "desc": "Êtres de lumière descendus des sphères supérieures, les Célestes irradient une aura de pureté. Leur sagesse ancestrale et leur charisme divin les élèvent au-dessus du commun.",
+      "bonus": {"SAG": 10, "CHA": 10},
+      "malus": {"FOR": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "spectre",
+      "name": "Spectre",
+      "desc": "Entités entre la vie et la mort, les Spectres traversent les murs et les esprits. Leur nature intangible les rend presque impossibles à atteindre, mais incapables de force physique.",
+      "bonus": {"PER": 15, "AGI": 10},
+      "malus": {"FOR": -15},
+      "bonusPoints": -5
+    },
+    {
+      "id": "ombre-nee",
+      "name": "Ombre-née",
+      "desc": "Nés dans les ténèbres entre les mondes, les Ombre-nés sont des assassins naturels. Leur affinité avec l'obscurité leur confère une furtivité surnaturelle.",
+      "bonus": {"AGI": 12, "PER": 8},
+      "malus": {"CHA": -8, "SAG": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "forge",
+      "name": "Forgé",
+      "desc": "Créatures façonnées dans les forges dimensionnelles, les Forgés sont des guerriers-artisans. Leur corps de métal vivant fusionne la solidité de l'acier et la souplesse du vivant.",
+      "bonus": {"FOR": 10, "CRE": 5},
+      "malus": {"CHA": -5, "PER": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "naga",
+      "name": "Naga",
+      "desc": "Serpents sapients aux multiples bras, les Nagas sont des êtres d'une sagesse insondable. Leur corps ophidien cache une intelligence supérieure et des réflexes foudroyants.",
+      "bonus": {"SAG": 10, "AGI": 8},
+      "malus": {"CRE": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "corallin",
+      "name": "Corallin",
+      "desc": "Êtres symbiotiques nés des récifs vivants, les Corallins sont des organismes collectifs. Leur connexion aux écosystèmes marins leur confère une perception étendue du monde.",
+      "bonus": {"PER": 12, "SAG": 5},
+      "malus": {"FOR": -5, "AGI": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "fungide",
+      "name": "Fungide",
+      "desc": "Humanoïdes fongiques reliés par un réseau de spores, les Fungides partagent une conscience collective. Leur esprit en réseau leur donne une créativité et une perception uniques.",
+      "bonus": {"CRE": 10, "PER": 8},
+      "malus": {"AGI": -5, "CHA": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "sylvain",
+      "name": "Sylvain",
+      "desc": "Gardiens des forêts anciennes, mi-plantes mi-humanoïdes, les Sylvains puisent leur force dans la nature. Leur patience millénaire cache une sagesse que peu peuvent appréhender.",
+      "bonus": {"SAG": 12, "PER": 5},
+      "malus": {"AGI": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "changelin",
+      "name": "Changelin",
+      "desc": "Métamorphes parfaits, les Changelins peuvent reproduire n'importe quel visage. Leur identité mouvante fait d'eux des espions et des diplomates hors pair.",
+      "bonus": {"CHA": 15},
+      "malus": {"FOR": -8},
+      "bonusPoints": 0
+    },
+    {
+      "id": "chimere",
+      "name": "Chimère",
+      "desc": "Hybrides de multiples espèces fusionnées, les Chimères sont des aberrations puissantes. Leur nature instable génère des capacités imprévisibles et une force chaotique.",
+      "bonus": {"FOR": 8, "CRE": 5, "AGI": 5},
+      "malus": {"SAG": -5, "CHA": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "fee",
+      "name": "Fée",
+      "desc": "Créatures du Rêve, les Fées plient la réalité par leur imagination. Minuscules mais d'une créativité débordante, elles transforment le monde par la pensée pure.",
+      "bonus": {"CRE": 18},
+      "malus": {"FOR": -15},
+      "bonusPoints": 0
+    },
+    {
+      "id": "titan",
+      "name": "Titan",
+      "desc": "Colosses d'une ère révolue, les Titans dominent par leur stature et leur puissance brute. Leur lenteur est compensée par une force que rien ne semble pouvoir arrêter.",
+      "bonus": {"FOR": 20},
+      "malus": {"AGI": -10, "PER": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "troll",
+      "name": "Troll",
+      "desc": "Régénérateurs naturels à la peau de roc, les Trolls encaissent les coups les plus terribles. Leur esprit simple compense par un instinct de survie sans pareil.",
+      "bonus": {"FOR": 12},
+      "malus": {"SAG": -8, "CHA": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "abyssal",
+      "name": "Abyssal",
+      "desc": "Créatures venues des profondeurs interdites, les Abyssaux portent la pression des abîmes. Leur connexion aux ténèbres originelles leur confère une perception surnaturelle.",
+      "bonus": {"PER": 12, "CRE": 5},
+      "malus": {"CHA": -8},
+      "bonusPoints": 0
+    },
+    {
+      "id": "astral",
+      "name": "Astral",
+      "desc": "Êtres nés dans le plan astral, entre les dimensions, les Astraux existent partiellement hors du temps. Leur sagesse cosmique et leur créativité dépassent l'entendement mortel.",
+      "bonus": {"SAG": 10, "CRE": 10},
+      "malus": {"FOR": -10},
+      "bonusPoints": -5
+    },
+    {
+      "id": "geant",
+      "name": "Géant",
+      "desc": "Race ancienne aux proportions monumentales, les Géants sont des forces de la nature. Leur taille immense leur confère une puissance dévastatrice mais une grande vulnérabilité.",
+      "bonus": {"FOR": 15},
+      "malus": {"AGI": -8, "PER": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "mort-vivant",
+      "name": "Mort-vivant",
+      "desc": "Revenus de l'au-delà, les Morts-vivants portent les secrets de la mort. Leur chair ne connaît plus la fatigue ni la douleur, mais leur esprit porte le poids de l'éternité.",
+      "bonus": {"FOR": 8, "PER": 8},
+      "malus": {"CHA": -10},
+      "bonusPoints": 0
+    },
+    {
+      "id": "primitif",
+      "name": "Primitif",
+      "desc": "Espèce pré-technologique à l'instinct affûté, les Primitifs survivent par la ruse et l'endurance. Ce que la civilisation n'a pas poli, la nature l'a durci.",
+      "bonus": {"PER": 10, "AGI": 5},
+      "malus": {"CRE": -5, "SAG": -3},
+      "bonusPoints": 5
+    },
+    {
+      "id": "revenant",
+      "name": "Revenant",
+      "desc": "Morts ramenés par une volonté inébranlable, les Revenants sont animés par un but unique. Leur détermination surpasse celle de tout être vivant, au prix de tout le reste.",
+      "bonus": {"FOR": 10, "SAG": 5},
+      "malus": {"CHA": -8, "CRE": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "wendigo",
+      "name": "Wendigo",
+      "desc": "Prédateurs spectres des terres glacées, les Wendigos incarnent la faim éternelle. Leur agilité de chasseur et leur perception de pisteur en font des traqueurs terrifiants.",
+      "bonus": {"AGI": 12, "PER": 8},
+      "malus": {"CHA": -10, "SAG": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "yokai",
+      "name": "Yokai",
+      "desc": "Esprits surnaturels issus du folklore cosmique, les Yokai défient la logique. Leur créativité chaotique et leur charme étrange en font des êtres fascinants et imprévisibles.",
+      "bonus": {"CRE": 10, "CHA": 8},
+      "malus": {"FOR": -5, "SAG": -5},
+      "bonusPoints": 0
+    },
+    {
+      "id": "elementaire",
+      "name": "Élémentaire",
+      "desc": "Incarnations pures d'un élément primordial, les Élémentaires sont des forces de la nature conscientes. Leur puissance brute est sans égale, mais leur compréhension du monde organique reste limitée.",
+      "bonus": {"FOR": 12, "CRE": 5},
+      "malus": {"CHA": -8, "SAG": -3},
+      "bonusPoints": 0
+    },
+    {
+      "id": "valkyrie",
+      "name": "Valkyrie",
+      "desc": "Guerrières célestes qui choisissent les dignes parmi les mortels, les Valkyries allient la grâce divine à la férocité du combat. Leur jugement est aussi tranchant que leur lame.",
+      "bonus": {"FOR": 8, "SAG": 5, "CHA": 5},
+      "malus": {"CRE": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "liche",
+      "name": "Liche",
+      "desc": "Sorciers ayant vaincu la mort par des rituels interdits, les Liches possèdent un savoir accumulé sur des millénaires. Leur corps desséché abrite l'esprit le plus affûté qui soit.",
+      "bonus": {"SAG": 18, "CRE": 5},
+      "malus": {"FOR": -10, "CHA": -8},
+      "bonusPoints": -5
+    },
+    {
+      "id": "bete-garou",
+      "name": "Bête-garou",
+      "desc": "Lycanthropes portant la malédiction de la bête, les Bêtes-garou oscillent entre humanité et bestialité. Leur force sauvage et leurs sens aiguisés en font des combattants féroces.",
+      "bonus": {"FOR": 10, "PER": 8, "AGI": 5},
+      "malus": {"SAG": -8, "CHA": -5},
+      "bonusPoints": -5
+    },
+    {
+      "id": "voidborn",
+      "name": "Voidborn",
+      "desc": "Nés dans le néant entre les univers, les Voidborn ne devraient pas exister. Leur connexion au vide leur confère une perception qui transcende les dimensions, mais les isole du monde réel.",
+      "bonus": {"PER": 15, "SAG": 8},
+      "malus": {"FOR": -8, "CHA": -8},
+      "bonusPoints": 0
+    },
+    {
+      "id": "greffe",
+      "name": "Greffé",
+      "desc": "Êtres ayant reçu des greffes d'organes ou de membres d'autres espèces, les Greffés sont des patchworks vivants. Chaque greffe apporte son lot de capacités… et de complications.",
+      "bonus": {"CRE": 5, "AGI": 5},
+      "malus": {"SAG": -3},
+      "bonusPoints": 8
+    }
   ]
 }
