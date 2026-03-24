@@ -25,6 +25,7 @@ var projectsData = {};
 var calendarData = {events:[]};
 var weatherData = {types:{}, forecast:{}, default:"eclat"};
 var jobsData = {jobs:[]};
+var tournamentData = {quotidiens:[], univers:[], races:[]};
 
 /* UTILS */
 function $(s,c){ return (c||document).querySelector(s) }

@@ -6,7 +6,7 @@ async function loadAllData(){
     try { var r = await fetch(path); if(r.ok) return await r.json(); } catch(e){}
     return null;
   }
-  var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs] = await Promise.all([
+  var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs, tournament] = await Promise.all([
     loadJSON("datas/authors.json"),
     loadJSON("datas/encyclopedia.json"),
     loadJSON("datas/personas.json"),
@@ -17,7 +17,8 @@ async function loadAllData(){
     loadJSON("datas/projects.json"),
     loadJSON("datas/calendar.json"),
     loadJSON("datas/weather.json"),
-    loadJSON("datas/jobs.json")
+    loadJSON("datas/jobs.json"),
+    loadJSON("datas/tournament.json")
   ]);
   if(auth) authData = auth;
   if(ency) encyData = ency;
@@ -30,6 +31,7 @@ async function loadAllData(){
   if(calendar) calendarData = calendar;
   if(weather) weatherData = weather;
   if(jobs) jobsData = jobs;
+  if(tournament) tournamentData = tournament;
   if(authData.author) avatarMap[authData.author.id] = authData.author.avatar;
   (authData.guides||[]).forEach(function(g){ if(g && g.avatar) avatarMap[g.id] = g.avatar });
   getPersonas().forEach(function(p){ if(p.avatar) avatarMap[p.id] = p.avatar });
@@ -60,7 +62,17 @@ function getEncyCards(){ return (encyData && encyData.cards) || [] }
 function getEncyCats(){ return (encyData && encyData.categories) || [] }
 function getGuidePersona(){ return getPersonas().find(function(p){ return p.id === getGuideId() }) || null }
 function getNonGuidePersonas(){ var gid = getGuideId(); return getPersonas().filter(function(p){ return p.id !== gid }) }
-function getPersonaById(id){ return getPersonas().find(function(p){ return p.id === id }) || null }
+function getPersonaById(id){
+  // Check generated tournament participants first
+  if(window._tournamentParticipants){
+    var tp = window._tournamentParticipants.find(function(p){ return p.id === id });
+    if(tp) return tp;
+  }
+  return getPersonas().find(function(p){ return p.id === id }) || null;
+}
+function getTournamentQuotidiens(){ return (tournamentData && tournamentData.quotidiens) || [] }
+function getTournamentUnivers(){ return (tournamentData && tournamentData.univers) || [] }
+function getTournamentRaces(){ return (tournamentData && tournamentData.races) || [] }
 
 /* USER */
 var USER_KEYS = {
@@ -68,7 +80,7 @@ var USER_KEYS = {
   visited:"ac_visited", floorsUp:"ac_fup", floorsDown:"ac_fdn",
   title:"ac_title", quote:"ac_quote", cardColor:"ac_ccolor",
   statCRE:"ac_cre", statSAG:"ac_sag", statCHA:"ac_cha",
-  statFOR:"ac_for", statAGI:"ac_agi", level:"ac_level", xp:"ac_xp",
+  statFOR:"ac_for", statAGI:"ac_agi", statPER:"ac_per", level:"ac_level", xp:"ac_xp",
   region:"ac_region", startCity:"ac_startCity", borderPasses:"ac_borderPasses",
   job:"ac_job", reputation:"ac_reputation", personaAffinities:"ac_affinities",
   gameDay:"ac_gameDay", gameHour:"ac_gameHour", gameMinute:"ac_gameMinute", gameSecond:"ac_gameSecond", mapX:"ac_mapX", mapY:"ac_mapY",
@@ -93,6 +105,7 @@ function loadUser(){
     statCHA: parseInt(acDB.get(USER_KEYS.statCHA)) || 50,
     statFOR: parseInt(acDB.get(USER_KEYS.statFOR)) || 50,
     statAGI: parseInt(acDB.get(USER_KEYS.statAGI)) || 50,
+    statPER: parseInt(acDB.get(USER_KEYS.statPER)) || 50,
     level: parseInt(acDB.get(USER_KEYS.level)) || 1,
     xp: parseInt(acDB.get(USER_KEYS.xp)) || 0,
     region: acDB.get(USER_KEYS.region) || "",

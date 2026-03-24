@@ -296,7 +296,51 @@ function _resolveNightTree(npc, playerScenario){
       outro: null
     };
   }
+  // Generic fallback for dynamically generated tournament personas
+  if(npc.quotidien){
+    return _buildGenericTree(npc);
+  }
   return null;
+}
+
+/* ── Build a generic dialogue tree for generated personas ── */
+function _buildGenericTree(npc){
+  var job = npc.quotidien || "voyageur";
+  var monde = npc.monde || "un monde lointain";
+  var race = npc.race || "inconnu";
+  var name = npc.name || "Inconnu";
+
+  var greetings = [
+    "Tu ne dors pas non plus\u2026 " + name + ", " + job + " de " + monde + ".",
+    "Tiens, quelqu\u2019un d\u2019\u00e9veill\u00e9. Je suis " + name + ". " + job + " de " + monde + ".",
+    "H\u00e9. Moi c\u2019est " + name + ". " + job + ". " + monde + ". Et toi ?"
+  ];
+
+  return {
+    greeting: greetings[Math.floor(Math.random() * greetings.length)],
+    intro: null,
+    outro: null,
+    beats: [
+      { npc: "Demain, tout change. Le Tournoi commence et personne sait vraiment ce qui nous attend. Qu\u2019est-ce qui t\u2019a amen\u00e9 ici, toi ?",
+        choices: [
+          { id: "gen_b1_c1", text: "Mon peuple a besoin de moi.", reply: "Ouais\u2026 c\u2019est pareil pour la plupart d\u2019entre nous. On porte tous quelque chose de plus lourd que nous.", tag: "loyal" },
+          { id: "gen_b1_c2", text: "La curiosit\u00e9, surtout.", reply: "La curiosit\u00e9, c\u2019est un luxe dangereux ici. Mais c\u2019est aussi ce qui fait les meilleurs champions.", tag: "curieux" },
+          { id: "gen_b1_c3", text: "Je pr\u00e9f\u00e8re ne pas en parler.", reply: "Comme tu veux. On a tous nos secrets. Le Tournoi les r\u00e9v\u00e8le t\u00f4t ou tard, de toute fa\u00e7on.", tag: "secret" }
+        ]},
+      { npc: "Moi, sur " + monde + ", j\u2019\u00e9tais " + job + ". Un m\u00e9tier qui m\u2019a appris une chose : rien n\u2019est jamais acquis.",
+        choices: [
+          { id: "gen_b2_c1", text: "C\u2019est une bonne le\u00e7on.", reply: "La meilleure. Surtout ici, o\u00f9 les r\u00e8gles changent \u00e0 chaque \u00e9tage.", tag: "sage" },
+          { id: "gen_b2_c2", text: "\u00c7a devait \u00eatre dur.", reply: "Dur ? Peut-\u00eatre. Mais \u00e7a m\u2019a pr\u00e9par\u00e9. Le Tournoi, c\u2019est juste une autre forme de survie.", tag: "empathique" },
+          { id: "gen_b2_c3", text: "Tu penses que \u00e7a t\u2019aidera ici ?", reply: "Tout aide. Chaque exp\u00e9rience, chaque cicatrice. Le Tournoi teste tout ce que tu es.", tag: "pragmatique" }
+        ]},
+      { npc: "Bon\u2026 les soleils vont bient\u00f4t se lever. Quoi qu\u2019il arrive demain, bonne chance, champion.",
+        choices: [
+          { id: "gen_b3_c1", text: "Bonne chance \u00e0 toi aussi, " + name + ".", reply: "Merci. On en aura besoin. Tous les deux.", tag: "cordial" },
+          { id: "gen_b3_c2", text: "On se reverra dans l\u2019ar\u00e8ne.", reply: "Probable. Et l\u00e0-bas, ce sera chacun pour soi. Mais cette nuit\u2026 cette nuit on \u00e9tait juste deux voyageurs.", tag: "rival" },
+          { id: "gen_b3_c3", text: "Je n\u2019oublierai pas cette conversation.", reply: "Moi non plus. Les nuits avant les tournois\u2026 elles ont un go\u00fbt sp\u00e9cial. Dors bien.", tag: "amical" }
+        ]}
+    ]
+  };
 }
 
 /* ── Show cinematic night intro, then NPC dialogue, then outro ── */
@@ -321,10 +365,8 @@ function showNightDialogue(onDone, cityName, regionName){
   }
   if(available.length === 0){ if(onDone) onDone(); return; }
 
-  // TEMP: Force Brakk until all 6 scenarios are implemented for the 323 other personas
-  // TODO: restore random selection — var npc = available[Math.floor(Math.random() * available.length)];
-  var allPersonas = getNonGuidePersonas();
-  var npc = allPersonas.find(function(p){ return p.id === "brakk"; });
+  // Pick a random NPC from available pool
+  var npc = available[Math.floor(Math.random() * available.length)];
   if(!npc){ if(onDone) onDone(); return; }
   var tree = _resolveNightTree(npc, playerScenario);
 
