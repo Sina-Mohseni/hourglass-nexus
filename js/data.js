@@ -2,52 +2,34 @@
 
 /* Load all JSON files */
 async function loadAllData(){
-  try {
-    var r = await fetch("datas/bundle.json");
-    if(!r.ok) throw new Error("bundle fetch failed: " + r.status);
-    var bundle = await r.json();
-    if(bundle.authors) authData = bundle.authors;
-    if(bundle.encyclopedia) encyData = bundle.encyclopedia;
-    if(bundle.personas) personasData = bundle.personas;
-    if(bundle.locations) locsData = bundle.locations;
-    if(bundle.games) gamesData = bundle.games;
-    if(bundle.elements) elementsData = bundle.elements;
-    if(bundle.dialog) dialogData = bundle.dialog;
-    if(bundle.projects) projectsData = bundle.projects;
-    if(bundle.calendar) calendarData = bundle.calendar;
-    if(bundle.weather) weatherData = bundle.weather;
-    if(bundle.jobs) jobsData = bundle.jobs;
-  } catch(e){
-    console.warn("Bundle load failed, falling back to individual files:", e);
-    async function loadJSON(path){
-      try { var r = await fetch(path); if(r.ok) return await r.json(); } catch(e){}
-      return null;
-    }
-    var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs] = await Promise.all([
-      loadJSON("datas/authors.json"),
-      loadJSON("datas/encyclopedia.json"),
-      loadJSON("datas/personas.json"),
-      loadJSON("datas/locations.json"),
-      loadJSON("datas/games.json"),
-      loadJSON("datas/elements.json"),
-      loadJSON("datas/dialog.json"),
-      loadJSON("datas/projects.json"),
-      loadJSON("datas/calendar.json"),
-      loadJSON("datas/weather.json"),
-      loadJSON("datas/jobs.json")
-    ]);
-    if(auth) authData = auth;
-    if(ency) encyData = ency;
-    if(personas) personasData = personas;
-    if(locs) locsData = locs;
-    if(games) gamesData = games;
-    if(elems) elementsData = elems;
-    if(dialog) dialogData = dialog;
-    if(projects) projectsData = projects;
-    if(calendar) calendarData = calendar;
-    if(weather) weatherData = weather;
-    if(jobs) jobsData = jobs;
+  async function loadJSON(path){
+    try { var r = await fetch(path); if(r.ok) return await r.json(); } catch(e){}
+    return null;
   }
+  var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs] = await Promise.all([
+    loadJSON("datas/authors.json"),
+    loadJSON("datas/encyclopedia.json"),
+    loadJSON("datas/personas.json"),
+    loadJSON("datas/locations.json"),
+    loadJSON("datas/games.json"),
+    loadJSON("datas/elements.json"),
+    loadJSON("datas/dialog.json"),
+    loadJSON("datas/projects.json"),
+    loadJSON("datas/calendar.json"),
+    loadJSON("datas/weather.json"),
+    loadJSON("datas/jobs.json")
+  ]);
+  if(auth) authData = auth;
+  if(ency) encyData = ency;
+  if(personas) personasData = personas;
+  if(locs) locsData = locs;
+  if(games) gamesData = games;
+  if(elems) elementsData = elems;
+  if(dialog) dialogData = dialog;
+  if(projects) projectsData = projects;
+  if(calendar) calendarData = calendar;
+  if(weather) weatherData = weather;
+  if(jobs) jobsData = jobs;
   if(authData.author) avatarMap[authData.author.id] = authData.author.avatar;
   (authData.guides||[]).forEach(function(g){ if(g && g.avatar) avatarMap[g.id] = g.avatar });
   getPersonas().forEach(function(p){ if(p.avatar) avatarMap[p.id] = p.avatar });
