@@ -290,6 +290,8 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   h += '<div class="inv-edit-form" style="padding:10px 16px">';
   h += '<div><label class="prof-field-label">Nom</label>'
     + '<input type="text" class="prof-input" id="inv-edit-name" value="' + esc(u.name) + '" placeholder="Ton nom\u2026" maxlength="40"></div>';
+  h += '<div><label class="prof-field-label">Race</label>'
+    + '<input type="text" class="prof-input" id="inv-edit-race" value="' + esc(u.race || "") + '" placeholder="Humain, Orque, Elfe\u2026" maxlength="32"></div>';
   h += '<div><label class="prof-field-label">Nom du monde</label>'
     + '<input type="text" class="prof-input" id="inv-edit-world" value="' + esc(u.worldName) + '" placeholder="D\u2019o\u00f9 viens-tu ?" maxlength="40"></div>';
   h += '<div><label class="prof-field-label">Slogan</label>'
@@ -392,10 +394,12 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
   function saveFields(){
     var cu = loadUser();
     var ni = document.getElementById("inv-edit-name");
+    var ri = document.getElementById("inv-edit-race");
     var qi = document.getElementById("inv-edit-quote");
     var wi = document.getElementById("inv-edit-world");
     var ci = document.getElementById("inv-edit-class");
     if(ni) cu.name = ni.value;
+    if(ri) cu.race = ri.value;
     if(qi) cu.quote = qi.value;
     if(wi) cu.worldName = wi.value;
     if(ci) cu.className = ci.value;
@@ -410,7 +414,7 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
     var dq = document.getElementById("pg-display-quote");
     if(dq && qi) dq.textContent = qi.value ? ("\u201C" + qi.value + "\u201D") : "";
   }
-  ["inv-edit-name","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
+  ["inv-edit-name","inv-edit-race","inv-edit-quote","inv-edit-world","inv-edit-class"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener("input", saveFields);
   });
