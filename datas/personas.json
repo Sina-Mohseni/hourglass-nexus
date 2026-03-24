@@ -262,6 +262,7 @@
       "affinites_dynamiques": {},
       "background": null,
       "night_discussions": {
+        "_comment": "6 scénarios joueur: champion, lambda, rebelle_connecte (dissident parmi champions), rebelle_isole (faux-isolé), apprenti-morkar, veteran-morkar. Chaque beat a un id pour la mémoire. Le joueur ne peut faire que 3 choix max avant l'outro.",
         "champion": {
           "intro": [
             "Une silhouette massive se découpe dans la pénombre. Tu perçois le bruit sourd de poings qui se serrent.",
