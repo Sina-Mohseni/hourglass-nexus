@@ -397,28 +397,32 @@ function goToNamePhase(){
   var nameInput = document.getElementById("cc-name-input");
   var confirmBtn = document.getElementById("cc-confirm-btn");
 
+  var raceInput = document.getElementById("cc-race-input");
+
   if(nameInput && confirmBtn){
     nameInput.addEventListener("input", function(){
       confirmBtn.disabled = nameInput.value.trim().length < 2;
     });
     confirmBtn.onclick = function(){
       if(nameInput.value.trim().length < 2) return;
-      finishCharCreate(nameInput.value.trim());
+      var race = raceInput ? raceInput.value.trim() : "";
+      finishCharCreate(nameInput.value.trim(), race);
     };
   }
   showCCTapHint(false);
 }
 
-async function finishCharCreate(name){
+async function finishCharCreate(name, race){
   var confirmBtn = document.getElementById("cc-confirm-btn");
   if(confirmBtn) confirmBtn.disabled = true;
 
   var nameZone = document.getElementById("cc-name-zone");
   if(nameZone) nameZone.style.display = "none";
 
-  // Save name + avatar (but don't mark as created yet)
+  // Save name + race + avatar (but don't mark as created yet)
   var u = loadUser();
   u.name = name;
+  if(race) u.race = race;
   saveUser(u);
   if(ccAvatarData) await saveAvatar(ccAvatarData);
 
