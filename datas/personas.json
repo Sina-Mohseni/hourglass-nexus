@@ -272,28 +272,64 @@
           "greeting": "T'es debout. Bien. Les faibles dorment la veille d'une guerre.",
           "beats": [
             {
-              "npc": "Un champion, hein ? J'en ai vu défiler, des champions. La plupart pensent que le titre suffit. Que le peuple derrière eux les rend invincibles. Ils se trompent.",
+              "id": "brakk_champ_b1",
+              "npc": "Un champion, hein ? Comme moi. J'en ai vu défiler. La plupart pensent que le titre suffit. Que le peuple derrière eux les rend invincibles. Le Tournoi se charge de leur montrer la vérité.",
               "choices": [
-                { "text": "Mon peuple me donne une raison de me battre.", "reply": "Une raison. C'est bien. Mais une raison sans force, c'est juste un beau discours avant la défaite." },
-                { "text": "Je ne compte que sur moi-même.", "reply": "Hmph. Au moins t'es honnête. Les champions qui comptent sur les autres tombent les premiers." },
-                { "text": "Et toi, tu te bats pour quoi ?", "reply": "Pour plus jamais porter de chaînes. C'est suffisant pour briser n'importe quoi." }
+                { "id": "brakk_champ_b1_c1", "text": "Mon peuple me donne une raison de me battre.", "reply": "Une raison. C'est bien. Moi aussi j'ai la mienne. Cendreciel m'a sorti des forges. Je lui dois tout. Mais une raison sans force, c'est juste un beau discours avant la défaite.", "tag": "loyal" },
+                { "id": "brakk_champ_b1_c2", "text": "Je ne compte que sur moi-même.", "reply": "Hmph. Au moins t'es honnête. Les champions qui comptent sur les autres tombent les premiers. Mais oublie pas — sans ton monde, t'aurais pas de titre.", "tag": "solo" },
+                { "id": "brakk_champ_b1_c3", "text": "Et toi, tu te bats pour quoi ?", "reply": "Pour Cendreciel. Pour les forges qui m'ont brisé et le peuple qui m'a reconstruit. Le Tournoi m'a donné une chance de prouver que même un ancien esclave peut porter l'honneur d'un monde entier.", "tag": "curieux" }
               ]
             },
             {
-              "npc": "Tu sais ce qui sépare un champion d'un cadavre ? Le moment où tout s'effondre. Là, t'as deux choix : frapper ou tomber.",
+              "id": "brakk_champ_b2",
+              "npc": "Le système du Tournoi, certains le critiquent. Des voix dans les couloirs qui murmurent que Morkar contrôle tout, que les dés sont pipés. Des lâches. Morkar m'a donné ce que personne d'autre ne m'a donné : une arène où la seule chose qui compte, c'est ce que t'as dans le ventre.",
               "choices": [
-                { "text": "Je frapperai.", "reply": "On verra. Les mots coûtent rien. Demain, c'est les actes qui parlent." },
-                { "text": "Il y a d'autres options que la force.", "reply": "Peut-être. Mais quand un poing arrive vers ta gueule, la diplomatie sert plus à grand-chose." }
+                { "id": "brakk_champ_b2_c1", "text": "Je suis d'accord. Le Tournoi est juste.", "reply": "Évidemment qu'il l'est. Chaque champion a les mêmes épreuves, les mêmes chances. C'est la seule chose dans cette galaxie qui ment pas.", "tag": "pro_systeme" },
+                { "id": "brakk_champ_b2_c2", "text": "Aucun système n'est parfait.", "reply": "Parfait, non. Mais meilleur que tout le reste ? Absolument. Avant le Tournoi, les mondes se faisaient la guerre. Maintenant ils envoient des champions. Tu préfères quoi ?", "tag": "nuance" },
+                { "id": "brakk_champ_b2_c3", "text": "Tu n'as jamais douté ?", "reply": "Douter ? J'ai été esclave pendant quinze ans dans les forges de l'Abysse. Quand Morkar a mis fin à l'esclavage sur Cendreciel, j'ai arrêté de douter. Les actes, pas les mots.", "tag": "doute" }
               ]
             },
             {
-              "npc": "Dors. Ou dors pas. Mais demain, sois prêt. Je déteste perdre contre des gens qui dormaient."
+              "id": "brakk_champ_b3",
+              "npc": "Tu sais ce qui sépare un champion d'un cadavre ? Le moment où tout s'effondre. Là, t'as deux choix : frapper ou tomber. Y'a pas de troisième option.",
+              "choices": [
+                { "id": "brakk_champ_b3_c1", "text": "Je frapperai.", "reply": "On verra. Les mots coûtent rien. Demain, c'est les actes qui parlent. J'ai hâte de voir ce que tu vaux vraiment.", "tag": "combatif" },
+                { "id": "brakk_champ_b3_c2", "text": "Il y a d'autres options que la force brute.", "reply": "Peut-être. Mais quand un poing arrive vers ta gueule, la diplomatie sert plus à grand-chose. J'espère que t'as un plan B plus solide que des beaux mots.", "tag": "stratege" },
+                { "id": "brakk_champ_b3_c3", "text": "Je ne suis pas pressé de me battre.", "reply": "Pas pressé ? C'est le Tournoi d'Extelua, pas une promenade. Si t'es pas prêt à tout donner, rentre chez toi. Y'a pas de place pour les tièdes ici.", "tag": "prudent" }
+              ]
+            },
+            {
+              "id": "brakk_champ_b4",
+              "npc": "J'ai entendu des rumeurs sur des dissidents. Des gens qui voudraient saboter le Tournoi. Foutre en l'air la seule chose qui donne de l'espoir aux mondes connectés. Si j'en croise un… il aura pas le temps de regretter.",
+              "choices": [
+                { "id": "brakk_champ_b4_c1", "text": "Les dissidents sont dangereux.", "reply": "Dangereux et stupides. Ils veulent détruire sans rien proposer. Le Tournoi, c'est la paix. Faut être aveugle pour pas le voir.", "tag": "anti_rebelle" },
+                { "id": "brakk_champ_b4_c2", "text": "Pourquoi quelqu'un voudrait saboter le Tournoi ?", "reply": "Parce que certains préfèrent le chaos à l'ordre. Parce qu'ils ont peur de perdre dans une arène juste. Alors ils essaient de renverser la table. Pathétique.", "tag": "interrogatif" },
+                { "id": "brakk_champ_b4_c3", "text": "Chacun a ses raisons.", "reply": "… Des raisons. Ouais. L'esclavagiste qui m'a enchaîné avait ses raisons aussi. Ça rend pas la chose juste. Fais gaffe à ce que tu défends, champion.", "tag": "empathique_rebelle" }
+              ]
+            },
+            {
+              "id": "brakk_champ_b5",
+              "npc": "Demain, on sera adversaires. Mais cette nuit, on est juste deux champions qui dorment pas. Alors dis-moi — c'est quoi, ta plus grande peur pour demain ?",
+              "choices": [
+                { "id": "brakk_champ_b5_c1", "text": "Décevoir mon peuple.", "reply": "Hmph. Bonne réponse. Un champion qui a peur pour lui-même est un lâche. Un champion qui a peur pour son peuple est un guerrier. T'as peut-être ce qu'il faut.", "tag": "honneur" },
+                { "id": "brakk_champ_b5_c2", "text": "Ne pas être à la hauteur.", "reply": "La hauteur, ça se mesure pas avant le combat. J'étais un esclave enchaîné. Personne m'aurait mis à la hauteur de quoi que ce soit. Et pourtant, je suis là.", "tag": "humilite" },
+                { "id": "brakk_champ_b5_c3", "text": "Je n'ai pas peur.", "reply": "Menteur. Ou inconscient. Dans les deux cas, le Tournoi va te corriger. La peur, c'est ce qui te garde en vie. Ceux qui ont pas peur meurent les premiers.", "tag": "bravade" }
+              ]
+            },
+            {
+              "id": "brakk_champ_b6",
+              "npc": "Tu sais quoi ? T'es pas si mal, pour un champion d'un autre monde. La plupart viennent me parler pour se rassurer. Toi, t'es venu parce que tu dormais pas. C'est plus honnête.",
+              "choices": [
+                { "id": "brakk_champ_b6_c1", "text": "Bonne chance demain, Brakk.", "reply": "La chance, c'est pour les faibles. Mais… merci quand même. Dors. Ou dors pas. Mais sois prêt.", "tag": "cordial" },
+                { "id": "brakk_champ_b6_c2", "text": "On se retrouvera dans l'arène.", "reply": "J'y compte bien. Et quand ce sera le cas, donne tout. Je déteste gagner contre quelqu'un qui se retient.", "tag": "rival" },
+                { "id": "brakk_champ_b6_c3", "text": "Je suis content qu'on ait parlé.", "reply": "Pareil. Mais demain, ça changera rien. Dans l'arène, y'a pas d'amis. Juste des adversaires qui se respectent. Ou pas.", "tag": "amical" }
+              ]
             }
           ],
           "outro": [
             "L'Orque se détourne sans un mot de plus. Sa silhouette s'enfonce dans la nuit comme une montagne qui s'éloigne.",
-            "Le silence revient. Mais quelque chose a changé dans l'air — une tension, un défi lancé sans être dit.",
-            "Tu fermes les yeux. Le sommeil met du temps à venir. Les mots de Brakk résonnent encore."
+            "Le silence revient. Mais quelque chose a changé dans l'air — une tension, un respect mutuel entre deux champions qui savent que demain, tout sera différent.",
+            "Tu fermes les yeux. Le sommeil met du temps à venir. Les mots de Brakk résonnent encore — un ancien esclave devenu champion, qui croit au système qui l'a libéré."
           ]
         },
         "lambda": {
