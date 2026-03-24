@@ -5,640 +5,360 @@
       "name": "Gladiateur",
       "classe": "Combattant",
       "epoque": "Antiquité",
-      "variants": [
-        {
-          "CRE": 30,
-          "SAG": 35,
-          "CHA": 55,
-          "FOR": 90,
-          "AGI": 70,
-          "PER": 40
-        }
-      ]
+      "desc": "Combattant d'arène forçant chaque jour pour survivre aux jeux. La foule scande ton nom, mais c'est ta lame qui parle.",
+      "bonus": {"FOR": 10, "AGI": 5},
+      "malus": {"CRE": -5, "SAG": -5}
     },
     {
       "id": "soldat-tranchees",
       "name": "Soldat des Tranchées",
       "classe": "Combattant",
       "epoque": "Guerres mondiales",
-      "variants": [
-        {
-          "CRE": 25,
-          "SAG": 50,
-          "CHA": 35,
-          "FOR": 75,
-          "AGI": 60,
-          "PER": 85
-        }
-      ]
+      "desc": "Des mois sous la boue et le feu. Tu as appris à voir venir la mort et à tenir debout quand tout s'effondre.",
+      "bonus": {"FOR": 8, "PER": 8},
+      "malus": {"CRE": -5, "CHA": -5}
     },
     {
       "id": "pilote-mecha",
       "name": "Pilote de Mecha",
       "classe": "Combattant",
       "epoque": "Futuriste",
-      "variants": [
-        {
-          "CRE": 55,
-          "SAG": 60,
-          "CHA": 40,
-          "FOR": 45,
-          "AGI": 90,
-          "PER": 80
-        }
-      ]
+      "desc": "Branché sur ta machine de guerre, tes réflexes ne font qu'un avec l'acier. Le cockpit est ton sanctuaire.",
+      "bonus": {"AGI": 10, "PER": 8},
+      "malus": {"CHA": -3, "FOR": -3}
     },
     {
       "id": "chasseur-mammouth",
       "name": "Chasseur de Mammouth",
       "classe": "Combattant",
       "epoque": "Préhistoire",
-      "variants": [
-        {
-          "CRE": 35,
-          "SAG": 40,
-          "CHA": 30,
-          "FOR": 95,
-          "AGI": 75,
-          "PER": 85
-        }
-      ]
+      "desc": "Traquer des bêtes colossales avec des outils de pierre. Chaque chasse est une question de vie ou de mort.",
+      "bonus": {"FOR": 12, "PER": 8, "AGI": 5},
+      "malus": {"CHA": -8, "CRE": -5}
     },
     {
       "id": "necromancien",
       "name": "Nécromancien",
       "classe": "Arcaniste",
       "epoque": "Fantasy sombre",
-      "variants": [
-        {
-          "CRE": 87,
-          "SAG": 80,
-          "CHA": 30,
-          "FOR": 22,
-          "AGI": 25,
-          "PER": 65
-        }
-      ]
+      "desc": "Tu converses avec les morts et puises dans les énergies interdites. Ton savoir est immense, mais il a un prix.",
+      "bonus": {"CRE": 10, "SAG": 8},
+      "malus": {"FOR": -8, "AGI": -5, "CHA": -5}
     },
     {
       "id": "hacker-neuromancien",
       "name": "Hacker Neuromancien",
       "classe": "Arcaniste",
       "epoque": "Cyberpunk",
-      "variants": [
-        {
-          "CRE": 90,
-          "SAG": 72,
-          "CHA": 45,
-          "FOR": 20,
-          "AGI": 60,
-          "PER": 78
-        }
-      ]
+      "desc": "Plongé dans le cyberespace, tu décodes les systèmes les plus protégés. La réalité virtuelle est ton terrain de jeu.",
+      "bonus": {"CRE": 10, "PER": 5},
+      "malus": {"FOR": -8, "CHA": -3}
     },
     {
       "id": "pretre-astronome",
       "name": "Prêtre-Astronome",
       "classe": "Arcaniste",
       "epoque": "Antiquité",
-      "variants": [
-        {
-          "CRE": 72,
-          "SAG": 92,
-          "CHA": 65,
-          "FOR": 25,
-          "AGI": 28,
-          "PER": 80
-        }
-      ]
+      "desc": "Tu lis les étoiles et interprètes les signes célestes. Ton temple est un observatoire, ton culte est la connaissance.",
+      "bonus": {"SAG": 10, "PER": 8, "CRE": 5},
+      "malus": {"FOR": -8, "AGI": -5}
     },
     {
       "id": "forgeron",
       "name": "Forgeron",
       "classe": "Artisan",
       "epoque": "Médiéval",
-      "variants": [
-        {
-          "CRE": 70,
-          "SAG": 50,
-          "CHA": 35,
-          "FOR": 90,
-          "AGI": 45,
-          "PER": 40
-        }
-      ]
+      "desc": "Le marteau et l'enclume sont tes compagnons. Tu transformes le métal brut en œuvres de guerre et de beauté.",
+      "bonus": {"FOR": 10, "CRE": 5},
+      "malus": {"CHA": -5, "PER": -3}
     },
     {
       "id": "ingenieur-vapeur",
       "name": "Ingénieur Vapeur",
       "classe": "Artisan",
       "epoque": "Industriel / Steampunk",
-      "variants": [
-        {
-          "CRE": 82,
-          "SAG": 75,
-          "CHA": 40,
-          "FOR": 50,
-          "AGI": 45,
-          "PER": 60
-        }
-      ]
+      "desc": "Tu conçois des machines à vapeur impossibles. Entre engrenages et chaudières, ton génie mécanique n'a pas de limites.",
+      "bonus": {"CRE": 8, "SAG": 5},
+      "malus": {"CHA": -3, "AGI": -3}
     },
     {
       "id": "tailleur-silex",
       "name": "Tailleur de Silex",
       "classe": "Artisan",
       "epoque": "Préhistoire",
-      "variants": [
-        {
-          "CRE": 80,
-          "SAG": 45,
-          "CHA": 25,
-          "FOR": 70,
-          "AGI": 65,
-          "PER": 55
-        }
-      ]
+      "desc": "Chaque éclat de pierre est un outil, une arme, un espoir. Tu façonnes la survie de ta tribu à mains nues.",
+      "bonus": {"CRE": 8, "FOR": 5},
+      "malus": {"CHA": -8}
     },
     {
       "id": "imprimeur-3d-bio",
       "name": "Imprimeur 3D Bio",
       "classe": "Artisan",
       "epoque": "Futuriste",
-      "variants": [
-        {
-          "CRE": 90,
-          "SAG": 80,
-          "CHA": 42,
-          "FOR": 22,
-          "AGI": 55,
-          "PER": 68
-        }
-      ]
+      "desc": "Tu imprimes des organes, des tissus, des formes de vie. La biologie est ton matériau et l'innovation ton quotidien.",
+      "bonus": {"CRE": 10, "SAG": 8},
+      "malus": {"FOR": -8, "CHA": -3}
     },
     {
       "id": "diplomate-interstellaire",
       "name": "Diplomate Interstellaire",
       "classe": "Social",
       "epoque": "Futuriste",
-      "variants": [
-        {
-          "CRE": 55,
-          "SAG": 78,
-          "CHA": 95,
-          "FOR": 20,
-          "AGI": 30,
-          "PER": 72
-        }
-      ]
+      "desc": "Tu négocies entre des civilisations qui ne partagent ni langue ni logique. Chaque mot peut déclencher la paix ou la guerre.",
+      "bonus": {"CHA": 12, "SAG": 5, "PER": 5},
+      "malus": {"FOR": -8, "AGI": -5}
     },
     {
       "id": "courtisan",
       "name": "Courtisan de Cour",
       "classe": "Social",
       "epoque": "Renaissance",
-      "variants": [
-        {
-          "CRE": 65,
-          "SAG": 58,
-          "CHA": 92,
-          "FOR": 22,
-          "AGI": 50,
-          "PER": 70
-        }
-      ]
+      "desc": "Dans les couloirs du palais, chaque sourire est un calcul. Tu excelles dans l'art de la séduction politique.",
+      "bonus": {"CHA": 10, "PER": 5},
+      "malus": {"FOR": -8}
     },
     {
       "id": "influenceur",
       "name": "Influenceur Médiatique",
       "classe": "Social",
       "epoque": "Contemporain",
-      "variants": [
-        {
-          "CRE": 80,
-          "SAG": 35,
-          "CHA": 95,
-          "FOR": 20,
-          "AGI": 45,
-          "PER": 55
-        }
-      ]
+      "desc": "Des millions te suivent, chaque post est un événement. Tu maîtrises l'image comme d'autres manient l'épée.",
+      "bonus": {"CHA": 12, "CRE": 8},
+      "malus": {"FOR": -8, "SAG": -5}
     },
     {
       "id": "assassin-guilde",
       "name": "Assassin de Guilde",
       "classe": "Ombre",
       "epoque": "Médiéval / Fantasy",
-      "variants": [
-        {
-          "CRE": 50,
-          "SAG": 55,
-          "CHA": 30,
-          "FOR": 35,
-          "AGI": 92,
-          "PER": 82
-        }
-      ]
+      "desc": "Tu tues proprement, silencieusement, sur commande. La guilde est ta famille, les ombres sont ton foyer.",
+      "bonus": {"AGI": 10, "PER": 8},
+      "malus": {"CHA": -8, "FOR": -5}
     },
     {
       "id": "agent-secret",
       "name": "Agent Secret",
       "classe": "Ombre",
       "epoque": "Guerre froide / Moderne",
-      "variants": [
-        {
-          "CRE": 65,
-          "SAG": 72,
-          "CHA": 70,
-          "FOR": 40,
-          "AGI": 78,
-          "PER": 85
-        }
-      ]
+      "desc": "Identités multiples, missions classifiées. Tu vis dans le mensonge pour servir une vérité que personne ne connaît.",
+      "bonus": {"PER": 8, "AGI": 8, "CHA": 5},
+      "malus": {"FOR": -5}
     },
     {
       "id": "pirate-spatial",
       "name": "Pirate Spatial",
       "classe": "Ombre",
       "epoque": "Futuriste / Space Opera",
-      "variants": [
-        {
-          "CRE": 60,
-          "SAG": 45,
-          "CHA": 65,
-          "FOR": 50,
-          "AGI": 85,
-          "PER": 70
-        }
-      ]
+      "desc": "Tu écumes les routes stellaires à bord de ton vaisseau. Pillage, liberté et danger sont ton pain quotidien.",
+      "bonus": {"AGI": 8, "PER": 5},
+      "malus": {"SAG": -3}
     },
     {
       "id": "chaman-tribal",
       "name": "Chaman Tribal",
       "classe": "Soigneur",
       "epoque": "Préhistoire / Tribal",
-      "variants": [
-        {
-          "CRE": 70,
-          "SAG": 88,
-          "CHA": 60,
-          "FOR": 30,
-          "AGI": 35,
-          "PER": 72
-        }
-      ]
+      "desc": "Tu communiques avec les esprits et soignes par les plantes et les rituels. Ta tribu dépend de tes visions.",
+      "bonus": {"SAG": 10, "PER": 5, "CRE": 5},
+      "malus": {"FOR": -5, "AGI": -5}
     },
     {
       "id": "chirurgien-campagne",
       "name": "Chirurgien de Campagne",
       "classe": "Soigneur",
       "epoque": "Guerres / XIXe",
-      "variants": [
-        {
-          "CRE": 45,
-          "SAG": 85,
-          "CHA": 40,
-          "FOR": 50,
-          "AGI": 72,
-          "PER": 80
-        }
-      ]
+      "desc": "Tu opères sous les bombes avec des outils rudimentaires. Chaque vie sauvée est un miracle arraché au chaos.",
+      "bonus": {"SAG": 8, "PER": 8},
+      "malus": {"CHA": -3, "CRE": -3}
     },
     {
       "id": "nano-medecin",
       "name": "Nano-Médecin",
       "classe": "Soigneur",
       "epoque": "Futuriste",
-      "variants": [
-        {
-          "CRE": 72,
-          "SAG": 92,
-          "CHA": 45,
-          "FOR": 20,
-          "AGI": 55,
-          "PER": 85
-        }
-      ]
+      "desc": "Tu pilotes des nano-robots à travers le corps humain. La médecine est devenue une science de l'invisible.",
+      "bonus": {"SAG": 10, "PER": 8},
+      "malus": {"FOR": -8, "CHA": -3}
     },
     {
       "id": "cueilleur-nomade",
       "name": "Cueilleur-Nomade",
       "classe": "Survivant",
       "epoque": "Préhistoire",
-      "variants": [
-        {
-          "CRE": 45,
-          "SAG": 60,
-          "CHA": 25,
-          "FOR": 65,
-          "AGI": 78,
-          "PER": 92
-        }
-      ]
+      "desc": "Tu suis les saisons et les troupeaux. Chaque jour est une quête de nourriture, guidée par l'instinct et l'observation.",
+      "bonus": {"PER": 10, "AGI": 8},
+      "malus": {"CHA": -8, "CRE": -3}
     },
     {
       "id": "trappeur-colonial",
       "name": "Trappeur Colonial",
       "classe": "Survivant",
       "epoque": "XVIIe-XVIIIe siècle",
-      "variants": [
-        {
-          "CRE": 40,
-          "SAG": 68,
-          "CHA": 35,
-          "FOR": 60,
-          "AGI": 72,
-          "PER": 88
-        }
-      ]
+      "desc": "Seul dans les terres sauvages, tu poses des pièges et lis les traces. La nature est ton alliée et ton adversaire.",
+      "bonus": {"PER": 10, "AGI": 5, "FOR": 3},
+      "malus": {"CHA": -5, "CRE": -3}
     },
     {
       "id": "scavenger-post-apo",
       "name": "Scavenger Post-Apo",
       "classe": "Survivant",
       "epoque": "Post-apocalyptique",
-      "variants": [
-        {
-          "CRE": 72,
-          "SAG": 55,
-          "CHA": 30,
-          "FOR": 60,
-          "AGI": 80,
-          "PER": 85
-        }
-      ]
+      "desc": "Dans les ruines du monde d'avant, tu fouilles, recycles et improvises. Chaque déchet peut devenir une arme ou un outil.",
+      "bonus": {"PER": 8, "AGI": 8, "CRE": 5},
+      "malus": {"CHA": -8}
     },
     {
       "id": "barde-itinerant",
       "name": "Barde Itinérant",
       "classe": "Artiste",
       "epoque": "Médiéval",
-      "variants": [
-        {
-          "CRE": 90,
-          "SAG": 45,
-          "CHA": 85,
-          "FOR": 25,
-          "AGI": 50,
-          "PER": 55
-        }
-      ]
+      "desc": "Tu chantes les légendes d'un village à l'autre. Ta voix est ton arme, ton luth est ton bouclier.",
+      "bonus": {"CRE": 10, "CHA": 8},
+      "malus": {"FOR": -8, "SAG": -3}
     },
     {
       "id": "peintre-cour",
       "name": "Peintre de la Cour",
       "classe": "Artiste",
       "epoque": "Renaissance",
-      "variants": [
-        {
-          "CRE": 95,
-          "SAG": 55,
-          "CHA": 70,
-          "FOR": 22,
-          "AGI": 62,
-          "PER": 78
-        }
-      ]
+      "desc": "Tu immortalises les puissants sur la toile. Ton pinceau capture l'âme autant que le visage.",
+      "bonus": {"CRE": 12, "PER": 5},
+      "malus": {"FOR": -8}
     },
     {
       "id": "artiste-holographique",
       "name": "VJ / Artiste Holographique",
       "classe": "Artiste",
       "epoque": "Futuriste",
-      "variants": [
-        {
-          "CRE": 98,
-          "SAG": 42,
-          "CHA": 75,
-          "FOR": 20,
-          "AGI": 70,
-          "PER": 65
-        }
-      ]
+      "desc": "Tu sculptes la lumière et le son en temps réel. Tes créations holographiques transforment l'espace lui-même.",
+      "bonus": {"CRE": 12, "CHA": 5},
+      "malus": {"FOR": -8, "SAG": -3}
     },
     {
       "id": "philosophe-antique",
       "name": "Philosophe Antique",
       "classe": "Érudit",
       "epoque": "Antiquité",
-      "variants": [
-        {
-          "CRE": 72,
-          "SAG": 95,
-          "CHA": 70,
-          "FOR": 20,
-          "AGI": 22,
-          "PER": 60
-        }
-      ]
+      "desc": "Tu questionnes l'existence sous les colonnes de marbre. Tes dialogues éclairent les esprits et ébranlent les certitudes.",
+      "bonus": {"SAG": 12, "CRE": 5, "CHA": 5},
+      "malus": {"FOR": -8, "AGI": -8}
     },
     {
       "id": "moine-copiste",
       "name": "Moine Copiste",
       "classe": "Érudit",
       "epoque": "Médiéval",
-      "variants": [
-        {
-          "CRE": 65,
-          "SAG": 90,
-          "CHA": 35,
-          "FOR": 25,
-          "AGI": 40,
-          "PER": 82
-        }
-      ]
+      "desc": "Dans le silence du scriptorium, tu recopies le savoir du monde. Chaque page est un rempart contre l'oubli.",
+      "bonus": {"SAG": 10, "PER": 8},
+      "malus": {"FOR": -8, "CHA": -5}
     },
     {
       "id": "data-scientist",
       "name": "Data Scientist",
       "classe": "Érudit",
       "epoque": "Contemporain",
-      "variants": [
-        {
-          "CRE": 70,
-          "SAG": 90,
-          "CHA": 40,
-          "FOR": 20,
-          "AGI": 35,
-          "PER": 80
-        }
-      ]
+      "desc": "Tu transformes des océans de données en vérités cachées. Les algorithmes sont ton langage maternel.",
+      "bonus": {"SAG": 10, "PER": 8},
+      "malus": {"FOR": -8, "AGI": -5}
     },
     {
       "id": "esclave-carrieres",
       "name": "Esclave des Carrières",
       "classe": "Labeur",
       "epoque": "Antiquité",
-      "variants": [
-        {
-          "CRE": 22,
-          "SAG": 40,
-          "CHA": 20,
-          "FOR": 95,
-          "AGI": 55,
-          "PER": 50
-        }
-      ]
+      "desc": "Tu brises la roche sous le fouet du soleil et des maîtres. Ton corps est forgé dans la souffrance et l'endurance.",
+      "bonus": {"FOR": 12},
+      "malus": {"CRE": -8, "CHA": -8, "SAG": -3}
     },
     {
       "id": "ouvrier-usine",
       "name": "Ouvrier d'Usine",
       "classe": "Labeur",
       "epoque": "Industriel XIXe",
-      "variants": [
-        {
-          "CRE": 25,
-          "SAG": 45,
-          "CHA": 30,
-          "FOR": 82,
-          "AGI": 55,
-          "PER": 48
-        }
-      ]
+      "desc": "Douze heures par jour devant les machines. La cadence est ton rythme, la fatigue ton compagnon constant.",
+      "bonus": {"FOR": 8},
+      "malus": {"CRE": -8, "CHA": -5}
     },
     {
       "id": "livreur-drone",
       "name": "Livreur de Drone",
       "classe": "Labeur",
       "epoque": "Contemporain / Proche futur",
-      "variants": [
-        {
-          "CRE": 35,
-          "SAG": 50,
-          "CHA": 40,
-          "FOR": 45,
-          "AGI": 72,
-          "PER": 68
-        }
-      ]
+      "desc": "Tu pilotes des essaims de drones à travers les mégapoles. Rapidité et précision sont tes seuls indicateurs.",
+      "bonus": {"AGI": 5, "PER": 5},
+      "malus": {"CRE": -3, "CHA": -3}
     },
     {
       "id": "marchand-soie",
       "name": "Marchand de Soie",
       "classe": "Marchand",
       "epoque": "Route de la Soie / Antique",
-      "variants": [
-        {
-          "CRE": 50,
-          "SAG": 70,
-          "CHA": 88,
-          "FOR": 30,
-          "AGI": 42,
-          "PER": 72
-        }
-      ]
+      "desc": "Tu parcours les routes commerciales avec tes caravanes. Chaque transaction est un art, chaque rencontre un risque.",
+      "bonus": {"CHA": 10, "SAG": 5, "PER": 5},
+      "malus": {"FOR": -5, "AGI": -3}
     },
     {
       "id": "contrebandier",
       "name": "Contrebandier Prohibition",
       "classe": "Marchand",
       "epoque": "Années 1920",
-      "variants": [
-        {
-          "CRE": 60,
-          "SAG": 55,
-          "CHA": 78,
-          "FOR": 45,
-          "AGI": 70,
-          "PER": 65
-        }
-      ]
+      "desc": "Tu fais passer l'interdit sous le nez des autorités. Les speakeasies sont tes bureaux, la nuit est ton alliée.",
+      "bonus": {"CHA": 8, "AGI": 5},
+      "malus": {"SAG": -3}
     },
     {
       "id": "trader-galactique",
       "name": "Trader Galactique",
       "classe": "Marchand",
       "epoque": "Futuriste / Space Opera",
-      "variants": [
-        {
-          "CRE": 58,
-          "SAG": 75,
-          "CHA": 82,
-          "FOR": 22,
-          "AGI": 48,
-          "PER": 78
-        }
-      ]
+      "desc": "Tu spécules sur les ressources de systèmes entiers. Un bon deal peut enrichir une planète ou en ruiner une autre.",
+      "bonus": {"CHA": 8, "SAG": 5, "PER": 5},
+      "malus": {"FOR": -8}
     },
     {
       "id": "tisserand-brume",
       "name": "Tisserand de Brume",
       "classe": "Singulier",
       "epoque": "Fantasy / Onirique",
-      "variants": [
-        {
-          "CRE": 92,
-          "SAG": 70,
-          "CHA": 50,
-          "FOR": 20,
-          "AGI": 55,
-          "PER": 65
-        }
-      ]
+      "desc": "Tu tisses les brumes du matin en étoffes oniriques. Ton art est insaisissable, à la frontière du rêve et du réel.",
+      "bonus": {"CRE": 10, "SAG": 5},
+      "malus": {"FOR": -8}
     },
     {
       "id": "gouteur-reves",
       "name": "Goûteur de Rêves",
       "classe": "Singulier",
       "epoque": "Surréaliste",
-      "variants": [
-        {
-          "CRE": 95,
-          "SAG": 75,
-          "CHA": 60,
-          "FOR": 20,
-          "AGI": 30,
-          "PER": 82
-        }
-      ]
+      "desc": "Tu goûtes les rêves des autres pour en extraire des saveurs impossibles. Chaque nuit est un festin sensoriel.",
+      "bonus": {"CRE": 12, "PER": 8, "SAG": 5},
+      "malus": {"FOR": -8, "AGI": -8}
     },
     {
       "id": "dompteur-tempetes",
       "name": "Dompteur de Tempêtes",
       "classe": "Singulier",
       "epoque": "Mythologique",
-      "variants": [
-        {
-          "CRE": 70,
-          "SAG": 65,
-          "CHA": 72,
-          "FOR": 50,
-          "AGI": 55,
-          "PER": 78
-        }
-      ]
+      "desc": "Tu domptes les ouragans et chevauches la foudre. Les éléments déchaînés obéissent à ta volonté indomptable.",
+      "bonus": {"PER": 8, "CHA": 5, "CRE": 5},
+      "malus": {"SAG": -3}
     },
     {
       "id": "archiviste-murmures",
       "name": "Archiviste des Murmures",
       "classe": "Singulier",
       "epoque": "Intemporel",
-      "variants": [
-        {
-          "CRE": 68,
-          "SAG": 90,
-          "CHA": 40,
-          "FOR": 20,
-          "AGI": 30,
-          "PER": 95
-        }
-      ]
+      "desc": "Tu catalogues les secrets chuchotés à travers les âges. Chaque murmure oublié trouve sa place dans tes archives infinies.",
+      "bonus": {"PER": 12, "SAG": 10},
+      "malus": {"FOR": -8, "AGI": -5, "CHA": -3}
     },
     {
       "id": "navigateur-neant",
       "name": "Navigateur du Néant",
       "classe": "Singulier",
       "epoque": "Cosmique",
-      "variants": [
-        {
-          "CRE": 78,
-          "SAG": 82,
-          "CHA": 35,
-          "FOR": 22,
-          "AGI": 68,
-          "PER": 88
-        }
-      ]
+      "desc": "Tu navigues dans le vide entre les dimensions. Là où d'autres voient le néant, tu traces des routes impossibles.",
+      "bonus": {"PER": 10, "SAG": 8, "AGI": 5},
+      "malus": {"FOR": -8, "CHA": -5}
     }
   ]
 }
