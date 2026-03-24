@@ -67,7 +67,8 @@
         "kordo": 70
       },
       "quote": "Chaque mot posé est une brique d'un monde qui attend d'exister.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "lux",
@@ -101,7 +102,8 @@
         "miro": 82
       },
       "quote": "La lumière ne force rien. Elle révèle ce qui était déjà là.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "hyandi",
@@ -135,7 +137,8 @@
         "orphea": 84
       },
       "quote": "L'ombre n'est pas l'absence de lumière, c'est son reflet fidèle.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "pipo",
@@ -168,7 +171,8 @@
         "miro": 78
       },
       "quote": "La meilleure stratégie ? Aucune.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "lambda"
     },
     {
       "id": "brakk",
@@ -201,7 +205,8 @@
         "tika": 55
       },
       "quote": "Les chaînes se brisent. Toujours.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "tika",
@@ -234,7 +239,8 @@
         "nova": 65
       },
       "quote": "Si tu m'as vue, c'est que je l'ai voulu.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "zara",
@@ -267,7 +273,8 @@
         "naia": 40
       },
       "quote": "Je préfère brûler que m'éteindre.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "naia",
@@ -300,7 +307,8 @@
         "solen": 78
       },
       "quote": "L'eau trouve toujours son chemin.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "solen",
@@ -333,7 +341,8 @@
         "rune": 75
       },
       "quote": "Je serai là quand tout le monde sera parti.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "miro",
@@ -366,7 +375,8 @@
         "kael": 75
       },
       "quote": "Ce qui n'existe pas encore est la plus belle chose du monde.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "lambda"
     },
     {
       "id": "vex",
@@ -399,7 +409,8 @@
         "cendre": 65
       },
       "quote": "L'émotion est une variable. Je l'ai éliminée.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "lyre",
@@ -432,7 +443,8 @@
         "pipo": 80
       },
       "quote": "Le monde chante, si tu sais l'entendre.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "lambda"
     },
     {
       "id": "iris",
@@ -465,7 +477,8 @@
         "atom": 78
       },
       "quote": "Ne me mens pas. Je vois ce que tu caches.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "kordo",
@@ -498,7 +511,8 @@
         "miro": 60
       },
       "quote": "Le métal ne ment pas. Il révèle celui qui le frappe.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "orphea",
@@ -531,7 +545,8 @@
         "atom": 80
       },
       "quote": "Toute fin est le début d'une histoire que personne n'a encore racontée.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "kael",
@@ -564,7 +579,8 @@
         "nova": 72
       },
       "quote": "Derrière chaque porte fermée se cache une découverte.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "lambda"
     },
     {
       "id": "nova",
@@ -597,7 +613,8 @@
         "cendre": 70
       },
       "quote": "Oups. Mais avoue, c'était magnifique.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "shade",
@@ -630,7 +647,8 @@
         "cendre": 78
       },
       "quote": "Tu ne me verras jamais. C'est le but.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "rune",
@@ -663,7 +681,8 @@
         "solen": 75
       },
       "quote": "Un mot gravé dans la pierre vaut mille cris dans le vent.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "blitz",
@@ -696,7 +715,8 @@
         "tika": 70
       },
       "quote": "Trop lent ! Je suis déjà là-bas.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "cendre",
@@ -729,7 +749,8 @@
         "solen": 72
       },
       "quote": "De la cendre peut renaître n'importe quoi. Même l'espoir.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "fenrir",
@@ -763,7 +784,8 @@
         "ardent": 83
       },
       "quote": "Les mots mentent. Les crocs, jamais.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "pixel",
@@ -797,7 +819,8 @@
         "lichen": 81
       },
       "quote": "404 — Réalité non trouvée.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "miel",
@@ -831,7 +854,8 @@
         "kronos": 81
       },
       "quote": "Un bon repas répare plus de choses qu'une épée.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "lambda"
     },
     {
       "id": "gust",
@@ -865,7 +889,8 @@
         "talion": 55
       },
       "quote": "Attrape-moi si tu souffles assez fort !",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "plume",
@@ -899,7 +924,8 @@
         "absolue": 52
       },
       "quote": "Les mots ont des ailes. Les miens aussi.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "lambda"
     },
     {
       "id": "grim",
@@ -933,7 +959,8 @@
         "spectre": 91
       },
       "quote": "Souris. Ça rend tout le monde nerveux.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "echo",
@@ -967,7 +994,8 @@
         "helios": 80
       },
       "quote": "Je ne fais que répéter. Mais écoute mieux cette fois.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "spark",
@@ -1001,7 +1029,8 @@
         "helios": 69
       },
       "quote": "Une étincelle suffit à changer le monde.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "flora",
@@ -1035,7 +1064,8 @@
         "kronos": 54
       },
       "quote": "Même dans les ruines, quelque chose pousse.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "lambda"
     },
     {
       "id": "zigzag",
@@ -1069,7 +1099,8 @@
         "kronos": 88
       },
       "quote": "Pourquoi aller droit quand on peut zigzaguer ?",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "bulle",
@@ -1103,7 +1134,8 @@
         "paradox": 50
       },
       "quote": "Pop ! Ah non, celle-là a tenu.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "lambda"
     },
     {
       "id": "rustik",
@@ -1137,7 +1169,8 @@
         "sonar": 56
       },
       "quote": "La terre ne ment pas. Elle nourrit ceux qui la respectent.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "lambda"
     },
     {
       "id": "jinx",
@@ -1171,7 +1204,8 @@
         "mantra": 81
       },
       "quote": "C'est pas de la malchance, c'est du talent inversé.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "prisme",
@@ -1205,7 +1239,8 @@
         "echo": 57
       },
       "quote": "Le blanc cache toutes les couleurs. Regarde mieux.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "cobalt",
@@ -1239,7 +1274,8 @@
         "requiem": 51
       },
       "quote": "Le froid conserve. La loyauté aussi.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "champion"
     },
     {
       "id": "totem",
@@ -1273,7 +1309,8 @@
         "iris": 76
       },
       "quote": "Nous ne sommes pas d'accord entre nous. Et c'est tant mieux.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "drift",
@@ -1307,7 +1344,8 @@
         "catalyst": 61
       },
       "quote": "Résiste pas, glisse. Tu verras, c'est mieux.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "mousse",
@@ -1341,7 +1379,8 @@
         "vesper": 91
       },
       "quote": "Ma taille ? Un avantage tactique.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "champion"
     },
     {
       "id": "kaori",
@@ -1375,7 +1414,8 @@
         "shade": 62
       },
       "quote": "Ferme les yeux. Respire. Tu te souviens maintenant ?",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "crash",
@@ -1409,7 +1449,8 @@
         "ouroboros": 88
       },
       "quote": "Oups ! Mais attends, j'ai une idée pour que ça soit encore mieux.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "vesper",
@@ -1443,7 +1484,8 @@
         "pandore": 64
       },
       "quote": "Le crépuscule n'est pas une fin. C'est la seule vérité.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "ardent",
@@ -1477,7 +1519,8 @@
         "babel": 62
       },
       "quote": "Si ça ne brûle pas en toi, ça ne vaut pas la peine.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "velvet",
@@ -1511,7 +1554,8 @@
         "cendre": 90
       },
       "quote": "Les gens croient choisir. Je choisis pour eux.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "fossile",
@@ -1545,7 +1589,8 @@
         "cendre": 92
       },
       "quote": "J'ai vu des mondes naître et mourir. Le tien est jeune.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "cipher",
@@ -1579,7 +1624,8 @@
         "galène": 95
       },
       "quote": "Si tu lis ceci, tu n'as compris que le premier niveau.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "champion"
     },
     {
       "id": "onyx",
@@ -1613,7 +1659,8 @@
         "orphea": 84
       },
       "quote": "Frappe. Je peux encaisser. C'est tout ce que je sais faire.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "lambda"
     },
     {
       "id": "sylph",
@@ -1647,7 +1694,8 @@
         "ultima": 74
       },
       "quote": "Le vent ne laisse aucune trace. Moi non plus.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "grimoire",
@@ -1681,7 +1729,8 @@
         "crash": 92
       },
       "quote": "Ouvre-moi, si tu oses.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "volt",
@@ -1715,7 +1764,8 @@
         "lux": 94
       },
       "quote": "La patience est une charge. Et je suis plein.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "nectar",
@@ -1749,7 +1799,8 @@
         "pipo": 69
       },
       "quote": "Goûte. Qu'est-ce que tu risques ? Beaucoup.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "marbre",
@@ -1783,7 +1834,8 @@
         "mirage": 81
       },
       "quote": "Chaque coup de ciseau est une décision irréversible.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "sonar",
@@ -1817,7 +1869,8 @@
         "miro": 66
       },
       "quote": "Je t'entends mentir. Ton cœur bat trop vite.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "karma",
@@ -1851,7 +1904,8 @@
         "omega": 50
       },
       "quote": "Ce que tu donnes te revient. Toujours.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "plasma",
@@ -1885,7 +1939,8 @@
         "onyx": 57
       },
       "quote": "Solide ? Liquide ? Gaz ? Trop limité. Je suis plus.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "sable",
@@ -1919,7 +1974,8 @@
         "catalyst": 66
       },
       "quote": "J'ai le temps. Pas toi.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "oracle",
@@ -1953,7 +2009,8 @@
         "flora": 94
       },
       "quote": "Je sais comment ça finit. Ça ne m'aide pas.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "mirage",
@@ -1987,7 +2044,8 @@
         "grim": 92
       },
       "quote": "Ce que tu vois n'existe pas. Mais tu y crois quand même.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "abyss",
@@ -2021,7 +2079,8 @@
         "kronos": 60
       },
       "quote": "Plus tu descends, plus tu comprends.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "fable",
@@ -2055,7 +2114,8 @@
         "echo": 60
       },
       "quote": "Ce n'est pas un mensonge. C'est une meilleure version de la vérité.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "lichen",
@@ -2089,7 +2149,8 @@
         "sable": 62
       },
       "quote": "Seul, je suis rien. Ensemble, on est tout.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "tempo",
@@ -2123,7 +2184,8 @@
         "mousse": 80
       },
       "quote": "Tout a un rythme. Même le silence.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "lambda"
     },
     {
       "id": "orage",
@@ -2157,7 +2219,8 @@
         "onyx": 71
       },
       "quote": "Tu as entendu le tonnerre ? C'était un avertissement.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "champion"
     },
     {
       "id": "jade",
@@ -2191,7 +2254,8 @@
         "volt": 88
       },
       "quote": "Je prends ta douleur. C'est mon choix.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "helios",
@@ -2225,7 +2289,8 @@
         "spark": 84
       },
       "quote": "Approche-toi. Mais pas trop.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "mantra",
@@ -2259,7 +2324,8 @@
         "paradox": 94
       },
       "quote": "Om. Om. Om. Tu comprends maintenant ?",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "lambda"
     },
     {
       "id": "spectre",
@@ -2293,7 +2359,8 @@
         "lyre": 66
       },
       "quote": "Tu ne peux pas tuer ce qui est déjà mort.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "thorin",
@@ -2327,7 +2394,8 @@
         "thanatos": 70
       },
       "quote": "Mon trône est taillé dans la montagne. Essaie de le renverser.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "nexus",
@@ -2361,7 +2429,8 @@
         "eternel": 53
       },
       "quote": "Tout est lié. Tu ne le vois simplement pas encore.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "ravage",
@@ -2395,7 +2464,8 @@
         "genesis": 76
       },
       "quote": "Avant de construire, il faut raser. C'est mathématique.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "siren",
@@ -2429,7 +2499,8 @@
         "scarab": 87
       },
       "quote": "Écoute. Tu n'as pas le choix, de toute façon.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "monolithe",
@@ -2463,7 +2534,8 @@
         "spark": 78
       },
       "quote": "...",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "lynx",
@@ -2497,7 +2569,8 @@
         "cobalt": 64
       },
       "quote": "Tu ne m'as pas vue approcher. C'est normal.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "requiem",
@@ -2531,7 +2604,8 @@
         "tempo": 74
       },
       "quote": "Je ne prends pas la vie. J'accompagne sa fin.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "talion",
@@ -2565,7 +2639,8 @@
         "atom": 66
       },
       "quote": "Œil pour œil. Mais je prends les intérêts.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "zenith",
@@ -2599,7 +2674,8 @@
         "golem": 77
       },
       "quote": "Le sommet est solitaire. Ça tombe bien, je n'aime pas la foule.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "pandore",
@@ -2633,7 +2709,8 @@
         "brakk": 74
       },
       "quote": "J'ai ouvert la boîte. C'est trop tard pour la refermer.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "lambda"
     },
     {
       "id": "galène",
@@ -2667,7 +2744,8 @@
         "oracle": 93
       },
       "quote": "Admire de loin. C'est un conseil, pas une suggestion.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "basalt",
@@ -2701,7 +2779,8 @@
         "chimere": 83
       },
       "quote": "Le calme avant l'éruption. Tu es prévenu.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "chronos",
@@ -2735,7 +2814,8 @@
         "ouroboros": 65
       },
       "quote": "Tic. Tac. C'est le son de ta vie qui s'amenuise.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "scarab",
@@ -2769,7 +2849,8 @@
         "golem": 70
       },
       "quote": "Prouve ta valeur. Ou retourne d'où tu viens.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "catalyst",
@@ -2803,7 +2884,8 @@
         "omega": 92
       },
       "quote": "Je ne change pas. Je te change, toi.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "tempest",
@@ -2837,7 +2919,8 @@
         "leviathan": 74
       },
       "quote": "L'océan ne pardonne pas. Moi non plus.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "lambda"
     },
     {
       "id": "nocturne",
@@ -2871,7 +2954,8 @@
         "oracle": 52
       },
       "quote": "La nuit est ma partition. Chaque étoile est une note.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "aegis",
@@ -2905,7 +2989,8 @@
         "cipher_x": 91
       },
       "quote": "Derrière moi, tu es en sécurité. C'est une promesse.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "champion"
     },
     {
       "id": "wraith",
@@ -2939,7 +3024,8 @@
         "valkyrie": 74
       },
       "quote": "La mort est surréaliste. La vie aussi, quand on y repense.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "silex",
@@ -2973,7 +3059,8 @@
         "chimere": 85
       },
       "quote": "Avant la magie, il y avait la friction. Moi.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "champion"
     },
     {
       "id": "miasme",
@@ -3007,7 +3094,8 @@
         "ultima": 82
       },
       "quote": "Tu ne m'as pas senti arriver. C'est le but.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "seraph",
@@ -3041,7 +3129,8 @@
         "ardent": 85
       },
       "quote": "La lumière ne négocie pas avec l'ombre.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "eclipse",
@@ -3075,7 +3164,8 @@
         "tika": 93
       },
       "quote": "Je suis le jour et la nuit en même temps. Choisis ton camp.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "magma",
@@ -3109,7 +3199,8 @@
         "thorin": 77
       },
       "quote": "Je n'ai pas besoin d'être rapide. Rien ne peut me stopper.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "nihil",
@@ -3143,7 +3234,8 @@
         "solen": 83
       },
       "quote": "Pourquoi exister ? La question n'a pas de réponse satisfaisante.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "genesis",
@@ -3177,7 +3269,8 @@
         "mirage": 81
       },
       "quote": "J'ai rêvé un monde. Il a commencé à exister.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "paradox",
@@ -3211,7 +3304,8 @@
         "marbre": 82
       },
       "quote": "J'ai raison ET tort. En même temps. Toujours.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "entropy",
@@ -3245,7 +3339,8 @@
         "leviathan": 78
       },
       "quote": "Tout finit par se dégrader. C'est la seule loi universelle.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "phoenix",
@@ -3279,7 +3374,8 @@
         "karma": 56
       },
       "quote": "Mourir est un inconvénient mineur quand tu sais revenir.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "omega",
@@ -3313,7 +3409,8 @@
         "thanatos": 80
       },
       "quote": "Tout commence. Tout finit. Je suis la fin.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "leviathan",
@@ -3347,7 +3444,8 @@
         "genesis": 94
       },
       "quote": "Mon réveil est ton cauchemar.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "chimere",
@@ -3381,7 +3479,8 @@
         "plasma": 51
       },
       "quote": "Je suis plusieurs. Et aucun ne veut céder.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "absolue",
@@ -3415,7 +3514,8 @@
         "galène": 86
       },
       "quote": "Je n'ai jamais tort. C'est le monde qui se trompe.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "limbes",
@@ -3449,7 +3549,8 @@
         "spectre": 61
       },
       "quote": "Je suis la porte. Mais personne ne sait vers quoi.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "kronos",
@@ -3483,7 +3584,8 @@
         "siren": 53
       },
       "quote": "Chaque seconde qui passe est un pas vers moi.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "golem",
@@ -3517,7 +3619,8 @@
         "jade": 53
       },
       "quote": "Tu as dit 'détruis tout'. J'ai obéi.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "prism_x",
@@ -3551,7 +3654,8 @@
         "cendre": 72
       },
       "quote": "Dans mon monde, les ombres brillent et la lumière est noire.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "fractal",
@@ -3585,7 +3689,8 @@
         "kordo": 70
       },
       "quote": "Regarde de plus près. Encore. Tu me trouves toujours.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "valkyrie",
@@ -3619,7 +3724,8 @@
         "fable": 84
       },
       "quote": "Tu t'es battu avec honneur. Viens.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "synapse",
@@ -3653,7 +3759,8 @@
         "lux": 90
       },
       "quote": "Je ne pense pas. Je suis la pensée.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "ouroboros",
@@ -3687,7 +3794,8 @@
         "aegis": 57
       },
       "quote": "Encore. Et encore. Et encore.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "nebula",
@@ -3721,7 +3829,8 @@
         "blitz": 60
       },
       "quote": "Les étoiles naissent en moi. Et meurent ailleurs.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "cipher_x",
@@ -3755,7 +3864,8 @@
         "silex": 59
       },
       "quote": "Problème résolu. Sauf un : pourquoi je suis là.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "thanatos",
@@ -3789,7 +3899,8 @@
         "anima": 82
       },
       "quote": "N'aie pas peur. Prends ma main.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "anima",
@@ -3823,7 +3934,8 @@
         "jinx": 87
       },
       "quote": "Je suis chaque rire et chaque larme. Tout en même temps.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "babel",
@@ -3857,7 +3969,8 @@
         "tempest": 72
       },
       "quote": "Le mot juste au bon moment crée un univers.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "eternel",
@@ -3891,7 +4004,8 @@
         "scarab": 90
       },
       "quote": "J'ai vu le début. Je verrai la fin. Et après.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "volonte",
@@ -3925,7 +4039,8 @@
         "oracle": 87
       },
       "quote": "Tant qu'il reste une once de volonté, rien n'est perdu.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "harmonia",
@@ -3959,7 +4074,8 @@
         "velvet": 93
       },
       "quote": "Chaque discorde est une harmonie inachevée.",
-      "job": "joaillier"
+      "job": "joaillier",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "avatar",
@@ -3993,7 +4109,8 @@
         "volonte": 75
       },
       "quote": "Aujourd'hui je suis tempête. Demain, peut-être rosée.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "nexion",
@@ -4027,7 +4144,8 @@
         "kronos": 53
       },
       "quote": "Coupe un fil et tout le tissu se défait.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "ultima",
@@ -4061,7 +4179,8 @@
         "naia": 65
       },
       "quote": "Après moi, le silence.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "prime",
@@ -4095,7 +4214,8 @@
         "omega": 78
       },
       "quote": "Avant tout, il y avait moi. Un souffle. Et le monde a suivi.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "lumin",
@@ -4129,7 +4249,8 @@
         "quillow": 86
       },
       "quote": "Je ne brille pas fort. Mais je ne m'éteins jamais.",
-      "job": "joaillier"
+      "job": "joaillier",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "bramble",
@@ -4163,7 +4284,8 @@
         "lichen": 79
       },
       "quote": "Touche pas. Ou touche, mais pleure pas.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "champion"
     },
     {
       "id": "flicker",
@@ -4197,7 +4319,8 @@
         "fable": 75
       },
       "quote": "Je... je crois que je brûle ? Oui. Non. Peut-être.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "champion"
     },
     {
       "id": "moss",
@@ -4231,7 +4354,8 @@
         "zest": 72
       },
       "quote": "Tu ne m'as pas vu arriver. Normal.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "clink",
@@ -4265,7 +4389,8 @@
         "flint": 71
       },
       "quote": "Encore une ! Et une autre ! Le son est magnifique.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "champion"
     },
     {
       "id": "wisp",
@@ -4299,7 +4424,8 @@
         "totem": 78
       },
       "quote": "Suis-moi ! Ou pas. C'est drôle aussi.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "pebble",
@@ -4333,7 +4459,8 @@
         "aether": 86
       },
       "quote": "L'eau m'a arrondi. Les voyages aussi.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "champion"
     },
     {
       "id": "tinker",
@@ -4367,7 +4494,8 @@
         "weir": 54
       },
       "quote": "Ça tient ! Ça tient ! ... C'est tombé.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "zest",
@@ -4401,7 +4529,8 @@
         "velvet": 59
       },
       "quote": "Tu dormais ? Plus maintenant.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "dew",
@@ -4435,7 +4564,8 @@
         "moss": 72
       },
       "quote": "Je ne dure pas. Mais sans moi, rien ne pousse.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "rook",
@@ -4469,7 +4599,8 @@
         "moss": 80
       },
       "quote": "Croâ. Mais avec sagesse.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "pip",
@@ -4503,7 +4634,8 @@
         "fizz": 91
       },
       "quote": "Je suis petit. Mais tu me sentiras.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "ember",
@@ -4537,7 +4669,8 @@
         "vex": 53
       },
       "quote": "Je ne flambe pas. Je réchauffe.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "glint",
@@ -4571,7 +4704,8 @@
         "mirage": 64
       },
       "quote": "Tu m'as vu ? Trop tard, je suis ailleurs.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "lambda"
     },
     {
       "id": "chalk",
@@ -4605,7 +4739,8 @@
         "vale": 83
       },
       "quote": "Ça s'efface. Et alors ? Je redessine.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "reed",
@@ -4639,7 +4774,8 @@
         "cruciform": 87
       },
       "quote": "Le chêne tombe. Le roseau chante.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "nutmeg",
@@ -4673,7 +4809,8 @@
         "fern": 92
       },
       "quote": "J'ai voyagé plus loin que tu ne penses.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "twine",
@@ -4707,7 +4844,8 @@
         "absolue": 77
       },
       "quote": "Je suis le lien. Sans moi, tout tombe.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "chirp",
@@ -4741,7 +4879,8 @@
         "tundra": 88
       },
       "quote": "Cui cui. C'est tout. C'est assez.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "lambda"
     },
     {
       "id": "clay",
@@ -4775,7 +4914,8 @@
         "prism_x": 76
       },
       "quote": "Je suis ce que tu fais de moi.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "lambda"
     },
     {
       "id": "nib",
@@ -4809,7 +4949,8 @@
         "nexus": 62
       },
       "quote": "L'encre ne pardonne pas. Ni moi.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "fizz",
@@ -4843,7 +4984,8 @@
         "mousse": 57
       },
       "quote": "Pop pop pop ! La vie est une fête !",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "lambda"
     },
     {
       "id": "latch",
@@ -4877,7 +5019,8 @@
         "thaw": 51
       },
       "quote": "Confie-moi tes secrets. Je ne parle pas.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "sprig",
@@ -4911,7 +5054,8 @@
         "fate": 89
       },
       "quote": "C'est quoi ça ? Et ça ? Et ÇA ?!",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "lambda"
     },
     {
       "id": "smudge",
@@ -4945,7 +5089,8 @@
         "golem": 71
       },
       "quote": "T'as essayé de m'effacer ? Bon courage.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "brim",
@@ -4979,7 +5124,8 @@
         "pip": 74
       },
       "quote": "Le bord est le seul endroit où on voit des deux côtés.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "quillow",
@@ -5013,7 +5159,8 @@
         "ultima": 60
       },
       "quote": "Pose-toi. Respire. Ça va aller.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "spool",
@@ -5047,7 +5194,8 @@
         "aether": 79
       },
       "quote": "Tire le fil. L'histoire viendra.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "copper",
@@ -5081,7 +5229,8 @@
         "plasma": 68
       },
       "quote": "Un sou. Puis deux. Puis un empire.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "lambda"
     },
     {
       "id": "fern",
@@ -5115,7 +5264,8 @@
         "sprout": 79
       },
       "quote": "Les arbres me trouvent vieux. Ça me fait rire.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "wren",
@@ -5149,7 +5299,8 @@
         "naia": 78
       },
       "quote": "Psst. Tu savais que...?",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "lambda"
     },
     {
       "id": "haze",
@@ -5183,7 +5334,8 @@
         "cortex": 90
       },
       "quote": "Tu vois flou ? C'est parfois mieux ainsi.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "tick",
@@ -5217,7 +5369,8 @@
         "ember": 79
       },
       "quote": "Tic. Tac. Tic. Tac. Toujours.",
-      "job": "joaillier"
+      "job": "joaillier",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "froth",
@@ -5251,7 +5404,8 @@
         "nimbus": 79
       },
       "quote": "Je suis rien. Et c'est génial.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "lambda"
     },
     {
       "id": "sprout",
@@ -5285,7 +5439,8 @@
         "tempest": 78
       },
       "quote": "Le béton ? Un petit inconvénient.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "lambda"
     },
     {
       "id": "flint",
@@ -5319,7 +5474,8 @@
         "sprout": 74
       },
       "quote": "Frappe-moi. Je te donnerai le feu.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "tempera",
@@ -5353,7 +5509,8 @@
         "fulgor": 72
       },
       "quote": "Les couleurs s'estompent. Les miennes, jamais.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "cortex",
@@ -5387,7 +5544,8 @@
         "wick": 69
       },
       "quote": "Une idée. Dix ramifications. Cent possibilités.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "champion"
     },
     {
       "id": "cairn",
@@ -5421,7 +5579,8 @@
         "plume": 88
       },
       "quote": "Je marque le chemin. Pour ceux qui suivent.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "quill",
@@ -5455,7 +5614,8 @@
         "hyandi": 52
       },
       "quote": "La vérité fait mal ? Bien. Lis quand même.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "crucible",
@@ -5489,7 +5649,8 @@
         "tide": 74
       },
       "quote": "La transformation n'est jamais confortable.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "gossamer",
@@ -5523,7 +5684,8 @@
         "brine": 82
       },
       "quote": "Le fil qui nous relie est plus fort que l'acier.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "mortar",
@@ -5557,7 +5719,8 @@
         "nyx": 89
       },
       "quote": "Je suis entre les pierres. C'est moi qui tiens tout.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "lambda"
     },
     {
       "id": "tide",
@@ -5591,7 +5754,8 @@
         "reed": 74
       },
       "quote": "Je reviendrai. Comme toujours.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "alloy",
@@ -5625,7 +5789,8 @@
         "summit": 92
       },
       "quote": "Ni l'un ni l'autre. Les deux à la fois.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "thistle",
@@ -5659,7 +5824,8 @@
         "spectre": 58
       },
       "quote": "Approche si tu oses. La récompense en vaut la peine.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "champion"
     },
     {
       "id": "anvil",
@@ -5693,7 +5859,8 @@
         "summit": 75
       },
       "quote": "Frappe. Je ne bougerai pas.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "meridian",
@@ -5727,7 +5894,8 @@
         "thorn": 95
       },
       "quote": "Tu as franchi une ligne. Tu ne l'as pas vue, mais elle est là.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "canopy",
@@ -5761,7 +5929,8 @@
         "bramble": 95
       },
       "quote": "Reste sous moi. Le soleil ne te brûlera pas.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "patina",
@@ -5795,7 +5964,8 @@
         "volonte": 88
       },
       "quote": "Le temps m'a embelli. Il le fera pour toi aussi.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "fulcrum",
@@ -5829,7 +5999,8 @@
         "nova": 95
       },
       "quote": "Donne-moi un point d'appui et je soulèverai le monde.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "loam",
@@ -5863,7 +6034,8 @@
         "vitriol": 82
       },
       "quote": "Plante en moi. Je ferai pousser.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "arc",
@@ -5897,7 +6069,8 @@
         "gossamer": 86
       },
       "quote": "Je ne finis rien. Mais quel début.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "lignite",
@@ -5931,7 +6104,8 @@
         "glint": 70
       },
       "quote": "Je dors encore. Quand je m'éveillerai, tu le sauras.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "thaw",
@@ -5965,7 +6139,8 @@
         "loam": 66
       },
       "quote": "La glace fond. Toujours. Il suffit d'attendre.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "strata",
@@ -5999,7 +6174,8 @@
         "karma": 58
       },
       "quote": "Creuse plus profond. Chaque couche a son secret.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "weld",
@@ -6033,7 +6209,8 @@
         "wisp": 76
       },
       "quote": "Brisé ? Donne. Ce sera plus fort qu'avant.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "glyph",
@@ -6067,7 +6244,8 @@
         "iris": 58
       },
       "quote": "Lis le symbole. Si tu peux.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "torrent",
@@ -6101,7 +6279,8 @@
         "cruciform": 64
       },
       "quote": "Écarte-toi ou suis le courant.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "lambda"
     },
     {
       "id": "lattice",
@@ -6135,7 +6314,8 @@
         "prism_x": 75
       },
       "quote": "Je suis troué partout. Et pourtant je tiens.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "brine",
@@ -6169,7 +6349,8 @@
         "aurora": 79
       },
       "quote": "Je conserve. C'est tout. Mais c'est crucial.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "apex",
@@ -6203,7 +6384,8 @@
         "riptide": 59
       },
       "quote": "C'est maintenant. Exactement maintenant. Le sommet.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "kiln",
@@ -6237,7 +6419,8 @@
         "harmonia": 87
       },
       "quote": "Cru, tu es fragile. Après mon feu, tu es éternel.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "nimbus",
@@ -6271,7 +6454,8 @@
         "schist": 85
       },
       "quote": "L'orage arrive. Tu peux fuir ou danser.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "prong",
@@ -6305,7 +6489,8 @@
         "helix": 88
       },
       "quote": "Gauche ou droite ? Les deux mènent quelque part.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "smelt",
@@ -6339,7 +6524,8 @@
         "jinx": 83
       },
       "quote": "Le feu sépare le pur de l'impur. Moi aussi.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "verge",
@@ -6373,7 +6559,8 @@
         "lux": 51
       },
       "quote": "Pas encore. Presque. Maintenant... non, pas encore.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "ballast",
@@ -6407,7 +6594,8 @@
         "chirp": 51
       },
       "quote": "Sans moi, tout bascule. Mais personne ne me remercie.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "relay",
@@ -6441,7 +6629,8 @@
         "iridium": 59
       },
       "quote": "Je ne garde rien. Je passe tout. C'est mon rôle.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "vellum",
@@ -6475,7 +6664,8 @@
         "bedrock": 60
       },
       "quote": "Écris. Mais choisis bien tes mots.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "pivot",
@@ -6509,7 +6699,8 @@
         "froth": 71
       },
       "quote": "Je ne bouge pas. C'est le monde qui tourne autour de moi.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "gorge",
@@ -6543,7 +6734,8 @@
         "pebble": 52
       },
       "quote": "Le seul passage. Tu paies ou tu contournes.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "pulse",
@@ -6577,7 +6769,8 @@
         "maelstrom": 84
       },
       "quote": "Tant que tu m'entends, tu es vivant.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "thorn",
@@ -6611,7 +6804,8 @@
         "maelstrom": 91
       },
       "quote": "Désolé. Mais je suis une épine. C'est ce que je fais.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "shoal",
@@ -6645,7 +6839,8 @@
         "prism_x": 64
       },
       "quote": "Tu ne me vois pas. C'est le but.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "bracket",
@@ -6679,7 +6874,8 @@
         "cruciform": 85
       },
       "quote": "Enlève-moi et regarde ce qui tombe.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "amber",
@@ -6713,7 +6909,8 @@
         "lignite": 59
       },
       "quote": "Cet instant est parfait. Je le garde.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "quarry",
@@ -6747,7 +6944,8 @@
         "nexion": 58
       },
       "quote": "Plus je creuse, plus je trouve.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "vestige",
@@ -6781,7 +6979,8 @@
         "mirage": 83
       },
       "quote": "J'étais quelque chose de grand. Maintenant je suis un souvenir.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "crest",
@@ -6815,7 +7014,8 @@
         "elrand": 57
       },
       "quote": "Au sommet de la vague. Juste une seconde.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "wick",
@@ -6849,7 +7049,8 @@
         "seraph": 74
       },
       "quote": "L'étincelle viendra. Je serai prêt.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "lambda"
     },
     {
       "id": "weir",
@@ -6883,7 +7084,8 @@
         "chimere": 91
       },
       "quote": "Je ne bloque pas. Je régule.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "champion"
     },
     {
       "id": "clinker",
@@ -6917,7 +7119,8 @@
         "terra": 80
       },
       "quote": "On me jette. Mais sans moi, le métal est faible.",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "vale",
@@ -6951,7 +7154,8 @@
         "cortex": 70
       },
       "quote": "Trouve-moi et tu trouveras la paix.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "obsidian",
@@ -6985,7 +7189,8 @@
         "helix": 79
       },
       "quote": "Je coupe tout. Y compris les illusions.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "cinnabar",
@@ -7019,7 +7224,8 @@
         "vale": 60
       },
       "quote": "Admire, mais ne touche pas.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "quartz",
@@ -7053,7 +7259,8 @@
         "orphea": 85
       },
       "quote": "Écoute la vibration. C'est la fréquence du réel.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "tungsten",
@@ -7087,7 +7294,8 @@
         "chimere": 69
       },
       "quote": "Tu n'as pas assez chaud pour me faire plier.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "riptide",
@@ -7121,7 +7329,8 @@
         "nimbus": 72
       },
       "quote": "Tu nages bien. Mais pas dans la bonne direction.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "schist",
@@ -7155,7 +7364,8 @@
         "valkyrie": 89
       },
       "quote": "Je me brise proprement. Contrairement au reste.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "corona",
@@ -7189,7 +7399,8 @@
         "apex": 91
       },
       "quote": "Tu ne me vois que quand la lumière faiblit.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "fjord",
@@ -7223,7 +7434,8 @@
         "clay": 76
       },
       "quote": "Les glaciers m'ont creusé. La beauté naît de la violence.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "iridium",
@@ -7257,7 +7469,8 @@
         "fulgor": 77
       },
       "quote": "Je ne suis pas d'ici. Et ça se voit.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "vitriol",
@@ -7291,7 +7504,8 @@
         "atom": 84
       },
       "quote": "Ça fait mal ? Normal. Tu étais couvert de mensonges.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "tundra",
@@ -7325,7 +7539,8 @@
         "bracket": 78
       },
       "quote": "Ici, rien ne fond. Rien ne change. Jamais.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "champion"
     },
     {
       "id": "undertow",
@@ -7359,7 +7574,8 @@
         "aether": 62
       },
       "quote": "L'eau est calme ? Parfait. C'est là que je suis.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "summit",
@@ -7393,7 +7609,8 @@
         "kordo": 86
       },
       "quote": "Encore un pas. Un seul. Le plus dur.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "vortex",
@@ -7427,7 +7644,8 @@
         "vitriol": 82
       },
       "quote": "Tourne avec moi. Ou sois aspiré.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "cruciform",
@@ -7461,7 +7679,8 @@
         "oracle": 70
       },
       "quote": "Quatre chemins. Un seul est le tien. Choisis bien.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "lambda"
     },
     {
       "id": "permafrost",
@@ -7495,7 +7714,8 @@
         "twine": 78
       },
       "quote": "Je dégèle. Et ce que je libère te fera peur.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "quicksilver",
@@ -7529,7 +7749,8 @@
         "froth": 67
       },
       "quote": "Attrape-moi. Je coule entre tes doigts.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "caldera",
@@ -7563,7 +7784,8 @@
         "ore": 58
       },
       "quote": "L'éruption m'a vidé. Mais regarde ce qui pousse maintenant.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "tremor",
@@ -7597,7 +7819,8 @@
         "patina": 65
       },
       "quote": "Tu l'as senti ? Non ? Tant pis pour toi.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "champion"
     },
     {
       "id": "ore",
@@ -7631,7 +7854,8 @@
         "helios": 64
       },
       "quote": "Je suis sale et laid. Mais fond-moi et tu verras de l'or.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "champion"
     },
     {
       "id": "raptor",
@@ -7665,7 +7889,8 @@
         "patina": 86
       },
       "quote": "Je t'ai vu avant que tu me cherches.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "conduit",
@@ -7699,7 +7924,8 @@
         "nova_x": 52
       },
       "quote": "L'énergie passe. Je dirige.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "maelstrom",
@@ -7733,7 +7959,8 @@
         "oracle": 70
       },
       "quote": "Tout finit par tourner vers moi.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "scoria",
@@ -7767,7 +7994,8 @@
         "ignis": 62
       },
       "quote": "Le feu m'a trouée. L'air m'a rendue légère.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "solstice",
@@ -7801,7 +8029,8 @@
         "silex": 66
       },
       "quote": "Profite. Après moi, l'ombre grandit.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "pyre",
@@ -7835,7 +8064,8 @@
         "amber": 83
       },
       "quote": "Jette ton passé dans mes flammes. L'avenir attendra.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "bedrock",
@@ -7869,7 +8099,8 @@
         "tempest": 65
       },
       "quote": "Je suis sous tout. Tu ne me vois pas. Mais tout tient sur moi.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "lithic",
@@ -7903,7 +8134,8 @@
         "vale": 78
       },
       "quote": "Avant le métal, il y avait moi.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "gale",
@@ -7937,7 +8169,8 @@
         "schist": 89
       },
       "quote": "Accroche-toi. Ou envole-toi.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "meridium",
@@ -7971,7 +8204,8 @@
         "vex": 53
       },
       "quote": "Midi. Pas d'ombre. Pas de mensonge.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "singularity",
@@ -8005,7 +8239,8 @@
         "kordo": 68
       },
       "quote": "Au-delà de moi, les règles n'existent plus.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "axiom",
@@ -8039,7 +8274,8 @@
         "basalt": 82
       },
       "quote": "Je n'ai pas besoin d'être prouvé. Je suis.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "paradigm",
@@ -8073,7 +8309,8 @@
         "orage": 95
       },
       "quote": "J'étais la vérité. Maintenant je suis l'histoire.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "lambda"
     },
     {
       "id": "zenon",
@@ -8107,7 +8344,8 @@
         "anchor": 80
       },
       "quote": "Tu ne peux pas m'atteindre. Et pourtant tu m'as déjà dépassé.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "lumen",
@@ -8141,7 +8379,8 @@
         "prong": 65
       },
       "quote": "La lumière n'est pas vague. Elle a un chiffre. Moi.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "theorem",
@@ -8175,7 +8414,8 @@
         "cipher": 89
       },
       "quote": "Prouve-le. Sinon, ça n'existe pas.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "catalyst_x",
@@ -8209,7 +8449,8 @@
         "valkyrie": 50
       },
       "quote": "J'ai appuyé une fois. Le monde a changé.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "helix",
@@ -8243,7 +8484,8 @@
         "sprig": 60
       },
       "quote": "Chaque spirale contient un univers.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "nexion_x",
@@ -8277,7 +8519,8 @@
         "thaw": 77
       },
       "quote": "Je relie ce qui ne devrait pas être relié.",
-      "job": "joaillier"
+      "job": "joaillier",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "antimatter",
@@ -8311,7 +8554,8 @@
         "scoria": 65
       },
       "quote": "Ne me touche pas. Sérieusement.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "continuum",
@@ -8345,7 +8589,8 @@
         "datum": 68
       },
       "quote": "Je coule. Toujours. Tu ne peux que suivre.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "prima",
@@ -8379,7 +8624,8 @@
         "tempera": 67
       },
       "quote": "Tout commence par moi. Une seule note.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "lambda"
     },
     {
       "id": "fulgor",
@@ -8413,7 +8659,8 @@
         "cinnabar": 86
       },
       "quote": "Un millième de seconde. Et tu as tout vu.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "stratum",
@@ -8447,7 +8694,8 @@
         "cobalt": 54
       },
       "quote": "Creuse. Plus profond. Encore. Je suis là.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "praxis",
@@ -8481,7 +8729,8 @@
         "froth": 69
       },
       "quote": "Penser ne suffit pas. Agir. Maintenant.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "tesseract",
@@ -8515,7 +8764,8 @@
         "fossile": 95
       },
       "quote": "Tu vois un cube. Je suis bien plus que ça.",
-      "job": "guérisseur"
+      "job": "guérisseur",
+      "scenario": "lambda"
     },
     {
       "id": "nova_x",
@@ -8549,7 +8799,8 @@
         "ouroboros": 87
       },
       "quote": "Ma mort est la plus belle chose que tu verras.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "datum",
@@ -8583,7 +8834,8 @@
         "clink": 54
       },
       "quote": "Je suis le zéro. Sans moi, les chiffres ne veulent rien dire.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "solvent",
@@ -8617,7 +8869,8 @@
         "prima": 77
       },
       "quote": "Je dissous tout. Le problème : qui me contient ?",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "vertex",
@@ -8651,7 +8904,8 @@
         "kiln": 53
       },
       "quote": "Toutes les lignes mènent à moi.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "archon",
@@ -8685,7 +8939,8 @@
         "zenith": 79
       },
       "quote": "Je ne règne pas. J'existe, et le monde s'ordonne.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "aether",
@@ -8719,7 +8974,8 @@
         "helios": 57
       },
       "quote": "Tu respires grâce à moi. Tu ne le sais pas.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "logos",
@@ -8753,7 +9009,8 @@
         "pip": 91
       },
       "quote": "Au commencement était le mot. C'était moi.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "void",
@@ -8787,7 +9044,8 @@
         "sable": 64
       },
       "quote": "Je suis rien. Et rien contient tout.",
-      "job": "éclaireur"
+      "job": "éclaireur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "aegis_prime",
@@ -8821,7 +9079,8 @@
         "mythos": 57
       },
       "quote": "Derrière moi, l'éternité est en sécurité.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "fate",
@@ -8855,7 +9114,8 @@
         "copper": 62
       },
       "quote": "Ton fil est entre mes doigts. Il l'a toujours été.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "aurora",
@@ -8889,7 +9149,8 @@
         "grimoire": 87
       },
       "quote": "Avant moi, le noir. Après moi, tout le reste.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "terra",
@@ -8923,7 +9184,8 @@
         "quill": 50
       },
       "quote": "Vous venez tous de moi. Et vous y retournerez.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "mythos",
@@ -8957,7 +9219,8 @@
         "summit": 69
       },
       "quote": "Chaque peuple me raconte différemment. J'ai toujours raison.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "ignis",
@@ -8991,7 +9254,8 @@
         "relay": 95
       },
       "quote": "Le premier feu. Tous les autres sont mes enfants.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "tempus",
@@ -9025,7 +9289,8 @@
         "lattice": 70
       },
       "quote": "Tu me combats chaque jour. Tu perds chaque jour.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "nyx",
@@ -9059,7 +9324,8 @@
         "gale": 69
       },
       "quote": "La lumière est venue après moi. Elle repartira avant moi.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "anchor",
@@ -9093,7 +9359,8 @@
         "helix": 88
       },
       "quote": "Le monde dérive ? Pas tant que je suis là.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "synthesis",
@@ -9127,7 +9394,8 @@
         "thorn": 89
       },
       "quote": "Tout ce qui s'oppose finit par s'unir. En moi.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "sulfur",
@@ -9161,7 +9429,8 @@
         "tesseract": 54
       },
       "quote": "L'odeur qui reste est la preuve que j'étais là.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "prism_z",
@@ -9195,7 +9464,8 @@
         "monolithe": 84
       },
       "quote": "Je vois toutes tes couleurs. Même celles que tu caches.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "delta",
@@ -9229,7 +9499,8 @@
         "thorn": 50
       },
       "quote": "Le fleuve finit. La mer commence. Et moi, je suis entre les deux.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "geode",
@@ -9263,7 +9534,8 @@
         "cendre": 63
       },
       "quote": "Casse-moi. Tu seras surpris.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "zenith_x",
@@ -9297,7 +9569,8 @@
         "gorge": 71
       },
       "quote": "Au-dessus du sommet. Là où personne ne vient.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "matrix",
@@ -9331,7 +9604,8 @@
         "rune": 88
       },
       "quote": "Tu vois le monde. Je vois le code.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "entropy_x",
@@ -9365,7 +9639,8 @@
         "copper": 51
       },
       "quote": "Tout se dégrade. Je suis la preuve finale.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "resonance",
@@ -9399,7 +9674,8 @@
         "flicker": 87
       },
       "quote": "Écoute. L'univers a une fréquence. C'est la mienne.",
-      "job": "pirate"
+      "job": "pirate",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "cipher_z",
@@ -9433,7 +9709,8 @@
         "gorge": 60
       },
       "quote": "Craque-moi. Si tu oses.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "flux",
@@ -9467,7 +9744,8 @@
         "aegis": 60
       },
       "quote": "Je suis déjà autre chose.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "champion"
     },
     {
       "id": "mantle",
@@ -9501,7 +9779,8 @@
         "fable": 86
       },
       "quote": "Les continents reposent sur moi. Tu le savais ?",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "silt",
@@ -9535,7 +9814,8 @@
         "scoria": 61
       },
       "quote": "Après la crue, je suis là. Et tout repousse.",
-      "job": "voleur"
+      "job": "voleur",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "zenith_y",
@@ -9569,7 +9849,8 @@
         "thorin": 57
       },
       "quote": "Je ne pousse pas. Je caresse.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "ripple",
@@ -9603,7 +9884,8 @@
         "lyre": 66
       },
       "quote": "Un caillou. Et le lac entier m'a senti.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "lambda"
     },
     {
       "id": "shard",
@@ -9637,7 +9919,8 @@
         "bramble": 63
       },
       "quote": "Je suis un morceau. Le reste est quelque part.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "beacon",
@@ -9671,7 +9954,8 @@
         "tesseract": 64
       },
       "quote": "Dans la tempête, cherche ma lumière.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "sediment",
@@ -9705,7 +9989,8 @@
         "matrix": 83
       },
       "quote": "Chaque grain est un jour. J'en ai des millions.",
-      "job": "archer"
+      "job": "archer",
+      "scenario": "champion"
     },
     {
       "id": "vein",
@@ -9739,7 +10024,8 @@
         "beacon": 67
       },
       "quote": "Je suis là. Creuse plus profond.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "plinth",
@@ -9773,7 +10059,8 @@
         "volonte": 81
       },
       "quote": "Regarde en bas pour une fois. C'est moi qui tiens tout.",
-      "job": "diplomate"
+      "job": "diplomate",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "crux",
@@ -9807,7 +10094,8 @@
         "pivot": 63
       },
       "quote": "Le problème ? C'est moi. La solution aussi.",
-      "job": "tailleur"
+      "job": "tailleur",
+      "scenario": "champion"
     },
     {
       "id": "nadir",
@@ -9841,7 +10129,8 @@
         "limbes": 58
       },
       "quote": "Le fond. Félicitations. Maintenant, remonte.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "helios_x",
@@ -9875,7 +10164,8 @@
         "drift": 90
       },
       "quote": "Ma lumière est noire. Elle montre ce que le jour cache.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "epoch",
@@ -9909,7 +10199,8 @@
         "nectar": 79
       },
       "quote": "J'ai duré mille ans. En un battement de cœur.",
-      "job": "cuisinier"
+      "job": "cuisinier",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "cosmos",
@@ -9943,7 +10234,8 @@
         "delta": 69
       },
       "quote": "Le chaos n'existe pas. Tu ne vois simplement pas le motif.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "sigil",
@@ -9977,7 +10269,8 @@
         "limbes": 80
       },
       "quote": "Ne brise pas le sceau. Tu ne veux pas savoir ce qu'il retient.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "champion"
     },
     {
       "id": "relic",
@@ -10011,7 +10304,8 @@
         "obsidian": 73
       },
       "quote": "On m'a oublié. Pas mon pouvoir.",
-      "job": "nomade"
+      "job": "nomade",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "miasma",
@@ -10045,7 +10339,8 @@
         "tide": 61
       },
       "quote": "Tu le sens ? Trop tard.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "champion"
     },
     {
       "id": "cipher_y",
@@ -10079,7 +10374,8 @@
         "entropy_x": 53
       },
       "quote": "Lis-moi à l'envers. Tu comprendras.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "obelisk",
@@ -10113,7 +10409,8 @@
         "cipher_x": 71
       },
       "quote": "Je suis là depuis avant ta mémoire.",
-      "job": "ingenieur"
+      "job": "ingenieur",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "forge_spirit",
@@ -10147,7 +10444,8 @@
         "tempest": 73
       },
       "quote": "Chaque coup de marteau, c'est moi qui guide ta main.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "meridian_x",
@@ -10181,7 +10479,8 @@
         "cendre": 92
       },
       "quote": "La magie coule en moi. À travers le monde.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "bastion",
@@ -10215,7 +10514,8 @@
         "crash": 77
       },
       "quote": "Tout a cédé. Je suis encore là.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "solaris",
@@ -10249,7 +10549,8 @@
         "phoenix": 75
       },
       "quote": "Je brûle pour que d'autres voient.",
-      "job": "mage"
+      "job": "mage",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "cobalt_y",
@@ -10283,7 +10584,8 @@
         "copper": 65
       },
       "quote": "Le métal ne ment jamais.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "minotaure",
@@ -10317,7 +10619,8 @@
         "shade": 72
       },
       "quote": "Le labyrinthe n'a pas de sortie. Il n'en a jamais eu.",
-      "job": "guerrier"
+      "job": "guerrier",
+      "scenario": "champion"
     },
     {
       "id": "serenade",
@@ -10351,7 +10654,8 @@
         "orphea": 88
       },
       "quote": "Écoute. La musique parle quand les mots se taisent.",
-      "job": "barde"
+      "job": "barde",
+      "scenario": "lambda"
     },
     {
       "id": "tectonique",
@@ -10385,7 +10689,8 @@
         "caldera": 85
       },
       "quote": "Les montagnes se souviennent de ma colère.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "papyrus",
@@ -10419,7 +10724,8 @@
         "nib": 85
       },
       "quote": "Ce qui n'est pas écrit n'a jamais existé.",
-      "job": "cartographe"
+      "job": "cartographe",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "typhon",
@@ -10453,7 +10759,8 @@
         "drift": 70
       },
       "quote": "Je ne passe pas. J'efface.",
-      "job": "assassin"
+      "job": "assassin",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "opale",
@@ -10487,7 +10794,8 @@
         "mirage": 82
       },
       "quote": "Tu ne vois que ce que je veux bien montrer.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "ragnarok",
@@ -10521,7 +10829,8 @@
         "ravage": 85
       },
       "quote": "Je ne suis pas la fin. Je suis ce qui vient après.",
-      "job": "necromancien"
+      "job": "necromancien",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "borealis",
@@ -10555,7 +10864,8 @@
         "prisme": 78
       },
       "quote": "Le ciel est mon seul partenaire de danse.",
-      "job": "druide"
+      "job": "druide",
+      "scenario": "lambda"
     },
     {
       "id": "cerbere",
@@ -10589,7 +10899,8 @@
         "onyx": 82
       },
       "quote": "Trois bouches. Aucune n'a jamais dit oui.",
-      "job": "paladin"
+      "job": "paladin",
+      "scenario": "champion"
     },
     {
       "id": "mandragore",
@@ -10623,7 +10934,8 @@
         "lichen": 82
       },
       "quote": "Ne me déracine pas. Tu n'es pas prêt à entendre.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "parallaxe",
@@ -10657,7 +10969,8 @@
         "paradigm": 82
       },
       "quote": "Vous regardez tous dans la même direction. C'est votre erreur.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "anthracite",
@@ -10691,7 +11004,8 @@
         "smelt": 80
       },
       "quote": "Je brûle encore quand tout s'est éteint.",
-      "job": "forgeron"
+      "job": "forgeron",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "chimere_y",
@@ -10725,7 +11039,8 @@
         "mirage": 85
       },
       "quote": "Je suis tout ce qui n'aurait pas dû naître.",
-      "job": "chasseur"
+      "job": "chasseur",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "talisman",
@@ -10759,7 +11074,8 @@
         "scarab": 78
       },
       "quote": "La chance n'existe pas. Mais moi, si.",
-      "job": "marchand"
+      "job": "marchand",
+      "scenario": "lambda"
     },
     {
       "id": "absinthe",
@@ -10793,7 +11109,8 @@
         "nutmeg": 82
       },
       "quote": "La vérité est au fond du verre. Ose boire.",
-      "job": "alchimiste"
+      "job": "alchimiste",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "monolithe_y",
@@ -10827,7 +11144,8 @@
         "lithic": 90
       },
       "quote": "...",
-      "job": "moine"
+      "job": "moine",
+      "scenario": "veteran-morkar"
     },
     {
       "id": "arachnea",
@@ -10861,7 +11179,8 @@
         "weir": 78
       },
       "quote": "Chaque fil mène quelque part. Surtout ceux que tu ne vois pas.",
-      "job": "espion"
+      "job": "espion",
+      "scenario": "rebelle-isole"
     },
     {
       "id": "volcan",
@@ -10895,7 +11214,8 @@
         "tremor": 85
       },
       "quote": "Mon silence n'est pas la paix. C'est un avertissement.",
-      "job": "berserker"
+      "job": "berserker",
+      "scenario": "rebelle-connecte"
     },
     {
       "id": "origami",
@@ -10929,7 +11249,8 @@
         "vellum": 88
       },
       "quote": "Un pli suffit pour changer la forme du monde.",
-      "job": "enchanteur"
+      "job": "enchanteur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "sextant",
@@ -10963,7 +11284,8 @@
         "arc": 82
       },
       "quote": "Les étoiles ne mentent pas. Il suffit de savoir les lire.",
-      "job": "explorateur"
+      "job": "explorateur",
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "reverie",
@@ -10997,7 +11319,8 @@
         "velvet": 82
       },
       "quote": "Ferme les yeux. C'est là que tout commence.",
-      "job": "oracle"
+      "job": "oracle",
+      "scenario": "lambda"
     },
     {
       "id": "chroniqueur",
@@ -11031,7 +11354,8 @@
         "epoch": 82
       },
       "quote": "J'ai vu la fin. Elle ressemble beaucoup au début.",
-      "job": "chronomancien"
+      "job": "chronomancien",
+      "scenario": "apprenti-morkar"
     }
   ]
 }
