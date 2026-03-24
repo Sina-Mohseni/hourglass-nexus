@@ -332,33 +332,33 @@
           "intro": [
             "Tu te figes. Quelqu'un est là. Grand. Massif. Impossible de l'éviter.",
             "L'Orque est assis sur un rocher, les bras croisés. Il ne dort pas. Il attend.",
-            "Ses yeux rouges se posent sur toi. Quelque chose dans son regard dit qu'il voit plus loin que la surface."
+            "Ses yeux rouges se posent sur toi. Tu actives mentalement ton personnage — l'isolé perdu, terrorisé, qui ne comprend rien. Mais son regard dit qu'il voit plus loin que la surface."
           ],
-          "greeting": "T'as une drôle de façon de bouger, toi. Comme quelqu'un qui a l'habitude de pas être vu.",
+          "greeting": "T'es un isolé, à ce qu'on dit. Mais tu bouges pas comme quelqu'un qui découvre un monde pour la première fois.",
           "beats": [
             {
-              "npc": "J'ai connu des gens comme toi. Ceux qui marchent dans l'ombre, qui regardent par-dessus leur épaule. Ceux qui portent un masque par-dessus un autre masque.",
+              "npc": "J'ai brisé mes chaînes dans les forges de l'Abysse. Tu sais ce que ça m'a appris ? À reconnaître ceux qui jouent un rôle. Les vrais isolés, ils tremblent. Toi, tu calcules.",
               "choices": [
-                { "text": "Tu te fais des idées.", "reply": "Peut-être. Ou peut-être que je reconnais les chaînes invisibles quand j'en vois. J'ai porté les miennes assez longtemps." },
-                { "text": "Et si c'était le cas ?", "reply": "Alors fais gaffe. Les gens qui jouent double finissent souvent broyés entre les deux. Je le dis pas pour te menacer. Je le dis parce que j'ai vu." },
-                { "text": "Tout le monde porte un masque ici.", "reply": "Vrai. Mais y'en a qui portent le leur pour survivre, et d'autres pour détruire. J'espère que t'es du bon côté." }
+                { "text": "Je suis juste nerveux, c'est tout.", "reply": "Nerveux. Ouais. Les nerveux regardent pas les sorties avant de regarder les étoiles. Mais bon, c'est ton histoire." },
+                { "text": "Tu vois des complots partout.", "reply": "J'ai été esclave. Les esclaves voient tout. C'est comme ça qu'on survit. Et toi, t'as le regard d'un survivant, pas d'un innocent." },
+                { "text": "Et si je n'étais pas ce que je prétends être ?", "reply": "Alors t'as du cran de me le dire. Ou t'es inconscient. Dans les deux cas… je respecte." }
               ]
             },
             {
-              "npc": "Je vais te dire un truc. Les chaînes, c'est pas toujours du métal. Parfois c'est des mensonges, des systèmes, des gens qui te disent que c'est 'pour ton bien'. Si quelqu'un essaie de briser ces chaînes-là… je suis pas contre.",
+              "npc": "Je vais te dire un truc. Les chaînes, c'est pas toujours du métal. Parfois c'est des mensonges, des systèmes, des gens qui te disent que c'est 'pour ton bien'. Si quelqu'un se déguise en isolé pour briser ces chaînes-là… je suis pas contre. Du tout.",
               "choices": [
-                { "text": "Tu parles de Morkar ?", "reply": "Je parle de personne en particulier. Et de tout le monde en même temps. Comprends ce que tu veux." },
-                { "text": "Les chaînes se brisent toujours, c'est ça ?", "reply": "… Ouais. Toujours. Mais faut être prêt à saigner pour ça. T'es prêt ?" }
+                { "text": "Tu parles de Morkar ?", "reply": "Je parle de personne en particulier. Et de tout le monde en même temps. Comprends ce que tu veux, faux isolé." },
+                { "text": "Les chaînes se brisent toujours, c'est ça ?", "reply": "… Toujours. Mais ceux qui les brisent doivent choisir : le masque ou la vérité. On peut pas porter les deux éternellement." }
               ]
             },
             {
-              "npc": "Dors bien, ombre. Demain, les masques tomberont. Sois sûr que le tien tienne plus longtemps que les autres."
+              "npc": "Dors bien, « isolé ». Ton secret est en sécurité avec moi. Je déteste Morkar bien plus que je me méfie de toi. Mais demain, joue mieux. Les vrais isolés tremblent. Toi, tu fais semblant."
             }
           ],
           "outro": [
             "L'Orque se lève. Pour un être aussi massif, il se déplace avec une étrange discrétion.",
-            "Il disparaît dans la nuit. Mais ses mots restent — lourds, dangereux, comme une promesse et un avertissement à la fois.",
-            "Tu inspires longuement. Ta couverture tient. Pour l'instant. Tu fermes les yeux, mais ton esprit ne dort pas."
+            "Il disparaît dans la nuit. Il sait. Ou du moins, il soupçonne. Mais ses mots disaient autre chose — une complicité, un ennemi commun.",
+            "Tu inspires longuement. Ta couverture de faux isolé a vacillé. Mais Brakk n'est pas Morkar. Peut-être qu'il est un allié. Tu fermes les yeux, mais ton esprit tourne déjà."
           ]
         },
         "apprenti-morkar": {
