@@ -1271,55 +1271,109 @@ function showScenarioChoice(onChosen){
             // Hide back button
             if(backBtn) backBtn.style.display = "none";
 
-            // ── PLANET SELECTION ──
+            // ── PLANET SELECTION (card grid + detail modal) ──
             step2State = "planet";
             if(step2Title) step2Title.textContent = "De quelle planète viens-tu ?";
             if(subtitle) subtitle.textContent = "Choisis ton monde d'origine";
 
+            var STAT_NAMES = {CRE:"Créativité",SAG:"Sagesse",CHA:"Charisme",FOR:"Force",AGI:"Agilité",PER:"Perception"};
+
             var planetZone = document.createElement("div");
-            planetZone.className = "sc-planet-zone";
-            planetZone.style.cssText = "display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px 8px;max-height:55vh;overflow-y:auto;animation:ccFadeUp .4s ease both";
+            planetZone.className = "sc-planet-zone sc-detail-grid";
+            planetZone.style.cssText = "display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px 8px;max-height:58vh;overflow-y:auto;animation:ccFadeUp .4s ease both;width:94%;max-width:360px;margin:0 auto";
 
             var univers = getTournamentUnivers();
             univers.forEach(function(w){
-              var btn = document.createElement("button");
-              btn.className = "sc-planet-btn";
-              btn.setAttribute("data-wid", w.id);
-              btn.innerHTML = '<span class="sc-planet-name">' + esc(w.name) + '</span>';
-              btn.onclick = function(e){
+              var card = document.createElement("button");
+              card.className = "id-race-card";
+              card.innerHTML = '<span class="id-race-card-name">' + esc(w.name) + '</span>';
+              card.onclick = function(e){
                 e.stopPropagation();
-                // Highlight selected
-                planetZone.querySelectorAll(".sc-planet-btn").forEach(function(b){
-                  b.classList.remove("selected");
-                  b.style.opacity = "0.4";
-                });
-                btn.classList.add("selected");
-                btn.style.opacity = "1";
+                showWorldDetail(w);
+              };
+              planetZone.appendChild(card);
+            });
+            arena.appendChild(planetZone);
 
-                // Save world
+            function showWorldDetail(w){
+              var existing = arena.closest(".scenario-overlay").querySelector(".id-race-modal-backdrop");
+              if(existing) existing.remove();
+
+              var backdrop = document.createElement("div");
+              backdrop.className = "id-race-modal-backdrop";
+
+              var h = '<div class="id-race-modal">';
+              h += '<div class="id-race-modal-title">' + esc(w.name) + '</div>';
+              if(w.desc) h += '<div class="id-race-modal-desc">' + esc(w.desc) + '</div>';
+              h += '<div class="id-race-stats">';
+              ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+                var bonus = (w.bonus && w.bonus[k]) || 0;
+                var malus = (w.malus && w.malus[k]) || 0;
+                var mod = bonus + malus;
+                var modStr = "";
+                if(bonus > 0) modStr = '<span class="id-stat-bonus">+' + bonus + '</span>';
+                if(malus < 0) modStr += '<span class="id-stat-malus">' + malus + '</span>';
+                var barW = Math.max(2, Math.min(100, 50 + mod));
+                h += '<div class="id-stat-row"><span class="id-stat-label">' + STAT_NAMES[k] + '</span>';
+                h += '<span class="id-stat-bar-wrap"><span class="id-stat-bar" style="width:' + barW + '%"></span></span>';
+                h += '<span class="id-stat-value">' + (mod >= 0 ? "+" + mod : mod) + '</span>' + modStr + '</div>';
+              });
+              h += '</div>';
+              h += '<div class="id-race-modal-actions">';
+              h += '<button class="id-race-modal-back">Retour</button>';
+              h += '<button class="id-race-modal-accept">Accepter</button>';
+              h += '</div></div>';
+
+              backdrop.innerHTML = h;
+              arena.closest(".scenario-overlay").appendChild(backdrop);
+              setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
+
+              backdrop.querySelector(".id-race-modal-back").onclick = function(){
+                backdrop.classList.remove("visible");
+                setTimeout(function(){ backdrop.remove(); }, 300);
+              };
+              backdrop.querySelector(".id-race-modal-accept").onclick = function(){
+                // Apply world bonus/malus
                 var u = loadUser();
                 u.worldName = w.name;
+                ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+                  var bonus = (w.bonus && w.bonus[k]) || 0;
+                  var malus = (w.malus && w.malus[k]) || 0;
+                  u["stat"+k] = Math.max(1, Math.min(99, (u["stat"+k] || 50) + bonus + malus));
+                });
                 saveUser(u);
                 window._chosenWorld = w;
 
+                backdrop.classList.remove("visible");
                 setTimeout(function(){
+                  backdrop.remove();
                   planetZone.style.animation = "ccFadeOut .3s ease both";
                   setTimeout(function(){
                     planetZone.remove();
+                    goToContractPhase();
+                  }, 300);
+                }, 300);
+              };
+            }
 
+            function goToContractPhase(){
                     // ── CONTRACT PHASE ──
                     step2State = "contract";
                     if(step2Title) step2Title.textContent = sc.name;
                     if(subtitle) subtitle.textContent = "";
 
                     showContractPreview(arena, persona, sc, type, function(){
-                      // Contract signed → show ATOM quotidien + name dialog
+                      // Contract signed → ATOM quotidien + name
                       step2State = "quotidien";
                       arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+                      goToQuotidienPhase();
+                    });
+            }
 
-                      // ── ATOM QUOTIDIEN + NAME DIALOG ──
+            function goToQuotidienPhase(){
+                      // ── ATOM QUOTIDIEN + NAME ──
                       if(step2Title) step2Title.textContent = "A.T.O.M.";
-                      if(subtitle) subtitle.textContent = "";
+                      if(subtitle) subtitle.textContent = "Quel était ton quotidien ?";
 
                       var atomZone = document.createElement("div");
                       atomZone.className = "sc-atom-zone";
@@ -1332,70 +1386,125 @@ function showScenarioChoice(onChosen){
                       if(guideP && guideP.avatar) atomPortrait.innerHTML = '<img src="'+esc(guideP.avatar)+'" style="width:100%;height:100%;object-fit:cover">';
                       atomZone.appendChild(atomPortrait);
 
-                      // ATOM dialog text
                       var atomText = document.createElement("div");
                       atomText.style.cssText = "font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;color:var(--bone-dim);text-align:center;line-height:1.5;max-width:300px";
-                      atomText.innerHTML = "Avant la cérémonie, j'ai besoin de savoir… <span style='color:var(--gold-light)'>Quel est ton quotidien</span> sur ta planète ?";
+                      atomText.innerHTML = "Avant la cérémonie, j'ai besoin de savoir… <span style='color:var(--gold-light)'>Quel était ton quotidien</span> sur ta planète ?";
                       atomZone.appendChild(atomText);
 
-                      // Quotidien list (grouped by classe)
+                      // Quotidien grid (same card pattern)
+                      var qGrid = document.createElement("div");
+                      qGrid.className = "sc-detail-grid sc-quotidien-list";
+                      qGrid.style.cssText = "display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:94%;max-width:360px;max-height:35vh;overflow-y:auto;padding:4px 0";
+
                       var quotidiens = getTournamentQuotidiens();
-                      var classes = {};
                       quotidiens.forEach(function(q){
-                        if(!classes[q.classe]) classes[q.classe] = [];
-                        classes[q.classe].push(q);
-                      });
-
-                      var qList = document.createElement("div");
-                      qList.style.cssText = "width:100%;max-height:35vh;overflow-y:auto;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:4px 0";
-                      qList.className = "sc-quotidien-list";
-
-                      quotidiens.forEach(function(q){
-                        var qBtn = document.createElement("button");
-                        qBtn.className = "sc-quotidien-btn";
-                        qBtn.setAttribute("data-qid", q.id);
-                        qBtn.innerHTML = '<span class="sc-q-name">' + esc(q.name) + '</span><span class="sc-q-classe">' + esc(q.classe) + '</span>';
-                        qBtn.onclick = function(ev){
+                        var card = document.createElement("button");
+                        card.className = "id-race-card";
+                        card.innerHTML = '<span class="id-race-card-name">' + esc(q.name) + '</span><span class="sc-q-classe">' + esc(q.classe) + '</span>';
+                        card.onclick = function(ev){
                           ev.stopPropagation();
-                          qList.querySelectorAll(".sc-quotidien-btn").forEach(function(b){
-                            b.classList.remove("selected");
-                            b.style.opacity = "0.4";
-                          });
-                          qBtn.classList.add("selected");
-                          qBtn.style.opacity = "1";
-                          window._chosenQuotidien = q;
-
-                          // Show name input
-                          var nameRow = atomZone.querySelector(".sc-atom-name-row");
-                          if(nameRow) nameRow.style.display = "flex";
+                          showQuotidienDetail(q, atomZone);
                         };
-                        qList.appendChild(qBtn);
+                        qGrid.appendChild(card);
                       });
-                      atomZone.appendChild(qList);
+                      atomZone.appendChild(qGrid);
+                      arena.appendChild(atomZone);
+            }
 
-                      // Name input row (hidden until quotidien selected)
-                      var nameRow = document.createElement("div");
-                      nameRow.className = "sc-atom-name-row";
-                      nameRow.style.cssText = "display:none;flex-direction:column;align-items:center;gap:8px;width:100%;animation:ccFadeUp .3s ease both";
+            function showQuotidienDetail(q, atomZone){
+              var existing = arena.closest(".scenario-overlay").querySelector(".id-race-modal-backdrop");
+              if(existing) existing.remove();
+
+              var backdrop = document.createElement("div");
+              backdrop.className = "id-race-modal-backdrop";
+
+              var h = '<div class="id-race-modal">';
+              h += '<div class="id-race-modal-title">' + esc(q.name) + '</div>';
+              h += '<div style="text-align:center;font-size:9px;color:rgba(201,160,74,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">' + esc(q.classe) + ' · ' + esc(q.epoque) + '</div>';
+              if(q.desc) h += '<div class="id-race-modal-desc">' + esc(q.desc) + '</div>';
+              h += '<div class="id-race-stats">';
+              ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+                var bonus = (q.bonus && q.bonus[k]) || 0;
+                var malus = (q.malus && q.malus[k]) || 0;
+                var mod = bonus + malus;
+                var modStr = "";
+                if(bonus > 0) modStr = '<span class="id-stat-bonus">+' + bonus + '</span>';
+                if(malus < 0) modStr += '<span class="id-stat-malus">' + malus + '</span>';
+                var barW = Math.max(2, Math.min(100, 50 + mod));
+                h += '<div class="id-stat-row"><span class="id-stat-label">' + STAT_NAMES[k] + '</span>';
+                h += '<span class="id-stat-bar-wrap"><span class="id-stat-bar" style="width:' + barW + '%"></span></span>';
+                h += '<span class="id-stat-value">' + (mod >= 0 ? "+" + mod : mod) + '</span>' + modStr + '</div>';
+              });
+              h += '</div>';
+              h += '<div class="id-race-modal-actions">';
+              h += '<button class="id-race-modal-back">Retour</button>';
+              h += '<button class="id-race-modal-accept">Accepter</button>';
+              h += '</div></div>';
+
+              backdrop.innerHTML = h;
+              arena.closest(".scenario-overlay").appendChild(backdrop);
+              setTimeout(function(){ backdrop.classList.add("visible"); }, 20);
+
+              backdrop.querySelector(".id-race-modal-back").onclick = function(){
+                backdrop.classList.remove("visible");
+                setTimeout(function(){ backdrop.remove(); }, 300);
+              };
+              backdrop.querySelector(".id-race-modal-accept").onclick = function(){
+                window._chosenQuotidien = q;
+                // Apply quotidien bonus/malus
+                var u = loadUser();
+                u.className = q.name;
+                ["CRE","SAG","CHA","FOR","AGI","PER"].forEach(function(k){
+                  var bonus = (q.bonus && q.bonus[k]) || 0;
+                  var malus = (q.malus && q.malus[k]) || 0;
+                  u["stat"+k] = Math.max(1, Math.min(99, (u["stat"+k] || 50) + bonus + malus));
+                });
+                saveUser(u);
+
+                backdrop.classList.remove("visible");
+                setTimeout(function(){
+                  backdrop.remove();
+                  // Remove quotidien zone, go to name input
+                  atomZone.style.animation = "ccFadeOut .3s ease both";
+                  setTimeout(function(){
+                    atomZone.remove();
+                    goToNamePhaseInScenario();
+                  }, 300);
+                }, 300);
+              };
+            }
+
+            function goToNamePhaseInScenario(){
+                      if(step2Title) step2Title.textContent = "A.T.O.M.";
+                      if(subtitle) subtitle.textContent = "";
+
+                      var nameZone = document.createElement("div");
+                      nameZone.className = "sc-atom-zone";
+                      nameZone.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 8px;animation:ccFadeUp .4s ease both;width:100%";
+
+                      var guideP = getGuidePersona();
+                      var atomPortrait = document.createElement("div");
+                      atomPortrait.style.cssText = "width:60px;height:60px;border-radius:50%;border:2px solid rgba(201,160,74,.3);overflow:hidden;margin-bottom:4px";
+                      if(guideP && guideP.avatar) atomPortrait.innerHTML = '<img src="'+esc(guideP.avatar)+'" style="width:100%;height:100%;object-fit:cover">';
+                      nameZone.appendChild(atomPortrait);
 
                       var nameLabel = document.createElement("div");
-                      nameLabel.style.cssText = "font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;color:var(--bone-dim);text-align:center";
-                      nameLabel.innerHTML = "Et quel <span style='color:var(--gold-light)'>nom</span> portes-tu ?";
-                      nameRow.appendChild(nameLabel);
+                      nameLabel.style.cssText = "font-family:var(--font-heading,Poppins,sans-serif);font-size:13px;color:var(--bone-dim);text-align:center;line-height:1.5";
+                      nameLabel.innerHTML = "Très bien. Et quel <span style='color:var(--gold-light)'>nom</span> portes-tu ?";
+                      nameZone.appendChild(nameLabel);
 
                       var nameInput = document.createElement("input");
                       nameInput.type = "text";
-                      nameInput.className = "id-name-input";
                       nameInput.placeholder = "Ton nom de voyageur\u2026";
                       nameInput.maxLength = 24;
                       nameInput.autocomplete = "off";
                       nameInput.style.cssText = "width:80%;max-width:280px;padding:14px 18px;background:rgba(14,10,6,.9);border:1px solid rgba(168,132,42,.2);border-radius:12px;color:var(--gold-light);font-family:var(--font-heading,Poppins,sans-serif);font-size:14px;text-align:center;outline:none;transition:border-color .2s";
-                      nameRow.appendChild(nameInput);
+                      nameZone.appendChild(nameInput);
 
                       var nameConfirm = document.createElement("button");
                       nameConfirm.textContent = "Continuer";
                       nameConfirm.disabled = true;
-                      nameConfirm.style.cssText = "padding:12px 36px;background:rgba(168,132,42,.06);border:1px solid rgba(168,132,42,.3);border-radius:24px;color:var(--gold-light);font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s";
+                      nameConfirm.style.cssText = "padding:12px 36px;background:rgba(168,132,42,.06);border:1px solid rgba(168,132,42,.3);border-radius:24px;color:var(--gold-light);font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s;opacity:0.4";
                       nameInput.addEventListener("input", function(){
                         nameConfirm.disabled = nameInput.value.trim().length < 2;
                         nameConfirm.style.opacity = nameConfirm.disabled ? "0.4" : "1";
@@ -1404,27 +1513,15 @@ function showScenarioChoice(onChosen){
                         ev.stopPropagation();
                         if(nameInput.value.trim().length < 2) return;
 
-                        // Save quotidien + name
                         var u = loadUser();
                         u.name = nameInput.value.trim();
-                        u.className = window._chosenQuotidien ? window._chosenQuotidien.name : "";
-                        // Apply quotidien stats
-                        if(window._chosenQuotidien && window._chosenQuotidien.variants && window._chosenQuotidien.variants[0]){
-                          var stats = window._chosenQuotidien.variants[0];
-                          u.statCRE = stats.CRE || 50;
-                          u.statSAG = stats.SAG || 50;
-                          u.statCHA = stats.CHA || 50;
-                          u.statFOR = stats.FOR || 50;
-                          u.statAGI = stats.AGI || 50;
-                          u.statPER = stats.PER || 50;
-                        }
                         saveUser(u);
                         window._idName = u.name;
 
-                        // Fade out ATOM zone → go to guide placement
-                        atomZone.style.animation = "ccFadeOut .3s ease both";
+                        // Fade out name zone → go to guide placement
+                        nameZone.style.animation = "ccFadeOut .3s ease both";
                         setTimeout(function(){
-                          atomZone.remove();
+                          nameZone.remove();
 
                           // ── GUIDE PLACEMENT ──
                           step2State = "guide";
@@ -1447,17 +1544,10 @@ function showScenarioChoice(onChosen){
                           initGuideDrag(scenario);
                         }, 300);
                       };
-                      nameRow.appendChild(nameConfirm);
-                      atomZone.appendChild(nameRow);
+                      nameZone.appendChild(nameConfirm);
+                      arena.appendChild(nameZone);
+            }
 
-                      arena.appendChild(atomZone);
-                    });
-                  }, 300);
-                }, 400);
-              };
-              planetZone.appendChild(btn);
-            });
-            arena.appendChild(planetZone);
           });
         };
       })(s);

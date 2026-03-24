@@ -3,282 +3,322 @@
     {
       "id": "astralum",
       "name": "Astralum",
-      "noms": [
-        "Astriel Voss"
-      ]
+      "noms": ["Astriel Voss"],
+      "desc": "Un monde suspendu entre les étoiles, où des ponts de lumière relient des îlots de roche céleste. Ses habitants méditent au bord du vide, cherchant la sagesse dans le silence cosmique.",
+      "bonus": { "SAG": 5, "CRE": 3 },
+      "malus": { "FOR": -5 }
     },
     {
       "id": "auroris",
       "name": "Auroris",
-      "noms": [
-        "Daëlys Khor"
-      ]
+      "noms": ["Daëlys Khor"],
+      "desc": "Des aurores perpétuelles embrasent le ciel de cette planète baignée de lumière prismatique. Les cités de cristal reflètent mille couleurs, et leurs résidents perçoivent le monde à travers des sens aiguisés par l'éclat.",
+      "bonus": { "PER": 5, "CHA": 3 },
+      "malus": { "FOR": -3 }
     },
     {
       "id": "cendreciel",
       "name": "Cendreciel",
-      "noms": [
-        "Brakk Ironfel"
-      ]
+      "noms": ["Brakk Ironfel"],
+      "desc": "Un ciel de cendres permanentes recouvre les ruines d'une civilisation volcanique autrefois glorieuse. Les survivants, endurcis par les éruptions constantes, forgent leur destin dans la lave et la poussière.",
+      "bonus": { "FOR": 5, "PER": 3 },
+      "malus": { "CHA": -5 }
     },
     {
       "id": "chronalis",
       "name": "Chronalis",
-      "noms": [
-        "Temrik Haal"
-      ]
+      "noms": ["Temrik Haal"],
+      "desc": "Le temps s'écoule de manière imprévisible sur Chronalis : certaines zones figent les instants, d'autres les accélèrent. Ses sages ont appris à naviguer les courants temporels avec une patience infinie.",
+      "bonus": { "SAG": 8 },
+      "malus": { "AGI": -5 }
     },
     {
       "id": "cosmion",
       "name": "Cosmion",
-      "noms": [
-        "Novara Zynn"
-      ]
+      "noms": ["Novara Zynn"],
+      "desc": "Une planète en parfaite harmonie avec les forces cosmiques, où chaque être vibre en résonance avec les constellations. L'art et la contemplation y sont élevés au rang de sciences exactes.",
+      "bonus": { "SAG": 5, "CRE": 5 },
+      "malus": { "FOR": -5, "AGI": -3 }
     },
     {
       "id": "crypteon",
       "name": "Cryptéon",
-      "noms": [
-        "Skaern Ombris"
-      ]
+      "noms": ["Skaern Ombris"],
+      "desc": "Un monde souterrain labyrinthique où la lumière est une denrée rare et les secrets sont la monnaie d'échange. Ses habitants, experts en dissimulation, communiquent par codes et signes furtifs.",
+      "bonus": { "PER": 8, "AGI": 3 },
+      "malus": { "CHA": -8 }
     },
     {
       "id": "enclumis",
       "name": "Enclumis",
-      "noms": [
-        "Forgan Martz"
-      ]
+      "noms": ["Forgan Martz"],
+      "desc": "Le martèlement des enclumes résonne jour et nuit sur cette planète-forge où chaque citoyen apprend l'art du métal dès l'enfance. La création d'artefacts y est un acte quasi sacré.",
+      "bonus": { "FOR": 8, "CRE": 3 },
+      "malus": { "AGI": -5, "CHA": -3 }
     },
     {
       "id": "ferralis",
       "name": "Ferralis",
-      "noms": [
-        "Keldra Vahn"
-      ]
+      "noms": ["Keldra Vahn"],
+      "desc": "Des plaines de fer oxydé s'étendent à perte de vue, parsemées de structures métalliques naturelles aux formes étranges. Les natifs ont développé une perception magnétique unique pour s'orienter dans ce monde d'acier.",
+      "bonus": { "FOR": 5, "PER": 3 },
+      "malus": { "CRE": -5 }
     },
     {
       "id": "florea",
       "name": "Floréa",
-      "noms": [
-        "Lioren Pétale"
-      ]
+      "noms": ["Lioren Pétale"],
+      "desc": "Des jardins titanesques recouvrent toute la surface de Floréa, où des fleurs colossales servent d'habitations et de temples. La sagesse botanique ancestrale guide chaque aspect de la vie quotidienne.",
+      "bonus": { "CRE": 5, "SAG": 3 },
+      "malus": { "FOR": -5 }
     },
     {
       "id": "fondeon",
       "name": "Fondéon",
-      "noms": [
-        "Gryndel Rok"
-      ]
+      "noms": ["Gryndel Rok"],
+      "desc": "Bâtie dans les profondeurs de la croûte terrestre, Fondéon est une civilisation de cavernes monumentales aux piliers naturels gigantesques. La stabilité et la patience sont les vertus cardinales de ce peuple souterrain.",
+      "bonus": { "FOR": 5, "SAG": 3 },
+      "malus": { "AGI": -5 }
     },
     {
       "id": "forgemont",
       "name": "Forgemont",
-      "noms": [
-        "Vulka Brennis"
-      ]
+      "noms": ["Vulka Brennis"],
+      "desc": "Une chaîne de montagnes volcaniques abrite les plus grandes forges connues de l'univers, où le magma est canalisé pour alimenter des fourneaux colossaux. Les forgerons de Forgemont sont légendaires pour leur endurance.",
+      "bonus": { "FOR": 8, "CRE": 3 },
+      "malus": { "CHA": -5, "AGI": -3 }
     },
     {
       "id": "fractura",
       "name": "Fractura",
-      "noms": [
-        "Zikael Fiss"
-      ]
+      "noms": ["Zikael Fiss"],
+      "desc": "La surface de Fractura est un puzzle géant de plaques tectoniques en mouvement constant, créant des canyons et des ponts éphémères. Seuls les plus agiles survivent dans ce paysage en perpétuelle recomposition.",
+      "bonus": { "AGI": 8, "PER": 3 },
+      "malus": { "SAG": -5, "CHA": -3 }
     },
     {
       "id": "horizonte",
       "name": "Horizonte",
-      "noms": [
-        "Maëlen Dusk"
-      ]
+      "noms": ["Maëlen Dusk"],
+      "desc": "Des plaines infinies sous un ciel immense où l'horizon semble reculer à chaque pas. Les nomades d'Horizonte ont développé une vue perçante et une foulée légère pour parcourir ces étendues sans fin.",
+      "bonus": { "PER": 5, "AGI": 3 },
+      "malus": { "FOR": -3 }
     },
     {
       "id": "ignaris",
       "name": "Ignaris",
-      "noms": [
-        "Pyra Shenn"
-      ]
+      "noms": ["Pyra Shenn"],
+      "desc": "Les geysers de flammes illuminent en permanence cette planète ardente où le sol lui-même pulse de chaleur. L'ingéniosité et la force brute sont nécessaires pour dompter cet enfer vivant.",
+      "bonus": { "FOR": 5, "CRE": 3 },
+      "malus": { "SAG": -5 }
     },
     {
       "id": "infinea",
       "name": "Infinéa",
-      "noms": [
-        "Éternia Loom"
-      ]
+      "noms": ["Éternia Loom"],
+      "desc": "Un monde sans frontières visibles où l'espace se replie sur lui-même, créant des paradoxes architecturaux vertigineux. L'imagination y est la seule limite, mais les corps s'y affaiblissent dans l'immensité.",
+      "bonus": { "CRE": 8, "SAG": 3 },
+      "malus": { "FOR": -8 }
     },
     {
       "id": "lumineth",
       "name": "Lumineth",
-      "noms": [
-        "Solwen Lux"
-      ]
+      "noms": ["Solwen Lux"],
+      "desc": "Des spires de lumière pure s'élèvent vers les cieux sur cette planète éclairée, où les sages et les diplomates règnent en harmonie. La parole y est aussi puissante que l'épée.",
+      "bonus": { "SAG": 5, "CHA": 5 },
+      "malus": { "FOR": -5, "AGI": -3 }
     },
     {
       "id": "maelstromis",
       "name": "Maelströmis",
-      "noms": [
-        "Torvak Wael"
-      ]
+      "noms": ["Torvak Wael"],
+      "desc": "Des tempêtes dimensionnelles ravagent sans cesse cette planète chaotique où la survie exige des réflexes fulgurants. La réflexion est un luxe que peu peuvent se permettre dans ce tourbillon perpétuel.",
+      "bonus": { "AGI": 8, "FOR": 3 },
+      "malus": { "SAG": -8 }
     },
     {
       "id": "marevia",
       "name": "Marévia",
-      "noms": [
-        "Ondine Thal"
-      ]
+      "noms": ["Ondine Thal"],
+      "desc": "Un océan global parsemé d'archipels flottants et de cités sous-marines bioluminescentes. Les courants capricieux ont façonné un peuple souple et observateur, mais peu enclin à la force brute.",
+      "bonus": { "AGI": 5, "PER": 3 },
+      "malus": { "FOR": -3, "CRE": -3 }
     },
     {
       "id": "mineralis",
       "name": "Minéralis",
-      "noms": [
-        "Quartzan Depp"
-      ]
+      "noms": ["Quartzan Depp"],
+      "desc": "Des formations cristallines gigantesques émettent des fréquences que seuls les natifs peuvent percevoir, transformant la géologie en langage. La beauté brute des cristaux cache une culture profondément introspective.",
+      "bonus": { "PER": 5, "SAG": 3 },
+      "malus": { "CHA": -5 }
     },
     {
       "id": "noctea",
       "name": "Noctéa",
-      "noms": [
-        "Umbrel Nyx"
-      ]
+      "noms": ["Umbrel Nyx"],
+      "desc": "Plongée dans une nuit éternelle, Noctéa est éclairée uniquement par la bioluminescence de sa faune et de sa flore. Ses habitants ont développé des sens extraordinaires pour naviguer dans l'obscurité perpétuelle.",
+      "bonus": { "PER": 8, "AGI": 3 },
+      "malus": { "CHA": -5, "CRE": -3 }
     },
     {
       "id": "obsidis",
       "name": "Obsidis",
-      "noms": [
-        "Korryn Valt"
-      ]
+      "noms": ["Korryn Valt"],
+      "desc": "Des falaises d'obsidienne tranchante comme des lames de rasoir dominent un paysage noir et luisant. Les guerriers d'Obsidis taillent leurs armes directement dans la roche volcanique vitrifiée.",
+      "bonus": { "FOR": 5, "PER": 3 },
+      "malus": { "CHA": -5 }
     },
     {
       "id": "ondaris",
       "name": "Ondaris",
-      "noms": [
-        "Naëris Flux"
-      ]
+      "noms": ["Naëris Flux"],
+      "desc": "Tout ondule sur Ondaris : le terrain, l'atmosphère, même la gravité fluctue en vagues douces et imprévisibles. Les natifs se déplacent avec une grâce fluide, épousant les mouvements de leur monde.",
+      "bonus": { "AGI": 5, "CRE": 3 },
+      "malus": { "FOR": -5 }
     },
     {
       "id": "pyrheim",
       "name": "Pyrheim",
-      "noms": [
-        "Askarn Brüll"
-      ]
+      "noms": ["Askarn Brüll"],
+      "desc": "Le royaume pyroclastique ultime, où des rivières de lave sculptent des forteresses naturelles dans la roche en fusion. Seuls les plus robustes peuvent endurer la chaleur infernale de ce monde embrasé.",
+      "bonus": { "FOR": 8 },
+      "malus": { "AGI": -5 }
     },
     {
       "id": "revelia",
       "name": "Rêvélia",
-      "noms": [
-        "Sonael Mirë"
-      ]
+      "noms": ["Sonael Mirë"],
+      "desc": "La frontière entre rêve et réalité n'existe pas sur Rêvélia, où les pensées prennent forme instantanément dans un paysage onirique en constante mutation. L'imagination y est reine, mais le corps s'y oublie.",
+      "bonus": { "CRE": 10, "SAG": 3 },
+      "malus": { "FOR": -8, "AGI": -3 }
     },
     {
       "id": "sableterre",
       "name": "Sabléterre",
-      "noms": [
-        "Djemba Sahar"
-      ]
+      "noms": ["Djemba Sahar"],
+      "desc": "Un désert infini de sable doré où d'anciennes cités enfouies affleurent lors des tempêtes. Les pisteurs de Sabléterre lisent les dunes comme des cartes et se faufilent entre les mirages.",
+      "bonus": { "PER": 5, "AGI": 3 },
+      "malus": { "CRE": -5 }
     },
     {
       "id": "solaria",
       "name": "Solaria",
-      "noms": [
-        "Héliax Donn"
-      ]
+      "noms": ["Héliax Donn"],
+      "desc": "Baignée par trois soleils, Solaria est une planète radieuse où la chaleur dore les cités de marbre blanc. Ses habitants, charismatiques et vigoureux, vivent sous une lumière qui ne faiblit jamais.",
+      "bonus": { "CHA": 5, "FOR": 3 },
+      "malus": { "PER": -3 }
     },
     {
       "id": "songemonde",
       "name": "Songemonde",
-      "noms": [
-        "Rêvan Osse"
-      ]
+      "noms": ["Rêvan Osse"],
+      "desc": "Un monde tissé de songes collectifs où les rêveurs partagent leurs visions dans des cathédrales de brume. La création artistique y atteint des sommets inégalés, au détriment de toute vigueur physique.",
+      "bonus": { "CRE": 8, "CHA": 3 },
+      "malus": { "FOR": -8 }
     },
     {
       "id": "spectrea",
       "name": "Spectréa",
-      "noms": [
-        "Fantiel Gris"
-      ]
+      "noms": ["Fantiel Gris"],
+      "desc": "Les spectres du passé errent visiblement dans les ruelles brumeuses de Spectréa, où le voile entre les vivants et les morts est presque transparent. La perception de l'invisible y est une compétence vitale.",
+      "bonus": { "PER": 8, "SAG": 3 },
+      "malus": { "FOR": -5, "CHA": -3 }
     },
     {
       "id": "sylvandre",
       "name": "Sylvandre",
-      "noms": [
-        "Ëlwynn Fael"
-      ]
+      "noms": ["Ëlwynn Fael"],
+      "desc": "Une forêt ancestrale recouvre la totalité de Sylvandre, ses arbres millénaires abritant des cités suspendues dans la canopée. Les sages sylvains écoutent la voix des bois et perçoivent chaque frémissement de feuille.",
+      "bonus": { "SAG": 5, "PER": 3 },
+      "malus": { "FOR": -3 }
     },
     {
       "id": "temporia",
       "name": "Temporia",
-      "noms": [
-        "Kronnel Aïk"
-      ]
+      "noms": ["Kronnel Aïk"],
+      "desc": "Les flux temporels convergent sur Temporia, créant des zones où passé, présent et futur coexistent simultanément. Les chronarques qui gouvernent ce monde possèdent une sagesse accumulée à travers les âges.",
+      "bonus": { "SAG": 8, "CRE": 3 },
+      "malus": { "FOR": -5, "AGI": -3 }
     },
     {
       "id": "terragone",
       "name": "Terragone",
-      "noms": [
-        "Tharra Mond"
-      ]
+      "noms": ["Tharra Mond"],
+      "desc": "Une planète de pierre massive aux continents compacts et aux montagnes inébranlables. Les Terragons bâtissent des citadelles imprenables et honorent la solidité comme vertu suprême.",
+      "bonus": { "FOR": 5, "SAG": 3 },
+      "malus": { "AGI": -5 }
     },
     {
       "id": "umbralis",
       "name": "Umbralis",
-      "noms": [
-        "Nyvek Shäd"
-      ]
+      "noms": ["Nyvek Shäd"],
+      "desc": "Les ombres y ont une vie propre, se déplaçant indépendamment de leurs propriétaires dans un monde crépusculaire permanent. Les assassins et les espions d'Umbralis sont les plus redoutés de l'univers.",
+      "bonus": { "AGI": 8, "PER": 3 },
+      "malus": { "CHA": -8 }
     },
     {
       "id": "volkanis",
       "name": "Volkanis",
-      "noms": [
-        "Magmel Torr"
-      ]
+      "noms": ["Magmel Torr"],
+      "desc": "Des volcans en éruption constante dominent le paysage de Volkanis, où la lave coule comme des rivières entre les forteresses de basalte. La forge et la guerre sont les deux piliers de cette civilisation ardente.",
+      "bonus": { "FOR": 8, "CRE": 3 },
+      "malus": { "SAG": -5, "CHA": -3 }
     },
     {
       "id": "vortexia",
       "name": "Vortexia",
-      "noms": [
-        "Spiryn Kael"
-      ]
+      "noms": ["Spiryn Kael"],
+      "desc": "Des failles dimensionnelles tourbillonnantes parsèment la surface de Vortexia, recrachant des fragments d'autres réalités. Les navigateurs de vortex ont appris à danser entre les dimensions avec une agilité surnaturelle.",
+      "bonus": { "AGI": 8, "CRE": 3 },
+      "malus": { "SAG": -5, "FOR": -3 }
     },
     {
       "id": "zenithia",
       "name": "Zénithia",
-      "noms": [
-        "Aethon Zar"
-      ]
+      "noms": ["Aethon Zar"],
+      "desc": "Perchée au sommet de pics vertigineux qui percent les nuages, Zénithia est une cité céleste où l'air raréfié aiguise l'esprit. Ses observatoires scrutent l'univers avec une clarté inégalée.",
+      "bonus": { "PER": 5, "SAG": 5 },
+      "malus": { "FOR": -5, "AGI": -3 }
     },
     {
       "id": "abyssmar",
       "name": "Abyssmar",
-      "noms": [
-        "Krellen Deph"
-      ]
+      "noms": ["Krellen Deph"],
+      "desc": "Dans les abysses les plus profondes d'un océan sans fond, Abyssmar abrite des créatures et des cités adaptées à une pression écrasante. La lumière n'y parvient jamais, mais les sens y sont décuplés.",
+      "bonus": { "PER": 8, "FOR": 3 },
+      "malus": { "CHA": -5, "AGI": -3 }
     },
     {
       "id": "canopea",
       "name": "Canopéa",
-      "noms": [
-        "Fëulys Verd"
-      ]
+      "noms": ["Fëulys Verd"],
+      "desc": "Une jungle démesurée dont la canopée est si dense qu'elle forme un second continent au-dessus du sol. Les habitants bondissent entre les branches géantes avec une agilité et une vigilance remarquables.",
+      "bonus": { "AGI": 5, "PER": 5 },
+      "malus": { "CHA": -5, "SAG": -3 }
     },
     {
       "id": "entropea",
       "name": "Entropéa",
-      "noms": [
-        "Chaon Mekk"
-      ]
+      "noms": ["Chaon Mekk"],
+      "desc": "Tout se décompose lentement sur Entropéa, où la matière retourne inexorablement au chaos primordial. Ses habitants ont transformé la décadence en art, trouvant la beauté dans chaque étape de la dissolution.",
+      "bonus": { "CRE": 5, "PER": 5 },
+      "malus": { "FOR": -5, "CHA": -3 }
     },
     {
       "id": "aceria",
       "name": "Acéria",
-      "noms": [
-        "Gelvyn Stahl"
-      ]
+      "noms": ["Gelvyn Stahl"],
+      "desc": "Une planète industrielle où d'immenses usines d'acier crachent leurs fumées vers un ciel métallique. L'ingénierie et la production de masse ont forgé un peuple pragmatique et travailleur.",
+      "bonus": { "FOR": 5, "CRE": 3 },
+      "malus": { "SAG": -3, "CHA": -3 }
     },
     {
       "id": "basaltia",
       "name": "Basaltia",
-      "noms": [
-        "Rokhan Baal"
-      ]
+      "noms": ["Rokhan Baal"],
+      "desc": "Des colonnes de basalte hexagonales forment des paysages géométriques saisissants sur cette planète volcanique austère. La roche noire façonne des guerriers implacables dont la réputation précède la parole.",
+      "bonus": { "FOR": 8, "PER": 3 },
+      "malus": { "CRE": -5, "CHA": -3 }
     }
   ]
 }
