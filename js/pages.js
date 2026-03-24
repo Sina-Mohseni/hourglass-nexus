@@ -230,7 +230,7 @@ function buildProfilePage(){
     + '<span class="prof-rarity" style="background:'+esc(col)+'">'+esc(u.title||"Voyageur")+'</span>'
     + '<div class="prof-info-overlay">'
     + '<div class="prof-name" style="color:'+esc(col)+'">'+esc(u.name||"Voyageur")+'</div>'
-    + '<div class="prof-subtitle">Niv. '+u.level+' \u2022 '+esc(u.title||"Voyageur")+'</div>'
+    + '<div class="prof-subtitle">Niv. '+u.level+' \u2022 '+esc(u.title||"Voyageur")+(u.race ? ' \u2022 '+esc(u.race) : '')+'</div>'
     + '</div></div>';
 
   h += '<input type="file" accept="image/*" id="prof-file-input" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">';
@@ -269,6 +269,9 @@ function buildProfilePage(){
 
   h += '<div><label class="prof-field-label">Nom</label>'
     + '<input type="text" class="prof-input" id="prof-edit-name" value="'+esc(u.name)+'"></div>';
+
+  h += '<div><label class="prof-field-label">Race</label>'
+    + '<input type="text" class="prof-input" id="prof-edit-race" placeholder="Ex: Humain, Orque, Kitsune…" value="'+esc(u.race||"")+'"></div>';
 
   h += '<div><label class="prof-field-label">Titre</label>'
     + '<input type="text" class="prof-input" id="prof-edit-title" value="'+esc(u.title)+'"></div>';
@@ -344,9 +347,11 @@ function wireProfilePage(){
   if(saveBtn) saveBtn.onclick = function(){
     var u = loadUser();
     var ni = document.getElementById("prof-edit-name");
+    var ri = document.getElementById("prof-edit-race");
     var ti = document.getElementById("prof-edit-title");
     var qi = document.getElementById("prof-edit-quote");
     if(ni) u.name = ni.value;
+    if(ri) u.race = ri.value;
     if(ti) u.title = ti.value;
     if(qi) u.quote = qi.value;
     saveUser(u);

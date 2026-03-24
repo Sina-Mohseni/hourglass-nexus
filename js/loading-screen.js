@@ -132,32 +132,52 @@ function showLoadingScreen(playerScenario, onDone){
   overlay.className = "loading-overlay";
   overlay.id = "loading-overlay";
 
+  // SVG arc circumference for a radius of ~110px
+  var ARC_RADIUS = 110;
+  var ARC_CIRCUMFERENCE = 2 * Math.PI * ARC_RADIUS; // ~691
+
   overlay.innerHTML =
     '<div class="loading-stars"></div>'
     + '<div class="loading-content">'
-    +   '<div class="loading-hourglass">\u29D6</div>'
-    +   '<div class="loading-title">Préparation du Tournoi</div>'
-    +   '<div class="loading-subtitle">Sélection des 40 candidats pour le Cycle 47…</div>'
-    +   '<div class="loading-bar-wrap"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>'
-    +   '<div class="loading-counter"><span class="loading-counter-num" id="loading-count">0</span> / 40</div>'
-    +   '<div class="loading-slots" id="loading-slots"></div>'
+    +   '<div class="loading-arena">'
+    +     '<div class="loading-ring-outer"></div>'
+    +     '<div class="loading-ring-inner"></div>'
+    +     '<svg class="loading-arc-svg" viewBox="0 0 228 228">'
+    +       '<circle class="loading-arc-track" cx="114" cy="114" r="'+ARC_RADIUS+'"/>'
+    +       '<circle class="loading-arc-fill" id="loading-arc" cx="114" cy="114" r="'+ARC_RADIUS+'" stroke-dasharray="'+ARC_CIRCUMFERENCE+'" stroke-dashoffset="'+ARC_CIRCUMFERENCE+'"/>'
+    +     '</svg>'
+    +     '<div class="loading-center-glow"></div>'
+    +     '<div class="loading-hourglass">\u29D6</div>'
+    +     '<div class="loading-counter"><span class="loading-counter-num" id="loading-count">0</span> / 40</div>'
+    +     '<div class="loading-slots" id="loading-slots"></div>'
+    +   '</div>'
+    +   '<div class="loading-title">Pr\u00e9paration du Tournoi</div>'
+    +   '<div class="loading-subtitle">S\u00e9lection des 40 candidats pour le Cycle 47\u2026</div>'
     +   '<div class="loading-flavor" id="loading-flavor"></div>'
     + '</div>';
 
   var screen = document.querySelector(".screen");
   (screen || document.body).appendChild(overlay);
 
-  // Create 40 slot indicators
+  // Create 40 slot indicators placed in a circle
   var slotsEl = overlay.querySelector("#loading-slots");
+  var arenaSize = 240;
+  var orbitRadius = 102; // px from center
   for(var i = 0; i < 40; i++){
+    var angle = (i / 40) * 2 * Math.PI - Math.PI / 2; // start from top
+    var cx = arenaSize / 2 + Math.cos(angle) * orbitRadius;
+    var cy = arenaSize / 2 + Math.sin(angle) * orbitRadius;
     var dot = document.createElement("div");
     dot.className = "loading-slot";
+    var dotSize = (i === 0) ? 14 : 10;
+    dot.style.left = (cx - dotSize / 2) + "px";
+    dot.style.top = (cy - dotSize / 2) + "px";
     if(i === 0) dot.classList.add("is-player");
     slotsEl.appendChild(dot);
   }
   var dots = slotsEl.querySelectorAll(".loading-slot");
 
-  var barFill = overlay.querySelector("#loading-bar-fill");
+  var arcEl = overlay.querySelector("#loading-arc");
   var countEl = overlay.querySelector("#loading-count");
   var flavorEl = overlay.querySelector("#loading-flavor");
 
@@ -183,7 +203,7 @@ function showLoadingScreen(playerScenario, onDone){
     dots[0].classList.add("filled");
     count = 1;
     countEl.textContent = "1";
-    barFill.style.width = (1 / totalSlots * 100) + "%";
+    arcEl.style.strokeDashoffset = ARC_CIRCUMFERENCE * (1 - 1 / totalSlots);
   }, 300);
 
   // Flavor text rotation
@@ -243,6 +263,6 @@ function showLoadingScreen(playerScenario, onDone){
     slotIdx++;
     count = slotIdx;
     countEl.textContent = count;
-    barFill.style.width = (count / totalSlots * 100) + "%";
+    arcEl.style.strokeDashoffset = ARC_CIRCUMFERENCE * (1 - count / totalSlots);
   }, interval);
 }
