@@ -68,7 +68,7 @@
       },
       "quote": "Chaque mot posé est une brique d'un monde qui attend d'exister.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "lux",
@@ -103,7 +103,7 @@
       },
       "quote": "La lumière ne force rien. Elle révèle ce qui était déjà là.",
       "job": "mage",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "hyandi",
@@ -138,7 +138,7 @@
       },
       "quote": "L'ombre n'est pas l'absence de lumière, c'est son reflet fidèle.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "pipo",
@@ -240,7 +240,7 @@
       },
       "quote": "Si tu m'as vue, c'est que je l'ai voulu.",
       "job": "espion",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "zara",
@@ -308,7 +308,7 @@
       },
       "quote": "L'eau trouve toujours son chemin.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "solen",
@@ -410,7 +410,7 @@
       },
       "quote": "L'émotion est une variable. Je l'ai éliminée.",
       "job": "ingenieur",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "lyre",
@@ -478,7 +478,7 @@
       },
       "quote": "Ne me mens pas. Je vois ce que tu caches.",
       "job": "oracle",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "kordo",
@@ -546,7 +546,7 @@
       },
       "quote": "Toute fin est le début d'une histoire que personne n'a encore racontée.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "kael",
@@ -614,7 +614,7 @@
       },
       "quote": "Oups. Mais avoue, c'était magnifique.",
       "job": "alchimiste",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "shade",
@@ -648,7 +648,7 @@
       },
       "quote": "Tu ne me verras jamais. C'est le but.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "rune",
@@ -750,7 +750,7 @@
       },
       "quote": "De la cendre peut renaître n'importe quoi. Même l'espoir.",
       "job": "chasseur",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "fenrir",
@@ -820,7 +820,7 @@
       },
       "quote": "404 — Réalité non trouvée.",
       "job": "espion",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "miel",
@@ -960,7 +960,7 @@
       },
       "quote": "Souris. Ça rend tout le monde nerveux.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "echo",
@@ -995,7 +995,7 @@
       },
       "quote": "Je ne fais que répéter. Mais écoute mieux cette fois.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "spark",
@@ -1030,7 +1030,7 @@
       },
       "quote": "Une étincelle suffit à changer le monde.",
       "job": "paladin",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "flora",
@@ -1205,7 +1205,7 @@
       },
       "quote": "C'est pas de la malchance, c'est du talent inversé.",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "prisme",
@@ -1240,7 +1240,7 @@
       },
       "quote": "Le blanc cache toutes les couleurs. Regarde mieux.",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "cobalt",
@@ -1310,7 +1310,7 @@
       },
       "quote": "Nous ne sommes pas d'accord entre nous. Et c'est tant mieux.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "drift",
@@ -1415,7 +1415,7 @@
       },
       "quote": "Ferme les yeux. Respire. Tu te souviens maintenant ?",
       "job": "voleur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "crash",
@@ -1450,7 +1450,7 @@
       },
       "quote": "Oups ! Mais attends, j'ai une idée pour que ça soit encore mieux.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "vesper",
@@ -1485,7 +1485,7 @@
       },
       "quote": "Le crépuscule n'est pas une fin. C'est la seule vérité.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "ardent",
@@ -1520,7 +1520,7 @@
       },
       "quote": "Si ça ne brûle pas en toi, ça ne vaut pas la peine.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "velvet",
@@ -1555,7 +1555,7 @@
       },
       "quote": "Les gens croient choisir. Je choisis pour eux.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "fossile",
@@ -1590,7 +1590,7 @@
       },
       "quote": "J'ai vu des mondes naître et mourir. Le tien est jeune.",
       "job": "guérisseur",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "cipher",
@@ -1660,7 +1660,7 @@
       },
       "quote": "Frappe. Je peux encaisser. C'est tout ce que je sais faire.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "sylph",
@@ -1695,7 +1695,7 @@
       },
       "quote": "Le vent ne laisse aucune trace. Moi non plus.",
       "job": "ingenieur",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "grimoire",
@@ -1730,7 +1730,7 @@
       },
       "quote": "Ouvre-moi, si tu oses.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "volt",
@@ -1765,7 +1765,7 @@
       },
       "quote": "La patience est une charge. Et je suis plein.",
       "job": "tailleur",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "nectar",
@@ -1800,7 +1800,7 @@
       },
       "quote": "Goûte. Qu'est-ce que tu risques ? Beaucoup.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "marbre",
@@ -1835,7 +1835,7 @@
       },
       "quote": "Chaque coup de ciseau est une décision irréversible.",
       "job": "nomade",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "sonar",
@@ -1870,7 +1870,7 @@
       },
       "quote": "Je t'entends mentir. Ton cœur bat trop vite.",
       "job": "moine",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "karma",
@@ -1905,7 +1905,7 @@
       },
       "quote": "Ce que tu donnes te revient. Toujours.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "plasma",
@@ -1940,7 +1940,7 @@
       },
       "quote": "Solide ? Liquide ? Gaz ? Trop limité. Je suis plus.",
       "job": "chasseur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "sable",
@@ -1975,7 +1975,7 @@
       },
       "quote": "J'ai le temps. Pas toi.",
       "job": "chasseur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "oracle",
@@ -2010,7 +2010,7 @@
       },
       "quote": "Je sais comment ça finit. Ça ne m'aide pas.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "mirage",
@@ -2045,7 +2045,7 @@
       },
       "quote": "Ce que tu vois n'existe pas. Mais tu y crois quand même.",
       "job": "ingenieur",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "abyss",
@@ -2080,7 +2080,7 @@
       },
       "quote": "Plus tu descends, plus tu comprends.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "fable",
@@ -2150,7 +2150,7 @@
       },
       "quote": "Seul, je suis rien. Ensemble, on est tout.",
       "job": "mage",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "tempo",
@@ -2185,7 +2185,7 @@
       },
       "quote": "Tout a un rythme. Même le silence.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "orage",
@@ -2290,7 +2290,7 @@
       },
       "quote": "Approche-toi. Mais pas trop.",
       "job": "assassin",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "mantra",
@@ -2360,7 +2360,7 @@
       },
       "quote": "Tu ne peux pas tuer ce qui est déjà mort.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "thorin",
@@ -2465,7 +2465,7 @@
       },
       "quote": "Avant de construire, il faut raser. C'est mathématique.",
       "job": "chronomancien",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "siren",
@@ -2500,7 +2500,7 @@
       },
       "quote": "Écoute. Tu n'as pas le choix, de toute façon.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "monolithe",
@@ -2535,7 +2535,7 @@
       },
       "quote": "...",
       "job": "chronomancien",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "lynx",
@@ -2570,7 +2570,7 @@
       },
       "quote": "Tu ne m'as pas vue approcher. C'est normal.",
       "job": "marchand",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "requiem",
@@ -2605,7 +2605,7 @@
       },
       "quote": "Je ne prends pas la vie. J'accompagne sa fin.",
       "job": "ingenieur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "talion",
@@ -2640,7 +2640,7 @@
       },
       "quote": "Œil pour œil. Mais je prends les intérêts.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "zenith",
@@ -2675,7 +2675,7 @@
       },
       "quote": "Le sommet est solitaire. Ça tombe bien, je n'aime pas la foule.",
       "job": "espion",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "pandore",
@@ -2710,7 +2710,7 @@
       },
       "quote": "J'ai ouvert la boîte. C'est trop tard pour la refermer.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "galène",
@@ -2745,7 +2745,7 @@
       },
       "quote": "Admire de loin. C'est un conseil, pas une suggestion.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "basalt",
@@ -2780,7 +2780,7 @@
       },
       "quote": "Le calme avant l'éruption. Tu es prévenu.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "chronos",
@@ -2885,7 +2885,7 @@
       },
       "quote": "Je ne change pas. Je te change, toi.",
       "job": "guérisseur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "tempest",
@@ -2920,7 +2920,7 @@
       },
       "quote": "L'océan ne pardonne pas. Moi non plus.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "nocturne",
@@ -2955,7 +2955,7 @@
       },
       "quote": "La nuit est ma partition. Chaque étoile est une note.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "aegis",
@@ -3025,7 +3025,7 @@
       },
       "quote": "La mort est surréaliste. La vie aussi, quand on y repense.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "silex",
@@ -3130,7 +3130,7 @@
       },
       "quote": "La lumière ne négocie pas avec l'ombre.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "eclipse",
@@ -3165,7 +3165,7 @@
       },
       "quote": "Je suis le jour et la nuit en même temps. Choisis ton camp.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "magma",
@@ -3200,7 +3200,7 @@
       },
       "quote": "Je n'ai pas besoin d'être rapide. Rien ne peut me stopper.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "nihil",
@@ -3235,7 +3235,7 @@
       },
       "quote": "Pourquoi exister ? La question n'a pas de réponse satisfaisante.",
       "job": "nomade",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "genesis",
@@ -3270,7 +3270,7 @@
       },
       "quote": "J'ai rêvé un monde. Il a commencé à exister.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "paradox",
@@ -3305,7 +3305,7 @@
       },
       "quote": "J'ai raison ET tort. En même temps. Toujours.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "entropy",
@@ -3340,7 +3340,7 @@
       },
       "quote": "Tout finit par se dégrader. C'est la seule loi universelle.",
       "job": "espion",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "phoenix",
@@ -3410,7 +3410,7 @@
       },
       "quote": "Tout commence. Tout finit. Je suis la fin.",
       "job": "guérisseur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "leviathan",
@@ -3480,7 +3480,7 @@
       },
       "quote": "Je suis plusieurs. Et aucun ne veut céder.",
       "job": "espion",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "absolue",
@@ -3550,7 +3550,7 @@
       },
       "quote": "Je suis la porte. Mais personne ne sait vers quoi.",
       "job": "forgeron",
-      "scenario": "rebelle-isole"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "kronos",
@@ -3585,7 +3585,7 @@
       },
       "quote": "Chaque seconde qui passe est un pas vers moi.",
       "job": "chronomancien",
-      "scenario": "rebelle-isole"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "golem",
@@ -3620,7 +3620,7 @@
       },
       "quote": "Tu as dit 'détruis tout'. J'ai obéi.",
       "job": "oracle",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "prism_x",
@@ -3655,7 +3655,7 @@
       },
       "quote": "Dans mon monde, les ombres brillent et la lumière est noire.",
       "job": "éclaireur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "fractal",
@@ -3690,7 +3690,7 @@
       },
       "quote": "Regarde de plus près. Encore. Tu me trouves toujours.",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "valkyrie",
@@ -3725,7 +3725,7 @@
       },
       "quote": "Tu t'es battu avec honneur. Viens.",
       "job": "marchand",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "synapse",
@@ -3760,7 +3760,7 @@
       },
       "quote": "Je ne pense pas. Je suis la pensée.",
       "job": "espion",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "ouroboros",
@@ -3795,7 +3795,7 @@
       },
       "quote": "Encore. Et encore. Et encore.",
       "job": "voleur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "nebula",
@@ -3865,7 +3865,7 @@
       },
       "quote": "Problème résolu. Sauf un : pourquoi je suis là.",
       "job": "éclaireur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "thanatos",
@@ -3935,7 +3935,7 @@
       },
       "quote": "Je suis chaque rire et chaque larme. Tout en même temps.",
       "job": "cartographe",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "babel",
@@ -3970,7 +3970,7 @@
       },
       "quote": "Le mot juste au bon moment crée un univers.",
       "job": "voleur",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "eternel",
@@ -4005,7 +4005,7 @@
       },
       "quote": "J'ai vu le début. Je verrai la fin. Et après.",
       "job": "nomade",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "volonte",
@@ -4040,7 +4040,7 @@
       },
       "quote": "Tant qu'il reste une once de volonté, rien n'est perdu.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "harmonia",
@@ -4075,7 +4075,7 @@
       },
       "quote": "Chaque discorde est une harmonie inachevée.",
       "job": "joaillier",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "avatar",
@@ -4110,7 +4110,7 @@
       },
       "quote": "Aujourd'hui je suis tempête. Demain, peut-être rosée.",
       "job": "cartographe",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "nexion",
@@ -4145,7 +4145,7 @@
       },
       "quote": "Coupe un fil et tout le tissu se défait.",
       "job": "berserker",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "ultima",
@@ -4180,7 +4180,7 @@
       },
       "quote": "Après moi, le silence.",
       "job": "chronomancien",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "prime",
@@ -4215,7 +4215,7 @@
       },
       "quote": "Avant tout, il y avait moi. Un souffle. Et le monde a suivi.",
       "job": "chronomancien",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "lumin",
@@ -4250,7 +4250,7 @@
       },
       "quote": "Je ne brille pas fort. Mais je ne m'éteins jamais.",
       "job": "joaillier",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "bramble",
@@ -4320,7 +4320,7 @@
       },
       "quote": "Je... je crois que je brûle ? Oui. Non. Peut-être.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "lambda"
     },
     {
       "id": "moss",
@@ -4355,7 +4355,7 @@
       },
       "quote": "Tu ne m'as pas vu arriver. Normal.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "clink",
@@ -4495,7 +4495,7 @@
       },
       "quote": "Ça tient ! Ça tient ! ... C'est tombé.",
       "job": "assassin",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "zest",
@@ -4530,7 +4530,7 @@
       },
       "quote": "Tu dormais ? Plus maintenant.",
       "job": "oracle",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "dew",
@@ -4565,7 +4565,7 @@
       },
       "quote": "Je ne dure pas. Mais sans moi, rien ne pousse.",
       "job": "moine",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "rook",
@@ -4600,7 +4600,7 @@
       },
       "quote": "Croâ. Mais avec sagesse.",
       "job": "assassin",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "pip",
@@ -4635,7 +4635,7 @@
       },
       "quote": "Je suis petit. Mais tu me sentiras.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "ember",
@@ -4775,7 +4775,7 @@
       },
       "quote": "Le chêne tombe. Le roseau chante.",
       "job": "oracle",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "nutmeg",
@@ -4810,7 +4810,7 @@
       },
       "quote": "J'ai voyagé plus loin que tu ne penses.",
       "job": "éclaireur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "twine",
@@ -4845,7 +4845,7 @@
       },
       "quote": "Je suis le lien. Sans moi, tout tombe.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "chirp",
@@ -4915,7 +4915,7 @@
       },
       "quote": "Je suis ce que tu fais de moi.",
       "job": "éclaireur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "nib",
@@ -4950,7 +4950,7 @@
       },
       "quote": "L'encre ne pardonne pas. Ni moi.",
       "job": "cartographe",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "fizz",
@@ -4985,7 +4985,7 @@
       },
       "quote": "Pop pop pop ! La vie est une fête !",
       "job": "éclaireur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "latch",
@@ -5020,7 +5020,7 @@
       },
       "quote": "Confie-moi tes secrets. Je ne parle pas.",
       "job": "voleur",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "sprig",
@@ -5125,7 +5125,7 @@
       },
       "quote": "Le bord est le seul endroit où on voit des deux côtés.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "quillow",
@@ -5160,7 +5160,7 @@
       },
       "quote": "Pose-toi. Respire. Ça va aller.",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "spool",
@@ -5195,7 +5195,7 @@
       },
       "quote": "Tire le fil. L'histoire viendra.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "copper",
@@ -5265,7 +5265,7 @@
       },
       "quote": "Les arbres me trouvent vieux. Ça me fait rire.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "wren",
@@ -5335,7 +5335,7 @@
       },
       "quote": "Tu vois flou ? C'est parfois mieux ainsi.",
       "job": "moine",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "tick",
@@ -5370,7 +5370,7 @@
       },
       "quote": "Tic. Tac. Tic. Tac. Toujours.",
       "job": "joaillier",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "froth",
@@ -5475,7 +5475,7 @@
       },
       "quote": "Frappe-moi. Je te donnerai le feu.",
       "job": "chasseur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "tempera",
@@ -5510,7 +5510,7 @@
       },
       "quote": "Les couleurs s'estompent. Les miennes, jamais.",
       "job": "paladin",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "cortex",
@@ -5580,7 +5580,7 @@
       },
       "quote": "Je marque le chemin. Pour ceux qui suivent.",
       "job": "diplomate",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "quill",
@@ -5615,7 +5615,7 @@
       },
       "quote": "La vérité fait mal ? Bien. Lis quand même.",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "crucible",
@@ -5650,7 +5650,7 @@
       },
       "quote": "La transformation n'est jamais confortable.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "gossamer",
@@ -5685,7 +5685,7 @@
       },
       "quote": "Le fil qui nous relie est plus fort que l'acier.",
       "job": "necromancien",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "mortar",
@@ -5755,7 +5755,7 @@
       },
       "quote": "Je reviendrai. Comme toujours.",
       "job": "guérisseur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "alloy",
@@ -5790,7 +5790,7 @@
       },
       "quote": "Ni l'un ni l'autre. Les deux à la fois.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "thistle",
@@ -5860,7 +5860,7 @@
       },
       "quote": "Frappe. Je ne bougerai pas.",
       "job": "tailleur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "meridian",
@@ -5895,7 +5895,7 @@
       },
       "quote": "Tu as franchi une ligne. Tu ne l'as pas vue, mais elle est là.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "canopy",
@@ -5930,7 +5930,7 @@
       },
       "quote": "Reste sous moi. Le soleil ne te brûlera pas.",
       "job": "alchimiste",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "patina",
@@ -5965,7 +5965,7 @@
       },
       "quote": "Le temps m'a embelli. Il le fera pour toi aussi.",
       "job": "éclaireur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "fulcrum",
@@ -6000,7 +6000,7 @@
       },
       "quote": "Donne-moi un point d'appui et je soulèverai le monde.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "loam",
@@ -6035,7 +6035,7 @@
       },
       "quote": "Plante en moi. Je ferai pousser.",
       "job": "cartographe",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "arc",
@@ -6070,7 +6070,7 @@
       },
       "quote": "Je ne finis rien. Mais quel début.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "lignite",
@@ -6105,7 +6105,7 @@
       },
       "quote": "Je dors encore. Quand je m'éveillerai, tu le sauras.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "thaw",
@@ -6140,7 +6140,7 @@
       },
       "quote": "La glace fond. Toujours. Il suffit d'attendre.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "strata",
@@ -6245,7 +6245,7 @@
       },
       "quote": "Lis le symbole. Si tu peux.",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "torrent",
@@ -6280,7 +6280,7 @@
       },
       "quote": "Écarte-toi ou suis le courant.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "lattice",
@@ -6315,7 +6315,7 @@
       },
       "quote": "Je suis troué partout. Et pourtant je tiens.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "brine",
@@ -6350,7 +6350,7 @@
       },
       "quote": "Je conserve. C'est tout. Mais c'est crucial.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "apex",
@@ -6385,7 +6385,7 @@
       },
       "quote": "C'est maintenant. Exactement maintenant. Le sommet.",
       "job": "moine",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "kiln",
@@ -6420,7 +6420,7 @@
       },
       "quote": "Cru, tu es fragile. Après mon feu, tu es éternel.",
       "job": "chasseur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "nimbus",
@@ -6455,7 +6455,7 @@
       },
       "quote": "L'orage arrive. Tu peux fuir ou danser.",
       "job": "enchanteur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "prong",
@@ -6490,7 +6490,7 @@
       },
       "quote": "Gauche ou droite ? Les deux mènent quelque part.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "smelt",
@@ -6525,7 +6525,7 @@
       },
       "quote": "Le feu sépare le pur de l'impur. Moi aussi.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "verge",
@@ -6630,7 +6630,7 @@
       },
       "quote": "Je ne garde rien. Je passe tout. C'est mon rôle.",
       "job": "druide",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "vellum",
@@ -6700,7 +6700,7 @@
       },
       "quote": "Je ne bouge pas. C'est le monde qui tourne autour de moi.",
       "job": "oracle",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "gorge",
@@ -6770,7 +6770,7 @@
       },
       "quote": "Tant que tu m'entends, tu es vivant.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "thorn",
@@ -6840,7 +6840,7 @@
       },
       "quote": "Tu ne me vois pas. C'est le but.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "bracket",
@@ -6875,7 +6875,7 @@
       },
       "quote": "Enlève-moi et regarde ce qui tombe.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "amber",
@@ -6910,7 +6910,7 @@
       },
       "quote": "Cet instant est parfait. Je le garde.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "quarry",
@@ -6945,7 +6945,7 @@
       },
       "quote": "Plus je creuse, plus je trouve.",
       "job": "diplomate",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "vestige",
@@ -6980,7 +6980,7 @@
       },
       "quote": "J'étais quelque chose de grand. Maintenant je suis un souvenir.",
       "job": "necromancien",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "crest",
@@ -7050,7 +7050,7 @@
       },
       "quote": "L'étincelle viendra. Je serai prêt.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "weir",
@@ -7085,7 +7085,7 @@
       },
       "quote": "Je ne bloque pas. Je régule.",
       "job": "barde",
-      "scenario": "champion"
+      "scenario": "lambda"
     },
     {
       "id": "clinker",
@@ -7120,7 +7120,7 @@
       },
       "quote": "On me jette. Mais sans moi, le métal est faible.",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "vale",
@@ -7155,7 +7155,7 @@
       },
       "quote": "Trouve-moi et tu trouveras la paix.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "obsidian",
@@ -7295,7 +7295,7 @@
       },
       "quote": "Tu n'as pas assez chaud pour me faire plier.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "riptide",
@@ -7330,7 +7330,7 @@
       },
       "quote": "Tu nages bien. Mais pas dans la bonne direction.",
       "job": "druide",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "schist",
@@ -7365,7 +7365,7 @@
       },
       "quote": "Je me brise proprement. Contrairement au reste.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "corona",
@@ -7400,7 +7400,7 @@
       },
       "quote": "Tu ne me vois que quand la lumière faiblit.",
       "job": "oracle",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "fjord",
@@ -7470,7 +7470,7 @@
       },
       "quote": "Je ne suis pas d'ici. Et ça se voit.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "vitriol",
@@ -7505,7 +7505,7 @@
       },
       "quote": "Ça fait mal ? Normal. Tu étais couvert de mensonges.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "tundra",
@@ -7575,7 +7575,7 @@
       },
       "quote": "L'eau est calme ? Parfait. C'est là que je suis.",
       "job": "barde",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "summit",
@@ -7610,7 +7610,7 @@
       },
       "quote": "Encore un pas. Un seul. Le plus dur.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "vortex",
@@ -7645,7 +7645,7 @@
       },
       "quote": "Tourne avec moi. Ou sois aspiré.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "cruciform",
@@ -7680,7 +7680,7 @@
       },
       "quote": "Quatre chemins. Un seul est le tien. Choisis bien.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "permafrost",
@@ -7715,7 +7715,7 @@
       },
       "quote": "Je dégèle. Et ce que je libère te fera peur.",
       "job": "forgeron",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "quicksilver",
@@ -7750,7 +7750,7 @@
       },
       "quote": "Attrape-moi. Je coule entre tes doigts.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "caldera",
@@ -7890,7 +7890,7 @@
       },
       "quote": "Je t'ai vu avant que tu me cherches.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "conduit",
@@ -7960,7 +7960,7 @@
       },
       "quote": "Tout finit par tourner vers moi.",
       "job": "barde",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "scoria",
@@ -7995,7 +7995,7 @@
       },
       "quote": "Le feu m'a trouée. L'air m'a rendue légère.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "solstice",
@@ -8030,7 +8030,7 @@
       },
       "quote": "Profite. Après moi, l'ombre grandit.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "pyre",
@@ -8100,7 +8100,7 @@
       },
       "quote": "Je suis sous tout. Tu ne me vois pas. Mais tout tient sur moi.",
       "job": "chronomancien",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "lithic",
@@ -8135,7 +8135,7 @@
       },
       "quote": "Avant le métal, il y avait moi.",
       "job": "tailleur",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "gale",
@@ -8170,7 +8170,7 @@
       },
       "quote": "Accroche-toi. Ou envole-toi.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "meridium",
@@ -8275,7 +8275,7 @@
       },
       "quote": "Je n'ai pas besoin d'être prouvé. Je suis.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "paradigm",
@@ -8310,7 +8310,7 @@
       },
       "quote": "J'étais la vérité. Maintenant je suis l'histoire.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "zenon",
@@ -8345,7 +8345,7 @@
       },
       "quote": "Tu ne peux pas m'atteindre. Et pourtant tu m'as déjà dépassé.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "lumen",
@@ -8380,7 +8380,7 @@
       },
       "quote": "La lumière n'est pas vague. Elle a un chiffre. Moi.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "theorem",
@@ -8415,7 +8415,7 @@
       },
       "quote": "Prouve-le. Sinon, ça n'existe pas.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "catalyst_x",
@@ -8450,7 +8450,7 @@
       },
       "quote": "J'ai appuyé une fois. Le monde a changé.",
       "job": "voleur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "helix",
@@ -8485,7 +8485,7 @@
       },
       "quote": "Chaque spirale contient un univers.",
       "job": "guérisseur",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "nexion_x",
@@ -8520,7 +8520,7 @@
       },
       "quote": "Je relie ce qui ne devrait pas être relié.",
       "job": "joaillier",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "antimatter",
@@ -8555,7 +8555,7 @@
       },
       "quote": "Ne me touche pas. Sérieusement.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "continuum",
@@ -8590,7 +8590,7 @@
       },
       "quote": "Je coule. Toujours. Tu ne peux que suivre.",
       "job": "tailleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "prima",
@@ -8625,7 +8625,7 @@
       },
       "quote": "Tout commence par moi. Une seule note.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "fulgor",
@@ -8660,7 +8660,7 @@
       },
       "quote": "Un millième de seconde. Et tu as tout vu.",
       "job": "chasseur",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "stratum",
@@ -8695,7 +8695,7 @@
       },
       "quote": "Creuse. Plus profond. Encore. Je suis là.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "praxis",
@@ -8730,7 +8730,7 @@
       },
       "quote": "Penser ne suffit pas. Agir. Maintenant.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "tesseract",
@@ -8765,7 +8765,7 @@
       },
       "quote": "Tu vois un cube. Je suis bien plus que ça.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "nova_x",
@@ -8800,7 +8800,7 @@
       },
       "quote": "Ma mort est la plus belle chose que tu verras.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "datum",
@@ -8835,7 +8835,7 @@
       },
       "quote": "Je suis le zéro. Sans moi, les chiffres ne veulent rien dire.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "solvent",
@@ -8870,7 +8870,7 @@
       },
       "quote": "Je dissous tout. Le problème : qui me contient ?",
       "job": "nomade",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "vertex",
@@ -8905,7 +8905,7 @@
       },
       "quote": "Toutes les lignes mènent à moi.",
       "job": "oracle",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "archon",
@@ -8940,7 +8940,7 @@
       },
       "quote": "Je ne règne pas. J'existe, et le monde s'ordonne.",
       "job": "tailleur",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "aether",
@@ -8975,7 +8975,7 @@
       },
       "quote": "Tu respires grâce à moi. Tu ne le sais pas.",
       "job": "guerrier",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "logos",
@@ -9010,7 +9010,7 @@
       },
       "quote": "Au commencement était le mot. C'était moi.",
       "job": "berserker",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "void",
@@ -9045,7 +9045,7 @@
       },
       "quote": "Je suis rien. Et rien contient tout.",
       "job": "éclaireur",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "aegis_prime",
@@ -9080,7 +9080,7 @@
       },
       "quote": "Derrière moi, l'éternité est en sécurité.",
       "job": "enchanteur",
-      "scenario": "rebelle-connecte"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "fate",
@@ -9115,7 +9115,7 @@
       },
       "quote": "Ton fil est entre mes doigts. Il l'a toujours été.",
       "job": "voleur",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "aurora",
@@ -9185,7 +9185,7 @@
       },
       "quote": "Vous venez tous de moi. Et vous y retournerez.",
       "job": "guerrier",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "mythos",
@@ -9220,7 +9220,7 @@
       },
       "quote": "Chaque peuple me raconte différemment. J'ai toujours raison.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "dissident"
     },
     {
       "id": "ignis",
@@ -9290,7 +9290,7 @@
       },
       "quote": "Tu me combats chaque jour. Tu perds chaque jour.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "nyx",
@@ -9325,7 +9325,7 @@
       },
       "quote": "La lumière est venue après moi. Elle repartira avant moi.",
       "job": "druide",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "anchor",
@@ -9360,7 +9360,7 @@
       },
       "quote": "Le monde dérive ? Pas tant que je suis là.",
       "job": "cuisinier",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "synthesis",
@@ -9395,7 +9395,7 @@
       },
       "quote": "Tout ce qui s'oppose finit par s'unir. En moi.",
       "job": "marchand",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "sulfur",
@@ -9465,7 +9465,7 @@
       },
       "quote": "Je vois toutes tes couleurs. Même celles que tu caches.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "delta",
@@ -9500,7 +9500,7 @@
       },
       "quote": "Le fleuve finit. La mer commence. Et moi, je suis entre les deux.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "geode",
@@ -9535,7 +9535,7 @@
       },
       "quote": "Casse-moi. Tu seras surpris.",
       "job": "oracle",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "zenith_x",
@@ -9570,7 +9570,7 @@
       },
       "quote": "Au-dessus du sommet. Là où personne ne vient.",
       "job": "forgeron",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "matrix",
@@ -9605,7 +9605,7 @@
       },
       "quote": "Tu vois le monde. Je vois le code.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "entropy_x",
@@ -9640,7 +9640,7 @@
       },
       "quote": "Tout se dégrade. Je suis la preuve finale.",
       "job": "nomade",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "resonance",
@@ -9675,7 +9675,7 @@
       },
       "quote": "Écoute. L'univers a une fréquence. C'est la mienne.",
       "job": "pirate",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "cipher_z",
@@ -9710,7 +9710,7 @@
       },
       "quote": "Craque-moi. Si tu oses.",
       "job": "barde",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "flux",
@@ -9780,7 +9780,7 @@
       },
       "quote": "Les continents reposent sur moi. Tu le savais ?",
       "job": "guerrier",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "silt",
@@ -9815,7 +9815,7 @@
       },
       "quote": "Après la crue, je suis là. Et tout repousse.",
       "job": "voleur",
-      "scenario": "rebelle-connecte"
+      "scenario": "lambda"
     },
     {
       "id": "zenith_y",
@@ -9850,7 +9850,7 @@
       },
       "quote": "Je ne pousse pas. Je caresse.",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "champion"
     },
     {
       "id": "ripple",
@@ -9920,7 +9920,7 @@
       },
       "quote": "Je suis un morceau. Le reste est quelque part.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "beacon",
@@ -10025,7 +10025,7 @@
       },
       "quote": "Je suis là. Creuse plus profond.",
       "job": "espion",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "plinth",
@@ -10060,7 +10060,7 @@
       },
       "quote": "Regarde en bas pour une fois. C'est moi qui tiens tout.",
       "job": "diplomate",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "crux",
@@ -10130,7 +10130,7 @@
       },
       "quote": "Le fond. Félicitations. Maintenant, remonte.",
       "job": "explorateur",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "helios_x",
@@ -10165,7 +10165,7 @@
       },
       "quote": "Ma lumière est noire. Elle montre ce que le jour cache.",
       "job": "marchand",
-      "scenario": "veteran-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "epoch",
@@ -10235,7 +10235,7 @@
       },
       "quote": "Le chaos n'existe pas. Tu ne vois simplement pas le motif.",
       "job": "alchimiste",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "sigil",
@@ -10305,7 +10305,7 @@
       },
       "quote": "On m'a oublié. Pas mon pouvoir.",
       "job": "nomade",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "miasma",
@@ -10375,7 +10375,7 @@
       },
       "quote": "Lis-moi à l'envers. Tu comprendras.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "obelisk",
@@ -10410,7 +10410,7 @@
       },
       "quote": "Je suis là depuis avant ta mémoire.",
       "job": "ingenieur",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "forge_spirit",
@@ -10480,7 +10480,7 @@
       },
       "quote": "La magie coule en moi. À travers le monde.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "dissident"
     },
     {
       "id": "bastion",
@@ -10550,7 +10550,7 @@
       },
       "quote": "Je brûle pour que d'autres voient.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "cobalt_y",
@@ -10585,7 +10585,7 @@
       },
       "quote": "Le métal ne ment jamais.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "minotaure",
@@ -10690,7 +10690,7 @@
       },
       "quote": "Les montagnes se souviennent de ma colère.",
       "job": "berserker",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "papyrus",
@@ -10725,7 +10725,7 @@
       },
       "quote": "Ce qui n'est pas écrit n'a jamais existé.",
       "job": "cartographe",
-      "scenario": "rebelle-isole"
+      "scenario": "lambda"
     },
     {
       "id": "typhon",
@@ -10760,7 +10760,7 @@
       },
       "quote": "Je ne passe pas. J'efface.",
       "job": "assassin",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "opale",
@@ -10795,7 +10795,7 @@
       },
       "quote": "Tu ne vois que ce que je veux bien montrer.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "lambda"
     },
     {
       "id": "ragnarok",
@@ -10935,7 +10935,7 @@
       },
       "quote": "Ne me déracine pas. Tu n'es pas prêt à entendre.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "parallaxe",
@@ -10970,7 +10970,7 @@
       },
       "quote": "Vous regardez tous dans la même direction. C'est votre erreur.",
       "job": "oracle",
-      "scenario": "veteran-morkar"
+      "scenario": "apprenti-morkar"
     },
     {
       "id": "anthracite",
@@ -11005,7 +11005,7 @@
       },
       "quote": "Je brûle encore quand tout s'est éteint.",
       "job": "forgeron",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "chimere_y",
@@ -11040,7 +11040,7 @@
       },
       "quote": "Je suis tout ce qui n'aurait pas dû naître.",
       "job": "chasseur",
-      "scenario": "veteran-morkar"
+      "scenario": "champion"
     },
     {
       "id": "talisman",
@@ -11110,7 +11110,7 @@
       },
       "quote": "La vérité est au fond du verre. Ose boire.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "monolithe_y",
@@ -11145,7 +11145,7 @@
       },
       "quote": "...",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "arachnea",
@@ -11180,7 +11180,7 @@
       },
       "quote": "Chaque fil mène quelque part. Surtout ceux que tu ne vois pas.",
       "job": "espion",
-      "scenario": "rebelle-isole"
+      "scenario": "champion"
     },
     {
       "id": "volcan",
@@ -11215,7 +11215,7 @@
       },
       "quote": "Mon silence n'est pas la paix. C'est un avertissement.",
       "job": "berserker",
-      "scenario": "rebelle-connecte"
+      "scenario": "champion"
     },
     {
       "id": "origami",
@@ -11250,7 +11250,7 @@
       },
       "quote": "Un pli suffit pour changer la forme du monde.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "champion"
     },
     {
       "id": "sextant",
@@ -11285,7 +11285,7 @@
       },
       "quote": "Les étoiles ne mentent pas. Il suffit de savoir les lire.",
       "job": "explorateur",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     },
     {
       "id": "reverie",
@@ -11355,7 +11355,7 @@
       },
       "quote": "J'ai vu la fin. Elle ressemble beaucoup au début.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "dissident"
     }
   ]
 }
