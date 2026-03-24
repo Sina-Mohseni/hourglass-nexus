@@ -374,6 +374,7 @@ function showNightDialogue(onDone, cityName, regionName){
     +   pillBtnHtml
     +   '<div class="ndlg-bubble" id="ndlg-bubble"></div>'
     +   '<div class="ndlg-choices" id="ndlg-choices"></div>'
+    +   '<div class="ndlg-choice-counter" id="ndlg-choice-counter"></div>'
     +   '<div class="ndlg-tap-hint" id="ndlg-tap-hint">\u25BC</div>'
     + '</div>'
     + '<div class="ndlg-intro-scene ndlg-scene-hidden" id="ndlg-outro-scene">'
@@ -443,6 +444,11 @@ function showNightDialogue(onDone, cityName, regionName){
     var pillBtn = overlay.querySelector("#ndlg-pill-btn");
     var beatIdx = -1;
 
+    /* ── 3-choice limit & dialogue memory ── */
+    var MAX_CHOICES = 3;
+    var choicesMade = 0;
+    var sessionChoices = []; // choices made this session for memory
+
     // Show pill button if available and not understanding
     function updatePillVisibility(){
       if(pillFloat){
@@ -490,9 +496,36 @@ function showNightDialogue(onDone, cityName, regionName){
       }, 150);
     }
 
+    function _updateChoiceCounter(){
+      var counterEl = overlay.querySelector("#ndlg-choice-counter");
+      if(!counterEl) return;
+      var remaining = MAX_CHOICES - choicesMade;
+      if(remaining > 0 && canUnderstand){
+        counterEl.textContent = remaining + " question" + (remaining > 1 ? "s" : "") + " restante" + (remaining > 1 ? "s" : "");
+        counterEl.style.opacity = "1";
+      } else {
+        counterEl.style.opacity = "0";
+      }
+    }
+
+    function _saveDialogueMemory(){
+      if(sessionChoices.length === 0) return;
+      var u = loadUser();
+      if(!u.dialogueMemory) u.dialogueMemory = {};
+      if(!u.dialogueMemory[npc.id]) u.dialogueMemory[npc.id] = [];
+      var entry = {
+        day: u.gameDay || 1,
+        scenario: (window._chosenScenario || "lambda"),
+        choices: sessionChoices.slice()
+      };
+      u.dialogueMemory[npc.id].push(entry);
+      saveUser(u);
+    }
+
     function showChoices(choices){
       choicesEl.innerHTML = "";
       choicesEl.style.opacity = "0";
+      _updateChoiceCounter();
       setTimeout(function(){
         choices.forEach(function(c, i){
           var btn = document.createElement("button");
@@ -503,8 +536,14 @@ function showNightDialogue(onDone, cityName, regionName){
             e.stopPropagation();
             choicesEl.querySelectorAll("button").forEach(function(b){ b.disabled = true; b.classList.add("ndlg-choice-used") });
             btn.classList.add("ndlg-choice-selected");
+
+            // Track choice for memory
+            choicesMade++;
+            sessionChoices.push({ id: c.id || null, tag: c.tag || null, text: c.text });
+
             setTimeout(function(){
               choicesEl.style.opacity = "0";
+              _updateChoiceCounter();
               var replyText = canUnderstand ? esc(c.reply) : _ndlgAlienText(c.reply);
               showText(replyText, !canUnderstand);
               tapHint.classList.add("visible");
@@ -512,6 +551,17 @@ function showNightDialogue(onDone, cityName, regionName){
                 if(ev.target.closest(".ndlg-choice-btn, .ndlg-pill-btn")) return;
                 overlay.removeEventListener("click", advance);
                 tapHint.classList.remove("visible");
+
+                // If max choices reached, force outro
+                if(choicesMade >= MAX_CHOICES){
+                  _saveDialogueMemory();
+                  dlgScene.classList.add("ndlg-intro-fading");
+                  setTimeout(function(){
+                    dlgScene.style.display = "none";
+                    _startOutroPhase(outroOverride || NIGHT_OUTRO_PARAGRAPHS);
+                  }, 700);
+                  return;
+                }
                 nextBeat();
               };
               setTimeout(function(){ overlay.addEventListener("click", advance) }, 400);
@@ -526,6 +576,7 @@ function showNightDialogue(onDone, cityName, regionName){
 
     // NPC departure when player can't understand (no pill)
     function _npcDeparts(){
+      _saveDialogueMemory();
       dlgScene.classList.add("ndlg-intro-fading");
       setTimeout(function(){
         dlgScene.style.display = "none";
@@ -543,6 +594,7 @@ function showNightDialogue(onDone, cityName, regionName){
       }
 
       if(beatIdx >= tree.beats.length){
+        _saveDialogueMemory();
         dlgScene.classList.add("ndlg-intro-fading");
         setTimeout(function(){
           dlgScene.style.display = "none";
