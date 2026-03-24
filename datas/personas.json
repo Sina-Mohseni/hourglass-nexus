@@ -401,37 +401,73 @@
             "Mais les mots de l'Orque t'ont laissé quelque chose — pas de la peur, mais une étincelle. Un ancien esclave devenu champion te voit comme un égal. Tu fermes les yeux."
           ]
         },
-        "rebelle": {
+        "rebelle_connecte": {
           "intro": [
-            "Tu te figes. Quelqu'un est là. Grand. Massif. Impossible de l'éviter.",
-            "L'Orque est assis sur un rocher, les bras croisés. Il ne dort pas. Il attend.",
-            "Ses yeux rouges se posent sur toi. Tu actives mentalement ton personnage — l'isolé perdu, terrorisé, qui ne comprend rien. Mais son regard dit qu'il voit plus loin que la surface."
+            "Une masse sombre bloque le passage. L'Orque est assis sur une caisse de ravitaillement, les bras croisés.",
+            "Il lève ses yeux rouges vers toi. Un regard franc, direct. Celui d'un champion qui évalue un autre champion.",
+            "Tu sens la tension dans tes épaules. Garder ta couverture de champion loyal est ta priorité. Souris. Joue le jeu."
           ],
-          "greeting": "T'es un isolé, à ce qu'on dit. Mais tu bouges pas comme quelqu'un qui découvre un monde pour la première fois.",
+          "greeting": "Un autre champion qui dort pas. Viens. Assieds-toi. Autant parler que tourner en rond.",
           "beats": [
             {
-              "npc": "J'ai brisé mes chaînes dans les forges de l'Abysse. Tu sais ce que ça m'a appris ? À reconnaître ceux qui jouent un rôle. Les vrais isolés, ils tremblent. Toi, tu calcules.",
+              "id": "brakk_rebcon_b1",
+              "npc": "Tu représentes quel monde ? Non, attends — laisse-moi deviner. T'as le regard de quelqu'un qui porte un poids. Tous les champions portent un poids, mais le tien a l'air… différent.",
               "choices": [
-                { "text": "Je suis juste nerveux, c'est tout.", "reply": "Nerveux. Ouais. Les nerveux regardent pas les sorties avant de regarder les étoiles. Mais bon, c'est ton histoire." },
-                { "text": "Tu vois des complots partout.", "reply": "J'ai été esclave. Les esclaves voient tout. C'est comme ça qu'on survit. Et toi, t'as le regard d'un survivant, pas d'un innocent." },
-                { "text": "Et si je n'étais pas ce que je prétends être ?", "reply": "Alors t'as du cran de me le dire. Ou t'es inconscient. Dans les deux cas… je respecte." }
+                { "id": "brakk_rebcon_b1_c1", "text": "Le poids de mon peuple, comme tout champion.", "reply": "Ouais. Comme tout champion. Sauf que la plupart disent ça avec de la fierté. Toi, on dirait que ça te pèse pour de vrai. Pas grave, c'est normal avant le Tournoi.", "tag": "couverture_parfaite" },
+                { "id": "brakk_rebcon_b1_c2", "text": "On porte tous nos fardeaux.", "reply": "Philosophe, hein ? Les champions philosophes, y'en a deux types : ceux qui réfléchissent trop et ceux qui cachent quelque chose. T'es lequel ?", "tag": "evasif" },
+                { "id": "brakk_rebcon_b1_c3", "text": "Tu analyses toujours les gens comme ça ?", "reply": "Quinze ans d'esclavage. Tu apprends à lire les gens ou tu crèves. C'est devenu un réflexe. Te vexe pas.", "tag": "deflexion" }
               ]
             },
             {
-              "npc": "Je vais te dire un truc. Les chaînes, c'est pas toujours du métal. Parfois c'est des mensonges, des systèmes, des gens qui te disent que c'est 'pour ton bien'. Si quelqu'un se déguise en isolé pour briser ces chaînes-là… je suis pas contre. Du tout.",
+              "id": "brakk_rebcon_b2",
+              "npc": "Tu sais ce que j'aime dans le Tournoi ? C'est la seule chose honnête dans cette galaxie. Pas de politique, pas de mensonges. Juste toi, l'arène, et ce que t'as dans les tripes. Morkar a créé quelque chose de pur.",
               "choices": [
-                { "text": "Tu parles de Morkar ?", "reply": "Je parle de personne en particulier. Et de tout le monde en même temps. Comprends ce que tu veux, faux isolé." },
-                { "text": "Les chaînes se brisent toujours, c'est ça ?", "reply": "… Toujours. Mais ceux qui les brisent doivent choisir : le masque ou la vérité. On peut pas porter les deux éternellement." }
+                { "id": "brakk_rebcon_b2_c1", "text": "Absolument. Le Tournoi est juste.", "reply": "Heh. T'as dit ça vite. Comme une leçon récitée. Mais bon, je suis d'accord avec toi, alors je vais pas chipoter.", "tag": "approbation_forcee" },
+                { "id": "brakk_rebcon_b2_c2", "text": "Pur, c'est un grand mot.", "reply": "C'est le bon mot. J'étais esclave. Le Tournoi m'a mis au même niveau que des rois. Si c'est pas pur, ça, je sais pas ce qui l'est. T'as un problème avec ça ?", "tag": "doute_risque" },
+                { "id": "brakk_rebcon_b2_c3", "text": "Morkar fait du bon travail.", "reply": "Du bon travail ? Ils font plus que du bon travail. Ils ont aboli l'esclavage sur Cendreciel. Ils ont donné une chance aux mondes oubliés. 'Du bon travail', c'est un euphémisme.", "tag": "louange_tiede" }
               ]
             },
             {
-              "npc": "Dors bien, « isolé ». Ton secret est en sécurité avec moi. Je déteste Morkar bien plus que je me méfie de toi. Mais demain, joue mieux. Les vrais isolés tremblent. Toi, tu fais semblant."
+              "id": "brakk_rebcon_b3",
+              "npc": "Y'a des rumeurs qui circulent. Des dissidents. Des gens infiltrés dans le Tournoi qui voudraient tout foutre en l'air. Tu y crois, toi ?",
+              "choices": [
+                { "id": "brakk_rebcon_b3_c1", "text": "Des rumeurs, rien de plus.", "reply": "Peut-être. Mais les rumeurs commencent toujours par quelque chose de vrai. Si y'a des dissidents ici, j'espère qu'ils savent ce qu'ils risquent.", "tag": "minimiser" },
+                { "id": "brakk_rebcon_b3_c2", "text": "Pourquoi quelqu'un ferait ça ?", "reply": "Bonne question. Pourquoi détruire la seule chose qui maintient la paix entre les mondes ? Faut être aveugle. Ou avoir été manipulé par des gens qui préfèrent le chaos.", "tag": "feindre_ignorance" },
+                { "id": "brakk_rebcon_b3_c3", "text": "Peut-être qu'ils ont leurs raisons.", "reply": "… Leurs raisons. L'esclavagiste qui m'enchaînait avait ses raisons aussi. Ça justifie rien. Le Tournoi sauve des mondes entiers. Qui peut être contre ça ?", "tag": "empathie_dangereuse" }
+              ]
+            },
+            {
+              "id": "brakk_rebcon_b4",
+              "npc": "Je vais te dire un truc. Si je tombe sur un dissident, je le briserai. Comme j'ai brisé mes chaînes. Parce que ces gens-là, ils veulent remettre des chaînes sur tout le monde au nom de leur 'liberté'. C'est l'ironie la plus cruelle que je connaisse.",
+              "choices": [
+                { "id": "brakk_rebcon_b4_c1", "text": "Tu as raison. Ils sont dangereux.", "reply": "Au moins on est d'accord là-dessus. Les champions doivent se serrer les coudes contre ce genre de menace. Le Tournoi, c'est sacré.", "tag": "accord_facade" },
+                { "id": "brakk_rebcon_b4_c2", "text": "La violence ne résout pas tout.", "reply": "C'est ce que disent ceux qui ont jamais eu à se battre pour survivre. Moi, la violence m'a libéré. Littéralement. Chacun ses outils.", "tag": "moderation" },
+                { "id": "brakk_rebcon_b4_c3", "text": "Et si les dissidents avaient raison sur certains points ?", "reply": "… T'es sérieux ? Raison sur quoi ? Que le Tournoi est truqué ? Que Morkar est maléfique ? J'étais esclave. Morkar m'a donné ma liberté. Alors non. Ils ont pas raison. Sur rien.", "tag": "provocation" }
+              ]
+            },
+            {
+              "id": "brakk_rebcon_b5",
+              "npc": "Tu sais ce qui me rend triste ? Les anciens champions qui disparaissent après le Tournoi. Certains disent que Morkar les fait taire. Moi je pense qu'ils ont juste honte d'avoir perdu. C'est plus facile de disparaître que d'affronter son peuple après une défaite.",
+              "choices": [
+                { "id": "brakk_rebcon_b5_c1", "text": "Tu as sûrement raison.", "reply": "La honte, c'est le pire ennemi d'un champion. Pire que n'importe quel adversaire. J'ai vu des guerriers invincibles se briser sous le poids de la défaite.", "tag": "accepter_version" },
+                { "id": "brakk_rebcon_b5_c2", "text": "Personne n'a enquêté sur ces disparitions ?", "reply": "Enquêté ? Pourquoi ? Des champions vaincus qui veulent se faire oublier, y'a rien de mystérieux là-dedans. Les dissidents adorent transformer ça en complot. C'est leur fond de commerce.", "tag": "investigation" },
+                { "id": "brakk_rebcon_b5_c3", "text": "Disparaître, c'est quand même étrange.", "reply": "Étrange ? Non. Humain. Tout le monde gère pas la défaite de la même façon. Arrête de chercher des complots partout, champion. Concentre-toi sur demain.", "tag": "suspicion_legere" }
+              ]
+            },
+            {
+              "id": "brakk_rebcon_b6",
+              "npc": "Allez. Le soleil se lève bientôt. T'es pas si mal, pour un champion. T'écoutes. C'est rare. La plupart veulent juste parler d'eux-mêmes.",
+              "choices": [
+                { "id": "brakk_rebcon_b6_c1", "text": "Bonne chance demain, Brakk.", "reply": "La chance, c'est pour les faibles. Mais merci quand même. Sois prêt. Et si tu croises un dissident… fais-moi signe.", "tag": "cordial" },
+                { "id": "brakk_rebcon_b6_c2", "text": "J'espère qu'on sera pas adversaires trop tôt.", "reply": "Moi j'espère le contraire. J'aime bien me mesurer aux gens que je respecte. Et t'as gagné un peu de mon respect cette nuit.", "tag": "esquive" },
+                { "id": "brakk_rebcon_b6_c3", "text": "Merci pour la discussion. Elle m'a donné à réfléchir.", "reply": "Réfléchir, c'est bien. Mais réfléchis pas trop non plus. Le Tournoi pardonne pas l'hésitation.", "tag": "pensif" }
+              ]
             }
           ],
           "outro": [
-            "L'Orque se lève. Pour un être aussi massif, il se déplace avec une étrange discrétion.",
-            "Il disparaît dans la nuit. Il sait. Ou du moins, il soupçonne. Mais ses mots disaient autre chose — une complicité, un ennemi commun.",
-            "Tu inspires longuement. Ta couverture de faux isolé a vacillé. Mais Brakk n'est pas Morkar. Peut-être qu'il est un allié. Tu fermes les yeux, mais ton esprit tourne déjà."
+            "L'Orque se lève et s'éloigne dans la nuit, chaque pas lourd comme un verdict.",
+            "Tu restes seul. Le poids de ta couverture n'a jamais été aussi lourd. Chaque mot de Brakk défendait le système que tu veux détruire — et le pire, c'est qu'il y croit sincèrement.",
+            "Tu fermes les yeux. Demain, il faudra jouer le champion loyal face aux caméras. Et face à Brakk. Le sommeil vient difficilement quand on porte un masque même dans le noir."
           ]
         },
         "apprenti-morkar": {

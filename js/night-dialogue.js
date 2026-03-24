@@ -271,6 +271,11 @@ function _resolveNightTree(npc, playerScenario){
   var personaData = getPersonaById(npc.id);
   if(personaData && personaData.night_discussions){
     var scKey = playerScenario || "lambda";
+    // For "rebelle", disambiguate using origin type: rebelle_connecte vs rebelle_isole
+    if(scKey === "rebelle"){
+      var origin = window._scOriginType || "isole";
+      scKey = "rebelle_" + origin;
+    }
     // Try exact match, then fallback to "champion" as default
     var disc = personaData.night_discussions[scKey] || personaData.night_discussions["champion"];
     if(disc && disc.beats){
