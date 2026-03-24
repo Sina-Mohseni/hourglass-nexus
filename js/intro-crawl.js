@@ -618,6 +618,7 @@ function showIdentityScreen(onDone){
   var preview = document.getElementById("id-avatar-preview");
   var label = document.getElementById("id-avatar-label");
   var fileInput = document.getElementById("id-file-input");
+  var skipBtn = document.getElementById("id-skip-avatar");
   var raceTitle = document.getElementById("id-race-title");
   var raceList = document.getElementById("id-race-list");
 
@@ -626,12 +627,8 @@ function showIdentityScreen(onDone){
 
   // Avatar pick
   function openFilePicker(){ if(fileInput) fileInput.click(); }
-  if(ring) ring.onclick = function(){
-    if(!avatarChosen) openFilePicker();
-  };
-  if(label) label.onclick = function(){
-    if(!avatarChosen) openFilePicker();
-  };
+  if(ring) ring.onclick = function(){ if(!avatarChosen) openFilePicker(); };
+  if(label) label.onclick = function(){ if(!avatarChosen) openFilePicker(); };
   if(fileInput) fileInput.onchange = function(){
     var file = fileInput.files[0]; if(!file) return;
     var reader = new FileReader();
@@ -643,26 +640,14 @@ function showIdentityScreen(onDone){
     reader.readAsDataURL(file);
   };
 
-  // Skip avatar → go to race selection after a short delay
-  // Allow tap on preview "+" to skip
-  if(preview){
-    var plus = preview.querySelector(".id-avatar-plus");
-    if(plus){
-      // Double-tap on "+" skips avatar
-      var tapCount = 0;
-      plus.onclick = function(e){
-        e.stopPropagation();
-        tapCount++;
-        if(tapCount >= 2) showRaceSelection();
-        setTimeout(function(){ tapCount = 0; }, 500);
-      };
-    }
-  }
+  // Skip avatar → go straight to race selection
+  if(skipBtn) skipBtn.onclick = function(){ showRaceSelection(); };
 
   function showRaceSelection(){
     avatarChosen = true;
-    // Hide avatar label, show race selection
+    // Hide avatar label + skip button, show race selection
     if(label) label.style.display = "none";
+    if(skipBtn) skipBtn.style.display = "none";
     if(raceTitle) raceTitle.style.display = "";
     if(raceList){
       raceList.style.display = "";
@@ -701,7 +686,8 @@ function showIdentityScreen(onDone){
               if(raceList) raceList.innerHTML = "";
               if(raceTitle) raceTitle.style.display = "none";
               if(raceList) raceList.style.display = "none";
-              if(label){ label.style.display = ""; }
+              if(label) label.style.display = "";
+              if(skipBtn) skipBtn.style.display = "";
               avatarChosen = false;
               onDone();
             }, 800);

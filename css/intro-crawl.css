@@ -166,6 +166,15 @@
 }
 .id-confirm-btn:active { border-color: var(--gold); transform: scale(.95); }
 .identity-overlay.fading-out { animation: icFadeOut .8s ease-in forwards; }
+.id-skip-avatar {
+  background: none; border: none;
+  color: var(--bone-dim); font-family: var(--font-ui, sans-serif);
+  font-size: 11px; letter-spacing: 1px;
+  cursor: pointer; padding: 8px 16px; margin-bottom: 16px;
+  opacity: 0; animation: scFadeIn .5s ease-out .4s forwards;
+  transition: color .2s;
+}
+.id-skip-avatar:active { color: var(--gold-light); }
 .id-race-title {
   font-family: var(--font-heading, Poppins, sans-serif);
   font-size: 13px; color: var(--gold-light);
