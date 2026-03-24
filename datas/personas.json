@@ -33,7 +33,16 @@
         "rune": 75
       },
       "quote": "Le temps ne pardonne pas, mais il enseigne.",
-      "job": "oracle"
+      "job": "oracle",
+      "race": "Automate",
+      "monde": "Nexus-Prime",
+      "profil": "Sage",
+      "niveau": 100,
+      "sablons": 0,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "elrand",
@@ -68,7 +77,16 @@
       },
       "quote": "Chaque mot posé est une brique d'un monde qui attend d'exister.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Astralum",
+      "profil": "Gardien",
+      "niveau": 95,
+      "sablons": 2099,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lux",
@@ -103,7 +121,16 @@
       },
       "quote": "La lumière ne force rien. Elle révèle ce qui était déjà là.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Lumineth",
+      "profil": "Érudit",
+      "niveau": 80,
+      "sablons": 960,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "hyandi",
@@ -138,7 +165,16 @@
       },
       "quote": "L'ombre n'est pas l'absence de lumière, c'est son reflet fidèle.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Abyssal",
+      "monde": "Voilenoir",
+      "profil": "Protecteur",
+      "niveau": 81,
+      "sablons": 1053,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pipo",
@@ -172,7 +208,16 @@
       },
       "quote": "La meilleure stratégie ? Aucune.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Chronalis",
+      "profil": "Artisan",
+      "niveau": 13,
+      "sablons": 104,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "brakk",
@@ -206,7 +251,16 @@
       },
       "quote": "Les chaînes se brisent. Toujours.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Cendreciel",
+      "profil": "Sentinelle",
+      "niveau": 42,
+      "sablons": 504,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tika",
@@ -240,7 +294,16 @@
       },
       "quote": "Si tu m'as vue, c'est que je l'ai voulu.",
       "job": "espion",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Nuéflore",
+      "profil": "Rebelle",
+      "niveau": 32,
+      "sablons": 332,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zara",
@@ -274,7 +337,16 @@
       },
       "quote": "Je préfère brûler que m'éteindre.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Pyrheim",
+      "profil": "Protecteur",
+      "niveau": 41,
+      "sablons": 451,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "naia",
@@ -308,7 +380,16 @@
       },
       "quote": "L'eau trouve toujours son chemin.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Abyssmar",
+      "profil": "Tacticien",
+      "niveau": 32,
+      "sablons": 547,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "solen",
@@ -342,7 +423,16 @@
       },
       "quote": "Je serai là quand tout le monde sera parti.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Socléa",
+      "profil": "Gardien",
+      "niveau": 35,
+      "sablons": 280,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "miro",
@@ -376,7 +466,16 @@
       },
       "quote": "Ce qui n'existe pas encore est la plus belle chose du monde.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Éthéria",
+      "profil": "Vagabond",
+      "niveau": 14,
+      "sablons": 238,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vex",
@@ -410,7 +509,16 @@
       },
       "quote": "L'émotion est une variable. Je l'ai éliminée.",
       "job": "ingenieur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Golem",
+      "monde": "Acéria",
+      "profil": "Vagabond",
+      "niveau": 70,
+      "sablons": 924,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lyre",
@@ -444,7 +552,16 @@
       },
       "quote": "Le monde chante, si tu sais l'entendre.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Espritval",
+      "profil": "Vagabond",
+      "niveau": 20,
+      "sablons": 208,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "iris",
@@ -478,7 +595,16 @@
       },
       "quote": "Ne me mens pas. Je vois ce que tu caches.",
       "job": "oracle",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Rêvélia",
+      "profil": "Gardien",
+      "niveau": 36,
+      "sablons": 356,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "kordo",
@@ -512,7 +638,16 @@
       },
       "quote": "Le métal ne ment pas. Il révèle celui qui le frappe.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Golem",
+      "monde": "Ferralis",
+      "profil": "Bâtisseur",
+      "niveau": 15,
+      "sablons": 273,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "orphea",
@@ -546,7 +681,16 @@
       },
       "quote": "Toute fin est le début d'une histoire que personne n'a encore racontée.",
       "job": "diplomate",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Âmeveil",
+      "profil": "Solitaire",
+      "niveau": 69,
+      "sablons": 1242,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "kael",
@@ -580,7 +724,16 @@
       },
       "quote": "Derrière chaque porte fermée se cache une découverte.",
       "job": "explorateur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Golem",
+      "monde": "Socléa",
+      "profil": "Bâtisseur",
+      "niveau": 1,
+      "sablons": 8,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nova",
@@ -614,7 +767,16 @@
       },
       "quote": "Oups. Mais avoue, c'était magnifique.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Entropéa",
+      "profil": "Meneur",
+      "niveau": 47,
+      "sablons": 846,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "shade",
@@ -648,7 +810,16 @@
       },
       "quote": "Tu ne me verras jamais. C'est le but.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Noctéa",
+      "profil": "Meneur",
+      "niveau": 58,
+      "sablons": 754,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "rune",
@@ -682,7 +853,16 @@
       },
       "quote": "Un mot gravé dans la pierre vaut mille cris dans le vent.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Rêvélia",
+      "profil": "Érudit",
+      "niveau": 16,
+      "sablons": 240,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "blitz",
@@ -716,7 +896,16 @@
       },
       "quote": "Trop lent ! Je suis déjà là-bas.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Limbéon",
+      "profil": "Tacticien",
+      "niveau": 6,
+      "sablons": 102,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cendre",
@@ -750,7 +939,16 @@
       },
       "quote": "De la cendre peut renaître n'importe quoi. Même l'espoir.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Mort-vivant",
+      "monde": "Spectréa",
+      "profil": "Gardien",
+      "niveau": 65,
+      "sablons": 715,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fenrir",
@@ -785,7 +983,16 @@
       },
       "quote": "Les mots mentent. Les crocs, jamais.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Canopéa",
+      "profil": "Stratège",
+      "niveau": 9,
+      "sablons": 99,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pixel",
@@ -820,7 +1027,16 @@
       },
       "quote": "404 — Réalité non trouvée.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Golem",
+      "monde": "Fondéon",
+      "profil": "Tacticien",
+      "niveau": 2,
+      "sablons": 44,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "miel",
@@ -855,7 +1071,16 @@
       },
       "quote": "Un bon repas répare plus de choses qu'une épée.",
       "job": "berserker",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Bête-garou",
+      "monde": "Cendreciel",
+      "profil": "Aventurier",
+      "niveau": 9,
+      "sablons": 180,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "gust",
@@ -890,7 +1115,16 @@
       },
       "quote": "Attrape-moi si tu souffles assez fort !",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Zéphyria",
+      "profil": "Gardien",
+      "niveau": 12,
+      "sablons": 228,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "plume",
@@ -925,7 +1159,16 @@
       },
       "quote": "Les mots ont des ailes. Les miens aussi.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Zéphyria",
+      "profil": "Bâtisseur",
+      "niveau": 8,
+      "sablons": 96,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "grim",
@@ -960,7 +1203,16 @@
       },
       "quote": "Souris. Ça rend tout le monde nerveux.",
       "job": "pirate",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Fée",
+      "monde": "Songemonde",
+      "profil": "Chasseur",
+      "niveau": 7,
+      "sablons": 212,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "echo",
@@ -995,7 +1247,16 @@
       },
       "quote": "Je ne fais que répéter. Mais écoute mieux cette fois.",
       "job": "pirate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Éthéria",
+      "profil": "Aventurier",
+      "niveau": 3,
+      "sablons": 81,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "spark",
@@ -1030,7 +1291,16 @@
       },
       "quote": "Une étincelle suffit à changer le monde.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Étincellis",
+      "profil": "Gardien",
+      "niveau": 7,
+      "sablons": 63,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "flora",
@@ -1065,7 +1335,16 @@
       },
       "quote": "Même dans les ruines, quelque chose pousse.",
       "job": "necromancien",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Canopéa",
+      "profil": "Bâtisseur",
+      "niveau": 2,
+      "sablons": 22,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zigzag",
@@ -1100,7 +1379,16 @@
       },
       "quote": "Pourquoi aller droit quand on peut zigzaguer ?",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Étincellis",
+      "profil": "Guérisseur",
+      "niveau": 3,
+      "sablons": 51,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "bulle",
@@ -1135,7 +1423,16 @@
       },
       "quote": "Pop ! Ah non, celle-là a tenu.",
       "job": "forgeron",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Golem",
+      "monde": "Canopéa",
+      "profil": "Guérisseur",
+      "niveau": 13,
+      "sablons": 253,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "rustik",
@@ -1170,7 +1467,16 @@
       },
       "quote": "La terre ne ment pas. Elle nourrit ceux qui la respectent.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Golem",
+      "monde": "Rocheval",
+      "profil": "Bâtisseur",
+      "niveau": 12,
+      "sablons": 92,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "jinx",
@@ -1205,7 +1511,16 @@
       },
       "quote": "C'est pas de la malchance, c'est du talent inversé.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Obsidis",
+      "profil": "Gardien",
+      "niveau": 4,
+      "sablons": 68,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prisme",
@@ -1240,7 +1555,16 @@
       },
       "quote": "Le blanc cache toutes les couleurs. Regarde mieux.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Spectréa",
+      "profil": "Gardien",
+      "niveau": 10,
+      "sablons": 190,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cobalt",
@@ -1275,7 +1599,16 @@
       },
       "quote": "Le froid conserve. La loyauté aussi.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Élémentaire",
+      "monde": "Cielclair",
+      "profil": "Tacticien",
+      "niveau": 9,
+      "sablons": 90,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "totem",
@@ -1310,7 +1643,16 @@
       },
       "quote": "Nous ne sommes pas d'accord entre nous. Et c'est tant mieux.",
       "job": "marchand",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Rêvélia",
+      "profil": "Stratège",
+      "niveau": 6,
+      "sablons": 225,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "drift",
@@ -1345,7 +1687,16 @@
       },
       "quote": "Résiste pas, glisse. Tu verras, c'est mieux.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Courantis",
+      "profil": "Artisan",
+      "niveau": 2,
+      "sablons": 50,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mousse",
@@ -1380,7 +1731,16 @@
       },
       "quote": "Ma taille ? Un avantage tactique.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Moussterre",
+      "profil": "Gardien",
+      "niveau": 4,
+      "sablons": 22,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "kaori",
@@ -1415,7 +1775,16 @@
       },
       "quote": "Ferme les yeux. Respire. Tu te souviens maintenant ?",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Ventsouffle",
+      "profil": "Meneur",
+      "niveau": 9,
+      "sablons": 214,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "crash",
@@ -1450,7 +1819,16 @@
       },
       "quote": "Oups ! Mais attends, j'ai une idée pour que ça soit encore mieux.",
       "job": "pirate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Bête-garou",
+      "monde": "Rêvélia",
+      "profil": "Vagabond",
+      "niveau": 6,
+      "sablons": 124,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vesper",
@@ -1485,7 +1863,16 @@
       },
       "quote": "Le crépuscule n'est pas une fin. C'est la seule vérité.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Cendrath",
+      "profil": "Sentinelle",
+      "niveau": 21,
+      "sablons": 321,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ardent",
@@ -1520,7 +1907,16 @@
       },
       "quote": "Si ça ne brûle pas en toi, ça ne vaut pas la peine.",
       "job": "marchand",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Élémentaire",
+      "monde": "Brûleciel",
+      "profil": "Sentinelle",
+      "niveau": 25,
+      "sablons": 750,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "velvet",
@@ -1555,7 +1951,16 @@
       },
       "quote": "Les gens croient choisir. Je choisis pour eux.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Abyssal",
+      "monde": "Cendrath",
+      "profil": "Sentinelle",
+      "niveau": 16,
+      "sablons": 192,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fossile",
@@ -1590,7 +1995,16 @@
       },
       "quote": "J'ai vu des mondes naître et mourir. Le tien est jeune.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Chronalis",
+      "profil": "Guérisseur",
+      "niveau": 16,
+      "sablons": 288,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cipher",
@@ -1625,7 +2039,16 @@
       },
       "quote": "Si tu lis ceci, tu n'as compris que le premier niveau.",
       "job": "barde",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Seuil-Éternel",
+      "profil": "Tacticien",
+      "niveau": 22,
+      "sablons": 281,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "onyx",
@@ -1660,7 +2083,16 @@
       },
       "quote": "Frappe. Je peux encaisser. C'est tout ce que je sais faire.",
       "job": "cuisinier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Basaltia",
+      "profil": "Stratège",
+      "niveau": 32,
+      "sablons": 489,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sylph",
@@ -1695,7 +2127,16 @@
       },
       "quote": "Le vent ne laisse aucune trace. Moi non plus.",
       "job": "ingenieur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Cielclair",
+      "profil": "Marchand",
+      "niveau": 21,
+      "sablons": 352,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "grimoire",
@@ -1730,7 +2171,16 @@
       },
       "quote": "Ouvre-moi, si tu oses.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Vortexia",
+      "profil": "Stratège",
+      "niveau": 34,
+      "sablons": 809,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "volt",
@@ -1765,7 +2215,16 @@
       },
       "quote": "La patience est une charge. Et je suis plein.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Ferralis",
+      "profil": "Marchand",
+      "niveau": 16,
+      "sablons": 304,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nectar",
@@ -1800,7 +2259,16 @@
       },
       "quote": "Goûte. Qu'est-ce que tu risques ? Beaucoup.",
       "job": "voleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Changeant",
+      "monde": "Espritval",
+      "profil": "Vagabond",
+      "niveau": 34,
+      "sablons": 523,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "marbre",
@@ -1835,7 +2303,16 @@
       },
       "quote": "Chaque coup de ciseau est une décision irréversible.",
       "job": "nomade",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Golem",
+      "monde": "Kael-Norath",
+      "profil": "Gardien",
+      "niveau": 27,
+      "sablons": 129,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sonar",
@@ -1870,7 +2347,16 @@
       },
       "quote": "Je t'entends mentir. Ton cœur bat trop vite.",
       "job": "moine",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Golem",
+      "monde": "Songemonde",
+      "profil": "Guérisseur",
+      "niveau": 24,
+      "sablons": 228,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "karma",
@@ -1905,7 +2391,16 @@
       },
       "quote": "Ce que tu donnes te revient. Toujours.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Âmeveil",
+      "profil": "Tacticien",
+      "niveau": 16,
+      "sablons": 518,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "plasma",
@@ -1940,7 +2435,16 @@
       },
       "quote": "Solide ? Liquide ? Gaz ? Trop limité. Je suis plus.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Obsidis",
+      "profil": "Stratège",
+      "niveau": 16,
+      "sablons": 176,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sable",
@@ -1975,7 +2479,16 @@
       },
       "quote": "J'ai le temps. Pas toi.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Horlogis",
+      "profil": "Protecteur",
+      "niveau": 13,
+      "sablons": 247,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "oracle",
@@ -2010,7 +2523,16 @@
       },
       "quote": "Je sais comment ça finit. Ça ne m'aide pas.",
       "job": "necromancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Abyssal",
+      "monde": "Éthéria",
+      "profil": "Mystique",
+      "niveau": 15,
+      "sablons": 225,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mirage",
@@ -2045,7 +2567,16 @@
       },
       "quote": "Ce que tu vois n'existe pas. Mais tu y crois quand même.",
       "job": "ingenieur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Automate",
+      "monde": "Songemonde",
+      "profil": "Mystique",
+      "niveau": 22,
+      "sablons": 237,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "abyss",
@@ -2080,7 +2611,16 @@
       },
       "quote": "Plus tu descends, plus tu comprends.",
       "job": "explorateur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Nain",
+      "monde": "Boisvert",
+      "profil": "Rebelle",
+      "niveau": 25,
+      "sablons": 247,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fable",
@@ -2115,7 +2655,16 @@
       },
       "quote": "Ce n'est pas un mensonge. C'est une meilleure version de la vérité.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Zénithia",
+      "profil": "Stratège",
+      "niveau": 24,
+      "sablons": 192,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lichen",
@@ -2150,7 +2699,16 @@
       },
       "quote": "Seul, je suis rien. Ensemble, on est tout.",
       "job": "mage",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Cielclair",
+      "profil": "Protecteur",
+      "niveau": 35,
+      "sablons": 315,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tempo",
@@ -2185,7 +2743,16 @@
       },
       "quote": "Tout a un rythme. Même le silence.",
       "job": "druide",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Rêvélia",
+      "profil": "Gardien",
+      "niveau": 33,
+      "sablons": 207,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "orage",
@@ -2220,7 +2787,16 @@
       },
       "quote": "Tu as entendu le tonnerre ? C'était un avertissement.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Socléa",
+      "profil": "Tacticien",
+      "niveau": 30,
+      "sablons": 510,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "jade",
@@ -2255,7 +2831,16 @@
       },
       "quote": "Je prends ta douleur. C'est mon choix.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Canopéa",
+      "profil": "Artisan",
+      "niveau": 27,
+      "sablons": 194,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "helios",
@@ -2290,7 +2875,16 @@
       },
       "quote": "Approche-toi. Mais pas trop.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Lumineth",
+      "profil": "Gardien",
+      "niveau": 18,
+      "sablons": 252,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mantra",
@@ -2325,7 +2919,16 @@
       },
       "quote": "Om. Om. Om. Tu comprends maintenant ?",
       "job": "cartographe",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Éthéria",
+      "profil": "Guérisseur",
+      "niveau": 12,
+      "sablons": 120,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "spectre",
@@ -2360,7 +2963,16 @@
       },
       "quote": "Tu ne peux pas tuer ce qui est déjà mort.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Spectréa",
+      "profil": "Tacticien",
+      "niveau": 44,
+      "sablons": 1584,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "thorin",
@@ -2395,7 +3007,16 @@
       },
       "quote": "Mon trône est taillé dans la montagne. Essaie de le renverser.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Quartzia",
+      "profil": "Tacticien",
+      "niveau": 31,
+      "sablons": 372,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nexus",
@@ -2430,7 +3051,16 @@
       },
       "quote": "Tout est lié. Tu ne le vois simplement pas encore.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Ventsouffle",
+      "profil": "Bâtisseur",
+      "niveau": 47,
+      "sablons": 592,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ravage",
@@ -2465,7 +3095,16 @@
       },
       "quote": "Avant de construire, il faut raser. C'est mathématique.",
       "job": "chronomancien",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Abyssal",
+      "monde": "Ondaris",
+      "profil": "Guérisseur",
+      "niveau": 53,
+      "sablons": 901,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "siren",
@@ -2500,7 +3139,16 @@
       },
       "quote": "Écoute. Tu n'as pas le choix, de toute façon.",
       "job": "pirate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Âmeveil",
+      "profil": "Protecteur",
+      "niveau": 41,
+      "sablons": 1312,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "monolithe",
@@ -2535,7 +3183,16 @@
       },
       "quote": "...",
       "job": "chronomancien",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Temporia",
+      "profil": "Marchand",
+      "niveau": 31,
+      "sablons": 279,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lynx",
@@ -2570,7 +3227,16 @@
       },
       "quote": "Tu ne m'as pas vue approcher. C'est normal.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Orque",
+      "monde": "Canopéa",
+      "profil": "Marchand",
+      "niveau": 47,
+      "sablons": 1057,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "requiem",
@@ -2605,7 +3271,16 @@
       },
       "quote": "Je ne prends pas la vie. J'accompagne sa fin.",
       "job": "ingenieur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Mort-vivant",
+      "monde": "Cendreciel",
+      "profil": "Stratège",
+      "niveau": 37,
+      "sablons": 355,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "talion",
@@ -2640,7 +3315,16 @@
       },
       "quote": "Œil pour œil. Mais je prends les intérêts.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Mort-vivant",
+      "monde": "Rêvélia",
+      "profil": "Sentinelle",
+      "niveau": 50,
+      "sablons": 560,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zenith",
@@ -2675,7 +3359,16 @@
       },
       "quote": "Le sommet est solitaire. Ça tombe bien, je n'aime pas la foule.",
       "job": "espion",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Changeant",
+      "monde": "Infinéa",
+      "profil": "Mystique",
+      "niveau": 50,
+      "sablons": 975,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pandore",
@@ -2710,7 +3403,16 @@
       },
       "quote": "J'ai ouvert la boîte. C'est trop tard pour la refermer.",
       "job": "cuisinier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Boisvert",
+      "profil": "Protecteur",
+      "niveau": 32,
+      "sablons": 374,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "galène",
@@ -2745,7 +3447,16 @@
       },
       "quote": "Admire de loin. C'est un conseil, pas une suggestion.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Spectre",
+      "monde": "Rocheval",
+      "profil": "Tacticien",
+      "niveau": 36,
+      "sablons": 432,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "basalt",
@@ -2780,7 +3491,16 @@
       },
       "quote": "Le calme avant l'éruption. Tu es prévenu.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Ignaris",
+      "profil": "Stratège",
+      "niveau": 44,
+      "sablons": 440,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chronos",
@@ -2815,7 +3535,16 @@
       },
       "quote": "Tic. Tac. C'est le son de ta vie qui s'amenuise.",
       "job": "mage",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Céleste",
+      "monde": "Horlogis",
+      "profil": "Stratège",
+      "niveau": 47,
+      "sablons": 611,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "scarab",
@@ -2850,7 +3579,16 @@
       },
       "quote": "Prouve ta valeur. Ou retourne d'où tu viens.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Enclumis",
+      "profil": "Protecteur",
+      "niveau": 45,
+      "sablons": 405,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "catalyst",
@@ -2885,7 +3623,16 @@
       },
       "quote": "Je ne change pas. Je te change, toi.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Granithal",
+      "profil": "Tacticien",
+      "niveau": 53,
+      "sablons": 763,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tempest",
@@ -2920,7 +3667,16 @@
       },
       "quote": "L'océan ne pardonne pas. Moi non plus.",
       "job": "druide",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Fractura",
+      "profil": "Stratège",
+      "niveau": 41,
+      "sablons": 258,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nocturne",
@@ -2955,7 +3711,16 @@
       },
       "quote": "La nuit est ma partition. Chaque étoile est une note.",
       "job": "diplomate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Umbralis",
+      "profil": "Protecteur",
+      "niveau": 45,
+      "sablons": 1282,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "aegis",
@@ -2990,7 +3755,16 @@
       },
       "quote": "Derrière moi, tu es en sécurité. C'est une promesse.",
       "job": "diplomate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Nuéflore",
+      "profil": "Protecteur",
+      "niveau": 30,
+      "sablons": 540,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "wraith",
@@ -3025,7 +3799,16 @@
       },
       "quote": "La mort est surréaliste. La vie aussi, quand on y repense.",
       "job": "explorateur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Morterive",
+      "profil": "Stratège",
+      "niveau": 42,
+      "sablons": 604,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "silex",
@@ -3060,7 +3843,16 @@
       },
       "quote": "Avant la magie, il y avait la friction. Moi.",
       "job": "ingenieur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Ignaris",
+      "profil": "Stratège",
+      "niveau": 45,
+      "sablons": 1026,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "miasme",
@@ -3095,7 +3887,16 @@
       },
       "quote": "Tu ne m'as pas senti arriver. C'est le but.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Carrefour-des-Mondes",
+      "profil": "Stratège",
+      "niveau": 30,
+      "sablons": 240,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "seraph",
@@ -3130,7 +3931,16 @@
       },
       "quote": "La lumière ne négocie pas avec l'ombre.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Étincellis",
+      "profil": "Tacticien",
+      "niveau": 34,
+      "sablons": 336,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "eclipse",
@@ -3165,7 +3975,16 @@
       },
       "quote": "Je suis le jour et la nuit en même temps. Choisis ton camp.",
       "job": "diplomate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Cryptéon",
+      "profil": "Tacticien",
+      "niveau": 55,
+      "sablons": 1237,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "magma",
@@ -3200,7 +4019,16 @@
       },
       "quote": "Je n'ai pas besoin d'être rapide. Rien ne peut me stopper.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Volkanis",
+      "profil": "Meneur",
+      "niveau": 55,
+      "sablons": 880,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nihil",
@@ -3235,7 +4063,16 @@
       },
       "quote": "Pourquoi exister ? La question n'a pas de réponse satisfaisante.",
       "job": "nomade",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Djinn",
+      "monde": "Cryptéon",
+      "profil": "Vagabond",
+      "niveau": 68,
+      "sablons": 571,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "genesis",
@@ -3270,7 +4107,16 @@
       },
       "quote": "J'ai rêvé un monde. Il a commencé à exister.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Cosmion",
+      "profil": "Stratège",
+      "niveau": 68,
+      "sablons": 884,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "paradox",
@@ -3305,7 +4151,16 @@
       },
       "quote": "J'ai raison ET tort. En même temps. Toujours.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Fractura",
+      "profil": "Gardien",
+      "niveau": 61,
+      "sablons": 610,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "entropy",
@@ -3340,7 +4195,16 @@
       },
       "quote": "Tout finit par se dégrader. C'est la seule loi universelle.",
       "job": "espion",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Fractura",
+      "profil": "Mystique",
+      "niveau": 54,
+      "sablons": 1333,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "phoenix",
@@ -3375,7 +4239,16 @@
       },
       "quote": "Mourir est un inconvénient mineur quand tu sais revenir.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Méridiane",
+      "profil": "Meneur",
+      "niveau": 72,
+      "sablons": 1296,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "omega",
@@ -3410,7 +4283,16 @@
       },
       "quote": "Tout commence. Tout finit. Je suis la fin.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Morterive",
+      "profil": "Meneur",
+      "niveau": 56,
+      "sablons": 907,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "leviathan",
@@ -3445,7 +4327,16 @@
       },
       "quote": "Mon réveil est ton cauchemar.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Zénithia",
+      "profil": "Stratège",
+      "niveau": 55,
+      "sablons": 825,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chimere",
@@ -3480,7 +4371,16 @@
       },
       "quote": "Je suis plusieurs. Et aucun ne veut céder.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Cendreciel",
+      "profil": "Meneur",
+      "niveau": 74,
+      "sablons": 962,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "absolue",
@@ -3515,7 +4415,16 @@
       },
       "quote": "Je n'ai jamais tort. C'est le monde qui se trompe.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Nexus-Prime",
+      "profil": "Meneur",
+      "niveau": 64,
+      "sablons": 576,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "limbes",
@@ -3550,7 +4459,16 @@
       },
       "quote": "Je suis la porte. Mais personne ne sait vers quoi.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Nain",
+      "monde": "Limbéon",
+      "profil": "Bâtisseur",
+      "niveau": 67,
+      "sablons": 871,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "kronos",
@@ -3585,7 +4503,16 @@
       },
       "quote": "Chaque seconde qui passe est un pas vers moi.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Automate",
+      "monde": "Temporia",
+      "profil": "Artisan",
+      "niveau": 63,
+      "sablons": 504,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "golem",
@@ -3620,7 +4547,16 @@
       },
       "quote": "Tu as dit 'détruis tout'. J'ai obéi.",
       "job": "oracle",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Djinn",
+      "monde": "Minéralis",
+      "profil": "Mystique",
+      "niveau": 51,
+      "sablons": 561,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prism_x",
@@ -3655,7 +4591,16 @@
       },
       "quote": "Dans mon monde, les ombres brillent et la lumière est noire.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Ombrecœur",
+      "profil": "Protecteur",
+      "niveau": 69,
+      "sablons": 1242,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fractal",
@@ -3690,7 +4635,16 @@
       },
       "quote": "Regarde de plus près. Encore. Tu me trouves toujours.",
       "job": "moine",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Paradoxe-Cité",
+      "profil": "Vagabond",
+      "niveau": 56,
+      "sablons": 448,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "valkyrie",
@@ -3725,7 +4679,16 @@
       },
       "quote": "Tu t'es battu avec honneur. Viens.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Rêvélia",
+      "profil": "Guérisseur",
+      "niveau": 60,
+      "sablons": 1950,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "synapse",
@@ -3760,7 +4723,16 @@
       },
       "quote": "Je ne pense pas. Je suis la pensée.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Rêvélia",
+      "profil": "Meneur",
+      "niveau": 67,
+      "sablons": 1480,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ouroboros",
@@ -3795,7 +4767,16 @@
       },
       "quote": "Encore. Et encore. Et encore.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Temporia",
+      "profil": "Protecteur",
+      "niveau": 58,
+      "sablons": 812,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nebula",
@@ -3830,7 +4811,16 @@
       },
       "quote": "Les étoiles naissent en moi. Et meurent ailleurs.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Élémentaire",
+      "monde": "Cosmion",
+      "profil": "Gardien",
+      "niveau": 73,
+      "sablons": 1095,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cipher_x",
@@ -3865,7 +4855,16 @@
       },
       "quote": "Problème résolu. Sauf un : pourquoi je suis là.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Ferralis",
+      "profil": "Sentinelle",
+      "niveau": 54,
+      "sablons": 432,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "thanatos",
@@ -3900,7 +4899,16 @@
       },
       "quote": "N'aie pas peur. Prends ma main.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Spectréa",
+      "profil": "Tacticien",
+      "niveau": 72,
+      "sablons": 1224,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "anima",
@@ -3935,7 +4943,16 @@
       },
       "quote": "Je suis chaque rire et chaque larme. Tout en même temps.",
       "job": "cartographe",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Âmeveil",
+      "profil": "Bâtisseur",
+      "niveau": 88,
+      "sablons": 1056,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "babel",
@@ -3970,7 +4987,16 @@
       },
       "quote": "Le mot juste au bon moment crée un univers.",
       "job": "voleur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Pyrheim",
+      "profil": "Chasseur",
+      "niveau": 93,
+      "sablons": 1432,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "eternel",
@@ -4005,7 +5031,16 @@
       },
       "quote": "J'ai vu le début. Je verrai la fin. Et après.",
       "job": "nomade",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Automate",
+      "monde": "Temporia",
+      "profil": "Chasseur",
+      "niveau": 86,
+      "sablons": 877,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "volonte",
@@ -4040,7 +5075,16 @@
       },
       "quote": "Tant qu'il reste une once de volonté, rien n'est perdu.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Spectre",
+      "monde": "Sylvandre",
+      "profil": "Tacticien",
+      "niveau": 86,
+      "sablons": 774,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "harmonia",
@@ -4075,7 +5119,16 @@
       },
       "quote": "Chaque discorde est une harmonie inachevée.",
       "job": "joaillier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Ventsouffle",
+      "profil": "Protecteur",
+      "niveau": 85,
+      "sablons": 3179,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "avatar",
@@ -4110,7 +5163,16 @@
       },
       "quote": "Aujourd'hui je suis tempête. Demain, peut-être rosée.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Floréa",
+      "profil": "Sentinelle",
+      "niveau": 95,
+      "sablons": 1330,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nexion",
@@ -4145,7 +5207,16 @@
       },
       "quote": "Coupe un fil et tout le tissu se défait.",
       "job": "berserker",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Bête-garou",
+      "monde": "Ignaris",
+      "profil": "Rebelle",
+      "niveau": 85,
+      "sablons": 1700,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ultima",
@@ -4180,7 +5251,16 @@
       },
       "quote": "Après moi, le silence.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Djinn",
+      "monde": "Cendreciel",
+      "profil": "Artisan",
+      "niveau": 90,
+      "sablons": 1080,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prime",
@@ -4215,7 +5295,16 @@
       },
       "quote": "Avant tout, il y avait moi. Un souffle. Et le monde a suivi.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Automate",
+      "monde": "Boisvert",
+      "profil": "Stratège",
+      "niveau": 92,
+      "sablons": 920,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lumin",
@@ -4250,7 +5339,16 @@
       },
       "quote": "Je ne brille pas fort. Mais je ne m'éteins jamais.",
       "job": "joaillier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Étincellis",
+      "profil": "Meneur",
+      "niveau": 10,
+      "sablons": 352,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "bramble",
@@ -4285,7 +5383,16 @@
       },
       "quote": "Touche pas. Ou touche, mais pleure pas.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Floréa",
+      "profil": "Tacticien",
+      "niveau": 15,
+      "sablons": 370,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "flicker",
@@ -4320,7 +5427,16 @@
       },
       "quote": "Je... je crois que je brûle ? Oui. Non. Peut-être.",
       "job": "necromancien",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Abyssal",
+      "monde": "Ignaris",
+      "profil": "Vagabond",
+      "niveau": 12,
+      "sablons": 240,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "moss",
@@ -4355,7 +5471,16 @@
       },
       "quote": "Tu ne m'as pas vu arriver. Normal.",
       "job": "chronomancien",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Floréa",
+      "profil": "Vagabond",
+      "niveau": 11,
+      "sablons": 198,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "clink",
@@ -4390,7 +5515,16 @@
       },
       "quote": "Encore une ! Et une autre ! Le son est magnifique.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Ferralis",
+      "profil": "Sentinelle",
+      "niveau": 7,
+      "sablons": 49,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "wisp",
@@ -4425,7 +5559,16 @@
       },
       "quote": "Suis-moi ! Ou pas. C'est drôle aussi.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Géant",
+      "monde": "Volkanis",
+      "profil": "Tacticien",
+      "niveau": 15,
+      "sablons": 300,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pebble",
@@ -4460,7 +5603,16 @@
       },
       "quote": "L'eau m'a arrondi. Les voyages aussi.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Rocheval",
+      "profil": "Gardien",
+      "niveau": 13,
+      "sablons": 104,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tinker",
@@ -4495,7 +5647,16 @@
       },
       "quote": "Ça tient ! Ça tient ! ... C'est tombé.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Éthéria",
+      "profil": "Tacticien",
+      "niveau": 1,
+      "sablons": 15,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zest",
@@ -4530,7 +5691,16 @@
       },
       "quote": "Tu dormais ? Plus maintenant.",
       "job": "oracle",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Spectre",
+      "monde": "Maelströmis",
+      "profil": "Gardien",
+      "niveau": 3,
+      "sablons": 52,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "dew",
@@ -4565,7 +5735,16 @@
       },
       "quote": "Je ne dure pas. Mais sans moi, rien ne pousse.",
       "job": "moine",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Moussterre",
+      "profil": "Artisan",
+      "niveau": 9,
+      "sablons": 90,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "rook",
@@ -4600,7 +5779,16 @@
       },
       "quote": "Croâ. Mais avec sagesse.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Ventsouffle",
+      "profil": "Gardien",
+      "niveau": 15,
+      "sablons": 270,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pip",
@@ -4635,7 +5823,16 @@
       },
       "quote": "Je suis petit. Mais tu me sentiras.",
       "job": "pirate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Orque",
+      "monde": "Chronalis",
+      "profil": "Vagabond",
+      "niveau": 2,
+      "sablons": 25,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ember",
@@ -4670,7 +5867,16 @@
       },
       "quote": "Je ne flambe pas. Je réchauffe.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Drakonide",
+      "monde": "Volkanis",
+      "profil": "Marchand",
+      "niveau": 7,
+      "sablons": 245,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "glint",
@@ -4705,7 +5911,16 @@
       },
       "quote": "Tu m'as vu ? Trop tard, je suis ailleurs.",
       "job": "mage",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Paradoxe-Cité",
+      "profil": "Bâtisseur",
+      "niveau": 11,
+      "sablons": 154,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chalk",
@@ -4740,7 +5955,16 @@
       },
       "quote": "Ça s'efface. Et alors ? Je redessine.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Quartzia",
+      "profil": "Protecteur",
+      "niveau": 6,
+      "sablons": 108,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "reed",
@@ -4775,7 +5999,16 @@
       },
       "quote": "Le chêne tombe. Le roseau chante.",
       "job": "oracle",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Astralum",
+      "profil": "Meneur",
+      "niveau": 10,
+      "sablons": 132,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nutmeg",
@@ -4810,7 +6043,16 @@
       },
       "quote": "J'ai voyagé plus loin que tu ne penses.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Volkanis",
+      "profil": "Stratège",
+      "niveau": 7,
+      "sablons": 133,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "twine",
@@ -4845,7 +6087,16 @@
       },
       "quote": "Je suis le lien. Sans moi, tout tombe.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Songemonde",
+      "profil": "Tacticien",
+      "niveau": 4,
+      "sablons": 62,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chirp",
@@ -4880,7 +6131,16 @@
       },
       "quote": "Cui cui. C'est tout. C'est assez.",
       "job": "éclaireur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Songemonde",
+      "profil": "Guérisseur",
+      "niveau": 6,
+      "sablons": 108,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "clay",
@@ -4915,7 +6175,16 @@
       },
       "quote": "Je suis ce que tu fais de moi.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Kael-Norath",
+      "profil": "Stratège",
+      "niveau": 8,
+      "sablons": 120,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nib",
@@ -4950,7 +6219,16 @@
       },
       "quote": "L'encre ne pardonne pas. Ni moi.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Ombrecœur",
+      "profil": "Stratège",
+      "niveau": 8,
+      "sablons": 88,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fizz",
@@ -4985,7 +6263,16 @@
       },
       "quote": "Pop pop pop ! La vie est une fête !",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Infinéa",
+      "profil": "Protecteur",
+      "niveau": 1,
+      "sablons": 20,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "latch",
@@ -5020,7 +6307,16 @@
       },
       "quote": "Confie-moi tes secrets. Je ne parle pas.",
       "job": "voleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Cosmion",
+      "profil": "Vagabond",
+      "niveau": 12,
+      "sablons": 201,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sprig",
@@ -5055,7 +6351,16 @@
       },
       "quote": "C'est quoi ça ? Et ça ? Et ÇA ?!",
       "job": "paladin",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Drakonide",
+      "monde": "Canopéa",
+      "profil": "Aventurier",
+      "niveau": 7,
+      "sablons": 84,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "smudge",
@@ -5090,7 +6395,16 @@
       },
       "quote": "T'as essayé de m'effacer ? Bon courage.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Confluence",
+      "profil": "Aventurier",
+      "niveau": 13,
+      "sablons": 198,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "brim",
@@ -5125,7 +6439,16 @@
       },
       "quote": "Le bord est le seul endroit où on voit des deux côtés.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Boisvert",
+      "profil": "Meneur",
+      "niveau": 5,
+      "sablons": 130,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "quillow",
@@ -5160,7 +6483,16 @@
       },
       "quote": "Pose-toi. Respire. Ça va aller.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Zéphyria",
+      "profil": "Sentinelle",
+      "niveau": 8,
+      "sablons": 152,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "spool",
@@ -5195,7 +6527,16 @@
       },
       "quote": "Tire le fil. L'histoire viendra.",
       "job": "forgeron",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Infinéa",
+      "profil": "Artisan",
+      "niveau": 3,
+      "sablons": 39,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "copper",
@@ -5230,7 +6571,16 @@
       },
       "quote": "Un sou. Puis deux. Puis un empire.",
       "job": "explorateur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Ferralis",
+      "profil": "Marchand",
+      "niveau": 10,
+      "sablons": 90,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fern",
@@ -5265,7 +6615,16 @@
       },
       "quote": "Les arbres me trouvent vieux. Ça me fait rire.",
       "job": "diplomate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Floréa",
+      "profil": "Marchand",
+      "niveau": 3,
+      "sablons": 81,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "wren",
@@ -5300,7 +6659,16 @@
       },
       "quote": "Psst. Tu savais que...?",
       "job": "archer",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Marévia",
+      "profil": "Bâtisseur",
+      "niveau": 15,
+      "sablons": 255,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "haze",
@@ -5335,7 +6703,16 @@
       },
       "quote": "Tu vois flou ? C'est parfois mieux ainsi.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Éolenne",
+      "profil": "Stratège",
+      "niveau": 3,
+      "sablons": 30,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tick",
@@ -5370,7 +6747,16 @@
       },
       "quote": "Tic. Tac. Tic. Tac. Toujours.",
       "job": "joaillier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Kael-Norath",
+      "profil": "Tacticien",
+      "niveau": 14,
+      "sablons": 338,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "froth",
@@ -5405,7 +6791,16 @@
       },
       "quote": "Je suis rien. Et c'est génial.",
       "job": "oracle",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Ondaris",
+      "profil": "Artisan",
+      "niveau": 5,
+      "sablons": 93,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sprout",
@@ -5440,7 +6835,16 @@
       },
       "quote": "Le béton ? Un petit inconvénient.",
       "job": "explorateur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Moussterre",
+      "profil": "Vagabond",
+      "niveau": 12,
+      "sablons": 151,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "flint",
@@ -5475,7 +6879,16 @@
       },
       "quote": "Frappe-moi. Je te donnerai le feu.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Basaltia",
+      "profil": "Tacticien",
+      "niveau": 4,
+      "sablons": 44,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tempera",
@@ -5510,7 +6923,16 @@
       },
       "quote": "Les couleurs s'estompent. Les miennes, jamais.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Noctéa",
+      "profil": "Meneur",
+      "niveau": 22,
+      "sablons": 440,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cortex",
@@ -5545,7 +6967,16 @@
       },
       "quote": "Une idée. Dix ramifications. Cent possibilités.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Brûleciel",
+      "profil": "Stratège",
+      "niveau": 20,
+      "sablons": 340,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cairn",
@@ -5580,7 +7011,16 @@
       },
       "quote": "Je marque le chemin. Pour ceux qui suivent.",
       "job": "diplomate",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Nain",
+      "monde": "Terragone",
+      "profil": "Rebelle",
+      "niveau": 15,
+      "sablons": 225,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "quill",
@@ -5615,7 +7055,16 @@
       },
       "quote": "La vérité fait mal ? Bien. Lis quand même.",
       "job": "moine",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Entropéa",
+      "profil": "Mystique",
+      "niveau": 13,
+      "sablons": 65,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "crucible",
@@ -5650,7 +7099,16 @@
       },
       "quote": "La transformation n'est jamais confortable.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Cielclair",
+      "profil": "Meneur",
+      "niveau": 13,
+      "sablons": 163,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "gossamer",
@@ -5685,7 +7143,16 @@
       },
       "quote": "Le fil qui nous relie est plus fort que l'acier.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Abyssal",
+      "monde": "Nexus-Prime",
+      "profil": "Stratège",
+      "niveau": 26,
+      "sablons": 364,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mortar",
@@ -5720,7 +7187,16 @@
       },
       "quote": "Je suis entre les pierres. C'est moi qui tiens tout.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Cendreciel",
+      "profil": "Marchand",
+      "niveau": 28,
+      "sablons": 156,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tide",
@@ -5755,7 +7231,16 @@
       },
       "quote": "Je reviendrai. Comme toujours.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Courantis",
+      "profil": "Tacticien",
+      "niveau": 30,
+      "sablons": 324,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "alloy",
@@ -5790,7 +7275,16 @@
       },
       "quote": "Ni l'un ni l'autre. Les deux à la fois.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Acéria",
+      "profil": "Stratège",
+      "niveau": 22,
+      "sablons": 308,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "thistle",
@@ -5825,7 +7319,16 @@
       },
       "quote": "Approche si tu oses. La récompense en vaut la peine.",
       "job": "ingenieur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Automate",
+      "monde": "Canopéa",
+      "profil": "Sentinelle",
+      "niveau": 19,
+      "sablons": 205,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "anvil",
@@ -5860,7 +7363,16 @@
       },
       "quote": "Frappe. Je ne bougerai pas.",
       "job": "tailleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Fondéon",
+      "profil": "Meneur",
+      "niveau": 35,
+      "sablons": 700,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "meridian",
@@ -5895,7 +7407,16 @@
       },
       "quote": "Tu as franchi une ligne. Tu ne l'as pas vue, mais elle est là.",
       "job": "chronomancien",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Automate",
+      "monde": "Étincellis",
+      "profil": "Mystique",
+      "niveau": 25,
+      "sablons": 500,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "canopy",
@@ -5930,7 +7451,16 @@
       },
       "quote": "Reste sous moi. Le soleil ne te brûlera pas.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Sylvandre",
+      "profil": "Gardien",
+      "niveau": 22,
+      "sablons": 316,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "patina",
@@ -5965,7 +7495,16 @@
       },
       "quote": "Le temps m'a embelli. Il le fera pour toi aussi.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Astralum",
+      "profil": "Protecteur",
+      "niveau": 23,
+      "sablons": 184,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fulcrum",
@@ -6000,7 +7539,16 @@
       },
       "quote": "Donne-moi un point d'appui et je soulèverai le monde.",
       "job": "explorateur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Piléon",
+      "profil": "Sentinelle",
+      "niveau": 23,
+      "sablons": 414,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "loam",
@@ -6035,7 +7583,16 @@
       },
       "quote": "Plante en moi. Je ferai pousser.",
       "job": "cartographe",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Nain",
+      "monde": "Kael-Norath",
+      "profil": "Aventurier",
+      "niveau": 33,
+      "sablons": 297,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "arc",
@@ -6070,7 +7627,16 @@
       },
       "quote": "Je ne finis rien. Mais quel début.",
       "job": "marchand",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Rêvélia",
+      "profil": "Gardien",
+      "niveau": 13,
+      "sablons": 487,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lignite",
@@ -6105,7 +7671,16 @@
       },
       "quote": "Je dors encore. Quand je m'éveillerai, tu le sauras.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Temporia",
+      "profil": "Sentinelle",
+      "niveau": 21,
+      "sablons": 529,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "thaw",
@@ -6140,7 +7715,16 @@
       },
       "quote": "La glace fond. Toujours. Il suffit d'attendre.",
       "job": "alchimiste",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Nain",
+      "monde": "Ère-Prime",
+      "profil": "Bâtisseur",
+      "niveau": 31,
+      "sablons": 837,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "strata",
@@ -6175,7 +7759,16 @@
       },
       "quote": "Creuse plus profond. Chaque couche a son secret.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Géant",
+      "monde": "Kael-Norath",
+      "profil": "Meneur",
+      "niveau": 33,
+      "sablons": 429,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "weld",
@@ -6210,7 +7803,16 @@
       },
       "quote": "Brisé ? Donne. Ce sera plus fort qu'avant.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Enclumis",
+      "profil": "Savant",
+      "niveau": 30,
+      "sablons": 648,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "glyph",
@@ -6245,7 +7847,16 @@
       },
       "quote": "Lis le symbole. Si tu peux.",
       "job": "moine",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Spectréa",
+      "profil": "Stratège",
+      "niveau": 12,
+      "sablons": 72,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "torrent",
@@ -6280,7 +7891,16 @@
       },
       "quote": "Écarte-toi ou suis le courant.",
       "job": "cuisinier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Abyssmar",
+      "profil": "Stratège",
+      "niveau": 23,
+      "sablons": 227,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lattice",
@@ -6315,7 +7935,16 @@
       },
       "quote": "Je suis troué partout. Et pourtant je tiens.",
       "job": "diplomate",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Humain",
+      "monde": "Solaria",
+      "profil": "Savant",
+      "niveau": 27,
+      "sablons": 405,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "brine",
@@ -6350,7 +7979,16 @@
       },
       "quote": "Je conserve. C'est tout. Mais c'est crucial.",
       "job": "explorateur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Abyssmar",
+      "profil": "Stratège",
+      "niveau": 26,
+      "sablons": 327,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "apex",
@@ -6385,7 +8023,16 @@
       },
       "quote": "C'est maintenant. Exactement maintenant. Le sommet.",
       "job": "moine",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Nexus-Prime",
+      "profil": "Aventurier",
+      "niveau": 13,
+      "sablons": 104,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "kiln",
@@ -6420,7 +8067,16 @@
       },
       "quote": "Cru, tu es fragile. Après mon feu, tu es éternel.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Cendrath",
+      "profil": "Sentinelle",
+      "niveau": 29,
+      "sablons": 261,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nimbus",
@@ -6455,7 +8111,16 @@
       },
       "quote": "L'orage arrive. Tu peux fuir ou danser.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Éolenne",
+      "profil": "Gardien",
+      "niveau": 20,
+      "sablons": 578,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prong",
@@ -6490,7 +8155,16 @@
       },
       "quote": "Gauche ou droite ? Les deux mènent quelque part.",
       "job": "mage",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Granithal",
+      "profil": "Meneur",
+      "niveau": 27,
+      "sablons": 216,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "smelt",
@@ -6525,7 +8199,16 @@
       },
       "quote": "Le feu sépare le pur de l'impur. Moi aussi.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Ossuaire",
+      "profil": "Tacticien",
+      "niveau": 25,
+      "sablons": 489,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "verge",
@@ -6560,7 +8243,16 @@
       },
       "quote": "Pas encore. Presque. Maintenant... non, pas encore.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Ventsouffle",
+      "profil": "Bâtisseur",
+      "niveau": 19,
+      "sablons": 256,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ballast",
@@ -6595,7 +8287,16 @@
       },
       "quote": "Sans moi, tout bascule. Mais personne ne me remercie.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Ère-Prime",
+      "profil": "Protecteur",
+      "niveau": 31,
+      "sablons": 372,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "relay",
@@ -6630,7 +8331,16 @@
       },
       "quote": "Je ne garde rien. Je passe tout. C'est mon rôle.",
       "job": "druide",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Étincellis",
+      "profil": "Tacticien",
+      "niveau": 22,
+      "sablons": 123,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vellum",
@@ -6665,7 +8375,16 @@
       },
       "quote": "Écris. Mais choisis bien tes mots.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Confluence",
+      "profil": "Mystique",
+      "niveau": 33,
+      "sablons": 841,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pivot",
@@ -6700,7 +8419,16 @@
       },
       "quote": "Je ne bouge pas. C'est le monde qui tourne autour de moi.",
       "job": "oracle",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Cosmion",
+      "profil": "Sentinelle",
+      "niveau": 28,
+      "sablons": 277,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "gorge",
@@ -6735,7 +8463,16 @@
       },
       "quote": "Le seul passage. Tu paies ou tu contournes.",
       "job": "moine",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Céleste",
+      "monde": "Maelströmis",
+      "profil": "Sentinelle",
+      "niveau": 13,
+      "sablons": 52,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pulse",
@@ -6770,7 +8507,16 @@
       },
       "quote": "Tant que tu m'entends, tu es vivant.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Socléa",
+      "profil": "Sentinelle",
+      "niveau": 19,
+      "sablons": 323,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "thorn",
@@ -6805,7 +8551,16 @@
       },
       "quote": "Désolé. Mais je suis une épine. C'est ce que je fais.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Boisvert",
+      "profil": "Protecteur",
+      "niveau": 30,
+      "sablons": 390,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "shoal",
@@ -6840,7 +8595,16 @@
       },
       "quote": "Tu ne me vois pas. C'est le but.",
       "job": "diplomate",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Courantis",
+      "profil": "Érudit",
+      "niveau": 26,
+      "sablons": 468,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "bracket",
@@ -6875,7 +8639,16 @@
       },
       "quote": "Enlève-moi et regarde ce qui tombe.",
       "job": "forgeron",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Ventsouffle",
+      "profil": "Guérisseur",
+      "niveau": 12,
+      "sablons": 171,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "amber",
@@ -6910,7 +8683,16 @@
       },
       "quote": "Cet instant est parfait. Je le garde.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Luménite",
+      "profil": "Sentinelle",
+      "niveau": 22,
+      "sablons": 411,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "quarry",
@@ -6945,7 +8727,16 @@
       },
       "quote": "Plus je creuse, plus je trouve.",
       "job": "diplomate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Socléa",
+      "profil": "Meneur",
+      "niveau": 21,
+      "sablons": 472,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vestige",
@@ -6980,7 +8771,16 @@
       },
       "quote": "J'étais quelque chose de grand. Maintenant je suis un souvenir.",
       "job": "necromancien",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Forgemont",
+      "profil": "Solitaire",
+      "niveau": 26,
+      "sablons": 520,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "crest",
@@ -7015,7 +8815,16 @@
       },
       "quote": "Au sommet de la vague. Juste une seconde.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Marévia",
+      "profil": "Gardien",
+      "niveau": 29,
+      "sablons": 580,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "wick",
@@ -7050,7 +8859,16 @@
       },
       "quote": "L'étincelle viendra. Je serai prêt.",
       "job": "tailleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Zénithia",
+      "profil": "Gardien",
+      "niveau": 16,
+      "sablons": 240,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "weir",
@@ -7085,7 +8903,16 @@
       },
       "quote": "Je ne bloque pas. Je régule.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Socléa",
+      "profil": "Vagabond",
+      "niveau": 18,
+      "sablons": 230,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "clinker",
@@ -7120,7 +8947,16 @@
       },
       "quote": "On me jette. Mais sans moi, le métal est faible.",
       "job": "moine",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Golem",
+      "monde": "Rocheval",
+      "profil": "Mystique",
+      "niveau": 19,
+      "sablons": 161,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vale",
@@ -7155,7 +8991,16 @@
       },
       "quote": "Trouve-moi et tu trouveras la paix.",
       "job": "mage",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Djinn",
+      "monde": "Cendreciel",
+      "profil": "Mystique",
+      "niveau": 13,
+      "sablons": 104,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "obsidian",
@@ -7190,7 +9035,16 @@
       },
       "quote": "Je coupe tout. Y compris les illusions.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Céleste",
+      "monde": "Obsidis",
+      "profil": "Bâtisseur",
+      "niveau": 35,
+      "sablons": 472,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cinnabar",
@@ -7225,7 +9079,16 @@
       },
       "quote": "Admire, mais ne touche pas.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Céleste",
+      "monde": "Forgemont",
+      "profil": "Bâtisseur",
+      "niveau": 33,
+      "sablons": 475,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "quartz",
@@ -7260,7 +9123,16 @@
       },
       "quote": "Écoute la vibration. C'est la fréquence du réel.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Granithal",
+      "profil": "Gardien",
+      "niveau": 38,
+      "sablons": 304,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tungsten",
@@ -7295,7 +9167,16 @@
       },
       "quote": "Tu n'as pas assez chaud pour me faire plier.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Ferralis",
+      "profil": "Gardien",
+      "niveau": 46,
+      "sablons": 657,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "riptide",
@@ -7330,7 +9211,16 @@
       },
       "quote": "Tu nages bien. Mais pas dans la bonne direction.",
       "job": "druide",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Piléon",
+      "profil": "Gardien",
+      "niveau": 40,
+      "sablons": 475,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "schist",
@@ -7365,7 +9255,16 @@
       },
       "quote": "Je me brise proprement. Contrairement au reste.",
       "job": "diplomate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Quartzia",
+      "profil": "Sentinelle",
+      "niveau": 33,
+      "sablons": 396,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "corona",
@@ -7400,7 +9299,16 @@
       },
       "quote": "Tu ne me vois que quand la lumière faiblit.",
       "job": "oracle",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Kael-Norath",
+      "profil": "Meneur",
+      "niveau": 39,
+      "sablons": 729,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fjord",
@@ -7435,7 +9343,16 @@
       },
       "quote": "Les glaciers m'ont creusé. La beauté naît de la violence.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Elfe",
+      "monde": "Marévia",
+      "profil": "Sage",
+      "niveau": 34,
+      "sablons": 714,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "iridium",
@@ -7470,7 +9387,16 @@
       },
       "quote": "Je ne suis pas d'ici. Et ça se voit.",
       "job": "assassin",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Acéria",
+      "profil": "Vagabond",
+      "niveau": 40,
+      "sablons": 360,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vitriol",
@@ -7505,7 +9431,16 @@
       },
       "quote": "Ça fait mal ? Normal. Tu étais couvert de mensonges.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Temporia",
+      "profil": "Meneur",
+      "niveau": 31,
+      "sablons": 310,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tundra",
@@ -7540,7 +9475,16 @@
       },
       "quote": "Ici, rien ne fond. Rien ne change. Jamais.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Volkanis",
+      "profil": "Stratège",
+      "niveau": 30,
+      "sablons": 390,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "undertow",
@@ -7575,7 +9519,16 @@
       },
       "quote": "L'eau est calme ? Parfait. C'est là que je suis.",
       "job": "barde",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Courantis",
+      "profil": "Stratège",
+      "niveau": 52,
+      "sablons": 624,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "summit",
@@ -7610,7 +9563,16 @@
       },
       "quote": "Encore un pas. Un seul. Le plus dur.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Mort-vivant",
+      "monde": "Nexus-Prime",
+      "profil": "Sentinelle",
+      "niveau": 34,
+      "sablons": 374,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vortex",
@@ -7645,7 +9607,16 @@
       },
       "quote": "Tourne avec moi. Ou sois aspiré.",
       "job": "pirate",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Orque",
+      "monde": "Paradoxe-Cité",
+      "profil": "Mystique",
+      "niveau": 35,
+      "sablons": 448,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cruciform",
@@ -7680,7 +9651,16 @@
       },
       "quote": "Quatre chemins. Un seul est le tien. Choisis bien.",
       "job": "barde",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Kael-Norath",
+      "profil": "Meneur",
+      "niveau": 46,
+      "sablons": 441,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "permafrost",
@@ -7715,7 +9695,16 @@
       },
       "quote": "Je dégèle. Et ce que je libère te fera peur.",
       "job": "forgeron",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Golem",
+      "monde": "Horizonte",
+      "profil": "Mystique",
+      "niveau": 49,
+      "sablons": 1274,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "quicksilver",
@@ -7750,7 +9739,16 @@
       },
       "quote": "Attrape-moi. Je coule entre tes doigts.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Enclumis",
+      "profil": "Protecteur",
+      "niveau": 49,
+      "sablons": 916,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "caldera",
@@ -7785,7 +9783,16 @@
       },
       "quote": "L'éruption m'a vidé. Mais regarde ce qui pousse maintenant.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Volkanis",
+      "profil": "Sentinelle",
+      "niveau": 49,
+      "sablons": 637,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tremor",
@@ -7820,7 +9827,16 @@
       },
       "quote": "Tu l'as senti ? Non ? Tant pis pour toi.",
       "job": "nomade",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Kael-Norath",
+      "profil": "Protecteur",
+      "niveau": 43,
+      "sablons": 516,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ore",
@@ -7855,7 +9871,16 @@
       },
       "quote": "Je suis sale et laid. Mais fond-moi et tu verras de l'or.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Terragone",
+      "profil": "Sentinelle",
+      "niveau": 55,
+      "sablons": 715,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "raptor",
@@ -7890,7 +9915,16 @@
       },
       "quote": "Je t'ai vu avant que tu me cherches.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Umbralis",
+      "profil": "Meneur",
+      "niveau": 46,
+      "sablons": 920,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "conduit",
@@ -7925,7 +9959,16 @@
       },
       "quote": "L'énergie passe. Je dirige.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Moussterre",
+      "profil": "Gardien",
+      "niveau": 31,
+      "sablons": 589,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "maelstrom",
@@ -7960,7 +10003,16 @@
       },
       "quote": "Tout finit par tourner vers moi.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Vortexia",
+      "profil": "Aventurier",
+      "niveau": 53,
+      "sablons": 508,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "scoria",
@@ -7995,7 +10047,16 @@
       },
       "quote": "Le feu m'a trouée. L'air m'a rendue légère.",
       "job": "marchand",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Kael-Norath",
+      "profil": "Gardien",
+      "niveau": 44,
+      "sablons": 1980,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "solstice",
@@ -8030,7 +10091,16 @@
       },
       "quote": "Profite. Après moi, l'ombre grandit.",
       "job": "necromancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Spectre",
+      "monde": "Sabléterre",
+      "profil": "Protecteur",
+      "niveau": 50,
+      "sablons": 550,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "pyre",
@@ -8065,7 +10135,16 @@
       },
       "quote": "Jette ton passé dans mes flammes. L'avenir attendra.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Cendrath",
+      "profil": "Sentinelle",
+      "niveau": 47,
+      "sablons": 752,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "bedrock",
@@ -8100,7 +10179,16 @@
       },
       "quote": "Je suis sous tout. Tu ne me vois pas. Mais tout tient sur moi.",
       "job": "chronomancien",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Djinn",
+      "monde": "Kael-Norath",
+      "profil": "Savant",
+      "niveau": 46,
+      "sablons": 368,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lithic",
@@ -8135,7 +10223,16 @@
       },
       "quote": "Avant le métal, il y avait moi.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Basaltia",
+      "profil": "Vagabond",
+      "niveau": 51,
+      "sablons": 612,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "gale",
@@ -8170,7 +10267,16 @@
       },
       "quote": "Accroche-toi. Ou envole-toi.",
       "job": "pirate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Ventsouffle",
+      "profil": "Guérisseur",
+      "niveau": 52,
+      "sablons": 1414,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "meridium",
@@ -8205,7 +10311,16 @@
       },
       "quote": "Midi. Pas d'ombre. Pas de mensonge.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Zénithia",
+      "profil": "Protecteur",
+      "niveau": 42,
+      "sablons": 420,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "singularity",
@@ -8240,7 +10355,16 @@
       },
       "quote": "Au-delà de moi, les règles n'existent plus.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Entropéa",
+      "profil": "Sentinelle",
+      "niveau": 53,
+      "sablons": 583,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "axiom",
@@ -8275,7 +10399,16 @@
       },
       "quote": "Je n'ai pas besoin d'être prouvé. Je suis.",
       "job": "voleur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Temporia",
+      "profil": "Rebelle",
+      "niveau": 65,
+      "sablons": 819,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "paradigm",
@@ -8310,7 +10443,16 @@
       },
       "quote": "J'étais la vérité. Maintenant je suis l'histoire.",
       "job": "cuisinier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Floréa",
+      "profil": "Meneur",
+      "niveau": 60,
+      "sablons": 432,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zenon",
@@ -8345,7 +10487,16 @@
       },
       "quote": "Tu ne peux pas m'atteindre. Et pourtant tu m'as déjà dépassé.",
       "job": "pirate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Paradoxe-Cité",
+      "profil": "Meneur",
+      "niveau": 72,
+      "sablons": 1497,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "lumen",
@@ -8380,7 +10531,16 @@
       },
       "quote": "La lumière n'est pas vague. Elle a un chiffre. Moi.",
       "job": "chronomancien",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Céleste",
+      "monde": "Solaria",
+      "profil": "Solitaire",
+      "niveau": 72,
+      "sablons": 1152,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "theorem",
@@ -8415,7 +10575,16 @@
       },
       "quote": "Prouve-le. Sinon, ça n'existe pas.",
       "job": "mage",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Horlogis",
+      "profil": "Gardien",
+      "niveau": 51,
+      "sablons": 969,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "catalyst_x",
@@ -8450,7 +10619,16 @@
       },
       "quote": "J'ai appuyé une fois. Le monde a changé.",
       "job": "voleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Ombrecœur",
+      "profil": "Sentinelle",
+      "niveau": 57,
+      "sablons": 1037,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "helix",
@@ -8485,7 +10663,16 @@
       },
       "quote": "Chaque spirale contient un univers.",
       "job": "guérisseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Courantis",
+      "profil": "Aventurier",
+      "niveau": 65,
+      "sablons": 994,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nexion_x",
@@ -8520,7 +10707,16 @@
       },
       "quote": "Je relie ce qui ne devrait pas être relié.",
       "job": "joaillier",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Nuéflore",
+      "profil": "Mystique",
+      "niveau": 62,
+      "sablons": 2591,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "antimatter",
@@ -8555,7 +10751,16 @@
       },
       "quote": "Ne me touche pas. Sérieusement.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Golem",
+      "monde": "Entropéa",
+      "profil": "Stratège",
+      "niveau": 57,
+      "sablons": 741,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "continuum",
@@ -8590,7 +10795,16 @@
       },
       "quote": "Je coule. Toujours. Tu ne peux que suivre.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Infinéa",
+      "profil": "Marchand",
+      "niveau": 69,
+      "sablons": 690,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prima",
@@ -8625,7 +10839,16 @@
       },
       "quote": "Tout commence par moi. Une seule note.",
       "job": "cuisinier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Âmeveil",
+      "profil": "Sentinelle",
+      "niveau": 68,
+      "sablons": 489,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fulgor",
@@ -8660,7 +10883,16 @@
       },
       "quote": "Un millième de seconde. Et tu as tout vu.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Spectréa",
+      "profil": "Protecteur",
+      "niveau": 75,
+      "sablons": 1125,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "stratum",
@@ -8695,7 +10927,16 @@
       },
       "quote": "Creuse. Plus profond. Encore. Je suis là.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Terragone",
+      "profil": "Tacticien",
+      "niveau": 64,
+      "sablons": 576,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "praxis",
@@ -8730,7 +10971,16 @@
       },
       "quote": "Penser ne suffit pas. Agir. Maintenant.",
       "job": "enchanteur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Noctéa",
+      "profil": "Chasseur",
+      "niveau": 74,
+      "sablons": 1132,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tesseract",
@@ -8765,7 +11015,16 @@
       },
       "quote": "Tu vois un cube. Je suis bien plus que ça.",
       "job": "guérisseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Sabléterre",
+      "profil": "Tacticien",
+      "niveau": 75,
+      "sablons": 742,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nova_x",
@@ -8800,7 +11059,16 @@
       },
       "quote": "Ma mort est la plus belle chose que tu verras.",
       "job": "mage",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Astralum",
+      "profil": "Sentinelle",
+      "niveau": 55,
+      "sablons": 605,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "datum",
@@ -8835,7 +11103,16 @@
       },
       "quote": "Je suis le zéro. Sans moi, les chiffres ne veulent rien dire.",
       "job": "forgeron",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Cryptéon",
+      "profil": "Rebelle",
+      "niveau": 67,
+      "sablons": 1393,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "solvent",
@@ -8870,7 +11147,16 @@
       },
       "quote": "Je dissous tout. Le problème : qui me contient ?",
       "job": "nomade",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Djinn",
+      "monde": "Socléa",
+      "profil": "Mystique",
+      "niveau": 51,
+      "sablons": 336,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vertex",
@@ -8905,7 +11191,16 @@
       },
       "quote": "Toutes les lignes mènent à moi.",
       "job": "oracle",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Céleste",
+      "monde": "Piléon",
+      "profil": "Savant",
+      "niveau": 61,
+      "sablons": 805,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "archon",
@@ -8940,7 +11235,16 @@
       },
       "quote": "Je ne règne pas. J'existe, et le monde s'ordonne.",
       "job": "tailleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Éolenne",
+      "profil": "Vagabond",
+      "niveau": 89,
+      "sablons": 1157,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "aether",
@@ -8975,7 +11279,16 @@
       },
       "quote": "Tu respires grâce à moi. Tu ne le sais pas.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Cosmion",
+      "profil": "Sentinelle",
+      "niveau": 98,
+      "sablons": 1666,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "logos",
@@ -9010,7 +11323,16 @@
       },
       "quote": "Au commencement était le mot. C'était moi.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Géant",
+      "monde": "Granithal",
+      "profil": "Meneur",
+      "niveau": 95,
+      "sablons": 760,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "void",
@@ -9045,7 +11367,16 @@
       },
       "quote": "Je suis rien. Et rien contient tout.",
       "job": "éclaireur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Cryptéon",
+      "profil": "Stratège",
+      "niveau": 99,
+      "sablons": 1188,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "aegis_prime",
@@ -9080,7 +11411,16 @@
       },
       "quote": "Derrière moi, l'éternité est en sécurité.",
       "job": "enchanteur",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Djinn",
+      "monde": "Cryptéon",
+      "profil": "Érudit",
+      "niveau": 90,
+      "sablons": 1224,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "fate",
@@ -9115,7 +11455,16 @@
       },
       "quote": "Ton fil est entre mes doigts. Il l'a toujours été.",
       "job": "voleur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Fée",
+      "monde": "Obsidis",
+      "profil": "Mystique",
+      "niveau": 87,
+      "sablons": 974,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "aurora",
@@ -9150,7 +11499,16 @@
       },
       "quote": "Avant moi, le noir. Après moi, tout le reste.",
       "job": "diplomate",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Humain",
+      "monde": "Auroris",
+      "profil": "Meneur",
+      "niveau": 86,
+      "sablons": 2064,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "terra",
@@ -9185,7 +11543,16 @@
       },
       "quote": "Vous venez tous de moi. Et vous y retournerez.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Golem",
+      "monde": "Socléa",
+      "profil": "Stratège",
+      "niveau": 89,
+      "sablons": 801,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mythos",
@@ -9220,7 +11587,16 @@
       },
       "quote": "Chaque peuple me raconte différemment. J'ai toujours raison.",
       "job": "pirate",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Bête-garou",
+      "monde": "Ère-Prime",
+      "profil": "Vagabond",
+      "niveau": 89,
+      "sablons": 2705,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ignis",
@@ -9255,7 +11631,16 @@
       },
       "quote": "Le premier feu. Tous les autres sont mes enfants.",
       "job": "chronomancien",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Drakonide",
+      "monde": "Brûleciel",
+      "profil": "Sentinelle",
+      "niveau": 89,
+      "sablons": 1602,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tempus",
@@ -9290,7 +11675,16 @@
       },
       "quote": "Tu me combats chaque jour. Tu perds chaque jour.",
       "job": "explorateur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Horlogis",
+      "profil": "Vagabond",
+      "niveau": 100,
+      "sablons": 720,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nyx",
@@ -9325,7 +11719,16 @@
       },
       "quote": "La lumière est venue après moi. Elle repartira avant moi.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Voilenoir",
+      "profil": "Guérisseur",
+      "niveau": 96,
+      "sablons": 1007,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "anchor",
@@ -9360,7 +11763,16 @@
       },
       "quote": "Le monde dérive ? Pas tant que je suis là.",
       "job": "cuisinier",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Sylvain",
+      "monde": "Terragone",
+      "profil": "Bâtisseur",
+      "niveau": 92,
+      "sablons": 828,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "synthesis",
@@ -9395,7 +11807,16 @@
       },
       "quote": "Tout ce qui s'oppose finit par s'unir. En moi.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Ondaris",
+      "profil": "Artisan",
+      "niveau": 94,
+      "sablons": 3525,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sulfur",
@@ -9430,7 +11851,16 @@
       },
       "quote": "L'odeur qui reste est la preuve que j'étais là.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Piléon",
+      "profil": "Protecteur",
+      "niveau": 52,
+      "sablons": 1040,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "prism_z",
@@ -9465,7 +11895,16 @@
       },
       "quote": "Je vois toutes tes couleurs. Même celles que tu caches.",
       "job": "diplomate",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Elfe",
+      "monde": "Ossuaire",
+      "profil": "Érudit",
+      "niveau": 47,
+      "sablons": 987,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "delta",
@@ -9500,7 +11939,16 @@
       },
       "quote": "Le fleuve finit. La mer commence. Et moi, je suis entre les deux.",
       "job": "cartographe",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Acéria",
+      "profil": "Tacticien",
+      "niveau": 46,
+      "sablons": 690,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "geode",
@@ -9535,7 +11983,16 @@
       },
       "quote": "Casse-moi. Tu seras surpris.",
       "job": "oracle",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Céleste",
+      "monde": "Piléon",
+      "profil": "Marchand",
+      "niveau": 53,
+      "sablons": 583,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zenith_x",
@@ -9570,7 +12027,16 @@
       },
       "quote": "Au-dessus du sommet. Là où personne ne vient.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Astralum",
+      "profil": "Meneur",
+      "niveau": 59,
+      "sablons": 920,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "matrix",
@@ -9605,7 +12071,16 @@
       },
       "quote": "Tu vois le monde. Je vois le code.",
       "job": "assassin",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Cosmion",
+      "profil": "Mystique",
+      "niveau": 53,
+      "sablons": 424,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "entropy_x",
@@ -9640,7 +12115,16 @@
       },
       "quote": "Tout se dégrade. Je suis la preuve finale.",
       "job": "nomade",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Djinn",
+      "monde": "Fractura",
+      "profil": "Sentinelle",
+      "niveau": 71,
+      "sablons": 426,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "resonance",
@@ -9675,7 +12159,16 @@
       },
       "quote": "Écoute. L'univers a une fréquence. C'est la mienne.",
       "job": "pirate",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Rêvélia",
+      "profil": "Gardien",
+      "niveau": 67,
+      "sablons": 1500,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cipher_z",
@@ -9710,7 +12203,16 @@
       },
       "quote": "Craque-moi. Si tu oses.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Vortexia",
+      "profil": "Bâtisseur",
+      "niveau": 62,
+      "sablons": 446,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "flux",
@@ -9745,7 +12247,16 @@
       },
       "quote": "Je suis déjà autre chose.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Géant",
+      "monde": "Obsidis",
+      "profil": "Meneur",
+      "niveau": 72,
+      "sablons": 648,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mantle",
@@ -9780,7 +12291,16 @@
       },
       "quote": "Les continents reposent sur moi. Tu le savais ?",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Acéria",
+      "profil": "Sentinelle",
+      "niveau": 18,
+      "sablons": 252,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "silt",
@@ -9815,7 +12335,16 @@
       },
       "quote": "Après la crue, je suis là. Et tout repousse.",
       "job": "voleur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Socléa",
+      "profil": "Bâtisseur",
+      "niveau": 14,
+      "sablons": 215,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "zenith_y",
@@ -9850,7 +12379,16 @@
       },
       "quote": "Je ne pousse pas. Je caresse.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Bête-garou",
+      "monde": "Nuéflore",
+      "profil": "Protecteur",
+      "niveau": 13,
+      "sablons": 143,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ripple",
@@ -9885,7 +12423,16 @@
       },
       "quote": "Un caillou. Et le lac entier m'a senti.",
       "job": "chasseur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Ondaris",
+      "profil": "Vagabond",
+      "niveau": 10,
+      "sablons": 120,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "shard",
@@ -9920,7 +12467,16 @@
       },
       "quote": "Je suis un morceau. Le reste est quelque part.",
       "job": "chronomancien",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Automate",
+      "monde": "Solaria",
+      "profil": "Stratège",
+      "niveau": 35,
+      "sablons": 665,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "beacon",
@@ -9955,7 +12511,16 @@
       },
       "quote": "Dans la tempête, cherche ma lumière.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Luménite",
+      "profil": "Meneur",
+      "niveau": 19,
+      "sablons": 266,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sediment",
@@ -9990,7 +12555,16 @@
       },
       "quote": "Chaque grain est un jour. J'en ai des millions.",
       "job": "archer",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Rocheval",
+      "profil": "Gardien",
+      "niveau": 29,
+      "sablons": 406,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "vein",
@@ -10025,7 +12599,16 @@
       },
       "quote": "Je suis là. Creuse plus profond.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Luménite",
+      "profil": "Protecteur",
+      "niveau": 43,
+      "sablons": 782,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "plinth",
@@ -10060,7 +12643,16 @@
       },
       "quote": "Regarde en bas pour une fois. C'est moi qui tiens tout.",
       "job": "diplomate",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Céleste",
+      "monde": "Rocheval",
+      "profil": "Artisan",
+      "niveau": 28,
+      "sablons": 420,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "crux",
@@ -10095,7 +12687,16 @@
       },
       "quote": "Le problème ? C'est moi. La solution aussi.",
       "job": "tailleur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Courantis",
+      "profil": "Sentinelle",
+      "niveau": 49,
+      "sablons": 980,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "nadir",
@@ -10130,7 +12731,16 @@
       },
       "quote": "Le fond. Félicitations. Maintenant, remonte.",
       "job": "explorateur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Bête-garou",
+      "monde": "Umbralis",
+      "profil": "Chasseur",
+      "niveau": 46,
+      "sablons": 331,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "helios_x",
@@ -10165,7 +12775,16 @@
       },
       "quote": "Ma lumière est noire. Elle montre ce que le jour cache.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Nain",
+      "monde": "Umbralis",
+      "profil": "Aventurier",
+      "niveau": 59,
+      "sablons": 1180,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "epoch",
@@ -10200,7 +12819,16 @@
       },
       "quote": "J'ai duré mille ans. En un battement de cœur.",
       "job": "cuisinier",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Nain",
+      "monde": "Minéralis",
+      "profil": "Stratège",
+      "niveau": 96,
+      "sablons": 864,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cosmos",
@@ -10235,7 +12863,16 @@
       },
       "quote": "Le chaos n'existe pas. Tu ne vois simplement pas le motif.",
       "job": "alchimiste",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Céleste",
+      "monde": "Cosmion",
+      "profil": "Érudit",
+      "niveau": 91,
+      "sablons": 1638,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sigil",
@@ -10270,7 +12907,16 @@
       },
       "quote": "Ne brise pas le sceau. Tu ne veux pas savoir ce qu'il retient.",
       "job": "ingenieur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Ère-Prime",
+      "profil": "Meneur",
+      "niveau": 34,
+      "sablons": 652,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "relic",
@@ -10305,7 +12951,16 @@
       },
       "quote": "On m'a oublié. Pas mon pouvoir.",
       "job": "nomade",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Étincellis",
+      "profil": "Sentinelle",
+      "niveau": 38,
+      "sablons": 250,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "miasma",
@@ -10340,7 +12995,16 @@
       },
       "quote": "Tu le sens ? Trop tard.",
       "job": "druide",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Sylvain",
+      "monde": "Umbralis",
+      "profil": "Gardien",
+      "niveau": 53,
+      "sablons": 445,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cipher_y",
@@ -10375,7 +13039,16 @@
       },
       "quote": "Lis-moi à l'envers. Tu comprendras.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Automate",
+      "monde": "Fondéon",
+      "profil": "Protecteur",
+      "niveau": 31,
+      "sablons": 613,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "obelisk",
@@ -10410,7 +13083,16 @@
       },
       "quote": "Je suis là depuis avant ta mémoire.",
       "job": "ingenieur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Nain",
+      "monde": "Temporia",
+      "profil": "Protecteur",
+      "niveau": 44,
+      "sablons": 1003,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "forge_spirit",
@@ -10445,7 +13127,16 @@
       },
       "quote": "Chaque coup de marteau, c'est moi qui guide ta main.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Fondéon",
+      "profil": "Meneur",
+      "niveau": 54,
+      "sablons": 1026,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "meridian_x",
@@ -10480,7 +13171,16 @@
       },
       "quote": "La magie coule en moi. À travers le monde.",
       "job": "assassin",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Brûleciel",
+      "profil": "Chasseur",
+      "niveau": 53,
+      "sablons": 583,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "bastion",
@@ -10515,7 +13215,16 @@
       },
       "quote": "Tout a cédé. Je suis encore là.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Méridiane",
+      "profil": "Tacticien",
+      "niveau": 34,
+      "sablons": 476,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "solaris",
@@ -10550,7 +13259,16 @@
       },
       "quote": "Je brûle pour que d'autres voient.",
       "job": "mage",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Céleste",
+      "monde": "Auroris",
+      "profil": "Stratège",
+      "niveau": 55,
+      "sablons": 880,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cobalt_y",
@@ -10585,7 +13303,16 @@
       },
       "quote": "Le métal ne ment jamais.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Forgemont",
+      "profil": "Meneur",
+      "niveau": 25,
+      "sablons": 455,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "minotaure",
@@ -10620,7 +13347,16 @@
       },
       "quote": "Le labyrinthe n'a pas de sortie. Il n'en a jamais eu.",
       "job": "guerrier",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Spectréa",
+      "profil": "Tacticien",
+      "niveau": 50,
+      "sablons": 650,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "serenade",
@@ -10655,7 +13391,16 @@
       },
       "quote": "Écoute. La musique parle quand les mots se taisent.",
       "job": "barde",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Humain",
+      "monde": "Rêvélia",
+      "profil": "Marchand",
+      "niveau": 12,
+      "sablons": 192,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "tectonique",
@@ -10690,7 +13435,16 @@
       },
       "quote": "Les montagnes se souviennent de ma colère.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Orque",
+      "monde": "Morterive",
+      "profil": "Meneur",
+      "niveau": 82,
+      "sablons": 1640,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "papyrus",
@@ -10725,7 +13479,16 @@
       },
       "quote": "Ce qui n'est pas écrit n'a jamais existé.",
       "job": "cartographe",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Nain",
+      "monde": "Carrefour-des-Mondes",
+      "profil": "Guérisseur",
+      "niveau": 4,
+      "sablons": 60,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "typhon",
@@ -10760,7 +13523,16 @@
       },
       "quote": "Je ne passe pas. J'efface.",
       "job": "assassin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Changeant",
+      "monde": "Zéphyria",
+      "profil": "Sentinelle",
+      "niveau": 70,
+      "sablons": 1120,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "opale",
@@ -10795,7 +13567,16 @@
       },
       "quote": "Tu ne vois que ce que je veux bien montrer.",
       "job": "enchanteur",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Fée",
+      "monde": "Solaria",
+      "profil": "Marchand",
+      "niveau": 18,
+      "sablons": 550,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "ragnarok",
@@ -10830,7 +13611,16 @@
       },
       "quote": "Je ne suis pas la fin. Je suis ce qui vient après.",
       "job": "necromancien",
-      "scenario": "veteran-morkar"
+      "scenario": "veteran-morkar",
+      "race": "Spectre",
+      "monde": "Limbéon",
+      "profil": "Diplomate",
+      "niveau": 93,
+      "sablons": 1674,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "borealis",
@@ -10865,7 +13655,16 @@
       },
       "quote": "Le ciel est mon seul partenaire de danse.",
       "job": "druide",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Elfe",
+      "monde": "Auroris",
+      "profil": "Guérisseur",
+      "niveau": 30,
+      "sablons": 273,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "cerbere",
@@ -10900,7 +13699,16 @@
       },
       "quote": "Trois bouches. Aucune n'a jamais dit oui.",
       "job": "paladin",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Drakonide",
+      "monde": "Pyrheim",
+      "profil": "Protecteur",
+      "niveau": 51,
+      "sablons": 816,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "mandragore",
@@ -10935,7 +13743,16 @@
       },
       "quote": "Ne me déracine pas. Tu n'es pas prêt à entendre.",
       "job": "alchimiste",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Boisvert",
+      "profil": "Stratège",
+      "niveau": 37,
+      "sablons": 1065,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "parallaxe",
@@ -10970,7 +13787,16 @@
       },
       "quote": "Vous regardez tous dans la même direction. C'est votre erreur.",
       "job": "oracle",
-      "scenario": "apprenti-morkar"
+      "scenario": "apprenti-morkar",
+      "race": "Djinn",
+      "monde": "Rocheval",
+      "profil": "Artisan",
+      "niveau": 78,
+      "sablons": 1458,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "anthracite",
@@ -11005,7 +13831,16 @@
       },
       "quote": "Je brûle encore quand tout s'est éteint.",
       "job": "forgeron",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Fondéon",
+      "profil": "Protecteur",
+      "niveau": 19,
+      "sablons": 469,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chimere_y",
@@ -11040,7 +13875,16 @@
       },
       "quote": "Je suis tout ce qui n'aurait pas dû naître.",
       "job": "chasseur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Elfe",
+      "monde": "Vortexia",
+      "profil": "Protecteur",
+      "niveau": 100,
+      "sablons": 1600,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "talisman",
@@ -11075,7 +13919,16 @@
       },
       "quote": "La chance n'existe pas. Mais moi, si.",
       "job": "marchand",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Nain",
+      "monde": "Boisvert",
+      "profil": "Marchand",
+      "niveau": 14,
+      "sablons": 595,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "absinthe",
@@ -11110,7 +13963,16 @@
       },
       "quote": "La vérité est au fond du verre. Ose boire.",
       "job": "alchimiste",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Voilenoir",
+      "profil": "Vagabond",
+      "niveau": 44,
+      "sablons": 1108,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "monolithe_y",
@@ -11145,7 +14007,16 @@
       },
       "quote": "...",
       "job": "moine",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Humain",
+      "monde": "Espritval",
+      "profil": "Solitaire",
+      "niveau": 67,
+      "sablons": 402,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "arachnea",
@@ -11180,7 +14051,16 @@
       },
       "quote": "Chaque fil mène quelque part. Surtout ceux que tu ne vois pas.",
       "job": "espion",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Humain",
+      "monde": "Chronalis",
+      "profil": "Meneur",
+      "niveau": 37,
+      "sablons": 673,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "volcan",
@@ -11215,7 +14095,16 @@
       },
       "quote": "Mon silence n'est pas la paix. C'est un avertissement.",
       "job": "berserker",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Géant",
+      "monde": "Brûleciel",
+      "profil": "Protecteur",
+      "niveau": 88,
+      "sablons": 792,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "origami",
@@ -11250,7 +14139,16 @@
       },
       "quote": "Un pli suffit pour changer la forme du monde.",
       "job": "enchanteur",
-      "scenario": "champion"
+      "scenario": "champion",
+      "race": "Fée",
+      "monde": "Âmeveil",
+      "profil": "Meneur",
+      "niveau": 26,
+      "sablons": 618,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "sextant",
@@ -11285,7 +14183,16 @@
       },
       "quote": "Les étoiles ne mentent pas. Il suffit de savoir les lire.",
       "job": "explorateur",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Elfe",
+      "monde": "Maelströmis",
+      "profil": "Solitaire",
+      "niveau": 13,
+      "sablons": 222,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "reverie",
@@ -11320,7 +14227,16 @@
       },
       "quote": "Ferme les yeux. C'est là que tout commence.",
       "job": "oracle",
-      "scenario": "lambda"
+      "scenario": "lambda",
+      "race": "Djinn",
+      "monde": "Rêvélia",
+      "profil": "Vagabond",
+      "niveau": 3,
+      "sablons": 26,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     },
     {
       "id": "chroniqueur",
@@ -11355,7 +14271,16 @@
       },
       "quote": "J'ai vu la fin. Elle ressemble beaucoup au début.",
       "job": "chronomancien",
-      "scenario": "dissident"
+      "scenario": "dissident",
+      "race": "Djinn",
+      "monde": "Sabléterre",
+      "profil": "Chasseur",
+      "niveau": 42,
+      "sablons": 546,
+      "inventaire": 6,
+      "affinite_joueur": 0,
+      "affinites_dynamiques": {},
+      "background": null
     }
   ]
 }
