@@ -1,19 +1,20 @@
 "use strict";
 
-/* ══════════ LOADING SCREEN — Sélection des 40 candidats ══════════
-   Affiche un écran de chargement de ~6 secondes pendant lequel
-   39 personas sont tirés au sort parmi les 324 selon le scénario
-   du joueur, puis lance la séquence de nuit.
-   ═══════════════════════════════════════════════════════════════ */
+/* ══════════ LOADING SCREEN — Génération des 40 candidats ══════════
+   Génère dynamiquement 39 personas (joueur = le 40e) à partir des
+   pools de quotidiens, univers et races définis dans tournament.json.
+   Chaque persona reçoit un rôle scénario, un univers unique, un nom,
+   une race aléatoire, un quotidien et une variante de stats.
+   ═══════════════════════════════════════════════════════════════════ */
 
 /* ── Distribution des 39 personas (joueur = le 40e) ──
    1  vétéran-morkar
    3  recrues (apprenti-morkar)
-   5  dissidents  — répartis aléatoirement entre les 2 groupes
-   10 isolés max  — moins les dissidents qui y sont placés
-   26 champions max — moins les dissidents qui y sont placés
-   Total = 1 + 3 + 5 + (isolés) + (champions) = 39
-   ════════════════════════════════════════════════════════════ */
+   5  dissidents (rebelle) — répartis entre champions et isolés
+   10 isolés (lambda)  — moins dissidents placés ici
+   26 champions        — moins dissidents placés ici
+   Total = 1 + 3 + 5 + isolés + champions = 39
+   ════════════════════════════════════════════════════ */
 
 var LOADING_FLAVOR_TEXTS = [
   "Les Routes Sillonnées s'activent…",
@@ -26,105 +27,167 @@ var LOADING_FLAVOR_TEXTS = [
   "Les téléportations s'enchaînent…"
 ];
 
-/**
- * Sélectionne 39 personas au hasard selon la distribution requise.
- * @param {string} playerScenario — scénario du joueur (champion, lambda, rebelle, apprenti-morkar, veteran-morkar)
- * @returns {Array} — tableau de 39 objets persona
- */
-function selectTournamentParticipants(playerScenario){
-  var allPersonas = getNonGuidePersonas();
+/* ── Palette de couleurs par classe de quotidien ── */
+var CLASS_COLORS = {
+  "Combattant":  "#e74c3c",
+  "Arcaniste":   "#9b59b6",
+  "Artisan":     "#e8a838",
+  "Social":      "#3498db",
+  "Ombre":       "#64748b",
+  "Soigneur":    "#27ae60",
+  "Survivant":   "#8b6914",
+  "Artiste":     "#e91e8b",
+  "Érudit":      "#5dade2",
+  "Labeur":      "#8b4513",
+  "Marchand":    "#d4aa42",
+  "Singulier":   "#06b6d4"
+};
 
-  // Pools par scénario
-  var pools = {
-    "veteran-morkar": [],
-    "apprenti-morkar": [],
-    "dissident": [],
-    "lambda": [],
-    "champion": []
-  };
-
-  allPersonas.forEach(function(p){
-    // Map "rebelle" → "dissident" si nécessaire
-    var sc = p.scenario === "rebelle" ? "dissident" : p.scenario;
-    if(pools[sc]) pools[sc].push(p);
-  });
-
-  // Shuffle helper
-  function shuffle(arr){
-    var a = arr.slice();
-    for(var i = a.length - 1; i > 0; i--){
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
+/* ── Shuffle helper ── */
+function _lsShuffle(arr){
+  var a = arr.slice();
+  for(var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
   }
-
-  function pickN(pool, n){
-    var shuffled = shuffle(pool);
-    return shuffled.slice(0, Math.min(n, shuffled.length));
-  }
-
-  // Quotas fixes
-  var veterans = pickN(pools["veteran-morkar"], 1);
-  var recrues  = pickN(pools["apprenti-morkar"], 3);
-  var dissidents = pickN(pools["dissident"], 5);
-
-  // Les 5 dissidents sont répartis aléatoirement entre champions et isolés
-  // (ils s'infiltrent dans ces groupes)
-  var dissidentsAsChampions = [];
-  var dissidentsAsIsolés = [];
-  shuffle(dissidents).forEach(function(d){
-    if(Math.random() < 0.5) dissidentsAsChampions.push(d);
-    else dissidentsAsIsolés.push(d);
-  });
-
-  // Slots restants : 39 - 1(vet) - 3(rec) - 5(diss) = 30
-  // isolés max = 10 - nombre de dissidents placés en isolés
-  // champions max = 26 - nombre de dissidents placés en champions
-  // Mais on a besoin de 30 au total entre isolés purs et champions purs
-  var slotsRemaining = 30;
-  var maxIsolePure = 10 - dissidentsAsIsolés.length;
-  var maxChampionPure = 26 - dissidentsAsChampions.length;
-
-  // S'assurer que les quotas sont cohérents
-  if(maxIsolePure < 0) maxIsolePure = 0;
-  if(maxChampionPure < 0) maxChampionPure = 0;
-
-  // Ajuster pour que isolePure + championPure = 30
-  var isolePure = Math.min(maxIsolePure, slotsRemaining);
-  var championPure = slotsRemaining - isolePure;
-  if(championPure > maxChampionPure){
-    championPure = maxChampionPure;
-    isolePure = slotsRemaining - championPure;
-  }
-
-  // Exclure les déjà choisis
-  var usedIds = {};
-  veterans.concat(recrues, dissidents).forEach(function(p){ usedIds[p.id] = true });
-
-  var availIso = pools["lambda"].filter(function(p){ return !usedIds[p.id] });
-  var availChamp = pools["champion"].filter(function(p){ return !usedIds[p.id] });
-
-  var isolés = pickN(availIso, isolePure);
-  var champions = pickN(availChamp, championPure);
-
-  // Résultat final : 39 personas
-  var selected = [].concat(veterans, recrues, dissidents, isolés, champions);
-
-  // Si on n'a pas assez (pool trop petit), compléter avec ce qui reste
-  if(selected.length < 39){
-    var allUsed = {};
-    selected.forEach(function(p){ allUsed[p.id] = true });
-    var remaining = allPersonas.filter(function(p){ return !allUsed[p.id] });
-    var extra = pickN(remaining, 39 - selected.length);
-    selected = selected.concat(extra);
-  }
-
-  return shuffle(selected).slice(0, 39);
+  return a;
 }
 
 /**
- * Affiche l'écran de chargement, sélectionne les 39 participants,
+ * Génère 39 personas dynamiques à partir des pools de données.
+ * @param {string} playerScenario — scénario du joueur
+ * @returns {Array} — tableau de 39 objets persona
+ */
+function selectTournamentParticipants(playerScenario){
+  var quotidiens = getTournamentQuotidiens();
+  var univers = getTournamentUnivers();
+  var races = getTournamentRaces();
+
+  if(quotidiens.length === 0 || univers.length === 0 || races.length === 0){
+    console.warn("Tournament data not loaded, cannot generate participants");
+    return [];
+  }
+
+  // ── 1. Distribuer les 39 rôles scénario ──
+  var roles = [];
+  // Exclure le rôle du joueur des quotas obligatoires
+  var playerSc = playerScenario || "lambda";
+
+  // Quotas : 1 vétéran, 3 recrues, 5 dissidents, ~10 isolés, ~20 champions
+  if(playerSc !== "veteran-morkar") roles.push("veteran-morkar");
+  var recrueCount = playerSc === "apprenti-morkar" ? 3 : 3;
+  for(var i = 0; i < recrueCount; i++) roles.push("apprenti-morkar");
+  var dissCount = playerSc === "rebelle" ? 5 : 5;
+  for(var i = 0; i < dissCount; i++) roles.push("rebelle");
+
+  // Remplir le reste avec champions et isolés
+  var remaining = 39 - roles.length;
+  var isoleCount = Math.min(10, remaining);
+  if(playerSc === "lambda") isoleCount = Math.min(9, remaining);
+  var champCount = remaining - isoleCount;
+
+  for(var i = 0; i < isoleCount; i++) roles.push("lambda");
+  for(var i = 0; i < champCount; i++) roles.push("champion");
+
+  // S'assurer qu'on a exactement 39
+  while(roles.length < 39) roles.push("champion");
+  roles = _lsShuffle(roles).slice(0, 39);
+
+  // ── 2. Assigner les 39 univers (1 univers = 1 persona, pas de doublon) ──
+  // Le joueur prend 1 des 40 univers, les 39 autres vont aux NPCs
+  var shuffledUnivers = _lsShuffle(univers).slice(0, 39);
+
+  // ── 3. Assigner les races (peuvent se répéter) ──
+  // Mélanger et piocher avec remise
+  var racePool = races.slice();
+
+  // ── 4. Assigner les quotidiens (peuvent se répéter, mais variantes différentes si même quotidien) ──
+  // Mélanger et distribuer — un même quotidien peut revenir, mais avec une variante différente
+  var shuffledQuotidiens = _lsShuffle(quotidiens);
+  var quotidienUsedVariants = {}; // track used variants per quotidien id
+
+  // ── 5. Générer les 39 personas ──
+  var generated = [];
+
+  for(var i = 0; i < 39; i++){
+    var role = roles[i];
+    var uni = shuffledUnivers[i];
+    var race = racePool[Math.floor(Math.random() * racePool.length)];
+
+    // Quotidien : distribuer cycliquement
+    var quot = shuffledQuotidiens[i % shuffledQuotidiens.length];
+
+    // Choisir une variante non utilisée pour ce quotidien
+    if(!quotidienUsedVariants[quot.id]) quotidienUsedVariants[quot.id] = [];
+    var usedV = quotidienUsedVariants[quot.id];
+    var availableVariants = [];
+    for(var v = 0; v < quot.variants.length; v++){
+      if(usedV.indexOf(v) === -1) availableVariants.push(v);
+    }
+    if(availableVariants.length === 0) availableVariants = [0, 1, 2, 3, 4]; // reset if all used
+    var variantIdx = availableVariants[Math.floor(Math.random() * availableVariants.length)];
+    usedV.push(variantIdx);
+    var stats = quot.variants[variantIdx];
+
+    // Choisir un nom aléatoire parmi les 5 de cet univers
+    var name = uni.noms[Math.floor(Math.random() * uni.noms.length)];
+
+    // Générer un ID unique
+    var personaId = "tp_" + i + "_" + quot.id;
+
+    // Titre basé sur le quotidien
+    var title = quot.name;
+
+    // Couleur basée sur la classe
+    var color = CLASS_COLORS[quot.classe] || "#c9a04a";
+
+    var persona = {
+      id: personaId,
+      name: name,
+      role: "Persona",
+      title: title,
+      avatar: "",
+      color: color,
+      difficulty: "—",
+      element: quot.classe,
+      bio: "",
+      traits: [],
+      stats: {
+        CRE: stats.CRE,
+        SAG: stats.SAG,
+        CHA: stats.CHA,
+        FOR: stats.FOR,
+        AGI: stats.AGI,
+        PER: stats.PER
+      },
+      affinities: {},
+      quote: "",
+      job: quot.id,
+      scenario: role,
+      race: race,
+      monde: uni.name,
+      profil: quot.classe,
+      niveau: 1,
+      sablons: 100,
+      inventaire: 6,
+      affinite_joueur: 0,
+      affinites_dynamiques: {},
+      background: null,
+      // Extra tournament fields
+      quotidien: quot.name,
+      quotidienClasse: quot.classe,
+      quotidienEpoque: quot.epoque,
+      variantIndex: variantIdx
+    };
+
+    generated.push(persona);
+  }
+
+  return generated;
+}
+
+/**
+ * Affiche l'écran de chargement, génère les 39 participants,
  * puis appelle onDone(selectedPersonas) quand c'est terminé.
  */
 function showLoadingScreen(playerScenario, onDone){
@@ -162,9 +225,9 @@ function showLoadingScreen(playerScenario, onDone){
   // Create 40 slot indicators placed in a circle
   var slotsEl = overlay.querySelector("#loading-slots");
   var arenaSize = 240;
-  var orbitRadius = 102; // px from center
+  var orbitRadius = 102;
   for(var i = 0; i < 40; i++){
-    var angle = (i / 40) * 2 * Math.PI - Math.PI / 2; // start from top
+    var angle = (i / 40) * 2 * Math.PI - Math.PI / 2;
     var cx = arenaSize / 2 + Math.cos(angle) * orbitRadius;
     var cy = arenaSize / 2 + Math.sin(angle) * orbitRadius;
     var dot = document.createElement("div");
@@ -186,16 +249,16 @@ function showLoadingScreen(playerScenario, onDone){
     overlay.classList.add("visible");
   });
 
-  // Select personas immediately (fast computation)
+  // Generate personas immediately
   var selected = selectTournamentParticipants(playerScenario);
 
-  // Store globally for night dialogue
+  // Store globally for night dialogue and rest of game
   window._tournamentParticipants = selected;
 
   // Animate the counter over ~6 seconds
-  var totalDuration = 6000; // ms
+  var totalDuration = 6000;
   var count = 0;
-  var totalSlots = 40; // 39 personas + 1 player
+  var totalSlots = 40;
   var interval = totalDuration / totalSlots;
 
   // Show player slot immediately
@@ -221,21 +284,19 @@ function showLoadingScreen(playerScenario, onDone){
   var flavorTimer = setInterval(showNextFlavor, 2000);
 
   // Animate persona slots one by one
-  var slotIdx = 1; // slot 0 = player, already filled
+  var slotIdx = 1;
   var slotTimer = setInterval(function(){
     if(slotIdx >= totalSlots){
       clearInterval(slotTimer);
       clearInterval(flavorTimer);
 
-      // All done — brief pause then transition
       setTimeout(function(){
         flavorEl.classList.remove("visible");
         setTimeout(function(){
-          flavorEl.textContent = "Tous les candidats sont prêts.";
+          flavorEl.textContent = "Tous les candidats sont pr\u00eats.";
           flavorEl.classList.add("visible");
         }, 200);
 
-        // Fade out after a beat
         setTimeout(function(){
           overlay.classList.add("fading-out");
           setTimeout(function(){
@@ -247,7 +308,6 @@ function showLoadingScreen(playerScenario, onDone){
       return;
     }
 
-    // Fill next dot with slight randomness in timing
     var dot = dots[slotIdx];
     if(dot){
       var persona = selected[slotIdx - 1];
