@@ -154,6 +154,20 @@
 }
 .id-name-input::placeholder { color: rgba(168,132,42,.25); }
 .id-name-input:focus { border-color: var(--gold); }
+.id-race-input {
+  width: 80%; max-width: 280px;
+  padding: 11px 18px;
+  background: rgba(14,10,6,.9);
+  border: 1px solid rgba(168,132,42,.15);
+  font-family: var(--font-heading); font-size: 13px;
+  letter-spacing: 1px; text-align: center;
+  color: var(--gold-light);
+  outline: none; transition: border-color .2s;
+  opacity: 0; animation: scFadeIn .5s ease-out .5s forwards;
+  margin-top: 4px;
+}
+.id-race-input::placeholder { color: rgba(168,132,42,.2); font-size: 12px; }
+.id-race-input:focus { border-color: var(--gold); }
 .id-confirm-btn {
   margin-top: 20px; padding: 14px 44px;
   background: rgba(168,132,42,.06);
