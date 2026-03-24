@@ -78,7 +78,14 @@ function getPersonaById(id){
 }
 function getTournamentQuotidiens(){ return (tournamentData && tournamentData.quotidiens) || [] }
 function getTournamentUnivers(){ return (tournamentData && tournamentData.univers) || [] }
-function getTournamentRaces(){ return (tournamentData && tournamentData.races) || [] }
+function getRaceObjects(){ return (tournamentData && tournamentData.races) || [] }
+function getTournamentRaces(){
+  // Backward compat: return array of race name strings
+  var objs = getRaceObjects();
+  if(objs.length === 0) return [];
+  if(typeof objs[0] === "string") return objs;
+  return objs.map(function(r){ return r.name });
+}
 
 /* USER */
 var USER_KEYS = {
