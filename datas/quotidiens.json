@@ -7,7 +7,8 @@
       "epoque": "Antiquité",
       "desc": "Combattant d'arène forçant chaque jour pour survivre aux jeux. La foule scande ton nom, mais c'est ta lame qui parle.",
       "bonus": {"FOR": 10, "AGI": 5},
-      "malus": {"CRE": -5, "SAG": -5}
+      "malus": {"CRE": -5, "SAG": -5},
+      "capacites": ["Combat rapproché à l'arme blanche", "Esquive instinctive en arène", "Galvaniser la foule pour regagner de l'énergie", "Résistance à la douleur physique"]
     },
     {
       "id": "soldat-tranchees",
@@ -16,7 +17,8 @@
       "epoque": "Guerres mondiales",
       "desc": "Des mois sous la boue et le feu. Tu as appris à voir venir la mort et à tenir debout quand tout s'effondre.",
       "bonus": {"FOR": 8, "PER": 8},
-      "malus": {"CRE": -5, "CHA": -5}
+      "malus": {"CRE": -5, "CHA": -5},
+      "capacites": ["Tir de suppression et couverture", "Creuser et fortifier une position en urgence", "Résistance au stress post-traumatique", "Survie en terrain boueux et dévasté"]
     },
     {
       "id": "pilote-mecha",
@@ -25,7 +27,8 @@
       "epoque": "Futuriste",
       "desc": "Branché sur ta machine de guerre, tes réflexes ne font qu'un avec l'acier. Le cockpit est ton sanctuaire.",
       "bonus": {"AGI": 10, "PER": 8},
-      "malus": {"CHA": -3, "FOR": -3}
+      "malus": {"CHA": -3, "FOR": -3},
+      "capacites": ["Pilotage de véhicules lourds et exosquelettes", "Interface neurale avec les machines", "Tir de précision assisté par ordinateur", "Réparation d'urgence en plein combat"]
     },
     {
       "id": "chasseur-mammouth",
@@ -34,7 +37,8 @@
       "epoque": "Préhistoire",
       "desc": "Traquer des bêtes colossales avec des outils de pierre. Chaque chasse est une question de vie ou de mort.",
       "bonus": {"FOR": 12, "PER": 8, "AGI": 5},
-      "malus": {"CHA": -8, "CRE": -5}
+      "malus": {"CHA": -8, "CRE": -5},
+      "capacites": ["Pistage de créatures massives", "Lancer de javelot à longue portée", "Coordination de chasse en groupe", "Dépeçage et utilisation de chaque partie de la proie"]
     },
     {
       "id": "necromancien",
@@ -43,7 +47,8 @@
       "epoque": "Fantasy sombre",
       "desc": "Tu converses avec les morts et puises dans les énergies interdites. Ton savoir est immense, mais il a un prix.",
       "bonus": {"CRE": 10, "SAG": 8},
-      "malus": {"FOR": -8, "AGI": -5, "CHA": -5}
+      "malus": {"FOR": -8, "AGI": -5, "CHA": -5},
+      "capacites": ["Invocation et contrôle des morts-vivants", "Drain d'énergie vitale", "Lecture des ossements et divination macabre", "Résistance aux malédictions"]
     },
     {
       "id": "hacker-neuromancien",
@@ -52,7 +57,8 @@
       "epoque": "Cyberpunk",
       "desc": "Plongé dans le cyberespace, tu décodes les systèmes les plus protégés. La réalité virtuelle est ton terrain de jeu.",
       "bonus": {"CRE": 10, "PER": 5},
-      "malus": {"FOR": -8, "CHA": -3}
+      "malus": {"FOR": -8, "CHA": -3},
+      "capacites": ["Intrusion dans les systèmes informatiques protégés", "Navigation dans le cyberespace", "Création de virus et contre-mesures numériques", "Extraction de données cryptées"]
     },
     {
       "id": "pretre-astronome",
@@ -61,7 +67,8 @@
       "epoque": "Antiquité",
       "desc": "Tu lis les étoiles et interprètes les signes célestes. Ton temple est un observatoire, ton culte est la connaissance.",
       "bonus": {"SAG": 10, "PER": 8, "CRE": 5},
-      "malus": {"FOR": -8, "AGI": -5}
+      "malus": {"FOR": -8, "AGI": -5},
+      "capacites": ["Lecture des astres et prédictions célestes", "Rituels de bénédiction et purification", "Calculs astronomiques complexes", "Méditation transcendantale"]
     },
     {
       "id": "forgeron",
@@ -70,7 +77,8 @@
       "epoque": "Médiéval",
       "desc": "Le marteau et l'enclume sont tes compagnons. Tu transformes le métal brut en œuvres de guerre et de beauté.",
       "bonus": {"FOR": 10, "CRE": 5},
-      "malus": {"CHA": -5, "PER": -3}
+      "malus": {"CHA": -5, "PER": -3},
+      "capacites": ["Forge d'armes et armures de qualité", "Évaluation instantanée des métaux et alliages", "Réparation d'équipement sur le terrain", "Trempe et enchantement des lames"]
     },
     {
       "id": "ingenieur-vapeur",
@@ -79,7 +87,8 @@
       "epoque": "Industriel / Steampunk",
       "desc": "Tu conçois des machines à vapeur impossibles. Entre engrenages et chaudières, ton génie mécanique n'a pas de limites.",
       "bonus": {"CRE": 8, "SAG": 5},
-      "malus": {"CHA": -3, "AGI": -3}
+      "malus": {"CHA": -3, "AGI": -3},
+      "capacites": ["Conception de machines à vapeur", "Réparation de mécanismes complexes", "Improvisation d'engins avec des pièces de fortune", "Maîtrise de la pression et de la thermodynamique"]
     },
     {
       "id": "tailleur-silex",
@@ -88,7 +97,8 @@
       "epoque": "Préhistoire",
       "desc": "Chaque éclat de pierre est un outil, une arme, un espoir. Tu façonnes la survie de ta tribu à mains nues.",
       "bonus": {"CRE": 8, "FOR": 5},
-      "malus": {"CHA": -8}
+      "malus": {"CHA": -8},
+      "capacites": ["Taille d'outils en pierre avec précision", "Création de pièges rudimentaires", "Allumage de feu par friction", "Fabrication d'armes improvisées"]
     },
     {
       "id": "imprimeur-3d-bio",
@@ -97,7 +107,8 @@
       "epoque": "Futuriste",
       "desc": "Tu imprimes des organes, des tissus, des formes de vie. La biologie est ton matériau et l'innovation ton quotidien.",
       "bonus": {"CRE": 10, "SAG": 8},
-      "malus": {"FOR": -8, "CHA": -3}
+      "malus": {"FOR": -8, "CHA": -3},
+      "capacites": ["Bio-impression d'organes et de tissus", "Programmation génétique de base", "Diagnostic médical par analyse cellulaire", "Création de prothèses bio-compatibles"]
     },
     {
       "id": "diplomate-interstellaire",
@@ -106,7 +117,8 @@
       "epoque": "Futuriste",
       "desc": "Tu négocies entre des civilisations qui ne partagent ni langue ni logique. Chaque mot peut déclencher la paix ou la guerre.",
       "bonus": {"CHA": 12, "SAG": 5, "PER": 5},
-      "malus": {"FOR": -8, "AGI": -5}
+      "malus": {"FOR": -8, "AGI": -5},
+      "capacites": ["Négociation multi-espèces", "Traduction linguistique intuitive", "Détection des mensonges par micro-expressions", "Rédaction de traités et accords complexes"]
     },
     {
       "id": "courtisan",
@@ -115,7 +127,8 @@
       "epoque": "Renaissance",
       "desc": "Dans les couloirs du palais, chaque sourire est un calcul. Tu excelles dans l'art de la séduction politique.",
       "bonus": {"CHA": 10, "PER": 5},
-      "malus": {"FOR": -8}
+      "malus": {"FOR": -8},
+      "capacites": ["Manipulation par la flatterie et le charme", "Espionnage politique et écoute clandestine", "Maîtrise de l'étiquette et du protocole", "Création d'alliances secrètes"]
     },
     {
       "id": "influenceur",
@@ -124,7 +137,8 @@
       "epoque": "Contemporain",
       "desc": "Des millions te suivent, chaque post est un événement. Tu maîtrises l'image comme d'autres manient l'épée.",
       "bonus": {"CHA": 12, "CRE": 8},
-      "malus": {"FOR": -8, "SAG": -5}
+      "malus": {"FOR": -8, "SAG": -5},
+      "capacites": ["Manipulation de l'opinion publique", "Création de contenu viral", "Gestion de crise médiatique", "Construction d'un réseau de contacts influents"]
     },
     {
       "id": "assassin-guilde",
@@ -133,7 +147,8 @@
       "epoque": "Médiéval / Fantasy",
       "desc": "Tu tues proprement, silencieusement, sur commande. La guilde est ta famille, les ombres sont ton foyer.",
       "bonus": {"AGI": 10, "PER": 8},
-      "malus": {"CHA": -8, "FOR": -5}
+      "malus": {"CHA": -8, "FOR": -5},
+      "capacites": ["Assassinat silencieux et discret", "Maîtrise des poisons et antidotes", "Escalade et infiltration de bâtiments", "Disparition dans la foule"]
     },
     {
       "id": "agent-secret",
@@ -142,7 +157,8 @@
       "epoque": "Guerre froide / Moderne",
       "desc": "Identités multiples, missions classifiées. Tu vis dans le mensonge pour servir une vérité que personne ne connaît.",
       "bonus": {"PER": 8, "AGI": 8, "CHA": 5},
-      "malus": {"FOR": -5}
+      "malus": {"FOR": -5},
+      "capacites": ["Adoption d'identités multiples crédibles", "Crochetage et désamorçage d'alarmes", "Interrogatoire et contre-interrogatoire", "Extraction sous couverture"]
     },
     {
       "id": "pirate-spatial",
@@ -151,7 +167,8 @@
       "epoque": "Futuriste / Space Opera",
       "desc": "Tu écumes les routes stellaires à bord de ton vaisseau. Pillage, liberté et danger sont ton pain quotidien.",
       "bonus": {"AGI": 8, "PER": 5},
-      "malus": {"SAG": -3}
+      "malus": {"SAG": -3},
+      "capacites": ["Abordage de vaisseaux en mouvement", "Navigation stellaire et calcul de sauts", "Contrebande et marché noir galactique", "Combat en apesanteur"]
     },
     {
       "id": "chaman-tribal",
@@ -160,7 +177,8 @@
       "epoque": "Préhistoire / Tribal",
       "desc": "Tu communiques avec les esprits et soignes par les plantes et les rituels. Ta tribu dépend de tes visions.",
       "bonus": {"SAG": 10, "PER": 5, "CRE": 5},
-      "malus": {"FOR": -5, "AGI": -5}
+      "malus": {"FOR": -5, "AGI": -5},
+      "capacites": ["Guérison par les plantes et rituels", "Communication avec les esprits de la nature", "Transe divinatoire et visions prophétiques", "Préparation de potions et cataplasmes"]
     },
     {
       "id": "chirurgien-campagne",
@@ -169,7 +187,8 @@
       "epoque": "Guerres / XIXe",
       "desc": "Tu opères sous les bombes avec des outils rudimentaires. Chaque vie sauvée est un miracle arraché au chaos.",
       "bonus": {"SAG": 8, "PER": 8},
-      "malus": {"CHA": -3, "CRE": -3}
+      "malus": {"CHA": -3, "CRE": -3},
+      "capacites": ["Chirurgie d'urgence avec outils limités", "Triage rapide des blessés", "Résistance émotionnelle face à la mort", "Amputation et cautérisation de terrain"]
     },
     {
       "id": "nano-medecin",
@@ -178,7 +197,8 @@
       "epoque": "Futuriste",
       "desc": "Tu pilotes des nano-robots à travers le corps humain. La médecine est devenue une science de l'invisible.",
       "bonus": {"SAG": 10, "PER": 8},
-      "malus": {"FOR": -8, "CHA": -3}
+      "malus": {"FOR": -8, "CHA": -3},
+      "capacites": ["Pilotage de nano-robots chirurgicaux", "Diagnostic par imagerie interne temps réel", "Traitement ciblé des maladies au niveau cellulaire", "Programmation de nano-essaims thérapeutiques"]
     },
     {
       "id": "cueilleur-nomade",
@@ -187,7 +207,8 @@
       "epoque": "Préhistoire",
       "desc": "Tu suis les saisons et les troupeaux. Chaque jour est une quête de nourriture, guidée par l'instinct et l'observation.",
       "bonus": {"PER": 10, "AGI": 8},
-      "malus": {"CHA": -8, "CRE": -3}
+      "malus": {"CHA": -8, "CRE": -3},
+      "capacites": ["Identification des plantes comestibles et toxiques", "Lecture des signes météorologiques", "Déplacement silencieux en milieu naturel", "Construction d'abris temporaires"]
     },
     {
       "id": "trappeur-colonial",
@@ -196,7 +217,8 @@
       "epoque": "XVIIe-XVIIIe siècle",
       "desc": "Seul dans les terres sauvages, tu poses des pièges et lis les traces. La nature est ton alliée et ton adversaire.",
       "bonus": {"PER": 10, "AGI": 5, "FOR": 3},
-      "malus": {"CHA": -5, "CRE": -3}
+      "malus": {"CHA": -5, "CRE": -3},
+      "capacites": ["Pose et relevé de pièges complexes", "Pistage d'animaux sur de longues distances", "Tannage et préparation des peaux", "Survie autonome en milieu sauvage prolongé"]
     },
     {
       "id": "scavenger-post-apo",
@@ -205,7 +227,8 @@
       "epoque": "Post-apocalyptique",
       "desc": "Dans les ruines du monde d'avant, tu fouilles, recycles et improvises. Chaque déchet peut devenir une arme ou un outil.",
       "bonus": {"PER": 8, "AGI": 8, "CRE": 5},
-      "malus": {"CHA": -8}
+      "malus": {"CHA": -8},
+      "capacites": ["Recyclage et réparation d'objets en ruine", "Détection des zones irradiées ou dangereuses", "Troc et négociation de survie", "Fabrication d'armes et outils de fortune"]
     },
     {
       "id": "barde-itinerant",
@@ -214,7 +237,8 @@
       "epoque": "Médiéval",
       "desc": "Tu chantes les légendes d'un village à l'autre. Ta voix est ton arme, ton luth est ton bouclier.",
       "bonus": {"CRE": 10, "CHA": 8},
-      "malus": {"FOR": -8, "SAG": -3}
+      "malus": {"FOR": -8, "SAG": -3},
+      "capacites": ["Chant envoûtant influençant les émotions", "Connaissance des légendes et histoires locales", "Jeu d'instrument inspirant le courage ou la peur", "Improvisation poétique pour désamorcer les conflits"]
     },
     {
       "id": "peintre-cour",
@@ -223,7 +247,8 @@
       "epoque": "Renaissance",
       "desc": "Tu immortalises les puissants sur la toile. Ton pinceau capture l'âme autant que le visage.",
       "bonus": {"CRE": 12, "PER": 5},
-      "malus": {"FOR": -8}
+      "malus": {"FOR": -8},
+      "capacites": ["Portrait fidèle révélant la personnalité du sujet", "Mélange de pigments rares et précieux", "Observation minutieuse des détails et imperfections", "Encodage de messages secrets dans les œuvres"]
     },
     {
       "id": "artiste-holographique",
@@ -232,7 +257,8 @@
       "epoque": "Futuriste",
       "desc": "Tu sculptes la lumière et le son en temps réel. Tes créations holographiques transforment l'espace lui-même.",
       "bonus": {"CRE": 12, "CHA": 5},
-      "malus": {"FOR": -8, "SAG": -3}
+      "malus": {"FOR": -8, "SAG": -3},
+      "capacites": ["Sculpture holographique en temps réel", "Manipulation de la lumière et du son", "Création d'environnements immersifs", "Piratage visuel par illusions holographiques"]
     },
     {
       "id": "philosophe-antique",
@@ -241,7 +267,8 @@
       "epoque": "Antiquité",
       "desc": "Tu questionnes l'existence sous les colonnes de marbre. Tes dialogues éclairent les esprits et ébranlent les certitudes.",
       "bonus": {"SAG": 12, "CRE": 5, "CHA": 5},
-      "malus": {"FOR": -8, "AGI": -8}
+      "malus": {"FOR": -8, "AGI": -8},
+      "capacites": ["Argumentation rhétorique imparable", "Analyse logique des situations complexes", "Enseignement et transmission du savoir", "Questionnement socratique déstabilisant l'adversaire"]
     },
     {
       "id": "moine-copiste",
@@ -250,7 +277,8 @@
       "epoque": "Médiéval",
       "desc": "Dans le silence du scriptorium, tu recopies le savoir du monde. Chaque page est un rempart contre l'oubli.",
       "bonus": {"SAG": 10, "PER": 8},
-      "malus": {"FOR": -8, "CHA": -5}
+      "malus": {"FOR": -8, "CHA": -5},
+      "capacites": ["Calligraphie et enluminure de manuscrits", "Mémorisation de textes entiers", "Déchiffrage de langues anciennes et codées", "Patience et concentration absolues"]
     },
     {
       "id": "data-scientist",
@@ -259,7 +287,8 @@
       "epoque": "Contemporain",
       "desc": "Tu transformes des océans de données en vérités cachées. Les algorithmes sont ton langage maternel.",
       "bonus": {"SAG": 10, "PER": 8},
-      "malus": {"FOR": -8, "AGI": -5}
+      "malus": {"FOR": -8, "AGI": -5},
+      "capacites": ["Analyse de données massives en temps réel", "Modélisation prédictive et statistique", "Détection de patterns invisibles à l'œil nu", "Programmation d'algorithmes d'intelligence artificielle"]
     },
     {
       "id": "esclave-carrieres",
@@ -268,7 +297,8 @@
       "epoque": "Antiquité",
       "desc": "Tu brises la roche sous le fouet du soleil et des maîtres. Ton corps est forgé dans la souffrance et l'endurance.",
       "bonus": {"FOR": 12},
-      "malus": {"CRE": -8, "CHA": -8, "SAG": -3}
+      "malus": {"CRE": -8, "CHA": -8, "SAG": -3},
+      "capacites": ["Endurance physique surhumaine", "Résistance à la douleur prolongée", "Extraction de matériaux avec des outils rudimentaires", "Solidarité et entraide silencieuse entre opprimés"]
     },
     {
       "id": "ouvrier-usine",
@@ -277,7 +307,8 @@
       "epoque": "Industriel XIXe",
       "desc": "Douze heures par jour devant les machines. La cadence est ton rythme, la fatigue ton compagnon constant.",
       "bonus": {"FOR": 8},
-      "malus": {"CRE": -8, "CHA": -5}
+      "malus": {"CRE": -8, "CHA": -5},
+      "capacites": ["Travail répétitif sans perte de qualité", "Résistance au bruit et aux conditions insalubres", "Maintenance de machines industrielles", "Organisation syndicale et solidarité ouvrière"]
     },
     {
       "id": "livreur-drone",
@@ -286,7 +317,8 @@
       "epoque": "Contemporain / Proche futur",
       "desc": "Tu pilotes des essaims de drones à travers les mégapoles. Rapidité et précision sont tes seuls indicateurs.",
       "bonus": {"AGI": 5, "PER": 5},
-      "malus": {"CRE": -3, "CHA": -3}
+      "malus": {"CRE": -3, "CHA": -3},
+      "capacites": ["Pilotage simultané de plusieurs drones", "Navigation urbaine à haute vitesse", "Optimisation de trajets en temps réel", "Réparation rapide de drones en vol"]
     },
     {
       "id": "marchand-soie",
@@ -295,7 +327,8 @@
       "epoque": "Route de la Soie / Antique",
       "desc": "Tu parcours les routes commerciales avec tes caravanes. Chaque transaction est un art, chaque rencontre un risque.",
       "bonus": {"CHA": 10, "SAG": 5, "PER": 5},
-      "malus": {"FOR": -5, "AGI": -3}
+      "malus": {"FOR": -5, "AGI": -3},
+      "capacites": ["Évaluation instantanée de la valeur des marchandises", "Négociation commerciale multilingue", "Cartographie des routes commerciales", "Détection des contrefaçons et arnaques"]
     },
     {
       "id": "contrebandier",
@@ -304,7 +337,8 @@
       "epoque": "Années 1920",
       "desc": "Tu fais passer l'interdit sous le nez des autorités. Les speakeasies sont tes bureaux, la nuit est ton alliée.",
       "bonus": {"CHA": 8, "AGI": 5},
-      "malus": {"SAG": -3}
+      "malus": {"SAG": -3},
+      "capacites": ["Dissimulation de marchandises illicites", "Corruption et persuasion des autorités", "Connaissance des passages secrets et routes clandestines", "Évasion rapide en cas de descente policière"]
     },
     {
       "id": "trader-galactique",
@@ -313,7 +347,8 @@
       "epoque": "Futuriste / Space Opera",
       "desc": "Tu spécules sur les ressources de systèmes entiers. Un bon deal peut enrichir une planète ou en ruiner une autre.",
       "bonus": {"CHA": 8, "SAG": 5, "PER": 5},
-      "malus": {"FOR": -8}
+      "malus": {"FOR": -8},
+      "capacites": ["Spéculation sur les marchés interplanétaires", "Lecture des tendances économiques galactiques", "Négociation avec des espèces non-humaines", "Gestion de flotte commerciale"]
     },
     {
       "id": "tisserand-brume",
@@ -322,7 +357,8 @@
       "epoque": "Fantasy / Onirique",
       "desc": "Tu tisses les brumes du matin en étoffes oniriques. Ton art est insaisissable, à la frontière du rêve et du réel.",
       "bonus": {"CRE": 10, "SAG": 5},
-      "malus": {"FOR": -8}
+      "malus": {"FOR": -8},
+      "capacites": ["Tissage de brume en étoffes tangibles", "Création de voiles de camouflage onirique", "Manipulation des courants brumeux", "Lecture des présages dans les brumes du matin"]
     },
     {
       "id": "gouteur-reves",
@@ -331,7 +367,8 @@
       "epoque": "Surréaliste",
       "desc": "Tu goûtes les rêves des autres pour en extraire des saveurs impossibles. Chaque nuit est un festin sensoriel.",
       "bonus": {"CRE": 12, "PER": 8, "SAG": 5},
-      "malus": {"FOR": -8, "AGI": -8}
+      "malus": {"FOR": -8, "AGI": -8},
+      "capacites": ["Extraction de saveurs impossibles des rêves", "Détection des cauchemars et rêves empoisonnés", "Création de potions oniriques aux effets variés", "Navigation dans les rêves d'autrui"]
     },
     {
       "id": "dompteur-tempetes",
@@ -340,7 +377,8 @@
       "epoque": "Mythologique",
       "desc": "Tu domptes les ouragans et chevauches la foudre. Les éléments déchaînés obéissent à ta volonté indomptable.",
       "bonus": {"PER": 8, "CHA": 5, "CRE": 5},
-      "malus": {"SAG": -3}
+      "malus": {"SAG": -3},
+      "capacites": ["Invocation et contrôle des vents et orages", "Chevauchée de la foudre pour se déplacer", "Création de barrières climatiques protectrices", "Lecture météorologique instinctive et infaillible"]
     },
     {
       "id": "archiviste-murmures",
@@ -349,7 +387,8 @@
       "epoque": "Intemporel",
       "desc": "Tu catalogues les secrets chuchotés à travers les âges. Chaque murmure oublié trouve sa place dans tes archives infinies.",
       "bonus": {"PER": 12, "SAG": 10},
-      "malus": {"FOR": -8, "AGI": -5, "CHA": -3}
+      "malus": {"FOR": -8, "AGI": -5, "CHA": -3},
+      "capacites": ["Capture et catalogage des secrets chuchotés", "Écoute des murmures à travers les murs et le temps", "Restitution fidèle de conversations oubliées", "Protection des archives contre l'effacement"]
     },
     {
       "id": "navigateur-neant",
@@ -358,7 +397,8 @@
       "epoque": "Cosmique",
       "desc": "Tu navigues dans le vide entre les dimensions. Là où d'autres voient le néant, tu traces des routes impossibles.",
       "bonus": {"PER": 10, "SAG": 8, "AGI": 5},
-      "malus": {"FOR": -8, "CHA": -5}
+      "malus": {"FOR": -8, "CHA": -5},
+      "capacites": ["Navigation entre les dimensions et le vide", "Résistance au vertige existentiel du néant", "Cartographie des routes interdimensionnelles", "Ouverture de passages éphémères entre les mondes"]
     }
   ]
 }
