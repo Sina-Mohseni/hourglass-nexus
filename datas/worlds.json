@@ -1,0 +1,284 @@
+{
+  "univers": [
+    {
+      "id": "astralum",
+      "name": "Astralum",
+      "noms": [
+        "Astriel Voss"
+      ]
+    },
+    {
+      "id": "auroris",
+      "name": "Auroris",
+      "noms": [
+        "Daëlys Khor"
+      ]
+    },
+    {
+      "id": "cendreciel",
+      "name": "Cendreciel",
+      "noms": [
+        "Brakk Ironfel"
+      ]
+    },
+    {
+      "id": "chronalis",
+      "name": "Chronalis",
+      "noms": [
+        "Temrik Haal"
+      ]
+    },
+    {
+      "id": "cosmion",
+      "name": "Cosmion",
+      "noms": [
+        "Novara Zynn"
+      ]
+    },
+    {
+      "id": "crypteon",
+      "name": "Cryptéon",
+      "noms": [
+        "Skaern Ombris"
+      ]
+    },
+    {
+      "id": "enclumis",
+      "name": "Enclumis",
+      "noms": [
+        "Forgan Martz"
+      ]
+    },
+    {
+      "id": "ferralis",
+      "name": "Ferralis",
+      "noms": [
+        "Keldra Vahn"
+      ]
+    },
+    {
+      "id": "florea",
+      "name": "Floréa",
+      "noms": [
+        "Lioren Pétale"
+      ]
+    },
+    {
+      "id": "fondeon",
+      "name": "Fondéon",
+      "noms": [
+        "Gryndel Rok"
+      ]
+    },
+    {
+      "id": "forgemont",
+      "name": "Forgemont",
+      "noms": [
+        "Vulka Brennis"
+      ]
+    },
+    {
+      "id": "fractura",
+      "name": "Fractura",
+      "noms": [
+        "Zikael Fiss"
+      ]
+    },
+    {
+      "id": "horizonte",
+      "name": "Horizonte",
+      "noms": [
+        "Maëlen Dusk"
+      ]
+    },
+    {
+      "id": "ignaris",
+      "name": "Ignaris",
+      "noms": [
+        "Pyra Shenn"
+      ]
+    },
+    {
+      "id": "infinea",
+      "name": "Infinéa",
+      "noms": [
+        "Éternia Loom"
+      ]
+    },
+    {
+      "id": "lumineth",
+      "name": "Lumineth",
+      "noms": [
+        "Solwen Lux"
+      ]
+    },
+    {
+      "id": "maelstromis",
+      "name": "Maelströmis",
+      "noms": [
+        "Torvak Wael"
+      ]
+    },
+    {
+      "id": "marevia",
+      "name": "Marévia",
+      "noms": [
+        "Ondine Thal"
+      ]
+    },
+    {
+      "id": "mineralis",
+      "name": "Minéralis",
+      "noms": [
+        "Quartzan Depp"
+      ]
+    },
+    {
+      "id": "noctea",
+      "name": "Noctéa",
+      "noms": [
+        "Umbrel Nyx"
+      ]
+    },
+    {
+      "id": "obsidis",
+      "name": "Obsidis",
+      "noms": [
+        "Korryn Valt"
+      ]
+    },
+    {
+      "id": "ondaris",
+      "name": "Ondaris",
+      "noms": [
+        "Naëris Flux"
+      ]
+    },
+    {
+      "id": "pyrheim",
+      "name": "Pyrheim",
+      "noms": [
+        "Askarn Brüll"
+      ]
+    },
+    {
+      "id": "revelia",
+      "name": "Rêvélia",
+      "noms": [
+        "Sonael Mirë"
+      ]
+    },
+    {
+      "id": "sableterre",
+      "name": "Sabléterre",
+      "noms": [
+        "Djemba Sahar"
+      ]
+    },
+    {
+      "id": "solaria",
+      "name": "Solaria",
+      "noms": [
+        "Héliax Donn"
+      ]
+    },
+    {
+      "id": "songemonde",
+      "name": "Songemonde",
+      "noms": [
+        "Rêvan Osse"
+      ]
+    },
+    {
+      "id": "spectrea",
+      "name": "Spectréa",
+      "noms": [
+        "Fantiel Gris"
+      ]
+    },
+    {
+      "id": "sylvandre",
+      "name": "Sylvandre",
+      "noms": [
+        "Ëlwynn Fael"
+      ]
+    },
+    {
+      "id": "temporia",
+      "name": "Temporia",
+      "noms": [
+        "Kronnel Aïk"
+      ]
+    },
+    {
+      "id": "terragone",
+      "name": "Terragone",
+      "noms": [
+        "Tharra Mond"
+      ]
+    },
+    {
+      "id": "umbralis",
+      "name": "Umbralis",
+      "noms": [
+        "Nyvek Shäd"
+      ]
+    },
+    {
+      "id": "volkanis",
+      "name": "Volkanis",
+      "noms": [
+        "Magmel Torr"
+      ]
+    },
+    {
+      "id": "vortexia",
+      "name": "Vortexia",
+      "noms": [
+        "Spiryn Kael"
+      ]
+    },
+    {
+      "id": "zenithia",
+      "name": "Zénithia",
+      "noms": [
+        "Aethon Zar"
+      ]
+    },
+    {
+      "id": "abyssmar",
+      "name": "Abyssmar",
+      "noms": [
+        "Krellen Deph"
+      ]
+    },
+    {
+      "id": "canopea",
+      "name": "Canopéa",
+      "noms": [
+        "Fëulys Verd"
+      ]
+    },
+    {
+      "id": "entropea",
+      "name": "Entropéa",
+      "noms": [
+        "Chaon Mekk"
+      ]
+    },
+    {
+      "id": "aceria",
+      "name": "Acéria",
+      "noms": [
+        "Gelvyn Stahl"
+      ]
+    },
+    {
+      "id": "basaltia",
+      "name": "Basaltia",
+      "noms": [
+        "Rokhan Baal"
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@ async function loadAllData(){
     try { var r = await fetch(path); if(r.ok) return await r.json(); } catch(e){}
     return null;
   }
-  var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs, tournament] = await Promise.all([
+  var [auth, ency, personas, locs, games, elems, dialog, projects, calendar, weather, jobs, worlds, quotidiens, races] = await Promise.all([
     loadJSON("datas/authors.json"),
     loadJSON("datas/encyclopedia.json"),
     loadJSON("datas/personas.json"),
@@ -18,7 +18,9 @@ async function loadAllData(){
     loadJSON("datas/calendar.json"),
     loadJSON("datas/weather.json"),
     loadJSON("datas/jobs.json"),
-    loadJSON("datas/tournament.json")
+    loadJSON("datas/worlds.json"),
+    loadJSON("datas/quotidiens.json"),
+    loadJSON("datas/races.json")
   ]);
   if(auth) authData = auth;
   if(ency) encyData = ency;
@@ -31,7 +33,11 @@ async function loadAllData(){
   if(calendar) calendarData = calendar;
   if(weather) weatherData = weather;
   if(jobs) jobsData = jobs;
-  if(tournament) tournamentData = tournament;
+  // Merge worlds, quotidiens, races into tournamentData for backward compatibility
+  tournamentData = {};
+  if(worlds) tournamentData.univers = worlds.univers;
+  if(quotidiens) tournamentData.quotidiens = quotidiens.quotidiens;
+  if(races) tournamentData.races = races.races;
   if(authData.author) avatarMap[authData.author.id] = authData.author.avatar;
   (authData.guides||[]).forEach(function(g){ if(g && g.avatar) avatarMap[g.id] = g.avatar });
   getPersonas().forEach(function(p){ if(p.avatar) avatarMap[p.id] = p.avatar });

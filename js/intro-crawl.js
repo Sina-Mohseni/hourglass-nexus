@@ -608,7 +608,7 @@ function showJournalArticle(){
   };
 }
 
-/* ══════════ IDENTITY SCREEN (portrait + name) ══════════ */
+/* ══════════ IDENTITY SCREEN (portrait + race) ══════════ */
 function showIdentityScreen(onDone){
   var overlay = document.getElementById("identity-screen");
   if(!overlay){ onDone(); return; }
@@ -618,48 +618,99 @@ function showIdentityScreen(onDone){
   var preview = document.getElementById("id-avatar-preview");
   var label = document.getElementById("id-avatar-label");
   var fileInput = document.getElementById("id-file-input");
-  var nameInput = document.getElementById("id-name-input");
-  var confirmBtn = document.getElementById("id-confirm-btn");
+  var raceTitle = document.getElementById("id-race-title");
+  var raceList = document.getElementById("id-race-list");
 
   var avatarData = "";
+  var avatarChosen = false;
 
   // Avatar pick
   function openFilePicker(){ if(fileInput) fileInput.click(); }
-  if(ring) ring.onclick = openFilePicker;
-  if(label) label.onclick = openFilePicker;
+  if(ring) ring.onclick = function(){
+    if(!avatarChosen) openFilePicker();
+  };
+  if(label) label.onclick = function(){
+    if(!avatarChosen) openFilePicker();
+  };
   if(fileInput) fileInput.onchange = function(){
     var file = fileInput.files[0]; if(!file) return;
     var reader = new FileReader();
     reader.onload = function(e){
       avatarData = e.target.result;
       if(preview) preview.innerHTML = '<img src="'+avatarData+'">';
+      showRaceSelection();
     };
     reader.readAsDataURL(file);
   };
 
-  // Confirm
-  if(confirmBtn) confirmBtn.onclick = function(){
-    var name = nameInput ? nameInput.value.trim() : "";
-    if(name.length < 2){ if(nameInput) nameInput.focus(); return; }
+  // Skip avatar → go to race selection after a short delay
+  // Allow tap on preview "+" to skip
+  if(preview){
+    var plus = preview.querySelector(".id-avatar-plus");
+    if(plus){
+      // Double-tap on "+" skips avatar
+      var tapCount = 0;
+      plus.onclick = function(e){
+        e.stopPropagation();
+        tapCount++;
+        if(tapCount >= 2) showRaceSelection();
+        setTimeout(function(){ tapCount = 0; }, 500);
+      };
+    }
+  }
 
-    // Save name + avatar immediately
-    var u = loadUser();
-    u.name = name;
-    saveUser(u);
-    if(avatarData) saveAvatar(avatarData);
-    window._idAvatarData = avatarData;
-    window._idName = name;
+  function showRaceSelection(){
+    avatarChosen = true;
+    // Hide avatar label, show race selection
+    if(label) label.style.display = "none";
+    if(raceTitle) raceTitle.style.display = "";
+    if(raceList){
+      raceList.style.display = "";
+      raceList.innerHTML = "";
 
-    overlay.classList.add("fading-out");
-    setTimeout(function(){
-      overlay.style.display = "none";
-      overlay.classList.remove("fading-out");
-      // Reset for potential replay
-      if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
-      if(nameInput) nameInput.value = "";
-      onDone();
-    }, 800);
-  };
+      var races = getTournamentRaces();
+      races.forEach(function(raceName){
+        var btn = document.createElement("button");
+        btn.className = "id-race-circle";
+        btn.textContent = raceName;
+        btn.onclick = function(e){
+          e.stopPropagation();
+          // Highlight selected
+          raceList.querySelectorAll(".id-race-circle").forEach(function(b){
+            b.classList.remove("selected");
+            b.style.opacity = "0.4";
+          });
+          btn.classList.add("selected");
+          btn.style.opacity = "1";
+
+          // Save race + avatar
+          var u = loadUser();
+          u.race = raceName;
+          saveUser(u);
+          if(avatarData) saveAvatar(avatarData);
+          window._idAvatarData = avatarData;
+          window._idRace = raceName;
+
+          setTimeout(function(){
+            overlay.classList.add("fading-out");
+            setTimeout(function(){
+              overlay.style.display = "none";
+              overlay.classList.remove("fading-out");
+              // Reset for potential replay
+              if(preview) preview.innerHTML = '<span class="id-avatar-plus">+</span>';
+              if(raceList) raceList.innerHTML = "";
+              if(raceTitle) raceTitle.style.display = "none";
+              if(raceList) raceList.style.display = "none";
+              if(label){ label.style.display = ""; }
+              avatarChosen = false;
+              onDone();
+            }, 800);
+          }, 400);
+        };
+        raceList.appendChild(btn);
+      });
+    }
+  }
 }
 
 /* ══════════ SCENARIO MUSIC MAP ══════════ */
@@ -809,13 +860,15 @@ function showContractPreview(arena, persona, scenarioObj, type, onSigned){
   var preview = document.createElement("div");
   preview.className = "sc-contract-preview";
 
-  var avatarSrc = (persona && persona.avatar) ? persona.avatar : "assets/settings.png";
-  var playerName = (persona && persona.name) ? persona.name : "Candidat";
+  // Use player data (avatar + race) if available, fallback to persona
+  var playerUser = loadUser();
+  var avatarSrc = playerUser.avatar || (persona && persona.avatar ? persona.avatar : "assets/settings.png");
+  var playerLabel = playerUser.race || (persona && persona.name ? persona.name : "Candidat");
 
   var h = '<div class="scp-portrait">';
   h += '<img src="' + avatarSrc + '" alt="">';
   h += '</div>';
-  h += '<div class="scp-name">' + playerName + '</div>';
+  h += '<div class="scp-name">' + esc(playerLabel) + '</div>';
   h += '<div class="scp-scenario">' + scenarioObj.name + '</div>';
   h += '<div class="scp-contract-icon" title="Ouvrir le contrat">&#128220;</div>';
   h += '<div class="scp-contract-hint">Contrat</div>';
@@ -1150,49 +1203,204 @@ function showScenarioChoice(onChosen){
       div.onclick = (function(sc){
         return function(){
           showScenarioLoreChoice(sc.name, sc.lore, function onAccept(){
-            // Accepted → go to contract preview (no back from here)
+            // Accepted → go to planet selection, then contract
             var scenario = sc.scenario;
             window._chosenScenario = scenario;
-            step2State = "contract";
 
             // Remove all scenario circles and labels
             arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
             arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
 
-            // Update title
-            if(step2Title) step2Title.textContent = sc.name;
-            if(subtitle) subtitle.textContent = "";
-
-            // Hide back button during contract phase
+            // Hide back button
             if(backBtn) backBtn.style.display = "none";
 
-            // Show contract preview page (portrait + name + title + contract icon)
-            showContractPreview(arena, persona, sc, type, function(){
-              // Contract signed → remove preview, show guide placement
-              step2State = "guide";
-              arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+            // ── PLANET SELECTION ──
+            step2State = "planet";
+            if(step2Title) step2Title.textContent = "De quelle planète viens-tu ?";
+            if(subtitle) subtitle.textContent = "Choisis ton monde d'origine";
 
-              if(step2Title) step2Title.textContent = "Place ton guide";
-              if(subtitle) subtitle.textContent = "Déplace le guide vers le cercle";
+            var planetZone = document.createElement("div");
+            planetZone.className = "sc-planet-zone";
+            planetZone.style.cssText = "display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px 8px;max-height:55vh;overflow-y:auto;animation:ccFadeUp .4s ease both";
 
-              // Create single target circle in center
-              var target = document.createElement("div");
-              target.className = "sc-circle";
-              target.setAttribute("data-scenario", scenario);
-              target.style.left = "50%";
-              target.style.top = "35%";
-              arena.appendChild(target);
+            var univers = getTournamentUnivers();
+            univers.forEach(function(w){
+              var btn = document.createElement("button");
+              btn.className = "sc-planet-btn";
+              btn.setAttribute("data-wid", w.id);
+              btn.innerHTML = '<span class="sc-planet-name">' + esc(w.name) + '</span>';
+              btn.onclick = function(e){
+                e.stopPropagation();
+                // Highlight selected
+                planetZone.querySelectorAll(".sc-planet-btn").forEach(function(b){
+                  b.classList.remove("selected");
+                  b.style.opacity = "0.4";
+                });
+                btn.classList.add("selected");
+                btn.style.opacity = "1";
 
-              // Reveal guide
-              guide.style.display = "";
-              guide.style.left = "50%";
-              guide.style.top = "82%";
-              guide.classList.remove("sc-guide-awake");
-              if(guideLabel) guideLabel.textContent = "Endormi";
+                // Save world
+                var u = loadUser();
+                u.worldName = w.name;
+                saveUser(u);
+                window._chosenWorld = w;
 
-              // Init drag for guide placement
-              initGuideDrag(scenario);
+                setTimeout(function(){
+                  planetZone.style.animation = "ccFadeOut .3s ease both";
+                  setTimeout(function(){
+                    planetZone.remove();
+
+                    // ── CONTRACT PHASE ──
+                    step2State = "contract";
+                    if(step2Title) step2Title.textContent = sc.name;
+                    if(subtitle) subtitle.textContent = "";
+
+                    showContractPreview(arena, persona, sc, type, function(){
+                      // Contract signed → show ATOM quotidien + name dialog
+                      step2State = "quotidien";
+                      arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+
+                      // ── ATOM QUOTIDIEN + NAME DIALOG ──
+                      if(step2Title) step2Title.textContent = "A.T.O.M.";
+                      if(subtitle) subtitle.textContent = "";
+
+                      var atomZone = document.createElement("div");
+                      atomZone.className = "sc-atom-zone";
+                      atomZone.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 8px;animation:ccFadeUp .4s ease both;width:100%";
+
+                      // ATOM portrait
+                      var guideP = getGuidePersona();
+                      var atomPortrait = document.createElement("div");
+                      atomPortrait.style.cssText = "width:60px;height:60px;border-radius:50%;border:2px solid rgba(201,160,74,.3);overflow:hidden;margin-bottom:4px";
+                      if(guideP && guideP.avatar) atomPortrait.innerHTML = '<img src="'+esc(guideP.avatar)+'" style="width:100%;height:100%;object-fit:cover">';
+                      atomZone.appendChild(atomPortrait);
+
+                      // ATOM dialog text
+                      var atomText = document.createElement("div");
+                      atomText.style.cssText = "font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;color:var(--bone-dim);text-align:center;line-height:1.5;max-width:300px";
+                      atomText.innerHTML = "Avant la cérémonie, j'ai besoin de savoir… <span style='color:var(--gold-light)'>Quel est ton quotidien</span> sur ta planète ?";
+                      atomZone.appendChild(atomText);
+
+                      // Quotidien list (grouped by classe)
+                      var quotidiens = getTournamentQuotidiens();
+                      var classes = {};
+                      quotidiens.forEach(function(q){
+                        if(!classes[q.classe]) classes[q.classe] = [];
+                        classes[q.classe].push(q);
+                      });
+
+                      var qList = document.createElement("div");
+                      qList.style.cssText = "width:100%;max-height:35vh;overflow-y:auto;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:4px 0";
+                      qList.className = "sc-quotidien-list";
+
+                      quotidiens.forEach(function(q){
+                        var qBtn = document.createElement("button");
+                        qBtn.className = "sc-quotidien-btn";
+                        qBtn.setAttribute("data-qid", q.id);
+                        qBtn.innerHTML = '<span class="sc-q-name">' + esc(q.name) + '</span><span class="sc-q-classe">' + esc(q.classe) + '</span>';
+                        qBtn.onclick = function(ev){
+                          ev.stopPropagation();
+                          qList.querySelectorAll(".sc-quotidien-btn").forEach(function(b){
+                            b.classList.remove("selected");
+                            b.style.opacity = "0.4";
+                          });
+                          qBtn.classList.add("selected");
+                          qBtn.style.opacity = "1";
+                          window._chosenQuotidien = q;
+
+                          // Show name input
+                          var nameRow = atomZone.querySelector(".sc-atom-name-row");
+                          if(nameRow) nameRow.style.display = "flex";
+                        };
+                        qList.appendChild(qBtn);
+                      });
+                      atomZone.appendChild(qList);
+
+                      // Name input row (hidden until quotidien selected)
+                      var nameRow = document.createElement("div");
+                      nameRow.className = "sc-atom-name-row";
+                      nameRow.style.cssText = "display:none;flex-direction:column;align-items:center;gap:8px;width:100%;animation:ccFadeUp .3s ease both";
+
+                      var nameLabel = document.createElement("div");
+                      nameLabel.style.cssText = "font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;color:var(--bone-dim);text-align:center";
+                      nameLabel.innerHTML = "Et quel <span style='color:var(--gold-light)'>nom</span> portes-tu ?";
+                      nameRow.appendChild(nameLabel);
+
+                      var nameInput = document.createElement("input");
+                      nameInput.type = "text";
+                      nameInput.className = "id-name-input";
+                      nameInput.placeholder = "Ton nom de voyageur\u2026";
+                      nameInput.maxLength = 24;
+                      nameInput.autocomplete = "off";
+                      nameInput.style.cssText = "width:80%;max-width:280px;padding:14px 18px;background:rgba(14,10,6,.9);border:1px solid rgba(168,132,42,.2);border-radius:12px;color:var(--gold-light);font-family:var(--font-heading,Poppins,sans-serif);font-size:14px;text-align:center;outline:none;transition:border-color .2s";
+                      nameRow.appendChild(nameInput);
+
+                      var nameConfirm = document.createElement("button");
+                      nameConfirm.textContent = "Continuer";
+                      nameConfirm.disabled = true;
+                      nameConfirm.style.cssText = "padding:12px 36px;background:rgba(168,132,42,.06);border:1px solid rgba(168,132,42,.3);border-radius:24px;color:var(--gold-light);font-family:var(--font-heading,Poppins,sans-serif);font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s";
+                      nameInput.addEventListener("input", function(){
+                        nameConfirm.disabled = nameInput.value.trim().length < 2;
+                        nameConfirm.style.opacity = nameConfirm.disabled ? "0.4" : "1";
+                      });
+                      nameConfirm.onclick = function(ev){
+                        ev.stopPropagation();
+                        if(nameInput.value.trim().length < 2) return;
+
+                        // Save quotidien + name
+                        var u = loadUser();
+                        u.name = nameInput.value.trim();
+                        u.className = window._chosenQuotidien ? window._chosenQuotidien.name : "";
+                        // Apply quotidien stats
+                        if(window._chosenQuotidien && window._chosenQuotidien.variants && window._chosenQuotidien.variants[0]){
+                          var stats = window._chosenQuotidien.variants[0];
+                          u.statCRE = stats.CRE || 50;
+                          u.statSAG = stats.SAG || 50;
+                          u.statCHA = stats.CHA || 50;
+                          u.statFOR = stats.FOR || 50;
+                          u.statAGI = stats.AGI || 50;
+                          u.statPER = stats.PER || 50;
+                        }
+                        saveUser(u);
+                        window._idName = u.name;
+
+                        // Fade out ATOM zone → go to guide placement
+                        atomZone.style.animation = "ccFadeOut .3s ease both";
+                        setTimeout(function(){
+                          atomZone.remove();
+
+                          // ── GUIDE PLACEMENT ──
+                          step2State = "guide";
+                          if(step2Title) step2Title.textContent = "Place ton guide";
+                          if(subtitle) subtitle.textContent = "Déplace le guide vers le cercle";
+
+                          var target = document.createElement("div");
+                          target.className = "sc-circle";
+                          target.setAttribute("data-scenario", scenario);
+                          target.style.left = "50%";
+                          target.style.top = "35%";
+                          arena.appendChild(target);
+
+                          guide.style.display = "";
+                          guide.style.left = "50%";
+                          guide.style.top = "82%";
+                          guide.classList.remove("sc-guide-awake");
+                          if(guideLabel) guideLabel.textContent = "Endormi";
+
+                          initGuideDrag(scenario);
+                        }, 300);
+                      };
+                      nameRow.appendChild(nameConfirm);
+                      atomZone.appendChild(nameRow);
+
+                      arena.appendChild(atomZone);
+                    });
+                  }, 300);
+                }, 400);
+              };
+              planetZone.appendChild(btn);
             });
+            arena.appendChild(planetZone);
           });
         };
       })(s);
@@ -1215,6 +1423,8 @@ function showScenarioChoice(onChosen){
     arena.querySelectorAll(".sc-circle").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-circle-label").forEach(function(c){ c.remove(); });
     arena.querySelectorAll(".sc-contract-preview").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-planet-zone").forEach(function(c){ c.remove(); });
+    arena.querySelectorAll(".sc-atom-zone").forEach(function(c){ c.remove(); });
     guide.style.display = "";
     if(window._scDragCleanup) window._scDragCleanup();
   }

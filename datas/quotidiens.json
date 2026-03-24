@@ -1,0 +1,644 @@
+{
+  "quotidiens": [
+    {
+      "id": "gladiateur",
+      "name": "Gladiateur",
+      "classe": "Combattant",
+      "epoque": "Antiquité",
+      "variants": [
+        {
+          "CRE": 30,
+          "SAG": 35,
+          "CHA": 55,
+          "FOR": 90,
+          "AGI": 70,
+          "PER": 40
+        }
+      ]
+    },
+    {
+      "id": "soldat-tranchees",
+      "name": "Soldat des Tranchées",
+      "classe": "Combattant",
+      "epoque": "Guerres mondiales",
+      "variants": [
+        {
+          "CRE": 25,
+          "SAG": 50,
+          "CHA": 35,
+          "FOR": 75,
+          "AGI": 60,
+          "PER": 85
+        }
+      ]
+    },
+    {
+      "id": "pilote-mecha",
+      "name": "Pilote de Mecha",
+      "classe": "Combattant",
+      "epoque": "Futuriste",
+      "variants": [
+        {
+          "CRE": 55,
+          "SAG": 60,
+          "CHA": 40,
+          "FOR": 45,
+          "AGI": 90,
+          "PER": 80
+        }
+      ]
+    },
+    {
+      "id": "chasseur-mammouth",
+      "name": "Chasseur de Mammouth",
+      "classe": "Combattant",
+      "epoque": "Préhistoire",
+      "variants": [
+        {
+          "CRE": 35,
+          "SAG": 40,
+          "CHA": 30,
+          "FOR": 95,
+          "AGI": 75,
+          "PER": 85
+        }
+      ]
+    },
+    {
+      "id": "necromancien",
+      "name": "Nécromancien",
+      "classe": "Arcaniste",
+      "epoque": "Fantasy sombre",
+      "variants": [
+        {
+          "CRE": 87,
+          "SAG": 80,
+          "CHA": 30,
+          "FOR": 22,
+          "AGI": 25,
+          "PER": 65
+        }
+      ]
+    },
+    {
+      "id": "hacker-neuromancien",
+      "name": "Hacker Neuromancien",
+      "classe": "Arcaniste",
+      "epoque": "Cyberpunk",
+      "variants": [
+        {
+          "CRE": 90,
+          "SAG": 72,
+          "CHA": 45,
+          "FOR": 20,
+          "AGI": 60,
+          "PER": 78
+        }
+      ]
+    },
+    {
+      "id": "pretre-astronome",
+      "name": "Prêtre-Astronome",
+      "classe": "Arcaniste",
+      "epoque": "Antiquité",
+      "variants": [
+        {
+          "CRE": 72,
+          "SAG": 92,
+          "CHA": 65,
+          "FOR": 25,
+          "AGI": 28,
+          "PER": 80
+        }
+      ]
+    },
+    {
+      "id": "forgeron",
+      "name": "Forgeron",
+      "classe": "Artisan",
+      "epoque": "Médiéval",
+      "variants": [
+        {
+          "CRE": 70,
+          "SAG": 50,
+          "CHA": 35,
+          "FOR": 90,
+          "AGI": 45,
+          "PER": 40
+        }
+      ]
+    },
+    {
+      "id": "ingenieur-vapeur",
+      "name": "Ingénieur Vapeur",
+      "classe": "Artisan",
+      "epoque": "Industriel / Steampunk",
+      "variants": [
+        {
+          "CRE": 82,
+          "SAG": 75,
+          "CHA": 40,
+          "FOR": 50,
+          "AGI": 45,
+          "PER": 60
+        }
+      ]
+    },
+    {
+      "id": "tailleur-silex",
+      "name": "Tailleur de Silex",
+      "classe": "Artisan",
+      "epoque": "Préhistoire",
+      "variants": [
+        {
+          "CRE": 80,
+          "SAG": 45,
+          "CHA": 25,
+          "FOR": 70,
+          "AGI": 65,
+          "PER": 55
+        }
+      ]
+    },
+    {
+      "id": "imprimeur-3d-bio",
+      "name": "Imprimeur 3D Bio",
+      "classe": "Artisan",
+      "epoque": "Futuriste",
+      "variants": [
+        {
+          "CRE": 90,
+          "SAG": 80,
+          "CHA": 42,
+          "FOR": 22,
+          "AGI": 55,
+          "PER": 68
+        }
+      ]
+    },
+    {
+      "id": "diplomate-interstellaire",
+      "name": "Diplomate Interstellaire",
+      "classe": "Social",
+      "epoque": "Futuriste",
+      "variants": [
+        {
+          "CRE": 55,
+          "SAG": 78,
+          "CHA": 95,
+          "FOR": 20,
+          "AGI": 30,
+          "PER": 72
+        }
+      ]
+    },
+    {
+      "id": "courtisan",
+      "name": "Courtisan de Cour",
+      "classe": "Social",
+      "epoque": "Renaissance",
+      "variants": [
+        {
+          "CRE": 65,
+          "SAG": 58,
+          "CHA": 92,
+          "FOR": 22,
+          "AGI": 50,
+          "PER": 70
+        }
+      ]
+    },
+    {
+      "id": "influenceur",
+      "name": "Influenceur Médiatique",
+      "classe": "Social",
+      "epoque": "Contemporain",
+      "variants": [
+        {
+          "CRE": 80,
+          "SAG": 35,
+          "CHA": 95,
+          "FOR": 20,
+          "AGI": 45,
+          "PER": 55
+        }
+      ]
+    },
+    {
+      "id": "assassin-guilde",
+      "name": "Assassin de Guilde",
+      "classe": "Ombre",
+      "epoque": "Médiéval / Fantasy",
+      "variants": [
+        {
+          "CRE": 50,
+          "SAG": 55,
+          "CHA": 30,
+          "FOR": 35,
+          "AGI": 92,
+          "PER": 82
+        }
+      ]
+    },
+    {
+      "id": "agent-secret",
+      "name": "Agent Secret",
+      "classe": "Ombre",
+      "epoque": "Guerre froide / Moderne",
+      "variants": [
+        {
+          "CRE": 65,
+          "SAG": 72,
+          "CHA": 70,
+          "FOR": 40,
+          "AGI": 78,
+          "PER": 85
+        }
+      ]
+    },
+    {
+      "id": "pirate-spatial",
+      "name": "Pirate Spatial",
+      "classe": "Ombre",
+      "epoque": "Futuriste / Space Opera",
+      "variants": [
+        {
+          "CRE": 60,
+          "SAG": 45,
+          "CHA": 65,
+          "FOR": 50,
+          "AGI": 85,
+          "PER": 70
+        }
+      ]
+    },
+    {
+      "id": "chaman-tribal",
+      "name": "Chaman Tribal",
+      "classe": "Soigneur",
+      "epoque": "Préhistoire / Tribal",
+      "variants": [
+        {
+          "CRE": 70,
+          "SAG": 88,
+          "CHA": 60,
+          "FOR": 30,
+          "AGI": 35,
+          "PER": 72
+        }
+      ]
+    },
+    {
+      "id": "chirurgien-campagne",
+      "name": "Chirurgien de Campagne",
+      "classe": "Soigneur",
+      "epoque": "Guerres / XIXe",
+      "variants": [
+        {
+          "CRE": 45,
+          "SAG": 85,
+          "CHA": 40,
+          "FOR": 50,
+          "AGI": 72,
+          "PER": 80
+        }
+      ]
+    },
+    {
+      "id": "nano-medecin",
+      "name": "Nano-Médecin",
+      "classe": "Soigneur",
+      "epoque": "Futuriste",
+      "variants": [
+        {
+          "CRE": 72,
+          "SAG": 92,
+          "CHA": 45,
+          "FOR": 20,
+          "AGI": 55,
+          "PER": 85
+        }
+      ]
+    },
+    {
+      "id": "cueilleur-nomade",
+      "name": "Cueilleur-Nomade",
+      "classe": "Survivant",
+      "epoque": "Préhistoire",
+      "variants": [
+        {
+          "CRE": 45,
+          "SAG": 60,
+          "CHA": 25,
+          "FOR": 65,
+          "AGI": 78,
+          "PER": 92
+        }
+      ]
+    },
+    {
+      "id": "trappeur-colonial",
+      "name": "Trappeur Colonial",
+      "classe": "Survivant",
+      "epoque": "XVIIe-XVIIIe siècle",
+      "variants": [
+        {
+          "CRE": 40,
+          "SAG": 68,
+          "CHA": 35,
+          "FOR": 60,
+          "AGI": 72,
+          "PER": 88
+        }
+      ]
+    },
+    {
+      "id": "scavenger-post-apo",
+      "name": "Scavenger Post-Apo",
+      "classe": "Survivant",
+      "epoque": "Post-apocalyptique",
+      "variants": [
+        {
+          "CRE": 72,
+          "SAG": 55,
+          "CHA": 30,
+          "FOR": 60,
+          "AGI": 80,
+          "PER": 85
+        }
+      ]
+    },
+    {
+      "id": "barde-itinerant",
+      "name": "Barde Itinérant",
+      "classe": "Artiste",
+      "epoque": "Médiéval",
+      "variants": [
+        {
+          "CRE": 90,
+          "SAG": 45,
+          "CHA": 85,
+          "FOR": 25,
+          "AGI": 50,
+          "PER": 55
+        }
+      ]
+    },
+    {
+      "id": "peintre-cour",
+      "name": "Peintre de la Cour",
+      "classe": "Artiste",
+      "epoque": "Renaissance",
+      "variants": [
+        {
+          "CRE": 95,
+          "SAG": 55,
+          "CHA": 70,
+          "FOR": 22,
+          "AGI": 62,
+          "PER": 78
+        }
+      ]
+    },
+    {
+      "id": "artiste-holographique",
+      "name": "VJ / Artiste Holographique",
+      "classe": "Artiste",
+      "epoque": "Futuriste",
+      "variants": [
+        {
+          "CRE": 98,
+          "SAG": 42,
+          "CHA": 75,
+          "FOR": 20,
+          "AGI": 70,
+          "PER": 65
+        }
+      ]
+    },
+    {
+      "id": "philosophe-antique",
+      "name": "Philosophe Antique",
+      "classe": "Érudit",
+      "epoque": "Antiquité",
+      "variants": [
+        {
+          "CRE": 72,
+          "SAG": 95,
+          "CHA": 70,
+          "FOR": 20,
+          "AGI": 22,
+          "PER": 60
+        }
+      ]
+    },
+    {
+      "id": "moine-copiste",
+      "name": "Moine Copiste",
+      "classe": "Érudit",
+      "epoque": "Médiéval",
+      "variants": [
+        {
+          "CRE": 65,
+          "SAG": 90,
+          "CHA": 35,
+          "FOR": 25,
+          "AGI": 40,
+          "PER": 82
+        }
+      ]
+    },
+    {
+      "id": "data-scientist",
+      "name": "Data Scientist",
+      "classe": "Érudit",
+      "epoque": "Contemporain",
+      "variants": [
+        {
+          "CRE": 70,
+          "SAG": 90,
+          "CHA": 40,
+          "FOR": 20,
+          "AGI": 35,
+          "PER": 80
+        }
+      ]
+    },
+    {
+      "id": "esclave-carrieres",
+      "name": "Esclave des Carrières",
+      "classe": "Labeur",
+      "epoque": "Antiquité",
+      "variants": [
+        {
+          "CRE": 22,
+          "SAG": 40,
+          "CHA": 20,
+          "FOR": 95,
+          "AGI": 55,
+          "PER": 50
+        }
+      ]
+    },
+    {
+      "id": "ouvrier-usine",
+      "name": "Ouvrier d'Usine",
+      "classe": "Labeur",
+      "epoque": "Industriel XIXe",
+      "variants": [
+        {
+          "CRE": 25,
+          "SAG": 45,
+          "CHA": 30,
+          "FOR": 82,
+          "AGI": 55,
+          "PER": 48
+        }
+      ]
+    },
+    {
+      "id": "livreur-drone",
+      "name": "Livreur de Drone",
+      "classe": "Labeur",
+      "epoque": "Contemporain / Proche futur",
+      "variants": [
+        {
+          "CRE": 35,
+          "SAG": 50,
+          "CHA": 40,
+          "FOR": 45,
+          "AGI": 72,
+          "PER": 68
+        }
+      ]
+    },
+    {
+      "id": "marchand-soie",
+      "name": "Marchand de Soie",
+      "classe": "Marchand",
+      "epoque": "Route de la Soie / Antique",
+      "variants": [
+        {
+          "CRE": 50,
+          "SAG": 70,
+          "CHA": 88,
+          "FOR": 30,
+          "AGI": 42,
+          "PER": 72
+        }
+      ]
+    },
+    {
+      "id": "contrebandier",
+      "name": "Contrebandier Prohibition",
+      "classe": "Marchand",
+      "epoque": "Années 1920",
+      "variants": [
+        {
+          "CRE": 60,
+          "SAG": 55,
+          "CHA": 78,
+          "FOR": 45,
+          "AGI": 70,
+          "PER": 65
+        }
+      ]
+    },
+    {
+      "id": "trader-galactique",
+      "name": "Trader Galactique",
+      "classe": "Marchand",
+      "epoque": "Futuriste / Space Opera",
+      "variants": [
+        {
+          "CRE": 58,
+          "SAG": 75,
+          "CHA": 82,
+          "FOR": 22,
+          "AGI": 48,
+          "PER": 78
+        }
+      ]
+    },
+    {
+      "id": "tisserand-brume",
+      "name": "Tisserand de Brume",
+      "classe": "Singulier",
+      "epoque": "Fantasy / Onirique",
+      "variants": [
+        {
+          "CRE": 92,
+          "SAG": 70,
+          "CHA": 50,
+          "FOR": 20,
+          "AGI": 55,
+          "PER": 65
+        }
+      ]
+    },
+    {
+      "id": "gouteur-reves",
+      "name": "Goûteur de Rêves",
+      "classe": "Singulier",
+      "epoque": "Surréaliste",
+      "variants": [
+        {
+          "CRE": 95,
+          "SAG": 75,
+          "CHA": 60,
+          "FOR": 20,
+          "AGI": 30,
+          "PER": 82
+        }
+      ]
+    },
+    {
+      "id": "dompteur-tempetes",
+      "name": "Dompteur de Tempêtes",
+      "classe": "Singulier",
+      "epoque": "Mythologique",
+      "variants": [
+        {
+          "CRE": 70,
+          "SAG": 65,
+          "CHA": 72,
+          "FOR": 50,
+          "AGI": 55,
+          "PER": 78
+        }
+      ]
+    },
+    {
+      "id": "archiviste-murmures",
+      "name": "Archiviste des Murmures",
+      "classe": "Singulier",
+      "epoque": "Intemporel",
+      "variants": [
+        {
+          "CRE": 68,
+          "SAG": 90,
+          "CHA": 40,
+          "FOR": 20,
+          "AGI": 30,
+          "PER": 95
+        }
+      ]
+    },
+    {
+      "id": "navigateur-neant",
+      "name": "Navigateur du Néant",
+      "classe": "Singulier",
+      "epoque": "Cosmique",
+      "variants": [
+        {
+          "CRE": 78,
+          "SAG": 82,
+          "CHA": 35,
+          "FOR": 22,
+          "AGI": 68,
+          "PER": 88
+        }
+      ]
+    }
+  ]
+}
