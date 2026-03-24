@@ -176,7 +176,15 @@ var NIGHT_DIALOGUES = {
 };
 
 /* ── Night intro narration builder ── */
-function _buildNightIntro(cityName, regionName){
+/* Tries persona's nightDialogues.intro first, then falls back to generic */
+function _buildNightIntro(cityName, regionName, npc){
+  if(npc && npc.nightDialogues && npc.nightDialogues.intro && npc.nightDialogues.intro.length > 0){
+    /* Inject city/region into paragraph 2 if it contains the generic text */
+    return npc.nightDialogues.intro.map(function(p){
+      return p.replace(/\{cityName\}/g, cityName || "un lieu inconnu")
+              .replace(/\{regionName\}/g, regionName || "une contrée lointaine");
+    });
+  }
   return [
     "La téléportation s'achève. Ton corps se reconstitue, particule par particule, dans un lieu que tu ne connais pas. L'air est différent ici. Plus dense. Plus ancien.",
     "Tu es à " + cityName + ", en " + regionName + ". C'est ici que le Tournoi t'a assigné ta zone de repos — un recoin du monde choisi au hasard, loin de tout, loin de tous.",
@@ -265,15 +273,60 @@ var PILL_RELIEF_LINES = {
   "solen":   "\u2026 Bien. Tu comprends."
 };
 
+/* ── Resolve the scenario key for nightDialogues lookup ── */
+function _resolveScenarioKey(){
+  var sc = window._chosenScenario || "lambda";
+  var origin = window._scOriginType || "connecte";
+  if(sc === "rebelle" && origin === "isole") return "rebelle_isole";
+  if(sc === "rebelle") return "rebelle_connecte";
+  if(sc === "apprenti-morkar") return "apprenti_morkar";
+  if(sc === "veteran-morkar") return "veteran_morkar";
+  return sc; // "champion" or "lambda"
+}
+
+/* ── Get dialogue tree for a persona: prefer nightDialogues (scenario-aware) then NIGHT_DIALOGUES (legacy) ── */
+function _resolveDialogueTree(npc){
+  var scKey = _resolveScenarioKey();
+  /* 1. Try persona's nightDialogues.scenarios[scKey] from personas.json */
+  if(npc.nightDialogues && npc.nightDialogues.scenarios && npc.nightDialogues.scenarios[scKey]){
+    var tree = npc.nightDialogues.scenarios[scKey];
+    if(tree.greeting && tree.beats && tree.beats.length > 0
+       && tree.greeting.indexOf("[TODO") === -1 && tree.beats[0].npc.indexOf("[TODO") === -1){
+      return tree;
+    }
+  }
+  /* 2. Fallback to legacy hardcoded NIGHT_DIALOGUES */
+  if(NIGHT_DIALOGUES[npc.id]) return NIGHT_DIALOGUES[npc.id];
+  return null;
+}
+
+/* ── Get outro paragraphs: prefer nightDialogues.outro[scKey] then generic ── */
+function _resolveOutro(npc){
+  var scKey = _resolveScenarioKey();
+  if(npc.nightDialogues && npc.nightDialogues.outro && npc.nightDialogues.outro[scKey]){
+    var outro = npc.nightDialogues.outro[scKey];
+    if(outro.length > 0 && outro[0].indexOf("[TODO") === -1) return outro;
+  }
+  return NIGHT_OUTRO_PARAGRAPHS;
+}
+
 /* ── Show cinematic night intro, then NPC dialogue, then outro ── */
 function showNightDialogue(onDone, cityName, regionName){
   var personas = getNonGuidePersonas();
-  var available = personas.filter(function(p){ return NIGHT_DIALOGUES[p.id] });
+  /* Prefer personas with scenario-specific dialogues, then legacy */
+  var available = personas.filter(function(p){ return _resolveDialogueTree(p) !== null });
   if(available.length === 0){ if(onDone) onDone(); return; }
 
-  var npc = available[Math.floor(Math.random() * available.length)];
-  var tree = NIGHT_DIALOGUES[npc.id];
-  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contr\u00e9e lointaine");
+  /* If tournament participants were selected, pick from those first */
+  var pool = available;
+  if(window._tournamentParticipants && window._tournamentParticipants.length > 0){
+    var tpAvailable = window._tournamentParticipants.filter(function(p){ return _resolveDialogueTree(p) !== null });
+    if(tpAvailable.length > 0) pool = tpAvailable;
+  }
+
+  var npc = pool[Math.floor(Math.random() * pool.length)];
+  var tree = _resolveDialogueTree(npc);
+  var introParagraphs = _buildNightIntro(cityName || "un lieu inconnu", regionName || "une contr\u00e9e lointaine", npc);
 
   // Pill state: comprehensible if pill was consumed during contract
   var canUnderstand = !!window._pillConsumed;
@@ -489,7 +542,7 @@ function showNightDialogue(onDone, cityName, regionName){
         dlgScene.classList.add("ndlg-intro-fading");
         setTimeout(function(){
           dlgScene.style.display = "none";
-          _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
+          _startOutroPhase(_resolveOutro(npc));
         }, 700);
         return;
       }
@@ -521,7 +574,7 @@ function showNightDialogue(onDone, cityName, regionName){
           dlgScene.classList.add("ndlg-intro-fading");
           setTimeout(function(){
             dlgScene.style.display = "none";
-            _startOutroPhase(NIGHT_OUTRO_PARAGRAPHS);
+            _startOutroPhase(_resolveOutro(npc));
           }, 700);
         };
         setTimeout(function(){ overlay.addEventListener("click", toOutro) }, 600);

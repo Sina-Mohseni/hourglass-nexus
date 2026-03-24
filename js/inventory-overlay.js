@@ -513,8 +513,14 @@ function _buildPgFooterDrawer(u, scenario, roleLabel, misc, equip){
       window._skipCharCreate = true;
       var mainClose = document.getElementById("inv-close-btn");
       if(mainClose) mainClose.click();
-      // Start the night dialogue → random placement → enterMainApp
-      startNightSequence();
+      // Loading screen (6s) → select 39 personas → night dialogue → enterMainApp
+      if(typeof showLoadingScreen === "function"){
+        showLoadingScreen(function(){
+          startNightSequence();
+        });
+      } else {
+        startNightSequence();
+      }
     });
   };
 }
