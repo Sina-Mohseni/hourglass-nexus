@@ -166,6 +166,88 @@
 }
 .id-confirm-btn:active { border-color: var(--gold); transform: scale(.95); }
 .identity-overlay.fading-out { animation: icFadeOut .8s ease-in forwards; }
+.id-race-title {
+  font-family: var(--font-heading, Poppins, sans-serif);
+  font-size: 13px; color: var(--gold-light);
+  letter-spacing: 1px; margin-bottom: 12px;
+  opacity: 0; animation: scFadeIn .4s ease-out .1s forwards;
+}
+.id-race-list {
+  width: 90%; max-width: 340px;
+  max-height: 45vh; overflow-y: auto;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; padding: 8px 0;
+  opacity: 0; animation: scFadeIn .4s ease-out .2s forwards;
+}
+.id-race-list::-webkit-scrollbar { width: 3px; }
+.id-race-list::-webkit-scrollbar-thumb { background: rgba(201,160,74,.25); border-radius: 4px; }
+.id-race-circle {
+  padding: 8px 14px;
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(201,160,74,.2);
+  border-radius: 20px;
+  color: var(--bone-dim);
+  font-family: var(--font-heading, Poppins, sans-serif);
+  font-size: 11px; font-weight: 600;
+  cursor: pointer; transition: all .25s ease;
+}
+.id-race-circle:active { transform: scale(.95); }
+.id-race-circle.selected {
+  border-color: var(--gold);
+  background: rgba(201,160,74,.15);
+  color: var(--gold-light);
+}
+
+/* ═══════════ PLANET SELECTION ═══════════ */
+.sc-planet-zone::-webkit-scrollbar { width: 3px; }
+.sc-planet-zone::-webkit-scrollbar-thumb { background: rgba(201,160,74,.25); border-radius: 4px; }
+.sc-planet-btn {
+  padding: 8px 14px;
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(201,160,74,.2);
+  border-radius: 20px;
+  cursor: pointer; transition: all .25s ease;
+}
+.sc-planet-btn:active { transform: scale(.95); }
+.sc-planet-name {
+  font-family: var(--font-heading, Poppins, sans-serif);
+  font-size: 11px; font-weight: 600;
+  color: var(--bone-dim);
+}
+.sc-planet-btn.selected {
+  border-color: var(--gold);
+  background: rgba(201,160,74,.15);
+}
+.sc-planet-btn.selected .sc-planet-name { color: var(--gold-light); }
+
+/* ═══════════ QUOTIDIEN SELECTION ═══════════ */
+.sc-quotidien-list::-webkit-scrollbar { width: 3px; }
+.sc-quotidien-list::-webkit-scrollbar-thumb { background: rgba(201,160,74,.25); border-radius: 4px; }
+.sc-quotidien-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(201,160,74,.15);
+  border-radius: 12px;
+  cursor: pointer; transition: all .25s ease;
+}
+.sc-quotidien-btn:active { transform: scale(.95); }
+.sc-q-name {
+  font-family: var(--font-heading, Poppins, sans-serif);
+  font-size: 10.5px; font-weight: 600;
+  color: var(--bone-dim);
+}
+.sc-q-classe {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 8px; color: rgba(201,160,74,.4);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.sc-quotidien-btn.selected {
+  border-color: var(--gold);
+  background: rgba(201,160,74,.15);
+}
+.sc-quotidien-btn.selected .sc-q-name { color: var(--gold-light); }
+.sc-quotidien-btn.selected .sc-q-classe { color: rgba(201,160,74,.7); }
 
 /* ═══════════ INTRO CHOICES (2 optional buttons) ═══════════ */
 /* Morkar announcement block */
@@ -386,6 +468,14 @@
 @keyframes scFadeIn {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ccFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ccFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
 }
 
 /* ── Step 1: Type choice buttons — full screen ── */
